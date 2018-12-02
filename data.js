@@ -1496,23 +1496,6 @@ fdata = {
       timetables: ["norralinjen", "enklingelinjen"],
       pricelists: "alandstrafiken"
     },
-    // enklingelinjen now incluced in norralinjen
-    enklingelinjen: {
-      name: "Norra linjen",
-      name_fi: "Pohjoinen linja",
-      name_en: "Northern line",
-      specifier: "Enklinge - Kumlinge",
-      piers: ["Enklinge", "Kumlinge"],
-      operator: "alandstrafiken",
-      vessels: ["rosala"],
-      features: {
-        interval_L: ["times.aday", "~ 10"],
-        booking_L: "booking.cannot",
-        duration_L: ["duration.minutes", "15"]
-      },
-      timetables: "enklingelinjen",
-      pricelists: "alandstrafiken"
-    },
     asterholmalinjen: {
       name: "Norra linjen",
       name_fi: "Pohjoinen linja",
