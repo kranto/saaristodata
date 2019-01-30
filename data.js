@@ -1007,8 +1007,9 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-06-01", validTo: "2018-08-31", images: ["FoglolinjenSommar2018_1.jpeg", "FoglolinjenSommar2018_2.jpeg"]},
-      { validFrom: "2018-09-01", validTo: "2018-12-31", images: ["FoglolinjenVinter2018_1.jpeg", "FoglolinjenVinter2018_2.jpeg"]}
+      { validFrom: "2019-01-01", validTo: "2019-05-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-28.jpg"]},
+      { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-29.jpg"]},
+      { validFrom: "2019-09-01", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-28.jpg"]},
       ],
     },
     norralinjen: {
@@ -1017,8 +1018,12 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["NorraVar2018_1.jpeg", "NorraVar2018_2.jpeg", "NorraVar2018_3.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["NorraVinter2018_1.jpeg", "NorraVinter2018_2.jpeg", "NorraVinter2018_3.jpeg"]},
+      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-30.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-31.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-32.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-33.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-06-19", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-34.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-35.jpg"]},
+      { validFrom: "2019-06-20", validTo: "2019-06-23", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-36.jpg"]},
+      { validFrom: "2019-06-24", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-34.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-35.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-32.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-33.jpg"]},
       ],
     },
     enklingelinjen: {
@@ -1027,8 +1032,12 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["EnklingeVar2018.jpeg"]},
+      { validFrom: "6-08-13", validTo: "2018-09-30", images: ["EnklingeVar2018.jpeg"]},
       { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["EnklingeVinter2018.jpeg"]},
+      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-54.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-55.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-56.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-55.jpg"]},
       ],
     },
     asterholmalinjen: {
@@ -1036,8 +1045,10 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["FridaVar2018_1.jpeg", "FridaVar2018_2.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["FridaVinter2018_1.jpeg", "FridaVinter2018_2.jpeg", "FridaVinter2018_3.jpeg"]},
+      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-48.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-49.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-50.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-51.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-52.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-53.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-50.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-51.jpg"]},
       ],
     },
     avajurmo: {
@@ -1045,8 +1056,10 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["DoppingenVar2018_1.jpeg", "DoppingenVar2018_2.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["DoppingenVinter2018_1.jpeg", "DoppingenVinter2018_2.jpeg", "DoppingenVinter2018_3.jpeg"]},
+      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-42.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-43.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-44.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-45.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-46.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-47.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-44.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-45.jpg"]},
       ],
     },
     osnasava: {
@@ -1054,8 +1067,10 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["ViggenVar2018_1.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["ViggenVinter2018_1.jpeg", "ViggenVinter2018_2.jpeg", "ViggenVinter2018_3.jpeg"]},
+      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-38.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-39.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-40.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-41.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-40.jpg"]},
       ],
     },
     sodralinjen: {
@@ -1063,8 +1078,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["SodraVar2018_1.jpeg?v=1.1", "SodraVar2018_2.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["SodraVinter2018_1.jpeg?v=1.1", "SodraVinter2018_2.jpeg"]},
+      { validFrom: "2019-01-01", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-16.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-17.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-18.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-19.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-20.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-21.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-22.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-23.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-09-29", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-18.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-19.jpg"]},
+      { validFrom: "2019-09-30", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-16.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-17.jpg"]},
       ],
     },
     tvarlinjen: {
@@ -1072,8 +1090,10 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-09-30", images: ["OdinVar2018_1.jpeg", "OdinVar2018_2.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["OdinVinter2018_1.jpeg", "OdinVinter2018_2.jpeg"]},
+      { validFrom: "2019-01-01", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-10.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-11.jpg"]},
+      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-12.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-13.jpg"]},
+      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-14.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-15.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-12.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-13.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
@@ -1082,6 +1102,7 @@ fdata = {
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
       { validFrom: "2018-01-01", validTo: "2018-12-31", images: ["AlandsVajerFarjor2018.jpeg"]},
+      { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-09.jpg"]},
       ],
     },
     seglingelinjen: {
