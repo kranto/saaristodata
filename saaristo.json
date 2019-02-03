@@ -2425,7 +2425,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "naantalikustavi",
         "ssubtype": "conn5",
         "iconWeight": 20
@@ -2448,7 +2448,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "NaantaliVanhakaupunki",
         "ssubtype": "4",
         "labelVisibleFrom": 12,
@@ -2463,7 +2463,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "Merimasku",
         "ssubtype": "4",
         "labelAnchor": {"dir": "S", "x":-5 , "y":5 }
@@ -2477,7 +2477,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "Parattula",
         "ssubtype": "4",
         "labelAnchor": {"dir": "NE", "x":-5 , "y":-7 }
@@ -2491,7 +2491,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "Kivimaa2",
         "ssubtype": "4",
         "markerVisibleFrom": 12,
