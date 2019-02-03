@@ -1226,9 +1226,9 @@ fdata = {
       link_sv: "http://www.ostern.fi/aikataulu",
       link_en: "http://www.ostern.fi/en/schedule-fahrplan",
       tables: [
-      { validFrom: "2018-05-18", validTo: "2018-09-02", images: ["Ostern2018_fisv.jpeg"], tables_en: ["Ostern2018_ende.jpeg"]},
+      { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["Ostern2019_fisv.jpeg"], images_en: ["Ostern2019_ende.jpeg"]},
       ],
-    },
+      },
     kasnashitis: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen-aurora.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
