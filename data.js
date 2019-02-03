@@ -400,7 +400,8 @@ fdata = {
       features: { },
       capacity: { cars: 10 },
       contact: {
-        phones: ['+358 10 271 7915']
+        phones: ['+358 50 379 1448'],
+        email: 'vikare.ksloy@outlook.com',
       },
     },
     sorpo: {
@@ -651,6 +652,15 @@ fdata = {
         www_sv: 'http://www.ncl.fi/sv',
         www_en: 'http://www.ncl.fi/en'
       },
+    },
+    kymensaaristoliikenne: {
+      name: "Kymen Saaristoliikenne Oy",
+      logo: "",
+      contact: {
+        address: 'Norpantie 15, 48310 Kotka',
+        phones: ['+358 400 947 703'],
+
+      }
     },
     ferryway: {
       name: "JS Ferryway Ltd Oy",
@@ -1032,8 +1042,6 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "6-08-13", validTo: "2018-09-30", images: ["EnklingeVar2018.jpeg"]},
-      { validFrom: "2018-10-01", validTo: "2018-12-31", images: ["EnklingeVinter2018.jpeg"]},
       { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-54.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
       { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-55.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
       { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-56.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-57.jpg"]},
@@ -1101,7 +1109,6 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-01-01", validTo: "2018-12-31", images: ["AlandsVajerFarjor2018.jpeg"]},
       { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-09.jpg"]},
       ],
     },
@@ -1119,7 +1126,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-02-01", validTo: null, images: ["Toftolinjen2018_1.jpeg", "Toftolinjen2018_2.jpeg", "Toftolinjen2018_3.jpeg"]},
+      { validFrom: "2019-01-01", validTo: null, images: ["toftolinjen_vajerfarja_2019_v1.0_low-2.jpg", "toftolinjen_vajerfarja_2019_v1.0_low-3.jpg", "toftolinjen_vajerfarja_2019_v1.0_low-4.jpg"]},
       ],
     },
     
@@ -1144,7 +1151,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-gustavs-aura.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi-aura.html#timetables",
       tables: [
-      { validFrom: "2018-08-15", validTo: "2018-12-31", images: ["AuraVinter2018.jpeg"]},
+      { validFrom: "2019-01-01", validTo: "2019-06-16", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
+      { validFrom: "2019-08-12", validTo: "2019-12-31", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
       ],
     },
     houtskarinio: {
@@ -1160,29 +1168,56 @@ fdata = {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/korppoo-houtskari.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-houtskar.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-houtskari.html#timetables",
+      tables: [
+        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
+        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-12.jpg"]},
+        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
+        { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        ],
     },
     korponorrskata: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/korppoo-norrskata.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-norrskata.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-norrskata.html#timetables",
+      tables: [
+        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
+        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-12.jpg"]},
+        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
+        { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        ],
     },
     nagukorpo: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/nauvo-korppoo.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-korpo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-korppoo.html#timetables",
+      tables: [
+        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-03.jpg"]},
+        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-07.jpg"]},
+        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-11.jpg"]},
+        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-07.jpg"]},
+        { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-03.jpg"]},
+        ],
     },
     pargasnagu: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/parainen-nauvo.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-nagu.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-nauvo.html#timetables",        
-    },
+      tables: [
+        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-02.jpg"]},
+        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-06.jpg"]},
+        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-10.jpg"]},
+        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-06.jpg"]},
+        { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-02.jpg"]},
+        ],
+      },
     velkuataivassalo: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti-kivimo.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-      { validFrom: "2017-06-01", validTo: "2018-09-02", images: ["KivimoSommar2018_1.jpeg?v=1.1", "KivimoSommar2018_2.jpeg?v=1.1"]},
-      { validFrom: "2018-09-03", validTo: "2019-05-31", images: ["KivimoVinter2019.jpeg"]}
+      { validFrom: "2018-09-03", validTo: "2019-05-31", images: ["KivimoVinter2019.jpeg"]},
       ],
     },
 
@@ -1207,7 +1242,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-      { validFrom: "2017-06-01", validTo: "2018-09-02", images: ["KivimoSommar2018_1.jpeg?v=1.1", "KivimoSommar2018_2.jpeg?v=1.1"]},
       { validFrom: "2018-09-03", validTo: "2019-05-31", images: ["KivimoVinter2019.jpeg"]}
       ],
     },
@@ -1221,7 +1255,6 @@ fdata = {
       name: "Houtskarin reitti - M/S Karolina", name_sv: "Houtskär rutt - M/S Karolina", name_en: "Houtskär Route - M/S Karolina", specifier: "",
       link: "http://www.ferryway.fi/7",
       tables: [
-      { validFrom: "2018-04-15", validTo: "2018-10-14", images: ["KarolinaSommar2018_1.jpeg?v=1.1", "KarolinaSommar2018_2.jpeg?v=1.1"]},
       { validFrom: "2018-10-15", validTo: "2019-04-07", images: ["KarolinaVinter2019_1.jpeg", "KarolinaVinter2019_2.jpeg"]}
       ],
     },
@@ -1251,20 +1284,18 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-falko.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-falko.html#timetables",
       tables: [
-        { validFrom: "2018-05-17", validTo: "2018-12-31", images: ["FalkoVinter2019.jpeg"]},
         { validFrom: "2018-09-03", validTo: "2019-05-16", images: ["FalkoVinter2019.jpeg"]}
       ],
     },
     nagutvar: {
       link: "https://www.ferryway.fi/5",
       tables: [
-      { validFrom: "2018-04-01", validTo: "2018-10-31", images: ["MyrskylintuSommar2018_1.jpeg", "MyrskylintuSommar2018_2.jpeg"]},
+      { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["Cheri_-_vinter_2018-19-1.jpg"]},
       ],
     },
     nagusodra: { 
       link: "https://www.ferryway.fi/6",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2018-10-31", images: ["NordepHost2018.jpeg"]},
       { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["NordepVinter2019.jpeg"]}
       ],
     },
@@ -1287,8 +1318,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-      { validFrom: "2018-06-01", validTo: "2018-08-31", images: ["VikenSommar2018_1.jpeg", "VikenSommar2018_2.jpeg"]},
-      { validFrom: "2018-09-01", validTo: "2018-10-31", images: ["VikenVar2018_1.jpeg", "VikenVar2018_2.jpeg"]},
+      { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["viken-talvi-2018-2019-1.jpg", "viken-talvi-2018-2019-2.jpg"]},
       ]
     },
 
@@ -1330,17 +1360,26 @@ fdata = {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/hammaronsalmi.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hammaronsalmi.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hammaronsalmi.html#timetables",
+      tables: [
+        { validFrom: "2018-01-01", validTo: null, images: ["Hammaronsalmi.jpg"]}
+        ]
     },
     palva: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/palva.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/palva.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/palva.html#timetables",
+      tables: [
+        { validFrom: "2018-01-01", validTo: null, images: ["Palva.jpg"]}
+        ]
     },
     velkuanmaa: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuanmaa.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkuanmaa.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkuanmaa.html#timetables",
-    },
+      tables: [
+        { validFrom: "2018-01-01", validTo: null, images: ["Velkuanmaa.jpg"]}
+        ]
+      },
     kivimo: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kivimo.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kivimo.html#timetables",
@@ -1362,18 +1401,9 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/keistio.html#timetables",
     },
     skagen: {
-      link: "http://www.ncl.fi/fi/aikataulut",
-      link_sv: "http://www.ncl.fi/sv/tidtabeller",
-      link_en: "http://www.ncl.fi/en/time-schedules",
-      tables: [
-      { validFrom: "2017-01-01", validTo: null, images: ["Skagen_fi.jpeg"]}
-      ],
-      tables_sv: [
-      { validFrom: "2017-01-01", validTo: null, images: ["Skagen_sv.jpeg"]}
-      ],
-      tables_en: [
-      { validFrom: "2017-01-01", validTo: null, images: ["Skagen_en.jpeg"]}
-      ],
+      link: "http://www.ksloy.fi/fi/lauttaliikenne/",
+      link_sv: "http://www.ksloy.fi/fi/sv/lauttaliikenne/",
+      link_en: "http://www.ksloy.fi/fi/en/lauttaliikenne/",
     },
     sorpo: {
       link: "http://lautta.net/db/aikataulut/sorpo/sorpo.php?lang=fi",
@@ -2084,12 +2114,14 @@ fdata = {
           interval_L: ["times.ondemandcheckpauses"],
           duration_L: ["duration.minutes", "7"],
       },
-      notes: [{
-        content: "<div class=\"alert alert-warning\"><strong>Note!</strong> From Jun 1 to Aug 31 runs between 6 AM and 10 PM with schedule every ~30 minutes, nighttime runs on demand</div>",
-        content_fi: "<div class=\"alert alert-warning\"><strong>Huom!</strong> 1.6.-31.8. liikennöidään päivällä klo 6-22 aikataulun mukaan n. 30 minuutin välein, yöllä tarvittaessa</div>",
-        content_sv: "<div class=\"alert alert-warning\"><strong>Obs!</strong> 1.6.-31.8. trafikeras dagtid kl 6-22 enligt tidtabellen varje ca. 30 minuter, nattetid vid behov</div>",
-      }],
-      timetables: ["seglingelinjen"]
+      notes: [
+      //   {
+      //   content: "<div class=\"alert alert-warning\"><strong>Note!</strong> From Jun 1 to Aug 31 runs between 6 AM and 10 PM with schedule every ~30 minutes, nighttime runs on demand</div>",
+      //   content_fi: "<div class=\"alert alert-warning\"><strong>Huom!</strong> 1.6.-31.8. liikennöidään päivällä klo 6-22 aikataulun mukaan n. 30 minuutin välein, yöllä tarvittaessa</div>",
+      //   content_sv: "<div class=\"alert alert-warning\"><strong>Obs!</strong> 1.6.-31.8. trafikeras dagtid kl 6-22 enligt tidtabellen varje ca. 30 minuter, nattetid vid behov</div>",
+      // }
+    ],
+      timetables: ["alandsvajerfarjor"]
     },
     toftolinjen: {
       name: "Töftölinjen",
@@ -2133,7 +2165,7 @@ fdata = {
     skagen: {
       name: "Skagen",
       piers: ["Skagen", "JumoE"],
-      operator: "ncl",
+      operator: "kymensaaristoliikenne",
       vessels: ["skagen"],
       features: {
         interval_fi: "Liikennöi tarvittessa ma-to 6.00-22.00, pe 6.00-23.00, la 7.00-23.00, su 8.30-20.00. Tauot 9.40-9.52, 11.58-12.10, 18.20-18.32.",
