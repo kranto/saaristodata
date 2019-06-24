@@ -1160,7 +1160,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/skargardens-ringvag-houtskar-inio.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-houtskari-inio.html#timetables",
       tables: [
-      { validFrom: "2018-05-25", validTo: "2018-08-26", images: ["AntoniaSommar2018.jpeg"]},
+      { validFrom: "2019-05-31", validTo: "2019-09-01", images: ["AntoniaSommar2019.jpeg"]},
       ],
     },
 
@@ -1217,7 +1217,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-      { validFrom: "2018-09-03", validTo: "2019-05-31", images: ["KivimoVinter2019.jpeg"]},
+        { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]}
       ],
     },
 
@@ -1234,7 +1234,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
       tables: [
-      { validFrom: "2018-01-01", validTo: "2018-12-31", images: ["Aurora2018.jpeg"]},
+      { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Aurora2019.jpeg"]},
       ],
     },
     velkuanreitti: {
@@ -1242,27 +1242,27 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-      { validFrom: "2018-09-03", validTo: "2019-05-31", images: ["KivimoVinter2019.jpeg"]}
+      { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]}
       ],
     },
     rymattylanreitti: {
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-      { validFrom: "2018-10-01", validTo: "2019-05-05", images: ["IslaVinter2019_1.jpeg", "IslaVinter2019_2.jpeg"]}
+      { validFrom: "2019-05-06", validTo: "2019-09-29", images: ["IslaSommar2019_1.jpeg", "IslaSommar2019_2.jpeg"]}
       ],
     },
     houtskarrutt: {
       name: "Houtskarin reitti - M/S Karolina", name_sv: "Houtskär rutt - M/S Karolina", name_en: "Houtskär Route - M/S Karolina", specifier: "",
       link: "http://www.ferryway.fi/7",
       tables: [
-      { validFrom: "2018-10-15", validTo: "2019-04-07", images: ["KarolinaVinter2019_1.jpeg", "KarolinaVinter2019_2.jpeg"]}
+      { validFrom: "2019-04-08", validTo: "2019-09-29", images: ["KarolinaSommar2019_1.jpeg", "KarolinaSommar2019_2.jpeg"]}
       ],
     },
     iniorutt: {
       name: "Iniön lisäreitti - M/S Satava", name_sv: "Iniö tilläggsrutt - M/S Satava", name_en: "Iniö Additional Route - M/S Satava", specifier: "",
       link: "http://www.ferryway.fi/8",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2019-05-12", images: ["SatavaVinter2019_1.jpeg", "SatavaVinter2019_2.jpeg"]}
+      { validFrom: "2019-05-13", validTo: "2019-08-11", images: ["SatavaSommar2019_1.jpeg", "SatavaSommar2019_2.jpeg"]}
       ],
     },
     utorutt: { 
@@ -1270,13 +1270,13 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       tables: [
-      { validFrom: "2018-08-07", validTo: "2019-05-31", images: ["EivorVinter2019.jpeg"]}
+      { validFrom: "2019-06-07", validTo: "2019-08-31", images: ["EivorSommar2019.jpeg"]}
       ],
     },
     korporutt: {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
-      { validFrom: "2018-09-01", validTo: "2019-05-31", images: ["FiskoVinter2019.jpeg"]},
+      { validFrom: "2019-05-31", validTo: "2019-08-31", images: ["FiskoSommar2019.jpeg"]},
       ],
     },
     nagunorra: {
@@ -1284,33 +1284,33 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-falko.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-falko.html#timetables",
       tables: [
-        { validFrom: "2018-09-03", validTo: "2019-05-16", images: ["FalkoVinter2019.jpeg"]}
+        { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["FalkoSommar2019.jpeg"]}
       ],
     },
     nagutvar: {
       link: "https://www.ferryway.fi/5",
       tables: [
-      { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["Cheri_-_vinter_2018-19-1.jpg"]},
+      { validFrom: "2019-04-01", validTo: "2019-10-31", images: ["Myrskylintu2019.jpeg"]},
       ],
     },
     nagusodra: { 
       link: "https://www.ferryway.fi/6",
       tables: [
-      { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["NordepVinter2019.jpeg"]}
+      { validFrom: "2019-06-03", validTo: "2019-08-11", images: ["NordepSommar2019.jpeg"]}
       ],
     },
     hitisstella: {
       name: "M/S Stella",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-      { validFrom: "2018-08-13", validTo: "2019-06-04", images: ["StellaVinter2019.jpeg"]}
+      { validFrom: "2019-06-02", validTo: "2019-08-09", images: ["StellaSommar2019_1.jpeg", "StellaSommar2019_2.jpeg"]}
       ],
     },
     hitisalva: { 
       name: "M/S Alva",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-      { validFrom: "2018-08-14", validTo: null, images: ["AlvaHost2018.jpeg"]},
+      { validFrom: "2018-06-02", validTo: "2019-08-09", images: ["AlvaSommar2019.jpeg"]},
       ],
     },
     pargasrutt: {
@@ -1318,7 +1318,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-      { validFrom: "2018-11-01", validTo: "2019-03-31", images: ["viken-talvi-2018-2019-1.jpg", "viken-talvi-2018-2019-2.jpg"]},
+      { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["VikenSommar2019.jpeg"]},
+      { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["VikenVar2019.jpeg"]},
       ]
     },
 
@@ -1604,7 +1605,7 @@ fdata = {
       specifier: "Långnäs - Överö - Sottunga - Kökar - Galtby",
       piers: ["Långnäs", "Överö", "Sottunga", "Husö", "Kyrkogårdsö", "Kökar", "Galtby"],
       operator: "alandstrafiken",
-      vessels: ["gudingen", "skiftet"],
+      vessels: ["gudingen", "skiftet", "knipan"],
       features: {
         interval_L: ["times.aday", "Långnäs - Kökar 3-4, Kökar - Galtby 0-2 "],
         cost_L: "cost.applies",
