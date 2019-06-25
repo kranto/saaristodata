@@ -2378,7 +2378,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "turkuuto",
         "ssubtype": "conn5"
       },

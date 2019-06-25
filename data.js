@@ -1451,26 +1451,9 @@ fdata = {
       link: "https://vitharun.fi/fi/aikataulut/turku-seili-nauvo/",
       link_sv: "https://vitharun.fi/sv/tidtabeller/abo-sjalo-nagu/",
       link_en: "https://vitharun.fi/en/timetables/turku-seili-nagu/",
-      tables_fi: [
-      { validFrom: "2018-06-08", validTo: "2018-09-02", images: ["Fanny2018_2fi.jpeg", "Fanny2018_3fi.jpeg"]},
-      { validFrom: "2018-09-03", validTo: "2018-09-30", images: ["Fanny2018_1fi.jpeg", "Fanny2018_3fi.jpeg"]},
+      tables: [
+      { validFrom: "2019-05-11", validTo: "2019-09-27", images: ["Norrskar2019.jpeg"]},
       ],
-      tables_sv: [
-      { validFrom: "2018-06-08", validTo: "2018-09-02", images: ["Fanny2018_2sv.jpeg", "Fanny2018_3sv.jpeg"]},
-      { validFrom: "2018-09-03", validTo: "2018-09-30", images: ["Fanny2018_1sv.jpeg", "Fanny2018_3sv.jpeg"]},
-      ],
-      tables_en: [
-      { validFrom: "2018-06-08", validTo: "2018-09-02", images: ["Fanny2018_2en.jpeg", "Fanny2018_3en.jpeg"]},
-      { validFrom: "2018-09-03", validTo: "2018-09-30", images: ["Fanny2018_1en.jpeg", "Fanny2018_3en.jpeg"]},
-      ],
-    },
-    turkuuto: {
-      link: "https://meritie.fi/aikataulut-reitti/",
-      link_sv: "https://meritie.fi/tidtabell-rutt/?lang=sv",
-      link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
-      // tables: [
-      // { validFrom: "2018-06-16", validTo: "2018-08-19", images: ["Kokar2018.jpeg"]}
-      // ],
     },
     naantalikustavi: {
       link: "https://www.visitnaantali.com/fi/saaristoreitti-kustaviin",
@@ -2247,40 +2230,19 @@ fdata = {
       timetables: ["hankobengtskar"]
     },
     turkunauvo: {
-      name: "Turku - Seili - Nauvo",
-      name_sv: "Åbo - Själö - Nagu",
-      name_en: "Turku - Själö - Nagu",
-      piers: ["TurkuVitharun", "Seili", "Nagu"],
+      name: "Turku - Seili - Nauvo - Gullkrona",
+      name_sv: "Åbo - Själö - Nagu - Gullkrona",
+      name_en: "Turku - Själö - Nagu - Gullkrona",
+      piers: ["TurkuVitharun", "Seili", "Nagu", "Gullkrona"],
       operator: "vitharun",
-      vessels: ["fanny"],
+      vessels: ["norrskar"],
       features: {
-        interval_L: ["times.onceaday"],
+        interval_L: ["times.adayaweek", "1", "Gullkrona", "2"],
         cost_L: "cost.applies",
-        duration_L: ["duration.hours", "2.5"],
+        duration_L: ["duration.hours" , "3.5"],
         seasonal_L: "seasonal.summers",
-        seealso_fi: 'Katso myös <a href="#turkuuto">Turku - Nauvo - Utö</a>',
-        seealso_sv: 'Se också <a href="#turkuuto">Åbo - Nagu - Utö</a>',
-        seealso_en: 'See also <a href="#turkuuto">Turku - Nagu - Utö</a>',
       },
       timetables: ["turkunauvo"]
-    },
-    turkuuto: {
-      name: "Turku - Nauvo - Pärnäinen - Utö",
-      name_sv: "Åbo - Nagu - Pärnäs - Utö",
-      name_en: "Turku - Nagu - Pärnäs - Utö",
-      piers: ["TurkuVitharun", "Nagu", "Pärnäs", "Utö"],
-      operator: "meritie",
-      vessels: ["kokar"],
-      features: {
-        interval_L: ["times.twiceaweek"],
-        cost_L: "cost.applies",
-        duration_L: ["duration.hoursminutes", "5", "45"],
-        seasonal_L: "seasonal.summers",
-        seealso_fi: 'Katso myös <a href="#turkunauvo">Turku - Seili - Nauvo</a>',
-        seealso_sv: 'Se också <a href="#turkunauvo">Åbo - Själö - Nagu</a>',
-        seealso_en: 'See also <a href="#turkunauvo">Turku - Själö - Nagu</a>',
-      },
-      timetables: ["turkuuto"]
     },
     naantalikustavi: {
       name: "Naantali - Velkua - Taivassalo - Kustavi",
