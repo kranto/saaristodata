@@ -1892,6 +1892,18 @@
           "type": "Feature",
           "properties": {
             "stype": "leg",
+            "sname": "Asterholmalinjen"
+          },
+          "geometry": {
+            "coordinates": [[20.996348, 60.317462], [20.996887, 60.317498], [20.998857, 60.317518], [21.001997, 60.317565], [21.006618, 60.317388], [21.010043, 60.316443], [21.013202, 60.314532], [21.016015, 60.31285], [21.019395, 60.310793], [21.022452, 60.308908], [21.0253, 60.307045], [21.028475, 60.305223], [21.031457, 60.30387], [21.034147, 60.30408]],
+            "type": "LineString"
+          },
+          "id": "ddbaf2892c4d94395dff28d05e0dfc50"
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "stype": "leg",
             "sname": "Kumlinge - Lappo"
           },
           "geometry": {
@@ -1932,7 +1944,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "asterholmalinjen",
         "ssubtype": "conn2",
         "color": "#db0a00"
