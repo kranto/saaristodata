@@ -428,7 +428,8 @@ fdata = {
         persons: 80,
       },
       contact: {
-        phones: ['+358 40 849 5140']
+        phones: ['+358 40 849 5140'],
+        email: "satava@ferentes.fi"
       },
     },
     nordep: {
@@ -438,7 +439,8 @@ fdata = {
         persons: 78,
       },
       contact: {
-        phones: ['+358 45 129 4779']
+        phones: ['+358 45 129 4779'],
+        email: "nordep@ferentes.fi"
       },
     },
     karolina: {
@@ -446,7 +448,8 @@ fdata = {
       features: { },
       capacity: { persons: 30, bikes: " " },
       contact: {
-        phones: ['+358 40 717 3455 ']
+        phones: ['+358 40 717 3455 '],
+        email: "karolina@ferentes.fi"
       },
     },
     cheri: {
@@ -670,6 +673,15 @@ fdata = {
         email: 'info@ferryway.fi',
         address: 'Äpplö, 21760 Houtskari',
         www: 'https://www.ferryway.fi/'
+      },
+    },
+    ferentes: {
+      name: "Ferentes Oy",
+      logo: "ferentes.png",
+      contact: {
+        phones: [],
+        email: 'info@ferentes.fi',
+        www: 'https://www.ferentes.fi/'
       },
     },
     al: {
@@ -1225,7 +1237,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-      { validFrom: "2019-09-02", validTo: "2020-04-30", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]}
+        { validFrom: "2019-09-02", validTo: "2020-04-30", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]}
       ],
     },
     rymattylanreitti: {
@@ -1236,17 +1248,21 @@ fdata = {
     },
     houtskarrutt: {
       name: "Houtskarin reitti - M/S Karolina", name_sv: "Houtskär rutt - M/S Karolina", name_en: "Houtskär Route - M/S Karolina", specifier: "",
-      link: "http://www.ferryway.fi/7",
+      link: "ferentes.fi/yhteysalusliikenne/houtskarin-reitti.html",
+      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/houtskar-rutten.html",
+      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-houtskari-route.html",
       tables: [
-      { validFrom: "2019-09-30", validTo: "2020-04-05", images:["houtskari-talvi-2019-20-1.jpg", "houtskari-talvi-2019-20-2.jpg"] },
-    ],
+        { validFrom: "2019-09-30", validTo: "2020-04-05", images:["houtskari-talvi-2019-20-1.jpg", "houtskari-talvi-2019-20-2.jpg"] },
+      ],
     },
     iniorutt: {
       name: "Iniön lisäreitti - M/S Satava", name_sv: "Iniö tilläggsrutt - M/S Satava", name_en: "Iniö Additional Route - M/S Satava", specifier: "",
-      link: "http://www.ferryway.fi/8",
+      link: "ferentes.fi/yhteysalusliikenne/inion-lisareitti.html",
+      link_sv: "ferentes.fi/sv/forbindelsefartygstrafik/inios-tillaggsrutt.html",
+      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-inio-additional-route.html",
       tables: [
-      { validFrom: "2019-08-12", validTo: "2020-05-18", images:["inio-syys-talvi-kevat-2019-2020-1.jpg", "inio-syys-talvi-kevat-2019-2020-2.jpg"] },
-    ],
+        { validFrom: "2019-08-12", validTo: "2020-05-18", images:["inio-syys-talvi-kevat-2019-2020-1.jpg", "inio-syys-talvi-kevat-2019-2020-2.jpg"] },
+      ],
     },
     utorutt: { 
       link: "https://meritie.fi/aikataulut-reitti/",
@@ -1271,13 +1287,17 @@ fdata = {
       ],
     },
     nagutvar: {
-      link: "https://www.ferryway.fi/5",
+      link: "https://www.ferentes.fi/yhteysalusliikenne/nauvon-poikittainen-reitti.html",
+      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-tvartrafik.html",
+      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-transverse-route.html",
       tables: [
         { validFrom: "2019-11-01", validTo: "2020-03-31", images:["cheri-vinter-2019-20-1.jpg"] },
       ],
     },
     nagusodra: { 
-      link: "https://www.ferryway.fi/6",
+      link: "https://www.ferentes.fi/yhteysalusliikenne/nauvon-etelainen-reitti.html",
+      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-sodra-rutten.html",
+      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
       tables: [
         { validFrom: "2019-11-01", validTo: "2020-03-31", images:["nauvon-etelainen-talvi-vinter-2019-20-1.jpg"] },
       ],
@@ -1764,7 +1784,7 @@ fdata = {
       name_en: "Houtskär Route and Iniö Additional Route",
       specifier: "",
       piers: ["Näsby","Roslax","Ytterstö","Lempmo","Salmis","Lammholm","Norrby","Sördö","Lempnäs","Äpplö","Bockholm", "Södö", "Nåtö","TorsholmaI","Själö","Härklot","Kvarnholm","Åselholm","Perkala","PerkalaP","Kolko","Kannvik"],
-      operator: "ferryway",
+      operator: "ferentes",
       vessels: ["karolina", "satava"],
       features: {
         interval_L: ["times.aday", "1-4"],
@@ -1820,7 +1840,7 @@ fdata = {
       name_en: "Nagu Cross Route",
       specifier: "",
       piers: ["Pärnäs", "Krok", "Mattnäs", "Lånholm", "Fagerholm", "Killingholm", "Ängsö", "Tveskiftsholm", "Berghamn", "Hummelholm", "Rockelholm", "Ytterstholm", "Byskär", "Brännskär", "Grötö", "Stenskär", "Gullkrona", "Kirjais"],
-      operator: "ferryway",
+      operator: "ferentes",
       vessels: ["myrskylintu", "cheri"],
       features: {
         interval_L: ["times.aweek", "3"],
@@ -1836,7 +1856,7 @@ fdata = {
       name_en: "Nagu Southern Route",
       specifier: "",
       piers: ["Kirjais", "PensarL", "Peno", "Brännskär", "Stenskär", "Gullkrona", "Grötö", "Knivskär", "Kopparholm", "Träskholm", "Bodö", "Björkö", "Gloskär", "Trunsö", "Sandholm", "Lökholm", "Borstö"],
-      operator: "ferryway",
+      operator: "ferentes",
       vessels: ["nordep"],
       features: {
         interval_L: ["times.adayaweek", "1-3", "Borstö", "4"],
