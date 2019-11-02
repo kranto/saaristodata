@@ -1073,10 +1073,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2019-01-02", validTo: "2019-04-28", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-38.jpg", "Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-39.jpg"]},
-      { validFrom: "2019-04-29", validTo: "2019-06-16", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-40.jpg"]},
-      { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-41.jpg"]},
-      { validFrom: "2019-08-12", validTo: "2019-08-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-40.jpg"]},
+        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["viggen_host_16.8-1.jpg"] },
       ],
     },
     sodralinjen: {
