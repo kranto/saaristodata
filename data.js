@@ -1303,7 +1303,7 @@ fdata = {
       name: "M/S Stella",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-        { validFrom: "2019-08-10", validTo: "2020-06-01", images:["Hiittinen-Syksy-2019-Talvi-Kevät-2020-1-1-1.jpg", "Hiittinen-Syksy-2019-Talvi-Kevät-2020-1-1-2.jpg"] },
+        { validFrom: "2019-08-10", validTo: "2020-06-01", images:["Hiittinen-Syksy-2019-Talvi-Kevät-2020--1.jpg", "Hiittinen-Syksy-2019-Talvi-Kevät-2020--2.jpg"] },
       ],
     },
     hitisalva: { 
