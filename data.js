@@ -477,7 +477,8 @@ fdata = {
       contact: {
         phones: ['+358 44 761 8000'],
         email: 'info@saaristolinjat.fi',
-        email_sv: 'info@skargardslinjer.fi'
+        email_sv: 'info@skargardslinjer.fi',
+        fb: 'https://www.facebook.com/yaFisko/',
       },
     },
     isla: {
