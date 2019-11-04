@@ -1040,7 +1040,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2019-09-30", validTo: "2020-01-02", images:["alfageln_host_16.8-2.jpg"] },
+      { validFrom: "2019-09-30", validTo: "2020-01-02", images:["alfageln_host_16.8-2a.jpg", "alfageln_host_16.8-2b.jpg"] },
     ],
     },
     enklingelinjen: {
@@ -1049,7 +1049,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-10-04", validTo: "2020-01-01", images:["enklinge_from_4.10.2019-1.jpg"] },
+        { validFrom: "2019-10-04", validTo: "2020-01-01", images:["enklinge_from_4.10.2019-1a.jpg", "enklinge_from_4.10.2019-1b.jpg"] },
       ],
     },
     brandokumlingelinjen: {
@@ -1058,7 +1058,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["ejdern_host_16.8-3.jpg", "ejdern_host_16.8-4.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["ejdern_host_16.8-3a.jpg", "ejdern_host_16.8-3b.jpg", "ejdern_host_16.8-4a.jpg", "ejdern_host_16.8-4b.jpg"] },
       ],
     },
     avajurmo: {
@@ -1066,7 +1066,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-01", images:["doppingen_host_16.8-2.jpg", "doppingen_host_16.8-3.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2020-01-01", images:["doppingen_host_16.8-2a.jpg", "doppingen_host_16.8-2b.jpg", "doppingen_host_16.8-3a.jpg"] },
       ],
     },
     osnasava: {
@@ -1093,7 +1093,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["odin_host_16.8_0-2.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["odin_host_16.8_0-2a.jpg", "odin_host_16.8_0-2b.jpg"] },
       ],  
     },
     alandsvajerfarjor: {
