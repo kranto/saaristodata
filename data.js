@@ -1405,6 +1405,10 @@ fdata = {
       link: "http://www.ksloy.fi/fi/lauttaliikenne/",
       link_sv: "http://www.ksloy.fi/fi/sv/lauttaliikenne/",
       link_en: "http://www.ksloy.fi/fi/en/lauttaliikenne/",
+      tables: [
+        { validFrom: "2018-01-01", validTo: null, images: ["skagen_fi.jpg"], images_sv: ["skagen_sv.jpg"], images_en: ["skagen_en.jpg"]}
+        ]
+
     },
     sorpo: {
       link: "http://lautta.net/db/aikataulut/sorpo/sorpo.php?lang=fi",
