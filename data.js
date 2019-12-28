@@ -107,7 +107,7 @@ fdata = {
       },
     },
     rosala: {
-      name: "M/S Rosala II",
+      name: "M/S Bärö",
       features: { access: false, cafe: false },
       capacity: { persons: 65, cars: 6, trucks: 1 },
       contact: {
@@ -1032,6 +1032,9 @@ fdata = {
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
       { validFrom: "2019-09-01", validTo: "2019-12-31", images:["foglo_sid_26-27_9okt-1.jpg"] },
+      { validFrom: "2020-01-01", validTo: "2020-05-31", images: ["Skärgårdsfärjornas_Turlistor_2020-30.jpg"]},
+      { validFrom: "2020-06-01", validTo: "2020-08-31", images: ["Skärgårdsfärjornas_Turlistor_2020-31.jpg"]},
+      { validFrom: "2020-09-01", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-30.jpg"]},
     ],
     },
     norralinjen: {
@@ -1040,16 +1043,24 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2019-09-30", validTo: "2020-01-02", images:["alfageln_host_16.8-2a.jpg", "alfageln_host_16.8-2b.jpg"] },
-    ],
+      { validFrom: "2019-09-30", validTo: "2019-12-31", images:["alfageln_host_16.8-2a.jpg", "alfageln_host_16.8-2b.jpg"] },
+      { validFrom: "2020-01-01", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-32.jpg", "Skärgårdsfärjornas_Turlistor_2020-33.jpg"]},
+      { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-34.jpg", "Skärgårdsfärjornas_Turlistor_2020-35.jpg"]},
+      { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-36.jpg", "Skärgårdsfärjornas_Turlistor_2020-37.jpg"]},
+      { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-34.jpg", "Skärgårdsfärjornas_Turlistor_2020-35.jpg"]},
+      { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-32.jpg", "Skärgårdsfärjornas_Turlistor_2020-33.jpg"]},
+  ],
     },
     enklingelinjen: {
-      specifier: "Enklinge - Kumlinge, M/S Rosala II",
+      specifier: "Enklinge - Kumlinge, M/S Bärö",
       link: "http://www.alandstrafiken.ax/fi/aikataulut",
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-10-04", validTo: "2020-01-01", images:["enklinge_from_4.10.2019-1a.jpg", "enklinge_from_4.10.2019-1b.jpg"] },
+        { validFrom: "2019-10-04", validTo: "2019-12-31", images:["enklinge_from_4.10.2019-1a.jpg", "enklinge_from_4.10.2019-1b.jpg"] },
+        { validFrom: "2020-01-01", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-54.jpg", "Skärgårdsfärjornas_Turlistor_2020-56.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-55.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-54.jpg", "Skärgårdsfärjornas_Turlistor_2020-56.jpg"]},
       ],
     },
     brandokumlingelinjen: {
@@ -1058,15 +1069,25 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["ejdern_host_16.8-3a.jpg", "ejdern_host_16.8-3b.jpg", "ejdern_host_16.8-4a.jpg", "ejdern_host_16.8-4b.jpg"] },
-      ],
+        { validFrom: "2019-09-30", validTo: "2019-12-31", images:["ejdern_host_16.8-3a.jpg", "ejdern_host_16.8-3b.jpg", "ejdern_host_16.8-4a.jpg", "ejdern_host_16.8-4b.jpg"] },
+        { validFrom: "2020-01-01", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-42.jpg", "Skärgårdsfärjornas_Turlistor_2020-43.jpg"]},
+        { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-44.jpg", "Skärgårdsfärjornas_Turlistor_2020-45.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-46.jpg", "Skärgårdsfärjornas_Turlistor_2020-47.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-44.jpg", "Skärgårdsfärjornas_Turlistor_2020-45.jpg"]},
+        { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-42.jpg", "Skärgårdsfärjornas_Turlistor_2020-43.jpg"]},
+        ],
     },
     avajurmo: {
       link: "http://www.alandstrafiken.ax/fi/aikataulut",
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-01", images:["doppingen_host_16.8-2a.jpg", "doppingen_host_16.8-2b.jpg", "doppingen_host_16.8-3a.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2019-12-31", images:["doppingen_host_16.8-2a.jpg", "doppingen_host_16.8-2b.jpg", "doppingen_host_16.8-3a.jpg"] },
+        { validFrom: "2020-01-01", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-48.jpg", "Skärgårdsfärjornas_Turlistor_2020-49.jpg"]},
+        { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-50.jpg", "Skärgårdsfärjornas_Turlistor_2020-51.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-52.jpg", "Skärgårdsfärjornas_Turlistor_2020-53.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-50.jpg", "Skärgårdsfärjornas_Turlistor_2020-51.jpg"]},
+        { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-48.jpg", "Skärgårdsfärjornas_Turlistor_2020-49.jpg"]},
       ],
     },
     osnasava: {
@@ -1074,7 +1095,12 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["viggen_host_16.8-1.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2019-12-31", images:["viggen_host_16.8-1.jpg"] },
+        { validFrom: "2020-01-01", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-38.jpg", "Skärgårdsfärjornas_Turlistor_2020-39.jpg"]},
+        { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-40.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-41.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-40.jpg"]},
+        { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-38.jpg", "Skärgårdsfärjornas_Turlistor_2020-39.jpg"]},
       ],
     },
     sodralinjen: {
@@ -1082,10 +1108,13 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2019-12-22", images:["sodra_sid_14-23_8okt-01.jpg", "sodra_sid_14-23_8okt-02.jpg"] },
-        { validFrom: "2019-12-23", validTo: "2019-12-26", images:["sodra_sid_14-23_8okt-10.jpg"] },
         { validFrom: "2019-12-27", validTo: "2019-12-30", images:["sodra_sid_14-23_8okt-01.jpg", "sodra_sid_14-23_8okt-02.jpg"] },
         { validFrom: "2019-12-31", validTo: "2020-01-01", images:["sodra_sid_14-23_8okt-10.jpg"] },
+        { validFrom: "2020-01-02", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-18.jpg", "Skärgårdsfärjornas_Turlistor_2020-19.jpg"]},
+        { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-20.jpg", "Skärgårdsfärjornas_Turlistor_2020-21.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-22.jpg", "Skärgårdsfärjornas_Turlistor_2020-23.jpg", "Skärgårdsfärjornas_Turlistor_2020-24.jpg", "Skärgårdsfärjornas_Turlistor_2020-25.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-20.jpg", "Skärgårdsfärjornas_Turlistor_2020-21.jpg"]},
+        { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-18.jpg", "Skärgårdsfärjornas_Turlistor_2020-19.jpg"]},
       ],
     },
     tvarlinjen: {
@@ -1093,7 +1122,12 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-01-02", images:["odin_host_16.8_0-2a.jpg", "odin_host_16.8_0-2b.jpg"] },
+        { validFrom: "2019-09-30", validTo: "2019-12-31", images:["odin_host_16.8_0-2a.jpg", "odin_host_16.8_0-2b.jpg"] },
+        { validFrom: "2020-01-01", validTo: "2020-04-26", images: ["Skärgårdsfärjornas_Turlistor_2020-12.jpg", "Skärgårdsfärjornas_Turlistor_2020-13.jpg"]},
+        { validFrom: "2020-04-27", validTo: "2020-06-14", images: ["Skärgårdsfärjornas_Turlistor_2020-14.jpg", "Skärgårdsfärjornas_Turlistor_2020-15.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["Skärgårdsfärjornas_Turlistor_2020-16.jpg", "Skärgårdsfärjornas_Turlistor_2020-17.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-09-27", images: ["Skärgårdsfärjornas_Turlistor_2020-14.jpg", "Skärgårdsfärjornas_Turlistor_2020-15.jpg"]},
+        { validFrom: "2020-09-28", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-12.jpg", "Skärgårdsfärjornas_Turlistor_2020-13.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
@@ -1102,15 +1136,17 @@ fdata = {
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
       { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-09.jpg"]},
-      ],
+      { validFrom: "2020-01-01", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-09.jpg"]},
+    ],
     },
     seglingelinjen: {
       link: "http://www.alandstrafiken.ax/fi/aikataulut",
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2018-06-01", validTo: "2018-08-31", images: ["SeglingeSommar2018_1.jpeg", "SeglingeSommar2018_2.jpeg", "SeglingeSommar2018_3.jpeg"]},
-      { validFrom: "2018-09-01", validTo: "2018-12-31", images: ["AlandsVajerFarjor2018.jpeg"]},
+        { validFrom: "2019-09-01", validTo: "2019-12-31", images: ["Skargardsguiden_TURLISTOR_GUIDE_2019_25jan-09.jpg"]},
+        { validFrom: "2020-01-01", validTo: "2020-05-31", images: ["Skärgårdsfärjornas_Turlistor_2020-09.jpg"]},
+        { validFrom: "2020-09-01", validTo: "2020-12-31", images: ["Skärgårdsfärjornas_Turlistor_2020-09.jpg"]},
       ],
     },
     toftolinjen: {
@@ -2072,7 +2108,7 @@ fdata = {
       //   content_sv: "<div class=\"alert alert-warning\"><strong>Obs!</strong> 1.6.-31.8. trafikeras dagtid kl 6-22 enligt tidtabellen varje ca. 30 minuter, nattetid vid behov</div>",
       // }
     ],
-      timetables: ["alandsvajerfarjor"]
+      timetables: ["seglingelinjen"]
     },
     toftolinjen: {
       name: "Töftölinjen",
