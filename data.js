@@ -1189,7 +1189,9 @@ fdata = {
         { validFrom: "2019-01-01", validTo: "2019-06-16", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
         { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["AuraSommar2019.jpeg"]},
         { validFrom: "2019-08-12", validTo: "2019-12-31", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
-      ],
+        { validFrom: "2020-01-01", validTo: "2020-06-14", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
+        { validFrom: "2020-08-10", validTo: "2020-12-31", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
+      ]
     },
     houtskarinio: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/saariston-rengastie-houtskari-inio.html#timetables",
@@ -1205,11 +1207,11 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-houtskar.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-houtskari.html#timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-04.jpg"]},
-        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
-        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-12.jpg"]},
-        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
         { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        { validFrom: "2020-01-01", validTo: "2020-04-16", images: ["saaristotien-lautta-aikataulut-2020-04.jpg"]},
+        { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-10.jpg"]},
+        { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
         ],
     },
     korponorrskata: {
@@ -1217,11 +1219,11 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-norrskata.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-norrskata.html#timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-04.jpg"]},
-        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
-        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-12.jpg"]},
-        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-08.jpg"]},
         { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-04.jpg"]},
+        { validFrom: "2020-01-01", validTo: "2020-04-16", images: ["saaristotien-lautta-aikataulut-2020-04.jpg"]},
+        { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-10.jpg"]},
+        { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
         ],
     },
     nagukorpo: {
@@ -1229,11 +1231,11 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-korpo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-korppoo.html#timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-03.jpg"]},
-        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-07.jpg"]},
-        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-11.jpg"]},
-        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-07.jpg"]},
         { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-03.jpg"]},
+        { validFrom: "2020-01-01", validTo: "2020-04-16", images: ["saaristotien-lautta-aikataulut-2020-03.jpg"]},
+        { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-06.jpg"]},
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-09.jpg"]},
+        { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-06.jpg"]},
         ],
     },
     pargasnagu: {
@@ -1241,11 +1243,11 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-nagu.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-nauvo.html#timetables",        
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-04-14", images: ["saaristotien-aikataulu-2019-02.jpg"]},
-        { validFrom: "2019-04-15", validTo: "2019-05-31", images: ["saaristotien-aikataulu-2019-06.jpg"]},
-        { validFrom: "2019-06-01", validTo: "2019-08-31", images: ["saaristotien-aikataulu-2019-10.jpg"]},
-        { validFrom: "2019-09-01", validTo: "2019-10-31", images: ["saaristotien-aikataulu-2019-06.jpg"]},
         { validFrom: "2019-11-01", validTo: "2019-12-31", images: ["saaristotien-aikataulu-2019-02.jpg"]},
+        { validFrom: "2020-01-01", validTo: "2020-04-16", images: ["saaristotien-lautta-aikataulut-2020-02.jpg"]},
+        { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-05.jpg"]},
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-08.jpg"]},
+        { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-05.jpg"]},
         ],
       },
     velkuataivassalo: {
@@ -1270,7 +1272,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
       tables: [
-      { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Aurora2019.jpeg"]},
+        { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Aurora2019.jpeg"]},
+        { validFrom: "2020-01-01", validTo: "2020-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2020-1.jpg"]},
       ],
     },
     velkuanreitti: {
