@@ -1292,7 +1292,7 @@ fdata = {
     },
     houtskarrutt: {
       name: "Houtskarin reitti - M/S Karolina", name_sv: "Houtskär rutt - M/S Karolina", name_en: "Houtskär Route - M/S Karolina", specifier: "",
-      link: "ferentes.fi/yhteysalusliikenne/houtskarin-reitti.html",
+      link: "https://www.ferentes.fi/yhteysalusliikenne/houtskarin-reitti.html",
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/houtskar-rutten.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-houtskari-route.html",
       tables: [
@@ -1301,7 +1301,7 @@ fdata = {
     },
     iniorutt: {
       name: "Iniön lisäreitti - M/S Satava", name_sv: "Iniö tilläggsrutt - M/S Satava", name_en: "Iniö Additional Route - M/S Satava", specifier: "",
-      link: "ferentes.fi/yhteysalusliikenne/inion-lisareitti.html",
+      link: "https://www.ferentes.fi/yhteysalusliikenne/inion-lisareitti.html",
       link_sv: "ferentes.fi/sv/forbindelsefartygstrafik/inios-tillaggsrutt.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-inio-additional-route.html",
       tables: [
