@@ -1190,6 +1190,7 @@ fdata = {
         { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["AuraSommar2019.jpeg"]},
         { validFrom: "2019-08-12", validTo: "2019-12-31", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
         { validFrom: "2020-01-01", validTo: "2020-06-14", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
+        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["inio-kustavi-aura-kesa-2020-1.jpg"]},
         { validFrom: "2020-08-10", validTo: "2020-12-31", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
       ]
     },
@@ -1198,7 +1199,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/skargardens-ringvag-houtskar-inio.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-houtskari-inio.html#timetables",
       tables: [
-      { validFrom: "2020-05-15", validTo: "2020-08-30", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
+      { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
 //      { validFrom: "2021-05-14", validTo: "2021-08-29", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
       ],
     },
@@ -1257,6 +1258,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
         { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]}
+        { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
       ],
     },
 
@@ -1266,7 +1268,7 @@ fdata = {
       link_en: "http://www.ostern.fi/en/schedule-fahrplan",
       tables: [
       { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["Ostern2019_fisv.jpeg"], images_en: ["Ostern2019_ende.jpeg"]},
-      { validFrom: "2020-05-15", validTo: "2020-08-30", images: ["Ostern2020_fisv.jpeg"], images_en: ["Ostern2020_ende.jpeg"]},
+      { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["Ostern2020_fisv.jpeg"], images_en: ["Ostern2020_ende.jpeg"]},
       ],
       },
     kasnashitis: {
@@ -1284,12 +1286,14 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
         { validFrom: "2019-09-02", validTo: "2020-05-31", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]}
+        { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
       ],
     },
     rymattylanreitti: {
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
         { validFrom: "2019-09-30", validTo: "2020-05-03", images:["Rymättylä-Syksy-2019-Talvi-Kevät-2020-1.jpg", "Rymättylä-Syksy-2019-Talvi-Kevät-2020-2.jpg"] },
+        { validFrom: "2020-05-04", validTo: "2020-09-29", images:["IslaSommar2020-guess-1.jpeg", "IslaSommar2020-guess-2.jpeg"] },
       ],
     },
     houtskarrutt: {
@@ -1318,6 +1322,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       tables: [
         { validFrom: "2019-09-01", validTo: "2020-06-05", images:["Eivor-talvi-2019-2020-1-1.jpg"] },
+        { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Eivor-kesä-2020-6.6.-31.8.2020-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1331,7 +1336,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-falko.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-falko.html#timetables",
       tables: [
-        { validFrom: "2019-09-02", validTo: "2020-05-14", images:["falko-talviaikataulu-2019-2020-1.jpg"] },
+        { validFrom: "2019-09-02", validTo: "2020-05-31", images:["falko-talviaikataulu-2019-2020-1.jpg"] },
+        { validFrom: "2020-06-01", validTo: "2020-05-14", images:["falko-kesa-2020-1.jpg"] },
       ],
     },
     nagutvar: {
