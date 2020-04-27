@@ -1257,7 +1257,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-        { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]}
+        { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]},
         { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
       ],
     },
@@ -1285,7 +1285,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
       tables: [
-        { validFrom: "2019-09-02", validTo: "2020-05-31", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]}
+        { validFrom: "2019-09-02", validTo: "2020-05-31", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]},
         { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
       ],
     },
