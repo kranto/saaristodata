@@ -1293,7 +1293,7 @@ fdata = {
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
         { validFrom: "2019-09-30", validTo: "2020-05-03", images:["Rymättylä-Syksy-2019-Talvi-Kevät-2020-1.jpg", "Rymättylä-Syksy-2019-Talvi-Kevät-2020-2.jpg"] },
-        { validFrom: "2020-05-04", validTo: "2020-09-29", images:["IslaSommar2020-guess-1.jpeg", "IslaSommar2020-guess-2.jpeg"] },
+        { validFrom: "2020-05-04", validTo: "2020-09-27", images:["Rymattyla-ya-Isla-KESA-2020-1.jpg", "Rymattyla-ya-Isla-KESA-2020-2.jpg"] },
       ],
     },
     houtskarrutt: {
