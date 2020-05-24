@@ -1380,6 +1380,7 @@ fdata = {
       tables: [
       { validFrom: "2019-11-01", validTo: "2020-03-31", images: ["viken-talvi-2019-2020-vinter-pargas-ruttomrade-1.jpg"]},
       { validFrom: "2020-04-01", validTo: "2020-05-31", images: ["viken-kevat-syksy-2020-1.jpg"]},
+      { validFrom: "2020-06-01", validTo: "2020-08-16", images: ["viken-kesa-2020-paraisten-reittialue-1.jpg"]},
       { validFrom: "2020-09-01", validTo: "2020-10-31", images: ["viken-kevat-syksy-2020-1.jpg"]},
       ]
     },
