@@ -1329,6 +1329,7 @@ fdata = {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
         { validFrom: "2019-09-01", validTo: "2020-05-31", images:["Fiskö-talviaikataulu-1.9.2019-31.5.2020-1.jpg"] },
+        { validFrom: "2020-06-01", validTo: "2020-08-31", images:["Fiskö-kesäaikataulu-2020-1.6.-31.8.2020-1.jpg"] },
       ],
     },
     nagunorra: {
