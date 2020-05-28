@@ -1329,7 +1329,7 @@ fdata = {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
         { validFrom: "2019-09-01", validTo: "2020-05-31", images:["Fiskö-talviaikataulu-1.9.2019-31.5.2020-1.jpg"] },
-        { validFrom: "2020-06-01", validTo: "2020-08-31", images:["Fiskö-kesaaikataulu-2020-1.6.-31.8.2020-1.jpg"] },
+        { validFrom: "2020-06-01", validTo: "2020-08-31", images:["Fisk-kesaaikataulu-2020-1.6.-31.8.2020-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1364,14 +1364,16 @@ fdata = {
       name: "M/S Stella",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-        { validFrom: "2019-08-10", validTo: "2020-06-01", images:["Hiittinen-Syksy-2019-Talvi-Kevät-2020--1.jpg", "Hiittinen-Syksy-2019-Talvi-Kevät-2020--2.jpg"] },
+        { validFrom: "2019-08-10", validTo: "2020-05-31", images:["Hiittinen-Syksy-2019-Talvi-Kevät-2020--1.jpg", "Hiittinen-Syksy-2019-Talvi-Kevät-2020--2.jpg"] },
+        { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Ms-Stella-Kesa-2020-1.jpg", "Ms-Stella-Kesa-2020-2.jpg"] },
       ],
     },
     hitisalva: { 
       name: "M/S Alva",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-        { validFrom: "2019-12-19", validTo: null, images:["Alva-kelirikko-2019-2020-1.jpg",]},
+        { validFrom: "2019-12-19", validTo: "2020-05-31", images:["Alva-kelirikko-2019-2020-1.jpg",]},
+        { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Alva-kesa-20-1.jpg"]},
       ],
     },
     pargasrutt: {
