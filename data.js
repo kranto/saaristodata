@@ -1483,7 +1483,7 @@ fdata = {
     pettu: {
       link: "http://www.petunlossi.com/lossi.html",
     },
-    hankooro: {
+    hankokasnas: {
       link: "https://www.wilsoncharter.fi/hanko-kasnas-ja-kasnas-oro",
       link_sv: "https://www.wilsoncharter.fi/se/hango-kasnas-och-kasnas-oro",
       link_en: "https://www.wilsoncharter.fi/en/hanko-kasnas-and-kasnas-oro",
@@ -2222,20 +2222,19 @@ fdata = {
       timetables: ["pettu"]
     },
 
-    hankooro: {
-      name: "Hanko - Kasnäs - Örö",
-      name_sv: "Hangö - Kasnäs - Örö",
-      piers: ["Hanko", "Vikare", "Kasnäs", "Örö"],
+    hankokasnas: {
+      name: "Hanko - Kasnäs",
+      name_sv: "Hangö - Kasnäs",
+      piers: ["Hanko", "Vikare", "Kasnäs"],
       operator: "wilsoncharter",
       vessels: ["sissel"],
       features: {
-        interval_L: ["times.adayaweek", "1", "Hanko/Hangö", "3"],
+        interval_L: ["times.aweek", "3"],
         cost_L: "cost.applies",
-        duration_L: ["duration.hours", "3"],
+        duration_L: ["duration.hours", "2"],
         seasonal_L: "seasonal.summers",
-        seealso_L: ["seealso", "#kasnasoro", "Kasnäs - Örö"],
       },
-      timetables: ["hankooro"]
+      timetables: ["hankokasnas"]
     },
     kasnasoro: {
       name: "Kasnäs - Örö",
@@ -2247,7 +2246,6 @@ fdata = {
         cost_L: "cost.applies",
         duration_L: ["duration.minutes", "45"],
         seasonal_L: "seasonal.summers",
-        seealso_L: ["seealso", "#hankooro", "Hanko - Kasnäs - Örö"],
       },
       timetables: ["kasnasorowilson"]
     },
