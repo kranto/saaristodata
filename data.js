@@ -1322,7 +1322,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       tables: [
         { validFrom: "2019-09-01", validTo: "2020-06-05", images:["Eivor-talvi-2019-2020-1-1.jpg"] },
-        { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Eivor-kesa-2020-6.6.-31.8.2020-1.jpg"] },
+        { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Baldur-kesa-2020.jpg"] },
       ],
     },
     korporutt: {
