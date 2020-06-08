@@ -511,8 +511,8 @@ fdata = {
         phones: ['+358 40 413 1574']
       },
     },
-    eivor: {
-      name: "M/S Eivor",
+    baldur: {
+      name: "M/S Baldur",
       features: { cafe: true },
       capacity: { cars: 19,
         persons: 195
@@ -1321,7 +1321,6 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       tables: [
-        { validFrom: "2019-09-01", validTo: "2020-06-05", images:["Eivor-talvi-2019-2020-1-1.jpg"] },
         { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Baldur-kesa-2020.jpg"] },
       ],
     },
@@ -1868,7 +1867,7 @@ fdata = {
       specifier: "",
       piers: ["Pärnäs", "Berghamn", "Nötö", "Aspö", "Jurmo", "Utö"],
       operator: "meritie",
-      vessels: ["eivor"],
+      vessels: ["baldur"],
       features: {
         interval_L: ["times.aweek", "5-6"],
         duration_L: ["duration.hours", "4.5-5.5"],
