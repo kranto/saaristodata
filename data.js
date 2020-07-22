@@ -544,6 +544,17 @@ fdata = {
         fb: 'https://www.facebook.com/YhteysalusOstern'
       }
     },
+    aalto: {
+      name: "M/S Aalto",
+      features: { cafe: false },
+      capacity: { cars: 6,
+        persons: 70
+      },
+      contact: {
+        phones: ['+358 400 720 606'],
+        email: 'info@ostern.fi',
+      }
+    },
     silvana: {
       name: "M/S Silvana",
       features: { },
@@ -1263,14 +1274,22 @@ fdata = {
     },
 
     nauvohanka: {
+      name: "M/S Östern", specifier: "",
       link: "http://www.ostern.fi/aikataulu",
       link_sv: "http://www.ostern.fi/aikataulu",
       link_en: "http://www.ostern.fi/en/schedule-fahrplan",
       tables: [
-      { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["Ostern2019_fisv.jpeg"], images_en: ["Ostern2019_ende.jpeg"]},
-      { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["Ostern2020_fisv.jpeg"], images_en: ["Ostern2020_ende.jpeg"]},
+        { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["Ostern2019_fisv.jpeg"], images_en: ["Ostern2019_ende.jpeg"]},
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["Ostern2020_fisv.jpeg"], images_en: ["Ostern2020_ende.jpeg"]},
       ],
-      },
+    },
+    nauvohankaturku: {
+      name: "Yhdistelmä M/S Aalto & M/S Östern", name_sv: "Kombination M/S Aalto & M/S Östern", name_en: "Combined M/S Aalto & M/S Östern", specifier: "",
+      link: "https://www.ostern.fi/b/ms-aalto-taydentaa-ms-osternin-kapasiteettia-pienella-rengastiella",
+      tables: [
+        { validFrom: "2020-07-21", validTo: "2020-08-16", images: ["Aaltoaikataulu_muokattu-1.jpg"]},
+      ],
+    },
     kasnashitis: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen-aurora.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
@@ -1754,14 +1773,15 @@ fdata = {
       specifier_fi: "Nauvo - Seili - Hanka",
       piers: ["Nagu", "Seili", "Hanka"],
       operator: "sinv",
-      vessels: ["ostern"],
+      vessels: ["ostern", "aalto"],
       features: {
-        interval_L: ["times.aday", "3"],
+        interval_L: ["times.aday", "3-5"],
         duration_L: ["duration.minutes", "60"],
         seasonal_L: "seasonal.summers",
         cost_L: "cost.applies",
       },
-      timetables: "nauvohanka",
+      notes: [ {content: "M/S Aalto cruises from/to Turku daily (passangers and bicycles only)", content_sv: "M/S Aalto kryssar från/till Åbo dagligen (bara passagerare och cyklar)", content_fi: "M/S Aalto risteilee Turusta/Turkuun päivittäin (vain matkustajia ja polkupyöriä)" }],
+      timetables: ["nauvohanka", "nauvohankaturku"],
     },
     velkuataivassalo: {
       name: "Velkuan reitti",
