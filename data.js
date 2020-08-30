@@ -387,6 +387,16 @@ fdata = {
         phones: ['+358 400 320 095']
       },
     },
+    mskaita: {
+      name: "M/S Kaita",
+      features: { },
+      capacity: { cars: 8,
+        persons: 50,
+      },
+      contact: {
+        phones: ['+358 400 320 095']
+      },
+    },
     vano: {
       name: "Lautta #201",
       features: { },
@@ -637,9 +647,9 @@ fdata = {
       contact: {
         phones: ['+358 (0)18-37227'],
         email: 'britta.h@aland.net',
-        www_fi: 'http://www.aland.com/fi/skarpnato',
-        www_sv: 'http://www.aland.com/se/skarpnato',
-        www_en: 'http://www.aland.com/en/skarpnato',
+        www_fi: 'https://www.aland.com/p/skarpnato-turistanlaggning-suomeksi',
+        www_sv: 'https://www.aland.com/p/skarpnato-turistanlaggning',
+        www_en: 'https://www.aland.com/p/skarpnato-turistanlaggning-english',
       },
     },
     finferries: {
@@ -1264,9 +1274,9 @@ fdata = {
         ],
       },
     velkuataivassalo: {
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti-kivimo.html#timetables",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti-kaita.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
         { validFrom: "2019-06-01", validTo: "2019-09-01", images: ["KivimoSommar2019.jpeg"]},
         { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
@@ -1280,7 +1290,7 @@ fdata = {
       link_en: "http://www.ostern.fi/en/schedule-fahrplan",
       tables: [
         { validFrom: "2019-05-17", validTo: "2019-09-01", images: ["Ostern2019_fisv.jpeg"], images_en: ["Ostern2019_ende.jpeg"]},
-        { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["Ostern2020_fisv.jpeg"], images_en: ["Ostern2020_ende.jpeg"]},
+        { validFrom: "2020-06-01", validTo: "2020-09-20", images: ["Ostern2020b_fisv.jpeg"], images_en: ["Ostern2020b_ende.jpeg"]},
       ],
     },
     nauvohankaturku: {
@@ -1300,12 +1310,13 @@ fdata = {
       ],
     },
     velkuanreitti: {
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti-kivimo.html#timetables",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kivimo.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kivimo.html#timetables",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti-kaita.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
         { validFrom: "2019-09-02", validTo: "2020-05-31", images: ["velkuan-reittialue-talvi-2019_2020-kivimo-1.jpg"]},
-        { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
+        { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]},
+        { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]}
       ],
     },
     rymattylanreitti: {
@@ -1333,6 +1344,7 @@ fdata = {
       tables: [
         { validFrom: "2019-08-12", validTo: "2020-05-18", images:["inio-syys-talvi-kevat-2019-2020-1.jpg", "inio-syys-talvi-kevat-2019-2020-2.jpg"] },
         { validFrom: "2020-05-19", validTo: "2020-08-16", images:["inio-kesa-sommar-2020-1.jpg", "inio-kesa-sommar-2020-2.jpg"] },
+        { validFrom: "2020-08-17", validTo: "2021-05-16", images:["inio-syys-talvi-kevat-2020-21-1.jpg", "inio-syys-talvi-kevat-2020-21-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1341,6 +1353,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
       tables: [
         { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Baldur-kesa-2020.jpg"] },
+        { validFrom: "2020-09-01", validTo: "2021-06-02", images:["Baldur-talvi-1.9.2020-2.6.2021-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1348,6 +1361,7 @@ fdata = {
       tables: [
         { validFrom: "2019-09-01", validTo: "2020-05-31", images:["Fiskö-talviaikataulu-1.9.2019-31.5.2020-1.jpg"] },
         { validFrom: "2020-06-01", validTo: "2020-08-31", images:["Fisk-kesaaikataulu-2020-1.6.-31.8.2020-1.jpg"] },
+        { validFrom: "2020-09-01", validTo: "2020-12-31", images:["Fisk-talviaikataulu-1.9.2020-31.12.2020-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1355,8 +1369,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-falko.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-falko.html#timetables",
       tables: [
-        { validFrom: "2019-09-02", validTo: "2020-05-31", images:["falko-talviaikataulu-2019-2020-1.jpg"] },
-        { validFrom: "2020-06-01", validTo: "2020-09-01", images:["falko-kesa-2020-1.jpg"] },
+        { validFrom: "2020-06-01", validTo: "2020-08-30", images:["falko-kesa-2020-1.jpg"] },
+        { validFrom: "2020-08-31", validTo: "2020-12-31", images:["falko-talviaikataulu-2020-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1373,25 +1387,25 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-sodra-rutten.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
       tables: [
-        { validFrom: "2019-11-01", validTo: "2020-03-31", images:["nauvon-etelainen-talvi-vinter-2019-20-1.jpg"] },
         { validFrom: "2020-04-01", validTo: "2020-05-31", images:["nauvon-etelainen-kevat-2020-1.jpg"] },
         { validFrom: "2020-06-01", validTo: "2020-08-16", images:["nauvon-etelainen-kesa-2020-1.jpg"] },
+        { validFrom: "2020-08-17", validTo: "2020-10-31", images:["nauvon-etelainen-syksy-2020-1.jpg"] },
       ],
     },
     hitisstella: {
       name: "M/S Stella",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-        { validFrom: "2019-08-10", validTo: "2020-05-31", images:["Hiittinen-Syksy-2019-Talvi-Kevät-2020--1.jpg", "Hiittinen-Syksy-2019-Talvi-Kevät-2020--2.jpg"] },
         { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Ms-Stella-Kesa-2020-1.jpg", "Ms-Stella-Kesa-2020-2.jpg"] },
+        { validFrom: "2020-08-10", validTo: "2021-05-28", images:["Hiittinen-Syksy-2020-Talvi-Kevät-2021--1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevät-2021--2.jpg"] },
       ],
     },
     hitisalva: { 
       name: "M/S Alva",
       link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
       tables: [
-        { validFrom: "2019-12-19", validTo: "2020-05-31", images:["Alva-kelirikko-2019-2020-1.jpg",]},
         { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Alva-kesa-20-1.jpg"]},
+        { validFrom: "2020-08-10", validTo: null, images:["Alva-syksy-20-1.jpg"]},
       ],
     },
     pargasrutt: {
@@ -1402,7 +1416,7 @@ fdata = {
       { validFrom: "2019-11-01", validTo: "2020-03-31", images: ["viken-talvi-2019-2020-vinter-pargas-ruttomrade-1.jpg"]},
       { validFrom: "2020-04-01", validTo: "2020-05-31", images: ["viken-kevat-syksy-2020-1.jpg"]},
       { validFrom: "2020-06-01", validTo: "2020-08-16", images: ["viken-kesa-2020-paraisten-reittialue-1.jpg"]},
-      { validFrom: "2020-09-01", validTo: "2020-10-31", images: ["viken-kevat-syksy-2020-1.jpg"]},
+      { validFrom: "2020-09-01", validTo: "2020-11-01", images: ["viken-kevat-syksy-2020-1.jpg"]},
       ]
     },
 
@@ -1773,15 +1787,15 @@ fdata = {
       specifier_fi: "Nauvo - Seili - Hanka",
       piers: ["Nagu", "Seili", "Hanka"],
       operator: "sinv",
-      vessels: ["ostern", "aalto"],
+      vessels: ["ostern"],
       features: {
-        interval_L: ["times.aday", "3-5"],
+        interval_L: ["times.aday", "3"],
         duration_L: ["duration.minutes", "60"],
         seasonal_L: "seasonal.summers",
         cost_L: "cost.applies",
       },
-      notes: [ {content: "M/S Aalto cruises from/to Turku daily (passangers and bicycles only)", content_sv: "M/S Aalto kryssar från/till Åbo dagligen (bara passagerare och cyklar)", content_fi: "M/S Aalto risteilee Turusta/Turkuun päivittäin (vain matkustajia ja polkupyöriä)" }],
-      timetables: ["nauvohanka", "nauvohankaturku"],
+      notes: [ {content: "In September Fri - Sun only", content_sv: "I september bara fre - sön", content_fi: "Syyskuussa ainoastaan pe - su" }],
+      timetables: ["nauvohanka"],
     },
     velkuataivassalo: {
       name: "Velkuan reitti",
@@ -1790,7 +1804,7 @@ fdata = {
       specifier: "Teersalo - Hakkenpää",
       piers: ["Teersalo", "Hakkenpää"],
       operator: "finferries",
-      vessels: ["mskivimo"],
+      vessels: ["mskaita"],
       features: {
         interval_L: ["times.aday", "1-2"],
         duration_L: ["duration.minutes", "50"],
@@ -1824,7 +1838,7 @@ fdata = {
       specifier: "",
       piers: ["Teersalo", "Rauhala", "Lailuoto", "Talosmeri", "Munninmaa", "Tammisluoto", "Liettinen", "Kettumaa", "Hakkenpää"],
       operator: "finferries",
-      vessels: ["mskivimo"],
+      vessels: ["mskaita"],
       features: {
         interval_L: ["times.aday", "3-9"],
         order_L: "order.partly",
