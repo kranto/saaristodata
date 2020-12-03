@@ -1235,6 +1235,7 @@ fdata = {
         { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
         { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-10.jpg"]},
         { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
+        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-4.jpg"]},
         ],
     },
     korponorrskata: {
@@ -1247,6 +1248,7 @@ fdata = {
         { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
         { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-10.jpg"]},
         { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-07.jpg"]},
+        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-4.jpg"]},
         ],
     },
     nagukorpo: {
@@ -1259,6 +1261,7 @@ fdata = {
         { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-06.jpg"]},
         { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-09.jpg"]},
         { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-06.jpg"]},
+        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-3.jpg"]},
         ],
     },
     pargasnagu: {
@@ -1271,6 +1274,7 @@ fdata = {
         { validFrom: "2020-04-17", validTo: "2020-05-31", images: ["saaristotien-lautta-aikataulut-2020-05.jpg"]},
         { validFrom: "2020-06-01", validTo: "2020-08-30", images: ["saaristotien-lautta-aikataulut-2020-08.jpg"]},
         { validFrom: "2020-08-31", validTo: "2020-10-31", images: ["saaristotien-lautta-aikataulut-2020-05.jpg"]},
+        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-2.jpg"]},
         ],
       },
     velkuataivassalo: {
@@ -1320,10 +1324,13 @@ fdata = {
       ],
     },
     rymattylanreitti: {
-      link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
+      link: "https://meritie.fi/aikataulut/",
+      link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
+      link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2019-09-30", validTo: "2020-05-03", images:["Rymättylä-Syksy-2019-Talvi-Kevät-2020-1.jpg", "Rymättylä-Syksy-2019-Talvi-Kevät-2020-2.jpg"] },
         { validFrom: "2020-05-04", validTo: "2020-09-27", images:["Rymattyla-ya-Isla-KESA-2020-1.jpg", "Rymattyla-ya-Isla-KESA-2020-2.jpg"] },
+        { validFrom: "2020-09-28", validTo: "2021-05-05", images:["Rymattyla-Syksy-2020-Talvi-Kevat-2021-1.jpg", "Rymattyla-Syksy-2020-Talvi-Kevat-2021-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1334,6 +1341,7 @@ fdata = {
       tables: [
         { validFrom: "2019-09-30", validTo: "2020-04-05", images:["houtskari-talvi-2019-20-1.jpg", "houtskari-talvi-2019-20-2.jpg"] },
         { validFrom: "2020-04-06", validTo: "2020-09-27", images:["houtskari-kesa-2020-1.jpg", "houtskari-kesa-2020-2.jpg"] },
+        { validFrom: "2020-09-28", validTo: "2021-04-04", images:["houtskari-talvi-2020-21-1.jpg", "houtskari-talvi-2020-21-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1348,12 +1356,12 @@ fdata = {
       ],
     },
     utorutt: { 
-      link: "https://meritie.fi/aikataulut-reitti/",
-      link_sv: "https://meritie.fi/tidtabell-rutt/?lang=sv",
-      link_en: "https://meritie.fi/tidtabell-rutt/?lang=sv",
+      link: "https://meritie.fi/aikataulut/",
+      link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
+      link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Baldur-kesa-2020.jpg"] },
-        { validFrom: "2020-09-01", validTo: "2021-06-02", images:["Baldur-talvi-1.9.2020-2.6.2021-1.jpg"] },
+        { validFrom: "2020-09-01", validTo: "2021-06-02", images:["Baldur-poikkeusaikataulu-20-21-1.jpg", "Baldur-talvi-1.9.2020-2.6.2021-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1378,8 +1386,8 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-tvartrafik.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-transverse-route.html",
       tables: [
-        { validFrom: "2019-11-01", validTo: "2020-03-31", images:["cheri-vinter-2019-20-1.jpg"] },
         { validFrom: "2020-04-01", validTo: "2020-10-31", images:["cheri-kesa-2020-1.jpg"] },
+        { validFrom: "2020-11-01", validTo: "2021-05-31", images:["tidtabell-1.11.2020-2021-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1387,22 +1395,25 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-sodra-rutten.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
       tables: [
-        { validFrom: "2020-04-01", validTo: "2020-05-31", images:["nauvon-etelainen-kevat-2020-1.jpg"] },
-        { validFrom: "2020-06-01", validTo: "2020-08-16", images:["nauvon-etelainen-kesa-2020-1.jpg"] },
         { validFrom: "2020-08-17", validTo: "2020-10-31", images:["nauvon-etelainen-syksy-2020-1.jpg"] },
+        { validFrom: "2020-11-01", validTo: "2021-03-31", images:["nauvon-etelainen-talvi-2020-21-1.jpg"] },
       ],
     },
     hitisstella: {
       name: "M/S Stella",
-      link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
+      link: "https://meritie.fi/aikataulut/",
+      link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
+      link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Ms-Stella-Kesa-2020-1.jpg", "Ms-Stella-Kesa-2020-2.jpg"] },
-        { validFrom: "2020-08-10", validTo: "2021-05-28", images:["Hiittinen-Syksy-2020-Talvi-Kevät-2021--1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevät-2021--2.jpg"] },
+        { validFrom: "2020-08-10", validTo: "2021-05-28", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-24.11-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-24.11-2.jpg"] },
       ],
     },
     hitisalva: { 
       name: "M/S Alva",
-      link: "https://kuljetus-savolainen.fi/yhteysalusliikenne/",
+      link: "https://meritie.fi/aikataulut/",
+      link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
+      link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2020-06-01", validTo: "2020-08-09", images:["Alva-kesa-20-1.jpg"]},
         { validFrom: "2020-08-10", validTo: null, images:["Alva-syksy-20-1.jpg"]},
@@ -1854,7 +1865,7 @@ fdata = {
       name_en: "Rymättylä Route",
       specifier: "",
       piers: ["Haapala", "Ruotsalainen", "Korvenmaa", "Pakinainen", "Pähkinäinen", "Samsaari", "Maisaari"],
-      operator: "savolainen",
+      operator: "meritie",
       vessels: ["isla"],
       features: {
         interval_L: ["times.aday", "3-5"],
@@ -1988,7 +1999,7 @@ fdata = {
       name_en: "Hitis Route",
       specifier: "",
       piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Ängesö", "Bolax", "Botesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
-      operator: "savolainen",
+      operator: "meritie",
       vessels: ["stellahiittinen", "alva"],
       features: {
         interval_L: ["times.aday", "1-3"],
