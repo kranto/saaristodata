@@ -1194,12 +1194,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-gustavs-aura.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi-aura.html#timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-06-16", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
-        { validFrom: "2019-06-17", validTo: "2019-08-11", images: ["AuraSommar2019.jpeg"]},
-        { validFrom: "2019-08-12", validTo: "2019-12-31", images: ["inio-kustavi-aura-talvi-2019-1.jpg"]},
-        { validFrom: "2020-01-01", validTo: "2020-06-14", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
-        { validFrom: "2020-06-15", validTo: "2020-08-09", images: ["inio-kustavi-aura-kesa-2020-1.jpg"]},
-        { validFrom: "2020-08-10", validTo: "2020-12-31", images: ["inio-kustavi-aura-talvi-2020-1.jpg"]},
+        { validFrom: "2021-01-01", validTo: "2021-06-20", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
+        { validFrom: "2021-08-09", validTo: "2021-12-31", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
       ]
     },
     houtskarinio: {
@@ -1296,8 +1292,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: "2019-12-31", images: ["Aurora2019.jpeg"]},
-        { validFrom: "2020-01-01", validTo: "2020-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2020-1.jpg"]},
+        { validFrom: "2021-01-01", validTo: "2021-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2021-1.jpg"]},
       ],
     },
     velkuanreitti: {
@@ -1354,9 +1349,7 @@ fdata = {
     korporutt: {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
-        { validFrom: "2019-09-01", validTo: "2020-05-31", images:["Fiskö-talviaikataulu-1.9.2019-31.5.2020-1.jpg"] },
-        { validFrom: "2020-06-01", validTo: "2020-08-31", images:["Fisk-kesaaikataulu-2020-1.6.-31.8.2020-1.jpg"] },
-        { validFrom: "2020-09-01", validTo: "2020-12-31", images:["Fisk-talviaikataulu-1.9.2020-31.12.2020-1.jpg"] },
+        { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
       ],
     },
     nagunorra: {
