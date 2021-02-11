@@ -1404,10 +1404,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-      { validFrom: "2019-11-01", validTo: "2020-03-31", images: ["viken-talvi-2019-2020-vinter-pargas-ruttomrade-1.jpg"]},
-      { validFrom: "2020-04-01", validTo: "2020-05-31", images: ["viken-kevat-syksy-2020-1.jpg"]},
-      { validFrom: "2020-06-01", validTo: "2020-08-16", images: ["viken-kesa-2020-paraisten-reittialue-1.jpg"]},
-      { validFrom: "2020-09-01", validTo: "2020-11-01", images: ["viken-kevat-syksy-2020-1.jpg"]},
+      { validFrom: "2020-12-16", validTo: "2021-03-31", images: ["paraisten-reittialue-viken-16.12.2020-31.3.2021-1.jpg"]},
       ]
     },
 
