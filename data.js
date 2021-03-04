@@ -304,8 +304,8 @@ fdata = {
     kokkomaa: {
       name: "M/S Kokkomaa",
       features: { cafe: false },
-      capacity: { cars: 6,
-        persons: 70
+      capacity: { cars: 8,
+        persons: 99
       },
       contact: {
         phones: ['+358 50 400 1941']
