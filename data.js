@@ -301,6 +301,16 @@ fdata = {
         phones: ['+358 400 320 097']
       },
     },
+    kokkomaa: {
+      name: "M/S Kokkomaa",
+      features: { cafe: false },
+      capacity: { cars: 6,
+        persons: 70
+      },
+      contact: {
+        phones: ['+358 50 400 1941']
+      },
+    },
     palva: {
       name: "Lautta #179",
       features: { },
@@ -761,6 +771,18 @@ fdata = {
         www_fi: 'https://www.meritie.fi/',
         www_sv: 'https://meritie.fi/?lang=sv',
         fb: 'https://www.facebook.com/Archipelagoway/'
+      },
+    },
+    coastline: {
+      name: "Coast Line",
+      logo: "coastline_logo.png",
+      contact: {
+        phones: ['+358 50 400 1941'],
+        email: 'coastline@eurowork.info',
+        address: 'Pörtö, 01180 KALKKIRANTA',
+        www: 'https://www.coast-line.fi/sv/',
+        www_fi: 'https://www.coast-line.fi/',
+        www_sv: 'https://www.coast-line.fi/sv/',
       },
     },
     vitharun: {
@@ -1353,12 +1375,11 @@ fdata = {
       ],
     },
     nagunorra: {
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/nauvon-pohjoinen-reitti-falko.html#timetables",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-falko.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-falko.html#timetables",
+      link: "https://www.coast-line.fi/nauvon-pohjoinen-reitti/",
+      link_sv: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
+      link_en: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       tables: [
-        { validFrom: "2020-06-01", validTo: "2020-08-30", images:["falko-kesa-2020-1.jpg"] },
-        { validFrom: "2020-08-31", validTo: "2020-12-31", images:["falko-talviaikataulu-2020-1.jpg"] },
+        { validFrom: "2021-01-01", validTo: "2021-05-16", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1904,8 +1925,8 @@ fdata = {
       name_en: "Nagu Northern Route",
       specifier: "",
       piers: ["Nagu", "Seili", "Innamo", "Järvsor", "Maskinnamo", "Åvensor", "Lavarn"],
-      operator: "finferries",
-      vessels: ["falko"],
+      operator: "coastline",
+      vessels: ["kokkomaa"],
       features: {
         interval_L: ["times.aday", "1-2"],
         order_L: "order.partly",
