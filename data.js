@@ -1343,9 +1343,8 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/houtskar-rutten.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-houtskari-route.html",
       tables: [
-        { validFrom: "2019-09-30", validTo: "2020-04-05", images:["houtskari-talvi-2019-20-1.jpg", "houtskari-talvi-2019-20-2.jpg"] },
-        { validFrom: "2020-04-06", validTo: "2020-09-27", images:["houtskari-kesa-2020-1.jpg", "houtskari-kesa-2020-2.jpg"] },
         { validFrom: "2020-09-28", validTo: "2021-04-04", images:["houtskari-talvi-2020-21-1.jpg", "houtskari-talvi-2020-21-2.jpg"] },
+        { validFrom: "2021-04-05", validTo: "2021-09-26", images:["houtskari-kesa-2021-1.jpg", "houtskari-kesa-2021-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1366,6 +1365,7 @@ fdata = {
       tables: [
         { validFrom: "2020-06-06", validTo: "2020-08-31", images:["Baldur-kesa-2020.jpg"] },
         { validFrom: "2020-09-01", validTo: "2021-06-02", images:["Baldur-poikkeusaikataulu-20-21-1.jpg", "Baldur-talvi-1.9.2020-2.6.2021-1.jpg"] },
+        { validFrom: "2021-06-03", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1396,8 +1396,7 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-sodra-rutten.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
       tables: [
-        { validFrom: "2020-08-17", validTo: "2020-10-31", images:["nauvon-etelainen-syksy-2020-1.jpg"] },
-        { validFrom: "2020-11-01", validTo: "2021-03-31", images:["nauvon-etelainen-talvi-2020-21-1.jpg"] },
+        { validFrom: "2021-04-01", validTo: "2021-06-06", images:["nauvon-etelainen-kevat-2021-1.jpg"] },
       ],
     },
     hitisstella: {
@@ -1425,7 +1424,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-      { validFrom: "2020-12-16", validTo: "2021-03-31", images: ["paraisten-reittialue-viken-16.12.2020-31.3.2021-1.jpg"]},
+      { validFrom: "2021-04-01", validTo: "2021-04-30", images: ["viken-01.04.-30.04.2021-1.jpg"]},
       ]
     },
 
