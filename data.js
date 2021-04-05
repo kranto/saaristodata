@@ -1334,7 +1334,7 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-09-01", validTo: "2021-05-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg", "Baldur-talvi-1.9.2020-2.6.2021-1.jpg"] },
+        { validFrom: "2020-09-01", validTo: "2021-05-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
         { validFrom: "2021-05-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
       ],
     },
