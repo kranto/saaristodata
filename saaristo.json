@@ -2247,7 +2247,7 @@
       "type": "FeatureCollection",
       "properties": {
         "stype": "connection",
-        "ref": "turkunauvo",
+        "ref": "saaristolinja_turkunauvo",
         "ssubtype": "conn5"
       },
       "features": [
@@ -2262,18 +2262,28 @@
             "type": "LineString"
           },
           "id": "3f4efae3e9f3041c11f0cdb8886a7cb0"
-        },
+        }
+     ]
+    },
+    {
+      "type": "FeatureCollection",
+      "properties": {
+        "stype": "connection",
+        "ref": "saaristolinja_roolaseili",
+        "ssubtype": "conn5"
+      },
+      "features": [
         {
           "type": "Feature",
           "properties": {
             "stype": "leg",
-            "sname": "Seili-Gullkrona"
+            "sname": "Röölä-Seili"
           },
           "geometry": {
-            "coordinates": [[21.95518,60.23652],[21.96167,60.23026],[22.018926,60.22609],[22.032095,60.22230],[22.081335,60.22572],[22.109009,60.22363],[22.116453,60.18370],[22.110154,60.18038],[22.078854,60.16966],[22.054616,60.15228],[22.052517,60.13270],[22.032859,60.11778],[22.061487,60.09248],[22.082099,60.09029],[22.083244,60.08819]],
+            "coordinates": [[21.956253,60.345545],[21.953677,60.343241],[21.89452,60.345447],[21.87936,60.340985],[21.836454,60.342309],[21.877873,60.273397],[21.945078,60.258135],[21.945888,60.237475],[21.955284,60.23651]],
             "type": "LineString"
           },
-          "id":"5b5292ad40881a79beb576b9cb12465f"
+          "id": "1b8f42e2501b9b048723e14114a37977"
         }
      ]
     },
@@ -4741,6 +4751,20 @@
         "type": "Point"
       },
       "id": "b928afa673480bcc96b7c54f8d178df9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stype": "pier",
+        "ref": "Röölä",
+        "ssubtype": "4",
+        "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }
+      },
+      "geometry": {
+        "coordinates": [21.956253,60.345545],
+        "type": "Point"
+      },
+      "id": "b928afa673480bcc96b7c54f8d178dfa"
     },
     {
       "type": "Feature",
