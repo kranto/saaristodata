@@ -2290,7 +2290,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "hankokasnas",
         "ssubtype": "conn5"
       },
@@ -4132,7 +4132,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ssubtype": "4",
         "ref": "Vikare",
         "labelAnchor": {"dir": "SW", "x":-3 , "y":3 }

@@ -251,12 +251,12 @@ fdata = {
     },
     stellakorppoo: {
       name: "M/S Stella",
-      features: { cafe: true },
+      features: { cafe: false },
       capacity: { cars: 65 },
       contact: {
-        phones: ['+358 400 114 291', { name: "Café Stella", tel: "+358 400 611 994"}],
-
-        fb: { name: "Café Stella", uri: "https://www.facebook.com/cafestellakorpo" }
+        // phones: ['+358 400 114 291', { name: "Café Stella", tel: "+358 400 611 994"}],
+        // fb: { name: "Café Stella", uri: "https://www.facebook.com/cafestellakorpo" },
+        phones: ['+358 400 114 291'],
       },
     },
     mergus: {
@@ -1225,6 +1225,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi-aura.html#timetables",
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-06-20", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
+        { validFrom: "2021-06-21", validTo: "2021-08-08", images: ["inio-kustavi-aura-kesa-21.6.-8.8.2021-1.jpg"]},
         { validFrom: "2021-08-09", validTo: "2021-12-31", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
       ]
     },
@@ -1242,7 +1243,10 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-houtskar.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-houtskari.html#timetables",
       tables: [
-        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-4.jpg"]},
+        { validFrom: "2021-04-19", validTo: "2021-05-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-10.jpg"]},
+        { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
+        { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-04.jpg"]},
       ],
     },
     korponorrskata: {
@@ -1250,7 +1254,10 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-norrskata.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-norrskata.html#timetables",
       tables: [
-        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-4.jpg"]},
+        { validFrom: "2021-04-19", validTo: "2021-05-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-10.jpg"]},
+        { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
+        { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-04.jpg"]},
       ],
     },
     nagukorpo: {
@@ -1258,7 +1265,10 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-korpo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-korppoo.html#timetables",
       tables: [
-        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-3.jpg"]},
+        { validFrom: "2021-04-19", validTo: "2021-05-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-06.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-09.jpg"]},
+        { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-06.jpg"]},
+        { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-03.jpg"]},
       ],
     },
     pargasnagu: {
@@ -1266,7 +1276,10 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-nagu.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-nauvo.html#timetables",        
       tables: [
-        { validFrom: "2020-11-01", validTo: "2021-04-18", images: ["saaristotien-aikataulu-talvi-2020-2021-2.jpg"]},
+        { validFrom: "2021-04-19", validTo: "2021-05-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-05.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-08.jpg"]},
+        { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-05.jpg"]},
+        { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-02.jpg"]},
       ],
       },
     velkuataivassalo: {
@@ -1274,7 +1287,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2020-06-01", validTo: "2020-09-01", images: ["velkua-kesa-2020-1.jpg"]}
+        { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
       ],
     },
 
@@ -1308,7 +1321,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]}
+        { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1317,6 +1331,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2020-09-28", validTo: "2021-05-05", images:["Rymattyla-Syksy-2020-Talvi-Kevat-2021-1.jpg", "Rymattyla-Syksy-2020-Talvi-Kevat-2021-2.jpg"] },
+        { validFrom: "2021-05-03", validTo: "2021-09-26", images:["Rymattyla-ya-Isla-Kesa-2021-1.jpg", "Rymattyla-ya-Isla-Kesa-2021-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1335,6 +1350,7 @@ fdata = {
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-inio-additional-route.html",
       tables: [
         { validFrom: "2020-08-17", validTo: "2021-05-16", images:["inio-syys-talvi-kevat-2020-21-1.jpg", "inio-syys-talvi-kevat-2020-21-2.jpg"] },
+        { validFrom: "2020-05-17", validTo: "2021-08-15", images:["inio-kesa-2021-1.jpg", "inio-kesa-2021-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1342,8 +1358,8 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-09-01", validTo: "2021-05-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
-        { validFrom: "2021-05-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
+        { validFrom: "2020-11-16", validTo: "2021-06-01", images:["Baldur-poikkeusaikataulu-20-21-2-1.jpg"] },
+        { validFrom: "2021-06-02", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1357,7 +1373,8 @@ fdata = {
       link_sv: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       link_en: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-05-16", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
+        { validFrom: "2021-01-01", validTo: "2021-05-13", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
+        { validFrom: "2021-05-14", validTo: "2021-08-30", images:["nagunorra-kesa-2021-26042021-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1391,7 +1408,8 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-08-10", validTo: null, images:["Alva-syksy-20-1.jpg"]},
+        { validFrom: "2021-04-12", validTo: "2021-05-28", images:["Alva-Kevat-2021-1.jpg"]},
+        { validFrom: "2021-05-29", validTo: "2021-08-09", images:["Alva-Kesa-2021-1.jpg"]},
       ],
     },
     pargasrutt: {
@@ -1400,6 +1418,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
         { validFrom: "2021-04-01", validTo: "2021-04-30", images: ["viken-01.04.-30.04.2021-1.jpg"]},
+        { validFrom: "2021-05-01", validTo: "2021-05-31", images: ["viken-01.05.-31.05.2021-1.jpg"]},
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["viken-01.06.-31.08.2021-1.jpg"]},
       ]
     },
 
