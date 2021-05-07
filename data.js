@@ -1391,6 +1391,7 @@ fdata = {
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
       tables: [
         { validFrom: "2021-04-01", validTo: "2021-06-06", images:["nauvon-etelainen-kevat-2021-1.jpg"] },
+        { validFrom: "2021-06-07", validTo: "2021-08-15", images:["nauvon-etelainen-kesa-2021-1.jpg"] },
       ],
     },
     hitisstella: {
