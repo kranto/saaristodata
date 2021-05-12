@@ -1358,8 +1358,8 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-11-16", validTo: "2021-06-01", images:["Baldur-poikkeusaikataulu-20-21-2-1.jpg"] },
-        { validFrom: "2021-06-02", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
+        { validFrom: "2020-11-16", validTo: "2021-06-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
+        { validFrom: "2021-06-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1-1.jpg"] },
       ],
     },
     korporutt: {
