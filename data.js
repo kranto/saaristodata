@@ -604,6 +604,13 @@ fdata = {
       contact: {
       }
     },
+    cardinalII: {
+      name: "M/S Cardinal II",
+      features: { },
+      capacity: { persons: 30, bikes: " " },
+      contact: {
+      }
+    },
     sissel: {
       name: "M/S Sissel",
       features: { },
@@ -841,6 +848,15 @@ fdata = {
         fb: "https://www.facebook.com/wilsoncharterFI/"
       }
     },
+    hankolines: {
+      name: "Hanko Lines",
+      logo: "hankolines.png",
+      contact: {
+        phones: ["+358 500 102 111"],
+        email: 'info@hankolines.fi',
+        www: 'http://www.hankolines.fi/',
+      }
+    },
     marinelines: {
       name: "Marine Lines",
       logo: "marinelines.png",
@@ -1016,6 +1032,7 @@ fdata = {
     Örö: { mun: "Kimitoön"},
     Rosala: { mun: "Kimitoön"},
     Vikare: { mun: "Kimitoön"},
+    Söderlångvik: { mun: "Kimitoön"},
     Bengtskär: { mun: "Kimitoön"},
     Vänoxaby: { name: "Vänoxa by", mun: "Kimitoön"},
     Vänoxasläten: { name: "Vänoxa släten (Bergö)", mun: "Kimitoön"},
@@ -1046,6 +1063,7 @@ fdata = {
     Keistiö:  { mun: "Iniö" },
     Skagen:  { mun: "Iniö" },
     JumoE:  { name: "Jumo", mun: "Iniö" },
+    Pargas:  { name_fi: "Parainen", mun: "Pargas" },
     Sorpo:  { mun: "Pargas" },
     Jermo:  { mun: "Pargas" },
     Ulkoluoto:  { name_sv: "Utö", mun: "Salo" },
@@ -1525,6 +1543,9 @@ fdata = {
       tables: [
         { validFrom: "2019-06-30", validTo: "2019-08-11", images_fi: ["Kustrutten2019_fi.jpg"], images: ["Kustrutten2019_sv.jpg"]},
       ],
+    },
+    hankokasnasuto: {
+      link: "http://www.hankolines.fi",
     },
     kasnasorowilson: {
       link: "https://www.wilsoncharter.fi/oron-linnake-ja-kansallispuisto",
@@ -2271,6 +2292,21 @@ fdata = {
         seasonal_L: "seasonal.summers",
       },
       timetables: ["hankokasnas"]
+    },
+    hankokasnasuto: {
+      name: "Hanko - Kasnäs - Parainen/Jurmo - Utö",
+      name_sv: "Hangö - Kasnäs - Pargas/Jurmo - Utö",
+      name_en: "Hanko - Kasnäs - Pargas/Jurmo - Utö",
+      piers: ["Hanko", "Vikare", "Kasnäs", "Söderlångvik", "Pargas", "Jurmo", "Utö"],
+      operator: "hankolines",
+      vessels: ["cardinalII"],
+      features: {
+        interval_L: ["times.aweek", "5"],
+        cost_L: "cost.applies",
+        duration_L: ["duration.hours", "4"],
+        seasonal_L: "seasonal.summers",
+      },
+      timetables: ["hankokasnasuto"]
     },
     kasnasoro: {
       name: "Kasnäs - Örö",
