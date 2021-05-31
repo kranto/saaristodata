@@ -1384,7 +1384,7 @@ fdata = {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
-        { validFrom: "2021-01-06", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
+        { validFrom: "2021-06-01", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
       ],
     },
     nagunorra: {
