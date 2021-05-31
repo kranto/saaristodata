@@ -1384,6 +1384,7 @@ fdata = {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
+        { validFrom: "2021-01-06", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1400,7 +1401,7 @@ fdata = {
       link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-tvartrafik.html",
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-transverse-route.html",
       tables: [
-        { validFrom: "2020-11-01", validTo: "2021-05-31", images:["tidtabell-1.11.2020-2021-1.jpg"] },
+        { validFrom: "2020-11-01", validTo: "2021-06-15", images:["tidtabell-1.11.2020-2021-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1418,7 +1419,8 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-08-10", validTo: "2021-05-28", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-24.11-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-24.11-2.jpg"] },
+        { validFrom: "2020-08-10", validTo: "2021-06-05", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-2.jpg"] },
+        { validFrom: "2021-06-06", validTo: "2021-08-15", images:["Ms-Stella-Kesa-2021-1.jpg", "Ms-Stella-Kesa-2021-2.jpg"] },
       ],
     },
     hitisalva: { 
