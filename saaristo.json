@@ -7121,6 +7121,21 @@
       }
     },
     {
+      "id": "9e752a9b1c3e3478c083913ad7d0000e",
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [23.125, 60.386111],
+        "type": "Point"
+      },
+      "properties": {
+        "stype": "area",
+        "ssubtype": "mun2",
+        "sname": "Salo",
+        "labelAnchor": {"dir": "N", "x": 0, "y": -10 },
+        "labelVisibleFrom": 8
+      }
+    },
+    {
       "id": "9e752a9b1c3d3478c083913ad7d0000f",
       "type": "Feature",
       "geometry": {

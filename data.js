@@ -32,6 +32,7 @@ fdata = {
     Velkua: {  name_fi_in: "Velkualla"},
     Taivassalo: { name_sv: "Tövsala" },
     Kustavi: { name_sv: "Gustavs" },
+    Salo: { },
     Kimitoön: { name_fi: "Kemiönsaari", name_fi_in: "Kemiönsaaressa" },
     Hitis: { name_fi: "Hiittinen", name_fi_in: "Hiittisissä" },
     Norrskata: { },
