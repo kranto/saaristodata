@@ -1342,6 +1342,7 @@ fdata = {
       tables: [
         { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]},
         { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
+        { validFrom: "2021-09-02", validTo: "2022-05-31", images: ["velkuan-reitti-talvi-2021-2022-1.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1370,6 +1371,7 @@ fdata = {
       tables: [
         { validFrom: "2020-08-17", validTo: "2021-05-16", images:["inio-syys-talvi-kevat-2020-21-1.jpg", "inio-syys-talvi-kevat-2020-21-2.jpg"] },
         { validFrom: "2020-05-17", validTo: "2021-08-15", images:["inio-kesa-2021-1.jpg", "inio-kesa-2021-2.jpg"] },
+        { validFrom: "2021-08-16", validTo: "2022-04-30", images:["inio-syys-talvi-kevat-2021-22-1.jpg", "inio-syys-talvi-kevat-2021-22-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1378,7 +1380,8 @@ fdata = {
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2020-11-16", validTo: "2021-06-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
-        { validFrom: "2021-06-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1-1.jpg"] },
+        { validFrom: "2021-06-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
+        { validFrom: "2021-09-01", validTo: "2022-06-02", images:["Baldur-talvi-2021-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1386,6 +1389,7 @@ fdata = {
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
         { validFrom: "2021-06-01", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
+        { validFrom: "2021-09-01", validTo: "2022-05-31", images:["Fisko-talviaikataulu-1.9.2021-31.5.2022-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1394,7 +1398,8 @@ fdata = {
       link_en: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-05-13", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
-        { validFrom: "2021-05-14", validTo: "2021-08-30", images:["nagunorra-kesa-2021-26042021-1.jpg"] },
+        { validFrom: "2021-05-14", validTo: "2021-08-29", images:["nagunorra-kesa-2021-26042021-1.jpg"] },
+        { validFrom: "2021-08-30", validTo: "2022-05-15", images:["Aikataulu-syksy-talvi-2021_2022-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1403,6 +1408,7 @@ fdata = {
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-transverse-route.html",
       tables: [
         { validFrom: "2020-11-01", validTo: "2021-06-15", images:["tidtabell-1.11.2020-2021-1.jpg"] },
+        { validFrom: "2021-06-23", validTo: "2021-10-31", images:["cheri-23.6.-31.10.2021-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1412,6 +1418,7 @@ fdata = {
       tables: [
         { validFrom: "2021-04-01", validTo: "2021-06-06", images:["nauvon-etelainen-kevat-2021-1.jpg"] },
         { validFrom: "2021-06-07", validTo: "2021-08-15", images:["nauvon-etelainen-kesa-2021-1.jpg"] },
+        { validFrom: "2021-08-16", validTo: "2021-10-31", images:["nauvon-etelainen-syksy-2021-1.jpg"] },
       ],
     },
     hitisstella: {
@@ -1422,6 +1429,7 @@ fdata = {
       tables: [
         { validFrom: "2020-08-10", validTo: "2021-06-05", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-2.jpg"] },
         { validFrom: "2021-06-06", validTo: "2021-08-15", images:["Ms-Stella-Kesa-2021-1.jpg", "Ms-Stella-Kesa-2021-2.jpg"] },
+        { validFrom: "2021-08-16", validTo: "2022-06-04", images:["Hiittinen-Syksy-2021-Talvi-Kevat-2022--1.jpg", "Hiittinen-Syksy-2021-Talvi-Kevat-2022--2.jpg"] },
       ],
     },
     hitisalva: { 
@@ -1442,6 +1450,7 @@ fdata = {
         { validFrom: "2021-04-01", validTo: "2021-04-30", images: ["viken-01.04.-30.04.2021-1.jpg"]},
         { validFrom: "2021-05-01", validTo: "2021-05-31", images: ["viken-01.05.-31.05.2021-1.jpg"]},
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["viken-01.06.-31.08.2021-1.jpg"]},
+        { validFrom: "2021-09-01", validTo: "2022-05-31", images: ["viken-01.09.2021-31.5.2022-1.jpg"]},
       ]
     },
 
