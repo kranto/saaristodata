@@ -1352,6 +1352,7 @@ fdata = {
       tables: [
         { validFrom: "2020-09-28", validTo: "2021-05-05", images:["Rymattyla-Syksy-2020-Talvi-Kevat-2021-1.jpg", "Rymattyla-Syksy-2020-Talvi-Kevat-2021-2.jpg"] },
         { validFrom: "2021-05-03", validTo: "2021-09-26", images:["Rymattyla-ya-Isla-Kesa-2021-1.jpg", "Rymattyla-ya-Isla-Kesa-2021-2.jpg"] },
+        { validFrom: "2021-09-27", validTo: "2022-05-01", images:["Rymattyla-Syksy-2021-Talvi-Kevat-2022-1.jpg", "Rymattyla-Syksy-2021-Talvi-Kevat-2022-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1361,6 +1362,7 @@ fdata = {
       link_en: "https://www.ferentes.fi/en/ferry-traffic/the-houtskari-route.html",
       tables: [
         { validFrom: "2021-04-05", validTo: "2021-09-26", images:["houtskari-kesa-2021-1.jpg", "houtskari-kesa-2021-2.jpg"] },
+        { validFrom: "2021-09-27", validTo: "2022-04-03", images:["houtskari-vinter-2021-22-1.jpg", "houtskari-vinter-2021-22-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1440,6 +1442,7 @@ fdata = {
       tables: [
         { validFrom: "2021-04-12", validTo: "2021-05-28", images:["Alva-Kevat-2021-1.jpg"]},
         { validFrom: "2021-05-29", validTo: "2021-08-09", images:["Alva-Kesa-2021-1.jpg"]},
+        { validFrom: "2021-08-16", validTo: null, images:["Alva-Syksy-2021-1.jpg"]},
       ],
     },
     pargasrutt: {
