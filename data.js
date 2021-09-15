@@ -1442,7 +1442,7 @@ fdata = {
       tables: [
         { validFrom: "2021-04-12", validTo: "2021-05-28", images:["Alva-Kevat-2021-1.jpg"]},
         { validFrom: "2021-05-29", validTo: "2021-08-09", images:["Alva-Kesa-2021-1.jpg"]},
-        { validFrom: "2021-08-16", validTo: null, images:["Alva-Syksy-2021-1.jpg"]},
+        { validFrom: "2021-08-16", validTo: null, images:["Alva-syksy-21-1.jpg"]},
       ],
     },
     pargasrutt: {
