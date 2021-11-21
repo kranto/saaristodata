@@ -1411,6 +1411,7 @@ fdata = {
       tables: [
         { validFrom: "2020-11-01", validTo: "2021-06-15", images:["tidtabell-1.11.2020-2021-1.jpg"] },
         { validFrom: "2021-06-23", validTo: "2021-10-31", images:["cheri-23.6.-31.10.2021-1.jpg"] },
+        { validFrom: "2021-11-01", validTo: "2022-03-31", images:["cheri-vinter-2021-22-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1421,6 +1422,7 @@ fdata = {
         { validFrom: "2021-04-01", validTo: "2021-06-06", images:["nauvon-etelainen-kevat-2021-1.jpg"] },
         { validFrom: "2021-06-07", validTo: "2021-08-15", images:["nauvon-etelainen-kesa-2021-1.jpg"] },
         { validFrom: "2021-08-16", validTo: "2021-10-31", images:["nauvon-etelainen-syksy-2021-1.jpg"] },
+        { validFrom: "2021-11-01", validTo: "2022-03-31", images:["nauvon-etelainen-talvi-2021-22-1.jpg"] },
       ],
     },
     hitisstella: {
