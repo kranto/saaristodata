@@ -1101,9 +1101,9 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2021-01-01", validTo: "2021-05-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-30.jpg"]},
-      { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-31.jpg"]},
-      { validFrom: "2021-09-01", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-30.jpg"]},
+      { validFrom: "2022-01-01", validTo: "2022-05-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
+      { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["Skargardsguiden_TURLISTOR_2022-31.jpg"]},
+      { validFrom: "2022-09-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
     ],
     },
     norralinjen: {
@@ -1112,11 +1112,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2021-01-01", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-32.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-33.jpg"]},
-      { validFrom: "2021-04-26", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-34.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-35.jpg"]},
-      { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-36.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-37.jpg"]},
-      { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-34.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-35.jpg"]},
-      { validFrom: "2021-10-04", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-32.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-33.jpg"]},
+      { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-32.jpg", "Skargardsguiden_TURLISTOR_2022-33.jpg"]},
+      { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-34.jpg", "Skargardsguiden_TURLISTOR_2022-35.jpg"]},
+      { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-36.jpg", "Skargardsguiden_TURLISTOR_2022-37.jpg"]},
+      { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-34.jpg", "Skargardsguiden_TURLISTOR_2022-35.jpg"]},
+      { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-32.jpg", "Skargardsguiden_TURLISTOR_2022-33.jpg"]},
   ],
     },
     enklingelinjen: {
@@ -1125,9 +1125,9 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-54.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-56.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-55.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-54.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-56.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-55.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
       ],
     },
     brandokumlingelinjen: {
@@ -1136,11 +1136,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-42.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-43.jpg"]},
-        { validFrom: "2021-04-26", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-44.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-45.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-46.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-47.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-44.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-45.jpg"]},
-        { validFrom: "2021-10-04", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-42.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-43.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-42.jpg", "Skargardsguiden_TURLISTOR_2022-43.jpg"]},
+        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-44.jpg", "Skargardsguiden_TURLISTOR_2022-45.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-46.jpg", "Skargardsguiden_TURLISTOR_2022-47.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-44.jpg", "Skargardsguiden_TURLISTOR_2022-45.jpg"]},
+        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-42.jpg", "Skargardsguiden_TURLISTOR_2022-43.jpg"]},
           ],
     },
     avajurmo: {
@@ -1148,11 +1148,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-48.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-49.jpg"]},
-        { validFrom: "2021-04-26", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-50.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-51.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-52.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-53.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-50.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-51.jpg"]},
-        { validFrom: "2021-10-04", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-48.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-49.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-48.jpg", "Skargardsguiden_TURLISTOR_2022-49.jpg"]},
+        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-50.jpg", "Skargardsguiden_TURLISTOR_2022-51.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-52.jpg", "Skargardsguiden_TURLISTOR_2022-53.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-50.jpg", "Skargardsguiden_TURLISTOR_2022-51.jpg"]},
+        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-48.jpg", "Skargardsguiden_TURLISTOR_2022-49.jpg"]},
       ],
     },
     osnasava: {
@@ -1160,11 +1160,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-38.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-39.jpg"]},
-        { validFrom: "2021-04-26", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-40.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-41.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-40.jpg"]},
-        { validFrom: "2021-10-04", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-38.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-39.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-38.jpg", "Skargardsguiden_TURLISTOR_2022-39.jpg"]},
+        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-41.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
+        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-38.jpg", "Skargardsguiden_TURLISTOR_2022-39.jpg"]},
       ],
     },
     sodralinjen: {
@@ -1172,16 +1172,16 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-03-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-18.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-19.jpg"]},
-        { validFrom: "2021-04-01", validTo: "2021-04-05", images: ["Skargardsguiden_TURLISTOR_20.8.2021-26.jpg"]},
-        { validFrom: "2021-04-06", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-18.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-19.jpg"]},
-        { validFrom: "2021-04-26", validTo: "2021-06-13", images: ["Skargardsguiden_TURLISTOR_20.8.2021-20.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-21.jpg"]},
-        { validFrom: "2021-06-14", validTo: "2021-06-23", images: ["Skargardsguiden_TURLISTOR_20.8.2021-22.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-24.jpg"]},
-        { validFrom: "2021-06-24", validTo: "2021-06-28", images: ["Skargardsguiden_TURLISTOR_20.8.2021-23.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-25.jpg"]},
-        { validFrom: "2021-06-29", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-22.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-24.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-20.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-21.jpg"]},
-        { validFrom: "2021-10-04", validTo: "2021-12-22", images: ["Skargardsguiden_TURLISTOR_20.8.2021-18.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-19.jpg"]},
-        { validFrom: "2021-12-23", validTo: "2022-01-01", images: ["Skargardsguiden_TURLISTOR_20.8.2021-27.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-13", images: ["Skargardsguiden_TURLISTOR_2022-18.jpg", "Skargardsguiden_TURLISTOR_2022-19.jpg"]},
+        { validFrom: "2022-04-14", validTo: "2022-04-18", images: ["Skargardsguiden_TURLISTOR_2022-26.jpg"]},
+        { validFrom: "2022-04-19", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-18.jpg", "Skargardsguiden_TURLISTOR_2022-19.jpg"]},
+        { validFrom: "2022-04-25", validTo: "2022-06-12", images: ["Skargardsguiden_TURLISTOR_2022-20.jpg", "Skargardsguiden_TURLISTOR_2022-21.jpg"]},
+        { validFrom: "2022-06-13", validTo: "2022-06-22", images: ["Skargardsguiden_TURLISTOR_2022-22.jpg", "Skargardsguiden_TURLISTOR_2022-24.jpg"]},
+        { validFrom: "2022-06-23", validTo: "2022-06-27", images: ["Skargardsguiden_TURLISTOR_2022-23.jpg", "Skargardsguiden_TURLISTOR_2022-25.jpg"]},
+        { validFrom: "2022-06-28", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-22.jpg", "Skargardsguiden_TURLISTOR_2022-24.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-20.jpg", "Skargardsguiden_TURLISTOR_2022-21.jpg"]},
+        { validFrom: "2022-10-03", validTo: "2022-12-23", images: ["Skargardsguiden_TURLISTOR_2022-18.jpg", "Skargardsguiden_TURLISTOR_2022-19.jpg"]},
+        { validFrom: "2022-12-24", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-27.jpg"]},
       ],
     },
     tvarlinjen: {
@@ -1189,11 +1189,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-04-25", images: ["Skargardsguiden_TURLISTOR_20.8.2021-12.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-13.jpg"]},
-        { validFrom: "2021-04-26", validTo: "2021-06-08", images: ["Skargardsguiden_TURLISTOR_20.8.2021-14.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-15.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-08-16", images: ["Skargardsguiden_TURLISTOR_20.8.2021-16.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-17.jpg"]},
-        { validFrom: "2021-08-17", validTo: "2021-10-03", images: ["Skargardsguiden_TURLISTOR_20.8.2021-14.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-15.jpg"]},
-        { validFrom: "2021-10-04", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-12.jpg", "Skargardsguiden_TURLISTOR_20.8.2021-13.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
+        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-16.jpg", "Skargardsguiden_TURLISTOR_2022-17.jpg"]},
+        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
+        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
@@ -1201,7 +1201,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2021-01-01", validTo: "2021-12-31", images: ["Skargardsguiden_TURLISTOR_20.8.2021-09.jpg"]},
+      { validFrom: "2022-01-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-09.jpg"]},
     ],
     },
     seglingelinjen: {
@@ -1209,8 +1209,8 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-06-08", images: ["skargardsguiden_turlistor_2021_vajerfarjor-1.jpg"]},
-        { validFrom: "2021-06-09", validTo: "2021-12-31", images: ["20-0628_seglinge_vajerfarja_2021_k5_0-2.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-06-08", images: ["skargardsguiden_turlistor_2021_vajerfarjor-1.jpg"]},
+        { validFrom: "2022-06-09", validTo: "2022-12-31", images: ["20-0628_seglinge_vajerfarja_2021_k5_0-2.jpg"]},
       ],
     },
     toftolinjen: {
@@ -1243,9 +1243,9 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-gustavs-aura.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi-aura.html#timetables",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-06-20", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
-        { validFrom: "2021-06-21", validTo: "2021-08-08", images: ["inio-kustavi-aura-kesa-21.6.-8.8.2021-1.jpg"]},
-        { validFrom: "2021-08-09", validTo: "2021-12-31", images: ["inio-kustavi-aura-talvi-kesa-2021-1.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-05-12", images: ["inio-kustavi-aura-1.1.-12.5.2022-1.jpg"]},
+        { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["inio-kustavi-aura-13.5.-4.9.2022-1.jpg"]},
+        { validFrom: "2022-09-05", validTo: "2022-12-31", images: ["inio-kustavi-aura-1.1.-12.5.2022-1.jpg"]},
       ]
     },
     houtskarinio: {
@@ -1363,7 +1363,8 @@ fdata = {
       tables: [
         { validFrom: "2021-04-05", validTo: "2021-09-26", images:["houtskari-kesa-2021-1.jpg", "houtskari-kesa-2021-2.jpg"] },
         { validFrom: "2021-09-27", validTo: "2022-04-03", images:["houtskari-vinter-2021-22-1.jpg", "houtskari-vinter-2021-22-2.jpg"] },
-      ],
+        { validFrom: "2022-04-24", validTo: "2022-04-30", images:["houtskari-4.-30.4.2022-1.jpg", "houtskari-4.-30.4.2022-2.jpg"] },
+          ],
     },
     iniorutt: {
       name: "Iniön lisäreitti - M/S Satava", name_sv: "Iniö tilläggsrutt - M/S Satava", name_en: "Iniö Additional Route - M/S Satava", specifier: "",
@@ -1423,6 +1424,7 @@ fdata = {
         { validFrom: "2021-06-07", validTo: "2021-08-15", images:["nauvon-etelainen-kesa-2021-1.jpg"] },
         { validFrom: "2021-08-16", validTo: "2021-10-31", images:["nauvon-etelainen-syksy-2021-1.jpg"] },
         { validFrom: "2021-11-01", validTo: "2022-03-31", images:["nauvon-etelainen-talvi-2021-22-1.jpg"] },
+        { validFrom: "2022-04-01", validTo: "2022-04-30", images:["nauvon-etelainen-huhtikuu-2022-1.jpg"] },
       ],
     },
     hitisstella: {
