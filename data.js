@@ -1209,8 +1209,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-06-08", images: ["skargardsguiden_turlistor_2021_vajerfarjor-1.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-12-31", images: ["20-0628_seglinge_vajerfarja_2021_k5_0-2.jpg"]},
+        { validFrom: "2022-01-01", validTo: null, images: ["Skargardsguiden_TURLISTOR_2022-9.jpg"]},
       ],
     },
     toftolinjen: {
@@ -1218,7 +1217,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2019-01-01", validTo: null, images:["toftolinjen_vajerfarja_2019_v1.1_low-2.jpg", "toftolinjen_vajerfarja_2019_v1.1_low-3.jpg", "toftolinjen_vajerfarja_2019_v1.1_low-4.jpg"] },
+        { validFrom: "2022-01-01", validTo: null, images:["21-0543_tofto_vajerfarja_2022_k2_2-2.jpg", "avvikelser_i_toftolinjens_turlista_2022-1.jpg"] },
       ],
     },
     
@@ -1363,7 +1362,7 @@ fdata = {
       tables: [
         { validFrom: "2021-04-05", validTo: "2021-09-26", images:["houtskari-kesa-2021-1.jpg", "houtskari-kesa-2021-2.jpg"] },
         { validFrom: "2021-09-27", validTo: "2022-04-03", images:["houtskari-vinter-2021-22-1.jpg", "houtskari-vinter-2021-22-2.jpg"] },
-        { validFrom: "2022-04-24", validTo: "2022-04-30", images:["houtskari-4.-30.4.2022-1.jpg", "houtskari-4.-30.4.2022-2.jpg"] },
+        { validFrom: "2022-04-04", validTo: "2022-04-30", images:["houtskari-4.-30.4.2022-1.jpg", "houtskari-4.-30.4.2022-2.jpg"] },
           ],
     },
     iniorutt: {
@@ -2213,7 +2212,7 @@ fdata = {
       //   content_sv: "<div class=\"alert alert-warning\"><strong>Obs!</strong> 1.6.-31.8. trafikeras dagtid kl 6-22 enligt tidtabellen varje ca. 30 minuter, nattetid vid behov</div>",
       // }
     ],
-      timetables: ["seglingelinjen"]
+      timetables: ["alandsvajerfarjor"]
     },
     toftolinjen: {
       name: "Töftölinjen",
