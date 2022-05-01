@@ -1278,6 +1278,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-houtskari-inio.html#timetables",
       tables: [
         { validFrom: "2021-05-14", validTo: "2021-08-29", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
+        { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["saariston-rengastie-houtskari-inio-antonia-13.5.-4.9.2022-1"]},
       ],
     },
 
@@ -1379,6 +1380,7 @@ fdata = {
         { validFrom: "2020-09-28", validTo: "2021-05-05", images:["Rymattyla-Syksy-2020-Talvi-Kevat-2021-1.jpg", "Rymattyla-Syksy-2020-Talvi-Kevat-2021-2.jpg"] },
         { validFrom: "2021-05-03", validTo: "2021-09-26", images:["Rymattyla-ya-Isla-Kesa-2021-1.jpg", "Rymattyla-ya-Isla-Kesa-2021-2.jpg"] },
         { validFrom: "2021-09-27", validTo: "2022-05-01", images:["Rymattyla-Syksy-2021-Talvi-Kevat-2022-1.jpg", "Rymattyla-Syksy-2021-Talvi-Kevat-2022-2.jpg"] },
+        { validFrom: "2022-05-02", validTo: "2022-09-25", images:["Rymattyla-ya-Isla-Kesa-2022-1.jpg", "Rymattyla-ya-Isla-Kesa-2022-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1414,7 +1416,8 @@ fdata = {
       tables: [
         { validFrom: "2020-11-16", validTo: "2021-06-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
         { validFrom: "2021-06-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
-        { validFrom: "2021-09-01", validTo: "2022-06-02", images:["Baldur-talvi-2021-1.jpg"] },
+        { validFrom: "2021-09-01", validTo: "2022-06-05", images:["Baldur-talvi-2021-1.jpg"] },
+        { validFrom: "2021-06-06", validTo: "2022-08-31", images:["Baldur-kesa-2022-1-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1423,6 +1426,7 @@ fdata = {
         { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
         { validFrom: "2021-06-01", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
         { validFrom: "2021-09-01", validTo: "2022-05-31", images:["Fisko-talviaikataulu-1.9.2021-31.5.2022-1.jpg"] },
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images:["Kopio-Fisko-kesaaikataulu-2021-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1432,17 +1436,21 @@ fdata = {
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-05-13", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
         { validFrom: "2021-05-14", validTo: "2021-08-29", images:["nagunorra-kesa-2021-26042021-1.jpg"] },
-        { validFrom: "2021-08-30", validTo: "2022-05-15", images:["Aikataulu-syksy-talvi-2021_2022-1.jpg"] },
+        { validFrom: "2021-08-30", validTo: "2022-05-12", images:["Aikataulu-syksy-talvi-2021_2022-1.jpg"] },
+        { validFrom: "2022-05-13", validTo: "2022-09-04", images:["Aikataulu-kesa-2022_rev_1-1-1.jpg"] },
       ],
     },
     nagutvar: {
-      link: "https://www.ferentes.fi/yhteysalusliikenne/nauvon-poikittainen-reitti.html",
-      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-tvartrafik.html",
-      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-transverse-route.html",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/nauvon-poikittainen-reitti.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-tvargaende-rutt.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-transverse-route.html",
       tables: [
         { validFrom: "2020-11-01", validTo: "2021-06-15", images:["tidtabell-1.11.2020-2021-1.jpg"] },
         { validFrom: "2021-06-23", validTo: "2021-10-31", images:["cheri-23.6.-31.10.2021-1.jpg"] },
         { validFrom: "2021-11-01", validTo: "2022-03-31", images:["cheri-vinter-2021-22-1.jpg"] },
+        { validFrom: "2022-05-01", validTo: "2022-05-31", images:["nauvon-poikittainen-reitti-talvi-1.5.-31.5.2022-ja-1.9.-31.12.2022-1.jpg"] },
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images:["nauvon-poikittainen-reitti-kesa-1.6.-31.8.2022-1.jpg"] },
+        { validFrom: "2022-09-01", validTo: "2022-12-31", images:["nauvon-poikittainen-reitti-talvi-1.5.-31.5.2022-ja-1.9.-31.12.2022-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1469,6 +1477,7 @@ fdata = {
         { validFrom: "2020-08-10", validTo: "2021-06-05", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-2.jpg"] },
         { validFrom: "2021-06-06", validTo: "2021-08-15", images:["Ms-Stella-Kesa-2021-1.jpg", "Ms-Stella-Kesa-2021-2.jpg"] },
         { validFrom: "2021-08-16", validTo: "2022-06-04", images:["Hiittinen-Syksy-2021-Talvi-Kevat-2022--1.jpg", "Hiittinen-Syksy-2021-Talvi-Kevat-2022--2.jpg"] },
+        { validFrom: "2022-06-05", validTo: "2022-08-14", images:["Ms-Stella-Kesa-2022-1.jpg", "Ms-Stella-Kesa-2022-2.jpg"] },
       ],
     },
     hitisalva: { 
@@ -2016,7 +2025,7 @@ fdata = {
       name_en: "Nagu Cross Route",
       specifier: "",
       piers: ["Pärnäs", "Krok", "Mattnäs", "Lånholm", "Fagerholm", "Killingholm", "Ängsö", "Tveskiftsholm", "Berghamn", "Hummelholm", "Rockelholm", "Ytterstholm", "Byskär", "Brännskär", "Grötö", "Stenskär", "Gullkrona", "Kirjais"],
-      operator: "ferentes",
+      operator: "finferries",
       vessels: ["myrskylintu", "cheri"],
       features: {
         interval_L: ["times.aweek", "3"],
