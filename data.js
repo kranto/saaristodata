@@ -395,7 +395,17 @@ fdata = {
         persons: 50,
       },
       contact: {
-        phones: ['+358 400 320 095']
+        phones: ['+358 400 320 094']
+      },
+    },
+    msfinno: {
+      name: "M/S Finnö",
+      features: { },
+      capacity: { cars: " ", bikes: " ",
+        persons: 50,
+      },
+      contact: {
+        phones: ['+358  400 720 607']
       },
     },
     mskaita: {
@@ -591,6 +601,13 @@ fdata = {
       contact: {
       }
     },
+    vidskar: {
+      name: "M/S Vidskär",
+      features: { cafe: true },
+      capacity: { persons: 99, cars: 10, bikes: 20 },
+      contact: {
+      }
+    },
     hamnskar: {
       name: "M/S Hamnskär",
       features: { cafe: true },
@@ -609,6 +626,13 @@ fdata = {
       name: "M/S Cardinal II",
       features: { },
       capacity: { persons: 30, bikes: " " },
+      contact: {
+      }
+    },
+    falken: {
+      name: "M/S Falken",
+      features: { },
+      capacity: { persons: 24, bikes: " " },
       contact: {
       }
     },
@@ -1307,6 +1331,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
         { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
+        { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
       ],
     },
 
@@ -1342,7 +1367,8 @@ fdata = {
       tables: [
         { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]},
         { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
-        { validFrom: "2021-09-02", validTo: "2022-05-31", images: ["velkuan-reitti-talvi-2021-2022-1.jpg"]},
+        { validFrom: "2021-09-02", validTo: "2022-05-17", images: ["velkuan-reitti-talvi-2021-2022-1.jpg"]},
+        { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1356,25 +1382,29 @@ fdata = {
       ],
     },
     houtskarrutt: {
-      name: "Houtskarin reitti - M/S Karolina", name_sv: "Houtskär rutt - M/S Karolina", name_en: "Houtskär Route - M/S Karolina", specifier: "",
-      link: "https://www.ferentes.fi/yhteysalusliikenne/houtskarin-reitti.html",
-      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/houtskar-rutten.html",
-      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-houtskari-route.html",
+      name: "Houtskarin reitti - M/S Finnö", name_sv: "Houtskär rutt - M/S Finnö", name_en: "Houtskär Route - M/S Finnö", specifier: "",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti-finno.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten-finno.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-ruote-finno.html",
       tables: [
         { validFrom: "2021-04-05", validTo: "2021-09-26", images:["houtskari-kesa-2021-1.jpg", "houtskari-kesa-2021-2.jpg"] },
         { validFrom: "2021-09-27", validTo: "2022-04-03", images:["houtskari-vinter-2021-22-1.jpg", "houtskari-vinter-2021-22-2.jpg"] },
         { validFrom: "2022-04-04", validTo: "2022-04-30", images:["houtskari-4.-30.4.2022-1.jpg", "houtskari-4.-30.4.2022-2.jpg"] },
+        { validFrom: "2022-05-01", validTo: "2022-12-31", images:["houtskarin-reitti-1.5.-31.12.2022-1.jpg", "houtskarin-reitti-1.5.-31.12.2022-2.jpg"] },
           ],
     },
     iniorutt: {
-      name: "Iniön lisäreitti - M/S Satava", name_sv: "Iniö tilläggsrutt - M/S Satava", name_en: "Iniö Additional Route - M/S Satava", specifier: "",
-      link: "https://www.ferentes.fi/yhteysalusliikenne/inion-lisareitti.html",
-      link_sv: "ferentes.fi/sv/forbindelsefartygstrafik/inios-tillaggsrutt.html",
-      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-inio-additional-route.html",
+      name: "Iniön lisäreitti - M/S Kivimo", name_sv: "Iniö tilläggsrutt - M/S Kivimo", name_en: "Iniö Additional Route - M/S Kivimo", specifier: "",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti-kivimo.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt-kivimo.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-inio-additional-route-kivimo.html",
       tables: [
         { validFrom: "2020-08-17", validTo: "2021-05-16", images:["inio-syys-talvi-kevat-2020-21-1.jpg", "inio-syys-talvi-kevat-2020-21-2.jpg"] },
         { validFrom: "2020-05-17", validTo: "2021-08-15", images:["inio-kesa-2021-1.jpg", "inio-kesa-2021-2.jpg"] },
         { validFrom: "2021-08-16", validTo: "2022-04-30", images:["inio-syys-talvi-kevat-2021-22-1.jpg", "inio-syys-talvi-kevat-2021-22-2.jpg"] },
+        { validFrom: "2022-05-01", validTo: "2022-05-31", images:["inion-lisareitti-1.5.-31.5.2022-ja-1.9.-31.12.2022-1.jpg"] },
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images:["inion-lisaretti-1.6.-31.8.2022-1.jpg"] },
+        { validFrom: "2022-09-01", validTo: "2022-12-31", images:["inion-lisareitti-1.5.-31.5.2022-ja-1.9.-31.12.2022-1.jpg"] },
       ],
     },
     utorutt: { 
@@ -1416,15 +1446,18 @@ fdata = {
       ],
     },
     nagusodra: { 
-      link: "https://www.ferentes.fi/yhteysalusliikenne/nauvon-etelainen-reitti.html",
-      link_sv: "https://www.ferentes.fi/sv/forbindelsefartygstrafik/nagu-sodra-rutten.html",
-      link_en: "https://www.ferentes.fi/en/ferry-traffic/the-nauvo-southern-route.html",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/nauvon-etelainen-reitti-falko.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-sodra-rutt-falko.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
         { validFrom: "2021-04-01", validTo: "2021-06-06", images:["nauvon-etelainen-kevat-2021-1.jpg"] },
         { validFrom: "2021-06-07", validTo: "2021-08-15", images:["nauvon-etelainen-kesa-2021-1.jpg"] },
         { validFrom: "2021-08-16", validTo: "2021-10-31", images:["nauvon-etelainen-syksy-2021-1.jpg"] },
         { validFrom: "2021-11-01", validTo: "2022-03-31", images:["nauvon-etelainen-talvi-2021-22-1.jpg"] },
         { validFrom: "2022-04-01", validTo: "2022-04-30", images:["nauvon-etelainen-huhtikuu-2022-1.jpg"] },
+        { validFrom: "2022-05-01", validTo: "2022-05-31", images:["nauvon-etelainen-reitti-talvi-1.5.-31.5.-ja-1.9.-31.12.2022-1.jpg"] },
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images:["nauvon-etelainen-reitti-kesa-1.6.-31.8.2022-1.jpg"] },
+        { validFrom: "2022-09-01", validTo: "2022-12-31", images:["nauvon-etelainen-reitti-talvi-1.5.-31.5.-ja-1.9.-31.12.2022-1.jpg"] },
       ],
     },
     hitisstella: {
@@ -1927,8 +1960,8 @@ fdata = {
       name_en: "Houtskär Route and Iniö Additional Route",
       specifier: "",
       piers: ["Näsby","Roslax","Ytterstö","Lempmo","Salmis","Lammholm","Norrby","Sördö","Lempnäs","Äpplö","Bockholm", "Södö", "Nåtö","TorsholmaI","Själö","Härklot","Kvarnholm","Åselholm","Perkala","PerkalaP","Kolko","Kannvik"],
-      operator: "ferentes",
-      vessels: ["karolina", "satava"],
+      operator: "finferries",
+      vessels: ["msfinno", "mskivimo"],
       features: {
         interval_L: ["times.aday", "1-4"],
         order_L: "order.only",
@@ -1999,8 +2032,8 @@ fdata = {
       name_en: "Nagu Southern Route",
       specifier: "",
       piers: ["Kirjais", "PensarL", "Peno", "Brännskär", "Stenskär", "Gullkrona", "Grötö", "Knivskär", "Kopparholm", "Träskholm", "Bodö", "Björkö", "Gloskär", "Trunsö", "Sandholm", "Lökholm", "Borstö"],
-      operator: "ferentes",
-      vessels: ["nordep"],
+      operator: "finferries",
+      vessels: ["falko"],
       features: {
         interval_L: ["times.adayaweek", "1-3", "Borstö", "4"],
         order_L: ["order.only"],
@@ -2313,16 +2346,16 @@ fdata = {
       timetables: ["hankokasnas"]
     },
     hankokasnasuto: {
-      name: "Hanko - Kasnäs - Parainen/Jurmo - Utö",
-      name_sv: "Hangö - Kasnäs - Pargas/Jurmo - Utö",
-      name_en: "Hanko - Kasnäs - Pargas/Jurmo - Utö",
-      piers: ["Hanko", "Vikare", "Kasnäs", "Söderlångvik", "Pargas", "Jurmo", "Utö"],
+      name: "Hanko - Kasnäs/Söderlångvik/Örö",
+      name_sv: "Hangö - Kasnäs/Söderlångvik/Örö",
+      name_en: "Hanko - Kasnäs/Söderlångvik/Örö",
+      piers: ["Hanko", "Vikare", "Kasnäs", "Söderlångvik", "Örö"],
       operator: "hankolines",
-      vessels: ["cardinalII"],
+      vessels: ["falken"],
       features: {
-        interval_L: ["times.aweek", "5"],
+        interval_L: ["times.aweek", "3"],
         cost_L: "cost.applies",
-        duration_L: ["duration.hours", "4"],
+        duration_L: ["duration.hours", "2"],
         seasonal_L: "seasonal.summers",
       },
       timetables: ["hankokasnasuto"]
@@ -2392,7 +2425,7 @@ fdata = {
       specifier: "Själö - Röölä",
       piers: ["Seili", "Röölä"],
       operator: "vitharun",
-      vessels: ["hamnskar"],
+      vessels: ["vidskar"],
       features: {
         interval_L: ["times.aday", "3"],
         cost_L: "cost.applies",
