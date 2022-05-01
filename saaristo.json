@@ -3172,7 +3172,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "skarpnatohallo",
         "ssubtype": "conn3"
       },
@@ -3185,6 +3185,29 @@
           },
           "geometry": {
             "coordinates": [[19.761529,60.32686],[19.763889,60.32728],[19.777021,60.33680],[19.784402,60.35701],[19.783802,60.35913],[19.780368,60.36024],[19.773931,60.36037],[19.769554,60.36236],[19.766378,60.36529],[19.768009,60.3661]],
+            "type": "LineString"
+          },
+          "id": "9927a80991803333afcd3b9359e95db3"
+        }
+     ],
+      "id": "40dfc56c20fe74f91d261ae19f6c92a2"
+    },
+    {
+      "type": "FeatureCollection",
+      "properties": {
+        "stype": "connection",
+        "ref": "skarpnatosnacko",
+        "ssubtype": "conn3"
+      },
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "stype": "leg",
+            "sname": "Skarpnåtö - Snäckö"
+          },
+          "geometry": {
+            "coordinates": [[19.761529,60.32686],[19.763889,60.32728],[19.777021,60.33680],[19.784398,60.357017],[19.790388,60.35721],[19.793711,60.35636]],
             "type": "LineString"
           },
           "id": "9927a80991803333afcd3b9359e95db3"
@@ -5163,13 +5186,27 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "Hällö",
         "ssubtype": "4",
         "labelAnchor": {"dir": "SW", "x":-10 , "y":10 }
       },
       "geometry": {
         "coordinates": [19.768695,60.36616],
+        "type": "Point"
+      },
+      "id": "c597425d09c60ef8c180ad61821333c5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stype": "pier",
+        "ref": "SnäcköGeta",
+        "ssubtype": "4",
+        "labelAnchor": {"dir": "E", "x":-5 , "y":0 }
+      },
+      "geometry": {
+        "coordinates": [19.793711,60.35636],
         "type": "Point"
       },
       "id": "c597425d09c60ef8c180ad61821333c5"
@@ -6836,8 +6873,8 @@
         "stype": "box",
         "ssubtype": "distance",
         "sname": "",
-        "description": "Geta - Hällö 5,1 km",
-        "description_en": "Geta - Hällö 5.1 km",
+        "description": "Geta - Snäckö 4,9 km",
+        "description_en": "Geta - Snäckö 4.9 km",
         "anchor": { "dir": "NW", "x": 0, "y": 0 }
       }
     },

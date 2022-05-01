@@ -1084,6 +1084,7 @@ fdata = {
 
     Skarpnåtö: { mun: "Hammarland", type: "1" },
     Hällö: { mun: "Geta", type: "1" },
+    SnäcköGeta: { name: "Snäckö", mun: "Geta", type: "1" },
     
     TurkuVitharun: { name: "Aurajoki", name_sv: "Aura å", name_en: "Aurajoki River", mun: "Turku", type: "1" },
 
@@ -1223,7 +1224,7 @@ fdata = {
     },
     
     
-    skarpnatohallo: {
+    skarpnatosnacko: {
       link: "https://www.aland.com/p/skarpnato-turistanlaggning-suomeksi",
       link_sv: "https://www.aland.com/p/skarpnato-turistanlaggning",
       link_en: "https://www.aland.com/p/skarpnato-turistanlaggning-in-english",
@@ -2235,11 +2236,11 @@ fdata = {
       timetables: ["alandsvajerfarjor"]
     },
 
-    skarpnatohallo: {
-      name: "Polkupyörälautta Skarpnåtö - Hällö",
-      name_sv: "Cykelfärja Skarpnåtö - Hällö",
-      name_en: "Bicycle ferry Skarpnåtö - Hällö",
-      piers: ["Skarpnåtö", "Hällö"],
+    skarpnatosnacko: {
+      name: "Polkupyörälautta Skarpnåtö - Snäckö",
+      name_sv: "Cykelfärja Skarpnåtö - Snäckö",
+      name_en: "Bicycle ferry Skarpnåtö - Snäckö",
+      piers: ["Skarpnåtö", "SnäcköGeta"],
       operator: "skarpnato",
       vessels: ["silvana"],
       features: {
@@ -2249,7 +2250,7 @@ fdata = {
           seasonal_L: ["seasonal.summers"],
           cost_L: ["cost.applies"],
       },
-      timetables: ["skarpnatohallo"]
+      timetables: ["skarpnatosnacko"]
     },
 
     skagen: {
