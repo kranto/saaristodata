@@ -5203,7 +5203,7 @@
         "stype": "pier",
         "ref": "SnäcköGeta",
         "ssubtype": "4",
-        "labelAnchor": {"dir": "E", "x":-5 , "y":0 }
+        "labelAnchor": {"dir": "E", "x":10 , "y":0 }
       },
       "geometry": {
         "coordinates": [19.793711,60.35636],
