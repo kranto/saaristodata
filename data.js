@@ -2436,9 +2436,9 @@ fdata = {
       operator: "vitharun",
       vessels: ["vidskar"],
       features: {
-        interval_L: ["times.aday", "3"],
+        interval_L: ["times.aday", "2"],
         cost_L: "cost.applies",
-        duration_L: ["duration.hoursminutes" , "1", "15"],
+        duration_L: ["duration.hoursminutes" , "1", "45"],
         seasonal_L: "seasonal.summers",
         seealso_fi: 'Yhteys <a href="#saaristolinja_turkunauvo">Seilistä Nauvoon ja Turkuun</a>',
         seealso_sv: 'Förbindelse <a href="#saaristolinja_turkunauvo">från Själö till Nagu och Åbo</a>',
