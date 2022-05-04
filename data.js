@@ -1359,6 +1359,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
       tables: [
         { validFrom: "2021-01-01", validTo: "2021-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2021-1.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2022-1.jpg"]},
       ],
     },
     velkuanreitti: {
