@@ -6685,7 +6685,7 @@
       "id": "9e752a9b1c3d3478c083913ad7e0001b",
       "type": "Feature",
       "geometry": {
-        "coordinates": [ 20.515,60.095],
+        "coordinates": [20.525,60.095],
         "type": "Point"
       },
       "properties": {
@@ -6694,7 +6694,7 @@
         "sname": "",
         "description": "Överö - Embarsund 5,0 km",
         "description_en": "Överö - Embarsund 5.0 km",
-        "anchor": { "dir": "NW", "x": 0, "y": 0 }
+        "anchor": { "dir": "NE", "x": 10, "y": 0 }
       }
     },
     {
