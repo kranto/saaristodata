@@ -1291,6 +1291,10 @@ fdata = {
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-10.jpg"]},
         { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
         { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-04.jpg"]},
+        { validFrom: "2022-04-18", validTo: "2022-05-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-07.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-10.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-09-01", validTo: "2022-10-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-07.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-11-01", validTo: "2022-12-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-04a.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
       ],
     },
     korponorrskata: {
@@ -1302,6 +1306,10 @@ fdata = {
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-10.jpg"]},
         { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-07.jpg"]},
         { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-04.jpg"]},
+        { validFrom: "2022-04-18", validTo: "2022-05-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-07.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-10.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-09-01", validTo: "2022-10-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-07.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-11-01", validTo: "2022-12-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-04a.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
       ],
     },
     nagukorpo: {
@@ -1313,6 +1321,10 @@ fdata = {
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-09.jpg"]},
         { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-06.jpg"]},
         { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-03.jpg"]},
+        { validFrom: "2022-04-18", validTo: "2022-05-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-06.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-09.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-09-01", validTo: "2022-10-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-06.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-11-01", validTo: "2022-12-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-03.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
       ],
     },
     pargasnagu: {
@@ -1324,6 +1336,10 @@ fdata = {
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-08.jpg"]},
         { validFrom: "2021-09-01", validTo: "2021-10-31", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-05.jpg"]},
         { validFrom: "2021-11-01", validTo: "2022-04-17", images: ["saaristotien-lautta-aikataulut-19.4.2021-17.4.2022-02.jpg"]},
+        { validFrom: "2022-04-18", validTo: "2022-05-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-05.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-08.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-09-01", validTo: "2022-10-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-05.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
+        { validFrom: "2022-11-01", validTo: "2022-12-31", images: ["saaristotien-lautta-aikataulut-18.4.-31.12.2022-02.jpg", "saaristotien-lautta-aikataulut-18.4.-31.12.2022-04b.jpg"]},
       ],
       },
     velkuataivassalo: {
