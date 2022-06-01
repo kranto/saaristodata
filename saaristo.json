@@ -2432,6 +2432,82 @@
      ]
     },
     {
+      "type": "Feature",
+      "properties": {
+        "stype": "pier",
+        "ssubtype": "4",
+        "ref": "Vuohensaari",
+        "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }
+      },
+      "geometry": {
+        "coordinates": [23.067812,60.361736],
+        "type": "Point"
+      },
+      "id": "28c164602cad1e725ecf2d61511f3984"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stype": "pier",
+        "ssubtype": "4",
+        "ref": "Salo",
+        "labelVisibleFrom": 13,
+        "labelAnchor": {"dir": "E", "x":10 , "y":0 }
+      },
+      "geometry": {
+        "coordinates": [23.127907,60.385031],
+        "type": "Point"
+      },
+      "id": "28c164602cad1e725ecf2d61511f3984"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stype": "pier",
+        "ssubtype": "4",
+        "ref": "Mathildedal",
+        "labelAnchor": {"dir": "SW", "x":10 , "y":10 }
+      },
+      "geometry": {
+        "coordinates": [22.898413,60.21992],
+        "type": "Point"
+      },
+      "id": "28c164602cad1e725ecf2d61511f3984"
+    },
+    {
+      "type": "FeatureCollection",
+      "properties": {
+        "stype": "connection",
+        "ref": "salomathildedal",
+        "ssubtype": "conn5"
+      },
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "sname": "SaloVuohensaari"
+          },
+          "geometry": {
+            "coordinates": [
+              [23.127895,60.385033],[23.127538,60.384985],[23.126116,60.383856],[23.122261,60.382383],[23.120253,60.381221],[23.118817,60.380157],[23.117022,60.379455],[23.115733,60.378818],[23.115488,60.37718],[23.114427,60.375873],[23.109319,60.373623],[23.107818,60.372058],[23.104619,60.370428],[23.101992,60.369274],[23.099805,60.368015],[23.095627,60.367329],[23.086748,60.366361],[23.067781,60.361712]],
+            "type": "LineString"
+          },
+          "id": "ceeb4d7ac71858f88f98a54e7881d7d2"
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "sleg": "VuohensaariMathildedal"
+          },
+          "geometry": {
+            "coordinates": [[23.067838,60.361706],[23.039886,60.344453],[23.028964,60.33072],[22.98595,60.317886],[22.984071,60.306816],[22.985574,60.294532],[22.945753,60.265385],[22.934483,60.252992],[22.907999,60.244137],[22.898043,60.222129],[22.898413,60.219934]],
+            "type": "LineString"
+          },
+          "id": "d5b313c9453edfdeb9306ca8c9898c3d"
+        }
+         ]
+    },
+    {
       "type": "FeatureCollection",
       "properties": {
         "stype": "connection_obsolete",

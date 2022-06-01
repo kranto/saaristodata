@@ -38,8 +38,6 @@ fdata = {
     Norrskata: { },
     Houtsala: { },
     Hanko: { name_sv: "Hangö", name_fi_in: "Hangossa" },
-    Salo: { },
-
   },
 
   ferries: {
@@ -465,13 +463,13 @@ fdata = {
     },
     nordep: {
       name: "M/S Nordep",
-      features: { },
-      capacity: { cars: 2,
+      features: { cafe: true },
+      capacity: { //cars: 2,
         persons: 78,
+        bikes: " ",
       },
       contact: {
         phones: ['+358 45 129 4779'],
-        email: "nordep@ferentes.fi"
       },
     },
     karolina: {
@@ -480,7 +478,6 @@ fdata = {
       capacity: { persons: 30, bikes: " " },
       contact: {
         phones: ['+358 40 717 3455 '],
-        email: "karolina@ferentes.fi"
       },
     },
     cheri: {
@@ -1118,6 +1115,10 @@ fdata = {
     Parattula: { mun: "Kustavi", type: "1" },
     Kivimaa2: { name: "Kivimaa", mun: "Kustavi", type: "1" },
     Katanpää: { mun: "Kustavi" },
+
+    Salo: { mun: "Salo" },
+    Vuohensaari: { mun: "Salo" },
+    Mathildedal: { mun: "Salo" },
   },
 
   timetables: {
@@ -1671,6 +1672,9 @@ fdata = {
       // tables: [
       // { validFrom: "2018-05-24", validTo: "2018-08-07", images: ["Amanda2018_1fi.jpeg", "Amanda2018_3fi.jpeg"], images_sv: ["Amanda2018_1sv.jpeg", "Amanda2018_3sv.jpeg"], images_en: ["Amanda2018_1en.jpeg", "Amanda2018_2en.jpeg", "Amanda2018_3en.jpeg"]}
       // ],
+    },
+    salomathildedal: {
+      link: "https://www.salonristeilyt.fi/",
     },
 
   },
@@ -2486,15 +2490,25 @@ fdata = {
       operator: "aspocharter",
       vessels: ["amanda"],
       features: {
-        interval_fi: "Liikennöi tiistaisin ja perjantaisin 26.6.-7.8.",
-        interval_sv: "Trafikerar på tisdagar och fredagar mellan 26.6. och 7.8.",
-        interval_en: "Operates on Tuesdays and Fridays between Jun 26 and Aug 7",
         cost_L: "cost.applies",
         duration_L: ["duration.hours", "3 - 3.5"],
         order_L: "order.only",
         seasonal_L: "seasonal.summers",
       },
       timetables: ["korpostromoro"]
+    },
+    salomathildedal: {
+      name: "Salo - Vuohensaari - Mathildedal",
+      piers: ["Salo", "Vuohensaari", "Mathildedal"],
+      operator: "ferentes",
+      vessels: ["nordep", "karolina"],
+      features: {
+        interval_L: ["times.aday", "Salo - Vuohensaari non-stop, Vuohensaari - Mathildedal 2"],
+        cost_L: "cost.applies",
+        duration: "Salo - Vuohensaari 20&nbsp;min, Vuohensaari - Mathildedal 60&nbsp;min",
+        seasonal_L: "seasonal.summers",
+      },
+      timetables: ["salomathildedal"]
     },
   },
 
