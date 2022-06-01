@@ -1517,6 +1517,7 @@ fdata = {
         { validFrom: "2021-05-01", validTo: "2021-05-31", images: ["viken-01.05.-31.05.2021-1.jpg"]},
         { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["viken-01.06.-31.08.2021-1.jpg"]},
         { validFrom: "2021-09-01", validTo: "2022-05-31", images: ["viken-01.09.2021-31.5.2022-1.jpg"]},
+        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["viken-1.6.-31.8.2022-1.jpg"]},
       ]
     },
 
