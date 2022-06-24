@@ -1279,7 +1279,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-houtskari-inio.html#timetables",
       tables: [
         { validFrom: "2021-05-14", validTo: "2021-08-29", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
-        { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["saariston-rengastie-houtskari-inio-antonia-13.5.-4.9.2022-1"]},
+        { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["saariston-rengastie-houtskari-inio-antonia-13.5.-4.9.2022-1.jpg"]},
       ],
     },
 
