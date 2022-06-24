@@ -2569,6 +2569,28 @@
     {
       "type": "FeatureCollection",
       "properties": {
+        "stype": "connection",
+        "ref": "utoexpress",
+        "ssubtype": "conn5"
+      },
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "stype": "leg",
+            "sname": "Pärnäinen-Utö"
+          },
+          "geometry": {
+            "coordinates": [[21.70521,60.16404],[21.68743,60.15381],[21.66965,60.11963],[21.69592,60.09604],[21.69274,60.07946],[21.39943,59.842018],[21.32938,59.814482],[21.35652,59.79104],[21.37110,59.785589],[21.37104,59.782712]],
+            "type": "LineString"
+          },
+          "id": "3f4efae3e9f3041c11f0cdb8886a7cb0"
+        }
+     ]
+    },
+    {
+      "type": "FeatureCollection",
+      "properties": {
         "stype": "connection_obsolete",
         "ref": "naantalikustavi",
         "ssubtype": "conn5",
