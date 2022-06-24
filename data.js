@@ -2444,17 +2444,14 @@ fdata = {
         cost_L: "cost.applies",
         duration_L: ["duration.hoursminutes" , "2", "15"],
         seasonal_L: "seasonal.summers",
-        seealso_fi: 'Yhteys <a href="#saaristolinja_roolaseili">Seilistä Röölään</a>',
-        seealso_sv: 'Förbindelse <a href="#saaristolinja_roolaseili">från Själö till Röölä</a>',
-        seealso_en: 'Connection <a href="#saaristolinja_roolaseili">from Själö to Röölä</a>',
       },
       timetables: ["saaristolinja"]
     },
     saaristolinja_roolaseili: {
       name: "Saaristolinja / Skärgårdslinjen",
-      specifier_fi: "Seili - Röölä",
-      specifier: "Själö - Röölä",
-      piers: ["Seili", "Röölä"],
+      specifier_fi: "Röölä - Seili - Nauvo",
+      specifier: "Röölä - Själö - Nagu",
+      piers: ["Röölä", "Seili", "Nagu"],
       operator: "vitharun",
       vessels: ["vidskar"],
       features: {
@@ -2462,9 +2459,6 @@ fdata = {
         cost_L: "cost.applies",
         duration_L: ["duration.hoursminutes" , "1", "45"],
         seasonal_L: "seasonal.summers",
-        seealso_fi: 'Yhteys <a href="#saaristolinja_turkunauvo">Seilistä Nauvoon ja Turkuun</a>',
-        seealso_sv: 'Förbindelse <a href="#saaristolinja_turkunauvo">från Själö till Nagu och Åbo</a>',
-        seealso_en: 'Connection <a href="#saaristolinja_turkunauvo">from Själö to Nagu och Turku</a>',
       },
       timetables: ["saaristolinja"]
     },
