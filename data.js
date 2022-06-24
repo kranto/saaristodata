@@ -1670,7 +1670,7 @@ fdata = {
     utoexpress: {
       link: "https://www.utohotel.fi/uto-express/",
       tables: [
-        { validFrom: "2022-06-22", validTo: "2022-08-12", images: ["Utö-Express-2022-ver-1.0-1.jpg"]},
+        { validFrom: "2022-06-22", validTo: "2022-08-12", images: ["Uto-Express-2022-ver-1.0-1.jpg"]},
       ],
     },
     naantalikustavi: {
