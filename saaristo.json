@@ -2270,7 +2270,7 @@
       "properties": {
         "stype": "connection",
         "ref": "saaristolinja_roolaseili",
-        "ssubtype": "conn5"
+        "ssubtype": "conn2m"
       },
       "features": [
         {
