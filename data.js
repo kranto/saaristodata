@@ -547,7 +547,7 @@ fdata = {
       },
       contact: {
         phones: ['+358 44 5000 503', {name: 'Café', tel: '+358 44 5000 506'}],
-        fb: 'https://www.facebook.com/mseivor/'
+        fb: 'https://www.facebook.com/msbaldur'
       }
     },
     kokar: {
