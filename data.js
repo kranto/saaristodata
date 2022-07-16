@@ -113,6 +113,14 @@ fdata = {
         phones: ['+358 (0)40 0492 739']
       },
     },
+    tuuli: {
+      name: "M/S Tuuli",
+      features: { access: false, cafe: false },
+      capacity: { persons: 63, cars: 10 },
+      contact: {
+        phones: ['+358 (0)40 0492 739']
+      },
+    },
     frida: {
       name: "M/S Frida II",
       features: { access: false, cafe: false },
@@ -1725,7 +1733,7 @@ fdata = {
       specifier: "Hummelvik - Torsholma",
       piers: ["Hummelvik", "Enklinge", "Kumlinge", "Asterholma", "Lappo", "Torsholma"],
       operator: "alandstrafiken",
-      vessels: ["alfageln", "ejdern", "rosala"],
+      vessels: ["alfageln", "ejdern", "tuuli"],
       features: {
         interval_L: ["times.adaytworoutes", "", "2-4", "Enklinge - Kumlinge", "10"],
         cost_L: "cost.applies",
@@ -2378,6 +2386,7 @@ fdata = {
     },
 
     hankokasnas: {
+      obsolete: true,
       name: "Hanko - Kasnäs",
       name_sv: "Hangö - Kasnäs",
       piers: ["Hanko", "Vikare", "Kasnäs"],
@@ -2493,6 +2502,7 @@ fdata = {
       timetables: ["saaristolinja"]
     },
     naantalikustavi: {
+      obsolete: true,
       name: "Naantali - Velkua - Taivassalo - Kustavi",
       name_sv: "Nådendal - Velkua - Tövsala - Gustavs",
       piers: ["NaantaliVanhakaupunki", "Merimasku", "Teersalo", "Hakkenpää", "Parattula", "Kivimaa2"],
