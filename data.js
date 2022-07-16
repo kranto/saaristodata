@@ -1163,7 +1163,7 @@ fdata = {
   ],
     },
     enklingelinjen: {
-      specifier: "Enklinge - Kumlinge, M/S Bärö",
+      specifier: "Enklinge - Kumlinge, M/S Tuuli",
       link: "http://www.alandstrafiken.ax/fi/aikataulut",
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
