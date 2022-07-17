@@ -881,8 +881,8 @@
       "properties": {
         "stype": "pier",
         "ref": "Kokkila",
-        "ssubtype": "5",
-        "labelVisibleFrom": 30
+        "ssubtype": "4",
+        "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }
       },
       "geometry": {
         "coordinates": [22.943401,60.31823],
@@ -2460,7 +2460,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ssubtype": "4",
         "ref": "Salo",
         "labelVisibleFrom": 13,
@@ -2497,18 +2497,6 @@
         {
           "type": "Feature",
           "properties": {
-            "sname": "SaloVuohensaari"
-          },
-          "geometry": {
-            "coordinates": [
-              [23.127895,60.385033],[23.127538,60.384985],[23.126116,60.383856],[23.122261,60.382383],[23.120253,60.381221],[23.118817,60.380157],[23.117022,60.379455],[23.115733,60.378818],[23.115488,60.37718],[23.114427,60.375873],[23.109319,60.373623],[23.107818,60.372058],[23.104619,60.370428],[23.101992,60.369274],[23.099805,60.368015],[23.095627,60.367329],[23.086748,60.366361],[23.067781,60.361712]],
-            "type": "LineString"
-          },
-          "id": "ceeb4d7ac71858f88f98a54e7881d7d2"
-        },
-        {
-          "type": "Feature",
-          "properties": {
             "sleg": "VuohensaariMathildedal"
           },
           "geometry": {
@@ -2516,8 +2504,19 @@
             "type": "LineString"
           },
           "id": "d5b313c9453edfdeb9306ca8c9898c3d"
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "sleg": "KokkilaVuohensaari"
+          },
+          "geometry": {
+            "coordinates": [[22.943739,60.31824],[22.963033,60.313113],[22.973739,60.316958],[22.986092,60.317949]],
+            "type": "LineString"
+          },
+          "id": "40e7010405213be362a5ff264733563c"
         }
-         ]
+      ]
     },
     {
       "type": "FeatureCollection",

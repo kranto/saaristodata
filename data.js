@@ -478,6 +478,7 @@ fdata = {
       },
       contact: {
         phones: ['+358 45 129 4779'],
+        fb: {name: "Salon risteilyt", uri: 'https://www.facebook.com/salonristeilyt'},
       },
     },
     karolina: {
@@ -1133,7 +1134,6 @@ fdata = {
     Kivimaa2: { name: "Kivimaa", mun: "Kustavi", type: "1" },
     Katanpää: { mun: "Kustavi" },
 
-    Salo: { mun: "Salo" },
     Vuohensaari: { mun: "Salo" },
     Mathildedal: { mun: "Salo" },
   },
@@ -2531,12 +2531,12 @@ fdata = {
       timetables: ["korpostromoro"]
     },
     salomathildedal: {
-      name: "Salo - Vuohensaari - Mathildedal",
-      piers: ["Salo", "Vuohensaari", "Mathildedal"],
+      name: "Vuohensaari - Kokkila/Mathildedal",
+      piers: ["Vuohensaari", "Kokkila", "Mathildedal"],
       operator: "ferentes",
-      vessels: ["nordep", "karolina"],
+      vessels: ["nordep"],
       features: {
-        interval_L: ["times.aday", "Salo - Vuohensaari non-stop, Vuohensaari - Mathildedal 2"],
+        interval_L: ["times.aweek", "Kokkila 6, Mathildedal 14"],
         cost_L: "cost.applies",
         duration: "Salo - Vuohensaari 20&nbsp;min, Vuohensaari - Mathildedal 60&nbsp;min",
         seasonal_L: "seasonal.summers",
