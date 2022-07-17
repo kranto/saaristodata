@@ -2358,7 +2358,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "korpostromoro",
         "ssubtype": "conn5"
       },
@@ -4371,7 +4371,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ssubtype": "4",
         "ref": "Korpoström",
         "labelVisibleFrom": 12,

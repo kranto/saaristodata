@@ -2519,6 +2519,7 @@ fdata = {
       timetables: ["naantalikustavi"]
     },
     korpostromoro: {
+      obsolete: true,
       name: "Korpoström - Aspö - Vänö - Örö",
       piers: ["Korpoström", "Aspö", "Nötö", "Bodö", "Vänö", "Örö"],
       operator: "aspocharter",
