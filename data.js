@@ -2538,7 +2538,7 @@ fdata = {
       features: {
         interval_L: ["times.aweek", "Kokkila 6, Mathildedal 14"],
         cost_L: "cost.applies",
-        duration: "Salo - Vuohensaari 20&nbsp;min, Vuohensaari - Mathildedal 60&nbsp;min",
+        duration: "Vuohensaari - Kokkila 60&nbsp;min, Vuohensaari - Mathildedal 90&nbsp;min",
         seasonal_L: "seasonal.summers",
       },
       timetables: ["salomathildedal"]
