@@ -2124,7 +2124,7 @@ fdata = {
       name_sv: "Hitis rutt",
       name_en: "Hitis Route",
       specifier: "",
-      piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Örö", "ÖröP", "Ängesö", "Bolax", "Botesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
+      piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Örö", "ÖröP", "Ängesö", "Bolax", "Bötesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
       operator: "meritie",
       vessels: ["stellahiittinen", "alva"],
       features: {
