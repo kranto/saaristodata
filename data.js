@@ -658,6 +658,13 @@ fdata = {
       contact: {
       }
     },
+    idun: {
+      name: "M/S Idun",
+      features: { },
+      capacity: { persons: 130, bikes: " " },
+      contact: {
+      }      
+    },
     minandra: {
       name: "M/S Minandra",
       features: { },
@@ -1070,6 +1077,7 @@ fdata = {
     Botesö: { mun: "Kimitoön"},
     Djupö: { mun: "Kimitoön"},
     Örö: { mun: "Kimitoön"},
+    ÖröP: { name: "Örö P", mun: "Kimitoön"},
     Rosala: { mun: "Kimitoön"},
     Vikare: { mun: "Kimitoön"},
     Söderlångvik: { mun: "Kimitoön"},
@@ -2115,7 +2123,7 @@ fdata = {
       name_sv: "Hitis rutt",
       name_en: "Hitis Route",
       specifier: "",
-      piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Ängesö", "Bolax", "Botesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
+      piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Örö", "ÖröP", "Ängesö", "Bolax", "Botesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
       operator: "meritie",
       vessels: ["stellahiittinen", "alva"],
       features: {
@@ -2417,7 +2425,7 @@ fdata = {
       name: "Kasnäs - Örö",
       piers: ["Kasnäs", "Örö"],
       operator: ["wilsoncharter"],
-      vessels: ["sissel", "minandra"],
+      vessels: ["idun", "sissel", "minandra"],
       features: {
         interval_L: ["times.aday", "1"],
         cost_L: "cost.applies",
