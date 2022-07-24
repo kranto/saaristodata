@@ -1074,7 +1074,7 @@ fdata = {
     Grönvik: { mun: "Kimitoön"},
     Ängesö: { name: "Stora Ängesö", mun: "Kimitoön"},
     Bolax: { mun: "Kimitoön"},
-    Botesö: { mun: "Kimitoön"},
+    Botesö: { name: "Bötesö", mun: "Kimitoön"},
     Djupö: { mun: "Kimitoön"},
     Örö: { mun: "Kimitoön"},
     ÖröP: { name: "Örö P", mun: "Kimitoön"},
