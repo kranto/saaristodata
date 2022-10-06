@@ -1410,10 +1410,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2020-09-02", validTo: "2021-05-31", images: ["velkuan-reitti-talvi-2020-21-1.jpg"]},
-        { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
-        { validFrom: "2021-09-02", validTo: "2022-05-17", images: ["velkuan-reitti-talvi-2021-2022-1.jpg"]},
-        { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
+        { validFrom: "2022-09-16", validTo: "2023-05-16", images: ["velkuan-reitti-talvi-2022-2023-1.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1421,10 +1418,7 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-09-28", validTo: "2021-05-05", images:["Rymattyla-Syksy-2020-Talvi-Kevat-2021-1.jpg", "Rymattyla-Syksy-2020-Talvi-Kevat-2021-2.jpg"] },
-        { validFrom: "2021-05-03", validTo: "2021-09-26", images:["Rymattyla-ya-Isla-Kesa-2021-1.jpg", "Rymattyla-ya-Isla-Kesa-2021-2.jpg"] },
-        { validFrom: "2021-09-27", validTo: "2022-05-01", images:["Rymattyla-Syksy-2021-Talvi-Kevat-2022-1.jpg", "Rymattyla-Syksy-2021-Talvi-Kevat-2022-2.jpg"] },
-        { validFrom: "2022-05-02", validTo: "2022-09-25", images:["Rymattyla-ya-Isla-Kesa-2022-1.jpg", "Rymattyla-ya-Isla-Kesa-2022-2.jpg"] },
+        { validFrom: "2022-09-26", validTo: "2023-05-07", images:["Rymattyla-Syksy-2022-Talvi-Kevat-2023-1.jpg", "Rymattyla-Syksy-2022-Talvi-Kevat-2023-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1458,19 +1452,13 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-11-16", validTo: "2021-06-15", images:["Baldur-poikkeusaikataulu-20-21-1.jpg"] },
-        { validFrom: "2021-06-16", validTo: "2021-08-31", images:["Baldur-kesa-2021-1.jpg"] },
-        { validFrom: "2021-09-01", validTo: "2022-06-05", images:["Baldur-talvi-2021-1.jpg"] },
-        { validFrom: "2021-06-06", validTo: "2022-08-31", images:["Baldur-kesa-2022-1-1.jpg"] },
+        { validFrom: "2022-09-01", validTo: "2023-06-04", images:["Baldur-talvi-2022-1-1.jpg"] },
       ],
     },
     korporutt: {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-05-31", images:["Fisko-talviaikataulu-1.1.2021-31.5.2020.jpg"] },
-        { validFrom: "2021-06-01", validTo: "2021-08-31", images:["Fisko-kesaaikataulu-2021-1.jpg"] },
-        { validFrom: "2021-09-01", validTo: "2022-05-31", images:["Fisko-talviaikataulu-1.9.2021-31.5.2022-1.jpg"] },
-        { validFrom: "2022-06-01", validTo: "2022-08-31", images:["Kopio-Fisko-kesaaikataulu-2021-1.jpg"] },
+        { validFrom: "2022-09-01", validTo: "2023-05-31", images:["Fisko-talviaikataulu-1.9.2022-31.5.2023-002-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1478,10 +1466,7 @@ fdata = {
       link_sv: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       link_en: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
       tables: [
-        { validFrom: "2021-01-01", validTo: "2021-05-13", images:["Kokkomaa-Aikataulu-talvi-2021_W1-1.jpg"] },
-        { validFrom: "2021-05-14", validTo: "2021-08-29", images:["nagunorra-kesa-2021-26042021-1.jpg"] },
-        { validFrom: "2021-08-30", validTo: "2022-05-12", images:["Aikataulu-syksy-talvi-2021_2022-1.jpg"] },
-        { validFrom: "2022-05-13", validTo: "2022-09-04", images:["Aikataulu-kesa-2022_rev_1-1-1.jpg"] },
+        { validFrom: "2022-09-05", validTo: "2023-04-30", images:["Aikataulu-syksy-talvi-2022_2023_v0_230722-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1518,10 +1503,7 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2020-08-10", validTo: "2021-06-05", images:["Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-1.jpg", "Hiittinen-Syksy-2020-Talvi-Kevat-2021-paivitetty-13.5-2.jpg"] },
-        { validFrom: "2021-06-06", validTo: "2021-08-15", images:["Ms-Stella-Kesa-2021-1.jpg", "Ms-Stella-Kesa-2021-2.jpg"] },
-        { validFrom: "2021-08-16", validTo: "2022-06-04", images:["Hiittinen-Syksy-2021-Talvi-Kevat-2022--1.jpg", "Hiittinen-Syksy-2021-Talvi-Kevat-2022--2.jpg"] },
-        { validFrom: "2022-06-05", validTo: "2022-08-14", images:["Ms-Stella-Kesa-2022-1.jpg", "Ms-Stella-Kesa-2022-2.jpg"] },
+        { validFrom: "2022-08-15", validTo: "2023-06-03", images:["Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-1.jpg", "Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-2.jpg"] },
       ],
     },
     hitisalva: { 
@@ -1530,7 +1512,7 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2022-06-06", validTo: "2022-08-14", images:["Alva-kesa-2022-1.jpg"]},
+        { validFrom: "2022-08-15", validTo: null, images:["Alva-syksy-2022-1.jpg"]},
       ],
     },
     pargasrutt: {
@@ -1538,11 +1520,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-        { validFrom: "2021-04-01", validTo: "2021-04-30", images: ["viken-01.04.-30.04.2021-1.jpg"]},
-        { validFrom: "2021-05-01", validTo: "2021-05-31", images: ["viken-01.05.-31.05.2021-1.jpg"]},
-        { validFrom: "2021-06-01", validTo: "2021-08-31", images: ["viken-01.06.-31.08.2021-1.jpg"]},
-        { validFrom: "2021-09-01", validTo: "2022-05-31", images: ["viken-01.09.2021-31.5.2022-1.jpg"]},
-        { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["viken-1.6.-31.8.2022-1.jpg"]},
+        { validFrom: "2022-09-01", validTo: "2023-05-31", images: ["viken-1.9.2022-31.5.2023-1.jpg"]},
       ]
     },
 
