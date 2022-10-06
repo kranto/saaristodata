@@ -1512,7 +1512,7 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2022-08-15", validTo: null, images:["Alva-syksy-2022-1.jpg"]},
+        { validFrom: "2022-08-15", validTo: null, images:["Alva-syksy-22-1.jpg"]},
       ],
     },
     pargasrutt: {
