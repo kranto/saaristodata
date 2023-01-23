@@ -1156,6 +1156,9 @@ fdata = {
       { validFrom: "2022-01-01", validTo: "2022-05-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
       { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["Skargardsguiden_TURLISTOR_2022-31.jpg"]},
       { validFrom: "2022-09-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
+      { validFrom: "2023-01-01", validTo: "2023-05-31", images: ["foglo_28-29-1-0.jpg"]},
+      { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["foglo_28-29-1-1.jpg"]},
+      { validFrom: "2023-09-01", validTo: "2023-12-31", images: ["foglo_28-29-1-0.jpg"]},
     ],
     },
     norralinjen: {
@@ -1200,11 +1203,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-48.jpg", "Skargardsguiden_TURLISTOR_2022-49.jpg"]},
-        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-50.jpg", "Skargardsguiden_TURLISTOR_2022-51.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-52.jpg", "Skargardsguiden_TURLISTOR_2022-53.jpg"]},
-        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-50.jpg", "Skargardsguiden_TURLISTOR_2022-51.jpg"]},
-        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-48.jpg", "Skargardsguiden_TURLISTOR_2022-49.jpg"]},
+        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["ava-jurmo_46-51-1-0.jpg", "ava-jurmo_46-51-1-1.jpg"]},
+        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["ava-jurmo_46-51-2-0.jpg", "ava-jurmo_46-51-2-1.jpg"]},
+        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["ava-jurmo_46-51-3-0.jpg", "ava-jurmo_46-51-3-1.jpg"]},
+        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["ava-jurmo_46-51-2-0.jpg", "ava-jurmo_46-51-2-1.jpg"]},
+        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["ava-jurmo_46-51-1-0.jpg", "ava-jurmo_46-51-1-1.jpg"]},
       ],
     },
     osnasava: {
@@ -1212,7 +1215,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-38.jpg", "Skargardsguiden_TURLISTOR_2022-39.jpg"]},
+        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["ava-jurmo_46-51-1.jpg"]},
         { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
         { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-41.jpg"]},
         { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
