@@ -1252,6 +1252,11 @@ fdata = {
         { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-16.jpg", "Skargardsguiden_TURLISTOR_2022-17.jpg"]},
         { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
         { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
+        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["tvargaende_10-15-1-0.jpg", "tvargaende_10-15-1-1.jpg"]},
+        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["tvargaende_10-15-2-0.jpg", "tvargaende_10-15-2-1.jpg"]},
+        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["tvargaende_10-15-3-0.jpg", "tvargaende_10-15-3-1.jpg"]},
+        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["tvargaende_10-15-2-0.jpg", "tvargaende_10-15-2-1.jpg"]},
+        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["tvargaende_10-15-1-0.jpg", "tvargaende_10-15-1-1.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
