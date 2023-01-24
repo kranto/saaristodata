@@ -1183,6 +1183,9 @@ fdata = {
         { validFrom: "2022-01-01", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
         { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-55.jpg"]},
         { validFrom: "2022-08-16", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
+        { validFrom: "2023-01-01", validTo: "2023-06-08", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
+        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["enklinge-kumlinge_52-54-1-1.jpg"]},
+        { validFrom: "2023-08-16", validTo: "2023-12-31", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
       ],
     },
     brandokumlingelinjen: {
