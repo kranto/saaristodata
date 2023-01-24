@@ -1223,11 +1223,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["ava-jurmo_46-51-1.jpg"]},
-        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-41.jpg"]},
-        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-40.jpg"]},
-        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-38.jpg", "Skargardsguiden_TURLISTOR_2022-39.jpg"]},
+        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_osnas_36-39-1-0.jpg", "norra_osnas_36-39-1-1.jpg"]},
+        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_osnas_36-39-2-0.jpg"]},
+        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["norra_osnas_36-39-2-1.jpg"]},
+        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["norra_osnas_36-39-2-0.jpg"]},
+        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["norra_osnas_36-39-1-0.jpg", "norra_osnas_36-39-1-1.jpg"]},
       ],
     },
     sodralinjen: {
