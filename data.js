@@ -1275,7 +1275,7 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: null, images:["21-0543_tofto_vajerfarja_2022_k2_2-2.jpg", "avvikelser_i_toftolinjens_turlista_2022-1.jpg"] },
+        { validFrom: "2023-01-01", validTo: null, images:["toftolinjens_turlista_2023_ny_senaste_2022.12.12-2-0.jpg", "toftolinjens_turlista_2023_ny_senaste_2022.12.12-2-1.jpg"] },
       ],
     },
     
