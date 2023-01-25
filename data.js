@@ -1259,6 +1259,7 @@ fdata = {
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
       { validFrom: "2022-01-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-09.jpg"]},
+      { validFrom: "2023-01-01", validTo: "2023-12-31", images: ["teckenforklaring_vajerfarjor_6-7-1-1.jpg"]},
     ],
     },
     seglingelinjen: {
