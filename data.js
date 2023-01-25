@@ -1153,9 +1153,6 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2022-01-01", validTo: "2022-05-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
-      { validFrom: "2022-06-01", validTo: "2022-08-31", images: ["Skargardsguiden_TURLISTOR_2022-31.jpg"]},
-      { validFrom: "2022-09-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-30.jpg"]},
       { validFrom: "2023-01-01", validTo: "2023-05-31", images: ["foglo_28-29-1-0.jpg"]},
       { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["foglo_28-29-1-1.jpg"]},
       { validFrom: "2023-09-01", validTo: "2023-12-31", images: ["foglo_28-29-1-0.jpg"]},
@@ -1167,11 +1164,11 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-      { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-32.jpg", "Skargardsguiden_TURLISTOR_2022-33.jpg"]},
-      { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-34.jpg", "Skargardsguiden_TURLISTOR_2022-35.jpg"]},
-      { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-36.jpg", "Skargardsguiden_TURLISTOR_2022-37.jpg"]},
-      { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-34.jpg", "Skargardsguiden_TURLISTOR_2022-35.jpg"]},
-      { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-32.jpg", "Skargardsguiden_TURLISTOR_2022-33.jpg"]},
+      { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_hummelvik_30-35-1-0.jpg", "norra_hummelvik_30-35-1-1.jpg"]},
+      { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_hummelvik_30-35-2-0.jpg", "norra_hummelvik_30-35-2-1.jpg"]},
+      { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["norra_hummelvik_30-35-3-0.jpg", "norra_hummelvik_30-35-3-1.jpg"]},
+      { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["norra_hummelvik_30-35-2-0.jpg", "norra_hummelvik_30-35-2-1.jpg"]},
+      { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["norra_hummelvik_30-35-1-0.jpg", "norra_hummelvik_30-35-1-1.jpg"]},
   ],
     },
     enklingelinjen: {
@@ -1180,9 +1177,6 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-55.jpg"]},
-        { validFrom: "2022-08-16", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-54.jpg", "Skargardsguiden_TURLISTOR_2022-56.jpg"]},
         { validFrom: "2023-01-01", validTo: "2023-06-08", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
         { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["enklinge-kumlinge_52-54-1-1.jpg"]},
         { validFrom: "2023-08-16", validTo: "2023-12-31", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
@@ -1194,11 +1188,6 @@ fdata = {
       link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
       link_en: "http://www.alandstrafiken.ax/en/timetables",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-42.jpg", "Skargardsguiden_TURLISTOR_2022-43.jpg"]},
-        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-44.jpg", "Skargardsguiden_TURLISTOR_2022-45.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-46.jpg", "Skargardsguiden_TURLISTOR_2022-47.jpg"]},
-        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-44.jpg", "Skargardsguiden_TURLISTOR_2022-45.jpg"]},
-        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-42.jpg", "Skargardsguiden_TURLISTOR_2022-43.jpg"]},
         { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["brando-kumlinge_40-45-1-0.jpg", "brando-kumlinge_40-45-1-1.jpg"]},
         { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["brando-kumlinge_40-45-2-0.jpg", "brando-kumlinge_40-45-2-1.jpg"]},
         { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["brando-kumlinge_40-45-3-0.jpg", "brando-kumlinge_40-45-3-1.jpg"]},
