@@ -219,7 +219,7 @@ fdata = {
         persons: 197,
       },
       contact: {
-        phones: ['+358 400 320 093']
+        phones: ['+358 400 533 461']
       },
     },
     aurora: {
@@ -1807,7 +1807,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Kittuis"],
       operator: "finferries",
-      vessels: ["stellakorppoo", "mergus"],
+      vessels: ["stellakorppoo", "aura"],
       features: {
         interval_L: ["times.aday", "10-12"],
         order_L: "order.partly",
@@ -1823,7 +1823,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Olofsnäs"],
       operator: "finferries",
-      vessels: ["stellakorppoo", "mergus"],
+      vessels: ["aura", "stellakorppoo"],
       features: {
         interval_L: ["times.aday", "13-14"],
         order_L: "order.partly",
