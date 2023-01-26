@@ -1385,9 +1385,9 @@ fdata = {
       ],
     },
     kasnashitis: {
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen-aurora.html#timetables",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen.html#timetables",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis.html#timetables",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2023-1.jpg"]},
       ],
