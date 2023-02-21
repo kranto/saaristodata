@@ -282,6 +282,14 @@ fdata = {
         phones: ['+358 40 553 1534']
       },
     },
+    l317: {
+      name: "Lautta #317",
+      features: { },
+      capacity: { cars: 52, persons: 200 },
+      contact: {
+        phones: ['+358 40 865 0602']
+      },
+    },
     prostvik1: {
       name: "M/S Prostvik 1",
       features: { },
@@ -1839,7 +1847,7 @@ fdata = {
       specifier: "",
       piers: ["Pärnäs", "Retais"],
       operator: "finferries",
-      vessels: ["prostvik1", "nagu2"],
+      vessels: ["l317", "prostvik1"],
       features: {
         interval_L: ["times.anhour", "1-4"],
         duration_L: ["duration.minutes", "5"],
