@@ -662,13 +662,13 @@ fdata = {
       contact: {
       }
     },
-    falken: {
-      name: "M/S Falken",
-      features: { },
-      capacity: { persons: 24, bikes: " " },
-      contact: {
-      }
-    },
+    // falken: {
+    //   name: "M/S Falken",
+    //   features: { },
+    //   capacity: { persons: 24, bikes: " " },
+    //   contact: {
+    //   }
+    // },
     sissel: {
       name: "M/S Sissel",
       features: { },
@@ -913,15 +913,15 @@ fdata = {
         fb: "https://www.facebook.com/wilsoncharterFI/"
       }
     },
-    hankolines: {
-      name: "Hanko Lines",
-      logo: "hankolines.png",
-      contact: {
-        phones: ["+358 500 102 111"],
-        email: 'info@hankolines.fi',
-        www: 'http://www.hankolines.fi/',
-      }
-    },
+    // hankolines: {
+    //   name: "Hanko Lines",
+    //   logo: "hankolines.png",
+    //   contact: {
+    //     phones: ["+358 500 102 111"],
+    //     email: 'info@hankolines.fi',
+    //     www: 'http://www.hankolines.fi/',
+    //   }
+    // },
     marinelines: {
       name: "Marine Lines",
       logo: "marinelines.png",
@@ -1602,9 +1602,9 @@ fdata = {
         { validFrom: "2019-06-30", validTo: "2019-08-11", images_fi: ["Kustrutten2019_fi.jpg"], images: ["Kustrutten2019_sv.jpg"]},
       ],
     },
-    hankokasnasuto: {
-      link: "http://www.hankolines.fi",
-    },
+    // hankokasnasuto: {
+    //   link: "http://www.hankolines.fi",
+    // },
     kasnasorowilson: {
       link: "https://www.wilsoncharter.fi/oron-linnake-ja-kansallispuisto",
       link_sv: "https://www.wilsoncharter.fi/se/oro-fort-och-nationalpark",
@@ -2361,21 +2361,21 @@ fdata = {
       },
       timetables: ["hankokasnas"]
     },
-    hankokasnasuto: {
-      name: "Hanko - Kasnäs/Söderlångvik/Örö",
-      name_sv: "Hangö - Kasnäs/Söderlångvik/Örö",
-      name_en: "Hanko - Kasnäs/Söderlångvik/Örö",
-      piers: ["Hanko", "Vikare", "Kasnäs", "Söderlångvik", "Örö"],
-      operator: "hankolines",
-      vessels: ["falken"],
-      features: {
-        interval_L: ["times.aweek", "3"],
-        cost_L: "cost.applies",
-        duration_L: ["duration.hours", "2"],
-        seasonal_L: "seasonal.summers",
-      },
-      timetables: ["hankokasnasuto"]
-    },
+    // hankokasnasuto: {
+    //   name: "Hanko - Kasnäs/Söderlångvik/Örö",
+    //   name_sv: "Hangö - Kasnäs/Söderlångvik/Örö",
+    //   name_en: "Hanko - Kasnäs/Söderlångvik/Örö",
+    //   piers: ["Hanko", "Vikare", "Kasnäs", "Söderlångvik", "Örö"],
+    //   operator: "hankolines",
+    //   vessels: ["falken"],
+    //   features: {
+    //     interval_L: ["times.aweek", "3"],
+    //     cost_L: "cost.applies",
+    //     duration_L: ["duration.hours", "2"],
+    //     seasonal_L: "seasonal.summers",
+    //   },
+    //   timetables: ["hankokasnasuto"]
+    // },
     kasnasoro: {
       name: "Kasnäs - Örö",
       piers: ["Kasnäs", "Örö"],

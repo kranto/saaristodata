@@ -2324,7 +2324,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "hankokasnasuto",
         "ssubtype": "conn5"
       },
