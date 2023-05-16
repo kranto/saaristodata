@@ -442,6 +442,16 @@ fdata = {
         phones: ['+358 400 320 095']
       },
     },
+    msinnamo: {
+      name: "M/S Innamo",
+      features: { },
+      capacity: { cars: 8,
+        persons: 99,
+      },
+      contact: {
+        phones: ['+358 40 861 0821']
+      },
+    },
     vano: {
       name: "Lautta #201",
       features: { },
@@ -1450,11 +1460,11 @@ fdata = {
       ],
     },
     nagunorra: {
-      link: "https://www.coast-line.fi/nauvon-pohjoinen-reitti/",
-      link_sv: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
-      link_en: "https://www.coast-line.fi/sv/nagu-norra-rutt/",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/nauvon-pohjoinen-reitti-innamo.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-innamo.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-innamo.html",
       tables: [
-        { validFrom: "2022-09-05", validTo: "2023-04-30", images:["Aikataulu-syksy-talvi-2022_2023_v0_230722-1.jpg"] },
+        { validFrom: "2023-05-12", validTo: "2023-09-03", images:["nauvon-pohjoinen-reitti-12.5.-3.9.2023.jpg"] },
       ],
     },
     nagutvar: {
@@ -2007,8 +2017,8 @@ fdata = {
       name_en: "Nagu Northern Route",
       specifier: "",
       piers: ["Nagu", "Seili", "Innamo", "Järvsor", "Maskinnamo", "Åvensor", "Lavarn"],
-      operator: "coastline",
-      vessels: ["kokkomaa"],
+      operator: "finferries",
+      vessels: ["msinnamo"],
       features: {
         interval_L: ["times.aday", "1-2"],
         order_L: "order.partly",
