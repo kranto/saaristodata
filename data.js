@@ -97,6 +97,14 @@ fdata = {
         phones: ['+358 (0)40 0330 455',{name: 'Café', tel: '+358 (0)40 7658 453'}]
       },
     },
+    adan: {
+      name: "M/S Ådan",
+      features: { access: true, cafe: true },
+      capacity: { persons: 145, cars: 38 },
+      contact: {
+        phones: ['+358 (0)40 4879 205']
+      },
+    },
     doppingen: {
       name: "M/S Doppingen",
       features: { access: false, cafe: false },
@@ -1737,7 +1745,7 @@ fdata = {
       specifier_sv: "Osnäs - Åva",
       piers: ["Vuosnainen", "Åva"],
       operator: "alandstrafiken",
-      vessels: ["viggen"],
+      vessels: ["adan"],
       features: {
         interval_L: ["times.aday", "3-4"],
         cost_L: "cost.applies",
