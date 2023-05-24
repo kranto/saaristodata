@@ -881,7 +881,7 @@
       "properties": {
         "stype": "pier",
         "ref": "Kokkila",
-        "ssubtype": "4",
+        "ssubtype": "5",
         "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }
       },
       "geometry": {
@@ -2457,7 +2457,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ssubtype": "4",
         "ref": "Vuohensaari",
         "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }
@@ -2486,7 +2486,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ssubtype": "4",
         "ref": "Mathildedal",
         "labelAnchor": {"dir": "SW", "x":10 , "y":10 }
