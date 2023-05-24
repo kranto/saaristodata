@@ -1691,10 +1691,7 @@ fdata = {
       // tables: [
       // { validFrom: "2018-05-24", validTo: "2018-08-07", images: ["Amanda2018_1fi.jpeg", "Amanda2018_3fi.jpeg"], images_sv: ["Amanda2018_1sv.jpeg", "Amanda2018_3sv.jpeg"], images_en: ["Amanda2018_1en.jpeg", "Amanda2018_2en.jpeg", "Amanda2018_3en.jpeg"]}
       // ],
-    },
-    salomathildedal: {
-      link: "https://www.salonristeilyt.fi/",
-    },
+    }
 
   },
 
@@ -2527,20 +2524,7 @@ fdata = {
         seasonal_L: "seasonal.summers",
       },
       timetables: ["korpostromoro"]
-    },
-    salomathildedal: {
-      name: "Vuohensaari - Kokkila/Mathildedal",
-      piers: ["Vuohensaari", "Kokkila", "Mathildedal"],
-      operator: "ferentes",
-      vessels: ["nordep"],
-      features: {
-        interval_L: ["times.aweek", "Kokkila 6, Mathildedal 14"],
-        cost_L: "cost.applies",
-        duration: "Vuohensaari - Kokkila 60&nbsp;min, Vuohensaari - Mathildedal 90&nbsp;min",
-        seasonal_L: "seasonal.summers",
-      },
-      timetables: ["salomathildedal"]
-    },
+    }
   },
 
   lauttaLegs: [

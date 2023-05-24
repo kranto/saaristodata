@@ -2500,7 +2500,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "salomathildedal",
         "ssubtype": "conn5"
       },
