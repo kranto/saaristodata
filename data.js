@@ -1337,7 +1337,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-11", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
-
+        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["inio-kustavi-kesaaikataulu-12.5.-3.9.2023.jpg"]},
         { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
       ]
     },
@@ -1348,6 +1348,7 @@ fdata = {
       tables: [
         { validFrom: "2021-05-14", validTo: "2021-08-29", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
         { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["saariston-rengastie-houtskari-inio-antonia-13.5.-4.9.2022-1.jpg"]},
+        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["saariston-rengastie-houtskari-inio-antonia-12.5.-3.9.2023.jpg"]},
       ],
     },
 
@@ -1390,6 +1391,7 @@ fdata = {
       tables: [
         { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
         { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
+        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
       ],
     },
 
@@ -1423,7 +1425,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2022-09-16", validTo: "2023-05-16", images: ["velkuan-reitti-talvi-2022-2023-1.jpg"]},
+        { validFrom: "2022-09-16", validTo: "2023-05-11", images: ["velkuan-reitti-talvi-2022-2023-1.jpg"]},
+        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1432,6 +1435,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2022-09-26", validTo: "2023-05-07", images:["Rymattyla-Syksy-2022-Talvi-Kevat-2023-1.jpg", "Rymattyla-Syksy-2022-Talvi-Kevat-2023-2.jpg"] },
+        { validFrom: "2023-05-08", validTo: "2023-09-24", images:["Rymattyla-Ya-Isla-kesa-2023-1.jpg", "Rymattyla-Ya-Isla-kesa-2023-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1441,6 +1445,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-ruote-finno.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["houtskarin-reitti-1.1.-31.5.2023-1.jpg", "houtskarin-reitti-1.1.-31.5.2023-2.jpg"] },
+        { validFrom: "2023-06-09", validTo: "2023-08-15", images:["houtskarin-reitti-kesa-9.6.2023-15.8.2023-1.jpg", "houtskarin-reitti-kesa-9.6.2023-15.8.2023-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1450,6 +1455,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-inio-additional-route-kivimo.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
+        { validFrom: "2023-06-01", validTo: "2023-08-31", images:["inion-lisareitti-kesa-1.6.2023-31.8.2023.jpg"] },
         { validFrom: "2023-09-01", validTo: "2023-12-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
       ],
     },
@@ -1459,6 +1465,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-06-04", images:["Baldur-talvi-2022-1-1.jpg"] },
+        { validFrom: "2023-06-05", validTo: "2023-09-03", images:["Baldur-kesa-2023.jpg"] },
       ],
     },
     korporutt: {
@@ -1481,6 +1488,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-transverse-route.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["nauvon-poikittainen-reitti-1.1.-31.5.2023-1.jpg"] },
+        { validFrom: "2023-06-05", validTo: "2023-08-13", images:["nauvon-poikittainen-reitti-5.6.-13.8.2023.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1489,6 +1497,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["nauvon-etelainen-reitti-1.1.-31.5.2023-1.jpg"] },
+        { validFrom: "2023-06-01", validTo: "2023-08-13", images:["nauvon-etelainen-reitti-5.6.-13.8.2023.jpg"] },
       ],
     },
     hitisstella: {
@@ -1498,6 +1507,7 @@ fdata = {
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
         { validFrom: "2022-08-15", validTo: "2023-06-03", images:["Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-1.jpg", "Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-2.jpg"] },
+        { validFrom: "2023-06-04", validTo: "2023-08-13", images:["Ms-Stella-Kesa-2023-1.jpg", "Ms-Stella-Kesa-2023-2.jpg"] },
       ],
     },
     hitisalva: { 
@@ -1515,6 +1525,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-05-31", images: ["viken-1.9.2022-31.5.2023-1.jpg"]},
+        { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["paraisten-reittialue-1.6.-31.8.2023.jpg"]},
       ]
     },
 
