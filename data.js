@@ -1445,7 +1445,9 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-ruote-finno.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["houtskarin-reitti-1.1.-31.5.2023-1.jpg", "houtskarin-reitti-1.1.-31.5.2023-2.jpg"] },
+        { validFrom: "2023-06-01", validTo: "2023-06-08", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
         { validFrom: "2023-06-09", validTo: "2023-08-15", images:["houtskarin-reitti-kesa-9.6.2023-15.8.2023-1.jpg", "houtskarin-reitti-kesa-9.6.2023-15.8.2023-2.jpg"] },
+        { validFrom: "2023-08-16", validTo: "2024-05-31", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1472,6 +1474,7 @@ fdata = {
       link: "https://saaristolinjat.fi/#reittialue",
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-05-31", images:["Fisko-talviaikataulu-1.9.2022-31.5.2023-002-1.jpg"] },
+        { validFrom: "2023-06-01", validTo: "2023-08-31", images:["Fisko-kesaaikataulu-2023.jpg"] },
       ],
     },
     nagunorra: {
@@ -1496,8 +1499,10 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-sodra-rutt-falko.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-05-31", images:["nauvon-etelainen-reitti-1.1.-31.5.2023-1.jpg"] },
+        { validFrom: "2023-01-01", validTo: "2023-04-30", images:["nauvon-etelainen-reitti-1.1.-31.5.2023-1.jpg"] },
+        { validFrom: "2023-05-01", validTo: "2023-05-31", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-13", images:["nauvon-etelainen-reitti-5.6.-13.8.2023.jpg"] },
+        { validFrom: "2023-08-14", validTo: "2024-06-02", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
       ],
     },
     hitisstella: {
@@ -1516,7 +1521,8 @@ fdata = {
       link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
       link_en: "https://meritie.fi/tidtabeller/?lang=sv",
       tables: [
-        { validFrom: "2022-08-15", validTo: null, images:["Alva-syksy-22-1.jpg"]},
+        { validFrom: "2022-08-15", validTo: "2023-06-04", images:["Alva-syksy-22-1.jpg"]},
+        { validFrom: "2023-06-05", validTo: "2023-08-13", images:["Alva-kesa-2023.jpg"]},
       ],
     },
     pargasrutt: {
