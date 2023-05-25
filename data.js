@@ -840,9 +840,9 @@ fdata = {
       contact: {
         phones: [{name: "CEO", tel: '+358 442 510 297'}],
         email: 'mats.sundqvist@sinv.eu',
-        www: 'http://www.ostern.fi/en',
-        www_fi: 'http://www.ostern.fi/',
-        www_sv: 'http://www.ostern.fi/',
+        www: 'https://www.ostern.fi/en/',
+        www_fi: 'https://www.ostern.fi/',
+        www_sv: 'https://www.ostern.fi/sv/',
       },
     },
     rosita: {
@@ -1397,12 +1397,10 @@ fdata = {
 
     nauvohanka: {
       name: "M/S Östern", specifier: "",
-      link: "http://www.ostern.fi/aikataulu",
-      link_sv: "http://www.ostern.fi/aikataulu",
-      link_en: "http://www.ostern.fi/en/schedule-fahrplan",
+      link: "https://www.ostern.fi/aikataulut/",
+      link_sv: "https://www.ostern.fi/sv/tidtabell/",
+      link_en: "https://www.ostern.fi/en/schedule/",
       tables: [
-        { validFrom: "2020-06-01", validTo: "2020-09-20", images: ["Ostern2020b_fisv.jpeg"], images_en: ["Ostern2020b_ende.jpeg"]},
-        { validFrom: "2021-05-14", validTo: "2021-09-29", images: ["Ostern2021_fisv.jpeg"], images_en: ["Ostern2021_ende.jpeg"]},
       ],
     },
     nauvohankaturku: {
@@ -1912,12 +1910,12 @@ fdata = {
       operator: "sinv",
       vessels: ["ostern"],
       features: {
-        interval_L: ["times.aday", "3"],
+        interval_L: ["times.aday", "3-4"],
         duration_L: ["duration.minutes", "60"],
         seasonal_L: "seasonal.summers",
         cost_L: "cost.applies",
       },
-      notes: [ {content: "In September Fri - Sun only", content_sv: "I september bara fre - sön", content_fi: "Syyskuussa ainoastaan pe - su" }],
+      // notes: [ {content: "In September Fri - Sun only", content_sv: "I september bara fre - sön", content_fi: "Syyskuussa ainoastaan pe - su" }],
       timetables: ["nauvohanka"],
     },
     velkuataivassalo: {
