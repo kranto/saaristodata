@@ -227,7 +227,7 @@ fdata = {
         persons: 197,
       },
       contact: {
-        phones: ['+358 400 533 461']
+        phones: ['+358 400 320 093']
       },
     },
     aurora: {
@@ -367,7 +367,7 @@ fdata = {
       features: { },
       capacity: { cars: 66 },
       contact: {
-        phones: ['+358 400 320 093']
+        phones: ['+358 400 110 114']
       },
     },
     falco: {
@@ -375,7 +375,7 @@ fdata = {
       features: { },
       capacity: { cars: 54 },
       contact: {
-        phones: ['+358 400 110 114']
+        phones: ['+358 400 533 461']
       },
     },
     viken: {
@@ -1338,7 +1338,7 @@ fdata = {
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-11", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["inio-kustavi-kesaaikataulu-12.5.-3.9.2023.jpg"]},
-        { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
+        // { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
       ]
     },
     houtskarinio: {
@@ -1815,7 +1815,7 @@ fdata = {
       specifier: "",
       piers: ["Kannvik", "Heponiemi"],
       operator: "finferries",
-      vessels: ["sterna"],
+      vessels: ["aura"],
       features: {
         interval_L: ["times.aday", "5-8"],
         duration_L: ["duration.minutes", "25"],
@@ -1845,7 +1845,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Kittuis"],
       operator: "finferries",
-      vessels: ["stellakorppoo", "aura"],
+      vessels: ["stellakorppoo", "falco"],
       features: {
         interval_L: ["times.aday", "10-12"],
         order_L: "order.partly",
@@ -1861,7 +1861,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Olofsnäs"],
       operator: "finferries",
-      vessels: ["aura", "stellakorppoo"],
+      vessels: ["falco", "stellakorppoo"],
       features: {
         interval_L: ["times.aday", "13-14"],
         order_L: "order.partly",
@@ -1892,7 +1892,7 @@ fdata = {
       specifier: "",
       piers: ["Lillmälö", "Prostvik"],
       operator: "finferries",
-      vessels: ["elektra", "altera", "falco"],
+      vessels: ["elektra", "altera", "sterna"],
       features: {
         interval_L: ["times.anhour", "1-4"],
         duration_L: ["duration.minutes", "10"],
