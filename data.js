@@ -1498,8 +1498,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-30", images:["nauvon-etelainen-reitti-1.1.-31.5.2023-1.jpg"] },
-        { validFrom: "2023-05-01", validTo: "2023-05-31", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
-        { validFrom: "2023-06-01", validTo: "2023-08-13", images:["nauvon-etelainen-reitti-5.6.-13.8.2023.jpg"] },
+        { validFrom: "2023-05-01", validTo: "2023-06-04", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
+        { validFrom: "2023-06-05", validTo: "2023-08-13", images:["nauvon-etelainen-reitti-5.6.-13.8.2023.jpg"] },
         { validFrom: "2023-08-14", validTo: "2024-06-02", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
       ],
     },
