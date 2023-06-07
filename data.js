@@ -2593,7 +2593,7 @@ fdata = {
     sname_sv: "Tallinn - Mariehamn - Stockholm",
     sname_en: "Tallinn - Mariehamn - Stockholm",
     operators: ["Tallink"], legs: [7, 6, 9, 11, 12, 16],
-    description_fi: "kerran kanhdessa päivässä, kesto n. 17,5 tuntia",
+    description_fi: "kerran kahdessa päivässä, kesto n. 17,5 tuntia",
     description_sv: "en gång om två dagar, längd ca 17,5 timmar",
     description_en: "every other day, duration about 17,5 hours"},
   // { sname: "Mariehamn - Stockholm",
