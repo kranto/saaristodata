@@ -743,10 +743,7 @@ fdata = {
         address: 'Styrmansgatan 1, AX-22100 MARIEHAMN',
         fb: 'https://www.facebook.com/%C3%85landstrafiken-trafikinformation-159908027409016/',
         email: 'info@alandstrafiken.ax',
-        www: 'http://www.alandstrafiken.ax',
-        www_fi: 'http://www.alandstrafiken.ax/fi',
-        www_sv: 'http://www.alandstrafiken.ax/sv',
-        www_en: 'http://www.alandstrafiken.ax/en',
+        www: 'http://www.alandstrafiken.ax/',
       },
     },
     skarpnato: {
@@ -1185,9 +1182,7 @@ fdata = {
 
   timetables: {
     foglolinjen: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
       { validFrom: "2023-01-01", validTo: "2023-05-31", images: ["foglo_28-29-1-0.jpg"]},
       { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["foglo_28-29-1-1.jpg"]},
@@ -1196,9 +1191,7 @@ fdata = {
     },
     norralinjen: {
       specifier: "Hummelvik - Torsholma, M/S Alfågeln",
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
       { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_hummelvik_30-35-1-0.jpg", "norra_hummelvik_30-35-1-1.jpg"]},
       { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_hummelvik_30-35-2-0.jpg", "norra_hummelvik_30-35-2-1.jpg"]},
@@ -1209,9 +1202,7 @@ fdata = {
     },
     enklingelinjen: {
       specifier: "Enklinge - Kumlinge, M/S Tuuli",
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-06-08", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
         { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["enklinge-kumlinge_52-54-1-1.jpg"]},
@@ -1220,9 +1211,7 @@ fdata = {
     },
     brandokumlingelinjen: {
       specifier: "Enklinge - Torsholma, M/S Ejdern",
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["brando-kumlinge_40-45-1-0.jpg", "brando-kumlinge_40-45-1-1.jpg"]},
         { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["brando-kumlinge_40-45-2-0.jpg", "brando-kumlinge_40-45-2-1.jpg"]},
@@ -1232,9 +1221,7 @@ fdata = {
           ],
     },
     avajurmo: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["ava-jurmo_46-51-1-0.jpg", "ava-jurmo_46-51-1-1.jpg"]},
         { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["ava-jurmo_46-51-2-0.jpg", "ava-jurmo_46-51-2-1.jpg"]},
@@ -1244,9 +1231,7 @@ fdata = {
       ],
     },
     osnasava: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_osnas_36-39-1-0.jpg", "norra_osnas_36-39-1-1.jpg"]},
         { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_osnas_36-39-2-0.jpg"]},
@@ -1256,9 +1241,7 @@ fdata = {
       ],
     },
     sodralinjen: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-05", images: ["sodra_16-25-1-0.jpg", "sodra_16-25-1-1.jpg"]},
         { validFrom: "2023-04-06", validTo: "2023-04-10", images: ["sodra_16-25-5-0.jpg"]},
@@ -1273,9 +1256,7 @@ fdata = {
       ],
     },
     tvarlinjen: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
         { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
@@ -1290,26 +1271,20 @@ fdata = {
       ],  
     },
     alandsvajerfarjor: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
       { validFrom: "2022-01-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-09.jpg"]},
       { validFrom: "2023-01-01", validTo: "2023-12-31", images: ["teckenforklaring_vajerfarjor_6-7-1-1.jpg"]},
     ],
     },
     seglingelinjen: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2022-01-01", validTo: null, images: ["Skargardsguiden_TURLISTOR_2022-9.jpg"]},
       ],
     },
     toftolinjen: {
-      link: "http://www.alandstrafiken.ax/fi/aikataulut",
-      link_sv: "http://www.alandstrafiken.ax/sv/turlistor",
-      link_en: "http://www.alandstrafiken.ax/en/timetables",
+      link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2023-01-01", validTo: null, images:["toftolinjens_turlista_2023_ny_senaste_2022.12.12-2-0.jpg", "toftolinjens_turlista_2023_ny_senaste_2022.12.12-2-1.jpg"] },
       ],
