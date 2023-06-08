@@ -2579,7 +2579,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "utoexpress",
         "ssubtype": "conn5"
       },
