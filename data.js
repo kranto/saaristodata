@@ -92,9 +92,9 @@ fdata = {
     viggen: {
       name: "M/S Viggen",
       features: { access: true, cafe: true },
-      capacity: { persons: 250, cars: 50, trucks: 4 },
+      capacity: { persons: 250, cars: 38, trucks: 4 },
       contact: {
-        phones: ['+358 (0)40 0330 455',{name: 'Café', tel: '+358 (0)40 7658 453'}]
+        phones: ['+358 (0)40 0330 455']
       },
     },
     adan: {
@@ -1748,7 +1748,7 @@ fdata = {
       specifier: "Långnäs - Överö - Sottunga - Kökar - Galtby",
       piers: ["Långnäs", "Överö", "Sottunga", "Husö", "Kyrkogårdsö", "Kökar", "Galtby"],
       operator: "alandstrafiken",
-      vessels: ["gudingen", "skiftet", "knipan"],
+      vessels: ["gudingen", "viggen", "skiftet"],
       features: {
         interval_L: ["times.aday", "Långnäs - Kökar 3-4, Kökar - Galtby 0-2 "],
         cost_L: "cost.applies",
