@@ -44,7 +44,7 @@ fdata = {
     skiftet: {
       name: "M/S Skiftet",
       features: { access: true, cafe: true },
-      capacity: { persons: 200, cars: 20, trucks: 4 },
+      capacity: { persons: 200, cars: 24, trucks: 4 },
       contact: {
         phones: [ '+358 (0)400 350 265', {name: 'Café', tel: '+358 (0)405 515 645'}]
       },
@@ -52,7 +52,7 @@ fdata = {
     gudingen: {
       name: "M/S Gudingen",
       features: { access: true, cafe: true },
-      capacity: { persons: 195, cars: 20, trucks: 4 },
+      capacity: { persons: 195, cars: 23, trucks: 4 },
       contact: {
         phones: [ '+358 (0)40 769 3687', {name: 'Café', tel: '+358 (0)405 505 059'}]
       },
@@ -60,7 +60,7 @@ fdata = {
     ejdern: {
       name: "M/S Ejdern",
       features: { access: false, cafe: false },
-      capacity: { persons: 144, cars: 16, trucks: 4 },
+      capacity: { persons: 99, cars: 16, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 0229 260']
       },
@@ -68,7 +68,7 @@ fdata = {
     skarven: {
       name: "M/S Skarven",
       features: { access: true, cafe: true },
-      capacity: { persons: 250, cars: 60, trucks: 4 },
+      capacity: { persons: 250, cars: 65, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 173 3600',{name: 'Café', tel: '+358 (0)457 3439 301'}]
       },
@@ -76,7 +76,7 @@ fdata = {
     alfageln: {
       name: "M/S Alfågeln",
       features: { access: true, cafe: true },
-      capacity: { persons: 244, cars: 50, trucks: 4 },
+      capacity: { persons: 244, cars: 38, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 768 2108',{name: 'Café', tel: '+358 (0)40 637 8500'}]
       },
@@ -84,7 +84,7 @@ fdata = {
     knipan: {
       name: "M/S Knipan",
       features: { access: true, cafe: false },
-      capacity: { persons: 157, cars: 20, trucks: 4 },
+      capacity: { persons: 157, cars: 22, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 0229 261']
       },
@@ -94,13 +94,13 @@ fdata = {
       features: { access: true, cafe: true },
       capacity: { persons: 250, cars: 38, trucks: 4 },
       contact: {
-        phones: ['+358 (0)40 0330 455']
+        phones: ['+358 (0)40 0330 455', {name: 'Café', tel: '+358 (0)40 7658 453'}]
       },
     },
     adan: {
       name: "M/S Ådan",
       features: { access: true, cafe: true },
-      capacity: { persons: 145, cars: 38 },
+      capacity: { persons: 145, cars: 42, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 4879 205']
       },
@@ -108,7 +108,7 @@ fdata = {
     doppingen: {
       name: "M/S Doppingen",
       features: { access: false, cafe: false },
-      capacity: { persons: 70, cars: 18, trucks: 2 },
+      capacity: { persons: 70, cars: 12, trucks: 2 },
       contact: {
         phones: ['+358 (0)40 7082 136']
       },
@@ -124,7 +124,7 @@ fdata = {
     tuuli: {
       name: "M/S Tuuli",
       features: { access: false, cafe: false },
-      capacity: { persons: 63, cars: 10 },
+      capacity: { persons: 60, cars: 14, trucks: 2 },
       contact: {
         phones: ['+358 (0)40 0492 739']
       },
@@ -140,7 +140,7 @@ fdata = {
     odin: {
       name: "M/S Odin",
       features: { access: true, cafe: false },
-      capacity: { persons: 80, cars: 45, trucks: 3 },
+      capacity: { persons: 99, cars: 41, trucks: 3 },
       contact: {
         phones: ['+358 (0)40 4840 352']
       },
