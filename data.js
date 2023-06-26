@@ -657,15 +657,15 @@ fdata = {
       contact: {
       }
     },
-    utoexpress: {
-      name: "M/S Utö Express",
-      features: {  },
-      capacity: { persons: 55 },
-      contact: {
-        phones: ["+358 45 124 5551"],
-        fb: "https://www.facebook.com/profile.php?id=100069822060431"
-      }
-    },
+    // utoexpress: {
+    //   name: "M/S Utö Express",
+    //   features: {  },
+    //   capacity: { persons: 55 },
+    //   contact: {
+    //     phones: ["+358 45 124 5551"],
+    //     fb: "https://www.facebook.com/profile.php?id=100069822060431"
+    //   }
+    // },
     summersea: {
       name: "M/S Summersea",
       features: { cafe: true },
@@ -1644,12 +1644,12 @@ fdata = {
         { validFrom: "2020-05-01", validTo: "2020-09-27", images_fi: ["Norrskar2020_fi.jpeg"], images_sv: ["Norrskar2020_sv.jpeg"], images: ["Norrskar2020_en.jpeg"]},
       ],
     },
-    utoexpress: {
-      link: "https://www.utohotel.fi/uto-express/",
-      tables: [
-        { validFrom: "2022-06-22", validTo: "2022-08-12", images: ["Uto-Express-2022-ver-1.0-1.jpg"]},
-      ],
-    },
+    // utoexpress: {
+    //   link: "https://www.utohotel.fi/uto-express/",
+    //   tables: [
+    //     { validFrom: "2022-06-22", validTo: "2022-08-12", images: ["Uto-Express-2022-ver-1.0-1.jpg"]},
+    //   ],
+    // },
     naantalikustavi: {
       link: "https://www.visitnaantali.com/fi/saaristoreitti-kustaviin",
       link_en: "https://www.visitnaantali.com/en/archipelago-route-to-kustavi",
@@ -2421,21 +2421,21 @@ fdata = {
       },
       timetables: ["hankobengtskar"]
     },
-    utoexpress: {
-      name: "Utö Express",
-      specifier_fi: "Pärnäinen - Utö",
-      specifier: "Pärnäs - Utö",
-      piers: ["Pärnäs", "Utö"],
-      operator: "al",
-      vessels: ["utoexpress"],
-      features: {
-        interval_L: ["times.aweek", "3"],
-        cost_L: "cost.applies",
-        duration_L: ["duration.hoursminutes" , "1", "30"],
-        seasonal_L: "seasonal.summers",
-      },
-      timetables: ["utoexpress"]
-    },
+    // utoexpress: {
+    //   name: "Utö Express",
+    //   specifier_fi: "Pärnäinen - Utö",
+    //   specifier: "Pärnäs - Utö",
+    //   piers: ["Pärnäs", "Utö"],
+    //   operator: "al",
+    //   vessels: ["utoexpress"],
+    //   features: {
+    //     interval_L: ["times.aweek", "3"],
+    //     cost_L: "cost.applies",
+    //     duration_L: ["duration.hoursminutes" , "1", "30"],
+    //     seasonal_L: "seasonal.summers",
+    //   },
+    //   timetables: ["utoexpress"]
+    // },
     saaristolinja_turkunauvo: {
       name: "Saaristolinja / Skärgårdslinjen",
       specifier_fi: "Turku - Seili - Nauvo",
