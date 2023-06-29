@@ -584,15 +584,15 @@ fdata = {
         phones: ['+358 40 413 1574']
       },
     },
-    baldur: {
-      name: "M/S Baldur",
+    msuto: {
+      name: "M/S Utö",
       features: { cafe: true },
       capacity: { cars: 19,
         persons: 195
       },
       contact: {
         phones: ['+358 44 5000 503', {name: 'Café', tel: '+358 44 5000 506'}],
-        fb: 'https://www.facebook.com/msbaldur'
+        fb: 'https://www.facebook.com/profile.php?id=100092752256599'
       }
     },
     kokar: {
@@ -1435,12 +1435,11 @@ fdata = {
       ],
     },
     utorutt: { 
-      link: "https://meritie.fi/aikataulut/",
-      link_sv: "https://meritie.fi/tidtabeller/?lang=sv",
-      link_en: "https://meritie.fi/tidtabeller/?lang=sv",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/uton-reittialue.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/uto-ruttomrade.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/uto-route.html",
       tables: [
-        { validFrom: "2022-09-01", validTo: "2023-06-04", images:["Baldur-talvi-2022-1-1.jpg"] },
-        { validFrom: "2023-06-05", validTo: "2023-09-03", images:["Baldur-kesa-2023.jpg"] },
+        { validFrom: "2023-06-05", validTo: "2023-09-03", images:["uton-reitti-5.6.-3.9.2023.jpg"] },
       ],
     },
     korporutt: {
@@ -1996,8 +1995,8 @@ fdata = {
       name_en: "Utö Route",
       specifier: "",
       piers: ["Pärnäs", "Berghamn", "Nötö", "Aspö", "Jurmo", "Utö"],
-      operator: "meritie",
-      vessels: ["baldur"],
+      operator: "finferries",
+      vessels: ["msuto"],
       features: {
         interval_L: ["times.aweek", "5-6"],
         duration_L: ["duration.hours", "4.5-5.5"],
