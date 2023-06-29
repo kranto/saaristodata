@@ -592,7 +592,7 @@ fdata = {
       },
       contact: {
         phones: ['+358 44 5000 503', {name: 'Café', tel: '+358 44 5000 506'}],
-        fb: 'https://www.facebook.com/profile.php?id=100092752256599'
+        fb: { name: "Utön reitti - Utö rutten", uri: 'https://www.facebook.com/profile.php?id=100092752256599'}
       }
     },
     kokar: {
