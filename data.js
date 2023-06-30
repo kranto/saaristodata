@@ -2189,7 +2189,7 @@ fdata = {
       operator: "finferries",
       vessels: ["kivimolossi"],
       features: {
-          interval_L: ["times.ondemandwithpauses", "9.10-9.30", "11.40-12.00", "17.10-17.30", "20.10-20.30"]
+          interval_L: ["times.ondemandwithpauses", "9.10-9.30", "11.40-12.00", "17.10-17.30", "20.30–20.50"]
       },
       timetables: ["kivimo"]
     },
