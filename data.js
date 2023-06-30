@@ -2320,15 +2320,15 @@ fdata = {
       operator: "finferries",
       vessels: ["l144"],
       features: {
-        interval_fi: "Liikennöi tarvittessa ma-to 6.00-22.00, pe 6.00-23.00, la 7.00-23.00, su 8.30-20.00. Tauot 9.40-9.52, 11.58-12.10, 18.20-18.32.",
-        interval_sv: "Trafikerar enligt behov må-to 6.00-22.00, fr 6.00-23.00, lö 7.00-23.00, sö 8.30-20.00. Pauser 9.40-9.52, 11.58-12.10, 18.20-18.32.",
-        interval_en: "Runs when needed Mon-Thu 6AM-10PM, Fri 6AM-11PM, Sat 7AM-11PM, Sun 8:30AM-8PM. Breaks 9:40-9:52, 11:58-12:10, 18:20-18:32",
+        interval_fi: "Liikennöi tarvittessa ma-pe 6.00-23.00, la 7.00-23.00, su 8.30-22.00. Tauot 9.40-10.00, 12.40-13.00, 16.20-16.40, 19.10-19.30",
+        interval_sv: "Trafikerar enligt behov må-fr 6.00-23.00, lö 7.00-23.00, sö 8.30-22.00. Pauser 9.40-10.00, 12.40-13.00, 16.20-16.40, 19.10-19.30",
+        interval_en: "Runs when needed Mon-Fri 6AM-11PM, Sat 7AM-11PM, Sun 8:30AM-10PM. Breaks 9:40-10:00, 12:40-13:00, 16:20-16:40, 19:10-19:30",
       },
       notes: [
       { 
-        content_fi: "<div>Lossi lähtee Skagenista aina 15 ja 30 min ennen Auroran lähtöä Kannvikista Heponiemeen (Kustavi).</div>",
-        content_sv: "<div>Färjan  avgår från Skagen alltid 15 och 30 min före Auroras avgång från Kannvik till Heponimi (Gustavs).</div>",
-        content_en: "<div>The ferry departures from Skagen always 15 and 30 minutes before Aurora's departure from Kannvik to Heponiemi (Kustavi).</div>"
+        content_fi: "<div>Lossi lähtee Skagenista aina 15 ja 30 min ennen M/S Auran lähtöä Kannvikista Heponiemeen (Kustavi).</div>",
+        content_sv: "<div>Färjan  avgår från Skagen alltid 15 och 30 min före M/S Auras avgång från Kannvik till Heponimi (Gustavs).</div>",
+        content_en: "<div>The ferry departures from Skagen always 15 and 30 minutes before M/S Aura's departure from Kannvik to Heponiemi (Kustavi).</div>"
       }
       ],
       timetables: ["skagen"]
