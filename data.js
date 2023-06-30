@@ -298,6 +298,14 @@ fdata = {
         phones: ['+358 40 865 0602']
       },
     },
+    l144: {
+      name: "Lautta #144",
+      features: { },
+      capacity: { cars: 27, persons: true },
+      contact: {
+        phones: ['+358 40 668 9916']
+      },
+    },
     prostvik1: {
       name: "M/S Prostvik 1",
       features: { },
@@ -1586,11 +1594,11 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/keistio.html#timetables",
     },
     skagen: {
-      link: "http://www.ksloy.fi/fi/lauttaliikenne/",
-      link_sv: "http://www.ksloy.fi/fi/sv/lauttaliikenne/",
-      link_en: "http://www.ksloy.fi/fi/en/lauttaliikenne/",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/skagen.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/skagen.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/skagen.html",
       tables: [
-        { validFrom: "2018-01-01", validTo: null, images: ["skagen_fi.jpg"], images_sv: ["skagen_sv.jpg"], images_en: ["skagen_en.jpg"]}
+        { validFrom: "2022-09-18", validTo: null, images: ["skagen_finferries_2022.jpg"]}
       ]
     },
     sorpo: {
@@ -2309,8 +2317,8 @@ fdata = {
     skagen: {
       name: "Skagen",
       piers: ["Skagen", "JumoE"],
-      operator: "kymensaaristoliikenne",
-      vessels: ["skagen"],
+      operator: "finferries",
+      vessels: ["l144"],
       features: {
         interval_fi: "Liikennöi tarvittessa ma-to 6.00-22.00, pe 6.00-23.00, la 7.00-23.00, su 8.30-20.00. Tauot 9.40-9.52, 11.58-12.10, 18.20-18.32.",
         interval_sv: "Trafikerar enligt behov må-to 6.00-22.00, fr 6.00-23.00, lö 7.00-23.00, sö 8.30-20.00. Pauser 9.40-9.52, 11.58-12.10, 18.20-18.32.",
