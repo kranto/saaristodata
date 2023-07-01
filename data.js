@@ -1621,12 +1621,12 @@ fdata = {
     //   link: "http://www.hankolines.fi",
     // },
     kasnasorowilson: {
-      link: "https://www.wilsoncharter.fi/oron-linnake-ja-kansallispuisto",
-      link_sv: "https://www.wilsoncharter.fi/se/oro-fort-och-nationalpark",
-      link_en: "https://www.wilsoncharter.fi/en/oro-fortress-tours",
+      link: "https://www.wilsoncharter.fi/%C3%B6r%C3%B6n-aikataulu?",
+      link_sv: "https://www.wilsoncharter.fi/sv/%C3%B6r%C3%B6n-aikataulu",
+      link_en: "https://www.wilsoncharter.fi/en-gb/%C3%B6r%C3%B6n-aikataulu",
       name: "Wilson Charter",
       tables: [
-        { validFrom: "2019-06-01 ", validTo: "2019-08-11", images_fi: ["SisselOro2019_fi.jpeg"], images: ["SisselOro2019_sv.jpeg"], images_en: ["SisselOro2019_en.jpeg"]},
+        { validFrom: "2023-06-02 ", validTo: "2023-09-14", images: ["wilson_oro_2023.jpg"]},
       ],
     },
     kasnasbengtskar: {
