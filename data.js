@@ -1321,7 +1321,7 @@ fdata = {
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-11", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["inio-kustavi-kesaaikataulu-12.5.-3.9.2023.jpg"]},
-        // { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
+        { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-aura-talvi-4.9.-31.12.2023.jpg"]},
       ]
     },
     houtskarinio: {
@@ -1334,13 +1334,14 @@ fdata = {
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["saariston-rengastie-houtskari-inio-antonia-12.5.-3.9.2023.jpg"]},
       ],
     },
-
     korpohoutskar: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/korppoo-houtskari.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-houtskar.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-houtskari.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-4.jpg"]},
+        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-7.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4.jpg"]},
       ],
     },
     korponorrskata: {
@@ -1349,6 +1350,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-norrskata.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-4.jpg"]},
+        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-7.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4.jpg"]},
       ],
     },
     nagukorpo: {
@@ -1357,6 +1360,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-korppoo.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-3.jpg", "saaristotien-lautta-aikataulut-1.1.-16.4.2023-4b.jpg"]},
+        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-6.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-3.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
       ],
     },
     pargasnagu: {
@@ -1365,6 +1370,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-nauvo.html#timetables",        
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-2.jpg", "saaristotien-lautta-aikataulut-1.1.-16.4.2023-4b.jpg"]},
+        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-5.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-2.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
       ],
       },
     velkuataivassalo: {
@@ -1408,6 +1415,7 @@ fdata = {
       tables: [
         { validFrom: "2022-09-16", validTo: "2023-05-11", images: ["velkuan-reitti-talvi-2022-2023-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
+        { validFrom: "2023-09-04", validTo: "2024-05-15", images: ["velkuan-reitti-4.9.2023-15.5.2024.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1417,6 +1425,7 @@ fdata = {
       tables: [
         { validFrom: "2022-09-26", validTo: "2023-05-07", images:["Rymattyla-Syksy-2022-Talvi-Kevat-2023-1.jpg", "Rymattyla-Syksy-2022-Talvi-Kevat-2023-2.jpg"] },
         { validFrom: "2023-05-08", validTo: "2023-09-24", images:["Rymattyla-Ya-Isla-kesa-2023-1.jpg", "Rymattyla-Ya-Isla-kesa-2023-2.jpg"] },
+        { validFrom: "2023-09-25", validTo: "2024-05-05", images:["Rymattyla-Ya-Isla-syksy-2023-talvi-kevat-2024-1.jpg", "Rymattyla-Ya-Isla-syksy-2023-talvi-kevat-2024-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1439,7 +1448,7 @@ fdata = {
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["inion-lisareitti-kesa-1.6.2023-31.8.2023.jpg"] },
-        { validFrom: "2023-09-01", validTo: "2023-12-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
+        { validFrom: "2023-09-01", validTo: "2024-05-31", images:["inion-lisareitti-talvi-1.9.2023-31.5.2024.jpg"] },
       ],
     },
     utorutt: { 
@@ -1448,6 +1457,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/uto-route.html",
       tables: [
         { validFrom: "2023-06-05", validTo: "2023-09-03", images:["uton-reitti-5.6.-3.9.2023.jpg"] },
+        { validFrom: "2023-09-04", validTo: "2024-06-03", images:["uton-reitti-4.9.2023-3.6.2024.jpg"] },
       ],
     },
     korporutt: {
@@ -1455,6 +1465,7 @@ fdata = {
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-05-31", images:["Fisko-talviaikataulu-1.9.2022-31.5.2023-002-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["Fisko-kesaaikataulu-2023.jpg"] },
+        { validFrom: "2023-09-01", validTo: "2024-05-31", images:["Fisko-talviaikataulu-1.9.2023-31.5.2024.jpg"] },
       ],
     },
     nagunorra: {
@@ -1463,6 +1474,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-innamo.html",
       tables: [
         { validFrom: "2023-05-12", validTo: "2023-09-03", images:["nauvon-pohjoinen-reitti-12.5.-3.9.2023.jpg"] },
+        { validFrom: "2023-09-04", validTo: "2024-05-15", images:["nauvon-pohjoinen-reitti-1.5.-11.5.2023-ja-4.9.2023-15.5.2024.jpg"] },
       ],
     },
     nagutvar: {
@@ -1472,6 +1484,7 @@ fdata = {
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["nauvon-poikittainen-reitti-1.1.-31.5.2023-1.jpg"] },
         { validFrom: "2023-06-05", validTo: "2023-08-13", images:["nauvon-poikittainen-reitti-5.6.-13.8.2023.jpg"] },
+        { validFrom: "2023-08-14", validTo: "2024-06-02", images:["nauvon-poikittainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1493,6 +1506,7 @@ fdata = {
       tables: [
         { validFrom: "2022-08-15", validTo: "2023-06-03", images:["Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-1.jpg", "Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-2.jpg"] },
         { validFrom: "2023-06-04", validTo: "2023-08-13", images:["Ms-Stella-Kesa-2023-1.jpg", "Ms-Stella-Kesa-2023-2.jpg"] },
+        { validFrom: "2023-08-14", validTo: "2024-06-01", images:["Hiittinen-Syksy-2023-Talvi-Kevat-20241-1.jpg", "Hiittinen-Syksy-2023-Talvi-Kevat-20241-2.jpg"] },
       ],
     },
     hitisalva: { 
@@ -1503,6 +1517,7 @@ fdata = {
       tables: [
         { validFrom: "2022-08-15", validTo: "2023-06-04", images:["Alva-syksy-22-1.jpg"]},
         { validFrom: "2023-06-05", validTo: "2023-08-13", images:["Alva-kesa-2023.jpg"]},
+        { validFrom: "2023-08-14", validTo: null, images:["Alva-syksy-23.jpg"]},
       ],
     },
     pargasrutt: {
@@ -1512,6 +1527,7 @@ fdata = {
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-05-31", images: ["viken-1.9.2022-31.5.2023-1.jpg"]},
         { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["paraisten-reittialue-1.6.-31.8.2023.jpg"]},
+        { validFrom: "2023-09-01", validTo: "2024-05-31", images: ["paraisten-reittialue-1.9.2023-31.5.2024.jpg"]},
       ]
     },
 
