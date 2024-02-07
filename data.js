@@ -76,7 +76,7 @@ fdata = {
     alfageln: {
       name: "M/S Alfågeln",
       features: { access: true, cafe: true },
-      capacity: { persons: 244, cars: 38, trucks: 4 },
+      capacity: { persons: 244, cars: 36, trucks: 4 },
       contact: {
         phones: ['+358 (0)40 768 2108',{name: 'Café', tel: '+358 (0)40 637 8500'}]
       },
@@ -94,15 +94,15 @@ fdata = {
       features: { access: true, cafe: true },
       capacity: { persons: 250, cars: 38, trucks: 4 },
       contact: {
-        phones: ['+358 (0)40 0330 455', {name: 'Café', tel: '+358 (0)40 7658 453'}]
+        phones: ['+358 (0)40 0330 455', {name: 'Café', tel: '+358 (0)400 296 222'}]
       },
     },
     adan: {
       name: "M/S Ådan",
       features: { access: true, cafe: true },
-      capacity: { persons: 145, cars: 42, trucks: 4 },
+      capacity: { persons: 145, cars: 38, trucks: 4 },
       contact: {
-        phones: ['+358 (0)40 4879 205']
+        phones: ['+358 (0)40 4879 205', {name: 'Café', tel: '+358 (0)401 965 771'}]
       },
     },
     doppingen: {
@@ -122,7 +122,7 @@ fdata = {
       },
     },
     tuuli: {
-      name: "M/S Tuuli",
+      name: "Enklingelinjens färja",
       features: { access: false, cafe: false },
       capacity: { persons: 60, cars: 14, trucks: 2 },
       contact: {
@@ -143,6 +143,14 @@ fdata = {
       capacity: { persons: 99, cars: 41, trucks: 3 },
       contact: {
         phones: ['+358 (0)40 4840 352']
+      },
+    },
+    mergus: {
+      name: "M/S Mergus",
+      features: { access: true, cafe: false },
+      capacity: { persons: 99, cars: 26, trucks: 2 },
+      contact: {
+        phones: ['+358 400 493 555']
       },
     },
     angosundslinjen: {
@@ -272,14 +280,6 @@ fdata = {
         // phones: ['+358 400 114 291', { name: "Café Stella", tel: "+358 400 611 994"}],
         // fb: { name: "Café Stella", uri: "https://www.facebook.com/cafestellakorpo" },
         phones: ['+358 400 114 291'],
-      },
-    },
-    mergus: {
-      name: "M/S Mergus",
-      features: { },
-      capacity: { cars: 27 },
-      contact: {
-        phones: ['+358 400 533 461']
       },
     },
     mossala: {
@@ -1192,97 +1192,91 @@ fdata = {
     foglolinjen: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-      { validFrom: "2023-01-01", validTo: "2023-05-31", images: ["foglo_28-29-1-0.jpg"]},
-      { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["foglo_28-29-1-1.jpg"]},
-      { validFrom: "2023-09-01", validTo: "2023-12-31", images: ["foglo_28-29-1-0.jpg"]},
+      { validFrom: "2024-01-01", validTo: "2024-05-31", images: ["Skargardsguiden_TURLISTOR_2024-30.jpg"]},
+      { validFrom: "2024-06-01", validTo: "2024-08-31", images: ["Skargardsguiden_TURLISTOR_2024-31.jpg"]},
+      { validFrom: "2024-09-01", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-30.jpg"]},
     ],
     },
     norralinjen: {
       specifier: "Hummelvik - Torsholma, M/S Alfågeln",
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-      { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_hummelvik_30-35-1-0.jpg", "norra_hummelvik_30-35-1-1.jpg"]},
-      { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_hummelvik_30-35-2-0.jpg", "norra_hummelvik_30-35-2-1.jpg"]},
-      { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["norra_hummelvik_30-35-3-0.jpg", "norra_hummelvik_30-35-3-1.jpg"]},
-      { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["norra_hummelvik_30-35-2-0.jpg", "norra_hummelvik_30-35-2-1.jpg"]},
-      { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["norra_hummelvik_30-35-1-0.jpg", "norra_hummelvik_30-35-1-1.jpg"]},
+      { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-32.jpg", "Skargardsguiden_TURLISTOR_2024-33.jpg"]},
+      { validFrom: "2024-29-04", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-34.jpg", "Skargardsguiden_TURLISTOR_2024-35.jpg"]},
+      { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-36.jpg", "Skargardsguiden_TURLISTOR_2024-37.jpg"]},
+      { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-34.jpg", "Skargardsguiden_TURLISTOR_2024-35.jpg"]},
+      { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-32.jpg", "Skargardsguiden_TURLISTOR_2024-33.jpg"]},
   ],
     },
     enklingelinjen: {
-      specifier: "Enklinge - Kumlinge, M/S Tuuli",
+      specifier: "Enklinge - Kumlinge",
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-06-08", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["enklinge-kumlinge_52-54-1-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-12-31", images: ["enklinge-kumlinge_52-54-1-0.jpg", "enklinge-kumlinge_52-54-2-0.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-54.jpg", "Skargardsguiden_TURLISTOR_2024-56.jpg"]},
+        { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-55.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-54.jpg", "Skargardsguiden_TURLISTOR_2024-56.jpg"]},
       ],
     },
     brandokumlingelinjen: {
-      specifier: "Enklinge - Torsholma, M/S Ejdern",
+      specifier: "Kumlinge - Torsholma, M/S Ejdern",
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["brando-kumlinge_40-45-1-0.jpg", "brando-kumlinge_40-45-1-1.jpg"]},
-        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["brando-kumlinge_40-45-2-0.jpg", "brando-kumlinge_40-45-2-1.jpg"]},
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["brando-kumlinge_40-45-3-0.jpg", "brando-kumlinge_40-45-3-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["brando-kumlinge_40-45-2-0.jpg", "brando-kumlinge_40-45-2-1.jpg"]},
-        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["brando-kumlinge_40-45-1-0.jpg", "brando-kumlinge_40-45-1-1.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-42.jpg", "Skargardsguiden_TURLISTOR_2024-43.jpg"]},
+        { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-44.jpg", "Skargardsguiden_TURLISTOR_2024-45.jpg"]},
+        { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-46.jpg", "Skargardsguiden_TURLISTOR_2024-47.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-44.jpg", "Skargardsguiden_TURLISTOR_2024-45.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-42.jpg", "Skargardsguiden_TURLISTOR_2024-43.jpg"]},
           ],
     },
     avajurmo: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["ava-jurmo_46-51-1-0.jpg", "ava-jurmo_46-51-1-1.jpg"]},
-        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["ava-jurmo_46-51-2-0.jpg", "ava-jurmo_46-51-2-1.jpg"]},
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["ava-jurmo_46-51-3-0.jpg", "ava-jurmo_46-51-3-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["ava-jurmo_46-51-2-0.jpg", "ava-jurmo_46-51-2-1.jpg"]},
-        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["ava-jurmo_46-51-1-0.jpg", "ava-jurmo_46-51-1-1.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-48.jpg", "Skargardsguiden_TURLISTOR_2024-49.jpg"]},
+        { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-50.jpg", "Skargardsguiden_TURLISTOR_2024-51.jpg"]},
+        { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-52.jpg", "Skargardsguiden_TURLISTOR_2024-53.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-50.jpg", "Skargardsguiden_TURLISTOR_2024-51.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-48.jpg", "Skargardsguiden_TURLISTOR_2024-49.jpg"]},
       ],
     },
     osnasava: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["norra_osnas_36-39-1-0.jpg", "norra_osnas_36-39-1-1.jpg"]},
-        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["norra_osnas_36-39-2-0.jpg"]},
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["norra_osnas_36-39-2-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["norra_osnas_36-39-2-0.jpg"]},
-        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["norra_osnas_36-39-1-0.jpg", "norra_osnas_36-39-1-1.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-38.jpg", "Skargardsguiden_TURLISTOR_2024-39.jpg"]},
+        { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-40.jpg"]},
+        { validFrom: "2024-06-09", validTo: "2024-08-15", images: ["Skargardsguiden_TURLISTOR_2024-41.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-40.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-38.jpg", "Skargardsguiden_TURLISTOR_2024-39.jpg"]},
       ],
     },
     sodralinjen: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-05", images: ["sodra_16-25-1-0.jpg", "sodra_16-25-1-1.jpg"]},
-        { validFrom: "2023-04-06", validTo: "2023-04-10", images: ["sodra_16-25-5-0.jpg"]},
-        { validFrom: "2023-04-11", validTo: "2023-04-30", images: ["sodra_16-25-1-0.jpg", "sodra_16-25-1-1.jpg"]},
-        { validFrom: "2023-05-01", validTo: "2023-06-11", images: ["sodra_16-25-2-0.jpg", "sodra_16-25-2-1.jpg"]},
-        { validFrom: "2023-06-12", validTo: "2023-06-21", images: ["sodra_16-25-3-0.jpg", "sodra_16-25-3-1.jpg", "sodra_16-25-4-0.jpg", "sodra_16-25-4-1.jpg"]},
-        { validFrom: "2023-06-22", validTo: "2023-06-26", images: ["sodra_16-25-3-1.jpg", "sodra_16-25-4-1.jpg"]},
-        { validFrom: "2023-06-27", validTo: "2023-08-15", images: ["sodra_16-25-3-0.jpg", "sodra_16-25-3-1.jpg", "sodra_16-25-4-0.jpg", "sodra_16-25-4-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["sodra_16-25-2-0.jpg", "sodra_16-25-2-1.jpg"]},
-        { validFrom: "2023-10-02", validTo: "2023-12-23", images: ["sodra_16-25-1-0.jpg", "sodra_16-25-1-1.jpg"]},
-        { validFrom: "2023-12-24", validTo: "2023-12-31", images: ["sodra_16-25-5-1.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-03-26", images: ["Skargardsguiden_TURLISTOR_2024-18.jpg", "Skargardsguiden_TURLISTOR_2024-19.jpg"]},
+        { validFrom: "2024-03-27", validTo: "2024-04-01", images: ["Skargardsguiden_TURLISTOR_2024-24.jpg"]},
+        { validFrom: "2024-04-02", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-18.jpg", "Skargardsguiden_TURLISTOR_2024-19.jpg"]},
+        { validFrom: "2024-04-29", validTo: "2024-06-09", images: ["Skargardsguiden_TURLISTOR_2024-20.jpg", "Skargardsguiden_TURLISTOR_2024-21.jpg"]},
+        { validFrom: "2024-06-10", validTo: "2024-06-19", images: ["Skargardsguiden_TURLISTOR_2024-22.jpg", "Skargardsguiden_TURLISTOR_2024-23.jpg", "Skargardsguiden_TURLISTOR_2024-.jpg", "Skargardsguiden_TURLISTOR_2024-.jpg"]},
+        { validFrom: "2024-06-20", validTo: "2024-06-24", images: ["Skargardsguiden_TURLISTOR_2024-25.jpg"]},
+        { validFrom: "2024-06-25", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-22.jpg", "Skargardsguiden_TURLISTOR_2024-23.jpg", "Skargardsguiden_TURLISTOR_2024-.jpg", "Skargardsguiden_TURLISTOR_2024-.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-20.jpg", "Skargardsguiden_TURLISTOR_2024-21.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-23", images: ["Skargardsguiden_TURLISTOR_2024-18.jpg", "Skargardsguiden_TURLISTOR_2024-19.jpg"]},
+        { validFrom: "2024-12-24", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-26.jpg"]},
       ],
     },
     tvarlinjen: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2022-01-01", validTo: "2022-04-24", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
-        { validFrom: "2022-04-25", validTo: "2022-06-08", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
-        { validFrom: "2022-06-09", validTo: "2022-08-15", images: ["Skargardsguiden_TURLISTOR_2022-16.jpg", "Skargardsguiden_TURLISTOR_2022-17.jpg"]},
-        { validFrom: "2022-08-16", validTo: "2022-10-02", images: ["Skargardsguiden_TURLISTOR_2022-14.jpg", "Skargardsguiden_TURLISTOR_2022-15.jpg"]},
-        { validFrom: "2022-10-03", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-12.jpg", "Skargardsguiden_TURLISTOR_2022-13.jpg"]},
-        { validFrom: "2023-01-01", validTo: "2023-04-30", images: ["tvargaende_10-15-1-0.jpg", "tvargaende_10-15-1-1.jpg"]},
-        { validFrom: "2023-05-01", validTo: "2023-06-08", images: ["tvargaende_10-15-2-0.jpg", "tvargaende_10-15-2-1.jpg"]},
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images: ["tvargaende_10-15-3-0.jpg", "tvargaende_10-15-3-1.jpg"]},
-        { validFrom: "2023-08-16", validTo: "2023-10-01", images: ["tvargaende_10-15-2-0.jpg", "tvargaende_10-15-2-1.jpg"]},
-        { validFrom: "2023-10-02", validTo: "2023-12-31", images: ["tvargaende_10-15-1-0.jpg", "tvargaende_10-15-1-1.jpg"]},
+        { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-12.jpg", "Skargardsguiden_TURLISTOR_2024-13.jpg"]},
+        { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-14.jpg", "Skargardsguiden_TURLISTOR_2024-15.jpg"]},
+        { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-14.jpg", "Skargardsguiden_TURLISTOR_2024-15.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-12.jpg", "Skargardsguiden_TURLISTOR_2024-13.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-      { validFrom: "2022-01-01", validTo: "2022-12-31", images: ["Skargardsguiden_TURLISTOR_2022-09.jpg"]},
-      { validFrom: "2023-01-01", validTo: "2023-12-31", images: ["teckenforklaring_vajerfarjor_6-7-1-1.jpg"]},
+      { validFrom: "2024-01-01", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-9.jpg"]},
     ],
     },
     seglingelinjen: {
@@ -1789,7 +1783,7 @@ fdata = {
       specifier: "Långnäs - Överö - Sottunga - Snäckö",
       piers: ["Långnäs", "Bergö", "Överö", "Sottunga", "Snäckö" ],
       operator: "alandstrafiken",
-      vessels: ["odin"],
+      vessels: ["mergus"],
       features: {
         interval_L: ["times.aday", "1-2"],
         cost_L: "cost.applies",
@@ -2321,7 +2315,7 @@ fdata = {
       operator: "skarpnato",
       vessels: ["silvana"],
       features: {
-          interval_L: ["times.aweek", "6"],
+          interval_L: ["times.aday", "1–2"],
           order_L: ["order.extra"],
           duration_L: ["duration.minutes", "25"],
           seasonal_L: ["seasonal.summers"],
