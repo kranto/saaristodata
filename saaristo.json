@@ -2268,7 +2268,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "saaristolinja_roolaseili",
         "ssubtype": "conn2m"
       },
@@ -5016,7 +5016,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stype": "pier",
+        "stype": "pier_obsolete",
         "ref": "Röölä",
         "ssubtype": "4",
         "labelAnchor": {"dir": "NW", "x":-10 , "y":0 }

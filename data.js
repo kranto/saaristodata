@@ -651,6 +651,13 @@ fdata = {
       contact: {
       }
     },
+    sommarskar: {
+      name: "M/S Sommarskär",
+      features: { },
+      capacity: { persons: 38 },
+      contact: {
+      }
+    },
     vidskar: {
       name: "M/S Vidskär",
       features: { cafe: true },
@@ -2460,30 +2467,34 @@ fdata = {
       specifier_en: "Turku - Själö - Nagu",
       piers: ["TurkuVitharun", "Seili", "Nagu"],
       operator: "vitharun",
-      vessels: ["norrskar"],
+      vessels: ["norrskar", "sommarskar"],
       features: {
-        interval_L: "times.onceaday",
+        interval_fi: "Turku - Seili - Nauvo kerran päivässä,<br/>Seili - Nauvo lisäksi 1-5 kertaa päivässä",
+        interval_sv: "Åbo - Själö - Nagu en gång om dagen,<br/>Själö - Nagu ytterligare 1-5 gånger om dagen",
+        interval_en: "Turku - Själö - Nagu once a day,<br/>Själö - Nagu  additional 1-5 times a day",
         cost_L: "cost.applies",
-        duration_L: ["duration.hoursminutes" , "2", "15"],
+        duration_fi: "Turku - Seili 1 tunti 45 minuuttia,<br/>Seili - Nauvo 30 minuuttia",
+        duration_sv: "Åbo - Själö 1 timme 45 minuter,<br/>Själö - Nagu 30 minuter",
+        duration_en: "Turku - Själö 1 hour 45 minutes,<br/>Själö - Nagu 30 minutes",
         seasonal_L: "seasonal.summers",
       },
       timetables: ["saaristolinja"]
     },
-    saaristolinja_roolaseili: {
-      name: "Saaristolinja / Skärgårdslinjen",
-      specifier_fi: "Röölä - Seili - Nauvo",
-      specifier: "Röölä - Själö - Nagu",
-      piers: ["Röölä", "Seili", "Nagu"],
-      operator: "vitharun",
-      vessels: ["vidskar"],
-      features: {
-        interval_L: ["times.aday", "2"],
-        cost_L: "cost.applies",
-        duration_L: ["duration.hoursminutes" , "1", "45"],
-        seasonal_L: "seasonal.summers",
-      },
-      timetables: ["saaristolinja"]
-    },
+    // saaristolinja_roolaseili: {
+    //   name: "Saaristolinja / Skärgårdslinjen",
+    //   specifier_fi: "Röölä - Seili - Nauvo",
+    //   specifier: "Röölä - Själö - Nagu",
+    //   piers: ["Röölä", "Seili", "Nagu"],
+    //   operator: "vitharun",
+    //   vessels: ["vidskar"],
+    //   features: {
+    //     interval_L: ["times.aday", "2"],
+    //     cost_L: "cost.applies",
+    //     duration_L: ["duration.hoursminutes" , "1", "45"],
+    //     seasonal_L: "seasonal.summers",
+    //   },
+    //   timetables: ["saaristolinja"]
+    // },
     naantalikustavi: {
       obsolete: true,
       name: "Naantali - Velkua - Taivassalo - Kustavi",
