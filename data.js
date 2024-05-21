@@ -1323,16 +1323,15 @@ fdata = {
         { validFrom: "2023-01-01", validTo: "2023-05-11", images: ["inio-kustavi-sterna-1.1.-11.5.2023-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["inio-kustavi-kesaaikataulu-12.5.-3.9.2023.jpg"]},
         { validFrom: "2023-09-04", validTo: "2023-12-31", images: ["inio-kustavi-aura-talvi-4.9.-31.12.2023.jpg"]},
+        { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["inio-kustavi-aura-kesa-10.5.-8.9.2024.jpg"]},
       ]
     },
     houtskarinio: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/saariston-rengastie-houtskari-inio.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/skargardens-ringvag-houtskar-inio.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-houtskari-inio.html#timetables",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-trail-houtskari-inio.html#timetables",
       tables: [
-        { validFrom: "2021-05-14", validTo: "2021-08-29", images: ["aikataulu-2020-ja-2021-houtskari-inio-antonia-1.jpg"]},
-        { validFrom: "2022-05-13", validTo: "2022-09-04", images: ["saariston-rengastie-houtskari-inio-antonia-13.5.-4.9.2022-1.jpg"]},
-        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["saariston-rengastie-houtskari-inio-antonia-12.5.-3.9.2023.jpg"]},
+        { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["saariston-rengastie-houtskari-inio-antonia-10.5.-8.9.2024.jpg"]},
       ],
     },
     korpohoutskar: {
@@ -1427,6 +1426,7 @@ fdata = {
         { validFrom: "2022-09-26", validTo: "2023-05-07", images:["Rymattyla-Syksy-2022-Talvi-Kevat-2023-1.jpg", "Rymattyla-Syksy-2022-Talvi-Kevat-2023-2.jpg"] },
         { validFrom: "2023-05-08", validTo: "2023-09-24", images:["Rymattyla-Ya-Isla-kesa-2023-1.jpg", "Rymattyla-Ya-Isla-kesa-2023-2.jpg"] },
         { validFrom: "2023-09-25", validTo: "2024-05-05", images:["Rymattyla-Ya-Isla-syksy-2023-talvi-kevat-2024-1.jpg", "Rymattyla-Ya-Isla-syksy-2023-talvi-kevat-2024-2.jpg"] },
+        { validFrom: "2024-05-06", validTo: "2024-09-22", images:["Rymattyla-Ya-Isla-kesa-2024-1.jpg", "Rymattyla-Ya-Isla-kesa-2024-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1508,6 +1508,7 @@ fdata = {
         { validFrom: "2022-08-15", validTo: "2023-06-03", images:["Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-1.jpg", "Hiittinen-Syksy-2022-Talvi-Kevat-2023-ei-pyhat-2.jpg"] },
         { validFrom: "2023-06-04", validTo: "2023-08-13", images:["Ms-Stella-Kesa-2023-1.jpg", "Ms-Stella-Kesa-2023-2.jpg"] },
         { validFrom: "2023-08-14", validTo: "2024-06-01", images:["Hiittinen-Syksy-2023-Talvi-Kevat-20241-1.jpg", "Hiittinen-Syksy-2023-Talvi-Kevat-20241-2.jpg"] },
+        { validFrom: "2024-06-02", validTo: "2024-08-11", images:["Ms-Stella-Kesa-2024-1.jpg", "Ms-Stella-Kesa-2024-2.jpg"] },
       ],
     },
     hitisalva: { 
