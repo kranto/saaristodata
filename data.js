@@ -1392,6 +1392,9 @@ fdata = {
       link_sv: "https://www.ostern.fi/sv/tidtabell/",
       link_en: "https://www.ostern.fi/en/schedule/",
       tables: [
+        { validFrom: "2024-05-10", validTo: "2024-06-30", images_fi: ["ostern2024_fi.jpg"], images: ["ostern2024_sv.jpg"], images_en: ["ostern2024_en.jpg"]},        
+        { validFrom: "2024-07-01", validTo: "2024-07-31", images_fi: ["ostern2024_juli_fi.jpg"], images: ["ostern2024_juli_sv.jpg"], images_en: ["ostern2024_juli_en.jpg"]},        
+        { validFrom: "2024-08-01", validTo: "2024-09-01", images_fi: ["ostern2024_fi.jpg"], images: ["ostern2024_sv.jpg"], images_en: ["ostern2024_en.jpg"]},        
       ],
     },
     nauvohankaturku: {
