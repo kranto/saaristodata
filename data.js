@@ -1382,6 +1382,7 @@ fdata = {
         { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
         { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
+        { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["velkuan-reitti-10.5.-8.9.2024.jpg"]},
       ],
     },
 
@@ -1406,6 +1407,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen.html#timetables",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2023-1.jpg"]},
+        { validFrom: "2024-04-01", validTo: "2024-12-31", images: ["kasnas-hiittinen-aurora-1.4.-31.12.2024.jpg"]},
       ],
     },
     velkuanreitti: {
@@ -1415,7 +1417,8 @@ fdata = {
       tables: [
         { validFrom: "2022-09-16", validTo: "2023-05-11", images: ["velkuan-reitti-talvi-2022-2023-1.jpg"]},
         { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
-        { validFrom: "2023-09-04", validTo: "2024-05-15", images: ["velkuan-reitti-4.9.2023-15.5.2024.jpg"]},
+        { validFrom: "2023-09-04", validTo: "2024-05-09", images: ["velkuan-reitti-4.9.2023-15.5.2024.jpg"]},
+        { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["velkuan-reitti-10.5.-8.9.2024.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1439,6 +1442,9 @@ fdata = {
         { validFrom: "2023-06-01", validTo: "2023-06-08", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
         { validFrom: "2023-06-09", validTo: "2023-08-15", images:["houtskarin-reitti-kesa-9.6.2023-15.8.2023-1.jpg", "houtskarin-reitti-kesa-9.6.2023-15.8.2023-2.jpg"] },
         { validFrom: "2023-08-16", validTo: "2024-05-31", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
+        { validFrom: "2024-06-01", validTo: "2024-06-07", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
+        { validFrom: "2024-06-08", validTo: "2024-08-14", images:["houtskarin-reitti-8.6.-14.8.2024-1.jpg", "houtskarin-reitti-8.6.-14.8.2024-2.jpg"] },
+        { validFrom: "2024-08-15", validTo: "2025-05-31", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1450,6 +1456,7 @@ fdata = {
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["inion-lisareitti-kesa-1.6.2023-31.8.2023.jpg"] },
         { validFrom: "2023-09-01", validTo: "2024-05-31", images:["inion-lisareitti-talvi-1.9.2023-31.5.2024.jpg"] },
+        { validFrom: "2024-06-01", validTo: "2024-08-31", images:["inion-lisareitti-kesa-1.6.2024-31.8.2024.jpg"] },
       ],
     },
     utorutt: { 
@@ -1458,7 +1465,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/uto-route.html",
       tables: [
         { validFrom: "2023-06-05", validTo: "2023-09-03", images:["uton-reitti-5.6.-3.9.2023.jpg"] },
-        { validFrom: "2023-09-04", validTo: "2024-06-03", images:["uton-reitti-4.9.2023-3.6.2024.jpg"] },
+        { validFrom: "2023-09-04", validTo: "2024-06-02", images:["uton-reitti-4.9.2023-3.6.2024.jpg"] },
+        { validFrom: "2024-06-03", validTo: "2024-09-01", images:["uton-reitti-3.6.-1.9.2024.jpg"] },
       ],
     },
     korporutt: {
@@ -1467,6 +1475,7 @@ fdata = {
         { validFrom: "2022-09-01", validTo: "2023-05-31", images:["Fisko-talviaikataulu-1.9.2022-31.5.2023-002-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["Fisko-kesaaikataulu-2023.jpg"] },
         { validFrom: "2023-09-01", validTo: "2024-05-31", images:["Fisko-talviaikataulu-1.9.2023-31.5.2024.jpg"] },
+        { validFrom: "2024-06-01", validTo: "2024-08-31", images:["Fisko-kesaaikataulu-1.6.-31.8.2024-1.jpg", "Fisko-kesaaikataulu-1.6.-31.8.2024-2.jpg"] },
       ],
     },
     nagunorra: {
@@ -1476,6 +1485,7 @@ fdata = {
       tables: [
         { validFrom: "2023-05-12", validTo: "2023-09-03", images:["nauvon-pohjoinen-reitti-12.5.-3.9.2023.jpg"] },
         { validFrom: "2023-09-04", validTo: "2024-05-15", images:["nauvon-pohjoinen-reitti-1.5.-11.5.2023-ja-4.9.2023-15.5.2024.jpg"] },
+        { validFrom: "2024-05-10", validTo: "2024-09-08", images:["nauvon-pohjoinen-reitti-10.5.-8.9.2024.jpg"] },
       ],
     },
     nagutvar: {
@@ -1486,6 +1496,7 @@ fdata = {
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["nauvon-poikittainen-reitti-1.1.-31.5.2023-1.jpg"] },
         { validFrom: "2023-06-05", validTo: "2023-08-13", images:["nauvon-poikittainen-reitti-5.6.-13.8.2023.jpg"] },
         { validFrom: "2023-08-14", validTo: "2024-06-02", images:["nauvon-poikittainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
+        { validFrom: "2024-06-03", validTo: "2024-09-29", images:["nauvon-poikittainen-reitti-3.6-29.9.2024.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1497,6 +1508,7 @@ fdata = {
         { validFrom: "2023-05-01", validTo: "2023-06-04", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
         { validFrom: "2023-06-05", validTo: "2023-08-13", images:["nauvon-etelainen-reitti-5.6.-13.8.2023.jpg"] },
         { validFrom: "2023-08-14", validTo: "2024-06-02", images:["nauvon-etelainen-reitti-1.5.-4.6.2023-ja-14.8.2023-2.6.2024.jpg"] },
+        { validFrom: "2024-06-03", validTo: "2024-09-29", images:["nauvon-etelainen-reitti-3.6.-29.9.2024.jpg"] },
       ],
     },
     hitisstella: {
@@ -1530,6 +1542,7 @@ fdata = {
         { validFrom: "2022-09-01", validTo: "2023-05-31", images: ["viken-1.9.2022-31.5.2023-1.jpg"]},
         { validFrom: "2023-06-01", validTo: "2023-08-31", images: ["paraisten-reittialue-1.6.-31.8.2023.jpg"]},
         { validFrom: "2023-09-01", validTo: "2024-05-31", images: ["paraisten-reittialue-1.9.2023-31.5.2024.jpg"]},
+        { validFrom: "2024-06-01", validTo: "2024-08-31", images: ["paraisten-reittialue-1.6.-31.8.2024.jpg"]},
       ]
     },
 
