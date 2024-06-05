@@ -1439,7 +1439,7 @@ fdata = {
       name: "Houtskarin reitti - M/S Finnö", name_sv: "Houtskär rutt - M/S Finnö", name_en: "Houtskär Route - M/S Finnö", specifier: "",
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti-finno.html",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten-finno.html",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-ruote-finno.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-route-finno.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["houtskarin-reitti-1.1.-31.5.2023-1.jpg", "houtskarin-reitti-1.1.-31.5.2023-2.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-06-08", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
@@ -1454,7 +1454,7 @@ fdata = {
       name: "Iniön lisäreitti - M/S Kivimo", name_sv: "Iniö tilläggsrutt - M/S Kivimo", name_en: "Iniö Additional Route - M/S Kivimo", specifier: "",
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti-kivimo.html",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt-kivimo.html",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-inio-additional-route-kivimo.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route-kivimo.html",
       tables: [
         { validFrom: "2023-01-01", validTo: "2023-05-31", images:["inion-lisareitti-1.1.-31.5.2023_1.9.-31.12.2023-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["inion-lisareitti-kesa-1.6.2023-31.8.2023.jpg"] },
@@ -1474,6 +1474,7 @@ fdata = {
     },
     korporutt: {
       link: "https://saaristolinjat.fi/#reittialue",
+      link_sv: "https://saaristolinjat.fi/?lang=sv#reittialue",
       tables: [
         { validFrom: "2022-09-01", validTo: "2023-05-31", images:["Fisko-talviaikataulu-1.9.2022-31.5.2023-002-1.jpg"] },
         { validFrom: "2023-06-01", validTo: "2023-08-31", images:["Fisko-kesaaikataulu-2023.jpg"] },
@@ -1673,6 +1674,8 @@ fdata = {
     },
     hankobengtskar: {
       link: "https://marinelines.fi/fi/risteilyt/bengtskar",
+      link_sv: "https://marinelines.fi/sv/bengtskar-2/",
+      link_en: "https://marinelines.fi/en/bengtskar-lighthouse/",
       tables: [
         { validFrom: "2018-06-19", validTo: "2018-08-25", images: ["Summersea2018.jpeg"]},
       ],
