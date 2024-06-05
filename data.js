@@ -1642,7 +1642,7 @@ fdata = {
       link_en: "http://lautta.net/db/aikataulut/sorpo/sorpo.php?lang=en",
     },
     pettu: {
-      link: "http://www.petunlossi.com/lossi.html",
+      link: "https://petunlossi.com/",
     },
     hankokasnas: {
       link: "https://www.wilsoncharter.fi/hanko-kasnas-ja-kasnas-oro",
