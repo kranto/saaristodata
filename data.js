@@ -1283,7 +1283,7 @@ fdata = {
     alandsvajerfarjor: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-      { validFrom: "2024-01-01", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-9.jpg"]},
+      { validFrom: "2024-01-01", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-09.jpg"]},
     ],
     },
     seglingelinjen: {
