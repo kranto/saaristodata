@@ -1225,7 +1225,7 @@ fdata = {
       ],
     },
     brandokumlingelinjen: {
-      specifier: "Kumlinge - Torsholma, M/S Ejdern",
+      specifier: "Kumlinge - Torsholma",
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
         { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-42.jpg", "Skargardsguiden_TURLISTOR_2024-43.jpg"]},
@@ -1745,7 +1745,7 @@ fdata = {
       specifier: "Hummelvik - Torsholma",
       piers: ["Hummelvik", "Enklinge", "Kumlinge", "Asterholma", "Lappo", "Torsholma"],
       operator: "alandstrafiken",
-      vessels: ["alfageln", "ejdern", "tuuli", "knipan"],
+      vessels: ["alfageln", "knipan", "tuuli"],
       features: {
         interval_L: ["times.adaytworoutes", "", "2-4", "Enklinge - Kumlinge", "10"],
         cost_L: "cost.applies",
@@ -1809,18 +1809,15 @@ fdata = {
       name: "Tvärgående linjen",
       name_fi: "Poikittainen linja",
       name_en: "Cross line",
-      specifier: "Långnäs - Överö - Sottunga - Snäckö/Kumlinge",
-      piers: ["Långnäs", "Bergö", "Överö", "Sottunga", "Snäckö", "Kumlinge"],
+      specifier: "Långnäs - Överö - Sottunga - Snäckö",
+      piers: ["Långnäs", "Bergö", "Överö", "Sottunga", "Snäckö"],
       operator: "alandstrafiken",
-      vessels: ["knipan", "ejdern"],
+      vessels: ["ejdern"],
       features: {
         interval_L: ["times.aday", "1-2"],
         cost_L: "cost.applies",
         duration_L: ["duration.hourminutes", "45"],
         order_L: ["order.pieronly", "Överö"],
-        limit: "<div>July 12–23, 2024 only Långnäs - Kumlinge (M/S Knipan)</div>",
-        limit_fi: "<div>12.7.–23.7.2024 vain Långnäs - Kumlinge (M/S Knipan)</div>",
-        limit_sv: "<div>12.7.–23.7.2024 bara Långnäs - Kumlinge (M/S Knipan)</div>"
       },
       notes: [
         { 

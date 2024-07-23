@@ -2043,19 +2043,6 @@
           "type": "Feature",
           "properties": {
             "stype": "leg",
-            "sname": "Bergö - Kumlinge",
-            "ssubtype": "conn2b"
-          },
-          "geometry": {
-            "coordinates": [[20.383192,60.159142],[20.390351,60.157833],[20.407345,60.155408],[20.437967,60.159829],[20.452807,60.183715],[20.722875,60.298459],[20.732011,60.305895],[20.758114,60.306865],[20.789437,60.290375]],
-            "type": "LineString"
-          },
-          "id": "d904501bdea86a915eef6160190cad8e"
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "stype": "leg",
             "sname": "Överö - Snäckö"
           },
           "geometry": {
