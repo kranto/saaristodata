@@ -1276,8 +1276,8 @@ fdata = {
         { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-12.jpg", "Skargardsguiden_TURLISTOR_2024-13.jpg"]},
         { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-14.jpg", "Skargardsguiden_TURLISTOR_2024-15.jpg"]},
         { validFrom: "2024-06-08", validTo: "2024-07-11", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
-        { validFrom: "2024-07-12", validTo: "2024-07-24", images: ["knipan2024.jpg"]},
-        { validFrom: "2024-07-23", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
+        { validFrom: "2024-07-12", validTo: "2024-07-23", images: ["knipan2024.jpg"]},
+        { validFrom: "2024-07-24", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
         { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-14.jpg", "Skargardsguiden_TURLISTOR_2024-15.jpg"]},
         { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-12.jpg", "Skargardsguiden_TURLISTOR_2024-13.jpg"]},
       ],  
@@ -1812,15 +1812,15 @@ fdata = {
       specifier: "Långnäs - Överö - Sottunga - Snäckö/Kumlinge",
       piers: ["Långnäs", "Bergö", "Överö", "Sottunga", "Snäckö", "Kumlinge"],
       operator: "alandstrafiken",
-      vessels: ["knipan", "ejder"],
+      vessels: ["knipan", "ejdern"],
       features: {
         interval_L: ["times.aday", "1-2"],
         cost_L: "cost.applies",
         duration_L: ["duration.hourminutes", "45"],
         order_L: ["order.pieronly", "Överö"],
-        limit: "<div>July 12–22 2024 only Långnäs - Kumlinge (M/S Knipan)</div>",
-        limit_fi: "<div>12.7.–22.7.2024 vain Långnäs - Kumlinge (M/S Knipan)</div>",
-        limit_sv: "<div>12.7.–22.7..2024 bara Långnäs - Kumlinge (M/S Knipan)</div>"
+        limit: "<div>July 12–23, 2024 only Långnäs - Kumlinge (M/S Knipan)</div>",
+        limit_fi: "<div>12.7.–23.7.2024 vain Långnäs - Kumlinge (M/S Knipan)</div>",
+        limit_sv: "<div>12.7.–23.7.2024 bara Långnäs - Kumlinge (M/S Knipan)</div>"
       },
       notes: [
         { 
