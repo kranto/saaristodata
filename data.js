@@ -65,6 +65,14 @@ fdata = {
         phones: ['+358 (0)40 0229 260']
       },
     },
+    bogoy: {
+      name: "M/S Bogoy",
+      features: { access: false, cafe: false },
+      capacity: { persons: 60, cars: 15 },
+      contact: {
+        phones: ['+358 (0)44 9808 297']
+      },
+    },
     skarven: {
       name: "M/S Skarven",
       features: { access: true, cafe: true },
@@ -1211,8 +1219,8 @@ fdata = {
       { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-32.jpg", "Skargardsguiden_TURLISTOR_2024-33.jpg"]},
       { validFrom: "2024-29-04", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-34.jpg", "Skargardsguiden_TURLISTOR_2024-35.jpg"]},
       { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-36.jpg", "Skargardsguiden_TURLISTOR_2024-37.jpg"]},
-      { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-34.jpg", "Skargardsguiden_TURLISTOR_2024-35.jpg"]},
-      { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-32.jpg", "Skargardsguiden_TURLISTOR_2024-33.jpg"]},
+      { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["alfageln_0-2-0.jpg", "alfageln_0-2-1.jpg"]},
+      { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["alfageln_0-1-0.jpg", "alfageln_0-1-1.jpg"]},
   ],
     },
     enklingelinjen: {
@@ -1231,8 +1239,8 @@ fdata = {
         { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-42.jpg", "Skargardsguiden_TURLISTOR_2024-43.jpg"]},
         { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-44.jpg", "Skargardsguiden_TURLISTOR_2024-45.jpg"]},
         { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-46.jpg", "Skargardsguiden_TURLISTOR_2024-47.jpg"]},
-        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-44.jpg", "Skargardsguiden_TURLISTOR_2024-45.jpg"]},
-        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-42.jpg", "Skargardsguiden_TURLISTOR_2024-43.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["bogoy-2-0.jpg", "bogoy-2-1.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["bogoy-1-0.jpg", "bogoy-1-1.jpg"]},
           ],
     },
     avajurmo: {
@@ -1241,8 +1249,8 @@ fdata = {
         { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-48.jpg", "Skargardsguiden_TURLISTOR_2024-49.jpg"]},
         { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-50.jpg", "Skargardsguiden_TURLISTOR_2024-51.jpg"]},
         { validFrom: "2024-06-08", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-52.jpg", "Skargardsguiden_TURLISTOR_2024-53.jpg"]},
-        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-50.jpg", "Skargardsguiden_TURLISTOR_2024-51.jpg"]},
-        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-48.jpg", "Skargardsguiden_TURLISTOR_2024-49.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["doppingen-2-0.jpg", "doppingen-2-1.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["doppingen-1-0.jpg", "doppingen-1-1.jpg"]},
       ],
     },
     osnasava: {
@@ -1251,8 +1259,8 @@ fdata = {
         { validFrom: "2024-01-01", validTo: "2024-04-28", images: ["Skargardsguiden_TURLISTOR_2024-38.jpg", "Skargardsguiden_TURLISTOR_2024-39.jpg"]},
         { validFrom: "2024-04-29", validTo: "2024-06-07", images: ["Skargardsguiden_TURLISTOR_2024-40.jpg"]},
         { validFrom: "2024-06-09", validTo: "2024-08-15", images: ["Skargardsguiden_TURLISTOR_2024-41.jpg"]},
-        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-40.jpg"]},
-        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-38.jpg", "Skargardsguiden_TURLISTOR_2024-39.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["adan_0-2-0.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["adan_0-1-0.jpg", "adan_0-1-1.jpg"]},
       ],
     },
     sodralinjen: {
@@ -1278,8 +1286,8 @@ fdata = {
         { validFrom: "2024-06-08", validTo: "2024-07-11", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
         { validFrom: "2024-07-12", validTo: "2024-07-23", images: ["knipan2024.jpg"]},
         { validFrom: "2024-07-24", validTo: "2024-08-14", images: ["Skargardsguiden_TURLISTOR_2024-16.jpg", "Skargardsguiden_TURLISTOR_2024-17.jpg"]},
-        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["Skargardsguiden_TURLISTOR_2024-14.jpg", "Skargardsguiden_TURLISTOR_2024-15.jpg"]},
-        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["Skargardsguiden_TURLISTOR_2024-12.jpg", "Skargardsguiden_TURLISTOR_2024-13.jpg"]},
+        { validFrom: "2024-08-15", validTo: "2024-09-29", images: ["ejdernjuli2024.skargardsguiden_turlistor_2024-2-0.jpg", "ejdernjuli2024.skargardsguiden_turlistor_2024-2-1.jpg"]},
+        { validFrom: "2024-09-30", validTo: "2024-12-31", images: ["ejdernjuli2024.skargardsguiden_turlistor_2024-1-0.jpg", "ejdernjuli2024.skargardsguiden_turlistor_2024-1-1.jpg"]},
       ],  
     },
     alandsvajerfarjor: {
@@ -1745,7 +1753,7 @@ fdata = {
       specifier: "Hummelvik - Torsholma",
       piers: ["Hummelvik", "Enklinge", "Kumlinge", "Asterholma", "Lappo", "Torsholma"],
       operator: "alandstrafiken",
-      vessels: ["alfageln", "knipan", "tuuli"],
+      vessels: ["alfageln", "bogoy", "tuuli"],
       features: {
         interval_L: ["times.adaytworoutes", "", "2-4", "Enklinge - Kumlinge", "10"],
         cost_L: "cost.applies",
