@@ -1714,7 +1714,7 @@
         "stype": "connection",
         "ref": "sodralinjen",
         "ssubtype": "conn2",
-        "color": "#00a000"
+        "color": "#3c854a"
       },
       "features": [
         {
@@ -1800,7 +1800,7 @@
         "stype": "connection",
         "ref": "foglolinjen",
         "ssubtype": "conn2",
-        "color": "#004d9d"
+        "color": "#34509f"
       },
       "features": [
         {
@@ -1824,7 +1824,7 @@
         "stype": "connection",
         "ref": "osnasava",
         "ssubtype": "conn2",
-        "color": "#db0a00"
+        "color": "#7a2736"
       },
       "features": [
         {
@@ -1848,7 +1848,7 @@
         "stype": "connection",
         "ref": "avajurmo",
         "ssubtype": "conn2",
-        "color": "#db0a00"
+        "color": "#7a2736"
       },
       "features": [
         {
@@ -1873,7 +1873,7 @@
         "stype": "connection",
         "ref": "norralinjen",
         "ssubtype": "conn2",
-        "color": "#db0a00"
+        "color": "#7a2736"
       },
       "features": [
         {
@@ -1947,7 +1947,7 @@
         "stype": "connection_obsolete",
         "ref": "asterholmalinjen",
         "ssubtype": "conn2",
-        "color": "#db0a00"
+        "color": "#7a2736"
       },
       "features": [
         {
@@ -1985,7 +1985,7 @@
         "stype": "connection",
         "ref": "tvarlinjen",
         "ssubtype": "conn2",
-        "color": "#f7c71a"
+        "color": "#c85534"
       },
       "features": [
         {
