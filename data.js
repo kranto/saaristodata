@@ -692,7 +692,7 @@ fdata = {
     summersea: {
       name: "M/S Summersea",
       features: { cafe: true },
-      capacity: { persons: 155, bikes: " " },
+      capacity: { persons: 155, bikes: 10 },
       contact: {
       }
     },
@@ -969,7 +969,16 @@ fdata = {
         www: 'https://marinelines.fi/fi',
         address: 'Korkeavuorenkatu 10 B 11, 10900 HANKO',
       }
-    }
+    },
+    jaleline: {
+      name: "JaLe Line oy",
+      logo: "marinelines.png",
+      contact: {
+        phones: ["+358 400 536 930"],
+        email: 'myynti@marinelines.fi',
+        www: 'https://marinelines.fi/fi',
+      }
+    },
   },
 
   piers: {
@@ -1700,7 +1709,7 @@ fdata = {
       ],
     },
     hankobengtskar: {
-      link: "https://marinelines.fi/fi/risteilyt/bengtskar",
+      link: "https://marinelines.fi/bengtskar/",
       link_sv: "https://marinelines.fi/sv/bengtskar-2/",
       link_en: "https://marinelines.fi/en/bengtskar-lighthouse/",
       tables: [
@@ -2485,7 +2494,7 @@ fdata = {
       name: "Hanko - Bengtskär",
       name_sv: "Hangö - Bengtskär",
       piers: ["Hanko", "Bengtskär"],
-      operator: "marinelines",
+      operator: "jaleline",
       vessels: ["summersea"],
       features: {
         interval_L: "times.onceaday",
