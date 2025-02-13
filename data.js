@@ -1563,7 +1563,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hogsara.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hogsara.html#timetables",
       tables: [
-        { validFrom: "2017-01-01", validTo: null, images: ["Hogsara.jpeg"]}
       ]
     },
     vartsala: {
@@ -1571,7 +1570,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/vartsala.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/vartsala.html#timetables",
       tables: [
-        { validFrom: "2017-01-01", validTo: null, images: ["Vartsala2020.jpeg"]}
       ]
     },
     vano: {
@@ -1579,7 +1577,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/vano.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/vano.html#timetables",
       tables: [
-        { validFrom: "2017-01-01", validTo: null, images: ["Vano2018_1.jpeg", "Vano2018_2.jpeg", "Vano2018_3.jpeg"]}
       ]
     },
     hogsar: {
@@ -1597,7 +1594,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hammaronsalmi.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hammaronsalmi.html#timetables",
       tables: [
-        { validFrom: "2018-01-01", validTo: null, images: ["Hammaronsalmi.jpg"]}
       ]
     },
     palva: {
@@ -1605,7 +1601,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/palva.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/palva.html#timetables",
       tables: [
-        { validFrom: "2018-01-01", validTo: null, images: ["Palva.jpg"]}
       ]
     },
     velkuanmaa: {
@@ -1613,7 +1608,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkuanmaa.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkuanmaa.html#timetables",
       tables: [
-        { validFrom: "2018-01-01", validTo: null, images: ["Velkuanmaa.jpg"]}
       ]
     },
     kivimo: {
@@ -1641,7 +1635,6 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/skagen.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/skagen.html",
       tables: [
-        { validFrom: "2022-09-18", validTo: null, images: ["skagen_finferries_2022.jpg"]}
       ]
     },
     sorpo: {
