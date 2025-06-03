@@ -784,7 +784,7 @@ fdata = {
       name: "Finferries",
       logo: "finferries.png",
       contact: {
-        phones: ['+358 207 118 750', {name: "Timetables", name_fi: "Aikatauluneuvonta", name_sv: "Tidtabellsinformation", tel: '+358 400 117 123'}],
+        phones: [{name: "Switchboard", name_fi: "Vaihde", name_sv: "Växel", tel: '+358 207 118 750'},],
         address: 'Puutarhakatu 55-57, PL 252, 20101 Turku',
         www: 'https://www.finferries.fi/',
         www_fi: 'https://www.finferries.fi/',
