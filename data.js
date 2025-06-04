@@ -298,10 +298,18 @@ fdata = {
         phones: ['+358 40 553 1534']
       },
     },
-    l317: {
-      name: "Lautta #317",
+    l197: {
+      name: "Lautta #197",
       features: { },
-      capacity: { cars: 52, persons: 200 },
+      capacity: { cars: 30 },
+      contact: {
+        phones: ['+358 400 864 268']
+      },
+    },
+    l198: {
+      name: "Lautta #198",
+      features: { },
+      capacity: { cars: 36 },
       contact: {
         phones: ['+358 40 865 0602']
       },
@@ -421,9 +429,9 @@ fdata = {
       },
     },
     vartsala: {
-      name: "Lautta #198",
+      name: "Lautta #317",
       features: { },
-      capacity: { cars: 36 },
+      capacity: { cars: 52 },
       contact: {
         phones: ['+358 400 138 239']
       },
@@ -1367,6 +1375,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-trail-houtskari-inio.html#timetables",
       tables: [
         { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["saariston-rengastie-houtskari-inio-antonia-10.5.-8.9.2024.jpg"]},
+        { validFrom: "2025-05-09", validTo: "2024-09-14", images: ["saariston-rengastie-houtskari-inio-antonia-9.5.-14.9.2025-1.jpg"]},
       ],
     },
     korpohoutskar: {
@@ -1440,9 +1449,9 @@ fdata = {
       ],
     },
     kasnashitis: {
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen.html#timetables",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis.html#timetables",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen.html#timetables",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kasnas-hiittinen-aurora.html#timetables",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hiittinen-aurora.html#timetables",
       tables: [
         { validFrom: "2025-01-01", validTo: "2025-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2025-1.jpg"]},
       ],
@@ -1453,6 +1462,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
         { validFrom: "2024-09-09", validTo: "2025-05-15", images: ["velkuan-reitti-9.9.2024-15.5.2025-1.jpg"]},
+        { validFrom: "2025-05-09", validTo: "2025-09-14", images: ["velkuan-reitti-kesa-9.5.-14.9.2025-1.jpg", "velkuan-reitti-kesa-9.5.-14.9.2025-2.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1461,6 +1471,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/rymattyla-route.html",
       tables: [
         { validFrom: "2024-09-23", validTo: "2025-05-04", images:["rymattylan-reitti-talvi-23.9.24-4.5.2025-1.jpg", "rymattylan-reitti-talvi-23.9.24-4.5.2025-2.jpg"] },
+        { validFrom: "2025-05-05", validTo: "2025-09-28", images:["rymattylan-reitti-5.5.-28.9.2025-1.jpg", "rymattylan-reitti-5.5.-28.9.2025-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1469,13 +1480,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten-finno.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-route-finno.html",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-05-31", images:["houtskarin-reitti-1.1.-31.5.2023-1.jpg", "houtskarin-reitti-1.1.-31.5.2023-2.jpg"] },
-        { validFrom: "2023-06-01", validTo: "2023-06-08", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
-        { validFrom: "2023-06-09", validTo: "2023-08-15", images:["houtskarin-reitti-kesa-9.6.2023-15.8.2023-1.jpg", "houtskarin-reitti-kesa-9.6.2023-15.8.2023-2.jpg"] },
-        { validFrom: "2023-08-16", validTo: "2024-05-31", images:["houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-1.jpg", "houtskarin-reitti-talvi-1.6-8.6.2023-ja-16.8.-31.5.2024-2.jpg"] },
-        { validFrom: "2024-06-01", validTo: "2024-06-07", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
-        { validFrom: "2024-06-08", validTo: "2024-08-14", images:["houtskarin-reitti-8.6.-14.8.2024-1.jpg", "houtskarin-reitti-8.6.-14.8.2024-2.jpg"] },
-        { validFrom: "2024-08-15", validTo: "2025-05-31", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
+        { validFrom: "2024-08-15", validTo: "2025-06-06", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
+        { validFrom: "2025-06-07", validTo: "2025-08-17", images:["houtskarin-reitti-kesa-2025-1.jpg", "houtskarin-reitti-kesa-2025-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1485,6 +1491,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route-kivimo.html",
       tables: [
         { validFrom: "2024-09-01", validTo: "2025-05-31", images:["inion-lisareitti-talvi-7.10.2024-31.5.2025-1.jpg"] },
+        { validFrom: "2024-06-01", validTo: "2025-08-31", images:["inion-lisareitti-kesa-2025-1.jpg", "inion-lisareitti-kesa-2025-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1493,6 +1500,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/uto-route.html",
       tables: [
         { validFrom: "2024-09-02", validTo: "2025-06-01", images:["uton-reitti-talvi-2.9.2024-1.6.2025-1.jpg"] },
+        { validFrom: "2025-06-02", validTo: "2025-08-31", images:["uton-reitti-kesa-2.6.-31.8.2025-1.jpg"] },
       ],
     },
     korporutt: {
@@ -1500,6 +1508,7 @@ fdata = {
       link_sv: "https://saaristolinjat.fi/?lang=sv#reittialue",
       tables: [
         { validFrom: "2024-09-02", validTo: "2025-06-02", images:["Talviaikataulu-Fisko-Korppoo-2.9.2024-2.6.2025-1.jpg"] },
+        { validFrom: "2025-06-02", validTo: "2025-08-31", images:["Fisko-kesaaikataulu-2.6.-31.8.2025-1.jpg", "Fisko-kesaaikataulu-2.6.-31.8.2025-2-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1508,6 +1517,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-innamo.html",
       tables: [
         { validFrom: "2025-01-06", validTo: "2025-05-30", images:["nauvon-pohjoinen-reitti-6.1.-30.5.2025-1.jpg"] },
+        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["nauvon-pohjoinen-reitti-kesa-1.6.-10.8.2025-1.jpg"] },
       ],
     },
     nagutvar: {
@@ -1535,6 +1545,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hiittinen-route.html",
       tables: [
         { validFrom: "2025-01-01", validTo: "2025-05-31", images:["hiittisten-reittialue-1.1.2025-31.5.2025-ja-11.8.2025-31.12.2025-1.jpg"]},
+        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["hiittisten-reittialue-1.6.-10.8.2025-1.jpg", "hiittisten-reittialue-1.6.-10.8.2025-2.jpg"]},
         { validFrom: "2025-08-11", validTo: "2025-12-31", images:["hiittisten-reittialue-1.1.2025-31.5.2025-ja-11.8.2025-31.12.2025-1.jpg"]},
       ],
     },
@@ -1545,6 +1556,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hiittinen-eastern-route.html",
       tables: [
         { validFrom: "2025-01-01", validTo: "2025-05-31", images:["hiittisten-itainen-reitti-talviaikataulu-2025-1.jpg"]},
+        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["hiittisten-itainen-reitti-1.6.-10.8.2025-1.jpg"]},
         { validFrom: "2025-08-11", validTo: "2025-12-31", images:["hiittisten-itainen-reitti-talviaikataulu-2025-1.jpg"]},
 
       ],
@@ -1555,6 +1567,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
         { validFrom: "2024-09-01", validTo: "2025-05-31", images: ["paraisten-reittialue-talvi-1.9.2024-31.5.2025-booking-1.jpg"]},
+        { validFrom: "2025-06-01", validTo: "2025-08-31", images: ["paraisten-reittialue-kesa-1.6.-31.8.2025-1.jpg"]},
       ]
     },
 
@@ -1897,7 +1910,7 @@ fdata = {
       specifier: "",
       piers: ["Pärnäs", "Retais"],
       operator: "finferries",
-      vessels: ["l317", "prostvik1"],
+      vessels: ["l198", "l197"],
       features: {
         interval_L: ["times.anhour", "1-4"],
         duration_L: ["duration.minutes", "5"],
