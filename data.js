@@ -243,7 +243,7 @@ fdata = {
         persons: 197,
       },
       contact: {
-        phones: ['+358 400 320 093']
+        phones: ['+358 400 533 461']
       },
     },
     aurora: {
@@ -282,7 +282,7 @@ fdata = {
     },
     stellakorppoo: {
       name: "M/S Stella",
-      features: { cafe: false },
+      features: { cafe: true },
       capacity: { cars: 65 },
       contact: {
         // phones: ['+358 400 114 291', { name: "Café Stella", tel: "+358 400 611 994"}],
@@ -391,7 +391,7 @@ fdata = {
       features: { },
       capacity: { cars: 66 },
       contact: {
-        phones: ['+358 400 110 114']
+        phones: ['+358 400 320 093']
       },
     },
     falco: {
@@ -399,7 +399,7 @@ fdata = {
       features: { },
       capacity: { cars: 54 },
       contact: {
-        phones: ['+358 400 533 461']
+        phones: ['+358 400 110 114']
       },
     },
     viken: {
@@ -418,6 +418,14 @@ fdata = {
       capacity: { cars: 27 },
       contact: {
         phones: ['+358 40 738 3002']
+      },
+    },
+    replot2: {
+      name: "Replot 2",
+      features: { },
+      capacity: { cars: 27 },
+      contact: {
+        phones: ['+358 40 589 1841'],
       },
     },
     saverkeit: {
@@ -794,10 +802,9 @@ fdata = {
       contact: {
         phones: [{name: "Switchboard", name_fi: "Vaihde", name_sv: "Växel", tel: '+358 207 118 750'},],
         address: 'Puutarhakatu 55-57, PL 252, 20101 Turku',
-        www: 'https://www.finferries.fi/',
-        www_fi: 'https://www.finferries.fi/',
-        www_sv: 'https://www.finferries.fi/sv',
-        www_en: 'https://www.finferries.fi/en'
+        www: [{name: "Kotisivu", name_sv: "Hemsida", name_en: "Home page", uri: 'https://www.finferries.fi/', uri_sv: 'https://www.finferries.fi/sv', uri_en: 'https://www.finferries.fi/en'},
+              {name: "Varaukset", name_sv: "Bokning", name_en: "Reservations", uri: 'https://booking.finferries.fi/'}
+        ],
       },
     },
     ncl: {
@@ -1366,6 +1373,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi.html#timetables",
       tables: [
         { validFrom: "2025-01-01", validTo: "2025-05-08", images: ["inio-kustavi-aura-talvi-1.1.-8.5.2025-ja-15.9.-31.12.2025-1.jpg"]},
+        { validFrom: "2025-05-09", validTo:  "2025-09-14", images: ["inio-kustavi-sterna-kesa-9.5.-14.9.2025-1.jpg"]},
         { validFrom: "2025-09-15", validTo: "2025-12-31", images: ["inio-kustavi-aura-talvi-1.1.-8.5.2025-ja-15.9.-31.12.2025-1.jpg"]},
       ]
     },
@@ -1375,7 +1383,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/the-archipelago-trail-houtskari-inio.html#timetables",
       tables: [
         { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["saariston-rengastie-houtskari-inio-antonia-10.5.-8.9.2024.jpg"]},
-        { validFrom: "2025-05-09", validTo: "2024-09-14", images: ["saariston-rengastie-houtskari-inio-antonia-9.5.-14.9.2025-1.jpg"]},
+        { validFrom: "2025-05-09", validTo: "2025-09-14", images: ["saariston-rengastie-houtskari-inio-9.5.-14.9.2025-1.jpg"]},
       ],
     },
     korpohoutskar: {
@@ -1848,7 +1856,7 @@ fdata = {
       specifier: "",
       piers: ["Kannvik", "Heponiemi"],
       operator: "finferries",
-      vessels: ["aura"],
+      vessels: ["sterna"],
       features: {
         interval_L: ["times.aday", "5-8"],
         duration_L: ["duration.minutes", "25"],
@@ -1862,7 +1870,7 @@ fdata = {
       specifier: "",
       piers: ["Mossala", "Dalen"],
       operator: "finferries",
-      vessels: ["antonia"],
+      vessels: ["replot2"],
       features: {
         interval_L: ["times.aday", "3-4"],
         duration_L: ["duration.minutes", "50"],
@@ -1878,7 +1886,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Kittuis"],
       operator: "finferries",
-      vessels: ["stellakorppoo", "falco"],
+      vessels: ["stellakorppoo", "aura"],
       features: {
         interval_L: ["times.aday", "10-12"],
         order_L: "order.partly",
@@ -1894,7 +1902,7 @@ fdata = {
       specifier: "",
       piers: ["Galtby", "Olofsnäs"],
       operator: "finferries",
-      vessels: ["falco", "stellakorppoo"],
+      vessels: ["aura", "stellakorppoo"],
       features: {
         interval_L: ["times.aday", "13-14"],
         order_L: "order.partly",
