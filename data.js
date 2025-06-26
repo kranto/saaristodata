@@ -1431,10 +1431,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2021-06-01", validTo: "2021-09-01", images: ["velkuan-reitti-01.06.-01.09.2021-1.jpg"]},
-        { validFrom: "2022-05-18", validTo: "2022-09-15", images: ["velkua-kesa2022-fi-ja-se-1.jpg"]},
-        { validFrom: "2023-05-12", validTo: "2023-09-03", images: ["velkuan-reitti-12.5.-3.9.2023.jpg"]},
         { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["velkuan-reitti-10.5.-8.9.2024.jpg"]},
+        { validFrom: "2025-05-09", validTo: "2025-09-14", images: ["velkuan-reitti-kesa-9.5.-14.9.2025-1.jpg", "velkuan-reitti-kesa-9.5.-14.9.2025-2.jpg"]},
       ],
     },
 
