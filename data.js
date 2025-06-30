@@ -62,7 +62,7 @@ fdata = {
       features: { access: false, cafe: false },
       capacity: { persons: 99, cars: 16, trucks: 4 },
       contact: {
-        phones: ['+358 (0)40 0229 260']
+        phones: ['+358 (0)50 3755 608']
       },
     },
     bogoy: {
