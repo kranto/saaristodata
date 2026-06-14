@@ -1982,7 +1982,7 @@
     {
       "type": "FeatureCollection",
       "properties": {
-        "stype": "connection",
+        "stype": "connection_obsolete",
         "ref": "tvarlinjen",
         "ssubtype": "conn2",
         "color": "#c85534"
