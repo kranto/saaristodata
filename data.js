@@ -1482,9 +1482,9 @@ fdata = {
     },
     houtskarrutt: {
       name: "Houtskarin reitti - M/S Finnö", name_sv: "Houtskär rutt - M/S Finnö", name_en: "Houtskär Route - M/S Finnö", specifier: "",
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti-finno.html",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten-finno.html",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskari-route-finno.html",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskar-route.html",
       tables: [
         { validFrom: "2024-08-15", validTo: "2025-06-06", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
         { validFrom: "2025-06-07", validTo: "2025-08-17", images:["houtskarin-reitti-kesa-2025-1.jpg", "houtskarin-reitti-kesa-2025-2.jpg"] },
@@ -1492,9 +1492,9 @@ fdata = {
     },
     iniorutt: {
       name: "Iniön lisäreitti - M/S Kivimo", name_sv: "Iniö tilläggsrutt - M/S Kivimo", name_en: "Iniö Additional Route - M/S Kivimo", specifier: "",
-      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti-kivimo.html",
-      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt-kivimo.html",
-      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route-kivimo.html",
+      link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti.html",
+      link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt.html",
+      link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route.html",
       tables: [
         { validFrom: "2024-09-01", validTo: "2025-05-31", images:["inion-lisareitti-talvi-7.10.2024-31.5.2025-1.jpg"] },
         { validFrom: "2024-06-01", validTo: "2025-08-31", images:["inion-lisareitti-kesa-2025-1.jpg", "inion-lisareitti-kesa-2025-2.jpg"] },
