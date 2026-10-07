@@ -7,10 +7,10 @@
         "sname_fi": "Ahvenanmaa",
         "stype": "area",
         "ssubtype": "province",
-        "labelAnchor": {"dir": "C", "x":-10 , "y":0 }
+        "labelAnchor": {"dir": "C", "x":0 , "y":0 }
       },
       "geometry": {
-        "coordinates": [20.21243,60.50252],
+        "coordinates": [20.31243,60.47252],
         "type": "Point"
       },
       "id": "200bcc3e536038d6624ff8ccc5513627"
@@ -25,10 +25,10 @@
         "ssubtype": "mun1",
         "labelVisibleFrom": 6,
         "labelVisibleTo": 7,
-        "labelAnchor": {"dir": "C", "x":0 , "y":0 }
+        "labelAnchor": {"dir": "C", "x":0 , "y":12 }
       },
       "geometry": {
-        "coordinates": [21.62511,60.06471],
+        "coordinates": [21.62511,60.1],
         "type": "Point"
       },
       "id": "200bcc3e536038d6624ff8ccc5513627"
