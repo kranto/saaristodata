@@ -676,6 +676,13 @@ fdata = {
       contact: {
       }
     },
+    lovskar: {
+      name: "M/S Lövskär",
+      features: { cafe: true },
+      capacity: { persons: 118, bikes: " " },
+      contact: {
+      }
+    },
     sommarskar: {
       name: "M/S Sommarskär",
       features: { },
@@ -745,6 +752,13 @@ fdata = {
       name: "M/S Minandra",
       features: { },
       capacity: { persons: 40 },
+      contact: {
+      }
+    },
+    joana: {
+      name: "M/S Joana",
+      features: { },
+      capacity: { },
       contact: {
       }
     },
@@ -1676,12 +1690,12 @@ fdata = {
     //   link: "http://www.hankolines.fi",
     // },
     kasnasorowilson: {
-      link: "https://www.wilsoncharter.fi/%C3%B6r%C3%B6n-aikataulu?",
+      link: "https://www.wilsoncharter.fi/rannikkoreitti",
       link_sv: "https://www.wilsoncharter.fi/sv/%C3%B6r%C3%B6n-aikataulu",
       link_en: "https://www.wilsoncharter.fi/en-gb/%C3%B6r%C3%B6n-aikataulu",
       name: "Wilson Charter",
       tables: [
-        { validFrom: "2023-06-02 ", validTo: "2023-09-14", images: ["wilson_oro_2023.jpg"]},
+        { validFrom: "2023-06-02", validTo: "2023-09-14", images: ["wilson_oro_2023.jpg"]},
       ],
     },
     kasnasbengtskar: {
@@ -2510,7 +2524,7 @@ fdata = {
       specifier_en: "Turku - Själö - Nagu",
       piers: ["TurkuVitharun", "Seili", "Nagu"],
       operator: "vitharun",
-      vessels: ["norrskar", "sommarskar"],
+      vessels: ["lovskar", "sommarskar"],
       features: {
         interval_fi: "Turku - Seili - Nauvo kerran päivässä,<br/>Seili - Nauvo lisäksi 1-5 kertaa päivässä",
         interval_sv: "Åbo - Själö - Nagu en gång om dagen,<br/>Själö - Nagu ytterligare 1-5 gånger om dagen",
