@@ -123,6 +123,69 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
   Pelkkä seuraavan lähdön tieto ei korvaa koko aikataulua.
 - Tarkista samalla reitti, alus, operaattori ja yhteystiedot.
 
+### PDF-aikataulun päivittäminen
+
+1. Etsi aikataulu liikenteen tilaajan tai operaattorin viralliselta
+   reittisivulta. Tallenna `link`, `link_sv` ja `link_en` osoittamaan
+   vastaaville reittisivuille, ei hakutulokseen tai tilapäiseen latausosoitteeseen.
+2. Valitse käyttäjälle näytettävä PDF kielittäin seuraavassa järjestyksessä:
+
+   - suomi: `fi`, `sv`, `en`
+   - ruotsi: `sv`, `fi`, `en`
+   - englanti: `en`, `sv`, `fi`
+
+   Jos aikataulu on vain yhdellä kielellä, tallenna kuvasarja yhteiseen
+   `images`-kenttään. Jos eri kieliversiot ovat saatavilla, käytä kenttiä
+   `images_fi`, `images_sv` ja `images_en` ja pidä `images` parhaana yhteisenä
+   varavaihtoehtona. Sovelluksen on toteutettava yllä kuvattu kielikohtainen
+   varajärjestys; datassa oleviin vanhoihin, tästä poikkeaviin kenttävalintoihin
+   ei pidä ottaa mallia.
+3. Muunna PDF:n jokainen aikataulun ymmärtämiseen tarvittava sivu omaksi
+   JPEG-kuvakseen. Käytä riittävää tarkkuutta, jotta pienikin teksti säilyy
+   luettavana puhelimella zoomattaessa. Rajaa pois suuret valkoiset reunukset,
+   mutta säilytä otsikot, selitteet, alaviitteet, yhteystiedot ja muut
+   aikataulun tulkintaan vaikuttavat merkinnät.
+4. Nimeä kuvat alkuperäisen PDF:n ja sivunumeron mukaan, esimerkiksi:
+
+   ```text
+   nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027-1.jpg
+   nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027-2.jpg
+   ```
+
+   Tallenna kuvat `timetables_jpg/`-hakemistoon. Älä korvaa erinimistä vanhaa
+   kuvaa uudella sisällöllä.
+5. Tarkista jokainen valmis kuva silmämääräisesti täydessä koossa. Varmista,
+   ettei rajaus leikkaa tekstiä ja että kaikki PDF:n aikataulusivut ovat mukana
+   oikeassa järjestyksessä.
+6. Korvaa päivitettävän reitin vanhentuneet `tables`-rivit `data.js`:ssä
+   uusilla voimassaolojaksoilla. Samassa PDF:ssä voi olla kaksi erillistä
+   kautta; tee niille erilliset rivit, vaikka ne käyttäisivät samoja kuvia:
+
+   ```js
+   tables: [
+     {
+       validFrom: "2026-01-01",
+       validTo: "2026-05-07",
+       images: ["inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-1.jpg"],
+     },
+     {
+       validFrom: "2026-09-14",
+       validTo: "2026-12-31",
+       images: ["inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-1.jpg"],
+     },
+   ],
+   ```
+
+   Poista vain kyseisen reitin vanhentuneet `tables`-rivit. Vanhoja
+   kuvatiedostoja ei tarvitse poistaa tämän päivityksen yhteydessä, eikä
+   aluksia poisteta `ferries`-rekisteristä.
+7. Generoi `data.json` uudelleen ja tarkista, että kaikki viitatut kuvat ovat
+   olemassa. Päivitä `index.json`:n dataversio vasta, kun muutos kommitoidaan
+   julkaistavaksi; keskeneräisen aikataulutyön aikana versiota ei nosteta.
+8. Avaa aikataulu sovelluksessa kaikilla tuetuilla kielillä ja tarkista
+   voimassaolojaksojen rajat, kielten varajärjestys, sivujärjestys ja kuvan
+   luettavuus sekä puhelin- että työpöytäkoossa.
+
 ## Sovelluksen tarkistus
 
 Datamuutoksen jälkeen rakenna sovellus Node.js 24:llä:

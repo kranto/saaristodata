@@ -867,8 +867,10 @@ fdata = {
       name: "Archipelago Lines",
       logo: "archipelagolines.png",
       contact: {
-        phones: ['+358 41 456 4828', '+358 45 124 5551'],
-        email: 'info@a-lines.fi',
+        phones: ['+358 44 761 8000', '+358 41 456 4828', '+358 45 124 5551'],
+        email: 'info@saaristolinjat.fi',
+        email_sv: 'info@skargardslinjer.fi',
+        email_en: 'info@a-lines.fi',
         www: 'https://saaristolinjat.fi/',
         www_fi: 'https://saaristolinjat.fi/',
         www_sv: 'https://saaristolinjat.fi/?lang=sv'
@@ -1386,9 +1388,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-gustavs.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-kustavi.html#timetables",
       tables: [
-        { validFrom: "2025-01-01", validTo: "2025-05-08", images: ["inio-kustavi-aura-talvi-1.1.-8.5.2025-ja-15.9.-31.12.2025-1.jpg"]},
-        { validFrom: "2025-05-09", validTo:  "2025-09-14", images: ["inio-kustavi-sterna-kesa-9.5.-14.9.2025-1.jpg"]},
-        { validFrom: "2025-09-15", validTo: "2025-12-31", images: ["inio-kustavi-aura-talvi-1.1.-8.5.2025-ja-15.9.-31.12.2025-1.jpg"]},
+        { validFrom: "2026-01-01", validTo: "2026-05-07", images: ["inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-1.jpg"]},
+        { validFrom: "2026-09-14", validTo: "2026-12-31", images: ["inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-1.jpg"]},
       ]
     },
     houtskarinio: {
@@ -1445,8 +1446,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2024-05-10", validTo: "2024-09-08", images: ["velkuan-reitti-10.5.-8.9.2024.jpg"]},
-        { validFrom: "2025-05-09", validTo: "2025-09-14", images: ["velkuan-reitti-kesa-9.5.-14.9.2025-1.jpg", "velkuan-reitti-kesa-9.5.-14.9.2025-2.jpg"]},
+        { validFrom: "2026-05-08", validTo: "2026-09-13", images: ["velkuan-reitti-kesa-8.5.-13.9.2026-1.jpg", "velkuan-reitti-kesa-8.5.-13.9.2026-2.jpg"]},
       ],
     },
 
@@ -1473,7 +1473,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kasnas-hitis-aurora.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hitis-aurora.html#timetables",
       tables: [
-        { validFrom: "2025-01-01", validTo: "2025-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2025-1.jpg"]},
+        { validFrom: "2026-01-01", validTo: "2026-12-31", images: ["kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026-1.jpg"]},
       ],
     },
     velkuanreitti: {
@@ -1481,8 +1481,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkua-rutt-kaita.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkua-route-kaita.html",
       tables: [
-        { validFrom: "2024-09-09", validTo: "2025-05-15", images: ["velkuan-reitti-9.9.2024-15.5.2025-1.jpg"]},
-        { validFrom: "2025-05-09", validTo: "2025-09-14", images: ["velkuan-reitti-kesa-9.5.-14.9.2025-1.jpg", "velkuan-reitti-kesa-9.5.-14.9.2025-2.jpg"]},
+        { validFrom: "2026-05-08", validTo: "2026-09-13", images: ["velkuan-reitti-kesa-8.5.-13.9.2026-1.jpg", "velkuan-reitti-kesa-8.5.-13.9.2026-2.jpg"]},
+        { validFrom: "2026-09-14", validTo: "2027-05-06", images: ["velkuan-reitti-talvi-14.9.2026-6.5.2027-1.jpg", "velkuan-reitti-talvi-14.9.2026-6.5.2027-2.jpg"]},
       ],
     },
     rymattylanreitti: {
@@ -1490,8 +1490,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/rimito-ruttomrade.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/rymattyla-route.html",
       tables: [
-        { validFrom: "2024-09-23", validTo: "2025-05-04", images:["rymattylan-reitti-talvi-23.9.24-4.5.2025-1.jpg", "rymattylan-reitti-talvi-23.9.24-4.5.2025-2.jpg"] },
-        { validFrom: "2025-05-05", validTo: "2025-09-28", images:["rymattylan-reitti-5.5.-28.9.2025-1.jpg", "rymattylan-reitti-5.5.-28.9.2025-2.jpg"] },
+        { validFrom: "2026-09-28", validTo: "2027-05-02", images:["rymattylan-reitti-28.9.2026-2.5.2027-1.jpg", "rymattylan-reitti-28.9.2026-2.5.2027-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1500,8 +1499,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskar-route.html",
       tables: [
-        { validFrom: "2024-08-15", validTo: "2025-06-06", images:["houtskarin-reitti-talvi-2024-2025-1.jpg", "houtskarin-reitti-talvi-2024-2025-2.jpg"] },
-        { validFrom: "2025-06-07", validTo: "2025-08-17", images:["houtskarin-reitti-kesa-2025-1.jpg", "houtskarin-reitti-kesa-2025-2.jpg"] },
+        { validFrom: "2026-08-19", validTo: "2026-09-30", images:["houtskarin-reitti-talvi-19.8.2026-30.9.2026-1.jpg", "houtskarin-reitti-talvi-19.8.2026-30.9.2026-2.jpg"] },
+        { validFrom: "2026-10-01", validTo: "2027-04-30", images:["houtskarin-reitti-talvi-1.10.2026-30.4.2027-1.jpg", "houtskarin-reitti-talvi-1.10.2026-30.4.2027-2.jpg"] },
       ],
     },
     iniorutt: {
@@ -1510,8 +1509,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route.html",
       tables: [
-        { validFrom: "2024-09-01", validTo: "2025-05-31", images:["inion-lisareitti-talvi-7.10.2024-31.5.2025-1.jpg"] },
-        { validFrom: "2024-06-01", validTo: "2025-08-31", images:["inion-lisareitti-kesa-2025-1.jpg", "inion-lisareitti-kesa-2025-2.jpg"] },
+        { validFrom: "2026-08-19", validTo: "2027-04-30", images:["inion-lisareitti-talvi-19.8.2026-30.4.2027-1.jpg", "inion-lisareitti-talvi-19.8.2026-30.4.2027-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1519,16 +1517,15 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/uto-ruttomrade.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/uto-route.html",
       tables: [
-        { validFrom: "2024-09-02", validTo: "2025-06-01", images:["uton-reitti-talvi-2.9.2024-1.6.2025-1.jpg"] },
-        { validFrom: "2025-06-02", validTo: "2025-08-31", images:["uton-reitti-kesa-2.6.-31.8.2025-1.jpg"] },
+        { validFrom: "2026-09-01", validTo: "2026-09-30", images:["uton-reitti-talvi-1.9.2026-30.9.2026-1.jpg"] },
+        { validFrom: "2026-10-01", validTo: "2027-05-31", images:["uton-reitti-talvi-1.10.2026-31.5.2027-1.jpg"] },
       ],
     },
     korporutt: {
       link: "https://saaristolinjat.fi/#reittialue",
       link_sv: "https://saaristolinjat.fi/?lang=sv#reittialue",
       tables: [
-        { validFrom: "2024-09-02", validTo: "2025-06-02", images:["Talviaikataulu-Fisko-Korppoo-2.9.2024-2.6.2025-1.jpg"] },
-        { validFrom: "2025-06-02", validTo: "2025-08-31", images:["Fisko-kesaaikataulu-2.6.-31.8.2025-1.jpg", "Fisko-kesaaikataulu-2.6.-31.8.2025-2-1.jpg"] },
+        { validFrom: "2026-09-01", validTo: "2027-06-01", images:["saaristolinjat-aikataulu-2026-09-01-1.jpg"] },
       ],
     },
     nagunorra: {
@@ -1536,8 +1533,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-norra-rutt-innamo.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-northern-route-innamo.html",
       tables: [
-        { validFrom: "2025-01-06", validTo: "2025-05-30", images:["nauvon-pohjoinen-reitti-6.1.-30.5.2025-1.jpg"] },
-        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["nauvon-pohjoinen-reitti-kesa-1.6.-10.8.2025-1.jpg"] },
+        { validFrom: "2026-08-11", validTo: "2027-05-30", images:["nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027-1.jpg", "nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027-2.jpg"] },
       ],
     },
     nagutvar: {
@@ -1545,8 +1541,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-tvargaende-rutt.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-transverse-route.html",
       tables: [
-        { validFrom: "2024-09-30", validTo: "2025-03-31", images:["nauvon-poikittainen-reitti-30.9.2024.-30.3.2025-1.jpg"] },
-        { validFrom: "2025-04-01", validTo: "2025-09-30", images:["nauvon-poikittainen-reitti-1.4.-30.9.2025-1.jpg"] },
+        { validFrom: "2026-10-01", validTo: "2027-03-24", images:["nauvon-poikittainen-reitti-talvi-1.10.2026-24.3.2027-1.jpg"] },
       ],
     },
     nagusodra: { 
@@ -1554,8 +1549,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-sodra-rutt-falko.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
-        { validFrom: "2024-09-30", validTo: "2025-03-31", images:["nauvon-etelainen-reitti-30.9.2024-30.3.2025-1.jpg"] },
-        { validFrom: "2025-04-01", validTo: "2025-09-30", images:["nauvon-etelainen-reitti-1.4.-30.9.2025-1.jpg"] },
+        { validFrom: "2026-10-01", validTo: "2027-03-24", images:["nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027-1.jpg"] },
       ],
     },
     hitisjurmo: {
@@ -1564,9 +1558,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hitis-ruttomrade.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hiittinen-route.html",
       tables: [
-        { validFrom: "2025-01-01", validTo: "2025-05-31", images:["hiittisten-reittialue-1.1.2025-31.5.2025-ja-11.8.2025-31.12.2025-1.jpg"]},
-        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["hiittisten-reittialue-1.6.-10.8.2025-1.jpg", "hiittisten-reittialue-1.6.-10.8.2025-2.jpg"]},
-        { validFrom: "2025-08-11", validTo: "2025-12-31", images:["hiittisten-reittialue-1.1.2025-31.5.2025-ja-11.8.2025-31.12.2025-1.jpg"]},
+        { validFrom: "2026-01-01", validTo: "2026-05-30", images:["hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-1.jpg", "hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-2.jpg"]},
+        { validFrom: "2026-08-10", validTo: "2026-12-31", images:["hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-1.jpg", "hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-2.jpg"]},
       ],
     },
     hitisalva: { 
@@ -1575,10 +1568,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hitis-ostra-rutt.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hiittinen-eastern-route.html",
       tables: [
-        { validFrom: "2025-01-01", validTo: "2025-05-31", images:["hiittisten-itainen-reitti-talviaikataulu-2025-1.jpg"]},
-        { validFrom: "2025-06-01", validTo: "2025-08-10", images:["hiittisten-itainen-reitti-1.6.-10.8.2025-1.jpg"]},
-        { validFrom: "2025-08-11", validTo: "2025-12-31", images:["hiittisten-itainen-reitti-talviaikataulu-2025-1.jpg"]},
-
+        { validFrom: "2026-08-11", validTo: "2026-12-31", images:["hiittisten-itainen-reitti-talviaikataulu-2026-1.jpg"]},
       ],
     },
     pargasrutt: {
@@ -1586,8 +1576,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-ruttomrade-viken.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-route-viken.html#timetables",
       tables: [
-        { validFrom: "2024-09-01", validTo: "2025-05-31", images: ["paraisten-reittialue-talvi-1.9.2024-31.5.2025-booking-1.jpg"]},
-        { validFrom: "2025-06-01", validTo: "2025-08-31", images: ["paraisten-reittialue-kesa-1.6.-31.8.2025-1.jpg"]},
+        { validFrom: "2026-09-01", validTo: "2027-05-31", images: ["paraisten-reittialue-talvi-1.9.2026-31.5.2027-1.jpg", "paraisten-reittialue-talvi-1.9.2026-31.5.2027-2.jpg"]},
       ]
     },
 
