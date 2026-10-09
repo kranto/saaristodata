@@ -231,6 +231,53 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
   `data.json` vastaa täsmälleen `node data.js` -komennon tulosta ja sovellus
   näyttää sekä nykyiset että tulevat jaksot oikeassa järjestyksessä.
 
+### Finferriesin verkkotaulukoista koostettavat aikataulut
+
+Finferriesin reittisivun aikataulu voi olla selaimessa näkyvä HTML-taulukko
+PDF:n sijaan. Pääsivun tekstiversio tai hakukoneen tallenne voi näyttää
+`Aikataulut`-osion tyhjänä, koska taulukot ladataan sivulle erikseen. Tarkista
+aina selaimessa näkyvä sisältö ja kaikki reittisivun lataamat nykyiset
+aikataulutaulukot ennen kuin päätät, ettei reitillä ole aikataulua.
+
+- Tee jokaisesta päiväryhmästä oma kuva: esimerkiksi maanantai–perjantai,
+  lauantai sekä sunnuntai ja pyhät. Jos sama aikataulu on voimassa viikon
+  jokaisena päivänä, käytä otsikoita `Päivittäin`, `Dagligen` ja `Daily`.
+- Tee yhden päivän erikoisaikataulusta oma kuva ja oma `tables`-jakso, jonka
+  `validFrom` ja `validTo` ovat sama päivä. Katkaise perusaikataulu ennen
+  erikoispäivää ja aloita se tarvittaessa uudelleen seuraavana päivänä, jotta
+  tabit eivät mene päällekkäin.
+- Pitkillä lauttareiteillä voi olla samalla kaudella erilliset arki- ja
+  viikonloppukuvat. Yksi `tables`-jakso voi viitata molempiin, jos niiden
+  voimassaolo alkaa ja päättyy samana päivänä.
+- Lue ajat suoraan taulukosta ja säilytä jokainen aikaan liittyvä tunnus,
+  kuten `*`, `T`, `A`, `S`, numeroitu alaviite tai tilausmerkintä. Älä irrota
+  tunnusta lähtöajasta tai normalisoi sitä pois.
+- Kopioi tai tiivistä kuvaan kaikki aikataulun tulkintaan vaikuttavat tiedot:
+  tauot, välittömän paluun ehdot, yö- ja tilausliikenne, tilauksen määräaika ja
+  puhelinnumero, tekstiviestitilaus, vaarallisten aineiden vuorot,
+  koulukuljetukset, ajoneuvojen lastausjärjestys, käytettävän aluksen tunnus
+  sekä joulu- ja muiden pyhäpäivien viimeiset lähdöt.
+- Ole tarkka ehtolauseissa. Esimerkiksi ”paluu heti” ja ”paluu heti, jos
+  rannalla on matkustajia” eivät tarkoita samaa asiaa. Vertaa jokaisen
+  kielikuvan tekstiä virallisen taulukon kyseiseen kieliversioon.
+- Erottele pysyvä aikataulusisältö lyhytaikaisesta liikennetiedotteesta.
+  Päiväkohtainen aikataulumuutos kuuluu voimassaolojaksoon ja kuvaan;
+  kalustonvaihdosta tai liikennekatkoa koskevaa tiedotetta ei pidä muuttaa
+  pysyväksi aikataulutiedoksi.
+- Käytä kuvassa kielikohtaisia paikannimiä silloin, kun niille on vakiintunut
+  muoto, ja nimeä molemmat suunnat selvästi nuolella. Älä jätä käyttäjän
+  pääteltäväksi, onko taulukon paikka lähtö- vai määräpaikka.
+- Renderöi teksti lopullista kuvaa suuremmalla tarkkuudella ja pienennä kuva
+  laadukkaalla suodatuksella. Nykyinen toimiva mobiilileveys on noin 620 px;
+  JPEG-tallennuksessa tekstin luettavuus vaatii korkean laadun ja vähäisen
+  värialinäytteistyksen. Tarkista lopputulos aina silmämääräisesti.
+- Varmista ohjelmallisesti, että jokaisella `images`, `images_fi`, `images_sv`
+  ja `images_en` -viittauksella on tiedosto, aikataulujaksot eivät mene
+  päällekkäin ja jokainen lähdetaulukko tuotti vähintään yhden ajan.
+- Älä rajaa verkkotaulukoiden käsittelyä vain lyhyisiin losseihin.
+  Nauvo–Korppoo, Korppoo–Norrskata ja Korppoo–Houtskari käyttävät samaa
+  lähderakennetta, vaikka reitit ovat pidempiä ja aikataulut monimutkaisempia.
+
 ## Sovelluksen tarkistus
 
 Datamuutoksen jälkeen rakenna sovellus Node.js 24:llä:
