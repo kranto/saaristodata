@@ -119,6 +119,16 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
 - Muunna vaikeasti selattavat PDF-aikataulut mobiiliin sopiviksi kuviksi tai
   muuksi selkeäksi esitykseksi. Rajaa suuret valkoiset marginaalit pois, mutta
   älä muuta aikataulun sisältöä, merkintöjä tai ehtoja.
+- Kun aikataulu koostetaan verkkosivun taulukosta, tee ensisijaisesti erilliset
+  kuvat suomeksi, ruotsiksi ja englanniksi. Lokalisoitavia tietoja ovat myös
+  viikonpäivät, voimassaoloaika, huomautukset ja kuvan lähdetiedot. Käytä
+  `images_fi`, `images_sv` ja `images_en` -kenttiä sekä parasta yhteistä
+  varavaihtoehtoa `images`-kentässä.
+- Merkitse lähtötaulukon otsikkoon myös suunta nuolella, esimerkiksi
+  `Parainen → Nauvo` ja `Nauvo → Parainen`. Pelkkä lähtölaiturin nimi ei aina
+  kerro käyttäjälle riittävän selvästi, mihin suuntaan ajat ovat.
+- Suosi puhelimelle sopivaa kapeaa asettelua. Laita vastakkaisten suuntien
+  taulukot allekkain ja jaa eri viikonpäiväryhmät tarvittaessa omiksi kuvikseen.
 - Säilytä kaikki suunnittelun kannalta tarpeelliset vuorot ja voimassaolojaksot.
   Pelkkä seuraavan lähdön tieto ei korvaa koko aikataulua.
 - Tarkista samalla reitti, alus, operaattori ja yhteystiedot.

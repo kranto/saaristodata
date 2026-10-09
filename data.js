@@ -1406,9 +1406,27 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-houtskar.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-houtskari.html#timetables",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-4.jpg"]},
-        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-7.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
-        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4.jpg"]},
+        {
+          validFrom: "2026-10-01", validTo: "2026-10-17",
+          images: ["korpohoutskar-korpohoutskar-weekday-2026-fi.jpg", "korpohoutskar-korpohoutskar-early-weekend-2026-fi.jpg"],
+          images_fi: ["korpohoutskar-korpohoutskar-weekday-2026-fi.jpg", "korpohoutskar-korpohoutskar-early-weekend-2026-fi.jpg"],
+          images_sv: ["korpohoutskar-korpohoutskar-weekday-2026-sv.jpg", "korpohoutskar-korpohoutskar-early-weekend-2026-sv.jpg"],
+          images_en: ["korpohoutskar-korpohoutskar-weekday-2026-en.jpg", "korpohoutskar-korpohoutskar-early-weekend-2026-en.jpg"]
+        },
+        {
+          validFrom: "2026-10-18", validTo: "2026-10-18",
+          images: ["korpohoutskar-korpohoutskar-special-sunday-2026-fi.jpg"],
+          images_fi: ["korpohoutskar-korpohoutskar-special-sunday-2026-fi.jpg"],
+          images_sv: ["korpohoutskar-korpohoutskar-special-sunday-2026-sv.jpg"],
+          images_en: ["korpohoutskar-korpohoutskar-special-sunday-2026-en.jpg"]
+        },
+        {
+          validFrom: "2026-10-19", validTo: "2027-04-30",
+          images: ["korpohoutskar-korpohoutskar-weekday-2026-fi.jpg", "korpohoutskar-korpohoutskar-weekend-2026-fi.jpg"],
+          images_fi: ["korpohoutskar-korpohoutskar-weekday-2026-fi.jpg", "korpohoutskar-korpohoutskar-weekend-2026-fi.jpg"],
+          images_sv: ["korpohoutskar-korpohoutskar-weekday-2026-sv.jpg", "korpohoutskar-korpohoutskar-weekend-2026-sv.jpg"],
+          images_en: ["korpohoutskar-korpohoutskar-weekday-2026-en.jpg", "korpohoutskar-korpohoutskar-weekend-2026-en.jpg"]
+        }
       ],
     },
     korponorrskata: {
@@ -1416,9 +1434,13 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/korpo-norrskata.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/korppoo-norrskata.html#timetables",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-4.jpg"]},
-        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-7.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
-        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4.jpg"]},
+        {
+          validFrom: "2026-10-01", validTo: "2027-04-30",
+          images: ["korponorrskata-korponorrskata-weekday-2026-fi.jpg", "korponorrskata-korponorrskata-weekend-2026-fi.jpg"],
+          images_fi: ["korponorrskata-korponorrskata-weekday-2026-fi.jpg", "korponorrskata-korponorrskata-weekend-2026-fi.jpg"],
+          images_sv: ["korponorrskata-korponorrskata-weekday-2026-sv.jpg", "korponorrskata-korponorrskata-weekend-2026-sv.jpg"],
+          images_en: ["korponorrskata-korponorrskata-weekday-2026-en.jpg", "korponorrskata-korponorrskata-weekend-2026-en.jpg"]
+        }
       ],
     },
     nagukorpo: {
@@ -1426,9 +1448,13 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-korpo.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-korppoo.html#timetables",
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-3.jpg", "saaristotien-lautta-aikataulut-1.1.-16.4.2023-4b.jpg"]},
-        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-6.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
-        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-3.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        {
+          validFrom: "2026-10-01", validTo: "2027-04-30",
+          images: ["nagukorpo-nagukorpo-weekday-2026-fi.jpg", "nagukorpo-nagukorpo-weekend-2026-fi.jpg"],
+          images_fi: ["nagukorpo-nagukorpo-weekday-2026-fi.jpg", "nagukorpo-nagukorpo-weekend-2026-fi.jpg"],
+          images_sv: ["nagukorpo-nagukorpo-weekday-2026-sv.jpg", "nagukorpo-nagukorpo-weekend-2026-sv.jpg"],
+          images_en: ["nagukorpo-nagukorpo-weekday-2026-en.jpg", "nagukorpo-nagukorpo-weekend-2026-en.jpg"]
+        }
       ],
     },
     pargasnagu: {
@@ -1436,9 +1462,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/pargas-nagu.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/parainen-nauvo.html#timetables",        
       tables: [
-        { validFrom: "2023-01-01", validTo: "2023-04-16", images: ["saaristotien-lautta-aikataulut-1.1.-16.4.2023-2.jpg", "saaristotien-lautta-aikataulut-1.1.-16.4.2023-4b.jpg"]},
-        { validFrom: "2023-09-01", validTo: "2023-10-31", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-5.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
-        { validFrom: "2023-11-01", validTo: "2024-04-15", images: ["saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-2.jpg", "saaristotien-lautta-aikataulut-01.6.2023-15.4.2024-4b.jpg"]},
+        {
+          validFrom: "2026-10-01",
+          validTo: "2027-04-30",
+          images: ["parainen-nauvo-talvi-1.10.2026-30.4.2027-ma-pe-1-fi.jpg", "parainen-nauvo-talvi-1.10.2026-30.4.2027-la-su-1-fi.jpg"],
+          images_fi: ["parainen-nauvo-talvi-1.10.2026-30.4.2027-ma-pe-1-fi.jpg", "parainen-nauvo-talvi-1.10.2026-30.4.2027-la-su-1-fi.jpg"],
+          images_sv: ["parainen-nauvo-talvi-1.10.2026-30.4.2027-ma-pe-1-sv.jpg", "parainen-nauvo-talvi-1.10.2026-30.4.2027-la-su-1-sv.jpg"],
+          images_en: ["parainen-nauvo-talvi-1.10.2026-30.4.2027-ma-pe-1-en.jpg", "parainen-nauvo-talvi-1.10.2026-30.4.2027-la-su-1-en.jpg"],
+        },
       ],
       },
     velkuataivassalo: {
@@ -1585,6 +1616,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hogsara.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hogsara.html#timetables",
       tables: [
+        {
+          validFrom: "2025-11-01",
+          validTo: null,
+          images: ["hogsara-hogsara-weekday-2026-fi.jpg", "hogsara-hogsara-saturday-2026-fi.jpg", "hogsara-hogsara-holiday-2026-fi.jpg"],
+          images_fi: ["hogsara-hogsara-weekday-2026-fi.jpg", "hogsara-hogsara-saturday-2026-fi.jpg", "hogsara-hogsara-holiday-2026-fi.jpg"],
+          images_sv: ["hogsara-hogsara-weekday-2026-sv.jpg", "hogsara-hogsara-saturday-2026-sv.jpg", "hogsara-hogsara-holiday-2026-sv.jpg"],
+          images_en: ["hogsara-hogsara-weekday-2026-en.jpg", "hogsara-hogsara-saturday-2026-en.jpg", "hogsara-hogsara-holiday-2026-en.jpg"]
+        }
       ]
     },
     vartsala: {
@@ -1592,6 +1631,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/vartsala.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/vartsala.html#timetables",
       tables: [
+        {
+          validFrom: "2025-10-01",
+          validTo: null,
+          images: ["vartsala-vartsala-2026-fi.jpg"],
+          images_fi: ["vartsala-vartsala-2026-fi.jpg"],
+          images_sv: ["vartsala-vartsala-2026-sv.jpg"],
+          images_en: ["vartsala-vartsala-2026-en.jpg"]
+        }
       ]
     },
     vano: {
@@ -1599,6 +1646,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/vano.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/vano.html#timetables",
       tables: [
+        {
+          validFrom: "2024-11-01",
+          validTo: null,
+          images: ["vano-vano-weekday-2026-fi.jpg", "vano-vano-weekend-2026-fi.jpg"],
+          images_fi: ["vano-vano-weekday-2026-fi.jpg", "vano-vano-weekend-2026-fi.jpg"],
+          images_sv: ["vano-vano-weekday-2026-sv.jpg", "vano-vano-weekend-2026-sv.jpg"],
+          images_en: ["vano-vano-weekday-2026-en.jpg", "vano-vano-weekend-2026-en.jpg"]
+        }
       ]
     },
     hogsar: {
@@ -1610,12 +1665,30 @@ fdata = {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/kokkila.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/kokkila.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kokkila.html#timetables",
+      tables: [
+        {
+          validFrom: "2026-10-09",
+          validTo: null,
+          images: ["kokkila-kokkila-2026-fi.jpg"],
+          images_fi: ["kokkila-kokkila-2026-fi.jpg"],
+          images_sv: ["kokkila-kokkila-2026-sv.jpg"],
+          images_en: ["kokkila-kokkila-2026-en.jpg"]
+        }
+      ]
     },
     hammaronsalmi: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/hammaronsalmi.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/hammaronsalmi.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hammaronsalmi.html#timetables",
       tables: [
+        {
+          validFrom: "2026-04-01",
+          validTo: null,
+          images: ["hammaronsalmi-hammaronsalmi-2026-fi.jpg"],
+          images_fi: ["hammaronsalmi-hammaronsalmi-2026-fi.jpg"],
+          images_sv: ["hammaronsalmi-hammaronsalmi-2026-sv.jpg"],
+          images_en: ["hammaronsalmi-hammaronsalmi-2026-en.jpg"]
+        }
       ]
     },
     palva: {
@@ -1623,6 +1696,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/palva.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/palva.html#timetables",
       tables: [
+        {
+          validFrom: "2026-10-09",
+          validTo: null,
+          images: ["palva-aikataulu-2026-1-fi.jpg"],
+          images_fi: ["palva-aikataulu-2026-1-fi.jpg"],
+          images_sv: ["palva-aikataulu-2026-1-sv.jpg"],
+          images_en: ["palva-aikataulu-2026-1-en.jpg"],
+        },
       ]
     },
     velkuanmaa: {
@@ -1630,6 +1711,14 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/velkuanmaa.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/velkuanmaa.html#timetables",
       tables: [
+        {
+          validFrom: "2026-10-09",
+          validTo: null,
+          images: ["velkuanmaa-velkuanmaa-2026-fi.jpg"],
+          images_fi: ["velkuanmaa-velkuanmaa-2026-fi.jpg"],
+          images_sv: ["velkuanmaa-velkuanmaa-2026-sv.jpg"],
+          images_en: ["velkuanmaa-velkuanmaa-2026-en.jpg"]
+        }
       ]
     },
     kivimo: {
@@ -1651,6 +1740,16 @@ fdata = {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/keistio.html#timetables",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/keistio.html#timetables",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/keistio.html#timetables",
+      tables: [
+        {
+          validFrom: "2026-04-01",
+          validTo: null,
+          images: ["keistio-keistio-weekday-2026-fi.jpg", "keistio-keistio-saturday-2026-fi.jpg", "keistio-keistio-sunday-2026-fi.jpg"],
+          images_fi: ["keistio-keistio-weekday-2026-fi.jpg", "keistio-keistio-saturday-2026-fi.jpg", "keistio-keistio-sunday-2026-fi.jpg"],
+          images_sv: ["keistio-keistio-weekday-2026-sv.jpg", "keistio-keistio-saturday-2026-sv.jpg", "keistio-keistio-sunday-2026-sv.jpg"],
+          images_en: ["keistio-keistio-weekday-2026-en.jpg", "keistio-keistio-saturday-2026-en.jpg", "keistio-keistio-sunday-2026-en.jpg"]
+        }
+      ]
     },
     skagen: {
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/skagen.html",
