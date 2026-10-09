@@ -186,6 +186,41 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
    voimassaolojaksojen rajat, kielten varajärjestys, sivujärjestys ja kuvan
    luettavuus sekä puhelin- että työpöytäkoossa.
 
+### Päivityksissä opittuja käytäntöjä
+
+- Älä päättele PDF:n voimassaoloa pelkästä tiedostonimestä tai verkkosivun
+  linkkitekstistä. Tarkista jokaisen sivun otsikko: yksi PDF voi sisältää
+  useita kausia, eri suuntien taulukoita sekä erillisiä selite- ja
+  poikkeussivuja.
+- Ryhmittele samaan `tables`-riviin kaikki sivut, joita kyseisen jakson
+  aikataulun tulkitseminen vaatii. Esimerkiksi ensimmäinen sivu voi sisältää
+  menovuorot ja seuraava paluuvuorot tai varaus- ja poikkeusehdot.
+- Tee toisistaan erillään oleville voimassaolojaksoille omat rivit, vaikka ne
+  käyttäisivät samoja kuvia. Älä venytä yhtä jaksoa sen välissä olevan kesä-,
+  talvi- tai poikkeuskauden yli.
+- Pätki pyhä- ja poikkeusliikenne niin, etteivät perusaikataulun ja
+  erikoisaikataulun voimassaolojaksot mene päällekkäin. Lisää perusaikataulu
+  tarvittaessa uudelleen poikkeusjakson jälkeen. Näin käyttäjälle ei näytetä
+  samalle päivälle kahta keskenään ristiriitaista tabia.
+- Yhteinen liite voi olla osa usean reitin aikataulua. Esimerkiksi
+  vaijerilossien yleinen tauko- ja poikkeussivu lisätään reittikohtaisen kuvan
+  lisäksi tai yksinään niille kausille, joille ei ole erillistä aikataulua.
+- Älä oleta, että kaikille vanhoille reiteille julkaistaan edelleen oma
+  aikataulu. Jos reitti puuttuu operaattorin nykyiseltä aikataulusivulta, älä
+  jatka vanhan aikataulun voimassaoloa. Selvitä reitin tila erikseen.
+- Tarkista kohdetiedoston nimi ennen kuvan kirjoittamista. Jos nimi on jo
+  käytössä, lisää nimeen vuosi tai tarkempi voimassaolojakso. Vanhaa kuvaa ei
+  saa korvata uuden kauden sisällöllä.
+- Käytä aikataulun `link`-kentässä vakaata reitti- tai aikatauluhakemiston
+  sivua. PDF:n suora osoite voi vaihtua korjauksen yhteydessä, vaikka kauden
+  nimi pysyisi samana.
+- Tarkista PDF:stä löytyvät alusnumerot, sähköpostiosoitteet ja varausehdot
+  samalla kertaa. Vertaa niitä operaattorin yhteystietosivuun ja päivitä
+  alus- tai operaattoritietue vain virallisen lähteen perusteella.
+- Tarkista lopuksi, että kaikki `data.js`:ssä viitatut kuvat ovat olemassa,
+  `data.json` vastaa täsmälleen `node data.js` -komennon tulosta ja sovellus
+  näyttää sekä nykyiset että tulevat jaksot oikeassa järjestyksessä.
+
 ## Sovelluksen tarkistus
 
 Datamuutoksen jälkeen rakenna sovellus Node.js 24:llä:
