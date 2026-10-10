@@ -74,6 +74,9 @@ Nykyinen käytäntö on kasvattaa kokonaislukua yhdellä.
   historiallisista syistä GeoJSON-tyylinen mutta ei täydellinen
   `FeatureCollection`.
 - `timetables_jpg/`: sovelluksessa näytettävät paikalliset aikataulukuvat.
+- `structured-timetables.json`: koneellisesti muodostettu rakenteellisen
+  aikataulun luonnos. Tietueen `review.status` kertoo tarkistustilan.
+- `structured-timetables.schema.json`: rakenteellisen aikataulun JSON Schema.
 - `index.json`: ladattavien tiedostojen nimet ja välimuistiversiot.
 
 ## Reittien elinkaari
@@ -108,6 +111,53 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
   useimpien reittien oletusratkaisu.
 - Säilytä virallisen alkuperäisaikataulun linkki lähteenä ja tarkistamista
   varten myös silloin, kun aikataulu esitetään paikallisesti.
+
+## Rakenteellisen aikataulun luonnos
+
+Generoi rakenteellinen luonnos hyväksytyistä, paikallisesti tallennetuista
+lähteistä:
+
+```sh
+python3 scripts/build_structured_timetables.py
+```
+
+Tarkista, että versionhallinnassa oleva tulos vastaa lähteitä:
+
+```sh
+python3 scripts/build_structured_timetables.py --check
+```
+
+Muunnin lukee lähdeluettelon `timetable-checks.json`:sta ja alkuperäiset
+tiedostot Gitin ulkopuolisesta `.timetable-checker/originals/`-hakemistosta.
+Ensimmäinen versio muuntaa Finferriesin HTML-aikataulujen lähtöajat,
+voimassaolot, viikonpäivät, ajosuunnat, tauot ja huomautukset. Kellonaika
+`24:00` tallennetaan arvona `00:00`, `dayOffset: 1`, mutta alkuperäinen arvo
+säilyy kentässä `sourceTime`.
+
+Jokaisella yksittäisellä lähdöllä on viikonpäivät lentoaikatauluista tutussa
+`operatingDays`-muodossa. Seitsemän merkkiä tarkoittavat järjestyksessä
+maanantaita–sunnuntaita, numero tarkoittaa ajopäivää ja alaviiva ettei vuoroa
+ajeta, esimerkiksi `12_4567`. Aikataulun tekstissä annetut poikkeukset pitää
+purkaa tähän lopulliseen ajopäiväjoukkoon. Säilytä lisäksi alkuperäinen merkintä
+`noteRefs`-kentässä ja rakenteinen tulkinta `conditions`-kentässä, jotta tulkinta
+voidaan jäljittää ja tarkistaa. Pelkkä tekstihuomautus ei riitä matkahakuun.
+`noteInterpretationStatus` on `resolved` vasta, kun merkinnän vaikutus on purettu
+rakenteeksi. Arvo `unresolved` estää keskeneräisen merkinnän sekoittamisen
+valmiiseen reititysdataan. Merkinnättömän lähdön arvo on `not_applicable`.
+
+Tietomallin ylin aikataulutaso on reitti, ei operaattorin lähdesivu. Esimerkiksi
+Högsåralla on yksi `hogsara`-tietue, vaikka Finferries julkaisee arjen,
+lauantain ja sunnuntain eri HTML-sivuilla. Saman suunnan ja kellonajan lähtö on
+yksi `departures`-tietue. Sen `operations`-lista kertoo eri voimassaolojaksot,
+ajopäivät, pyhäpäiväsäännöt ja poikkeusehdot. Operaattorin sivujen tunnisteet
+säilytetään ainoastaan `sourceId`-provenienssina.
+
+Generoitu tietue on aina aluksi `generated_unreviewed`. Älä käytä sitä
+matkahakuun varmennettuna tietona ennen kuin lähtöajat, poikkeukset ja
+huomautusviitteet on verrattu alkuperäiseen aikatauluun. PDF-lähteet ja
+HTML-sivut, joissa ei ole aktiivisia lähtöjä, luetellaan toistaiseksi
+`unconvertedSources`-kentässä. Näin aineiston kattavuusvajetta ei voi tulkita
+vahingossa liikennöinnin puuttumiseksi.
 - Anna jokaiselle aikataululle `validFrom` ja mahdollisuuksien mukaan
   `validTo` ISO-muodossa `YYYY-MM-DD`.
 - Älä jatka vanhan aikataulun voimassaoloa ilman lähdettä.
