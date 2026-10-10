@@ -592,6 +592,7 @@
       "properties": {
         "sname": "Iniö",
         "stype": "road",
+        "minZ": 7,
         "maxZ": "11"
       },
       "geometry": {
@@ -5480,6 +5481,7 @@
       "properties": {
         "sname": "Houtskari",
         "stype": "road",
+        "minZ": 7,
         "maxZ": 11
       },
       "geometry": {
@@ -10505,7 +10507,7 @@
       "properties": {
         "sname": "Brändö",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 9
       },
       "geometry": {
@@ -12632,7 +12634,7 @@
       "properties": {
         "sname": "Heponiemi",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 11
       },
       "geometry": {
@@ -37375,7 +37377,7 @@
       "properties": {
         "sname": "Vartsalan lossi - Vuosnainen",
         "stype": "road",
-        "minZ": 9,
+        "minZ": 7,
         "maxZ": 11,
         "roadImportId": "vartsala"
       },
@@ -42583,7 +42585,7 @@
       "properties": {
         "sname": "Naantali - Rymättylä",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 9,
         "roadImportId": "rymättylä"
       },
@@ -44095,7 +44097,7 @@
       "properties": {
         "sname": "Rymättylä - Hämmärönsalmi",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 11,
         "roadImportId": "airismaa"
       },
@@ -45315,7 +45317,7 @@
       "properties": {
         "sname": "Hämmärönsalmi - Hanka",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 11,
         "roadImportId": "aasla"
       },
@@ -45823,7 +45825,7 @@
       "properties": {
         "sname": "Prostvik - Pärnäs",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 9,
         "roadImportId": "prostvikpärnäs"
       },
@@ -47671,7 +47673,7 @@
       "properties": {
         "sname": "Kaarina - Lillmälö",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 9,
         "roadImportId": "kaarinalillmälö"
       },
@@ -51775,7 +51777,7 @@
       "properties": {
         "sname": "Retais - Korpo",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 9,
         "roadImportId": "retaiskorpo"
       },
@@ -52679,7 +52681,7 @@
       "properties": {
         "sname": "Galtby",
         "stype": "road",
-        "minZ": 8,
+        "minZ": 7,
         "maxZ": 11,
         "roadImportId": "galtby"
       },
