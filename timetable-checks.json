@@ -1,0 +1,1218 @@
+{
+  "schemaVersion": 1,
+  "acceptedAt": "2026-10-10T06:55:52.108046+00:00",
+  "settings": {
+    "pdfRenderDpi": 150
+  },
+  "catalogs": [
+    {
+      "id": "finferries-aikatauluhakemisto",
+      "url": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut.html",
+      "pattern": "/koodiviidakko/aikataulu/(?:hogsara|vartsala|vano|hogsar|kokkila|hammaronsalmi|velkuanmaa|kivimo|saverkeit|mossala|keistio|skagen|inio-kustavi|korppoo-houtskari|korppoo-norrskata|nauvo-korppoo|kasnas-hiittinen|palva|parainen-nauvo|hiittisten-itainen-reitti|hiittisten-reittialue|houtskarin-reitti|inion-lisareitti|nauvon-etelainen-reitti|nauvon-pohjoinen-reitti|nauvon-poikittainen-reitti|paraisten-reittialue|rymattylan-reittialue|saariston-rengastie|uto-ruttomrade|velkuan-reittialue)[^/?#]*\\.html$",
+      "crawlPattern": "/lauttaliikenne/lauttapaikat-ja-aikataulut/[^/?#]+\\.html$",
+      "crawlNames": [
+        "hammaronsalmi",
+        "hiittisten-itainen-reitti",
+        "hiittisten-reittialue",
+        "hogsar",
+        "hogsara",
+        "houtskarin-reitti",
+        "inio-kustavi",
+        "inion-lisareitti",
+        "kasnas-hiittinen-aurora",
+        "keistio",
+        "kivimo",
+        "kokkila",
+        "korppoo-houtskari",
+        "korppoo-norrskata",
+        "mossala",
+        "nauvo-korppoo",
+        "nauvon-etelainen-reitti-falko",
+        "nauvon-pohjoinen-reitti-innamo",
+        "nauvon-poikittainen-reitti",
+        "palva",
+        "parainen-nauvo",
+        "paraisten-reittialue-viken",
+        "rymattylan-reittialue",
+        "saariston-rengastie-houtskari-inio",
+        "saverkeit",
+        "skagen",
+        "uton-reittialue",
+        "vano",
+        "vartsala",
+        "velkuan-reitti-kaita",
+        "velkuanmaa"
+      ],
+      "sourcePrefix": "https://www.finferries.fi/",
+      "complete": false
+    },
+    {
+      "id": "alandstrafiken-turlistor",
+      "url": "https://www.alandstrafiken.ax/turlistor",
+      "pattern": "/sites/default/files/[^?#]+\\.pdf(?:[?#].*)?$",
+      "sourcePrefix": "https://www.alandstrafiken.ax/sites/default/files/",
+      "complete": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "finferries-hogsara-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hogsara-ma-pe-1.11.2025-alkaen.html",
+      "seedFile": "component-hogsara-weekday.html",
+      "fingerprint": {
+        "sha256": "9a49a1489b6032fc84d90d1d988ebd72f5ab867b2c5ab560bf2f1715fcfdb557",
+        "size": 2554,
+        "etag": "W/\"a939fe160e5ff66a4a4b34827507b30a\"",
+        "normalizedSha256": "d37ad7cbfe1a382cb79b803b404453acd074d950edd4ecbcecff724d454b3030"
+      }
+    },
+    {
+      "id": "finferries-hogsara-saturday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hogsara-la-1.7.2024-alkaen.html",
+      "seedFile": "component-hogsara-saturday.html",
+      "fingerprint": {
+        "sha256": "26562fdee03544ed19e14491ee3505dc3cf0f6e2f84dff1fc462cf6ad01d1fbe",
+        "size": 2205,
+        "etag": "W/\"d0f40fe055320e50d95439a6293d6488\"",
+        "normalizedSha256": "df2dacf11717461b1dc9b7322594d2e7c5df5e4fc4a23b810abf9ff194159994"
+      }
+    },
+    {
+      "id": "finferries-hogsara-holiday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hogsara-pyhat-1.7.2024-alkaen.html",
+      "seedFile": "component-hogsara-holiday.html",
+      "fingerprint": {
+        "sha256": "6c966da7c9d02e72faa01f755909eb793474360fbcf4ad31cb4a5ca2a23b628b",
+        "size": 1874,
+        "etag": "W/\"fd2be58fc473f9c361e736662ced7428\"",
+        "normalizedSha256": "828531e8cc410444dbed1cd24ebd29c658d198a67016f17821e69b38b3fc74c2"
+      }
+    },
+    {
+      "id": "finferries-vartsala",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/vartsala-1.10.2025-alkaen.html",
+      "seedFile": "component-vartsala.html",
+      "fingerprint": {
+        "sha256": "ad6bf997b9aa008d6bdf91c74064bee82ffe4ebfb1f5c1328b92e79afd0b3cc8",
+        "size": 5167,
+        "etag": "W/\"0334acb191f840536dcd8d704e2e5214\"",
+        "normalizedSha256": "99c5b0991b011a288058300b0599d7c04444e899a15d646cc525211c3b6ef74a"
+      }
+    },
+    {
+      "id": "finferries-vano-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/vano-ma-pe-1.11.2024-alkaen.html",
+      "seedFile": "component-vano-weekday.html",
+      "fingerprint": {
+        "sha256": "087f826a6f470ee24053382a52d64005dc799bf872f05b85bb850e707e643728",
+        "size": 4497,
+        "etag": "W/\"f2acf7d26b6852bdc6b2899b81d2edb6\"",
+        "normalizedSha256": "4e667586c6f502682a0e92b71417d16e122e3135d71b0b9633e5240cb6442d03"
+      }
+    },
+    {
+      "id": "finferries-vano-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/vano-lo-so-1.11.2024-alkaen.html",
+      "seedFile": "component-vano-weekend.html",
+      "fingerprint": {
+        "sha256": "1f29fe5db45c607356193b08f564e6ffcb6764341791843c6a26b7821a6f708b",
+        "size": 4365,
+        "etag": "W/\"dc7d67b101096dfdac1761c2115a4d51\"",
+        "normalizedSha256": "61a91b5a6ea9bc13d3b070b88886a3f17faf4cff7340843fb35fd5dbea7bc57c"
+      }
+    },
+    {
+      "id": "finferries-hogsar",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hogsar-1.6.2026-alkaen.html",
+      "seedFile": "component-hogsar.html",
+      "fingerprint": {
+        "sha256": "5de59cbb608fc62e6edf1e3b5de3ba91b7a26dbf86e43151fcde9274b5da5bbe",
+        "size": 1347,
+        "etag": "W/\"6d941c987e2bbf86fc751cd2c75c735f\"",
+        "normalizedSha256": "fb9951172f45427178fe53ac1fd3df7b4c9be253304c76cade48abc676f9d54f"
+      }
+    },
+    {
+      "id": "finferries-kokkila",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/kokkila-1.6.2015.html",
+      "seedFile": "component-kokkila.html",
+      "fingerprint": {
+        "sha256": "12e1dca5f3305a97b496ddac56fdb7b799499d6ab43e0b2776ea402b55bd3226",
+        "size": 3744,
+        "etag": "W/\"2ceaa13f122800154a9a94afcd1ca496\"",
+        "normalizedSha256": "9f7540f564ed5c4aaee474a6986247318c9ad41721502123011bf1c08d9d6471"
+      }
+    },
+    {
+      "id": "finferries-hammaronsalmi",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hammaronsalmi-voimassa-ympari-vuoden-1.4.2026-alkaen.html",
+      "seedFile": "component-hammaronsalmi.html",
+      "fingerprint": {
+        "sha256": "026c36eef5c1d5e51f0a051bb59b390e0bc4d48e4cda0ad8ce2d548cb361c631",
+        "size": 4395,
+        "etag": "W/\"3a7180bba7aad8071bec0ff0606ee805\"",
+        "normalizedSha256": "a2ec026035389a9a238a0104cd480ea7b98157a03fb12178d1075860918f03ec"
+      }
+    },
+    {
+      "id": "finferries-velkuanmaa",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/velkuanmaa-20.2.2017-lahtien.html",
+      "seedFile": "component-velkuanmaa.html",
+      "fingerprint": {
+        "sha256": "6b3a49787d30480263d6653e46179e07ebaba918d20e9c09efa48e5959c6f6c6",
+        "size": 4216,
+        "etag": "W/\"fadd8c2d5e53c28953a176b5929bc93b\"",
+        "normalizedSha256": "95a4fbd97e5f86d458cb21a2914ca538e1ca067d47abe964d09b89d38fdfcad4"
+      }
+    },
+    {
+      "id": "finferries-kivimo",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/kivimo.html",
+      "seedFile": "component-kivimo.html",
+      "fingerprint": {
+        "sha256": "b104cb24bc62ce8901ecd654e2f72a2d8b121f7c7b87dd4426157e4571a5a374",
+        "size": 1577,
+        "etag": "W/\"326a71d44e883044799248832b6a6f64\"",
+        "normalizedSha256": "26d681b42c9afaddd375d3a2b887f71f61431cad689a91051ff73b6a37617de1"
+      }
+    },
+    {
+      "id": "finferries-saverkeit",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/saverkeit.html",
+      "seedFile": "component-saverkeit.html",
+      "fingerprint": {
+        "sha256": "fd732f2fb9bb95b8101e62dd65218efdbe49845244522e6afd27e1dbe117f1c8",
+        "size": 1292,
+        "etag": "W/\"e096eb00f41c3574fc6b68d8232e0979\"",
+        "normalizedSha256": "45bebe90daa9ceacba5bed5dcf63ce7665cd39fcd1f3a31143c5472c6a65d76b"
+      }
+    },
+    {
+      "id": "finferries-mossala",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/mossala.html",
+      "seedFile": "component-mossala.html",
+      "fingerprint": {
+        "sha256": "d09c0aa3d57542b5b9934aeba3430c9e15b9407f8ad3e1e05de692951b40a205",
+        "size": 1605,
+        "etag": "W/\"6a4bf538e2cfe68829c800719f98c222\"",
+        "normalizedSha256": "08e5635c1ee354cce50670122ebca1bf97038640f5a996be01bfeca4ca99a145"
+      }
+    },
+    {
+      "id": "finferries-keistio-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/keistio-ma-pe-1.4.2026-alkaen.html",
+      "seedFile": "component-keistio-weekday.html",
+      "fingerprint": {
+        "sha256": "c619e74a1240b219308bc4d0de12cb81dda29303ddf7a8fac28119a22a8fdbb8",
+        "size": 4115,
+        "etag": "W/\"e15d95f559b752666827d02e3b4904f8\"",
+        "normalizedSha256": "48aac7335e2b990ff3a101fb3da763ecb51d5849b6ea9e72f5cf02eb0339b6ce"
+      }
+    },
+    {
+      "id": "finferries-keistio-saturday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/keistio-la-1.4.2026-alkaen.html",
+      "seedFile": "component-keistio-saturday.html",
+      "fingerprint": {
+        "sha256": "1bb15b6e4b5ea2d81042dda7818132c7f61e82841024a29d1ea28ff9b35ebbda",
+        "size": 3569,
+        "etag": "W/\"051c05f0e2235ad65f3f068abb564e55\"",
+        "normalizedSha256": "cbd4c314356725302e294ffb5428846e08a588d5b2dd773c462d5c97afb4dbdd"
+      }
+    },
+    {
+      "id": "finferries-keistio-sunday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/keistio-su-2014.html",
+      "seedFile": "component-keistio-sunday.html",
+      "fingerprint": {
+        "sha256": "1428b7c7e6b1dafead81b2312a1781e4eb4289a213c22fcfdd9d8da539297033",
+        "size": 3375,
+        "etag": "W/\"32195aaf6c6fe2c8d1a9b8ee4356e11e\"",
+        "normalizedSha256": "4693fe2dfeaf0bcbc8949824664211f1839549e84533a60969fff987dcd7d437"
+      }
+    },
+    {
+      "id": "finferries-skagen",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/skagen.html",
+      "seedFile": "component-skagen.html",
+      "fingerprint": {
+        "sha256": "3b52dbb1175c308ac91a6ad18c5530e98d7f24bf417e7966824ed71192e46cc7",
+        "size": 2799,
+        "etag": "W/\"6e30f767dfb1547f31f2b61fe90065fa\"",
+        "normalizedSha256": "0a18be268e86d2aae56c6973aeb2f9e4b72279e05e47fed9a9973e44f8bed7d2"
+      }
+    },
+    {
+      "id": "finferries-inio-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/inio-kustavi-talvi-7.4.-7.5.-ja-14.9.-31.12.2026-ma-pe.html",
+      "seedFile": "component-inio-weekday.html",
+      "fingerprint": {
+        "sha256": "f30aa252ce2417141a4fec6f46fc66e2055f4c24e9efdade9944c48bcd965048",
+        "size": 3310,
+        "etag": "W/\"8b6ef856ffbe48399171ffe1aad13bb1\"",
+        "normalizedSha256": "891172c30ce4adf90ac369dc9f651aef75943f74b33b958f56ee1db9997279e0"
+      }
+    },
+    {
+      "id": "finferries-inio-saturday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-la.html",
+      "seedFile": "component-inio-saturday.html",
+      "fingerprint": {
+        "sha256": "2559d6fb1281180789f38046233e1445f52b7bf3d4b4334432f218aa80caab82",
+        "size": 2953,
+        "etag": "W/\"2e4937737018ce2f1ad35bf73338fbaf\"",
+        "normalizedSha256": "d253b60f5849a705c786e954d539bb1b11c9730b6eb3deb3b7a975b3c34f45d9"
+      }
+    },
+    {
+      "id": "finferries-inio-sunday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026-su.html",
+      "seedFile": "component-inio-sunday.html",
+      "fingerprint": {
+        "sha256": "f1f396b51364e7bc326bb99364c9de717b27e87b4603a9930e00f892878033a0",
+        "size": 2942,
+        "etag": "W/\"f48d69cfb1bc5978fc8de46ec80b91f3\"",
+        "normalizedSha256": "0b13c247bcc80432baf17ddcf05af2280894e825855bf083b22dd70a47496e64"
+      }
+    },
+    {
+      "id": "finferries-korpohoutskar-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-ma-pe-talvi-1.10.2026-30.4.2027.html",
+      "seedFile": "component-korpohoutskar-weekday.html",
+      "fingerprint": {
+        "sha256": "bdbda5f55b8febf7cff7591646bac452aeb41cc06fa6ce4597f1a54b158416a5",
+        "size": 4939,
+        "etag": "W/\"6ad26a0576b2feb367f0e2879a758488\"",
+        "normalizedSha256": "b5529e8c6f8404bd24aa813e30d600bf0bf677e1f35d4a1194ab1b36d40795f4"
+      }
+    },
+    {
+      "id": "finferries-korpohoutskar-early-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-la-su-talvi-1.10.2026-17.10.2026.html",
+      "seedFile": "component-korpohoutskar-early-weekend.html",
+      "fingerprint": {
+        "sha256": "e7df7a0343b69230236ca5f5c68eb3ef71b1648ae3dd0365a737d8d6722384c2",
+        "size": 3558,
+        "etag": "W/\"6a68c9c04c3f619d58956ee0399d57b4\"",
+        "normalizedSha256": "6deba4910e86e1029a9de74a47e01eb845c577a1a646f745c7c39348ae83b4a3"
+      }
+    },
+    {
+      "id": "finferries-korpohoutskar-special-sunday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-su-talvi-18.10.2026.html",
+      "seedFile": "component-korpohoutskar-special-sunday.html",
+      "fingerprint": {
+        "sha256": "0b84b55bb9c2ef0b5818bd8fdb741611ffabb1efe58a2bceab2b2e654bb24b0a",
+        "size": 3601,
+        "etag": "W/\"6398e50c23a5b8d459d44835a9d7eccd\"",
+        "normalizedSha256": "135dd70c5e1ce12b309805c405471506d274c0e35995b3b9553f0e79a9ebac93"
+      }
+    },
+    {
+      "id": "finferries-korpohoutskar-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-la-su-talvi-19.10.2026-30.4.2027.html",
+      "seedFile": "component-korpohoutskar-weekend.html",
+      "fingerprint": {
+        "sha256": "e44a8a6a3e4ad4add2d06ec7d0319311e625acbe548d5fbb59989594237503f5",
+        "size": 3558,
+        "etag": "W/\"de58c1b2adefe36109a94af41a296db8\"",
+        "normalizedSha256": "2e3be36fa09e6998173be898cb8df760ec57966ba3cf0fe337564dfcf4143f5b"
+      }
+    },
+    {
+      "id": "finferries-korponorrskata-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-norrskata-talvi-ma-pe-1.10.2026-30.4.2027.html",
+      "seedFile": "component-korponorrskata-weekday.html",
+      "fingerprint": {
+        "sha256": "9cc297c839ea709cc3277d564b7b437bc78bcaec97ead43510b3d62d03628ddd",
+        "size": 4594,
+        "etag": "W/\"717eedd8822c6eed1dffb532c730e0d1\"",
+        "normalizedSha256": "62ec967e770cccec1aa95f89604d40f4111865ce6dc5f9ce426535e9a9a5301d"
+      }
+    },
+    {
+      "id": "finferries-korponorrskata-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-norrskata-talvi-la-su-1.10.2026-30.4.2027.html",
+      "seedFile": "component-korponorrskata-weekend.html",
+      "fingerprint": {
+        "sha256": "c92600561473d8cce0202adc63a674b29b81ff4af1c1b8821ab60d6e3be524c1",
+        "size": 3124,
+        "etag": "W/\"fa066fb7041ae4854d3dc42f13273d4e\"",
+        "normalizedSha256": "bf3d56b6708a74e458b5efb00f1f7fa0d48f35628fdec5c65a644fa101df025e"
+      }
+    },
+    {
+      "id": "finferries-nagukorpo-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/nauvo-korppoo-ma-pe-talvi-1.10.2026-30.4.2027.html",
+      "seedFile": "component-nagukorpo-weekday.html",
+      "fingerprint": {
+        "sha256": "979504cd3154f734943c9b4b0b991ad02c5f55e7d5ba8d6d8332222f41100e7f",
+        "size": 6380,
+        "etag": "W/\"ae9bb1de28cc1ea5afa4ce0cfa06f768\"",
+        "normalizedSha256": "9d14608dc2aeb1c942f48c61008a76385af67ee0d8b32680b146a2d14156f34d"
+      }
+    },
+    {
+      "id": "finferries-nagukorpo-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/nauvo-korppoo-talvi-la-su-1.10.2026-30.4.2027.html",
+      "seedFile": "component-nagukorpo-weekend.html",
+      "fingerprint": {
+        "sha256": "e1763e66dbda363fb8a35f9095e682628e4644c984a77ce1610144041311213e",
+        "size": 5582,
+        "etag": "W/\"1a4b5846fd077c6d7ea692b97872dea7\"",
+        "normalizedSha256": "40069a5c0a868a664b4bc9069af67426ac8c08069eb8b3e5263724e41f53aea9"
+      }
+    },
+    {
+      "id": "finferries-kasnashitis-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-ma-pe-1.1.-31.3.2026-ja-1.10.-31.12.2026.html",
+      "seedFile": "component-kasnashitis-weekday.html",
+      "fingerprint": {
+        "sha256": "1815a78a6b1ceeec3c35a04c5840e17269a195d0d3d6b3afc1ea7ad7a702fe95",
+        "size": 3234,
+        "etag": "W/\"e13ac08d0123f6e101f294b0648693c4\"",
+        "normalizedSha256": "4c53e8608d15f0dd6d44204e61639f420db889ac56bc2e303e5466595a228d32"
+      }
+    },
+    {
+      "id": "finferries-kasnashitis-saturday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-la-1.1-31.3.2026-ja-1.10.-31.12.2026.html",
+      "seedFile": "component-kasnashitis-saturday.html",
+      "fingerprint": {
+        "sha256": "04caccc47a60677cb23a48635933f3ec603b17a131ec0f9ad454c59b05db8b7e",
+        "size": 2678,
+        "etag": "W/\"49b9774da1f74b2771433e15653d9d49\"",
+        "normalizedSha256": "eb1fa098c513b25b3175edcff9a55411e6003d33410ff21fa841dbadfc7efd88"
+      }
+    },
+    {
+      "id": "finferries-kasnashitis-sunday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-su-1.1.-31.3.2026-ja-1.10.-31.12.2026.html",
+      "seedFile": "component-kasnashitis-sunday.html",
+      "fingerprint": {
+        "sha256": "1dd5de95089b601ce03b89086df7846c7c4bcf00e3b0e14fca5580b781b134fc",
+        "size": 2456,
+        "etag": "W/\"654c537198f63e381e50e733c0eeeb70\"",
+        "normalizedSha256": "5db695742965890056af7a29881706378357a83cd1e9f12febdbc94d32218217"
+      }
+    },
+    {
+      "id": "finferries-hitisalva-hiittisten-itainen-reitti-talviaikataulu-2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/hiittisten-itainen-reitti-talviaikataulu-2026.pdf",
+      "seedFile": "hiittisten-itainen-reitti-talviaikataulu-2026.pdf",
+      "fingerprint": {
+        "sha256": "79cc286bbb13cc3afc893cc690739dedfc750ec682b97bd93abda5fd808422ed",
+        "size": 505645,
+        "etag": "\"7b72d-645fbba4c9150\"",
+        "lastModified": "Mon, 15 Dec 2025 11:15:24 GMT",
+        "pageImageSha256": [
+          "be389da703abc8fb8deae74977ae32b685b394d4eacf887f2352d737cfc56d68"
+        ]
+      }
+    },
+    {
+      "id": "finferries-hitisjurmo-hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026.pdf",
+      "seedFile": "hiittisten-reittialue-2026.pdf",
+      "fingerprint": {
+        "sha256": "5f03aa1d0ca47a0b4642258f3cfa164c273ad9a21212a675f81c59dc1bc839a8",
+        "size": 467313,
+        "etag": "\"72171-64d7170e79e06\"",
+        "lastModified": "Fri, 20 Mar 2026 09:38:01 GMT",
+        "pageImageSha256": [
+          "9d54059f6d48212be5a8ccb6785332c73400406084f508fe556368fb333f5808",
+          "411bd14b4ac026fead45007013e56fdda6ca7297702bd0629e7a67801bb1b0d3"
+        ]
+      }
+    },
+    {
+      "id": "finferries-houtskarrutt-houtskarin-reitti-talvi-19.8.2026-30.9.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/houtskarin-reitti-talvi-19.8.2026-30.9.2026.pdf",
+      "seedFile": "houtskarin-reitti-talvi-19.8.2026-30.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "35ed43520cac63035b82cf3949bec76a01a523a4e8f479406d5920a5521fd4c2",
+        "size": 509926,
+        "etag": "\"7c7e6-65bba96ea8a7d\"",
+        "lastModified": "Fri, 18 Sep 2026 04:46:54 GMT",
+        "pageImageSha256": [
+          "ab958b21f46e9b3f33fde8770f2b6a9a979d23f10134c129a0028326ed8b7bdc",
+          "d64c1fade552f36eb7e2cf0ac2a679847c5efe5d63f377960e9693344dd2d0ec"
+        ]
+      }
+    },
+    {
+      "id": "finferries-houtskarrutt-houtskarin-reitti-talvi-1.10.2026-30.4.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/houtskarin-reitti-talvi-1.10.2026-30.4.2027.pdf",
+      "seedFile": "houtskarin-reitti-talvi-1.10.2026-30.4.2027.pdf",
+      "fingerprint": {
+        "sha256": "d660b9c3708a517d846a4ddfe8ecdbb848cc3ac7fc7989bc8f842f19f25d03c5",
+        "size": 509344,
+        "etag": "\"7c5a0-65c23e1ee7859\"",
+        "lastModified": "Wed, 23 Sep 2026 10:24:04 GMT",
+        "pageImageSha256": [
+          "3bc65a18140e1c8cae0d80da9060d4b0ef0634d10b6fcac5e5e3a8448f92d991",
+          "b6cf809e58e9cda697a74461323737d63a36c0da3a131a477ecccf3730c0fa77"
+        ]
+      }
+    },
+    {
+      "id": "finferries-iniokustavi-inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026.pdf",
+      "seedFile": "inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026.pdf",
+      "fingerprint": {
+        "sha256": "04f340eacb80c8ab71606f42f3a8aacd28055baa2a036807b0236eb8a20243ae",
+        "size": 59575,
+        "etag": "\"e8b7-656ce2e619e2b\"",
+        "lastModified": "Fri, 17 Jul 2026 13:03:21 GMT",
+        "pageImageSha256": [
+          "05d9c8f1a60f8df626f56a052ac443339a32da060428168f48ad3e547cee4b24"
+        ]
+      }
+    },
+    {
+      "id": "finferries-iniorutt-inion-lisareitti-talvi-19.8.2026-30.4.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/inion-lisareitti-talvi-19.8.2026-30.4.2027.pdf",
+      "seedFile": "inion-lisareitti-talvi-19.8.2026-30.4.2027.pdf",
+      "fingerprint": {
+        "sha256": "19a9456ec1f654e13aaece6c246da43b4979fdc5d26f382b70b4d944cdeee27e",
+        "size": 549681,
+        "etag": "\"86331-658fd015040bd\"",
+        "lastModified": "Fri, 14 Aug 2026 07:45:32 GMT",
+        "pageImageSha256": [
+          "361dc68d036751e842fc7bdba83f8f0b9053be5edece5ff22c009ebcca1c1bc8",
+          "0fe35e03567063c244a1bbf9819b2b5d205473bce3d75f3d561df906f1ce9108"
+        ]
+      }
+    },
+    {
+      "id": "finferries-kasnashitis-kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026.pdf",
+      "seedFile": "kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026.pdf",
+      "fingerprint": {
+        "sha256": "d94c57106794090d74a5d7ce0f735586621a10d2e758706ac15383252c80b3c2",
+        "size": 211925,
+        "etag": "\"33bd5-645820fd73837\"",
+        "lastModified": "Tue, 09 Dec 2025 10:06:14 GMT",
+        "pageImageSha256": [
+          "c7a966506eb997690cd3bf5f3e12c57b6ef72e11e1971bd451c8cd3e296fbbc5"
+        ]
+      }
+    },
+    {
+      "id": "finferries-nagunorra-nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027.pdf",
+      "seedFile": "nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "17381445674436b68738c388d0326636dc82c252ef772154a62e68b9d3fd1f43",
+        "size": 520618,
+        "etag": "\"7f1aa-6537c8b7cebf0\"",
+        "lastModified": "Fri, 05 Jun 2026 07:24:01 GMT",
+        "pageImageSha256": [
+          "cccf3520a0fdb5903d418ef9cdb8b567bad7360ec32a785bec934aa9303a4a00",
+          "e53f48fa7080938d3d97a6a97a40b10c08418cf4c3881b207192b3a746d28011"
+        ]
+      }
+    },
+    {
+      "id": "finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
+      "seedFile": "nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
+      "fingerprint": {
+        "sha256": "48b304bf7893b812fa1cb8f31a6dc1319e2d053532aa51fb575e5d7181e1020c",
+        "size": 505720,
+        "etag": "\"7b778-6537c8acbbcb0\"",
+        "lastModified": "Fri, 05 Jun 2026 07:23:49 GMT",
+        "pageImageSha256": [
+          "1f7d1d27ff3f038355c853f7d31ac96c109664c4e4f3dae43a8c7bcf9af65d55"
+        ]
+      }
+    },
+    {
+      "id": "finferries-nagutvar-nauvon-poikittainen-reitti-talvi-1.10.2026-24.3.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/nauvon-poikittainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
+      "seedFile": "nauvon-poikittainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
+      "fingerprint": {
+        "sha256": "cafba75a250fc58c5b231e65492c113e69ba3f94d7f1bed72c44b25cfd736b17",
+        "size": 579661,
+        "etag": "\"8d84d-6537c8c212ab1\"",
+        "lastModified": "Fri, 05 Jun 2026 07:24:12 GMT",
+        "pageImageSha256": [
+          "fd0cbd7bbec9967a573df107a64355aae8abc3008c9298cde34637de545a428e"
+        ]
+      }
+    },
+    {
+      "id": "finferries-pargasrutt-paraisten-reittialue-talvi-1.9.2026-31.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/paraisten-reittialue-talvi-1.9.2026-31.5.2027.pdf",
+      "seedFile": "paraisten-reittialue-talvi-1.9.2026-31.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "e8b1ecf11ef27a6eefa06f7291a7ed96056bd8e565d49e89a15dacde3c257a40",
+        "size": 95058,
+        "etag": "\"17352-6593d7f141fdd\"",
+        "lastModified": "Mon, 17 Aug 2026 12:42:00 GMT",
+        "pageImageSha256": [
+          "a9fd3ced2619af758b9dccb50e93060b3c4c36905264162e94335265bec43297",
+          "91b5329118572771402eddaeec21aa1627bad6966907a01865a3f4084703ef2f"
+        ]
+      }
+    },
+    {
+      "id": "finferries-rymattylanreitti-rymattylan-reitti-28.9.2026-2.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/rymattylan-reitti-28.9.2026-2.5.2027.pdf",
+      "seedFile": "rymattylan-reitti-28.9.2026-2.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "bc8ad332275855d2dcc5480eacb11dabf9b2e0124f670acdde27892c37b2478c",
+        "size": 188888,
+        "etag": "\"2e1d8-6537b8b41a507\"",
+        "lastModified": "Fri, 05 Jun 2026 06:12:22 GMT",
+        "pageImageSha256": [
+          "9c080d97fc0c965f42cf958a91dddd77b1a5df40cf4915020958936c8910d8bf",
+          "e1acfcb44d22bdd523ce6f82c7f06a9f848c33c9bcb4c53ac1bb01a587945b7f"
+        ]
+      }
+    },
+    {
+      "id": "finferries-utorutt-uton-reitti-talvi-1.9.2026-30.9.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/uton-reitti-talvi-1.9.2026-30.9.2026.pdf",
+      "seedFile": "uton-reitti-talvi-1.9.2026-30.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "0619b7725fd66122efe0ff9d24ff054cd2b4494e5ed509025007d09573fe1123",
+        "size": 723960,
+        "etag": "\"b0bf8-65bbaafb636fc\"",
+        "lastModified": "Fri, 18 Sep 2026 04:53:50 GMT",
+        "pageImageSha256": [
+          "0b52f092da3cffe427b11740f24132fa2eb3ff5bc25cb9bba91afb1277205e0b"
+        ]
+      }
+    },
+    {
+      "id": "finferries-utorutt-uton-reitti-talvi-1.10.2026-31.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/uton-reitti-talvi-1.10.2026-31.5.2027.pdf",
+      "seedFile": "uton-reitti-talvi-1.10.2026-31.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "c50094461358108887dfa5fa24629c5ec52b0026ee45bee4452b8590722e56c9",
+        "size": 724134,
+        "etag": "\"b0ca6-65bbaa9da1b56\"",
+        "lastModified": "Fri, 18 Sep 2026 04:52:11 GMT",
+        "pageImageSha256": [
+          "be7c87a69a1e9bb136ce9a67a0f813141748745db3a92baeab5ef808e607062f"
+        ]
+      }
+    },
+    {
+      "id": "finferries-velkuanreitti-velkuan-reitti-kesa-8.5.-13.9.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/velkuan-reitti-kesa-8.5.-13.9.2026.pdf",
+      "seedFile": "velkuan-reitti-kesa-8.5.-13.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "0a57e771cdacfe76ba4eca225e554aaf8990e6701c9941da7b46f4b47f14135d",
+        "size": 661402,
+        "etag": "\"a179a-64a9d41a371ae\"",
+        "lastModified": "Thu, 12 Feb 2026 09:38:51 GMT",
+        "pageImageSha256": [
+          "eb8aae17eaa4a2e795b019824ca6a7a9c43ec405bfb8d7c952bb21161c4d1dee",
+          "4804d7e8dc701d3c9e392d38306b167dbde425234da65cd32cdc962cc7ed3b2e"
+        ]
+      }
+    },
+    {
+      "id": "finferries-velkuanreitti-velkuan-reitti-talvi-14.9.2026-6.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/velkuan-reitti-talvi-14.9.2026-6.5.2027.pdf",
+      "seedFile": "velkuan-reitti-talvi-14.9.2026-6.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "bb9ed62c79cb0ee771e474db2f87968648c2c6d493c2b4ba12178903c82c2c23",
+        "size": 158359,
+        "etag": "\"26a97-6537b8b41d3e7\"",
+        "lastModified": "Fri, 05 Jun 2026 06:12:22 GMT",
+        "pageImageSha256": [
+          "2d910e84ff560db20732d8162162974aa47e9b495eeb4eeff662380101f11fae",
+          "1b931b8397915a57dd85f54892c544dc4d4e24e2b3fe00117aae8bcc711959a9"
+        ]
+      }
+    },
+    {
+      "id": "finferries-velkuataivassalo-velkuan-reitti-kesa-8.5.-13.9.2026",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2026/velkuan-reitti-kesa-8.5.-13.9.2026.pdf",
+      "seedFile": "velkuan-reitti-kesa-8.5.-13.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "0a57e771cdacfe76ba4eca225e554aaf8990e6701c9941da7b46f4b47f14135d",
+        "size": 661402,
+        "etag": "\"a179a-64a9d41a371ae\"",
+        "lastModified": "Thu, 12 Feb 2026 09:38:51 GMT",
+        "pageImageSha256": [
+          "eb8aae17eaa4a2e795b019824ca6a7a9c43ec405bfb8d7c952bb21161c4d1dee",
+          "4804d7e8dc701d3c9e392d38306b167dbde425234da65cd32cdc962cc7ed3b2e"
+        ]
+      }
+    },
+    {
+      "id": "finferries-velkuataivassalo-velkuan-reitti-talvi-14.9.2026-6.5.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/velkuan-reitti-talvi-14.9.2026-6.5.2027.pdf",
+      "seedFile": "velkuan-reitti-talvi-14.9.2026-6.5.2027.pdf",
+      "fingerprint": {
+        "sha256": "bb9ed62c79cb0ee771e474db2f87968648c2c6d493c2b4ba12178903c82c2c23",
+        "size": 158359,
+        "etag": "\"26a97-6537b8b41d3e7\"",
+        "lastModified": "Fri, 05 Jun 2026 06:12:22 GMT",
+        "pageImageSha256": [
+          "2d910e84ff560db20732d8162162974aa47e9b495eeb4eeff662380101f11fae",
+          "1b931b8397915a57dd85f54892c544dc4d4e24e2b3fe00117aae8bcc711959a9"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-ava-jurmo-25.08",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-08/ava-jurmo_25.08.pdf",
+      "seedFile": "ava-jurmo_25.08.pdf",
+      "fingerprint": {
+        "sha256": "1b1b725300c7f4171aeeed38092fdd9e61e3f52db8684922ca057c3f52f8736b",
+        "size": 106764,
+        "pageImageSha256": [
+          "ec64e01a6d20d1ef6b92d74caf57c96ebf2ef9ade4f43ac72697b7ef849af251",
+          "e2d1ba5d4df1f56d3d4258ee19d58bcbd84a1702ea0bdeb2c8db101198e8fff7",
+          "4d6050e9d580f8494458290a7f77f453ea19ae7d5fe116a98c7be12da6f8beec"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-ava-osnas-1.9.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/ava-osnas-1.9.2026.pdf",
+      "seedFile": "ava-osnas-1.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "5ab1a0a6fd4f088f59e38d149e74fc90026413a61f21fac7353a9dcde10e3490",
+        "size": 91227,
+        "pageImageSha256": [
+          "e9128f9ad921921ec69bf469435832b9cb195295743ae9b970fbf9236c14f920",
+          "4f275c60f04ce93b36fe024affe1e1f9606fae25df31b46535d7b8841e55860a",
+          "5e200650b875c252a87cf2cfe4da4ae8eccef31eb5524e1e8d192d8b68fd896d"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-brando-kumlinge-11.9.2026-0",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/brando-kumlinge-11.9.2026_0.pdf",
+      "seedFile": "brando-kumlinge-11.9.2026_0.pdf",
+      "fingerprint": {
+        "sha256": "47a9f3ecec3b3a1247c2f4777a04b4e719bae50a8817bf7d49a0b34b4e9f6aa0",
+        "size": 132902,
+        "pageImageSha256": [
+          "a82a7b02d0742a111cc3df9ed346a1229e14687c6f4d67b421beb385f5391ace",
+          "8726e6dadee9c1e13f79a98ba088b493ce6f530029c41bd997001361176209b0",
+          "84bb794f3716601d963ecc6c67bf4c57556a7d4731fc8468ed8c08fba6a431d1",
+          "b0de626801d3aff4ec0f462bca950367402b760930c5dd869b0ec34fdf7b88db",
+          "558fa1bc3ea0a3c81e636b621da5953b29823e5dff51100efd48156a0af40fe5",
+          "d2f9c32db816cab0f83421c842be4aea4b183d3ef160c6e4969744af65be8e76"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-embarsund-8.6.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-06/embarsund-8.6.2026.pdf",
+      "seedFile": "embarsund-8.6.2026.pdf",
+      "fingerprint": {
+        "sha256": "da7348f708c90ec4fc9f841f0f5712aa7ad2b6d736b6ea7e9ced553ca13ca5bf",
+        "size": 109230,
+        "pageImageSha256": [
+          "1877bc743f32a69a65a73459967da38b8e4c235f21ec0e86d45f3b494553e5e8"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-enklinge-kumlinge-14.9.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/enklinge-kumlinge-14.9.2026.pdf",
+      "seedFile": "enklinge-kumlinge-14.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "1abb7c6937e73e9a5f0da7fbd88aa843938f3f532a7545e4764dc7bd0116e372",
+        "size": 127002,
+        "pageImageSha256": [
+          "c92cf759d8493532f03c809d5df60ed35ee214ec9c6502955b34386c6da344d2",
+          "9e71e01422ee21e77a7f6e700c4f5cf8f4e43b005f0ba7656274d440bb3d1fda",
+          "7905f8960b14dde684fd0175326f9efd213090858cb5c5b6cf53b909aae96623",
+          "ade5fbcb1cfea1f06fc0684f654a1703f1d19bd36e8a83aa9d4a4bbf8b647a59"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-foglo-27.5.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-05/foglo-27.5.2026.pdf",
+      "seedFile": "foglo-27.5.2026.pdf",
+      "fingerprint": {
+        "sha256": "3c064d85349ac3b7997edaa136c222ff8ebc38e7a35a5e22a90ef9e7fe8ce1c9",
+        "size": 75925,
+        "pageImageSha256": [
+          "532a8d9345456515672e572f10300f88767d2bc4ef9aa0a66ed7bfd8f457edf4",
+          "ae0881e544d4fca7d010947a19bb95691ec175ae4394fbabdacd03b08241da57"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-huto-11.9.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/huto-11.9.2026.pdf",
+      "seedFile": "huto-11.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "bdc44d9f9e9268cb67668c71d7637ce3c683e8f3dfe17e8b2069df428038643a",
+        "size": 131815,
+        "etag": "\"202e7-65b3377a76e64\"",
+        "lastModified": "Fri, 11 Sep 2026 11:34:29 GMT",
+        "pageImageSha256": [
+          "7c30dd894f8fbf5a4026bf0f00745e6a7a61925f1ec88ec9811fd0759ec58350",
+          "da7986c3acee44c171b947e8d266e5bf56b749172a7d1960f18b463655bd9d74",
+          "0accb0d8892ad3ac24d3128736dd3230192d5a001e045bbb48cad058afd57f79",
+          "30044764e44a8c5181c3c95a6dbe8b8d251c5f64e11bba97c9bb4177533053c8",
+          "96e38013dc971b0b3a42003a691efabcee393f43d78815fc7fd212d4a8ef358b",
+          "b0ca233eec3bb786330f6a3fbd79ff7267e60ed888e28abaffff9008438ec126"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-linfarjor",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-02/linfarjor.pdf",
+      "seedFile": "linfarjor.pdf",
+      "fingerprint": {
+        "sha256": "e1163ec8a744b8ba8a3dcfa34fe903737e3d147ca45ed763799cda5ffabb273b",
+        "size": 102435,
+        "etag": "\"19023-64aec7fb32cfe\"",
+        "lastModified": "Mon, 16 Feb 2026 08:11:15 GMT",
+        "pageImageSha256": [
+          "4595016814dcacbf5d34e5a9bdb485a3117f184eb16accfae808e0499cf43fd8"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-passbaten",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-02/passbaten.pdf",
+      "seedFile": "passbaten.pdf",
+      "fingerprint": {
+        "sha256": "b7770c8bc5ba801f50e718337863134445d418d729c6cb3f6866fb9d8423ceec",
+        "size": 51141,
+        "etag": "\"c7c5-64aebc64ac12d\"",
+        "lastModified": "Mon, 16 Feb 2026 07:19:24 GMT",
+        "pageImageSha256": [
+          "ad9d3231e2a7f5544a4b1aa1aa4de5c38f89c6d747cd72c02453d51f322f4938"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-seglinge-linfarja-1.1-13.9",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-08/seglinge-linfarja-1.1-13.9.pdf",
+      "seedFile": "seglinge-linfarja-1.1-13.9.pdf",
+      "fingerprint": {
+        "sha256": "b3ea5152e4ccd4ef8deab9470bafd8547376924ff807df2e6cb9651ff33329b8",
+        "size": 110029,
+        "etag": "\"1adcd-65a553b84e2da\"",
+        "lastModified": "Mon, 31 Aug 2026 10:26:17 GMT",
+        "pageImageSha256": [
+          "d61644177142fed6eb0bc98b2dfd263eaecda5755ca76ddfd3e97046872ba814"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-seglinge-linfarja-14.9-31.12-1",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-08/seglinge-linfarja-14.9-31.12_1.pdf",
+      "seedFile": "seglinge-linfarja-14.9-31.12_1.pdf",
+      "fingerprint": {
+        "sha256": "5c4215ae824d130f7e626d33e6c82f023e8bcb8e5a84fbd5cbfed768d90190ec",
+        "size": 110051,
+        "etag": "\"1ade3-65a556d9e9a21\"",
+        "lastModified": "Mon, 31 Aug 2026 10:40:18 GMT",
+        "pageImageSha256": [
+          "e4d03465d02e10ed8a4b215c31bbedaa080fb007ab5daa6f49fc825befd0dce0"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-simskala-1",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2025-12/simskala_1.pdf",
+      "seedFile": "simskala_1.pdf",
+      "fingerprint": {
+        "sha256": "81770943fe8dd2191ff3712e89d2c77120e7e16be92514da18569d45f58b139b",
+        "size": 110134,
+        "etag": "\"1ae36-6462284ebd051\"",
+        "lastModified": "Wed, 17 Dec 2025 09:32:13 GMT",
+        "pageImageSha256": [
+          "c796cb35bfb3f51d7f1f4ba86cb86bd8af8313c588c9f696e3c55641573f1caf"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-sodra-linjen-30.9.2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf",
+      "seedFile": "sodra-linjen-30.9.2026.pdf",
+      "fingerprint": {
+        "sha256": "be9d38768e0af9739247a3c5e62fdab6b8bb7337764599007e99f7d8e319cae9",
+        "size": 231801,
+        "etag": "\"38979-65cb2438e1a84\"",
+        "lastModified": "Wed, 30 Sep 2026 12:16:07 GMT",
+        "pageImageSha256": [
+          "bb0b3c25487cb66587efe298aa089234be17bc1456467cd173b835302779ed69",
+          "8a09cfb2351878f0d05aab5de1a7728f7dcaec81f5c68c6b797a4aebf8e62e53",
+          "acbe26047e6d627211968bb545e1b1af6d0dc1b20798521ca1f1ee86f0de468f",
+          "50f3765aeea666669b57f1b23595f380246feaa36cf543b05cae8f96bc21ff6f",
+          "b27dedfd8e0dcf85d47980f0d0f7e240c78341edde6a6a0ac733fd5042f9145c",
+          "6f8c14c487b521930d56d312465b4811381f21504ec0f31dadf632f975df2f8b",
+          "9dcf89c183d5e5b76e6d6a8d37bf98da173b13cbdafa663288a53464a908eb68",
+          "c2447588bc1fe831f241f521eada798213b94c1cf9406dd38c53c66d3812808e",
+          "c24ce2ca77318e58d93799d7f6824c073ee051ecdb2c28f47dcb4f16e0dd4f0c",
+          "cda80bf042db7c3dfe8034cdc1f9eefe84aa1c051ccfba9bcd393f2951efbfb8",
+          "f6f236662d190296fb22f1daa2a582929a3737467bef0dbcb5ba8fc15086afc0"
+        ]
+      }
+    },
+    {
+      "id": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-01/toftolinjen-inkl-avvikelser.pdf",
+      "seedFile": "toftolinjen-inkl-avvikelser.pdf",
+      "fingerprint": {
+        "sha256": "32e8700eae07dfe78c70dc6cffeb06ba18980834b4423c382a09b1aabede95a8",
+        "size": 110124,
+        "etag": "\"1ae2c-64763b85a10d4\"",
+        "lastModified": "Fri, 02 Jan 2026 08:44:40 GMT",
+        "pageImageSha256": [
+          "1988d715d50b3714b852935b62167e7e88e9093531924394b7636db5a31a7eab"
+        ]
+      }
+    },
+    {
+      "id": "finferries-palva",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/palva-20.2.2017-alkaen.html",
+      "seedFile": "component-palva__1.html",
+      "fingerprint": {
+        "sha256": "afd5bf3b87283c4e73f84ce90679f7306d2d69da4ed8ad6484cac6a097ab23e7",
+        "size": 4081,
+        "etag": "W/\"830fe98248f98a6328b0757daad7e0ca\"",
+        "normalizedSha256": "f317920dff65d666f2fa1a9a29afb2bdf8ca37cfc794c139fbe094e943e66be7"
+      }
+    },
+    {
+      "id": "finferries-pargasnagu-weekday",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/parainen-nauvo-talvi-ma-pe-1.10.2026-30.4.2027.html",
+      "seedFile": "component-pargasnagu__1.html",
+      "fingerprint": {
+        "sha256": "df114eddfab191fad78373bbfa8b537042e187095f2a2bfe034646977f94df79",
+        "size": 6409,
+        "etag": "W/\"0d3a460b1fb04a7979369ebf1cf421c7\"",
+        "normalizedSha256": "e3484285661e865378c53a550c0174b405566ac954a8344c04df7ba4760a777b"
+      }
+    },
+    {
+      "id": "finferries-pargasnagu-weekend",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/parainen-nauvo-talvi-la-su-1.10.2026-30.4.2027.html",
+      "seedFile": "component-pargasnagu__2.html",
+      "fingerprint": {
+        "sha256": "e2192785adc0985b844dfcedfa5ce678a66d853a5583607974618e718f01e96e",
+        "size": 4823,
+        "etag": "W/\"c20f9e5e5c1c61762ae8e65064305974\"",
+        "normalizedSha256": "6d1138cfdaa4febed25ab4682e2753343e7fe30ec10e13f0d26b0f56423b17d0"
+      }
+    },
+    {
+      "id": "finferries-hitisalva-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hiittisten-itainen-reitti-ms-alva.html",
+      "seedFile": "component-hitisalva__1.html",
+      "fingerprint": {
+        "sha256": "a02dbdd09726bcdb0434b96bb56195276c6ca49c5da7428132338df7c5efd7ff",
+        "size": 4969,
+        "etag": "W/\"6e6b1ac132a006b75566e502b0326b20\"",
+        "normalizedSha256": "7776a66f9af0c4b705f0e8d85ab1ccda7b29ae843bb6816bf4dd8c7a65f83f89"
+      }
+    },
+    {
+      "id": "finferries-hitisjurmo-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hiittisten-reittialue-jurmo.html",
+      "seedFile": "component-hitisjurmo__1.html",
+      "fingerprint": {
+        "sha256": "40cbd8dac46f7eda2aaecc91b4f8852b080902390b51b3a7573ab142eb5151aa",
+        "size": 4980,
+        "etag": "W/\"99f740f05efb79e38887929689d8e936\"",
+        "normalizedSha256": "c11121b5ad7421308637043239f80b8f45ef8c1311422d9dfb68d752397dff8c"
+      }
+    },
+    {
+      "id": "finferries-houtskarrutt-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/houtskarin-reitti-finno.html",
+      "seedFile": "component-houtskarrutt__1.html",
+      "fingerprint": {
+        "sha256": "9ffc60c9c81b799246b61fb7ee26a689f220dc0c4e59aef7bf5cb466fd1ee3d0",
+        "size": 6279,
+        "etag": "W/\"914072de522544c81e9b7b8d71660d41\"",
+        "normalizedSha256": "d93b24ab7ee03855efdd4431dae2147a28e473ff2fa8602d260446e001fa1b56"
+      }
+    },
+    {
+      "id": "finferries-iniorutt-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/inion-lisareitti-kivimo.html",
+      "seedFile": "component-iniorutt__1.html",
+      "fingerprint": {
+        "sha256": "bdd3753f8929ada823989dfde97bf4ad474b8c02b598ce7d7c557cf0772ad9c5",
+        "size": 5274,
+        "etag": "W/\"aba29e05d2faaf3533feddd139cd5096\"",
+        "normalizedSha256": "44f28f9160b72fb24452920d5c3080fd67380c56014220bd306621d0535a92b5"
+      }
+    },
+    {
+      "id": "finferries-nagusodra-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/nauvon-etelainen-reitti-falko.html",
+      "seedFile": "component-nagusodra__1.html",
+      "fingerprint": {
+        "sha256": "026d2d09d2bc637533ad6b06595f821479862ad88c8c4ed7518cd77fff62214f",
+        "size": 5017,
+        "etag": "W/\"7e9a173910db7909c7a9ee29fcc36344\"",
+        "normalizedSha256": "73ea981a5bbba6f46d8a3b0e3a28cf3a0b840bbd72e6f921987b25df06b6f7ce"
+      }
+    },
+    {
+      "id": "finferries-nagunorra-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/nauvon-pohjoinen-reitti-innamo.html",
+      "seedFile": "component-nagunorra__1.html",
+      "fingerprint": {
+        "sha256": "d98368ac1c708be3ceffbd49d1197564146946a017c8736a45f21bec627b18d1",
+        "size": 5445,
+        "etag": "W/\"7dd2f3b2088ee576e16c93682ffce9dd\"",
+        "normalizedSha256": "5aab74763b8290f8189f7a32afea7c5458e5a7c0b9ebb08e08fc280f9a264c7b"
+      }
+    },
+    {
+      "id": "finferries-nagutvar-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/nauvon-poikittainen-reitti.html",
+      "seedFile": "component-nagutvar__1.html",
+      "fingerprint": {
+        "sha256": "fcae1aaed1938ea78fbde60a1beb175f38eb60c0650983a67a429effa3a451c1",
+        "size": 5018,
+        "etag": "W/\"ff273d6aa1f7d2ae4904adc241216a1d\"",
+        "normalizedSha256": "8c73d66d15e72297603207c7d29dfc3c6f4789abd494452e5f013e3449e690f7"
+      }
+    },
+    {
+      "id": "finferries-pargasrutt-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/paraisten-reittialue-viken-uusi-aikataulu.html",
+      "seedFile": "component-pargasrutt__1.html",
+      "fingerprint": {
+        "sha256": "f47b1e3aa74d4765c4b912ab6446519ebcac389694a62eb01b2d2c766e03f628",
+        "size": 6290,
+        "etag": "W/\"68f792e5134d5ecee3e3965a9b363ccd\"",
+        "normalizedSha256": "c1075898bf306b9bcea993462be014aa1c37a71c369d49f9e90fcdff92b3cf70"
+      }
+    },
+    {
+      "id": "finferries-rymattylanreitti-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/rymattylan-reittialue-isla.html",
+      "seedFile": "component-rymattylanreitti__1.html",
+      "fingerprint": {
+        "sha256": "ae0952d5f642213740ac74330490845c94ab86338ab8ec7550c93d387e4ffd4e",
+        "size": 5816,
+        "etag": "W/\"9b25cfe31ff48e7f4b0856f824cbfcab\"",
+        "normalizedSha256": "42e2cc82c701c83af3f37179aa2bb7f0934f3446cb41915ff772563565d77ddf"
+      }
+    },
+    {
+      "id": "finferries-utorutt-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/uto-ruttomrade-uto.html",
+      "seedFile": "component-utorutt__1.html",
+      "fingerprint": {
+        "sha256": "93102ba7a0a33da72af486ccadcb9e906897f44819e5faf64754a162e864a3a0",
+        "size": 7673,
+        "etag": "W/\"1593c7f059a6a713362a135dbf689390\"",
+        "normalizedSha256": "cabb4ec8c781aea7cf10a3f1c2067cf39b181d510e169bfc414e49d6911f2cc4"
+      }
+    },
+    {
+      "id": "finferries-velkuanreitti-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/velkuan-reittialue-velkua-ruttomrade-ms-kaita.html",
+      "seedFile": "component-velkuanreitti__1.html",
+      "fingerprint": {
+        "sha256": "9548873e8891ce8d893fc0a6b9701a4c8d5096af71971cd2b6023215de53529c",
+        "size": 5965,
+        "etag": "W/\"633709a39f92749dd73743fee6fc9c39\"",
+        "normalizedSha256": "456006fd08c47cd9de42c788da138c17c2f1d57854b4980fdae8cbff742c2041"
+      }
+    },
+    {
+      "id": "finferries-houtskarinio-source",
+      "provider": "finferries",
+      "kind": "html",
+      "url": "https://www.finferries.fi/koodiviidakko/aikataulu/saariston-rengastie-on-suljettu.html",
+      "seedFile": "component-houtskarinio__1.html",
+      "fingerprint": {
+        "sha256": "97dcd7eca68aadd80aebaa5edeaeb77db36f375bdbf5e53659f00d1809308fee",
+        "size": 1330,
+        "etag": "W/\"40cf0d359df1904eed5d194142d97845\"",
+        "normalizedSha256": "4cfa03d230c66b7caef4bac3822b56ee3634521dab87466c5817cc79c477128c"
+      }
+    },
+    {
+      "id": "alandstrafiken-bransleturlista-2026",
+      "provider": "alandstrafiken",
+      "kind": "pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-06/1.7-bransleturlista-1.1-31.12.2026.pdf",
+      "seedFile": "1.7-bransleturlista-1.1-31.12.2026.pdf",
+      "fingerprint": {
+        "sha256": "45cff7a63a75d7b3940df08bb68d8c6f93e95d9300acbddcb5393b59d3a091ec",
+        "size": 206188,
+        "etag": "\"3256c-653e4d229451a\"",
+        "lastModified": "Wed, 10 Jun 2026 11:48:23 GMT",
+        "pageImageSha256": [
+          "96bf1d768a2f6cefd28922e130e99997244dd65da06cc5819e7a39f3524f92f6",
+          "591d8730b4a4cabfa8dbe684ac1b45e2af04ad184e3f6c856b9336960ed5d2c7",
+          "8df269095e1e245f6c019f2de303d511be9b1113487190bdfdd13ddbf271dcbc",
+          "2d08916db1f088caec794db2ff514891351d4eec617ac55f33f2328108e8c6b7",
+          "7803bdc54e94b03b52705071dc9cf57f7c92c134b609605f6dd633cee6cd7d53",
+          "9c659816b73b5facf0c103b84f2d42293dc88c7fdc2cf002593f4a2c5abef22a",
+          "dd4ad27ef5960e580cda8dfc7c436c1317fde5b2602f4e145383fae00aa9882d"
+        ]
+      }
+    }
+  ]
+}

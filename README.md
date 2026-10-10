@@ -278,6 +278,105 @@ aikataulutaulukot ennen kuin päätät, ettei reitillä ole aikataulua.
   Nauvo–Korppoo, Korppoo–Norrskata ja Korppoo–Houtskari käyttävät samaa
   lähderakennetta, vaikka reitit ovat pidempiä ja aikataulut monimutkaisempia.
 
+### Lähdeaikataulujen muutosten tarkistus
+
+`scripts/check_timetables.py` vertaa Finferriesin HTML-aikatauluja sekä
+Finferriesin ja Ålandstrafikenin PDF:iä hyväksyttyyn vertailutilaan.
+Versionhallintaan kuuluva `timetable-checks.json` sisältää lähdeosoitteet ja
+niiden viimeksi hyväksytyt tunnisteet. Alkuperäiset PDF:t ja HTML-tiedostot
+tallennetaan `.timetable-checker/originals/`-hakemistoon. Koko
+`.timetable-checker/` on jätetty Gitin ulkopuolelle.
+
+Tee tavallinen, esimerkiksi viikoittainen tarkistus näin:
+
+```sh
+python3 scripts/check_timetables.py check
+```
+
+Tarkistus ei muuta hyväksyttyä vertailutilaa. Se tallentaa uusimmat ladatut
+tiedostot `.timetable-checker/candidates/`-hakemistoon ja koneellisesti
+luettavan raportin tiedostoon `.timetable-checker/last-report.json`.
+Tulosteessa käytetään seuraavia tiloja:
+
+- `UNCHANGED`: sisältö vastaa vertailutilaa. HTTP 304 tarkoittaa, että palvelin
+  vahvisti tämän ETag-tunnisteella lataamatta tiedostoa uudelleen.
+- `METADATA`: tiedoston tavut muuttuivat, mutta HTML:n normalisoitu sisältö tai
+  PDF:n kaikki renderöidyt sivut säilyivät samoina.
+- `CHANGED`: aikataulun sisältö muuttui. PDF:n kohdalla raportti luettelee
+  muuttuneet sivut.
+- `ERROR`: lähdettä ei voitu tarkistaa. Tämä ei tarkoita, että lähde olisi
+  ennallaan.
+
+Paluuarvo on 0, kun kaikki on ennallaan, 2 kun muutoksia löytyi ja 1 kun
+vähintään yksi tarkistus epäonnistui. Virhe saa etusijan muutokseen nähden.
+Ålandstrafiken suojaa sivunsa JavaScriptillä suoritettavalla
+proof-of-work-tarkistuksella. Skripti käyttää siksi näihin lähteisiin paikallista
+Google Chromea ja säilyttää sen istunnon `.timetable-checker/chrome-profile/`-
+hakemistossa. Chromen tarkan polun voi tarvittaessa antaa
+`TIMETABLE_CHROME`-ympäristömuuttujassa. Jos selainkaan ei läpäise tarkistusta,
+skripti ilmoittaa `ERROR` eikä kuittaa tiedostoa tarkistetuksi. Lataa PDF:t
+siinä tapauksessa selaimella paikalliseen hakemistoon ja vertaa niitä
+tiedostonimiin perustuen samalla PDF-tarkistuksella:
+
+```sh
+python3 scripts/check_timetables.py check-local /polku/ladattuihin/pdf-tiedostoihin
+```
+
+Hakemistossa ei tarvitse olla kaikkia lähteitä; komento tarkistaa ne tiedostot,
+joiden nimi vastaa jonkin `sources`-rivin `seedFile`-kenttää. Myös tämä komento
+tallentaa raportin ja ehdokkaat, mutta ei hyväksy niitä automaattisesti.
+
+Skripti sulkee oman Chromensa hallitusti. Jos aikaisempi ajo on keskeytynyt,
+se poistaa käynnistyksessä vain tarkistusprofiilin vanhentuneet
+`SingletonLock`-, `SingletonSocket`- ja `SingletonCookie`-linkit. Käynnissä
+olevan prosessin lukkoa ei poisteta. Chromen käynnistysloki tallennetaan
+tarvittaessa tiedostoon `.timetable-checker/chrome-startup.log`, ja sama
+käynnistysvirhe raportoidaan ajon aikana vain alkuperäisen syyn perusteella
+uudelleen yrittämättä Chromea jokaiselle PDF:lle erikseen.
+
+Kun raportti ilmoittaa muutoksesta:
+
+1. Säilytä `.timetable-checker/candidates/` tarkastuksen ajan. Vertaa muuttuneet
+   sivut ja päivitä sovelluksen aikataulukuvat sekä `data.js` normaalin
+   työjärjestyksen mukaan.
+2. Lisää kokonaan uudet kausilinkit `timetable-checks.json`:n `sources`-listaan.
+   Finferriesin tarkistus käy aikatauluhakemiston reittisivut läpi ja
+   Ålandstrafikenin tarkistus lukee sen aikataulusivun. Ne kertovat uusista
+   PDF- tai HTML-aikataululinkeistä, mutta eivät lisää niitä automaattisesti.
+3. Kun uusi aikataulu on käsitelty ja tarkistettu, hyväksy ladatut lähteet:
+
+   ```sh
+   python3 scripts/check_timetables.py accept
+   ```
+
+4. Tarkista ja kommitoi muuttunut `timetable-checks.json` aikataulupäivityksen
+   mukana. Älä lisää `.timetable-checker/`-hakemiston alkuperäistiedostoja
+   versionhallintaan.
+
+Vertailutila voidaan rakentaa uudelleen jo ladatuista alkuperäistiedostoista.
+Jokaiselle `sources`-rivin `seedFile`-nimelle on löydyttävä tiedosto jostakin
+annetusta hakemistosta:
+
+```sh
+python3 scripts/check_timetables.py seed /polku/finferries /polku/alandstrafiken
+```
+
+PDF:stä tallennetaan tavuhajautuksen lisäksi jokaisen 150 dpi:n PNG-renderöidyn
+sivun SHA-256. Siksi PDF:n metatietojen muuttuminen voidaan erottaa näkyvästä
+aikataulumuutoksesta myös niissä Ålandstrafikenin PDF:issä, joista tekstiä ei
+voi luotettavasti poimia. Renderöintitarkistus edellyttää Popplerin
+`pdftoppm`-komentoa. macOSissa sen voi asentaa komennolla `brew install
+poppler`. Vaihtoehtoisesti komennon tarkan polun voi antaa ympäristömuuttujassa
+`TIMETABLE_PDFTOPPM`. Skripti etsii myös Homebrewin tavalliset asennuspolut ja
+Codexin mukana toimitetun version. Jos renderöintitarkkuutta muutetaan, vanha
+vertailutila on alustettava uudelleen samalla tarkkuudella.
+
+Finferriesin HTML-lähteiden normalisoitu hajautus jättää
+`finferriesFerryBulletins`-liikennetiedotteet huomiotta. Lyhyen huoltoseisakin
+tai muun tilapäisen tiedotteen lisääminen tai poistuminen ei siten näyttäydy
+aikataulumuutoksena. Raakatiedoston SHA-256 muuttuu silti, joten tapaus näkyy
+`METADATA`-tilana ja voidaan tarvittaessa tarkastaa raportista.
+
 ## Sovelluksen tarkistus
 
 Datamuutoksen jälkeen rakenna sovellus Node.js 24:llä:
