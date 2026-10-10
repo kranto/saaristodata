@@ -15,6 +15,8 @@ Esimerkkikysymyksiä:
 
 - Miten pääsen Äpplöön 30.11., jos voin lähteä Roslaxista tai Kannvikista?
 - Miten pääsen 23.12. Kustavista Sottungaan autolla?
+- Miten pääsen pyörällä Turusta Iniöön, jos ajan keskimäärin 18 km/h ja vältän
+  vilkasliikenteisiä teitä?
 - Kuinka aikaisin minun kannattaa lähteä, jos haluan varmasti ehtiä päivän
   viimeiselle jatkoyhteydelle?
 
@@ -29,6 +31,7 @@ Nykyisistä aikatauluista voidaan poimia riittävän luotettavasti:
 - tilausvuorot ja tarvittaessa käytävät laiturit
 - tilauksen määräajat ja yhteystiedot
 - ajoneuvoja, varauksia ja maksuja koskevat ehdot
+- voiko mukaan ottaa polkupyörän, moottoripyörän tai auton
 - aikatauluun merkityt jatkoyhteydet
 - lähdeasiakirja ja sen tarkistusajankohta
 
@@ -119,6 +122,72 @@ Marginaalit eivät voi olla kaikkialla samoja. Niihin vaikuttavat ainakin:
 - pitääkö seuraava osuus tilata tai varata
 - onko kyseessä päivän viimeinen toimiva matkaketju
 
+## Kulkutavat ja ajoneuvokelpoisuus
+
+Jalankulkija, pyöräilijä, moottoripyöräilijä ja autoilija eivät muodosta yhtä
+yleistä ajoneuvoluokkaa. Jokaisella lautta- tai yhteysalusosuudella pitää olla
+erikseen tieto siitä, mitkä kulkutavat hyväksytään ja millä ehdoilla.
+
+Vähimmäisluokitus on:
+
+- jalankulkija
+- polkupyörä
+- moottoripyörä
+- henkilöauto
+- ajoneuvoyhdistelmä
+- raskas ajoneuvo
+
+Useimpiin saaristolauttoihin ja yhteysaluksiin voi ottaa polkupyörän, mutta sitä
+ei pidä päätellä pelkästään siitä, että matkustajat otetaan kyytiin. Mahdollinen
+maksu, varausvelvollisuus, kapasiteettirajoitus tai pyörän kuljetustapa
+tallennetaan lähteen perusteella.
+
+Moottoripyörä käsitellään autosta erillään. Esimerkiksi Teersalo–Hakkenpää-
+yhteyttä voidaan käyttää moottoripyörällä mutta ei autolla. Reititin saa siis
+tarjota sen moottoripyöräilijälle, pyöräilijälle tai jalankulkijalle, mutta sen
+on suljettava yhteys pois henkilöautolla tehtävästä hausta.
+
+Ajoneuvokelpoisuus kuuluu yksittäiselle reittiosuudelle tai vuorolle. Saman
+reitin eri alus, kausi tai poikkeusvuoro voi muuttaa sallittuja ajoneuvoja.
+Puuttuva tieto tarkoittaa tarkistamatonta ominaisuutta, ei automaattisesti
+sallittua tai kiellettyä kulkutapaa.
+
+## Pyöräilyprofiili
+
+Pyöräilijät muodostavat tärkeän ja sisäisesti hyvin erilaisen käyttäjäryhmän.
+Pelkkä vakionopeudella laskettu lyhin tie ei tuota kaikille käyttökelpoista
+reittiä. Käyttäjän profiiliin tarvitaan ainakin:
+
+- oma arvio matkanopeudesta tasaisella tiellä
+- haluttu varmuusmarginaali lautoille ehtimiseen
+- suositaanko lyhintä, nopeinta, rauhallisinta vai maisemallisinta reittiä
+- vältetäänkö vilkasliikenteisiä teitä
+- hyväksytäänkö soratiet ja muut päällystämättömät osuudet
+- huomioidaanko mäkisyys voimakkaasti vai vähän
+- hyväksytäänkö pyörän taluttaminen lyhyellä osuudella
+- sähköpyörä ja käytettävissä oleva toimintamatka
+- matkatavaroiden vaikutus nopeuteen
+
+Reititin laskee tieosuuden ajan käyttäjän nopeusprofiilista, reitin pinnasta,
+mäkisyydestä ja mahdollisista turvallisuusrangaistuksista. Ensimmäinen versio
+voi käyttää käyttäjän ilmoittamaa keskinopeutta ja yksinkertaista
+pintaluokitusta. Myöhemmin nopeusarviota voidaan tarkentaa korkeuserojen ja
+tieympäristön perusteella.
+
+Pyörä kulkee matkaketjussa käyttäjän mukana. Lauttaosuus ei katkaise
+pyöräreittiä, jos kyseinen yhteys sallii polkupyörän. Hakutuloksessa kerrotaan:
+
+- sallitaanko pyörä
+- pitääkö pyörä tai matkustaja varata
+- peritäänkö pyörästä maksu
+- onko pyöräpaikkojen määrä rajallinen
+- pitääkö pyörä taluttaa, lastata itse tai jättää tiettyyn paikkaan
+
+Pyöräilijän vaihtomarginaalissa huomioidaan myös laiturille saapuminen,
+mahdollinen lipunosto ja lastaus. Lyhyen lossin menettäminen on usein pieni
+haitta, mutta harvoin kulkevalle yhteysalukselle pyöräilijänkin pitää ehtiä
+ajoissa juuri valitulle vuorolle.
+
 ## Rakenteisen datan luonnos
 
 Tietomalli voidaan rakentaa GTFS:n perusajatusten mukaisesti, mutta saariston
@@ -203,6 +272,20 @@ Vuoroon tai osaväliin voidaan liittää:
 }
 ```
 
+Ajoneuvot voidaan kuvata tarkemmin sallittujen ja ehdollisten kulkutapojen
+avulla:
+
+```json
+{
+  "mobility": {
+    "foot": { "allowed": true },
+    "bicycle": { "allowed": true, "reservationRequired": false },
+    "motorcycle": { "allowed": true },
+    "car": { "allowed": false }
+  }
+}
+```
+
 ## Maantie- ja kävelyosuudet
 
 Yhdistelmäreititys tarvitsee lauttayhteyksien lisäksi laiturien väliset
@@ -217,8 +300,10 @@ Jokaisesta osuudesta tarvitaan vähintään:
 - mahdollinen lossiyhteys tieosuuden sisällä
 - pysäköintiä, lähtöselvitystä tai jonotusta varten tarvittava lisäaika
 
-Autolla tehtävä haku saa käyttää vain yhteyksiä, jotka kuljettavat kyseisen
-ajoneuvon. Jalan tai pyörällä tehtävä haku voi tuottaa erilaisen matkaketjun.
+Autolla tai moottoripyörällä tehtävä haku saa käyttää vain yhteyksiä, jotka
+kuljettavat kyseisen ajoneuvon. Jalan ja pyörällä tehtävät haut voivat tuottaa
+keskenään ja moottoriajoneuvoihin verrattuna erilaiset matkaketjut. Pyöräreitin
+tieosuudet lasketaan pyöräilyyn soveltuvasta verkosta eikä auton ajo-ohjeista.
 
 ## Hakutulos
 
@@ -311,19 +396,27 @@ hyväksytään vertaamalla rakenteinen tulos alkuperäiseen aikatauluun.
 - haetaan yhteyksiä saman reittialueen laiturien välillä
 - käsitellään ehdolliset laiturikäynnit täysivaltaisina vaihtoehtoina
 - lisätään vaihtoehtoiset lähtölaiturit
+- suodatetaan yhteydet erikseen jalankulkijalle, pyörälle, moottoripyörälle ja
+  autolle
 - muodostetaan nopeat, suositellut ja varmat vaihtoehdot
 
 ### 3. Yhdistelmäreititys
 
-- lisätään maantie- ja kävelyosuudet
+- lisätään erilliset maantie-, moottoripyörä-, pyöräily- ja kävelyosuudet
 - yhdistetään eri operaattorien vuorot
 - mallinnetaan lyhyiden lossien vuoroväli-, jono- ja kapasiteettiriski
 - suojataan harvoin kulkevat varatut yhteydet käyttäjän riskiprofiilin mukaan
+- huomioidaan pyöräilijän nopeus, reittimieltymykset ja pyörän kuljetusehdot
 - tuotetaan vaihtoehtoiset matkaketjut ja varasuunnitelmat
 
 Ensimmäinen laaja testitapaus on Kustavi–Sottunga autolla. Se pakottaa
 käsittelemään maantieosuudet, lyhyet lossit, maksulliset ja varattavat lautat,
 eri operaattorit, poikkeuspäivät sekä käyttäjäkohtaisen varmuusvälin.
+
+Sen rinnalle tarvitaan pyöräilyn testitapaus, jossa vaihtoehtoiset nopeudet ja
+tieprofiilit tuottavat aidosti erilaisia yhteyksiä. Teersalo–Hakkenpää toimii
+ajoneuvoluokituksen regressiotestinä: yhteys saa löytyä moottoripyörälle mutta
+ei henkilöautolle.
 
 ## Onnistumisen rajaus
 
