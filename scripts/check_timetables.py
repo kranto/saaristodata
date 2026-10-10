@@ -530,6 +530,7 @@ def check_catalogs(manifest: dict) -> tuple[list[dict], bool]:
         try:
             links = discover_catalog(catalog)
             known = {url for url in source_urls if url.startswith(catalog.get("sourcePrefix", ""))}
+            known.update(catalog.get("acceptedUrls", []))
             new = sorted(links - known)
             missing = sorted(known - links) if catalog.get("complete", False) else []
             if new or missing:

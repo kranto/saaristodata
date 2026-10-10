@@ -52,6 +52,19 @@
       "pattern": "/sites/default/files/[^?#]+\\.pdf(?:[?#].*)?$",
       "sourcePrefix": "https://www.alandstrafiken.ax/sites/default/files/",
       "complete": false
+    },
+    {
+      "id": "saaristolinjat-aikataulut",
+      "url": "https://saaristolinjat.fi/",
+      "pattern": "/taika/api/config/data/pdf/saaristolinjat-aikataulu-[^?#]+\\.pdf(?:[?#].*)?$",
+      "sourcePrefix": "https://saaristolinjat.fi/taika/api/config/data/pdf/",
+      "complete": false,
+      "acceptedUrls": [
+        "https://saaristolinjat.fi/taika/api/config/data/pdf/saaristolinjat-aikataulu-2025-06-02.pdf",
+        "https://saaristolinjat.fi/taika/api/config/data/pdf/saaristolinjat-aikataulu-2025-09-01.pdf",
+        "https://saaristolinjat.fi/taika/api/config/data/pdf/saaristolinjat-aikataulu-2026-06-01.pdf",
+        "https://saaristolinjat.fi/taika/api/config/data/pdf/saaristolinjat-aikataulu-2026-08-13.pdf"
+      ]
     }
   ],
   "sources": [
@@ -1211,6 +1224,21 @@
           "7803bdc54e94b03b52705071dc9cf57f7c92c134b609605f6dd633cee6cd7d53",
           "9c659816b73b5facf0c103b84f2d42293dc88c7fdc2cf002593f4a2c5abef22a",
           "dd4ad27ef5960e580cda8dfc7c436c1317fde5b2602f4e145383fae00aa9882d"
+        ]
+      }
+    },
+    {
+      "id": "saaristolinjat-korppoon-reittialue-2026-09-01",
+      "provider": "saaristolinjat",
+      "kind": "pdf",
+      "url": "https://saaristolinjat.fi/taika/api/config/data/pdf/saaristolinjat-aikataulu-2026-09-01.pdf",
+      "seedFile": "saaristolinjat-aikataulu-2026-09-01.pdf",
+      "fingerprint": {
+        "sha256": "acadd8481cf72b454a3b5c8b2d377ae2162580c121ce8f41ff36a6e32a71e586",
+        "size": 93733,
+        "lastModified": "Mon, 31 Aug 2026 20:22:58 GMT",
+        "pageImageSha256": [
+          "b951d9bf330188cc48ada919f6adcf5915a7d519e2cebe07a3cb93ae625391a6"
         ]
       }
     }

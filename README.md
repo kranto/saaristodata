@@ -281,7 +281,8 @@ aikataulutaulukot ennen kuin päätät, ettei reitillä ole aikataulua.
 ### Lähdeaikataulujen muutosten tarkistus
 
 `scripts/check_timetables.py` vertaa Finferriesin HTML-aikatauluja sekä
-Finferriesin ja Ålandstrafikenin PDF:iä hyväksyttyyn vertailutilaan.
+Finferriesin, Ålandstrafikenin ja Saaristolinjojen PDF:iä hyväksyttyyn
+vertailutilaan.
 Versionhallintaan kuuluva `timetable-checks.json` sisältää lähdeosoitteet ja
 niiden viimeksi hyväksytyt tunnisteet. Alkuperäiset PDF:t ja HTML-tiedostot
 tallennetaan `.timetable-checker/originals/`-hakemistoon. Koko
@@ -341,8 +342,11 @@ Kun raportti ilmoittaa muutoksesta:
    työjärjestyksen mukaan.
 2. Lisää kokonaan uudet kausilinkit `timetable-checks.json`:n `sources`-listaan.
    Finferriesin tarkistus käy aikatauluhakemiston reittisivut läpi ja
-   Ålandstrafikenin tarkistus lukee sen aikataulusivun. Ne kertovat uusista
-   PDF- tai HTML-aikataululinkeistä, mutta eivät lisää niitä automaattisesti.
+   Ålandstrafikenin sekä Saaristolinjojen tarkistukset lukevat niiden
+   aikataulusivut. Ne kertovat uusista PDF- tai HTML-aikataululinkeistä, mutta
+   eivät lisää niitä automaattisesti. `acceptedUrls` sisältää lähdesivulla
+   edelleen näkyvät historialliset tiedostot, joita ei tarvitse tarkistaa
+   sisältölähteinä mutta joita ei myöskään pidä ilmoittaa uutena joka ajolla.
 3. Kun uusi aikataulu on käsitelty ja tarkistettu, hyväksy ladatut lähteet:
 
    ```sh
