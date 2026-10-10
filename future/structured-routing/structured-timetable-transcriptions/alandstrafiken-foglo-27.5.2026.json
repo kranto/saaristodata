@@ -1,0 +1,289 @@
+{
+  "routeId": "foglolinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-foglo-27.5.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-01",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "FRÅN DEGERBY (Föglö)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Måndag",
+          "Tisdag",
+          "Onsdag",
+          "Torsdag",
+          "Fredag",
+          "Lördag",
+          "Söndag"
+        ],
+        [
+          "06:30\n07:45\n09:15\n10:45\n12:15\n14:05\n15:35\n17:35\n19:45\n21:05\n23:251)",
+          "06:30",
+          "06:30\n07:45\n09:15\n10:45\n12:15\n14:05\n15:35\n17:35\n19:45\n21:05\n23:251)",
+          "06:30",
+          "06:30\n07:45\n09:15\n10:45\n12:15\n14:05\n15:35\n17:35\n19:45\n21:05\n23:251)",
+          "06:152)",
+          "06:302)\n–\n–\n10:45\n12:15\n–\n15:35\n17:35\n19:45\n21:05\n23:251)"
+        ],
+        [
+          null,
+          "07:45",
+          null,
+          "07:45",
+          null,
+          "–",
+          null
+        ],
+        [
+          null,
+          "09:15",
+          null,
+          "09:15",
+          null,
+          "09:15",
+          null
+        ],
+        [
+          null,
+          "10:45",
+          null,
+          "10:45",
+          null,
+          "10:45",
+          null
+        ],
+        [
+          null,
+          "12:15",
+          null,
+          "12:15",
+          null,
+          "12:15",
+          null
+        ],
+        [
+          null,
+          "14:05",
+          null,
+          "14:05",
+          null,
+          "14:05",
+          null
+        ],
+        [
+          null,
+          "15:35",
+          null,
+          "15:35",
+          null,
+          "15:35",
+          null
+        ],
+        [
+          null,
+          "17:35",
+          null,
+          "17:35B)",
+          null,
+          "17:35",
+          null
+        ],
+        [
+          null,
+          "19:45",
+          null,
+          "19:45",
+          null,
+          "–",
+          null
+        ],
+        [
+          null,
+          "21:05",
+          null,
+          "21:05",
+          null,
+          "21:05",
+          null
+        ],
+        [
+          null,
+          "23:251)",
+          null,
+          "23:251)",
+          null,
+          "23:251)",
+          null
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "FRÅN SVINÖ (Lumparland)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Måndag",
+          "Tisdag",
+          "Onsdag",
+          "Torsdag",
+          "Fredag",
+          "Lördag",
+          "Söndag"
+        ],
+        [
+          "–",
+          "–",
+          "–",
+          "–",
+          "–",
+          "06:552)",
+          "–"
+        ],
+        [
+          "07:10",
+          "07:10",
+          "07:10",
+          "07:10",
+          "07:10",
+          "–",
+          "07:102)"
+        ],
+        [
+          "08:30",
+          "08:30",
+          "08:30",
+          "08:30B)",
+          "08:30",
+          "–",
+          "–"
+        ],
+        [
+          "10:00\n11:30\n13:20\n14:50\n16:55\n18:15\n20:25\n21:45",
+          "10:00",
+          "10:00\n11:30\n13:20\n14:50\n16:55\n18:15\n20:25\n21:45",
+          "10:00",
+          "10:00\n11:30\n13:20\n14:50\n16:55\n18:15\n20:25\n21:45",
+          "10:00",
+          "–"
+        ],
+        [
+          null,
+          "11:30",
+          null,
+          "11:30",
+          null,
+          "11:30",
+          "11:30"
+        ],
+        [
+          null,
+          "13:20",
+          null,
+          "13:20",
+          null,
+          "13:20",
+          "–"
+        ],
+        [
+          null,
+          "14:50",
+          null,
+          "14:50",
+          null,
+          "14:50",
+          "14:50"
+        ],
+        [
+          null,
+          "16:55",
+          null,
+          "16:55",
+          null,
+          "16:55",
+          "16:55"
+        ],
+        [
+          null,
+          "18:15",
+          null,
+          "18:15",
+          null,
+          "18:15",
+          "18:15"
+        ],
+        [
+          null,
+          "20:25",
+          null,
+          "20:25",
+          null,
+          "–",
+          "20:25\n21:45"
+        ],
+        [
+          null,
+          "21:45",
+          null,
+          "21:45",
+          null,
+          "21:45",
+          null
+        ],
+        [
+          "00:051)",
+          "00:051)",
+          "00:051)",
+          "00:051)",
+          "00:051)",
+          "00:051)",
+          "00:051)"
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "24\nFöglölinjen 1–31/5 och 1/9–31/12 2026 UPPDATERAD 27/5 2026\nFRÅN DEGERBY (Föglö)\nMåndag Tisdag Onsdag Torsdag Fredag Lördag Söndag\n06:30 06:30 06:30 06:30 06:30 06:152) 06:302)\n07:45 07:45 07:45 07:45 07:45 – –\n09:15 09:15 09:15 09:15 09:15 09:15 –\n10:45 10:45 10:45 10:45 10:45 10:45 10:45\n12:15 12:15 12:15 12:15 12:15 12:15 12:15\n14:05 14:05 14:05 14:05 14:05 14:05 –\n15:35 15:35 15:35 15:35 15:35 15:35 15:35\n17:35 17:35 17:35 17:35B) 17:35 17:35 17:35\n19:45 19:45 19:45 19:45 19:45 – 19:45\n21:05 21:05 21:05 21:05 21:05 21:05 21:05\n23:251) 23:251) 23:251) 23:251) 23:251) 23:251) 23:251)\nFRÅN SVINÖ (Lumparland)\nMåndag Tisdag Onsdag Torsdag Fredag Lördag Söndag\n– – – – – 06:552) –\n07:10 07:10 07:10 07:10 07:10 – 07:102)\n08:30 08:30 08:30 08:30B) 08:30 – –\n10:00 10:00 10:00 10:00 10:00 10:00 –\n11:30 11:30 11:30 11:30 11:30 11:30 11:30\n13:20 13:20 13:20 13:20 13:20 13:20 –\n14:50 14:50 14:50 14:50 14:50 14:50 14:50\n16:55 16:55 16:55 16:55 16:55 16:55 16:55\n18:15 18:15 18:15 18:15 18:15 18:15 18:15\n20:25 20:25 20:25 20:25 20:25 – 20:25\n21:45 21:45 21:45 21:45 21:45 21:45 21:45\n00:051) 00:051) 00:051) 00:051) 00:051) 00:051) 00:051)\nM/S Skarven tel. +358 (0)401 733 600. Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION TIETOJA INFORMATION\n1) Trafikeras mot beställning till färjan senast kl. 1) Liikennöidään tilauksesta. Tilaus suoraan lau- 1) Only by ordering to the ferry, no later than 21:30.\n21:30. talle viimeistään klo 21:30 mennessä. 2) Only by ordering to the ferry the day before at\n2) Mot beställning till färjan dagen före senast kl. 2) Tilauksesta lautalle viimeistään edellisenä 21:30 the latest.\n21:30. iltana klo 21:30. B) B) Fuel transport Thu at 08:30/17:35, to be\nB) Bränsletur tors kl. 08:30/17:35, endast mot B) Polttoainekuljetus to klo 08:30/17:35, ainoas booked no later than Mon at 12:00 to Ålandstrafi-\nbokning senast mån kl. 12:00 hos Ålandstrafiken. taan varauksesta ma klo 12:00 Ålandstrafikenille. ken. Limited capacity.\nBegränsad kapacitet. Rajoitettu kapaciteetti. The vehicles must be ready to embark at least 10\nFordon ska vara klara att köra ombord senast Ajoneuvojen on oltava valmiina lastaukseen min prior to the departure time. Also applies to\n10 min före annonserad avgångstid. Gäller även viimeistään 10 min ennen ilmoitettua lähtöaikaa. vehicles with granted priority.\nförtursfordon. Koskee myös etusijaisia ajoneuovoja.\nTHIS LINE CAN NOT BE BOOKED, you need a\nDENNA LINJE KAN INTE BOKAS, du behöver TÄTÄ LINJAA EI VOIDA VARATA, tarvitset valid ticket, such as an annual pass, tourist pass\ngiltigt färdbevis såsom årskort, turistkort eller voimassa olevan matkalipun, kuten kausikortin, or open ticket.\nöppen biljett. turistikortin tai avoimen lipun.\nAvvikelser: Poikkeuksia: Exceptions:\nTors 1/1 Trafiken inleds kl. 10:45 från Degerby To 1/1 Liikennöinti alkaa klo 10:45 Degerbystä, Thu 1/1 Traffic starts at 10:45 from Degerby,\ndärefter söndagstrafik. ja jatko sunnuntailiikenne. thereafter Sunday schedule.\nTis 6/1, Fre 3/4, Mån 6/4, Lör 31/10, Sön 6/12 Ti 6/1, Pe 3/4, Ma 6/4, La 31/10, Su 6/12 Tue 6/1, Fri 3/4, Mon 6/4, Sat 31/10, Sun 6/12\nSöndags trafik. Sunnuntailiikenne. Sunday schedule.\nTors 24/12 Trafiken avslutas med avg. kl. 16:55 To 24/12 Liikennöinti pysähtyy klo 16:55 vuo- Thu 24/12 Traffic stops with departure at 16:55\nfrån Svinö, därefter körs beställningsturer kl. rolla Svinöstä, jonka jälkeen ajetaan klo 22:25 from Svinö and after that only the tour from\n22:25 från Degerby samt kl. 23:00 från Svinö Degerbystä, sekä klo 23:00 Svinöstä ainoastaan Degerby at 22:25 and from Svinö at 23:00, to be\nmot beställning senast 23/12 kl. 21:30. tilausvuoroja, jotka tulee tehdä viimeistään ordered no later than 23/12 at 21:30.\nFre 25/12 Trafiken inleds kl. 12:15 från Degerby, 23/12 klo 21:30. Fri 25/12 Traffic starts with departure at 12:15\ndärefter söndagstrafik. Pe 25/12 Liikennöinti alkaa klo 12:15 vuorolla from Degerby, thereafter Sunday schedule.\nLör 26/12 Trafiken inleds kl. 10:45 från Degerby, Degerbystä, ja jatko sunnuntaliikenne. Sat 26/12 Traffic starts with departure at 10:45\ndärefter söndagstrafik. La 26/12 Liikennöinti alkaa klo 10:45 Deger- from Degerby, thereafter Sunday schedule.\nTors 31/12 Trafiken avslutas med avg. kl. 20:25 bystä, ja jatko sunnuntaliikenne. Thu 31/12 Traffic stops with departure at 20:25\nfrån Svinö. To 31/12 Liikennöinti pysähtyy klo 20:25 vuo- from Svinö.\nFre 1/1 2027 Trafiken inleds kl. 10:45 från rolla Svinöstä. Fri 1/1 2027 Traffic starts with departure\nDegerby, därefter söndagstrafik. Pe 1/1 2027 Liikennöinti alkaa klo 10:45 Deger- at 10:45 from Degerby, thereafter Sunday\nbystä, ja jatko sunnuntailiikenne. schedule."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 27,
+    "losslessIntent": true
+  }
+}

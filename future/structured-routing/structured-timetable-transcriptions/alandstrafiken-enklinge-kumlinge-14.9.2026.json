@@ -1,0 +1,317 @@
+{
+  "routeId": "enklingelinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-enklinge-kumlinge-14.9.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      3,
+      4
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 3,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "Veckodag",
+          "Kumlinge",
+          "Enklinge\n(Kumlinge)",
+          "",
+          "Enklinge\n(Kumlinge)",
+          "Kumlinge"
+        ],
+        [
+          "Måndag 06:152) 06:30\n07:001) 07:15\n07:351) 07:50\n08:30 08:45\n11:15 11:30\n12:251) 12:40\n13:30 13:45\n14:45 15:00\n15:45 16:00\n17:301) 17:45\n18:451) 19:00\n19:451) 20:00\n20:451) 21:00",
+          null,
+          null,
+          null,
+          "06:302) 06:45\n07:201) 07:35\n08:00 08:15\n08:45 09:00\n11:50 12:05\n12:401) 12:55\n14:05 14:20\n15:051) 15:20\n16:051) 16:20\n18:001) 18:15\n19:151) 19:30\n20:301) 20:45\n21:001) 21:15",
+          null
+        ],
+        [
+          "Tisdag,",
+          "07:002)",
+          "07:15",
+          null,
+          "07:202)",
+          "07:35"
+        ],
+        [
+          "onsdag,",
+          "07:401)",
+          "07:55",
+          null,
+          "08:00",
+          "08:15"
+        ],
+        [
+          "torsdag",
+          "08:30",
+          "08:45",
+          null,
+          "08:45",
+          "09:00"
+        ],
+        [
+          "",
+          "11:40",
+          "11:55",
+          null,
+          "12:00",
+          "12:15"
+        ],
+        [
+          "",
+          "12:251)",
+          "12:40",
+          null,
+          "12:401)",
+          "12:55"
+        ],
+        [
+          "",
+          "13:30",
+          "13:45",
+          null,
+          "14:05",
+          "14:20"
+        ],
+        [
+          "",
+          "14:45",
+          "15:00",
+          null,
+          "15:051)",
+          "15:20"
+        ],
+        [
+          "",
+          "15:45",
+          "16:00",
+          null,
+          "16:051)",
+          "16:20"
+        ],
+        [
+          "",
+          "17:301)",
+          "17:45",
+          null,
+          "18:001)",
+          "18:15"
+        ],
+        [
+          "",
+          "18:451)",
+          "19:00",
+          null,
+          "19:051)",
+          "19:20"
+        ],
+        [
+          "",
+          "19:451)",
+          "20:00",
+          null,
+          "20:301)",
+          "20:45"
+        ],
+        [
+          "",
+          "21:451)",
+          "22:00",
+          null,
+          "22:001)",
+          "22:15"
+        ],
+        [
+          "Fredag",
+          "07:002)",
+          "07:15",
+          "",
+          "07:202)",
+          "07:35"
+        ],
+        [
+          "",
+          "07:401)",
+          "07:55",
+          "",
+          "08:00",
+          "08:15"
+        ],
+        [
+          "",
+          "08:30",
+          "08:45",
+          "",
+          "09:00",
+          "09:15"
+        ],
+        [
+          "",
+          "09:30",
+          "09:45",
+          "",
+          "12:00",
+          "12:15"
+        ],
+        [
+          "",
+          "12:251)",
+          "12:40",
+          "",
+          "12:401)",
+          "12:55"
+        ],
+        [
+          "",
+          "13:30",
+          "13:45",
+          "",
+          "14:05",
+          "14:20"
+        ],
+        [
+          "",
+          "14:451)",
+          "15:00",
+          "",
+          "15:051)",
+          "15:20"
+        ],
+        [
+          "",
+          "15:451)",
+          "16:00",
+          "",
+          "16:051)",
+          "16:20"
+        ],
+        [
+          "",
+          "16:501)",
+          "17:05",
+          "",
+          "17:051)",
+          "17:20"
+        ],
+        [
+          "",
+          "17:301)",
+          "17:45",
+          "",
+          "19:051)",
+          "19:20"
+        ],
+        [
+          "",
+          "19:451)",
+          "20:00",
+          "",
+          "20:301)",
+          "20:45"
+        ],
+        [
+          "",
+          "21:451)",
+          "22:00",
+          "",
+          "22:001)",
+          "22:15"
+        ],
+        [
+          "Lördag",
+          "07:002)",
+          "07:15",
+          null,
+          "07:202)",
+          "07:35"
+        ],
+        [
+          "",
+          "08:151)",
+          "08:30",
+          null,
+          "09:201)",
+          "09:35"
+        ],
+        [
+          "",
+          "09:501)",
+          "10:05",
+          null,
+          "12:101)",
+          "12:25"
+        ],
+        [
+          "",
+          "12:401)",
+          "12:55",
+          null,
+          "13:301)",
+          "13:45"
+        ],
+        [
+          "",
+          "13:451)",
+          "14:00",
+          null,
+          "15:001)",
+          "15:15"
+        ],
+        [
+          "",
+          "15:301)",
+          "15:45",
+          null,
+          "19:151)",
+          "19:30"
+        ],
+        [
+          "",
+          "19:451)",
+          "20:00",
+          null,
+          "21:151)",
+          "21:30"
+        ],
+        [
+          "Söndag 07:002) 07:15\n08:151) 08:30\n09:001) 09:15\n10:101) 10:25\n11:451) 12:00\n12:451) 13:00\n15:551) 16:10\n20:001) 20:15",
+          null,
+          null,
+          null,
+          "07:202) 07:35\n08:301) 08:45\n09:30 09:45\n10:301) 10:45\n12:101) 12:25\n15:151) 15:30\n18:301) 18:45\n20:301) 20:45",
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 3,
+      "text": "46\nEnklinge – Kumlinge 14/9–31/12 2026 UPPDATERAD 14/9 2026\nINFORMATION\nVeckodag Kumlinge Enklinge Enklinge Kumlinge\n(Kumlinge) (Kumlinge) 1) Mot bokning till Ålandstrafiken senast 1 h före\nMåndag 06:152) 06:30 06:302) 06:45 avgång.\n07:001) 07:15 07:201) 07:35 2) Mot bokning till Ålandstrafiken senast kl. 20:00\n07:351) 07:50 08:00 08:15 kvällen före.\n08:30 08:45 08:45 09:00 Vid skollov körs alla turer endast mot bokning till\nÅlandstrafiken.\n11:15 11:30 11:50 12:05\n12:251) 12:40 12:401) 12:55 Skollov; 1–6/1, 16–20/2, 2–6/4, 1/5, 14–15/5,\n14–16/10, 23–31/12 2026, 1–6/1 2027.\n13:30 13:45 14:05 14:20\n14:45 15:00 15:051) 15:20 På lördag eller söndag finns möjlighet att beställa\n15:45 16:00 16:051) 16:20 en tur och retur per månad mellan kl. 02:00 och\n03:00. Ansökan görs till Ålands landskapsreger-\n17:301) 17:45 18:001) 18:15\ning senast två veckor före den aktuella månaden\n18:451) 19:00 19:151) 19:30 inleds.\n19:451) 20:00 20:301) 20:45\nFordon ska vara klara att köra ombord senast 5\n20:451) 21:00 21:001) 21:15 min före annonserad avgångstid.\nTisdag, 07:002) 07:15 07:202) 07:35\nonsdag, 07:401) 07:55 08:00 08:15\nTIETOJA\ntorsdag 08:30 08:45 08:45 09:00\n11:40 11:55 12:00 12:15 1) Varauksesta Ålands trafikenille viimeistään 1 h\nennen lähtöä.\n12:251) 12:40 12:401) 12:55\n13:30 13:45 14:05 14:20 2) Varauksesta Ålandstrafikenille viimeistään klo\n20:00 edellisenä iltana.\n14:45 15:00 15:051) 15:20\n15:45 16:00 16:051) 16:20 Koululomien aikana liikenöidään kaikki vuorot\nvarauksesta Ålands trafikenille tai tilauksesta\n17:301) 17:45 18:001) 18:15\nlautalle.\n18:451) 19:00 19:051) 19:20\nKoululomia; 1–6/1, 16–20/2, 2–6/4, 1/5, 14–15/5,\n19:451) 20:00 20:301) 20:45\n14–16/10, 23–31/12 2026, 1–6/1 2027.\n21:451) 22:00 22:001) 22:15\nLauantaisin tai sunnuntaisin kerran kuukau-\nFredag 07:002) 07:15 07:202) 07:35\ndessa voidaan tilata yksi meno-paluukuljetus klo\n07:401) 07:55 08:00 08:15\n02:00–03:00. Kuljetus anotaan Ahvenanmaan\n08:30 08:45 09:00 09:15 maakuntahallitukselta vähintään kaksi viikkoa\n09:30 09:45 12:00 12:15 ennen kyseisen kuukauden alkua.\n12:251) 12:40 12:401) 12:55 Ajoneuvojen on oltava valmiina lastaukseen\n13:30 13:45 14:05 14:20 viimeistään 5 min ennen ilmoitettua lähtöaikaa.\n14:451) 15:00 15:051) 15:20\n15:451) 16:00 16:051) 16:20\nINFORMATION\n16:501) 17:05 17:051) 17:20\n1) Only by booking to Ålandstrafiken no later than\n17:301) 17:45 19:051) 19:20\n1 h before departure.\n19:451) 20:00 20:301) 20:45\n2) Only by booking to Ålandstrafiken by 20:00 the\n21:451) 22:00 22:001) 22:15\nevening before.\nLördag 07:002) 07:15 07:202) 07:35\nOnly by booking to Ålandstrafiken during school\n08:151) 08:30 09:201) 09:35\nholidays.\n09:501) 10:05 12:101) 12:25\nSchool holidays; 1–6/1, 16–20/2, 2–6/4, 1/5,\n12:401) 12:55 13:301) 13:45\n14–15/5, 14–16/10, 23–31/12 2026, 1–6/1 2027.\n13:451) 14:00 15:001) 15:15\nOn Saturday or Sunday once a month it is possible\n15:301) 15:45 19:151) 19:30\nto order a transport with return for a departure\n19:451) 20:00 21:151) 21:30\nbetween 02:00 and 03:00. The application has to\nSöndag 07:002) 07:15 07:202) 07:35 be made to the Government of Åland two weeks\n08:151) 08:30 08:301) 08:45 prior to the beginning of the month.\n09:001) 09:15 09:30 09:45 Vehicles must be ready to embark at least 5 min\n10:101) 10:25 10:301) 10:45 prior to the time of departure.\n11:451) 12:00 12:101) 12:25\n12:451) 13:00 15:151) 15:30\n15:551) 16:10 18:301) 18:45\n20:001) 20:15 20:301) 20:45\nEnklingelinjens färja. Ålandstrafiken tel. +358 (0)18 25 600.\nKom ihåg att avboka Muista peruuttaa Remember to cancel\nbilplats som du inte varauksesi ellet booked car if you\nbehöver. På så vis blir tarvitse sitä. Jokui don´t need it. Then\nnågon annan glad över toinen ilahtuu kun you make somebody else\natt få rum med sin bil hän pääset no show happy to get thair car\noch du undviker avgift maksusta. booked and you avoid\nför no show. fee for no show.\nAvvikelser, sid. 47. Poikkeuksia, s. 47. Exceptions, p. 47."
+    },
+    {
+      "page": 4,
+      "text": "47\nEnklinge – Kumlinge 1/1–6/6 och 19/8–31/12 2026 och 1/1 2027\nAvvikelser | Poikkeuksia | Exeptions UPPDATERAD 2/2 2026\nAvvikelser: Poikkeuksia: Exceptions:\nTors 1/1 Söndagstrafik. Extratur mot bok- To 1/1 Sunnuntailiikenne. Ylimäärinen vuoro Thu 1/1 Sunday schedule, but all departurers\nning från Kumlinge kl. 06:30 med retur efter varausta Kumlingenistä klo 06:30 paluu heti by booking. Additional tour by booking from\nankomst. saapumisen jälkeen. Kumlinge at 06:30 with return after arrival.\nTis 6/1 Tisdagstrafik, men alla turer mot Ti 6/1 Tiistainaliikenne, mutta liikennöidään Tue 6/1 Tuesday schedule, but all departures\nbokning. varauksesta. by booking.\nFre 3/4 Fredagstrafik, men alla turer mot bok- Pe 3/4 Perjantailiikenne mutta liikennöidään Fri 3/4 Friday schedule, but all departures\nning. Extratur mot bokning från Kumlinge kl. varauksesta. Ylimääräinen vuoro varausta by booking. Additional tour by booking from\n06:15 med retur efter ankomst. Kumlingenistä klo 06:15, paluu heti Kumlinge at 06:15 with return after arrival.\nLör 4/4 Lördagstrafik. Extratur mot bok- saapumisen jälkeen. Sat 4/4 Saturday schedule. Additional tour by\nning från Kumlinge kl. 06:15 med retur efter La 4/4 Lauantailiikkenne. Ylimääräinen vuoro booking from Kumlinge at 06:15 with return\nankomst. varausta Kumlingenistä klo 06:15 paluu heti after arrival.\nSön 5/4 Söndagstrafik. Extratur mot bokning saapumisen jälkeen. Sun 5/4 Sunday schedule. Additional tour by\nfrån Kumlinge kl. 06:15 och kl. 21:45 med retur Su 5/4 Sunnuntailiikenne. Ylimääräinen vuoro booking from Kumlinge at 06:15 and at 21:45\nefter ankomst. varausta Kumlingenistä klo 06:15 ja klo 21:45 with return after arrival.\nMån 6/4 Söndagstrafik. paluu heti saapumisen jälkeen. Mon 6/4 Sunday schedule.\nTis 7/4 Tisdagstrafik. Extratur mot bok- Ma 6/4 Sunnuntailiikenne. Tue 7/4 Tuesday schedule. Additional tour by\nning från Kumlinge kl. 06:15 med retur efter Ti 7/4 Tiistainaliikenne. Ylimääräinen vuoro booking from Kumlinge at 06:15 with return\nankomst. varausta Kumlingenistä klo 06:15 paluu heti after arrival.\nTors 14/5 Torsdagstrafik, men alla turer mot saapumisen jälkeen. Thu 14/5 Thursday schedule but all\nbokning. To 14/5 Torstailiikenne mutta liikennöidään departures by booking.\nFre 15/5 Fredagstrafik. Extratur mot bok- varauksesta. Fri 15/5 Friday schedule. Additional tour by\nning från Kumlinge kl. 06:15 med retur efter Pe 15/5 Perjantailiikenne. Ylimääräinen vuoro booking from Kumlinge at 06:15 with return\nankomst. varausta Kumlingenistä klo 06:15 paluu heti after arrival.\nsaapumisen jälkeen.\nTors 24/12 Torsdagstrafik, men alla turer mot To 24/12 Torstailiikenne, mutta liikennöidään Thu 24/12 Thuesday schedule, but all departu-\nbokning. Trafikerar Enklinge-Kumlinge t/r för varauksesta. Liikennöidään Enklinge-Kum- rers by booking. Traffics between Enklinge-\njulbön mot beställning till färjan. linge meno-paluu joulu rukous liikennöidään Kumlinge t/r for Christmas Event by ordering\nFre 25/12 Söndagstrafik, men alla turer mot tilauksesta joka tehdään lautalle. to the ferry.\nbokning. Extratur mot bokning från Kum- Pe 25/12 Sunnuntailiikenne, mutta liiken- Fri 25/12 Sunday schedule, but all dep. by\nlinge kl. 06:30 och kl. 21:45 med retur efter nöidään varauksesta. Ylimäärinen vuoro booking. Additional tour by booking from\nankomst. varausta vastaan Kumlingenistä klo 06:30 ja Kumlinge at 06:30 and at 21:45 with return\nLör 26/12 Söndagstrafik, men alla turer mot klo 21:45 paluu heti saapumisen jälkeen. after arrival.\nbokning. Extratur mot bokning från Kum- La 26/12 Sunnuntailiikenne, mutta liiken- Sat 26/12 Sunday schedule, but all dep. by\nlinge kl. 06:30 och kl. 21:45 med retur efter nöidään varauksesta. Ylimäärinen vuoro booking. Additional tour by booking from\nankomst. varausta vastaan Kumlingenistä klo 06:30 ja Kumlinge at 06:30 and at 21:45 with return\nMån 28/12 Måndagstrafik, men alla turer mot klo 21:45 paluu heti saapumisen jälkeen. after arrival.\nbokning. Ma 28/12 Maanantailiikenne, mutta liiken- Mon 28/12 Monday schedule, but all departu-\nTis 29/12 Tisdagstrafik, men alla turer mot nöidään varauksesta. rers by booking.\nbokning. Ti 29/12 Tiistailiikenne, mutta liikennöidään Tue 29/12 Tuesday schedule, but all departu-\nOns 30/12 Onsdagstrafik, men alla turer mot varauksesta. rers by booking.\nbokning. Ke 30/12 Keskiviikonaliikenne, mutta liiken- Wed 30/12 Wednesday schedule, but all\nTors 31/12 Torsdagstrafik, men alla turer mot nöidään varauksesta. departurers by booking.\nbokning. To 31/12 Torstailiikenne, mutta liikennöidään Thu 31/12 Thursday schedule, but all departu-\nFre 1/1 2027 Söndagstrafik. Extratur mot bok- varauksesta. rers by booking.\nning från Kumlinge kl. 06:30 och kl. 21:45 med Pe 1/1 2027 Sunnuntailiikenne. Ylimäärinen Fri 1/1 2027 Sunday schedule, but all depar-\nretur efter ankomst. vuoro varausta Kumlingenistä klo 06:30 ja klo turers by booking. Additional tour by booking\n21:45 paluu heti saapumisen jälkeen. from Kumlinge at 06:30 and at 21:45 with\nreturn after arrival.\nKom ihåg att avboka Muista peruuttaa Remember to cancel\nbilplats som du inte varauksesi ellet booked car if you\nbehöver. På så vis blir tarvitse sitä. Jokui don´t need it. Then\nnågon annan glad över toinen ilahtuu kun you make somebody else\natt få rum med sin bil hän pääset no show happy to get thair car\noch du undviker avgift maksusta. booked and you avoid\nför no show. fee for no show."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 34,
+    "losslessIntent": true
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "routeId": "nagutvar",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-nagutvar-nauvon-poikittainen-reitti-talvi-1.10.2026-24.3.2027",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-10-01",
+      "validTo": "2027-03-24"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Må/Ma/Mon",
+          "Ti/Ti/Tue",
+          "Ons/Ke/Wed",
+          "To/To/Thu",
+          "Fre/Pe/Fri",
+          "Lö/La/Sat",
+          "Sön/Su/Sun"
+        ],
+        [
+          "Hummelholm",
+          "09:30y",
+          "",
+          "09:30y",
+          "",
+          "11:45y",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Ängsö / Lånholm",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Pärnäs/Pärnäinen",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Pärnäs/Pärnäinen",
+          "11:00y",
+          "",
+          "11:00y",
+          "",
+          "13:15y",
+          "",
+          ""
+        ],
+        [
+          "Krok",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Mattnäs",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Ängsö / Lånholm",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "~12:00y",
+          "",
+          "~12:00y",
+          "",
+          "~14:15y",
+          "",
+          ""
+        ],
+        [
+          "Hummelholm",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Mattnäs",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Brännskär",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Byskär",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Stenskär",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Gullkrona",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "13:30y",
+          "",
+          "13:30y",
+          "",
+          "15:30y",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "15:15y",
+          "9:30y*",
+          "15:15y",
+          "",
+          "17:00y",
+          "",
+          "Borstö -->*"
+        ],
+        [
+          "Gullkrona",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Stenskär",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Byskär",
+          "y",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Brännskär",
+          "y",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Mattnäs",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Hummelholm",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Ängsö / Lånholm",
+          "y",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Mattnäs",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Krok",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Pärnäs/Pärnäinen",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Hummelholm",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Berghamn",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "",
+          "12:00y",
+          "",
+          "",
+          "",
+          "",
+          "18:00y"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "Beroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReserveringarna via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. Ingen lastkapacitet."
+        ],
+        [
+          "Olosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nVaraukset maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. Aluksilla ei kuljeteta rahtia."
+        ],
+        [
+          "Due to circumstances there can be changes in the schedule.\nReservations via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. No cargo is transported."
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "uppdaterad/päivitetty/updated 7.11.2025\nNAGU TVÄRGÅENDE RUTT / NAUVON POIKITTAINEN REITTI /\nNAUVO TRANSVERSE ROUTE\nVintertidtabell/ Talviaikataulu / Winter schedule m/s Cheri\n1.10.2026-24.3.2027 m/s Myrskylintu Tel./puh. 0400 22 77 22\nMå/Ma/Mon Ti/Ti/Tue Ons/Ke/Wed To/To/Thu Fre/Pe/Fri Lö/La/Sat Sön/Su/Sun\nHummelholm 09:30y 09:30y 11:45y\nBerghamn y y y\nÄngsö / Lånholm y y y\nPärnäs/Pärnäinen y y y\nPärnäs/Pärnäinen 11:00y 11:00y 13:15y\nKrok y y y\nMattnäs y y y\nÄngsö / Lånholm y y y\nBerghamn ~12:00y ~12:00y ~14:15y\nHummelholm y y y\nMattnäs y y y\nBrännskär y y y\nByskär y y y\nStenskär y y y\nGullkrona y y y\nKirjais 13:30y 13:30y 15:30y\nKirjais 15:15y 9:30y* 15:15y 17:00y Borstö -->*\nGullkrona y y y\nStenskär y y y\nByskär y y y y\nBrännskär y y y y\nMattnäs y y y\nHummelholm y y y\nBerghamn y y y y\nÄngsö / Lånholm y y y y y\nMattnäs y y y\nKrok y y y\nPärnäs/Pärnäinen y y y\nHummelholm y y\nBerghamn y\nKirjais 12:00y 18:00y\nAnlöper vid beställning / Poiketaan tilauksesta / When ordered: Fagerholm, Rockelholm, Grötö, Triören, Killingholm\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\ny = Beställningstur, beställs före kl. 16.00 dagen innan/Tilausvuoro, tilattava edellisenä päivänä ennen klo 16.00/Needs to be ordered the day before by 4 pm\ny* = Trafikeras med m/s Falkö, beställs före kl.16:00 dagen innan (fartyg som kan ta frakt och fordon)\nLiikenteen hoitaa m/s Falkö, tilattava edelisenä päivänä ennen klo 16:00 (alus joka voi kuljettaa rahtia ja ajoneuvoja)\nOperated with m/s Falkö, needs to be ordered the day before by 4 pm (a vessel that can transport cargo and vehicles)\nHelgtrafiken/Pyhäliikenne/Schedule for public holidays 2026\n23.12. Ons/ke/Wed Fre tidtabell/Pe aikataulu/Fri schedule\n24.12. Tor/to/Thu Ingen trafik/Ei liikennöintiä/No traffic\n25.12.Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n31.12. Tor/to/Thu Ons tidtabell/Ke aikataulu/Wed schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027\n1.1. Fre/pe/Fri Ingen trafik/Ei liikennöintiä/No traffic\n6.1. Ons/ke/Wed Ingen trafik/Ei liikennöintiä/No traffic\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReserveringarna via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. Ingen lastkapacitet.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nVaraukset maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. Aluksilla ei kuljeteta rahtia.\nDue to circumstances there can be changes in the schedule.\nReservations via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nm/s Cheri 11 pax; m/s Myrskylintu 30 pax. No cargo is transported.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 37,
+    "losslessIntent": true
+  },
+  "callConditions": {
+    "requestOnlyStops": {
+      "operation": "on_separate_call_order",
+      "stops": [
+        "Fagerholm",
+        "Rockelholm",
+        "Grötö",
+        "Triören",
+        "Killingholm"
+      ],
+      "sourceStatement": "Poiketaan tilauksesta",
+      "TriörenDataStatus": "Current timetable stop confirmed. A provisional pier on the southeast shore and a route east of Furuskär and Mottonskär are stored in the local map data; the exact landing point will be verified from historical live data."
+    }
+  },
+  "sourceRowExpansions": {
+    "Ängsö / Lånholm": {
+      "stops": [
+        "Ängsö",
+        "Lånholm"
+      ],
+      "semantics": "two_separate_calls",
+      "inheritCellMarkersForEachStop": true,
+      "allCallsIndependentlyAvailable": true,
+      "bothCallsMayOccurOnSameTrip": true,
+      "geography": "separate piers on opposite sides of the same large island, more than 2 km apart"
+    }
+  },
+  "stopAliases": {
+    "Pärnäs/Pärnäinen": {
+      "canonicalId": "Pärnäs",
+      "names": {
+        "fi": "Pärnäinen",
+        "sv": "Pärnäs",
+        "en": "Pärnäs"
+      },
+      "sameStop": true
+    }
+  },
+  "routingPolicy": {
+    "tuesdayFalköDuty": {
+      "operatingDays": "_2_____",
+      "vessel": "M/S Falkö",
+      "vesselHomeRoute": "nagusodra",
+      "departure": {
+        "stop": "Kirjais",
+        "time": "09:30"
+      },
+      "stopOrder": [
+        "Kirjais",
+        "Byskär",
+        "Brännskär",
+        "Ängsö",
+        "Lånholm",
+        "Hummelholm",
+        "Berghamn",
+        "Kirjais"
+      ],
+      "arrival": {
+        "stop": "Kirjais",
+        "time": "12:00"
+      },
+      "bookingRequired": true,
+      "serviceBelongsTo": "nagutvar"
+    },
+    "sundayContinuationFromSouthernRoute": {
+      "operatingDays": "______7",
+      "sameTrip": true,
+      "separateTransverseDeparture": false,
+      "origin": {
+        "stop": "Borstö",
+        "time": "12:00"
+      },
+      "sourceRoute": "nagusodra",
+      "transverseSectionStops": [
+        "Berghamn",
+        "Ängsö",
+        "Lånholm",
+        "Hummelholm"
+      ],
+      "omittedSharedContinuationStops": [
+        "Brännskär",
+        "Grötö",
+        "Stenskär",
+        "Gullkrona"
+      ],
+      "fullConfirmedContinuationOrder": [
+        "Berghamn",
+        "Ängsö",
+        "Lånholm",
+        "Hummelholm",
+        "Brännskär",
+        "Grötö",
+        "Stenskär",
+        "Gullkrona",
+        "Kirjais"
+      ],
+      "omissionReason": "The transverse timetable avoids adding rows used only by this single Sunday continuation.",
+      "destination": {
+        "stop": "Kirjais",
+        "timeApproximate": "18:00"
+      },
+      "visualEvidence": "shared_orange_background"
+    }
+  }
+}

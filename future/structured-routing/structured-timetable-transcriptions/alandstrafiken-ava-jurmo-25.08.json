@@ -1,0 +1,328 @@
+{
+  "routeId": "avajurmo",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-ava-jurmo-25.08",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      3
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 3,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "JURMO – ÅVA",
+          null,
+          null,
+          "",
+          "ÅVA – JURMO",
+          null
+        ],
+        [
+          "Veckodag",
+          "Jurmo\n(Brändö)",
+          "Åva\n(Brändö)",
+          null,
+          "Åva\n(Brändö)",
+          "Jurmo\n(Brändö)"
+        ],
+        [
+          "Måndag 05:252) 05:40A)",
+          null,
+          null,
+          null,
+          "05:452) 06:00",
+          null
+        ],
+        [
+          "",
+          "06:352)",
+          "06:50ÅD)",
+          "",
+          "06:552)",
+          "07:10"
+        ],
+        [
+          "",
+          "07:551)",
+          "08:10",
+          "",
+          "08:251)",
+          "08:40"
+        ],
+        [
+          "",
+          "11:051)",
+          "11:20",
+          "",
+          "11:251)ÅD)",
+          "11:40"
+        ],
+        [
+          "",
+          "12:101)",
+          "12:25A)ÅD)",
+          "",
+          "12:401)A)",
+          "12:55"
+        ],
+        [
+          "",
+          "14:201)",
+          "14:35K)ÅD)",
+          "",
+          "14:401)ÅD)",
+          "14:55"
+        ],
+        [
+          "",
+          "16:101)",
+          "16:25",
+          "",
+          "16:301)",
+          "16:45"
+        ],
+        [
+          "",
+          "17:051)",
+          "17:20ÅD)",
+          "",
+          "17:251)ÅD)",
+          "17:40"
+        ],
+        [
+          "",
+          "19:152)",
+          "19:30A)",
+          "",
+          "19:352)ÅD)",
+          "19:50"
+        ],
+        [
+          "",
+          "20:101)",
+          "20:25ÅD)",
+          "",
+          "20:301)A)",
+          "20:45"
+        ],
+        [
+          "Tisdag,",
+          "07:102)",
+          "07:25A)",
+          "",
+          "07:352)ÅD)",
+          "07:50"
+        ],
+        [
+          "onsdag,",
+          "07:551)",
+          "08:10ÅD)",
+          null,
+          "08:251)A)",
+          "08:40"
+        ],
+        [
+          "torsdag",
+          "11:401)",
+          "11:55",
+          null,
+          "13:151)",
+          "13:30"
+        ],
+        [
+          "",
+          "14:101)",
+          "14:25A)ÅD)",
+          null,
+          "14:251)ÅD)",
+          "14:40"
+        ],
+        [
+          "",
+          "14:451)",
+          "15:00ÅD)",
+          null,
+          "15:101)A)",
+          "15:25"
+        ],
+        [
+          "",
+          "16:101)",
+          "16:25",
+          null,
+          "16:301)",
+          "16:45"
+        ],
+        [
+          "",
+          "17:051)",
+          "17:20ÅD)",
+          null,
+          "17:251)ÅD)",
+          "17:40"
+        ],
+        [
+          "",
+          "17:451)",
+          "18:00",
+          null,
+          "18:051)",
+          "18:20"
+        ],
+        [
+          "",
+          "20:101)",
+          "20:25A)ÅD)",
+          null,
+          "20:301)ÅD)",
+          "20:45"
+        ],
+        [
+          "",
+          "21:052)",
+          "21:20",
+          null,
+          "21:302)A)",
+          "21:45"
+        ],
+        [
+          "Fredag 07:102) 07:25A)\n07:551) 08:10ÅD)\n11:401) 11:55\n14:101) 14:25A)ÅD)\n14:451) 15:00ÅD)\n16:101) 16:25\n17:051) 17:20ÅD)\n17:451) 18:00\n20:051) 20:20A)\n21:052) 21:20ÅD)\n22:252) 22:40",
+          null,
+          null,
+          null,
+          "07:352)ÅD) 07:50\n08:251)A) 08:40",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "13:151)",
+          "13:30"
+        ],
+        [
+          null,
+          null,
+          null,
+          "",
+          "14:251)ÅD) 14:40\n15:101)A) 15:25\n16:301) 16:45\n17:251)ÅD) 17:40\n18:051) 18:20\n20:301)ÅD) 20:45\n21:302)A) 21:45\n22:452) 23:00",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "",
+          null,
+          null
+        ],
+        [
+          "Lördag",
+          "07:102)",
+          "07:25A)",
+          null,
+          "07:352)ÅD)",
+          "07:50"
+        ],
+        [
+          "",
+          "07:551)",
+          "08:10ÅD)",
+          null,
+          "08:201)A)",
+          "08:35"
+        ],
+        [
+          "",
+          "10:001)",
+          "10:15K)",
+          null,
+          "10:201)",
+          "10:35"
+        ],
+        [
+          "",
+          "10:451)",
+          "11:00",
+          null,
+          "12:001)",
+          "12:15"
+        ],
+        [
+          "",
+          "14:151)",
+          "14:30",
+          null,
+          "14:351)",
+          "14:50"
+        ],
+        [
+          "",
+          "17:051)",
+          "17:20ÅD)",
+          null,
+          "17:251)K)ÅD)",
+          "17:40"
+        ],
+        [
+          "",
+          "19:252)",
+          "19:40K)ÅD)",
+          null,
+          "19:452)ÅD)",
+          "20:00"
+        ],
+        [
+          "",
+          "21:102)",
+          "21:25",
+          null,
+          "21:302)A)",
+          "21:45"
+        ],
+        [
+          "",
+          "22:252)",
+          "22:40",
+          null,
+          "22:452)",
+          "23:00"
+        ],
+        [
+          "Söndag 07:252) 07:40A)\n10:301) 10:45\n11:051) 11:20ÅD)\n13:201) 13:35K)\n14:301) 14:45ÅD)\n15:401) 15:55\n16:301) 16:45A)ÅD)\n19:302) 19:45K)\n20:251) 20:40",
+          null,
+          null,
+          null,
+          "07:452) 08:00\n10:501) 11:05\n11:251) 11:40\n14:001)ÅD) 14:15\n14:501)K) 15:05\n16:001) 16:15\n16:551)A)ÅD) 17:10\n19:502)ÅD) 20:05\n20:551)K) 21:10",
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 3,
+      "text": "43\nÅva – Jurmo 14/9–31/12 2026 UPPDATERAD 25/8 2026\nJURMO – ÅVA ÅVA – JURMO INFORMATION\nVeckodag Jurmo Åva Åva Jurmo 1) Mot bokning senast 1 h före avgång till Ålands-\n(Brändö) (Brändö) (Brändö) (Brändö) trafiken.\n2) Mot bokning till Ålandstrafiken senast kl. 20:00.\nMåndag 05:252) 05:40A) 05:452) 06:00\nA) Kombinerar med M/S Alfågeln i Torsholma.\n06:352) 06:50ÅD) 06:552) 07:10\nK) Kombinerar med M/S Knipan i Torsholma.\n07:551) 08:10 08:251) 08:40\nÅD) Kombinerar med M/S Ådan i Åva.\n11:051) 11:20 11:251)ÅD) 11:40\nBilväg från Åva till Torsholma ca 22 km.\n12:101) 12:25A)ÅD) 12:401)A) 12:55 På lördag eller söndag finns möjlighet att beställa\n14:201) 14:35K)ÅD) 14:401)ÅD) 14:55 en tur och retur per månad mellan kl. 02:00 och\n03:00. Ansökan görs till Ålands landskapsregering\n16:101) 16:25 16:301) 16:45 senast två veckor före den aktuella månaden inleds.\n17:051) 17:20ÅD) 17:251)ÅD) 17:40 Fordon ska vara klara att köra ombord senast 5\n19:152) 19:30A) 19:352)ÅD) 19:50 min före annonserad avgångstid.\n20:101) 20:25ÅD) 20:301)A) 20:45 Information om att turer kan kombineras (kombi-\nnationsturer) är endast information om en möjlig-\nTisdag, 07:102) 07:25A) 07:352)ÅD) 07:50 het till kombination. Ålands landskapsregering tar\nonsdag, 07:551) 08:10ÅD) 08:251)A) 08:40 ej ansvar för färden mellan kombinationsturer/\nhamnar. Fotnoter som anger kombinationsturer\ntorsdag 11:401) 11:55 13:151) 13:30 garanterar inte kombinationen.\n14:101) 14:25A)ÅD) 14:251)ÅD) 14:40\n14:451) 15:00ÅD) 15:101)A) 15:25 TIETOJA\n1) Varauksesta Ålandstrafikenille viimeistään 1 h\n16:101) 16:25 16:301) 16:45\nennen lautan lähtöä.\n17:051) 17:20ÅD) 17:251)ÅD) 17:40 2) Varauksesta Ålandstrafikenille viimestään klo\n17:451) 18:00 18:051) 18:20 20:00.\n20:101) 20:25A)ÅD) 20:301)ÅD) 20:45 A) Jatkoyhteys M/S Alfågelnille Torsholmassa.\n21:052) 21:20 21:302)A) 21:45 K) Jatkoyhteys M/S Knipanille Torsholmassa.\nÅD) Jatkoyhteys M/S Ådanille Åvassa.\nFredag 07:102) 07:25A) 07:352)ÅD) 07:50\nAutotie Åvasta Torsholmaan n. 22 km.\n07:551) 08:10ÅD) 08:251)A) 08:40\nLauantaisin tai sunnuntaisin kerran kuukau-\n11:401) 11:55 13:151) 13:30 dessa voidaan tilata yksi meno-paluukuljetus klo\n14:101) 14:25A)ÅD) 14:251)ÅD) 14:40 02:00–03:00. Kuljetus anotaan Ahvenanmaan\nmaakuntahallitukselta vähintään kaksi viikkoa\n14:451) 15:00ÅD) 15:101)A) 15:25 ennen kyseisen kuukauden alkua.\n16:101) 16:25 16:301) 16:45 Ajoneuvojen on oltava valmiina lastaukseen viimei-\n17:051) 17:20ÅD) 17:251)ÅD) 17:40 stään 5 min ennen ilmoitettua lähtöaikaa.\nTieto siitä, että lähdöllä on yhteys lautan lähdölle,\n17:451) 18:00 18:051) 18:20\non ainoastaan tieto mahdollisuudesta yhteydeyllä.\n20:051) 20:20A) 20:301)ÅD) 20:45 Ahvenanmaan maakuntahallitus ei vastaa asiak-\nkaan matkasta maitse satamien välissä. Alaviit-\n21:052) 21:20ÅD) 21:302)A) 21:45\nteet, jotkat kertovat jatkoyhteydestä eivät takaa\n22:252) 22:40 22:452) 23:00 jatkoyhteyttä.\nLördag 07:102) 07:25A) 07:352)ÅD) 07:50\nINFORMATION\n07:551) 08:10ÅD) 08:201)A) 08:35\n1) By booking via Ålandstrafiken no later than 1 h\n10:001) 10:15K) 10:201) 10:35 before departure.\n10:451) 11:00 12:001) 12:15 2) By booking via Ålandstrafiken no later than\n14:151) 14:30 14:351) 14:50 20:00.\n17:051) 17:20ÅD) 17:251)K)ÅD) 17:40 A) Connection to M/S Alfågeln in Torsholma.\nK) Connection to M/S Knipan in Torsholma.\n19:252) 19:40K)ÅD) 19:452)ÅD) 20:00\nÅD) Connection to M/S Ådan in Åva.\n21:102) 21:25 21:302)A) 21:45\nLand road from Åva to Torsholma approx. 22 km.\n22:252) 22:40 22:452) 23:00\nOn Saturday or Sunday once a month it is possible\nSöndag 07:252) 07:40A) 07:452) 08:00 to order a transport with return for a departure\n10:301) 10:45 10:501) 11:05 between 02:00 and 03:00. The application has to\nbe made to the Government of Åland two weeks\n11:051) 11:20ÅD) 11:251) 11:40 prior to the beginning of the month.\n13:201) 13:35K) 14:001)ÅD) 14:15 Vehicles must be ready to embark at least 5 min\nprior to the time of departure.\n14:301) 14:45ÅD) 14:501)K) 15:05\nInformation that tours can be combined\n15:401) 15:55 16:001) 16:15 (combination tours) is only information about a\n16:301) 16:45A)ÅD) 16:551)A)ÅD) 17:10 possibility of combination. The Government of\nÅland does not take responsibility for the journey\n19:302) 19:45K) 19:502)ÅD) 20:05 between combination tours/harbour. Footnotes\n20:251) 20:40 20:551)K) 21:10 indicating combination tours do not garantee\ncombination.\nM/S Doppingen. Ålandstrafiken tel. +358 (0)18 25 600.\nAvvikelser: Poikkeuksia: Exceptions:\nTors 24/12 Torsdagstrafik som avslutas med To 24/12 Torstailiikenne, päättyy vuoroon klo Thu 24/12 Thursday schedule that stops with\navg. kl. 17:25 från Åva, men alla turer mot 17:25 Åvasta, mutta liikennöidään varaukse- departure at 17:25 from Åva, but all departures\nbokning. sta. by booking.\nFre 25/12 Trafik på morgonen för julotta. Sön- Pe 25/12 Liikennöidään aamulla Joulun pal- Fri 25/12 Traffic in the morning for Christmas\ndagstrafik med start kl. 11:05 från Jurmo och veluksen takia. Sunnuntailiikenne alkaen klo Event. Sunday schedule that starts at 11:05\navslutas med avg. kl. 16:55 från Åva. 11:05 Jurmosta ja päättyy vuoroon klo 16:55 from Jurmo and stops with departure at 16:55\nLör 26/12 Söndagstrafik med start kl. 11:05 Åvasta. from Åva.\nfrån Jurmo och avslutas med avg. kl. 16:55 La 26/12 Sunnuntailiikenne alkaen klo 11:05 Sat 26/12 Sunday schedule that starts at 11:05\nfrån Åva. Jurmosta ja päättyy vuoroon klo 16:55 Åvasta. from Jurmo and stops with departure at 16:55\nTors 31/12 Torsdagstrafik som avslutas med To 31/12 Torstailiikenne, päättyy vuoroon klo from Åva.\navg. kl. 17:25 från Åva, men alla turer mot 17:25 Åvasta, mutta liikennöidään varaukse- Thu 31/12 Thursday schedule that stops with\nbokning. sta. departure at 17:25 from Åva, but all departures\nFre 1/1 2027 Söndagstrafik. Pe 1/1 2027 Sunnuntailiikenne. by booking.\nFri 1/1 2027 Sunday schedule."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 36,
+    "losslessIntent": true
+  }
+}

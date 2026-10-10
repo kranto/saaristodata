@@ -1,0 +1,722 @@
+{
+  "routeId": "nagusodra",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-10-01",
+      "validTo": "2027-03-24"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Må/Ma/Mon",
+          "Ti/Ti/Tue",
+          "Ons/Ke/Wed",
+          "To/To/Thu",
+          "Fre/Pe/Fri",
+          "Lö/La/Sat",
+          "Sön/Su/Sun"
+        ],
+        [
+          "Kirjais",
+          "~06:15y ++",
+          "~06:15y ++",
+          "~06:15y ++",
+          "~06:15y ++",
+          "~06:15y ++",
+          "",
+          ""
+        ],
+        [
+          "Gullkrona",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Stenskär",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Brännskär",
+          "07:20y",
+          "07:20y",
+          "07:20y",
+          "07:20y",
+          "07:20y",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "7:45",
+          "7:45",
+          "7:45",
+          "7:45",
+          "7:45",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "7:45",
+          "7:45",
+          "7:45",
+          "7:45",
+          "7:45",
+          "09:00y",
+          ""
+        ],
+        [
+          "Pensar",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Penö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Kirjais",
+          "~08:50",
+          "~08:50",
+          "~08:50",
+          "~08:50",
+          "~08:50",
+          "~10:00y",
+          ""
+        ],
+        [
+          "Kirjais",
+          "09:30y",
+          "~09:30y*",
+          "09:30y",
+          "",
+          "09:30y",
+          "10:00y",
+          ""
+        ],
+        [
+          "Gullkrona",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Stenskär",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Grötö",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Brännskär",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Knivskär",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Kopparholm",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Bodö",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Träskholm",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Björkö",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Gloskär / Trunsö",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Sandholm",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Lökholm",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Borstö",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "~13:25",
+          "12:00y+"
+        ],
+        [
+          "Kirjais",
+          "",
+          "16:00y",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Lökholm",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "y+"
+        ],
+        [
+          "Sandholm",
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y+"
+        ],
+        [
+          "Gloskär/Trunsö",
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y+"
+        ],
+        [
+          "Björkö",
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y+"
+        ],
+        [
+          "Träskholm",
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y+"
+        ],
+        [
+          "Bodö",
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          "y+"
+        ],
+        [
+          "Kopparholm",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "y*+"
+        ],
+        [
+          "Knivskär",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Brännskär",
+          "y",
+          "y",
+          "y",
+          "",
+          "",
+          "",
+          "y+"
+        ],
+        [
+          "Grötö",
+          "y",
+          "y",
+          "y",
+          "",
+          "",
+          "",
+          "y+"
+        ],
+        [
+          "Stenskär",
+          "y",
+          "y",
+          "y",
+          "",
+          "",
+          "",
+          "y+"
+        ],
+        [
+          "Gullkrona",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y+"
+        ],
+        [
+          "Kirjais",
+          "~17:00y",
+          "17:30y",
+          "~17:00y",
+          "",
+          "~16:00",
+          "",
+          "~18:00y"
+        ],
+        [
+          "Kirjais",
+          "17:00y",
+          "17:30y",
+          "",
+          "16:00y",
+          "17:00y",
+          "",
+          "18:00y"
+        ],
+        [
+          "Peno",
+          "y",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Pensar",
+          "y",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Kirjais",
+          "18:15y",
+          "18:45",
+          "",
+          "17:15y",
+          "18:00y",
+          "",
+          "19:00y"
+        ],
+        [
+          "Kirjais",
+          "18:15y",
+          "",
+          "17:00y",
+          "17:15y",
+          "18:00y",
+          "",
+          "19:00y"
+        ],
+        [
+          "Brännskär",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Stenskär",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Gullkrona",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Kirjais",
+          "~19:45",
+          "",
+          "18:30y",
+          "~18:45",
+          "~19:30",
+          "",
+          "~20:20"
+        ],
+        [
+          "Kirjais",
+          "",
+          "",
+          "18:30y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Peno",
+          "",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Pensar",
+          "",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Kirjais",
+          "",
+          "",
+          "~19:45",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "Alla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system."
+        ],
+        [
+          "Södra ruttens fartyg på tvärgående rutten /Eteläisen reitin alus poikittaisella reitillä /The vessel of the Southern route on the Transverse route"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 3,
+      "rows": [
+        [
+          "Helgtrafiken / Pyhäliikenne / Schedule for public holidays 2026\n31.10. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n5.12. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n6.12. Sön/su/Sun Söndags tidtabell / Sunnuntain aikataulu / Sundays Schedule\n24.12. Tor/to/Thu Ingen trafik / Ei liikennöintiä / No traffic\n25.12.Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n26.12. Lör/la/Sat Lördags tidtabell / lauantain aikataulu / Saturdays schedule\n30.12. Ons/ke/Wed Ons tidtabell / Ke aikataulu / Wed schedule\n31.12. Tor/to/Thu Fredags tidtabell / perjantain aikataulu / Fridays schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027\n1.1. Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n6.1. Ons/ke/Wed Ingen trafik / Ei liikennöintiä / No traffic"
+        ],
+        [
+          "Beroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservering av bilplats via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nMax. passagerarmängd 99, max. lastkapacitet 25 t, max. antal personbilar 8"
+        ],
+        [
+          "Olosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nAutopaikan varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nMax. matkustajamäärä 99, max. lastikapasiteetti 25 t, max. henkilöautomäärä 8."
+        ],
+        [
+          "Due to circumstances there can be changes in the schedule.\nReservations of deck space for vehicles via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nMax. amount of passengers 99, max. carrying capacity 25 t, max. amount of cars 8"
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "uppdaterad / päivitetty / updated 8.12.2025\nNAGU SÖDRA RUTT / NAUVON ETELÄINEN REITTI /\nNAUVO SOUTHERN ROUTE\nVintertidtabell / talviaikataulu / Winter schedule\n1.10.2026 - 24.3.2027 m/s Falkö Tel./puh. 020 7118 790\nMå/Ma/Mon Ti/Ti/Tue Ons/Ke/Wed To/To/Thu Fre/Pe/Fri Lö/La/Sat Sön/Su/Sun\nKirjais ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++\nGullkrona y y y y y\nStenskär y y y y y\nBrännskär 07:20y 07:20y 07:20y 07:20y 07:20y\nKirjais 7:45 7:45 7:45 7:45 7:45\nKirjais 7:45 7:45 7:45 7:45 7:45 09:00y\nPensar y y y y y y\nPenö y y y y y y\nKirjais ~08:50 ~08:50 ~08:50 ~08:50 ~08:50 ~10:00y\nKirjais 09:30y ~09:30y* 09:30y 09:30y 10:00y\nGullkrona y y y\nStenskär y y y\nGrötö y y y\nBrännskär y y y\nKnivskär y y y y\nKopparholm y y\nBodö y y\nTräskholm y y\nBjörkö y y\nGloskär / Trunsö y y\nSandholm y y\nLökholm y y y y\nBorstö y y y ~13:25 12:00y+\nKirjais 16:00y\nLökholm y y y+\nSandholm y y y+\nGloskär/Trunsö y y y+\nBjörkö y y y+\nTräskholm y y y+\nBodö y y y+\nKopparholm y y y*+\nKnivskär y y\nBrännskär y y y y+\nGrötö y y y y+\nStenskär y y y y+\nGullkrona y y+\nKirjais ~17:00y 17:30y ~17:00y ~16:00 ~18:00y\nKirjais 17:00y 17:30y 16:00y 17:00y 18:00y\nPeno y y y y y\nPensar y y y y y\nKirjais 18:15y 18:45 17:15y 18:00y 19:00y\nKirjais 18:15y 17:00y 17:15y 18:00y 19:00y\nBrännskär y y y y y\nStenskär y y y y y\nGullkrona y y y y y\nKirjais ~19:45 18:30y ~18:45 ~19:30 ~20:20\nKirjais 18:30y\nPeno y\nPensar y\nKirjais ~19:45\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\nSödra ruttens fartyg på tvärgående rutten /Eteläisen reitin alus poikittaisella reitillä /The vessel of the Southern route on the Transverse route\ny = Beställningstur, beställs före kl. 18:00 dagen innan. / Tilausvuoro, tilattava edellisenä päivänä ennen klo 18:00. / Needs to be ordered the day before by 6 pm.\ny+ = Beställs senast dagen innan kl. 12:00. / Tilattava viim. edellisenä päivänä klo 12:00 / Needs to be ordered the day before by 12 pm.\n* = Via Nagu tvärgående rutt (se tvärgående ruttens tidtabell) / Nauvon poikittaisen reitin kautta (katso poikittaisen reitin aikataulu)\n/ Via the Transverse route (see the schedule of the transverse route)\n++ = Turens avgångstid varierar enligt bookningarna 0615-0650 / Vuoron lähtöaika vaihtelee tilauksien mukaan kl 0615-0650 / Departure time of the tour varies according to bookings 0615-0650\n~ = Ankomsttiden kan variera beroende på beställningsmängden. / Saapumisaika voi vaihdella tilausmäärästä riippuen. / The arrival time can change due to the amount of orders.\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026\n31.10. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n5.12. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n6.12. Sön/su/Sun Söndags tidtabell / Sunnuntain aikataulu / Sundays Schedule\n24.12. Tor/to/Thu Ingen trafik / Ei liikennöintiä / No traffic\n25.12.Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n26.12. Lör/la/Sat Lördags tidtabell / lauantain aikataulu / Saturdays schedule\n30.12. Ons/ke/Wed Ons tidtabell / Ke aikataulu / Wed schedule\n31.12. Tor/to/Thu Fredags tidtabell / perjantain aikataulu / Fridays schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027\n1.1. Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n6.1. Ons/ke/Wed Ingen trafik / Ei liikennöintiä / No traffic\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservering av bilplats via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nMax. passagerarmängd 99, max. lastkapacitet 25 t, max. antal personbilar 8\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nAutopaikan varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nMax. matkustajamäärä 99, max. lastikapasiteetti 25 t, max. henkilöautomäärä 8.\nDue to circumstances there can be changes in the schedule.\nReservations of deck space for vehicles via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nMax. amount of passengers 99, max. carrying capacity 25 t, max. amount of cars 8\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 3,
+    "rowCount": 57,
+    "losslessIntent": true
+  },
+  "routingPolicy": {
+    "servicePattern": "reservation_activated_island_loop",
+    "serviceRunsWhen": "at_least_one_island_journey_is_reserved",
+    "emptyLoopNotOperated": true,
+    "terminalAnchorsAreOperationalNotPassengerJourney": true,
+    "sameTerminalOriginDestinationAllowed": false,
+    "publishedDepartureTimeRole": "exact",
+    "approximateReturnTimeDependsOn": [
+      "which_island_calls_are_reserved",
+      "weather_and_operating_conditions"
+    ],
+    "intermediateCalls": "only_for_reservations_to_or_from_that_pier",
+    "typicalPassengerJourney": "terminal_to_island_or_island_to_terminal",
+    "island_to_islandJourney": "possible_but_uncommon",
+    "tuesdayTransverseDuty": {
+      "operatingDays": "_2_____",
+      "vessel": "M/S Falkö",
+      "notSeparateSouthernPassengerLoop": true,
+      "departure": {
+        "stop": "Kirjais",
+        "timeApproximate": "09:30"
+      },
+      "operatesRoute": "nagutvar",
+      "arrival": {
+        "stop": "Kirjais",
+        "time": "12:00"
+      },
+      "laterSouthernService": {
+        "departure": "16:00",
+        "separateTrip": true
+      }
+    },
+    "weekdayMorningWindow": {
+      "operatingDays": "12345__",
+      "from": "Kirjais",
+      "departureWindow": {
+        "earliest": "06:15",
+        "latest": "06:50"
+      },
+      "exactDepartureProvidedWithBooking": true,
+      "exactDepartureDependsOn": "booked_calls",
+      "publishedAnchors": [
+        {
+          "stop": "Brännskär",
+          "time": "07:20"
+        },
+        {
+          "stop": "Kirjais",
+          "time": "07:45",
+          "role": "return"
+        }
+      ],
+      "doNotCollapseWindowToSingleEstimatedTime": true
+    },
+    "weekendBorstöRotation": {
+      "principalTerminal": "Kirjais",
+      "farthestStop": "Borstö",
+      "outbound": {
+        "operatingDays": "_____6_",
+        "from": "Kirjais",
+        "departure": "10:00",
+        "to": "Borstö",
+        "arrivalApproximate": "13:25"
+      },
+      "vesselOvernightsAt": "Borstö",
+      "inbound": {
+        "operatingDays": "______7",
+        "from": "Borstö",
+        "departure": "12:00",
+        "to": "Kirjais",
+        "arrivalApproximate": "18:00",
+        "bookingMarker": "y+",
+        "bookingDeadline": {
+          "relativeTo": "previous_day",
+          "time": "12:00"
+        },
+        "deadlineAppliesToWholeTrip": true
+      }
+    },
+    "sundayServiceBoundary": {
+      "previousTripEnds": {
+        "stop": "Kirjais",
+        "timeApproximate": "18:00"
+      },
+      "nextTrip": {
+        "route": [
+          "Kirjais",
+          "Peno",
+          "Pensar",
+          "Kirjais"
+        ],
+        "departure": "18:00",
+        "return": "19:00",
+        "bookingMarker": "y",
+        "bookingDeadline": {
+          "relativeTo": "previous_day",
+          "time": "18:00"
+        }
+      },
+      "strongPrintedRuleDoesNotJoinTrips": true
+    },
+    "sundayTransverseDetour": {
+      "interpretationConfidence": "medium",
+      "vesselChange": false,
+      "vessel": "M/S Falkö",
+      "appliesAfter": "Kopparholm",
+      "normalStopSkipped": "Knivskär",
+      "normalStopSkippedConfirmed": true,
+      "detourStopOrder": [
+        "Berghamn",
+        "Ängsö",
+        "Lånholm",
+        "Hummelholm"
+      ],
+      "returnsToSouthernRouteAt": "Brännskär",
+      "thenContinues": [
+        "Grötö",
+        "Stenskär",
+        "Gullkrona",
+        "Kirjais"
+      ],
+      "sharedContinuationStopsConfirmed": true,
+      "sourceMarkerInterpretation": "The y*+ marker printed only at Kopparholm may describe the whole section from Borstö through Kopparholm before Falkö switches temporarily to the transverse route. This remains a plausible but not fully confirmed interpretation.",
+      "sameTripAcrossSourceTables": true,
+      "visualEvidence": "shared_orange_background"
+    }
+  },
+  "canonicalStopNames": {
+    "Penö": "Peno"
+  },
+  "sourceRowExpansions": {
+    "Gloskär / Trunsö": {
+      "stops": [
+        "Gloskär",
+        "Trunsö"
+      ],
+      "semantics": "two_separate_optional_calls",
+      "inheritCellMarkersForEachStop": true,
+      "bothCallsMayOccurOnSameTrip": true,
+      "reason": "Separate nearby islands combined on one row to keep the printed timetable compact."
+    }
+  }
+}

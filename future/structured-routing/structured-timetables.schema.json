@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saaristolautat.fi/schema/structured-timetables-v1.json",
+  "title": "Saaristolautat structured timetable draft",
+  "type": "object",
+  "required": ["schemaVersion", "status", "timingEstimatePolicy", "routes", "unconvertedSources", "statistics"],
+  "$defs": {
+    "dayPattern": {
+      "type": "string",
+      "pattern": "^[1_][2_][3_][4_][5_][6_][7_]$",
+      "description": "Monday-to-Sunday airline-style pattern."
+    },
+    "operation": {
+      "type": "object",
+      "required": ["validFrom", "validTo", "operatingDays", "specialDays", "noteInterpretationStatus", "sourceId"],
+      "properties": {
+        "validFrom": { "type": ["string", "null"], "format": "date" },
+        "validTo": { "type": ["string", "null"], "format": "date" },
+        "operatingDays": { "$ref": "#/$defs/dayPattern" },
+        "specialDays": { "type": "array", "items": { "type": "string" } },
+        "noteInterpretationStatus": { "enum": ["not_applicable", "resolved", "unresolved"] },
+        "noteRefs": { "type": "array", "items": { "type": "string" } },
+        "conditions": { "type": "array", "items": { "type": "object" } },
+        "sourceId": { "type": "string" }
+      }
+    },
+    "historicalEstimate": {
+      "type": "object",
+      "required": ["basis", "range", "sampleSize", "observedFrom", "observedTo", "generatedAt", "modelVersion", "disclosureRequired"],
+      "properties": {
+        "basis": { "const": "historical_observations" },
+        "typical": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
+        "range": {
+          "type": "object",
+          "required": ["earliest", "latest"],
+          "properties": {
+            "earliest": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
+            "latest": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+          }
+        },
+        "dayOffset": { "type": "integer", "minimum": 0 },
+        "sampleSize": { "type": "integer", "minimum": 1 },
+        "observedFrom": { "type": "string", "format": "date" },
+        "observedTo": { "type": "string", "format": "date" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "modelVersion": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "disclosureRequired": { "const": true },
+        "disclosureKey": { "type": "string" }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["draft", "reviewed"] },
+    "timingEstimatePolicy": {
+      "type": "object",
+      "required": ["field", "basis", "role", "scheduledTimesTakePrecedence", "disclosureRequired", "disclosureKey"],
+      "properties": {
+        "field": { "const": "historicalEstimate" },
+        "basis": { "const": "historical_observations" },
+        "role": { "const": "advisory" },
+        "scheduledTimesTakePrecedence": { "const": true },
+        "disclosureRequired": { "const": true },
+        "disclosureKey": { "type": "string" }
+      }
+    },
+    "stopDisplayPolicy": { "type": "object" },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "provider", "departures", "continuousServices", "notes", "sources", "review"],
+        "properties": {
+          "id": { "type": "string" },
+          "provider": { "type": "string" },
+          "departures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["from", "time", "operations"],
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "description": "Departure pier as labelled by the source timetable."
+                },
+                "time": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
+                "dayOffset": { "type": "integer", "minimum": 0 },
+                "sourceTime": { "type": "string" },
+                "operations": { "type": "array", "items": { "$ref": "#/$defs/operation" } }
+              }
+            }
+          },
+          "continuousServices": { "type": "array", "items": { "type": "object" } },
+          "vessel": { "type": "string" },
+          "vessels": { "type": "array", "items": { "type": "string" } },
+          "sourceLanguageAuthority": { "enum": ["fi", "sv", "en"] },
+          "languageConflictPolicy": { "type": "string" },
+          "validPeriods": { "type": "array", "items": { "type": "object" } },
+          "booking": { "type": "object" },
+          "serviceType": { "type": "string" },
+          "classificationEvidence": { "type": "object" },
+          "callMarkerPolicy": { "type": "object" },
+          "routeApplications": { "type": "array", "items": { "type": "object" } },
+          "routingPolicy": { "type": "object" },
+          "canonicalStopNames": { "type": "object" },
+          "sourceRowExpansions": { "type": "object" },
+          "sourceRowExpansionPolicy": { "type": "object" },
+          "timeNotationPolicy": { "type": "object" },
+          "sourceTableCorrections": { "type": "array", "items": { "type": "object" } },
+          "stopAliases": { "type": "object" },
+          "connections": { "type": "array", "items": { "type": "object" } },
+          "serviceRole": { "type": "object" },
+          "callConditions": { "type": "object" },
+          "departureAnnotations": { "type": "array", "items": { "type": "object" } },
+          "holidayExceptions": { "type": "array", "items": { "type": "object" } },
+          "capacity": { "type": "object" },
+          "trips": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "operatingDays", "calls"],
+              "properties": {
+                "id": { "type": "string" },
+                "operatingDays": { "$ref": "#/$defs/dayPattern" },
+                "freightAllowed": { "type": "boolean" },
+                "userNotices": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["type", "importance", "messages"],
+                    "properties": {
+                      "type": { "type": "string" },
+                      "importance": { "enum": ["minor", "normal", "important"] },
+                      "messages": { "type": "object" },
+                      "effects": { "type": "object" },
+                      "sourceAnnotations": { "type": "array", "items": { "type": "string" } }
+                    }
+                  }
+                },
+                "calls": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "historicalEstimate": { "$ref": "#/$defs/historicalEstimate" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "generalNotes": { "type": "array", "items": { "type": "string" } },
+          "onDemandExtra": { "type": "object" },
+          "sourceAnnotations": { "type": "object" },
+          "annualSchedulePattern": { "type": "object" },
+          "extractionDiagnostics": { "type": "object" },
+          "sourceTables": {
+            "type": "array",
+            "description": "Lossless intermediate extraction of PDF tables pending semantic trip review.",
+            "items": {
+              "type": "object",
+              "required": ["page", "tableIndex", "rows"],
+              "properties": {
+                "page": { "type": "integer", "minimum": 1 },
+                "tableIndex": { "type": "integer", "minimum": 1 },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": { "type": ["string", "null"] }
+                  }
+                }
+              }
+            }
+          },
+          "sourcePageText": { "type": "array", "items": { "type": "object" } },
+          "notes": { "type": "array", "items": { "type": "object" } },
+          "sources": { "type": "array", "items": { "type": "object" } },
+          "review": { "type": "object" }
+        }
+      }
+    },
+    "unconvertedSources": { "type": "array" },
+    "statistics": { "type": "object" }
+  }
+}

@@ -74,9 +74,9 @@ Nykyinen käytäntö on kasvattaa kokonaislukua yhdellä.
   historiallisista syistä GeoJSON-tyylinen mutta ei täydellinen
   `FeatureCollection`.
 - `timetables_jpg/`: sovelluksessa näytettävät paikalliset aikataulukuvat.
-- `structured-timetables.json`: koneellisesti muodostettu rakenteellisen
+- `future/structured-routing/structured-timetables.json`: koneellisesti muodostettu rakenteellisen
   aikataulun luonnos. Tietueen `review.status` kertoo tarkistustilan.
-- `structured-timetables.schema.json`: rakenteellisen aikataulun JSON Schema.
+- `future/structured-routing/structured-timetables.schema.json`: rakenteellisen aikataulun JSON Schema.
 - `index.json`: ladattavien tiedostojen nimet ja välimuistiversiot.
 
 ## Reittien elinkaari
@@ -118,13 +118,13 @@ Generoi rakenteellinen luonnos hyväksytyistä, paikallisesti tallennetuista
 lähteistä:
 
 ```sh
-python3 scripts/build_structured_timetables.py
+python3 future/structured-routing/scripts/build_structured_timetables.py
 ```
 
 Tarkista, että versionhallinnassa oleva tulos vastaa lähteitä:
 
 ```sh
-python3 scripts/build_structured_timetables.py --check
+python3 future/structured-routing/scripts/build_structured_timetables.py --check
 ```
 
 Muunnin lukee lähdeluettelon `timetable-checks.json`:sta ja alkuperäiset
@@ -152,12 +152,322 @@ yksi `departures`-tietue. Sen `operations`-lista kertoo eri voimassaolojaksot,
 ajopäivät, pyhäpäiväsäännöt ja poikkeusehdot. Operaattorin sivujen tunnisteet
 säilytetään ainoastaan `sourceId`-provenienssina.
 
+Kahden laiturin lähtöaikatauluissa `departures[].from` tarkoittaa aina
+lähtölaituria. Älä käytä epämääräistä `direction`-kenttää. Kohdelaituri voidaan
+johtaa kaksipäisen reitin toisesta laiturista; monen pysähdyksen
+yhteysalusvuoroissa kulkusuunta määräytyy järjestetystä `calls`-listasta.
+
+PDF-taulukoiden käsin tarkistetut litteroinnit säilytetään
+`future/structured-routing/structured-timetable-transcriptions/`-hakemistossa. Monen pysähdyksen
+yhteysalusvuorot kuvataan `trips`-listana ja niiden satamakäynnit järjestettynä
+`calls`-listana. Generaattori yhdistää litteroinnit samaan reittikohtaiseen
+aineistoon HTML-lähteiden kanssa.
+
+Loppujen PDF:ien häviötön välivaiheen poiminta tehdään komennolla
+`/Users/kranto/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 future/structured-routing/scripts/extract_remaining_pdf_timetables.py`.
+Se tallentaa taulukot `sourceTables`-kenttään ja sivujen tekstin
+`sourcePageText`-kenttään. Välivaihe poistaa PDF-taiton riippuvuuden ja säilyttää
+kaikki solut, mutta `review.routingReady: false` tarkoittaa, ettei aineistoa saa
+vielä käyttää matkahakuun. Vuorojen rajat, ajopäivät ja huomautusmerkit on ensin
+purettava `trips`/`calls`-rakenteeksi ja tarkistettava lähdekuvaa vasten.
+Pelkkä tekstipoiminta ei riitä, jos PDF käyttää väriä semantiikkaan. Esimerkiksi
+Houtskarin ja Iniön lisäreitin sininen merkintä ilmaisee virallisen
+vaihtoyhteyden. Säilytä ja tarkista tällaiset värikoodit lähdekuvasta.
+
+Jos saman virallisen aikataulun kieliversiot ovat keskenään ristiriidassa,
+säilytä kaikki lähdearvot ja ristiriidan kuvaus rakenteessa. Käytä oletuksena
+Manner-Suomen aikatauluissa suomenkielistä ja Ahvenanmaan aikatauluissa
+ruotsinkielistä tietoa. Kirjaa valittu arvo ja valintaperuste erikseen, jotta
+ratkaisu voidaan myöhemmin tarkistaa tai vaihtaa.
+
+Ålandstrafikenin vuosiaikataulu muodostuu tavallisesti viidestä kaudesta mutta
+kolmesta varsinaisesta aikataulupohjasta: alkuvuosi vastaa loppuvuotta, kevään
+välikausi syksyn välikauden aikataulua ja kesäkausi muodostaa kolmannen pohjan.
+Vuodenvaihteessa julkaistaan uusi vuosikerta, jota voidaan vielä päivittää
+vuoden aikana. Päivitetyssä loppuvuoden PDF:ssä näkyvät alkuvuoden tai kevään
+poikkeukset ovat historiallisia viitteitä; merkitse ne pois aktiivisesta
+reitityksestä, elleivät ne kuulu tarkasteltavaan voimassaolokauteen.
+
+Ahvenanmaan vaijerilossien yleissivun taukoja ei kopioida reitille, jolla on
+oma kellonaikataulu: tauko näkyy jo aikataulun lähtöjen aukosta ja olisi
+redundantti. Yleissivulta yhdistetään tällaiselle reitille vain muualta
+puuttuvat poikkeukset, kuten joulun liikenne. Embarsund on poikkeus syys–
+joulukuussa: kesäaikataulun päätyttyä se liikennöi tarvittaessa ilman
+kellonaikataulua, joten yleissivu toimii silloin aktiivisena lähteenä.
+
+Ålandstrafikenillä varaus on käyttäjän kannalta normaali toimintatapa. Reititin
+voi käsitellä vuoron mahdollisena, jos käyttäjä pystyy varaamaan sen. Esimerkiksi
+polttoainekuljetuksia koskevat merkinnät säilytetään tarvittaessa vähäisinä
+lähdeannotaatioina, mutta niitä ei nosteta käyttäjän matkahaun ehdoiksi.
+Liitä polttoainekuljetuksen vaikutus kyseisen vuoron vähäiseen
+`userNotices`-huomioon. Kerro vain lähteen vahvistama käytännön vaikutus:
+Brändö–Kumlinge-aikataulussa se on enintään 20 matkustajaa. Älä väitä
+ajoneuvokapasiteetin pienenevän, koska lähde ei sitä sano.
+Poikkeuksellisia, maakuntahallitukselta viikkoja etukäteen anottavia yövuoroja
+ei sisällytetä tämän palvelun käyttäjille tarjottaviin reittivaihtoehtoihin.
+
+Finferriesin terminologiassa `yhteysalus` tarkoittaa monisatamaista
+yhteysaluspalvelua, ei point-to-point-liikennettä hoitavaa maantielauttaa.
+Finferriesin yhteysalusmatka varataan aina yhteisestä varauspalvelusta
+`https://booking.finferries.fi/`. Tämä matkan varaus on eri asia kuin vanhoista
+taulukoista säilynyt `y`: `y` määrää, että kyseisessä laiturissa poiketaan vain
+ennakkoon tehdystä tilauksesta. `x` tarkoittaa tarvittaessa tehtävää
+laiturikäyntiä, jota ei tarvitse tilata erikseen. Älä päättele `y`:n
+puuttumisesta, ettei yhteysalusmatkaa tarvitsisi varata.
+Käytännön hypoteesi on, että `y` kuuluu jokaiselle tilattavalle välikäynnille.
+Päätelaiturin kellonajasta merkintä voi puuttua, koska se ei antaisi kaikkien
+matkojen yleisen varausvelvollisuuden lisäksi uutta tietoa. Säilytä silti
+lähteen solumerkintä sellaisenaan äläkä lisää puuttuvaa `y`:tä lähdedataan.
+Luokittele reitti ensisijaisesti kartta-aineiston yhteystyypistä:
+`saaristo.json`-aineistossa yhteysalukset ovat `conn4` ja Iniö–Kustavi sekä
+Kasnäs–Hiittinen `conn2`. Kahden laiturin rakenne tukee jälkimmäisten
+`road_ferry`-luokitusta, mutta laiturimäärä ei yksin ratkaise tyyppiä.
+
+Yhteysalustaulukon sama päätelaituri vuoron alussa ja lopussa kuvaa aluksen
+kierroksen operatiivista kehystä, ei matkustajalle tarjottavaa päätelaituri–
+päätelaituri-matkaa. Kierros ajetaan, kun vähintään yksi matka päätelaiturista
+saareen, saaresta päätelaituriin tai poikkeuksellisesti saarten välillä on
+varattu. Ilman varauksia alus ei aja tyhjää kierrosta. Lähtöaika voi olla tarkka
+ja paluuaika likimääräinen, koska paluu riippuu tilatuista laiturikäynneistä ja
+olosuhteista. Matkahaku ei saa muodostaa esimerkiksi Kirjais–Kirjais-yhteyttä.
+
+Sulkeisiin merkitty välilaiturin aika tulkitaan arvioajaksi. Paraisten reitillä
+Pensar on kierroksen kauimmaisin piste, joten sen arvioaika on käyttäjälle
+hyödyllinen kiintopiste ja voi tavallisesti olla melko vakaa myös Pensarin
+jälkeisiltä laitureilta lähteville. Sitä ei kuitenkaan esitetä minuutilleen
+taattuna aikana, sillä tilatut käynnit ja olosuhteet voivat siirtää sitä.
+
+Erota aina koko matkan varausvelvollisuus yksittäisen laituripoikkeaman
+tilaamisesta. Paraisten reitillä kaikki matkustajan matkat varataan.
+Granholmen käsitellään rakenteessa omana varattavana laituririvinään ennen tai
+jälkeen jokaista Heisala-käyntiä kulkusuunnan mukaan. Granvik–Heisala on lähes
+heiluriliikennettä ja Granholmen vain pieni poikkeama reitiltä, joten lähde on
+jättänyt toistuvat Granholmen-rivit painamatta. Klo 7.45 ja 14.00 Granvikista
+lähtevät kierrokset muodostavat poikkeuksen: alus ajaa vain
+Granvik–Heisala–Granvik eikä käy Granholmenissa lainkaan. Niillä ei siis voi
+tilata Granvik–Granholmen- eikä Granholmen–Granvik-matkaa. Kaikilla muilla
+vuoroilla matkan voi tilata kumpaankin suuntaan.
+
+Ramsholm on Heisalan saaren toisessa päässä sijaitseva oma laituri, vaikka se ei
+ole normaali aikataulupysähdys. Se säilytetään erillisenä haettavana lähtö- ja
+määräpaikkana erikoismerkinnällä `varattavissa vain olosuhteiden niin
+vaatiessa`. Käyttäjälle ei esitetä arvailuja siitä, mitä nämä olosuhteet ovat.
+Granvikista tultaessa reittijärjestys on
+Björkholm–Ramsholm–Stenholm–Aspholm; Ramsholm ja Stenholm on jätetty painetusta
+aikataulutaulukosta pois.
+Stenholmiin ja Stenholmista voi varata matkan kumpaankin suuntaan jokaisella
+Pensariin ulottuvalla kierroksella. Lyhyemmillä kierroksilla Stenholm-käynti ei
+ole tarjolla.
+
+Paraisten reitin varausohjeen `aamuvuoro` tulkitaan vain päivän ensimmäiseksi,
+Granvikista klo 6.00 lähteväksi vuoroksi. Se varataan edellisenä päivänä klo 17
+mennessä; muiden vuorojen määräaika on vähintään 10 minuuttia ennen lähtöä.
+Sanamuoto ei määrittele aamuvuoroa täsmällisesti, joten tulkinnan varmuustaso on
+rakenteessa keskitaso.
+
+Iniö–Kustavin aikataulun harmaa taustaväri on semanttinen merkintä. Tiistain ja
+torstain Heponiemen klo 7.00 sekä Kannvikin klo 9.30 lähdöt ovat vaarallisten
+aineiden kuljetuksia, joilla matkustajamäärä on rajoitettu. Tieto tallennetaan
+yksittäisten lähtöjen huomautukseksi eikä koko reitin ominaisuudeksi.
+Kasnäs–Hiittinen-reitillä sama harmaa merkintä koskee kaikkia maanantaista
+perjantaihin Kasnäsistä klo 6.30 ja Långnäsistä klo 8.30 lähteviä vuoroja:
+viittä lähtöä kumpaankin suuntaan eli yhteensä kymmentä lähtöä viikossa.
+
+Utön reitin `(tx)`-merkinnät muodostavat yhden yön yli jatkuvan kierron, eivät
+joukkoa toisistaan riippumattomia lähtöjä. Henkilökuljetus lähtee reitin
+päälaiturista Pärnäisistä sunnuntaina klo 17.05, saapuu Utön kylälaituriin klo
+19.30, yöpyy Utössä ja palaa maanantaina klo 6.00–8.15 Pärnäisiin. Molemmat
+osuudet tilataan viimeistään edeltävänä lauantaina klo 15. Vuoro ajetaan
+Myrskylinnulla tai Berghamnilla, eikä sillä kuljeteta ajoneuvoja; koululaiset ja
+paikalliset asukkaat ovat ensisijaisia matkustajia. Vuoro näytetään silti
+kaikille matkahakijoille mahdollisena yhteytenä, jos varaus hyväksytään;
+ensisijaisuus esitetään huomautuksena eikä käyttörajauksena.
+Utön perjantain aamukierroksella Utö 5.30–Pärnäinen 10.00 Berghamnin `z`-käynti
+on varattavissa edellisenä päivänä klo 17 mennessä vain parittomilla
+ISO-viikoilla. Parillisilla viikoilla Berghamnia ei tarjota tällä kierroksella
+lainkaan.
+Utön pääsiäispoikkeus 25.3.2027 `perjantain aikataulu klo 18.00 →` tarkoittaa,
+ettei ennen klo 18 ole lainkaan liikennettä. Vasta klo 18 alkaen käytetään
+perjantain aikataulua; sitä ei yhdistetä torstain päivävuoroihin. Utön matka
+kestää noin viisi tuntia, joten alus ei ehtisi ajaa kahta tällaista kierrosta.
+Pääsiäisen 2027 `(tx)`-yökierto siirtyy päivällä: sunnuntaiaikataulun mukainen
+Pärnäinen 17.05–Utö 19.30 ajetaan maanantaina 29.3. ja siihen kuuluva
+maanantaiaikataulun Utö 6.00–Pärnäinen 8.15 tiistaina 30.3. Tiistaina ei ole
+muita normaaleja vuoroja. Normaali keskiviikkoliikenne jatkuu 31.3. Siirretty
+kierto varataan edeltävänä lauantaina 27.3. klo 15 mennessä.
+Maanantain `(tx)`-paluu saapuu Pärnäisiin klo 8.15 ja varsinainen M/S Utö lähtee
+klo 8.30. Vaihto on fyysisesti mahdollinen, mutta sitä ei ehdoteta yhteytenä:
+`(tx)` on jo käynyt samoissa välisaarissa, joihin M/S Utö on lähdössä takaisin.
+Reitityksen pitää karsia tällaiset teknisesti mahdolliset mutta hyödyttömät
+takaisinpäin vaihdot.
+Östra Tallholm poistetaan nykyisestä Paraisten reitistä ja kartan
+laiturikohteista. Se esiintyi ainakin vuoden 2019 aikataulussa, mutta ei
+tarkistetuissa vuoden 2025 kesäaikatauluissa eikä nykyisessä talviaikataulussa.
+Rakenteinen data kuvaa nykyisiä matkustusmahdollisuuksia, ei historiallista
+laituriluetteloa.
+
+Jos painettu aikataulu yhdistää kaksi lähekkäistä saarta samalle riville tilan
+säästämiseksi, säilytä lähderivi mutta pura se reitityksessä kahdeksi erilliseksi
+kohteeksi. Esimerkiksi Nauvon eteläisen reitin `Gloskär / Trunsö` tarkoittaa
+kahta erillistä `y`-käyntiä. Kummankin voi varata erikseen ja samalla vuorolla
+voidaan käydä molemmissa.
+Yleisemmin kauttaviivalla samalla rivillä luetellut laiturit ovat matkustajalle
+erillisiä kohteita, joille rivin `y`, `x` tai muu ehto periytyy erikseen.
+Yhdistetty rivi tulkitaan painetun taulukon tilansäästöksi, ellei lähde tai
+reittikohtainen tieto nimenomaisesti osoita muuta.
+Kauttaviiva voi kuitenkin erottaa myös saman paikan kieliversiot. Esimerkiksi
+`Själö/Seili`, `Nagu/Nauvo` ja `Pärnäs/Pärnäinen` normalisoidaan kukin yhdeksi
+laituriksi kielikohtaisine nimineen, ei kahdeksi kohteeksi.
+
+Nauvon pohjoisen reitin sunnuntain `y**` yhdistää kaksi merkittyä vuoroa
+jaksoilla 11.8.–13.9. ja 9.–31.5. Erillisten Nauvo–Seili–Nauvo- ja
+Nauvo–…–Ahvensaari-vuorojen sijasta ajetaan yksi kierros klo 17.50:
+Nauvo–Seili–Nauvo–Innamo–Järvsor–Maskinnamo–Ahvensaari. Korvatut vuorot eivät
+jää samalle päivälle erillisiksi lähdöiksi.
+
+Nauvon eteläisen reitin viikonloppuliikenne muodostaa Borstön yökierron.
+Päälaituri on Kirjais ja kaukaisin kohde Borstö. Alus lähtee lauantaina
+Kirjaisista klo 10, saapuu Borstöön noin klo 13.25 ja palaa sunnuntaina klo
+12–noin 18 Kirjaisiin. Sunnuntain paluuvuoron `y+` tarkoittaa, että koko matka
+tilataan edellisenä päivänä klo 12 mennessä, vaikka plusmerkkiä ei ole toistettu
+jokaiseen soluun. Klo 18 alkava Kirjais–Peno–Pensar–Kirjais on erillinen lyhyt
+`y`-kierros, jonka määräaika on edellisenä päivänä klo 18. Taulukon vahva
+poikkiviiva ei yhdistä näitä vuoroja.
+Sunnuntain Borstö–Kirjais-paluun `y*+` tulkitaan toistaiseksi keskitason
+varmuudella näin: sama M/S Falkö jatkaa Kopparholmin jälkeen ilman aluksenvaihtoa,
+ohittaa varmasti Knivskärin ja ajaa sijainnin mukaisessa järjestyksessä
+poikittaisen reitin Berghamn–Ängsö–Lånholm–Hummelholm,
+minkä jälkeen se palaa eteläiselle reitille Brännskärissä ja jatkaa
+Grötö–Stenskär–Gullkrona–Kirjais. Kopparholm kuuluu eteläiseen reittiin.
+Plus- ja tähtimerkinnän voidaan ajatella koskevan koko Borstö–Kopparholm-osuutta,
+vaikka ne on painettu vain Kopparholmin soluun; tulkinta ei ole täysin varma.
+
+Brännskär, Grötö, Stenskär ja Gullkrona kuuluvat sekä Nauvon poikittaiseen että
+eteläiseen reittiin. Grötö sekä aikataulussa lisäksi mainittu Triören ovat
+poikittaisella reitillä tilauksesta poikettavia laitureita. Triören puuttui
+vanhasta reitti- ja laituridatasta kokonaan. Se lisätään Gullkronan
+pohjoispuolelle alustavasti kaakkoisrannan laituriin, ja reittiviiva kulkee
+Gullkronasta Furuskärin ja Mottonskärin itäpuolitse. Laiturin tarkka koordinaatti
+varmistetaan myöhemmin historiallisen livedatan avulla.
+
+Tiistaisin M/S Falkö siirtyy eteläiseltä reitiltä ajamaan poikittaisen reitin
+kierroksen Kirjaisista noin klo 9.30 ja palaa Kirjaisiin klo 12. Poikittaisen
+taulukon mukainen järjestys on
+Kirjais–Byskär–Brännskär–Ängsö–Lånholm–Hummelholm–Berghamn–Kirjais.
+Kyse ei ole erillisestä eteläisen reitin matkustajakierroksesta. Eteläisen
+reitin klo 16 lähtö on myöhempi erillinen vuoro.
+
+Poikittaisen taulukon sunnuntain `Borstö → *` ei aloita uutta vuoroa. Se jatkaa
+samaa M/S Falkön Borstöstä klo 12 lähtenyttä eteläisen reitin paluuvuoroa
+poikittaisen reitin osuudella Berghamn–Ängsö–Lånholm–Hummelholm ja edelleen
+Brännskär–Grötö–Stenskär–Gullkrona–Kirjaisiin noin klo 18. Viimeiset yhteiset
+laiturit on jätetty poikittaisesta taulukosta pois, jotta yhtä sunnuntaivuoroa
+varten ei tarvita omia rivejä. Taulukoiden yhteinen oranssi pohjaväri on semanttinen
+jatkuvuusmerkintä. Rakenteessa kyse on yhdestä lähdöstä, vaikka vuoro kuvataan
+kahdessa reittitaulukossa.
+
+Nauvon eteläisen reitin arkipäivien ensimmäinen Kirjaisin lähtö on
+lähtöaikaikkuna 6.15–6.50, ei yksittäinen arvioaika. Tarkka lähtö määräytyy
+varausten perusteella ja vahvistuu matkustajalle varauksen yhteydessä.
+Brännskärin klo 7.20 ja Kirjaisiin paluun klo 7.45 ajat säilytetään julkaistuina
+kiintopisteinä.
+
+Käyttöliittymä näyttää nimen ensisijaisesti käyttäjän valitsemalla kielellä.
+Kun kieliversiot poikkeavat niin paljon, ettei samaa paikkaa voi helposti
+tunnistaa, näytä lisäksi toinen kotimainen nimi. Suositeltuja muotoja ovat
+esimerkiksi `Seili / Själö`, `Själö / Seili` ja englanniksi `Seili / Själö`.
+Yhteinen pysyvä laituritunniste estää rinnakkaisnimien muuttumisen erillisiksi
+reittisolmuiksi.
+Samannimisiä mutta eri paikkoja ei tarvitse tarkentaa saman reitin tavallisessa
+näkymässä tai kartalla, koska ne eivät esiinny samalla reitillä. Lisää reitti-
+tai kuntatarkenne vasta hakutulokseen, jossa eri reittien samannimiset kohteet
+voivat sekoittua. Berghamn on tärkeä testitapaus: eri yhteysalusreittien varrella
+on useita eri Berghamn-kohteita.
+Sulkeissa oleva paikannimi voi olla pelkkä sijaintikonteksti eikä osa laiturin
+nimeä. Nauvon pohjoisen reitin `Lavarn (Houtsala)` normalisoidaan laituriksi
+`Lavarn`: Houtsala on ympäröivä saari tai alue. Koska muuta Lavarnia ei ole,
+Houtsala-tarkennetta ei näytetä normaalissa käyttöliittymässä.
+Rymättylän reitin `Korvenmaa/Wihuri/Pyytti` puretaan vastaavasti kolmeksi
+erilliseksi käynniksi. Korvenmaa ja Pyytti ovat eri saaria; Wihuri on erillinen
+laituri Korvenmaan saaressa.
+Nauvon poikittaisen reitin `Ängsö / Lånholm` tarkoittaa kahta itsenäistä
+laituria saman suuren saaren eri puolilla, yli kahden kilometrin päässä
+toisistaan. Solun merkintä periytyy kummallekin erikseen.
+Velkuan reitin Munninmaa, Kettumaa, Liettinen ja Tammisluoto ovat eri saaria.
+Niiden vaihtelevat kauttaviivayhdistelmät puretaan aina luetelluiksi erillisiksi
+laiturikäynneiksi.
+
+Rymättylän reitin sulkeissa olevat kellonajat ovat laskennallisia väliaikoja,
+eivät sitovia lähtö- tai saapumisaikoja. Esimerkiksi Ruotsalainen `(10.35)x` ja
+Pakinainen `(10.55)x` ilmaisevat noin 20 ja 40 minuuttia Haapalan klo 10.15
+lähdöstä. `x`-käynti tehdään tarvittaessa ja on käytännössä tavallinen, mutta ei
+varma. Muille laitureille ei pidä keksiä aikaa. Haapalan painettu paluuaika on
+kierroksen kehysaika; todellinen paluu voi aikaistua, jos valinnaisia käyntejä
+jää pois.
+Sunnuntain Pakinainen `(16.40/17.05)x` on ehdollinen aika: noin klo 16.40, jos
+Pähkinäisessä ei käydä ensin, ja noin klo 17.05, jos Pähkinäisen käynti tehdään.
+Älä muodosta niistä kahta erillistä lähtöä.
+
+Houtskarin reitin talvi-PDF:n ensimmäisestä otsikkorivistä puuttuu pystyviiva
+maanantain ja tiistain välistä. Se on taittovirhe, ei yhdistetty päiväotsikko.
+Aamun klo 5.50 kierroksen ajat ovat tiistain ja keskiviikon sarakkeissa
+(`_23____`), eivät maanantaina.
+Sunnuntain Själö `(~13.20)` – Torsholma 13.55/14.10 – Själö `(~14.50)` on yksi
+edestakainen kierros. Själön ajat ovat likimääräisiä väliaikoja mennessä ja
+palatessa; Torsholman ajat ovat saapuminen ja paluulähtö.
+Houtskarin aikataulun mainitsema yhteys Iniön lisäreitiltä Houtskarin reitille
+on suunniteltu, vain tähän suuntaan toimiva vaihto Själössä. Älä päättele
+odottamistakuuta ilman erillistä lähdettä. Esimerkiksi perjantaina Åselholm
+13.10 – Själö 13.40 jatkuu M/S Finnön Torsholmasta klo 14.30 alkavalla
+kierroksella Själöstä Roslaxiin klo 17.40. Själön tarkka noutoaika puuttuu ja
+on historiadata-arvion ehdokas; normaali odotus on yli tunti.
+Maanantaina, keskiviikkona ja sunnuntaina Iniön lisäreitin ja Houtskarin reitin
+alukset ovat iltapäivällä yhtä aikaa Själössä. Näinä päivinä aikataulu tarjoaa
+virallisen vaihtoyhteyden kumpaankin suuntaan. Yhteys on merkitty PDF:ssä
+sinisellä; väri on tässä rakenteellista tietoa eikä koriste. Merkitse yhteys
+viralliseksi, mutta älä päättele odottamistakuuta ilman erillistä lupausta.
+
+Korppoon reittialueen sunnuntain `#`-merkityt Österskär-ajat tulkitaan omaksi
+klo 10.00 Korppoosta lähteväksi kierrokseksi. Lähteen Österskär klo 12.00
+säilytetään julkaistuna arvona, mutta noin 90 minuutin tyypillinen matka-aika ja
+paluu ennen klo 13.00 alkavaa seuraavaa kierrosta tarkennetaan historiadatasta.
+Korppoo 13.00 – Berghamn 14.00 – Korppoo 15.30 on erillinen kierros.
+Österskärin kierroksen `Brunskär/Kälö` puretaan kahdeksi erilliseksi
+varattavaksi laituriksi. PDF:n harmaa värialue ja `#`-huomautus keskeyttävät
+koko kierroksen 2.11.2026–30.4.2027, joten talvella ei käydä Brunskärissä,
+Kälössä eikä Österskärissä tämän vuoron osana.
+
+### Historiadataan perustuvat laituriaika-arviot
+
+Rakenteessa julkaistu aikatauluaika ja myöhemmin laskettava historiapohjainen
+arvio ovat eri asioita. Säilytä julkaistu aika kentissä `time`, `timeRange` tai
+`timeAlternatives`. Mahdollinen arvio kuuluu satamakäynnin erilliseen
+`historicalEstimate`-kenttään eikä se saa korvata lähteen ilmoittamaa aikaa.
+
+Arviossa on vaihteluväli (`range.earliest`–`range.latest`) ja mahdollinen
+tyypillinen aika (`typical`). Tallenna myös otoskoko, havaintojen aikaväli,
+arvion laskenta-aika, malliversio ja mahdollinen luottamusarvo. Arvio on aina
+luonteeltaan neuvova. `disclosureRequired` on pakollisesti `true`, ja
+käyttöliittymän pitää kertoa `disclosureKey`-tekstillä, että aika perustuu vain
+historiadataan eikä ole operaattorin julkaisema aikataulu tai taattu yhteys.
+
+Historiapohjainen arvio sopii erityisesti PDF:ssä ilman kellonaikaa oleville
+tilattaville välikäynneille. Älä lisää arviota ennen kuin käytettävissä on
+riittävä havaintoaineisto; siihen asti `time: null` on oikea esitys.
+
 Generoitu tietue on aina aluksi `generated_unreviewed`. Älä käytä sitä
 matkahakuun varmennettuna tietona ennen kuin lähtöajat, poikkeukset ja
 huomautusviitteet on verrattu alkuperäiseen aikatauluun. PDF-lähteet ja
 HTML-sivut, joissa ei ole aktiivisia lähtöjä, luetellaan toistaiseksi
 `unconvertedSources`-kentässä. Näin aineiston kattavuusvajetta ei voi tulkita
 vahingossa liikennöinnin puuttumiseksi.
+
+Rakenteellinen aikataulu sisältää vain tarkistushetkellä voimassa olevat ja
+tulevat kaudet sekä päivämääräpoikkeukset. Päättynyt `validTo` ja mennyt
+poikkeuspäivä poistetaan sekä litteroinnista että generoidusta aineistosta.
+Avoimena jatkuvaa aikataulua ei poisteta vain siksi, että sen `validFrom` on
+menneisyydessä. Lähdetarkistuksen historiatiedot voivat säilyä erillisessä
+`timetable-checks.json`-tiedostossa, mutta niitä ei viedä reititysdataan.
 - Anna jokaiselle aikataululle `validFrom` ja mahdollisuuksien mukaan
   `validTo` ISO-muodossa `YYYY-MM-DD`.
 - Älä jatka vanhan aikataulun voimassaoloa ilman lähdettä.

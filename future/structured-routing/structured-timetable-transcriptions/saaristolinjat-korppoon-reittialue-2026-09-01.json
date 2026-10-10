@@ -1,0 +1,653 @@
+{
+  "routeId": "korporutt",
+  "provider": "saaristolinjat",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "saaristolinjat-korppoon-reittialue-2026-09-01",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-01",
+      "validTo": "2027-06-01"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Mån / Ma",
+          "Tis / Ti",
+          "Ons / Ke",
+          "Tors / To",
+          "Fre /Pe",
+          "Lör / La",
+          "Sön / Su"
+        ],
+        [
+          "",
+          "",
+          "Fiskö/",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "",
+          "Taksivene",
+          "",
+          "",
+          "",
+          "",
+          "#10:00y"
+        ],
+        [
+          "Korpo/Korppoo",
+          "07.30y",
+          "07.30y",
+          "07.30y",
+          "07.30y",
+          "07.30y",
+          "",
+          "13:00y"
+        ],
+        [
+          "Storpensar",
+          "08.00y",
+          "08.00y",
+          "08.00y",
+          "08.00y",
+          "08.00y",
+          "",
+          ""
+        ],
+        [
+          "Lillpensar",
+          "08.15y",
+          "",
+          "08.15y",
+          "08.15y",
+          "08.15y",
+          "",
+          ""
+        ],
+        [
+          "Havstrask",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Korppo/Korppoo",
+          "08.45y",
+          "08.45y",
+          "08.45y",
+          "08.45y",
+          "08.45y",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "10.05y",
+          "",
+          "10.05y",
+          "",
+          "10.05y",
+          "",
+          "14.00y"
+        ],
+        [
+          "Finnö",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Käldersö",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Elvsö",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "11.15",
+          "",
+          "11.15",
+          "09.45",
+          "11.15",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "",
+          "",
+          "",
+          "#10.00y",
+          "11.15y",
+          "",
+          ""
+        ],
+        [
+          "Finnö",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Käldersö",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Elvsö",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Brunskär/Kälö",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Österskär",
+          "",
+          "Fiskö/",
+          "",
+          "y",
+          "",
+          "",
+          "#12:00y"
+        ],
+        [
+          "Korpo/Korppoo",
+          "",
+          "Taksivene",
+          "",
+          "",
+          "12.30",
+          "",
+          "15.30"
+        ],
+        [
+          "Korpo/Korppoo",
+          "15.10y",
+          "15.10y",
+          "15.10y",
+          "14.10y",
+          "13.10y",
+          "",
+          ""
+        ],
+        [
+          "Storpensar",
+          "15.40y",
+          "15.40y",
+          "15.40y",
+          "14.40y",
+          "13.40y",
+          "",
+          ""
+        ],
+        [
+          "Lillpensar",
+          "15.55y",
+          "",
+          "15.55y",
+          "14.55y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "16.40y",
+          "16.40y",
+          "16.40y",
+          "15.40y",
+          "",
+          "",
+          "15:45y"
+        ],
+        [
+          "Finnö",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Käldersö",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Elvsö",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Berghamn",
+          "18.10y",
+          "",
+          "18.10y",
+          "17.10y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Kittuis",
+          "y",
+          "",
+          "y",
+          "y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Elvsö",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "19.20y",
+          "",
+          "19.20y",
+          "18.10y",
+          "",
+          "",
+          "16.45y"
+        ],
+        [
+          "Havträsk (Norrskata)",
+          "y",
+          "",
+          "y",
+          "y",
+          "13.50y",
+          "",
+          "y"
+        ],
+        [
+          "Lillpensar",
+          "y",
+          "",
+          "y",
+          "y",
+          "14.00y",
+          "",
+          "y"
+        ],
+        [
+          "Storpensar",
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Korpo/Korppoo",
+          "",
+          "",
+          "",
+          "",
+          "17:00",
+          "",
+          ""
+        ],
+        [
+          "Elvsö",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "20.50",
+          "",
+          "20.50",
+          "19.50",
+          "19:30",
+          "",
+          "18.30"
+        ],
+        [
+          "Havträsk (Norrskata)",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Lillpensar",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Storpensar",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Korpo/Korppoo",
+          "",
+          "",
+          "",
+          "",
+          "21:00",
+          "",
+          ""
+        ],
+        [
+          "# Österskärsturen trafikeras ej / Österskärin vuoroa ei liikennöidä ajalla 2.11.2026- 30",
+          null,
+          null,
+          null,
+          null,
+          null,
+          ".04.2027",
+          null
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "Autopaikkoja on mahdollista varata enintään kuukausi etukäteen.\nVaraus saa sisältää enintään yksi autopaikka / ruokakunta, mikäli kysymyksessä ei ole ajoneuvoyhdistelmä .\nPaikkavaraus on vahvistettava viimeistään viikkoa ennen, soittamalla aluksen numeroon 044 761 8000 tai\nlähettämällä viestin sähköpostilla. Vahvistamattomat varaukset eivät ole voimassa.\nJos autopaikka varauksesi peruuntuu, ole ystävällinen ja ilmoita asiasta M/S Fiskö:lle.",
+          null
+        ],
+        [
+          null,
+          ""
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "KORPO RUTTOMRÅDE /\nKORPPOON REITTIALUE Fiskö\nms FISKÖ tel/puh. O44 761 8000\n01.09.2026- 1.6.2027\nMån / Ma Tis / Ti Ons / Ke Tors / To Fre /Pe Lör / La Sön / Su\nFiskö/\nKorpo/Korppoo Taksivene #10:00y\nKorpo/Korppoo 07.30y 07.30y 07.30y 07.30y 07.30y 13:00y\nStorpensar 08.00y 08.00y 08.00y 08.00y 08.00y\nLillpensar 08.15y 08.15y 08.15y 08.15y\nHavstrask y y y y\nKorppo/Korppoo 08.45y 08.45y 08.45y 08.45y 08.45y\nBerghamn 10.05y 10.05y 10.05y 14.00y\nFinnö y y y y\nKäldersö y y y y\nElvsö y y y y\nKorpo/Korppoo 11.15 11.15 09.45 11.15\nKorpo/Korppoo #10.00y 11.15y\nFinnö y y\nKäldersö y y\nElvsö y y y\nBrunskär/Kälö y y\nÖsterskär Fiskö/ y #12:00y\nKorpo/Korppoo Taksivene 12.30 15.30\nKorpo/Korppoo 15.10y 15.10y 15.10y 14.10y 13.10y\nStorpensar 15.40y 15.40y 15.40y 14.40y 13.40y\nLillpensar 15.55y 15.55y 14.55y\nKorpo/Korppoo 16.40y 16.40y 16.40y 15.40y 15:45y\nFinnö y y y y\nKäldersö y y y y\nElvsö y y y y\nBerghamn 18.10y 18.10y 17.10y\nKittuis y y y\nElvsö\nKorpo/Korppoo 19.20y 19.20y 18.10y 16.45y\nHavträsk (Norrskata) y y y 13.50y y\nLillpensar y y y 14.00y y\nStorpensar y y y y y\nKorpo/Korppoo 17:00\nElvsö y\nBerghamn y\nKorpo/Korppoo 20.50 20.50 19.50 19:30 18.30\nHavträsk (Norrskata) y\nLillpensar y\nStorpensar y\nKorpo/Korppoo 21:00\n# Österskärsturen trafikeras ej / Österskärin vuoroa ei liikennöidä ajalla 2.11.2026- 30.04.2027\nTisdag: Endast skolskjuts/Tiistai:Ainoastaan koulukyyti\ny = Beställningstur, beställs före kl. 15.00 dagen innan/\nTilausvuoro, tilattava edellisenä päivänä ennen klo 15.00\nBilplats reserveras tel. /Autopaikkavaraukset puh. 044 761 8000\nAutopaikkoja on mahdollista varata enintään kuukausi etukäteen.\nVaraus saa sisältää enintään yksi autopaikka / ruokakunta, mikäli kysymyksessä ei ole ajoneuvoyhdistelmä .\nPaikkavaraus on vahvistettava viimeistään viikkoa ennen, soittamalla aluksen numeroon 044 761 8000 tai\nlähettämällä viestin sähköpostilla. Vahvistamattomat varaukset eivät ole voimassa.\nJos autopaikka varauksesi peruuntuu, ole ystävällinen ja ilmoita asiasta M/S Fiskö:lle.\nEn bilplats kan reserveras högst en månad på förhand. Reserveringen får innehålla en bil/hushåll,\nom reserveringen inte gäller bil+släp. Bil-reserveringen MÅSTE bekräftas senast en vecka före avgång\nmed att ringa M/S Fiskö 044 761 8000 eller skicka e-mail. Obekräftade reserveringar behandlas som avbokade.\nOm det blir ändringar med en bil-reservering, meddela gärna M/S Fiskö.\nInternet sidor/sivut www.skargardslinjer.fi e-post info@skargardslinjer.fi\nwww.saaristolinjat.fi sähköposti info@saaristolinjat.fi\nHelgtrafiken / Pyhäaikataulu 2026 - 2027\n6.12. sön/su enligt tidtabell/aikataulun mukaan\n23.12. ons/ke fredags tidtabell/perjantain aikataulun mukaan\n24.12. tors/to ingen trafik/ei liikennettä\n25.12. fre/pe ingen trafik/ei liikennettä\n26.12 lör/la söndags tidtabell/sunnuntain aikataulun mukaan\n27.12. sön enligt tidtabell/aikataulun mukaan\n1.1. fre/pe enligt tidtabell/aikataulun mukaan\n6.1. ons/ke ingen trafik/ei liikennettä\n25.3. tors/to fredags tidtabell/perjantain aikataulun mukaan\n26.3. fre/pe ingen trafik/ei liikennettä\n27.3. la/lör söndags tidtabell/sunnuntain aikataulun mukaan\n28.3. sön/su ingen trafik / ei liikennettä\n29.3. mån/ma enligt tidtabell/aikataulun mukaan\n1.5. lör/la ingen trafik / ei liikennettä\n16.5. sön/su enligt tidtabell/aikataulun mukaan\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 45,
+    "losslessIntent": true
+  },
+  "booking": {
+    "defaultPolicy": "required_for_y_services",
+    "deadline": {
+      "relativeTo": "previous_day",
+      "time": "15:00"
+    },
+    "phone": "+358447618000",
+    "vehicleSpace": {
+      "role": "passenger_information_only",
+      "affectsRouting": false,
+      "reservationWindow": {
+        "opensDaysBeforeDeparture": 30,
+        "closesDaysBeforeDeparture": 7
+      },
+      "interpretation": "Vehicle space must be reserved no earlier than one month and no later than one week before departure.",
+      "sourceWordingAmbiguous": true
+    }
+  },
+  "trips": [
+    {
+      "id": "tuesday-school-morning-storpensar",
+      "operatingDays": "_2_____",
+      "serviceRole": "school_transport",
+      "passengerEligibility": {
+        "default": "school_transport_only",
+        "generalPublic": "not_normally_available",
+        "operatorExceptionPossible": true
+      },
+      "bookingRequired": true,
+      "bookingDeadline": {
+        "relativeTo": "previous_day",
+        "time": "15:00"
+      },
+      "vesselAlternatives": [
+        "M/S Fiskö",
+        "taxi_boat"
+      ],
+      "vesselSelectionBasis": "not_published",
+      "vehiclePolicy": {
+        "M/S Fiskö": "vehicle_space_must_be_reserved",
+        "taxi_boat": "vehicles_not_supported",
+        "routingRequirement": "assigned_vessel_must_be_known_before_offering_vehicle_transport"
+      },
+      "calls": [
+        {
+          "stop": "Korppoo",
+          "time": "07:30"
+        },
+        {
+          "stop": "Storpensar",
+          "time": "08:00"
+        },
+        {
+          "stop": "Korppoo",
+          "time": "08:45"
+        }
+      ]
+    },
+    {
+      "id": "tuesday-school-afternoon-storpensar",
+      "operatingDays": "_2_____",
+      "serviceRole": "school_transport",
+      "passengerEligibility": {
+        "default": "school_transport_only",
+        "generalPublic": "not_normally_available",
+        "operatorExceptionPossible": true
+      },
+      "bookingRequired": true,
+      "bookingDeadline": {
+        "relativeTo": "previous_day",
+        "time": "15:00"
+      },
+      "vesselAlternatives": [
+        "M/S Fiskö",
+        "taxi_boat"
+      ],
+      "vesselSelectionBasis": "not_published",
+      "vehiclePolicy": {
+        "M/S Fiskö": "vehicle_space_must_be_reserved",
+        "taxi_boat": "vehicles_not_supported",
+        "routingRequirement": "assigned_vessel_must_be_known_before_offering_vehicle_transport"
+      },
+      "calls": [
+        {
+          "stop": "Korppoo",
+          "time": "15:10"
+        },
+        {
+          "stop": "Storpensar",
+          "time": "15:40"
+        },
+        {
+          "stop": "Korppoo",
+          "time": "16:40"
+        }
+      ]
+    }
+  ],
+  "generalNotes": [
+    "On Tuesdays only school transport is operated. General-public passengers are not normally eligible.",
+    "The two Tuesday Korppoo–Storpensar round trips are operated by either M/S Fiskö or a taxi boat. The source does not state how the vessel is selected.",
+    "Vehicle transport can only be offered when M/S Fiskö is assigned and vehicle space has been reserved; a taxi boat does not carry vehicles.",
+    "As non-routing passenger information, vehicle-space reservations are interpreted as available from one month until one week before departure. The source's separate confirmation wording is ambiguous and is not modeled as an additional routing condition."
+  ],
+  "sourceTableCorrections": [
+    {
+      "page": 1,
+      "location": "Sunday column before 2026-11-02",
+      "sourceIssue": "The visual grouping leaves the relationship between the Österskär and Berghamn times ambiguous.",
+      "interpretation": {
+        "separateTrips": true,
+        "trips": [
+          {
+            "id": "sunday-osterskar",
+            "from": "Korppoo",
+            "departure": "10:00",
+            "destination": "Österskär",
+            "publishedDestinationTime": "12:00",
+            "destinationTimeConfidence": "source_value_but_operationally_uncertain",
+            "historicalEstimateCandidate": true,
+            "expectedTypicalDurationMinutes": 90,
+            "returnMustPrecede": "13:00",
+            "operatesUntil": "2026-11-01",
+            "calls": [
+              {
+                "stop": "Brunskär",
+                "callCondition": "y"
+              },
+              {
+                "stop": "Kälö",
+                "callCondition": "y"
+              },
+              {
+                "stop": "Österskär",
+                "publishedTime": "12:00",
+                "callCondition": "y"
+              }
+            ],
+            "seasonalSuspension": {
+              "validFrom": "2026-11-02",
+              "validTo": "2027-04-30",
+              "appliesToEntireTrip": true
+            }
+          },
+          {
+            "id": "sunday-berghamn",
+            "from": "Korppoo",
+            "departure": "13:00",
+            "destination": "Berghamn",
+            "publishedDestinationTime": "14:00",
+            "returnTo": "Korppoo",
+            "publishedReturnTime": "15:30"
+          }
+        ]
+      }
+    }
+  ],
+  "sourceRowExpansions": {
+    "Brunskär/Kälö": {
+      "stops": [
+        "Brunskär",
+        "Kälö"
+      ],
+      "semantics": "two_separate_optional_calls",
+      "inheritCellMarkersForEachStop": true,
+      "bothCallsBelongTo": "sunday-osterskar",
+      "bothCallsMayOccurOnSameTrip": true
+    }
+  }
+}

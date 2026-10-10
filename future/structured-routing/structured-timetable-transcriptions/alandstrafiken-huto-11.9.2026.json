@@ -1,0 +1,321 @@
+{
+  "routeId": "norralinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-huto-11.9.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      5,
+      6
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 5,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "HUMMELVIK – ENKLINGE – KUMLINGE – LAPPO – TORSHOLMA GAMLA FÄRJFÄSTE (NORRVIKEN)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Hummelvik\n(Vårdö)",
+          "Enklinge1)\n(Kumlinge)",
+          "Kumlinge",
+          "Lappo\n(Brändö)",
+          "Torsholma\n(Brändö)"
+        ],
+        [
+          "Måndag A 09:30 – 10:40 11:30 12:10ÅD)\nK 11:50B) – 13:00B) 13:55B ) 14:35ÅD)\nA 17:15 – 18:35 19:301) 20:10ÅD)\nK 19:45 20:551) 21:15 – –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Tisdag",
+          "A",
+          "05:00",
+          "06:001)",
+          "06:20",
+          "07:051)",
+          "07:45ÅD)"
+        ],
+        [
+          "",
+          "A",
+          "11:50",
+          "–",
+          "13:00",
+          "13:55",
+          "14:35ÅD)"
+        ],
+        [
+          "",
+          "A",
+          "18:15",
+          "–",
+          "19:30",
+          "20:251)",
+          "21:05ÅD)"
+        ],
+        [
+          "Onsdag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nA 18:15 – 19:30 20:251) 21:05ÅD)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Torsdag",
+          "A",
+          "05:00",
+          "06:001)",
+          "06:20",
+          "07:051)",
+          "07:45ÅD)"
+        ],
+        [
+          "",
+          "A",
+          "11:50",
+          "–",
+          "13:00",
+          "13:55",
+          "14:35ÅD)"
+        ],
+        [
+          "",
+          "A",
+          "18:15",
+          "–",
+          "19:30",
+          "20:251)",
+          "21:05ÅD)"
+        ],
+        [
+          "Fredag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nK 16:30 17:401) 18:00 – –\nA 18:15 – 19:30 20:251) 21:05\nK 19:45 20:551) 21:15 22:101) 22:50",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Lördag",
+          "A",
+          "05:00",
+          "06:101)",
+          "06:30",
+          "07:251)",
+          "08:00ÅD)"
+        ],
+        [
+          "",
+          "K",
+          "14:10",
+          "–",
+          "15:25",
+          "16:20",
+          "17:00ÅD)"
+        ],
+        [
+          "",
+          "A",
+          "18:15",
+          "–",
+          "19:35",
+          "20:301)",
+          "21:10"
+        ],
+        [
+          "Söndag K 11:10 – 12:25 13:20 14:00ÅD)\nA 13:15 14:251) 14:45 15:40 16:20ÅD)\nK 17:30 – 18:50 19:45 20:25\nA 21:10 22:201) 22:40 23:351) 00:15",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "TORSHOLMA GAMLA FÄRJFÄSTE (NORRVIKEN) – LAPPO – KUMLINGE – ENKLINGE – HUMMELVIK",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Torsholma\n(Brändö)",
+          "Lappo\n(Brändö)",
+          "Kumlinge",
+          "Enklinge1)\n(Kumlinge)",
+          "Hummelvik\n(Vårdö)"
+        ],
+        [
+          "Måndag A 06:15 06:551) 07:45 08:051) 09:15\nA 13:00ÅD) 13:40 14:35 – 15:55\nK 15:10 15:50 16:45B) 17:101)B) 18:25B)\nA 20:20ÅD) 21:001) 21:50 22:101) 23:10",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Tisdag",
+          "A",
+          "07:55ÅD)",
+          "08:351)",
+          "09:20",
+          "09:401)",
+          "10:55"
+        ],
+        [
+          "",
+          "A",
+          "15:10ÅD)",
+          "15:50",
+          "16:45",
+          "–",
+          "17:55"
+        ],
+        [
+          "",
+          "A",
+          "21:15ÅD)",
+          "21:551)",
+          "22:45",
+          "23:051)",
+          "00:05"
+        ],
+        [
+          "Onsdag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nA 15:10ÅD) 15:50 16:45 – 17:55\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Torsdag",
+          "A",
+          "07:55ÅD)",
+          "08:351)",
+          "09:20",
+          "09:401)",
+          "10:55"
+        ],
+        [
+          "",
+          "A",
+          "15:10ÅD)",
+          "15:50",
+          "16:45",
+          "–",
+          "17:55"
+        ],
+        [
+          "",
+          "A",
+          "21:15ÅD)",
+          "21:551)",
+          "22:45",
+          "23:051)",
+          "00:05"
+        ],
+        [
+          "Fredag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nK – – 14:30 – 15:50\nA 15:10ÅD) 15:50 16:45 – 17:55\nK – – 18:15 – 19:35\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Lördag",
+          "A",
+          "08:10ÅD)",
+          "08:501)",
+          "09:45",
+          "–",
+          "10:55"
+        ],
+        [
+          "",
+          "K",
+          "11:00ÅD)",
+          "11:40",
+          "12:35",
+          "–",
+          "13:55"
+        ],
+        [
+          "",
+          "K",
+          "20:30ÅD)",
+          "21:101)",
+          "22:05",
+          "22:301)",
+          "23:35"
+        ],
+        [
+          "Söndag A 08:30 09:101) 10:05 – 11:15\nK 14:15ÅD) 14:55 15:50 – 17:00\nA 17:35ÅD) 18:15 19:10 19:301) 20:40\nK 20:35ÅD) 21:151) 22:05 22:301) 23:35",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 5,
+      "text": "30\nNorra linjen 14/9–31/12 2026\nUPPDATERAD 11/9 2026\nHUMMELVIK – ENKLINGE – KUMLINGE – LAPPO – TORSHOLMA GAMLA FÄRJFÄSTE (NORRVIKEN)\nFärja Hummelvik Enklinge1) Kumlinge Lappo Torsholma\n(Vårdö) (Kumlinge) (Brändö) (Brändö)\nMåndag A 09:30 – 10:40 11:30 12:10ÅD)\nK 11:50B) – 13:00B) 13:55B ) 14:35ÅD)\nA 17:15 – 18:35 19:301) 20:10ÅD)\nK 19:45 20:551) 21:15 – –\nTisdag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nA 18:15 – 19:30 20:251) 21:05ÅD)\nOnsdag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nA 18:15 – 19:30 20:251) 21:05ÅD)\nTorsdag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nA 18:15 – 19:30 20:251) 21:05ÅD)\nFredag A 05:00 06:001) 06:20 07:051) 07:45ÅD)\nA 11:50 – 13:00 13:55 14:35ÅD)\nK 16:30 17:401) 18:00 – –\nA 18:15 – 19:30 20:251) 21:05\nK 19:45 20:551) 21:15 22:101) 22:50\nLördag A 05:00 06:101) 06:30 07:251) 08:00ÅD)\nK 14:10 – 15:25 16:20 17:00ÅD)\nA 18:15 – 19:35 20:301) 21:10\nSöndag K 11:10 – 12:25 13:20 14:00ÅD)\nA 13:15 14:251) 14:45 15:40 16:20ÅD)\nK 17:30 – 18:50 19:45 20:25\nA 21:10 22:201) 22:40 23:351) 00:15\nTORSHOLMA GAMLA FÄRJFÄSTE (NORRVIKEN) – LAPPO – KUMLINGE – ENKLINGE – HUMMELVIK\nFärja Torsholma Lappo Kumlinge Enklinge1) Hummelvik\n(Brändö) (Brändö) (Kumlinge) (Vårdö)\nMåndag A 06:15 06:551) 07:45 08:051) 09:15\nA 13:00ÅD) 13:40 14:35 – 15:55\nK 15:10 15:50 16:45B) 17:101)B) 18:25B)\nA 20:20ÅD) 21:001) 21:50 22:101) 23:10\nTisdag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nA 15:10ÅD) 15:50 16:45 – 17:55\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05\nOnsdag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nA 15:10ÅD) 15:50 16:45 – 17:55\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05\nTorsdag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nA 15:10ÅD) 15:50 16:45 – 17:55\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05\nFredag A 07:55ÅD) 08:351) 09:20 09:401) 10:55\nK – – 14:30 – 15:50\nA 15:10ÅD) 15:50 16:45 – 17:55\nK – – 18:15 – 19:35\nA 21:15ÅD) 21:551) 22:45 23:051) 00:05\nLördag A 08:10ÅD) 08:501) 09:45 – 10:55\nK 11:00ÅD) 11:40 12:35 – 13:55\nK 20:30ÅD) 21:101) 22:05 22:301) 23:35\nSöndag A 08:30 09:101) 10:05 – 11:15\nK 14:15ÅD) 14:55 15:50 – 17:00\nA 17:35ÅD) 18:15 19:10 19:301) 20:40\nK 20:35ÅD) 21:151) 22:05 22:301) 23:35\nM/S Alfågeln, M/S Knipan. Ålandstrafiken tel. +358 (0)18 25 600."
+    },
+    {
+      "page": 6,
+      "text": "31\nNorra linjen 14/9–31/12 2026\nUPPDATERAD 27/4 2026\nINFORMATION TIETOJA INFORMATION\n1) Angörs mot bokning till Ålandstrafiken senast 1 1) Liikennöidään varauksesta Ålands trafikenille vii- 1) Only when booked in advance to Ålands trafiken\nh före avg. i starthamn. meistään 1 h ennen lautan lähtöä lähtösatamasta. no later than 1 h before departure time in start\nB) Trafikerar alla veckor, men jämna veckor som B) Liikennöidään joka viikko mutta parillisina harbour.\nbränsletur som bokas senast ons kl. 12:00 hos viikkoina polttoainekuljetusvuorona joka varataan B) Traffic all weeks, but even weeks as fuel\nÅlandstrafiken. Max 20 passagerare medtas på viimeistään ke klo 12:00 Ålandstrafikeniltä. Mak- transport to be booked no later than Wed at 12:00\nbränsletur. simihenkilömäärä polttoainekuljetuksissa 20. to Ålandstrafiken. Max number of pax 20 at fuel\nÅD) Kombinerar med M/S Ådan i Åva. ÅD) Jatkoyhteys M/S Ådanille Åvassa. transportation.\nBilväg Torsholma–Åva ca 22 km. Lokaltrafiken i Autotie Torsholma–Åva n. 22 km. Paikallisliikenne ÅD) Connection to M/S Ådan in Åva.\nBrändö sid. 53. Brändössä, ks. s. 53. Land road Tors holma–Åva approx. 22 km. Local\nFordon ska vara klara att köra ombord senast Ajoneuvojen tulee olla valmiina lastaukseen transport on Brändö, see p. 53.\n15 min före annonserad avgångstid i starthamn. aloitussatamassa 15 min ennen ilmoitettua läh- Vehicles must be ready to embark at least 15 min\nFärjan kan avgå 5 min före utsatt avg. tid förutom töaikaa. Lautta voi lähteä 5 min ennen ilmoitettua prior to the dep.time in start harbour. The ferry can\nvid avgång från färjans starthamn. aikaa paitsi lautan lähtösatamasta. depart 5 min before scheduled dep. time except\nBegränsad busstrafik lördag, söndag och helg- Rajoitettu linja-autoliikenne lauantaisin, sun- when departing from the ferrys start harbour.\ndag. Vid förseningar väntar bussen max 10 min. nuntaisin ja pyhäpäivinä. Lautan myöhästyessä Limited bus traffic on Saturdays, Sundays and\nInformation om att turer kan kombineras (kombi- linja-auto odottaa max 10 min. public holidays. If the ferry is late the bus will wait\nnationsturer) är endast information om en möjlig- Tieto siitä, että lähdöllä on yhteys lautan lähdölle, max 10 min.\nhet till kombination. Ålands landskapsregering tar on ainoastaan tieto mahdollisuudesta yhtey- Information that tours can be combined\nej ansvar för färden mellan kombinationsturer/ deyllä. Ahvenanmaan maakuntahallitus ei vastaa (combination tours) is only information about a\nhamnar. Fotnoter som anger kombinationsturer asiakkaan matkasta maitse satamien välissä. possibility of combination. The Government of\ngaranterar inte kombinationen. Alaviitteet, jotkat kertovat jatkoyhteydestä eivät Åland does not take responsibility for the journey\ntakaa jatkoyhteyttä. between combination tours/harbour. Footnotes\nindicating combination tours do not garantee\ncombination.\nAvboka senast 24 h före Voit peruuttaa Cancel your trip 24 h\navgång för att undvika matkasi 24 t ennen before departure to\navbokningsavgift! lähtöä veloituksetta! avoid cancelation fee!\nTors 24/12 Torsdagstrafik som avslutas To 24/12 Torstainaliikenne päättyy klo 17:55 Thu 24/12 Thursday schedule that stops at\nkl. 17:55 i Hummelvik. Hummelviikiin. 17:55 in Hummelvik.\nFre 25/12 Söndagstrafik med start kl. 13:15 Pe 25/12 Sunnuntailiikenne alkaen klo 13:15 Fri 25/12 Sunday schedule that starts at 13:15\noch avslutas kl. 20:40 i Hummelvik (M/S Alfå- päättyy klo 20:40 Hummelviikiin (M/S Alfå- and stops at 20:40 in Hummelvik (M/S Alfå-\ngeln), ingen trafik med M/S Knipan. geln), ei liikenettä M/S Knipanilla. geln), no traffic with M/S Knipan.\nLör 26/12 Söndagstrafik med start kl. 13:15 La 26/12 Sunnuntailiikenne alkaen klo 13:15 Sat 26/12 Sunday schedule that starts at 13:15\n(M/S Alfågeln), ingen trafik med M/S Knipan. (M/S Alfågeln), ei liikenettä M/S Knipanilla. (M/S Alfågeln), no traffic with M/S Knipan.\nSön 27/12 Söndagstrafik med start kl. 08:10 Su 27/12 Sunnuntailiikenne alkaen klo 08:10 Sun 27/12 Sunday schedule that starts at\n(M/S Alfågeln) och kl. 12:30 (M/S Knipan). (M/S Alfågeln) ja klo 12:30 (M/S Knipan). 08:10 (M/S Alfågeln) and at 12:30 (M/S\nTors 31/12 Torsdagstrafik som avslutas To 31/12 Torstainaliikenne päättyy klo 17:55 Knipan).\nkl. 17:55 i Hummelvik. Hummelviikiin. Thu 31/12 Thursday schedule that stops at\nFre 1/1 2027 Söndagstrafik med start kl. 13:15 Pe 1/1 2027 Sunnuntailiikenne alkaen klo 17:55 in Hummelvik.\noch avslutas kl. 20:40 i Hummelvik. 13:15 päättyy klo 20:40 Hummelviikiin. Fri 1/1 2027 Sunday schedule that starts at\n13:15 and stops at 20:40 in Hummelvik."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 30,
+    "losslessIntent": true
+  }
+}

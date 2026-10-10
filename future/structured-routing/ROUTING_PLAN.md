@@ -335,6 +335,32 @@ Vaihtoehdot voidaan nimetä esimerkiksi:
 - vähiten ajamista
 - vähiten varauksia
 
+### Viimeinen toimiva yhteys ja hätävaravaihtoehto
+
+Matkaketju suunnitellaan normaalisti viimeisen aikataulun ja vaadittujen
+lastausmääräaikojen mukaan varmasti toimivan syöttöyhteyden varaan. Sen rinnalla
+näytetään saman lyhyen lauttayhteyden edellinen ja seuraava vuoro, jotta käyttäjä
+näkee pelivaran ja sen, mitä yhden vuoron menettäminen tarkoittaa.
+
+Seuraavaa vuoroa ei kuitenkaan piiloteta vain siksi, ettei se enää täytä
+normaalia vaihtomarginaalia. Jos sillä voi fyysisesti ehtiä jatkoyhteydelle vain
+operaattorin joustolla, se näytetään erillisenä hätävaravaihtoehtona:
+
+- yhteys ei ole aikataulun mukaan varma eikä sitä käytetä ensisijaisen matkan
+  suunnitteluun
+- jäljelle jäävä aika ja rikottu lastaus- tai vaihtomarginaali näytetään
+  minuuteissa
+- käyttäjälle kerrotaan, että hänen pitää soittaa jatkavalle alukselle heti
+- puhelinnumero näytetään suoraan vaihtoehdon yhteydessä
+- operaattorin odottamista tai kyytiin pääsyä ei luvata
+
+Esimerkiksi Galtbyn klo 9.30 lähdölle ajoneuvon pitää olla lastausvalmiina klo
+9.15. Pärnäinen–Retainen klo 8.50–8.55 on viimeinen normaalisti toimiva yhteys.
+Seuraava klo 9.10–9.15 johtaa Galtbyhyn noin klo 9.25: määräaika on jo mennyt,
+mutta matkustaja voi hätätilanteessa yrittää yhteyttä soittamalla alukselle.
+Molemmat tiedot ovat matkustajalle hyödyllisiä, mutta ne esitetään eri
+luotettavuusluokissa.
+
 Lyhyen lossiyhteyden jälkeen voidaan näyttää myös varasuunnitelma:
 
 > Jos et mahdu ensimmäiseen lossivuoroon, seuraava arvioitu ylitys on noin klo
@@ -359,6 +385,14 @@ Arvioituja aikoja voidaan käyttää reittiehdotuksen muodostamiseen, kun niiden
 luonne näytetään käyttäjälle. Kahden epävarman ajan välille ei muodosteta
 tiukkaa vaihtoa ilman virallista jatkoyhteysmerkintää tai riittävää
 vaihtomarginaalia.
+
+Myöhemmin laiturikäynnille voidaan laskea historiadatasta tyypillinen aika ja
+vaihteluväli. Tämä tallennetaan erillisenä `historicalEstimate`-tietona eikä
+julkaistun aikatauluajan tilalle. Arvion mukana säilytetään vähintään otoskoko,
+havaintojakso, malliversio ja laskenta-aika. Käyttöliittymä kertoo aina, että
+arvio perustuu vain historiadataan eikä ole operaattorin julkaisema aika tai
+taattu yhteys. Reititin käyttää vaihteluväliä ja käyttäjän riskiprofiilia
+vaihtomarginaalin valintaan.
 
 ## Tietojen tuottaminen ja tarkistus
 

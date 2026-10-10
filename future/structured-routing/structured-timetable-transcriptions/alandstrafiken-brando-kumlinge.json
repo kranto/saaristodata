@@ -1,0 +1,2796 @@
+{
+  "routeId": "brandokumlingelinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "vessels": [
+    "M/S Östern"
+  ],
+  "sourceId": "alandstrafiken-brando-kumlinge-11.9.2026-0",
+  "review": {
+    "status": "machine_extracted_unreviewed",
+    "method": "PDFKit table geometry plus visual review",
+    "sourcePages": [
+      5,
+      6
+    ]
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "booking": {
+    "defaultPolicy": "reservation_expected",
+    "routingAssumption": "available_if_booking_succeeds",
+    "phone": "+3581825600",
+    "vehicleLoadingReadinessMinutesBefore": 5,
+    "mayDepartEarlyMinutes": 5,
+    "earlyDepartureNotFromStartingHarbour": true
+  },
+  "callConditions": {
+    "1": {
+      "type": "booking_required",
+      "bookingHours": {
+        "from": "09:30",
+        "to": "18:30"
+      }
+    },
+    "2": {
+      "type": "booking_required",
+      "deadline": {
+        "relativeTo": "departure_from_starting_harbour",
+        "offsetMinutes": -120
+      }
+    },
+    "A": {
+      "type": "possible_connection",
+      "service": "M/S Alfågeln",
+      "at": "Lappo",
+      "guaranteed": false
+    },
+    "K": {
+      "type": "possible_connection",
+      "service": "M/S Knipan",
+      "at": "Lappo",
+      "guaranteed": false
+    },
+    "ÅD": {
+      "type": "possible_connection",
+      "service": "M/S Ådan",
+      "via": {
+        "from": "Torsholma",
+        "to": "Åva",
+        "mode": "road",
+        "distanceKm": 22
+      },
+      "guaranteed": false
+    }
+  },
+  "sourceAnnotations": {
+    "B": {
+      "importance": "minor",
+      "topic": "fuel_transport",
+      "maxPassengers": 20,
+      "text": "Monday fuel transport between Torsholma and Lappo."
+    }
+  },
+  "annualSchedulePattern": {
+    "periodCount": 5,
+    "templateCount": 3,
+    "templates": [
+      {
+        "id": "winter",
+        "periodRoles": [
+          "year_start",
+          "year_end"
+        ]
+      },
+      {
+        "id": "shoulder",
+        "periodRoles": [
+          "spring",
+          "autumn"
+        ]
+      },
+      {
+        "id": "summer",
+        "periodRoles": [
+          "summer"
+        ]
+      }
+    ],
+    "publicationCycle": "New annual timetables are normally published around the turn of the year and may be updated during the year."
+  },
+  "holidayExceptions": [
+    {
+      "date": "2026-12-24",
+      "action": "modified_thursday_schedule",
+      "ends": {
+        "stop": "Torsholma (Norrviken)",
+        "time": "16:55"
+      }
+    },
+    {
+      "date": "2026-12-25",
+      "action": "extra_roundtrip",
+      "stops": [
+        "Lappo",
+        "Asterholma",
+        "Torsholma (Norrviken)"
+      ],
+      "purpose": "Christmas church",
+      "baseOperatingDays": "______7"
+    },
+    {
+      "date": "2026-12-26",
+      "action": "use_day_pattern",
+      "operatingDays": "______7"
+    },
+    {
+      "date": "2026-12-31",
+      "action": "modified_thursday_schedule",
+      "ends": {
+        "stop": "Torsholma (Norrviken)",
+        "time": "16:55"
+      }
+    },
+    {
+      "date": "2027-01-01",
+      "action": "use_day_pattern",
+      "operatingDays": "______7"
+    }
+  ],
+  "trips": [
+    {
+      "id": "p5-1xxxxxx-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "07:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "07:45",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:30",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "09:05",
+          "conditions": [
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "12:00",
+          "conditions": [
+            "ÅD",
+            "2"
+          ],
+          "sourceAnnotations": [
+            "B"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "12:50",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Kumlinge",
+          "time": "13:50",
+          "conditions": [
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5,
+      "userNotices": [
+        {
+          "type": "fuel_transport",
+          "importance": "minor",
+          "messages": {
+            "fi": "Polttoainekuljetusvuoro: enintään 20 matkustajaa.",
+            "sv": "Bränsletransporttur: högst 20 passagerare.",
+            "en": "Fuel transport trip: maximum 20 passengers."
+          },
+          "effects": {
+            "maxPassengers": 20
+          },
+          "sourceAnnotations": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5-1xxxxxx-05-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Kumlinge",
+          "time": "15:15",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "16:15",
+          "conditions": [
+            "2"
+          ],
+          "sourceAnnotations": [
+            "B"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:50",
+          "conditions": [
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5,
+      "userNotices": [
+        {
+          "type": "fuel_transport",
+          "importance": "minor",
+          "messages": {
+            "fi": "Polttoainekuljetusvuoro: enintään 20 matkustajaa.",
+            "sv": "Bränsletransporttur: högst 20 passagerare.",
+            "en": "Fuel transport trip: maximum 20 passengers."
+          },
+          "effects": {
+            "maxPassengers": 20
+          },
+          "sourceAnnotations": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5-1xxxxxx-06-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "17:40",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:20",
+          "conditions": [
+            "ÅD",
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "18:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "19:25",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "19:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-11-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-12-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "21:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "21:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-1xxxxxx-13-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "1______",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "21:40",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "22:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "07:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "07:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "09:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "13:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "13:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-05-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "14:15",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "14:30",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-06-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "15:15",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "15:30",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "16:20",
+          "conditions": [
+            "1"
+          ],
+          "sourceAnnotations": [
+            "B"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:55",
+          "conditions": [
+            "ÅD",
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5,
+      "userNotices": [
+        {
+          "type": "fuel_transport",
+          "importance": "minor",
+          "messages": {
+            "fi": "Polttoainekuljetusvuoro: enintään 20 matkustajaa.",
+            "sv": "Bränsletransporttur: högst 20 passagerare.",
+            "en": "Fuel transport trip: maximum 20 passengers."
+          },
+          "effects": {
+            "maxPassengers": 20
+          },
+          "sourceAnnotations": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5-x2xxxxx-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "17:40",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:20",
+          "conditions": [
+            "ÅD",
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "18:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-11-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:20",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-12-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "20:30",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:45",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-13-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "21:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "21:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-x2xxxxx-14-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_2_____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "22:00",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "22:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "07:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "07:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "09:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "12:00",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "12:35",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Kumlinge",
+          "time": "13:35",
+          "conditions": [
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-05-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Kumlinge",
+          "time": "15:15",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "16:15",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:50",
+          "conditions": [
+            "ÅD",
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-06-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "17:40",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:20",
+          "conditions": [
+            "ÅD",
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "18:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:20",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "20:30",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:45",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-11-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "21:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "21:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xx3xxxx-12-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "__3____",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "22:00",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "22:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "07:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "07:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "09:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "13:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "13:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-05-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "15:15",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "15:30",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-06-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "14:15",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "14:30",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "16:20",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "17:40",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "18:20",
+          "conditions": [
+            "ÅD",
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "18:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-11-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:20",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-12-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "20:30",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:45",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-13-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "21:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "21:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxx4xxx-14-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "___4___",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "22:00",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "22:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "07:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "07:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:20",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "09:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "13:00",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "13:35",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Kumlinge",
+          "time": "14:20",
+          "conditions": [
+            "2",
+            "K"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-05-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Kumlinge",
+          "time": "14:55",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "15:40",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:15",
+          "conditions": [
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-06-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "16:35",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:10",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Kumlinge",
+          "time": "18:05",
+          "conditions": [
+            "2",
+            "K"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Kumlinge",
+          "time": "18:10",
+          "conditions": [
+            "2",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "19:10",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "19:25",
+          "conditions": [
+            "2"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "20:00",
+          "conditions": [
+            "ÅD",
+            "2"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "20:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "21:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "21:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxx5xx-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "____5__",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "22:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "22:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "08:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-02-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "08:55",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "09:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-03-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "11:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "11:20",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "11:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-04-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "12:50",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "13:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "13:40",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-05-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "16:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "16:15",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-06-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "16:25",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "16:40",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-07-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "17:00",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "17:15",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:50",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-08-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "17:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "18:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "18:45",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-09-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:10",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "20:25",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-10-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "20:40",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-11-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "22:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "22:20",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "22:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxx6x-12-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "_____6_",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "22:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "23:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "23:45",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-01-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "08:30",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "08:45",
+          "conditions": [
+            "1",
+            "A"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-02-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "10:15",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "10:50",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-03-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Torsholma (Norrviken)",
+          "time": "13:05",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "13:40",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "13:55",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-04-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "14:15",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "14:30",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-05-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "15:00",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "15:15",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-06-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "19:25",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "19:40",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-07-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "19:55",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "20:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-08-east",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Asterholma",
+          "time": "20:55",
+          "conditions": [
+            "1"
+          ]
+        },
+        {
+          "stop": "Lappo",
+          "time": "21:10",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    },
+    {
+      "id": "p5-xxxxxx7-09-west",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-14",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "operatingDays": "______7",
+      "vessel": "M/S Östern",
+      "calls": [
+        {
+          "stop": "Lappo",
+          "time": "21:20",
+          "conditions": [
+            "1",
+            "K"
+          ]
+        },
+        {
+          "stop": "Asterholma",
+          "time": "21:35",
+          "conditions": [
+            "1"
+          ]
+        }
+      ],
+      "sourcePage": 5
+    }
+  ],
+  "generalNotes": [
+    "Combination markings describe possible connections and do not guarantee them."
+  ],
+  "extractionDiagnostics": {
+    "singleCallRows": 0,
+    "singleCallDetails": []
+  }
+}

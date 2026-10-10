@@ -1,0 +1,747 @@
+{
+  "routeId": "pargasrutt",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-pargasrutt-paraisten-reittialue-talvi-1.9.2026-31.5.2027",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1,
+      2
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-01",
+      "validTo": "2027-05-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Mån/Ma/Mo",
+          "Tis/Ti/Tu",
+          "Ons/Ke/Wed",
+          "Tors/To/Thu",
+          "Fre/Pe/Fri",
+          "Lö/La/Sat",
+          "Sön/Su/Sun"
+        ],
+        [
+          "Granvik",
+          "06.00y",
+          "06.00y",
+          "06.00y",
+          "06.00y",
+          "06.00y",
+          "",
+          ""
+        ],
+        [
+          "Pensar",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Kuggö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "07.45y",
+          "10.00y",
+          "10.00y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Granvik",
+          "08.15y",
+          "08.15y",
+          "08.15y",
+          "08.15y",
+          "08.15y",
+          "10.30y",
+          "10.30y"
+        ],
+        [
+          "Granvik",
+          "8.15y",
+          "8.15y",
+          "8.15y",
+          "8.15y",
+          "8.15y",
+          "10.30y",
+          "10.30y"
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Kuggö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Pensar",
+          "(09.00)y",
+          "(09.00)y",
+          "(09.00)y",
+          "(09.00)y",
+          "(09.00)y",
+          "(11.15) y",
+          "(11.15) y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "12.00",
+          "12.00"
+        ],
+        [
+          "Granvik",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "09.45y",
+          "",
+          ""
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "10.20y",
+          "10.20y",
+          "10.20y",
+          "10.20y",
+          "10.20y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "12.15y",
+          "12.15y",
+          "12.15y",
+          "12.15y",
+          "12.15y",
+          "12.00y",
+          "12.00y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Granvik",
+          "13.30y",
+          "13.30y",
+          "13.30y",
+          "13.30y",
+          "13.30y",
+          "12.45",
+          "12.45"
+        ],
+        [
+          "Granvik",
+          "14.00y",
+          "14.00y",
+          "14.00y",
+          "14.00y",
+          "14.00y",
+          "",
+          ""
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "14.25y",
+          "14.15y",
+          "14.15y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Kuggö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Pensar",
+          "(15.10)y",
+          "(15.10)y",
+          "(15.10)y",
+          "(15.10)y",
+          "(15.10)y",
+          "(15:00)y",
+          "(15:00)y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "15.45y",
+          "15.45y"
+        ],
+        [
+          "Granvik",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "16.00y",
+          "15.45y",
+          "15.45y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Granvik",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.30y",
+          "16.30y"
+        ],
+        [
+          "Granvik",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.45y",
+          "16.30y",
+          "16.30y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Kuggö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Pensar",
+          "(17.30)y",
+          "(17.30)y",
+          "(17.30)y",
+          "(17.30)y",
+          "(17.30)y",
+          "(17.15)y",
+          "(17.15)y"
+        ],
+        [
+          "Aspholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Granvik",
+          "18:15y",
+          "18:15y",
+          "18:15y",
+          "18:15y",
+          "18:15y",
+          "18.00y",
+          "18.00y"
+        ],
+        [
+          "Granvik",
+          "18.15y",
+          "18.15y",
+          "18.15y",
+          "18.15y",
+          "18.40y",
+          "18.00y",
+          "18.00y"
+        ],
+        [
+          "Heisala",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Björkholm",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Granvik",
+          "19.00y",
+          "19.00y",
+          "19.00y",
+          "19.00y",
+          "19.10y",
+          "18:45y",
+          "18:45y"
+        ],
+        [
+          "Granvik",
+          "",
+          "",
+          "",
+          "",
+          "19.10y",
+          "",
+          ""
+        ],
+        [
+          "Aspholm",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Kuggö",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Pensar",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Granvik",
+          "",
+          "",
+          "",
+          "",
+          "20.40y",
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "Reservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångstiden.\nFartygens max antal passagerarmängd 73, max lastkapacitet 60t, max antal personbilar 13.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas."
+        ],
+        [
+          "Autopaikan ja rahdin varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä tilausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 73, max. lastikapasiteetti 60t, henkilöautomäärä 13.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää."
+        ],
+        [
+          "Reservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before desired departure.\nVehicles and passengers must be ready for loading 10 min before departure time.\nMax. amount of passengers 73, max. carrying capacity 60t, max. amount of cars 13.\nDue to circumstances there can be changes in the schedule or tours can be cancelled."
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "uppdaterad / päivitetty / updated 17.8.2026 1/2\nPARGAS RUTTOMRÅDE / PARAISTEN REITTIALUE /\nPARGAS ROUTE\nVintertidtabell / Talviaikataulu / Winter schedule\n1.9.2026 – 31.5.2027 m/s VIKEN puh. / tel. 020 7118 792\nMån/Ma/Mo Tis/Ti/Tu Ons/Ke/Wed Tors/To/Thu Fre/Pe/Fri Lö/La/Sat Sön/Su/Sun\nGranvik 06.00y 06.00y 06.00y 06.00y 06.00y\nPensar y y y y y\nKuggö y y y y y\nAspholm y y y y y\nBjörkholm y y y y y\nHeisala y y y y y\nGranvik 07.45y 07.45y 07.45y 07.45y 07.45y\nGranvik 07.45y 07.45y 07.45y 07.45y 07.45y 10.00y 10.00y\nHeisala y y y y y y y\nGranvik 08.15y 08.15y 08.15y 08.15y 08.15y 10.30y 10.30y\nGranvik 8.15y 8.15y 8.15y 8.15y 8.15y 10.30y 10.30y\nBjörkholm y y y y y y y\nAspholm y y y y y y y\nKuggö y y y y y y y\nPensar (09.00)y (09.00)y (09.00)y (09.00)y (09.00)y (11.15) y (11.15) y\nAspholm y y y y y y y\nBjörkholm y y\nHeisala y y y y y\nGranvik 09.45y 09.45y 09.45y 09.45y 09.45y 12.00 12.00\nGranvik 09.45y 09.45y 09.45y 09.45y 09.45y\nHeisala y y y y y\nBjörkholm y y y y y\nGranvik 10.20y 10.20y 10.20y 10.20y 10.20y\nGranvik 12.15y 12.15y 12.15y 12.15y 12.15y 12.00y 12.00y\nHeisala y y y y y y y\nBjörkholm y y y y y y y\nGranvik 13.30y 13.30y 13.30y 13.30y 13.30y 12.45 12.45\nGranvik 14.00y 14.00y 14.00y 14.00y 14.00y\nHeisala y y y y y\nGranvik 14.25y 14.25y 14.25y 14.25y 14.25y\nGranvik 14.25y 14.25y 14.25y 14.25y 14.25y 14.15y 14.15y\nAspholm y y y y y y y\nKuggö y y y y y y y\nPensar (15.10)y (15.10)y (15.10)y (15.10)y (15.10)y (15:00)y (15:00)y\nAspholm y y y y y y y\nBjörkholm y y\nHeisala y y y y y\nGranvik 16.00y 16.00y 16.00y 16.00y 16.00y 15.45y 15.45y\nGranvik 16.00y 16.00y 16.00y 16.00y 16.00y 15.45y 15.45y\nHeisala y y y y y y y\nBjörkholm y y y y y y y\nGranvik 16.45y 16.45y 16.45y 16.45y 16.45y 16.30y 16.30y\nGranvik 16.45y 16.45y 16.45y 16.45y 16.45y 16.30y 16.30y\nAspholm y y y y y y y\nKuggö y y y y y y y\nPensar (17.30)y (17.30)y (17.30)y (17.30)y (17.30)y (17.15)y (17.15)y\nAspholm y y y y y y y\nBjörkholm y y y y y y y\nGranvik 18:15y 18:15y 18:15y 18:15y 18:15y 18.00y 18.00y\nGranvik 18.15y 18.15y 18.15y 18.15y 18.40y 18.00y 18.00y\nHeisala y y y y y y y\nBjörkholm y y y y y y y\nGranvik 19.00y 19.00y 19.00y 19.00y 19.10y 18:45y 18:45y\nGranvik 19.10y\nAspholm y\nKuggö y\nPensar y\nGranvik 20.40y\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system."
+    },
+    {
+      "page": 2,
+      "text": "uppdaterad / päivitetty / updated 17.8.2026 2/2\nPARGAS RUTTOMRÅDE / PARAISTEN REITTIALUE /\nPARGAS ROUTE\nVintertidtabell / Talviaikataulu / Winter schedule\n1.9.2026 – 31.5.2027 m/s VIKEN puh. / tel. 020 7118 792\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\ny = Bör beställas minst 10 min före avgång från Granvik, morgonturen föregående kväll före kl. 17.00 via bokningssystemet.\ny = Tilattava vähintään 10 min ennen lähtöä Granvikista, aamuvuoro edellisenä iltana ennen kello 17.00 varausjärjestelmän kautta.\ny = To be ordered at least 10 min before departure from Granvik, morning tours to be ordered the day before by 17.00 via the booking system.\nGranholmen anlöpes på beställning, förutom på 07:45 & 14:00 Heisala turer. Stenholm: anlöpes på beställning på Pensar turerna.\nGranholmen: poiketaan tilauksesta, paitsi 07:45 & 14:00 Heisalan vuoroilla. Stenholm: poiketaan tilauksesta Pensarin vuoroilla.\nGranholmen: deviates if ordered, except for 07:45 & 14:00 Heisala tours. Stenholm: deviates if ordered with Pensar tours.\nRamsholmen kan användas när omständigheterna det kräver. / Ramsholmin laituria voidaan käyttää olosuhteiden vaatiessa. /\nRamsholm jetty can be used when circumstances require.\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026:\n6.12. Sö/su/Sun Sö tidtabell / su aikataulu / Sun schedule\n24.12. To/to/Thu Sö tidtabell till kl. 16:30 / su aikataulu klo 16:30 asti / Sun schedule until 16:30\n25.12. Fre/pe/Fri Sö tidtabell / su aikataulu / Sun schedule\n26.12. Lör/la/Sat Sö tidtabell / su aikataulu / Sun schedule\n31.12. To/to/Thu Sö tidtabell till kl. 16:30 / su aikataulu klo 16:30 asti / Sun schedule until 16:30\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027:\n1.1. Fre/pe/Fri Sö tidtabell / su aikataulu / Sun schedule\n6.1. Ons/ke/Wed Sö tidtabell / su aikataulu / Sun schedule\n25.3. To/to/Thu Fre tidtabell / pe aikataulu / Fri schedule\n26.3. Fre/pe/Fri Sö tidtabell / su aikataulu / Sun schedule\n28.3. Sö/su/Sun Sö tidtabell / su aikataulu / Sun schedule\n29.3. Må/ma/Mon Sö tidtabell / su aikataulu / Sun schedule\n1.5. Lör/la/Sat Sö tidtabell / su aikataulu / Sun schedule\n6.5.Tor/to/Thu Sö tidtabell / su aikataulu / Sun schedule\nReservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångstiden.\nFartygens max antal passagerarmängd 73, max lastkapacitet 60t, max antal personbilar 13.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nAutopaikan ja rahdin varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä tilausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 73, max. lastikapasiteetti 60t, henkilöautomäärä 13.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before desired departure.\nVehicles and passengers must be ready for loading 10 min before departure time.\nMax. amount of passengers 73, max. carrying capacity 60t, max. amount of cars 13.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 62,
+    "losslessIntent": true
+  },
+  "timeNotationPolicy": {
+    "parenthesizedPensarTime": {
+      "type": "estimated_intermediate_time",
+      "stop": "Pensar",
+      "strictTime": false,
+      "routingUse": "useful_approximate_call_time",
+      "interpretation": "Pensar is the farthest point of the route. The printed time gives passengers a useful estimate and may normally be fairly stable, including for passengers boarding at subsequent stops, but it is not guaranteed to the minute.",
+      "actualTimeDependsOn": "ordered_calls_and_operating_conditions"
+    }
+  },
+  "booking": {
+    "defaultPolicy": "required",
+    "interpretation": "Every passenger journey must be booked. This general rule is distinct from whether an individual route deviation needs a separate call order.",
+    "deadlineRules": [
+      {
+        "appliesTo": {
+          "departureFrom": "Granvik",
+          "time": "06:00",
+          "role": "first_departure_of_day"
+        },
+        "deadline": {
+          "relativeTo": "previous_day",
+          "time": "17:00"
+        },
+        "interpretationConfidence": "medium",
+        "sourceAmbiguity": "The source says 'morning tour'; this is interpreted as only the first departure of the day."
+      },
+      {
+        "appliesTo": "all_other_departures",
+        "deadlineMinutesBeforeDeparture": 10
+      }
+    ]
+  },
+  "callConditions": {
+    "Granholmen": {
+      "operation": "booking_required",
+      "availableJourneys": "Granvik-Granholmen and Granholmen-Granvik on all services unless excluded below",
+      "structuralExpansion": "Treat Granholmen as an omitted timetable row adjacent to every Heisala call, before or after Heisala according to the direction of travel.",
+      "passengerJourneyBookingRequired": true,
+      "serviceExclusions": [
+        {
+          "departuresFromGranvik": [
+            "07:45",
+            "14:00"
+          ],
+          "route": [
+            "Granvik",
+            "Heisala",
+            "Granvik"
+          ],
+          "GranholmenCallAvailable": false,
+          "affectedJourneys": [
+            "Granvik-Granholmen",
+            "Granholmen-Granvik"
+          ]
+        }
+      ],
+      "routeContext": "Granvik-Heisala is nearly a shuttle service and Granholmen is only a small deviation. Granholmen was omitted as a repeated timetable row for readability."
+    },
+    "Stenholm": {
+      "operation": "on_separate_call_order",
+      "eligibleServices": "every service extending to Pensar",
+      "eligibleDirections": [
+        "Granvik-Stenholm",
+        "Stenholm-Granvik"
+      ],
+      "availableOnShorterServices": false,
+      "passengerJourneyBookingAlsoRequired": true
+    },
+    "Ramsholm": {
+      "operation": "only_when_conditions_require",
+      "normalTimetableStop": false,
+      "independentSearchablePier": true,
+      "location": "opposite end of Heisala island",
+      "userNotice": {
+        "fi": "varattavissa vain olosuhteiden niin vaatiessa",
+        "sv": "kan bokas endast när omständigheterna kräver det",
+        "en": "bookable only when circumstances require it"
+      }
+    }
+  },
+  "routingPolicy": {
+    "stopOrderFromGranvik": [
+      "Björkholm",
+      "Ramsholm",
+      "Stenholm",
+      "Aspholm"
+    ],
+    "RamsholmAndStenholmOmittedFromPrintedTable": true,
+    "retiredStops": [
+      {
+        "stop": "Östra Tallholm",
+        "excludedFromCurrentRoute": true,
+        "evidence": "The stop appeared in at least the 2019 timetable but not in the checked 2025 summer timetables or the current 2026-2027 winter timetable."
+      }
+    ]
+  }
+}

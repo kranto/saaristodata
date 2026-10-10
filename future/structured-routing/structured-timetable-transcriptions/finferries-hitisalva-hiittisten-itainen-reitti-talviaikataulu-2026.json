@@ -1,0 +1,415 @@
+{
+  "routeId": "hitisalva",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-hitisalva-hiittisten-itainen-reitti-talviaikataulu-2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Mån/Ma/Mon",
+          "Tis/Ti/Tue",
+          "Ons/Ke/Wed",
+          "Tors/To/Thu",
+          "Fre/Pe/Fri"
+        ],
+        [
+          "Dalsbruk",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Bolax",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Bötesö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Grönvik",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Djupö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Stora Ängesö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Vänoxaby",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Vänoxa släten",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Biskopsö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Dalsbruk",
+          "8:05",
+          "8:05",
+          "8:05",
+          "8:05",
+          "8:05"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Dalsbruk",
+          "15:00",
+          "15:00",
+          "15:00",
+          "15:00",
+          "15:00"
+        ],
+        [
+          "Stora Ängesö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Biskopsö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Vänoxa släten",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Vänoxaby",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Grönvik",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Djupö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Bötesö",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Bolax",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "y = Beställningstur, beställs föregående kördag senast kl. 17.30 via bokningssystemet.\nTilausvuoro, tilattava edellisenä ajopäivänä viimeistään klo 17:30 varausjärjestelmän\nkautta. / Needs to be ordered the driving day before by 17:30 via the booking system.\nx = Körs vid behov, måste inte beställas. / Ajetaan tarvittaessa, ei tarvitse tilata.\nDriven if necessary, no need to order.",
+          null,
+          null
+        ],
+        [
+          "",
+          null,
+          null
+        ],
+        [
+          "Alla beställningar via bokningssystemet / Kaikki matkavaraukset varausjärjestelmää käyttäen\n/ All reservations via the booking system",
+          null,
+          null
+        ],
+        [
+          "Reservering av plats via bokningssystemet tidigast två veckor innan planerad resa.\nPassagerare bör vara klara för inlastning 10 min. före avgångstiden i varje hamn.\nFartygets max passagerarmängd 20.",
+          "ts via bokningssystemet tidigast två veckor innan planerad resa.\nra klara för inlastning 10 min. före avgångstiden i varje hamn.",
+          null
+        ],
+        [
+          null,
+          null,
+          ""
+        ],
+        [
+          "Beroende på omständigheterna kan turlistan ändras eller trafiken inställas.",
+          null,
+          null
+        ],
+        [
+          "Paikan varaus aikai",
+          "sintaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.",
+          null
+        ],
+        [
+          "Matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa kaikissa satamissa.\nAluksen max. matkustajamäärä 20.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.",
+          null,
+          null
+        ],
+        [
+          "Reservations of spa\nPassengers must b\nMax. amount of pas",
+          "ce via the booking system at the earliest two weeks before departure.\ne ready for loading 10 min before departure time in every port.",
+          null
+        ],
+        [
+          null,
+          "sengers 20.",
+          null
+        ],
+        [
+          "Due to circumstances there can be changes in the schedule or tours can be cancelled.",
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "HITIS ÖSTRA RUTT / HIITTISTEN ITÄINEN REITTI /\nHIITTINEN EASTERN ROUTE\nVintertidtabell/ talviaikataulu/ winter schedule\n1.1.2026-31.5.2026, 11.8.2026-31.12.2026\ni kraft tills menföret börjar / voimassa kunnes kelirikko alkaa / valid until frost heaving\nm/s Alva, tel./puh. 040 413 1574\nMån/Ma/Mon Tis/Ti/Tue Ons/Ke/Wed Tors/To/Thu Fre/Pe/Fri\nDalsbruk y y y y y\nBolax y y y y y\nBötesö y y y y y\nGrönvik y y y y y\nDjupö y y y y y\nStora Ängesö y y y y y\nVänoxaby y y y y y\nVänoxa släten y y y y y\nBiskopsö y y y y y\nDalsbruk 8:05 8:05 8:05 8:05 8:05\nDalsbruk 15:00 15:00 15:00 15:00 15:00\nStora Ängesö y y y y y\nBiskopsö y y y y y\nVänoxa släten y y y y y\nVänoxaby y y y y y\nGrönvik y y y y y\nDjupö y y y y y\nBötesö y y y y y\nBolax y y y y y\ny = Beställningstur, beställs föregående kördag senast kl. 17.30 via bokningssystemet.\nTilausvuoro, tilattava edellisenä ajopäivänä viimeistään klo 17:30 varausjärjestelmän\nkautta. / Needs to be ordered the driving day before by 17:30 via the booking system.\nx = Körs vid behov, måste inte beställas. / Ajetaan tarvittaessa, ei tarvitse tilata.\nDriven if necessary, no need to order.\nAlla beställningar via bokningssystemet / Kaikki matkavaraukset varausjärjestelmää käyttäen\n/ All reservations via the booking system\nReservering av plats via bokningssystemet tidigast två veckor innan planerad resa.\nPassagerare bör vara klara för inlastning 10 min. före avgångstiden i varje hamn.\nFartygets max passagerarmängd 20.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nPaikan varaus aikaisintaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nMatkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa kaikissa satamissa.\nAluksen max. matkustajamäärä 20.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservations of space via the booking system at the earliest two weeks before departure.\nPassengers must be ready for loading 10 min before departure time in every port.\nMax. amount of passengers 20.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset\nja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän\nkautta / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 32,
+    "losslessIntent": true
+  },
+  "serviceRole": {
+    "primaryPurpose": "school_transport",
+    "routingInterpretation": "The morning service is a bookable round trip from Dalsbruk via ordered island stops back to Dalsbruk at 08:05. The unpublished departure may be around 06:00 or earlier. The 15:00 service runs only outbound from Dalsbruk to the islands.",
+    "stopOrderPolicy": "published_order_is_expected",
+    "stopOrderConfidence": "high",
+    "bookingControlsCallOccurrenceNotRouteOrder": true
+  },
+  "booking": {
+    "defaultPolicy": "required",
+    "deadline": {
+      "relativeTo": "previous_operating_day",
+      "time": "17:30"
+    },
+    "channel": "operator_booking_system",
+    "earliestBookingDaysBefore": 14,
+    "loadingReadinessMinutesBefore": 10
+  },
+  "callConditions": {
+    "y": {
+      "type": "booking_required",
+      "meaning": "The call is operated only when ordered."
+    }
+  },
+  "trips": [
+    {
+      "id": "weekday-morning",
+      "operatingDays": "12345__",
+      "bookingRequired": true,
+      "tripRole": "school_morning_inbound",
+      "routingDirection": "dalsbruk_islands_dalsbruk_round_trip",
+      "publishedStartTime": false,
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Bolax",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Bötesö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Grönvik",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Djupö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Stora Ängesö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Vänoxaby",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Vänoxa släten",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Biskopsö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Dalsbruk",
+          "time": "08:05"
+        }
+      ]
+    },
+    {
+      "id": "weekday-afternoon",
+      "operatingDays": "12345__",
+      "bookingRequired": true,
+      "tripRole": "school_afternoon_outbound",
+      "routingDirection": "dalsbruk_to_islands_only",
+      "reverseJourneyAvailable": false,
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "time": "15:00"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Biskopsö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Vänoxa släten",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Vänoxaby",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Grönvik",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Djupö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Bötesö",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        },
+        {
+          "stop": "Bolax",
+          "callCondition": "y",
+          "historicalEstimateCandidate": true
+        }
+      ]
+    }
+  ],
+  "generalNotes": [
+    "All trips must be booked through the booking system.",
+    "The service primarily carries schoolchildren. The morning circuit starts in Dalsbruk, visits ordered island stops and returns to Dalsbruk at 08:05; it can also carry passengers from Dalsbruk to the islands, but the early departure time is not published.",
+    "The 15:00 afternoon circuit runs from Dalsbruk to the islands only. The timetable does not provide an afternoon journey from the islands to Dalsbruk.",
+    "The published stop order is expected to remain nearly constant; bookings determine which requested calls are made, not a freely optimized stop order.",
+    "The PDF publishes only the morning return time to Dalsbruk and the afternoon departure time from Dalsbruk; other call times are not published.",
+    "Unpublished call times may later receive advisory ranges based on historical observations, never as operator-published times."
+  ]
+}

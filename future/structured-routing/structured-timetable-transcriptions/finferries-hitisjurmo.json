@@ -1,0 +1,818 @@
+{
+  "routeId": "hitisjurmo",
+  "provider": "finferries",
+  "vessel": "M/S Jurmo",
+  "sourceId": "finferries-hitisjurmo-hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026",
+  "review": {
+    "status": "manually_transcribed_unreviewed",
+    "method": "visual_pdf_transcription",
+    "sourcePages": [
+      1,
+      2
+    ]
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-08-10",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "booking": {
+    "requiredForAllTrips": true,
+    "channel": "https://booking.finferries.fi/",
+    "vehicleAndCargoBookingOpensDaysBefore": 14,
+    "loadingReadinessMinutesBefore": 10
+  },
+  "callConditions": {
+    "x": {
+      "type": "on_request",
+      "deadline": {
+        "relativeTo": "trip_departure",
+        "offsetMinutes": 0
+      }
+    },
+    "y": {
+      "type": "booking_required",
+      "deadline": {
+        "dayOffset": -1,
+        "time": "17:00"
+      }
+    },
+    "xy": {
+      "type": "on_request",
+      "deadline": {
+        "weekday": "sunday",
+        "time": "14:20"
+      },
+      "sourceConflict": {
+        "fi": "sunnuntaina klo 14:20 mennessä",
+        "sv": "senast sön kl. 14:20",
+        "en": "by Sunday 14:00",
+        "interpretation": "Finnish and Swedish agree on 14:20; English says 14:00",
+        "resolvedValue": "14:20",
+        "resolutionBasis": "Mainland Finland source: Finnish is the default authority when language versions conflict"
+      }
+    },
+    "**": {
+      "type": "charter_trip",
+      "instructions": "Confirm departure time and Örö harbour (south/north) from the vessel.",
+      "phone": "+358406756441"
+    }
+  },
+  "holidayExceptions": [
+    {
+      "date": "2026-12-06",
+      "action": "use_day_pattern",
+      "operatingDays": "______7",
+      "forceCallCondition": "y"
+    },
+    {
+      "date": "2026-12-24",
+      "action": "no_service"
+    },
+    {
+      "date": "2026-12-25",
+      "action": "no_service"
+    },
+    {
+      "date": "2026-12-26",
+      "action": "use_day_pattern",
+      "operatingDays": "______7",
+      "forceCallCondition": "y"
+    }
+  ],
+  "capacity": {
+    "passengers": 100,
+    "cargoTonnes": 25,
+    "cars": 8
+  },
+  "trips": [
+    {
+      "id": "early-weekday-roundtrip",
+      "operatingDays": "12345__",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "timeAlternatives": [
+            "05:00",
+            "05:40"
+          ],
+          "timeInterpretationStatus": "unresolved"
+        },
+        {
+          "stop": "Örö",
+          "time": "06:00",
+          "operatingDays": "__3____",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "06:00",
+          "operatingDays": "12_45__",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Vänö",
+          "time": "06:40",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Holma",
+          "time": "07:20",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "07:35"
+        }
+      ]
+    },
+    {
+      "id": "early-sunday-roundtrip",
+      "operatingDays": "______7",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "timeAlternatives": [
+            "11:30",
+            "12:10"
+          ],
+          "timeInterpretationStatus": "unresolved",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "12:20",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Vänö",
+          "time": "13:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Holma",
+          "time": "13:45",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "14:00",
+          "callCondition": "x"
+        }
+      ]
+    },
+    {
+      "id": "thursday-helsingholm",
+      "operatingDays": "___4___",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "08:00",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Helsingholm",
+          "time": "09:00",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "10:00",
+          "callCondition": "y"
+        }
+      ]
+    },
+    {
+      "id": "monday-helsingholm",
+      "operatingDays": "1______",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "08:00",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Helsingholm",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "10:00"
+        }
+      ]
+    },
+    {
+      "id": "tuesday-dalsbruk-outbound",
+      "operatingDays": "_2_____",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "08:00"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "time": "08:55",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Bötesö",
+          "time": "09:35",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": "09:50",
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": "10:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "10:10",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "10:25",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Dalsbruk",
+          "time": "11:00"
+        }
+      ]
+    },
+    {
+      "id": "tuesday-dalsbruk-return",
+      "operatingDays": "_2_____",
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "time": "12:30"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "13:05",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "13:30",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": null,
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Bötesö",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "15:00"
+        }
+      ]
+    },
+    {
+      "id": "wednesday-dalsbruk-outbound",
+      "operatingDays": "__3____",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "08:00"
+        },
+        {
+          "stop": "Bolax",
+          "time": "09:10",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Bötesö",
+          "time": "09:35",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": "09:50",
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": "10:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "10:10",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "10:25",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Dalsbruk",
+          "time": "11:00"
+        }
+      ]
+    },
+    {
+      "id": "wednesday-dalsbruk-return",
+      "operatingDays": "__3____",
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "time": "12:30"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "13:05",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "13:30",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": null,
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Bötesö",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Bolax",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "15:30"
+        }
+      ]
+    },
+    {
+      "id": "sunday-dalsbruk-outbound",
+      "operatingDays": "______7",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "14:20",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "time": "15:30",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Bötesö",
+          "time": "15:55",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": "16:10",
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": "16:20",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "16:30",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "16:45",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Dalsbruk",
+          "time": "17:20",
+          "callCondition": "x"
+        }
+      ]
+    },
+    {
+      "id": "sunday-dalsbruk-return",
+      "operatingDays": "______7",
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "time": "17:30",
+          "callCondition": "xy"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "18:05",
+          "callCondition": "xy"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": "18:20",
+          "callCondition": "xy"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "18:30",
+          "callCondition": "xy"
+        },
+        {
+          "stop": "Djupö",
+          "time": null,
+          "callCondition": "xy",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Bötesö",
+          "time": null,
+          "callCondition": "xy"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": null,
+          "callCondition": "x"
+        }
+      ]
+    },
+    {
+      "id": "monday-oro",
+      "operatingDays": "1______",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "12:00",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Örö",
+          "time": "13:00",
+          "callCondition": "y",
+          "additionalConditions": [
+            "**"
+          ]
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "14:00"
+        }
+      ]
+    },
+    {
+      "id": "thursday-oro",
+      "operatingDays": "___4___",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "10:30",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Örö",
+          "timeRange": {
+            "from": "11:30",
+            "to": "12:30"
+          },
+          "callCondition": "y",
+          "additionalConditions": [
+            "**"
+          ]
+        },
+        {
+          "stop": "Kasnäs",
+          "timeRange": {
+            "from": "12:30",
+            "to": "13:30"
+          },
+          "additionalConditions": [
+            "**"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monday-afternoon",
+      "operatingDays": "1______",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "15:00"
+        },
+        {
+          "stop": "Holma",
+          "time": "15:15",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänö",
+          "time": "16:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "16:40",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Helsingholm",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "timeAlternatives": [
+            "17:45",
+            "19:00"
+          ],
+          "timeInterpretationStatus": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "tuesday-afternoon",
+      "operatingDays": "_2_____",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "15:30"
+        },
+        {
+          "stop": "Holma",
+          "time": "15:45",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänö",
+          "time": "16:30",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "17:10",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "18:00"
+        }
+      ]
+    },
+    {
+      "id": "wednesday-afternoon",
+      "operatingDays": "__3____",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "15:30"
+        },
+        {
+          "stop": "Holma",
+          "time": "15:45",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänö",
+          "time": "16:30",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Örö",
+          "time": "17:10",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "18:15"
+        }
+      ]
+    },
+    {
+      "id": "thursday-afternoon",
+      "operatingDays": "___4___",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "15:00"
+        },
+        {
+          "stop": "Holma",
+          "time": "15:15",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänö",
+          "time": "16:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "16:40",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "17:45"
+        }
+      ]
+    },
+    {
+      "id": "friday-afternoon",
+      "operatingDays": "____5__",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "12:00"
+        },
+        {
+          "stop": "Holma",
+          "time": "12:15",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänö",
+          "time": "13:00",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Tunnhamn",
+          "time": "13:40",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "14:40"
+        }
+      ]
+    },
+    {
+      "id": "friday-dalsbruk-outbound",
+      "operatingDays": "____5__",
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "timeRange": {
+            "from": "15:00",
+            "to": "16:30"
+          },
+          "callCondition": "y"
+        },
+        {
+          "stop": "Stora Ängesö",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Bötesö",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Djupö",
+          "time": null,
+          "callCondition": "y",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Dalsbruk",
+          "time": null,
+          "callCondition": "x"
+        }
+      ]
+    },
+    {
+      "id": "friday-dalsbruk-return",
+      "operatingDays": "____5__",
+      "calls": [
+        {
+          "stop": "Dalsbruk",
+          "time": "18:15",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Biskopsö",
+          "time": "18:50",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxaby",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Vänöxa, Släten",
+          "time": "19:15",
+          "callCondition": "x"
+        },
+        {
+          "stop": "Djupö",
+          "time": null,
+          "callCondition": "x",
+          "sourceLabel": "Djuppö"
+        },
+        {
+          "stop": "Bötesö",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Bolax",
+          "time": null,
+          "callCondition": "x"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": "21:15",
+          "callCondition": "y"
+        }
+      ]
+    },
+    {
+      "id": "friday-late-roundtrip",
+      "operatingDays": "____5__",
+      "freightAllowed": false,
+      "calls": [
+        {
+          "stop": "Kasnäs",
+          "time": "21:15",
+          "callCondition": "y"
+        },
+        {
+          "stop": "Holma",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Vänö or Tunnhamn",
+          "time": null,
+          "callCondition": "y"
+        },
+        {
+          "stop": "Kasnäs",
+          "time": null,
+          "callCondition": "x"
+        }
+      ]
+    }
+  ],
+  "generalNotes": [
+    "Unbooked cargo will not be transported.",
+    "Schedule or trips may change or be cancelled due to circumstances."
+  ]
+}

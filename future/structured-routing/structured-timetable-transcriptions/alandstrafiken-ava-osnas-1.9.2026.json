@@ -1,0 +1,154 @@
+{
+  "routeId": "osnasava",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-ava-osnas-1.9.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      3
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 3,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "OSNÄS – ÅVA",
+          null,
+          null
+        ],
+        [
+          "",
+          "Osnäs,\n(Gustavs)",
+          "Åva\n(Brändö)"
+        ],
+        [
+          "Måndag – –\n10:35B) 11:20\n13:40 14:25A)\n16:35 17:20\n18:40 19:25A)",
+          null,
+          null
+        ],
+        [
+          "Tisdag,",
+          "06:30",
+          "07:15A)"
+        ],
+        [
+          "onsdag,",
+          "13:35",
+          "14:20A)"
+        ],
+        [
+          "torsdag",
+          "16:35",
+          "17:20"
+        ],
+        [
+          "",
+          "19:40",
+          "20:25A)"
+        ],
+        [
+          "Fredag 06:30 07:15A)\n13:35 14:20A)\n16:35 17:20\n19:40 20:25A)",
+          null,
+          null
+        ],
+        [
+          "Lördag",
+          "06:30",
+          "07:15A)"
+        ],
+        [
+          "",
+          "16:35",
+          "17:15"
+        ],
+        [
+          "",
+          "18:40",
+          "19:25A)"
+        ],
+        [
+          "Söndag – –\n13:05 13:50A)\n16:05 16:50A)\n19:00 19:45K)\n21:051) 21:50",
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "ÅVA – OSNÄS",
+          null
+        ],
+        [
+          "Åva\n(Brändö)",
+          "Osnäs,\n(Gustavs)"
+        ],
+        [
+          "07:05 07:50\n12:40A) 13:20\n15:35K) 16:20\n17:30B) 18:15\n20:40A) 21:20",
+          null
+        ],
+        [
+          "08:30A)",
+          "09:15"
+        ],
+        [
+          "15:05A)",
+          "15:50"
+        ],
+        [
+          "18:00",
+          "18:45"
+        ],
+        [
+          "21:35A)",
+          "22:20"
+        ],
+        [
+          "08:30A) 09:15\n15:05A) 15:50\n18:00 18:45\n20:30 21:15",
+          null
+        ],
+        [
+          "08:30A)",
+          "09:15"
+        ],
+        [
+          "17:30",
+          "18:15"
+        ],
+        [
+          "–",
+          "–"
+        ],
+        [
+          "12:00 12:45\n15:00A) 15:45\n17:00K) 17:45\n20:001) 20:45\n– –",
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 3,
+      "text": "34\nNorra linjen 14/9–31/12 2026 UPPDATERAD 1/9 2026\nOSNÄS – ÅVA ÅVA – OSNÄS INFORMATION\n1) Trafikeras 12/4–5/6 och 19/8–14/9.\nOsnäs, Åva Åva Osnäs,\n(Gustavs) (Brändö) (Brändö) (Gustavs) A) Kombinerar med M/S Alfågeln i Torsholma.\nB) Bränsletransport till Brändö måndag kl. 10:35\nMåndag – – 07:05 07:50 från Osnäs. Retur från Brändö måndag kl. 17:30.\nTransport av farligt gods endast mot bokning\n10:35B) 11:20 12:40A) 13:20\nsenast onsdag kl. 12:00 hos Ålandstrafiken.\n13:40 14:25A) 15:35K) 16:20 Max 20 pass medtas på bränsletur.\n16:35 17:20 17:30B) 18:15 K) Kombinerar med M/S Knipan i Torsholma.\nBilväg från Åva till Torsholma ca 22 km.\n18:40 19:25A) 20:40A) 21:20 Fordon ska vara klara att köra ombord senast 10\nTisdag, 06:30 07:15A) 08:30A) 09:15 min före annonserad avgångstid i starthamn.\nonsdag, 13:35 14:20A) 15:05A) 15:50 TIETOJA\n1) Liikennöidään 12/4–5/6 ja 19/8–14/9.\ntorsdag 16:35 17:20 18:00 18:45\nA) Jatkoyhteys M/S Alfågelnille Tors holmassa.\n19:40 20:25A) 21:35A) 22:20 B) Polttoainekuljetusvuoro Brändööhön ajetaan\nFredag 06:30 07:15A) 08:30A) 09:15 maanantaisin klo 10:35 Vuosnaisista. Paluu\nBrändööstä maanantaisin klo 17:30. Vaarallisten\n13:35 14:20A) 15:05A) 15:50 aineiden kuljetus ainoastaan varauksesta joka\non tehtävä viimeistään keskiviikona klo 12:00\n16:35 17:20 18:00 18:45 Ålandstrafikenille.\n19:40 20:25A) 20:30 21:15 Maksimihenkilömäärä polttoainekuljetuksissa 20.\nK) Yhteys M/S Knipanille Torsholmassa.\nLördag 06:30 07:15A) 08:30A) 09:15\nAutotie Torsholma–Åva n. 22 km.\n16:35 17:15 17:30 18:15 Ajoneuvojen tulee olla valmiina lastaukseen\n18:40 19:25A) – – aloitussatamassa 10 min ennen ilmoitettua\nlähtöaikaa.\nSöndag – – 12:00 12:45\nINFORMATION\n13:05 13:50A) 15:00A) 15:45 1) Traffics 12/4–5/6 and 19/8–14/9.\n16:05 16:50A) 17:00K) 17:45 A) Connection to M/S Alfågeln in Torsholma.\nB) Fuel transportation to Brändö on Monday at\n19:00 19:45K) 20:001) 20:45\n10:35 from Osnäs. Retour from Brändö on Monday\n21:051) 21:50 – – at 17:30. Dangerous goods transportation has\nto be booked no later than Wednesday 12:00 to\nÅlandstrafiken.\nM/S Ådan. Ålandstrafiken tel. +358 (0)18 25 600.\nMaximum number of pax 20 at fuel\ntransportation.\nK) Connection to M/S Knipan in Torsholma.\nLand road from Åva to Torsholma approx.\n22 km.\nVehicles must be ready to embark at least 10 min\nprior to the dep.time in start harbour.\nTors 24/12 Torsdagstrafik som avslutas med To 24/12 Torstailiikenne, päättyy vuoroon klo Thu 24/12 Thursday schedule that stops with\navg. kl. 17:30 från Åva. 17:30 Åvasta. departure at 17:30 from Åva.\nFre 25/12 Söndagstrafik med start kl. 16:05 Pe 25/12 Sunnuntailiikenne alkaen klo 16:05 Fri 25/12 Sunday schedule that starts at 16:05\nfrån Osnäs och avslutas med avg. kl. 17:00 Vuosnaisista ja päättyy vuoroon klo 17:00 from Osnäs and stops with departure at 17:00\nfrån Åva. Åvasta. from Åva.\nLör 26/12 Söndagstrafik med start kl. 13:05 La 26/12 Sunnuntailiikenne alkaen klo 13:05 Sat 26/12 Sunday schedule that starts at\nfrån Osnäs och avslutas med avg. kl. 19:00 Vuosnaisista ja päättyy vuoroon klo 19:00 13:05 from Osnäs and stops with departure at\nfrån Osnäs. Vuosnaisista. 19:00 from Osnäs.\nTors 31/12 Torsdagstrafik som avslutas med To 31/12 Torstailiikenne, päättyy vuoroon klo Thu 31/12 Thursday schedule that stops with\navg. kl. 17:30 från Åva. 17:30 Åvasta. departure at 17:30 from Åva.\nFre 1/1 2027 Söndagstrafik med start Pe 1/1 2027 Sunnuntailiikenne alkaen Fri 1/1 2027 Sunday schedule that starts at\nkl. 16:05 från Osnäs och avslutas med avg. kl. klo 16:05 Vuosnaisista ja päättyy vuoroon klo 16:05 from Osnäs and stops with departure at\n17:00 från Åva. 17:00 Åvasta. 17:00 from Åva."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 24,
+    "losslessIntent": true
+  }
+}

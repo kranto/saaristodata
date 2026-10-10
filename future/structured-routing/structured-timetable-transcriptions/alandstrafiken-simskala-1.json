@@ -1,0 +1,312 @@
+{
+  "routeId": "simskalalinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-simskala-1",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "AVGÅNGSTIDER FRÅN SIMSKÄLA (TIMSKÄR–VATTUNGSREVET)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "TRAFIK VID BEHOV 22:00–05:50",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "",
+          ""
+        ],
+        [
+          "06 – 10 – – 30 – –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "501)"
+        ],
+        [
+          "07",
+          "–",
+          "10*)",
+          "–",
+          "–",
+          "–",
+          "40",
+          "–",
+          "–"
+        ],
+        [
+          "08 – – 15*) – – – 45 –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "09",
+          "–",
+          "–",
+          "15",
+          "–",
+          "–",
+          "–",
+          "45",
+          "–"
+        ],
+        [
+          "10 – – 15 – – – 45 –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "11",
+          "–",
+          "–",
+          "15",
+          "–",
+          "–",
+          "–",
+          "–",
+          "–"
+        ],
+        [
+          "12 – – 15 – – – 45 –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "13",
+          "–",
+          "–",
+          "15*)",
+          "–",
+          "–",
+          "–",
+          "45",
+          "–"
+        ],
+        [
+          "14 – – 15 – – – – 50",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "15",
+          "–",
+          "–",
+          "15",
+          "–",
+          "–",
+          "–",
+          "45",
+          "–"
+        ],
+        [
+          "16 – – – 20 – – – 50",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "17",
+          "–",
+          "–",
+          "–",
+          "–",
+          "–",
+          "40",
+          "–",
+          "–"
+        ],
+        [
+          "18 00 – – – 30 – – –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "19",
+          "00",
+          "–",
+          "–",
+          "–",
+          "30",
+          "–",
+          "–",
+          "–"
+        ],
+        [
+          "20 00 – – – 30 – – –",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "21",
+          "00",
+          "–",
+          "–",
+          "–",
+          "30",
+          "–",
+          "–",
+          "–"
+        ],
+        [
+          "",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "TRAFIKUPPEHÅLL",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Alla dagar:",
+          "11:35–12:10\n14:00–14:15\n17:05–17:40",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "1) Lördag, söndag och helgdag: Rödmarkerad tur utgår.\n*) Vid behov inväntar färjan skolskjutsar och bussar i linjetrafik.",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "Simskälalinjens linfärja 1/1 2026–\nAVGÅNGSTIDER FRÅN SIMSKÄLA (TIMSKÄR–VATTUNGSREVET)\nTRAFIK VID BEHOV 22:00–05:50\n06 – 10 – – 30 – – 501)\n07 – 10*) – – – 40 – –\n08 – – 15*) – – – 45 –\n09 – – 15 – – – 45 –\n10 – – 15 – – – 45 –\n11 – – 15 – – – – –\n12 – – 15 – – – 45 –\n13 – – 15*) – – – 45 –\n14 – – 15 – – – – 50\n15 – – 15 – – – 45 –\n16 – – – 20 – – – 50\n17 – – – – – 40 – –\n18 00 – – – 30 – – –\n19 00 – – – 30 – – –\n20 00 – – – 30 – – –\n21 00 – – – 30 – – –\nTRAFIKUPPEHÅLL\nAlla dagar: 11:35–12:10\n14:00–14:15\n17:05–17:40\n1) Lördag, söndag och helgdag: Rödmarkerad tur utgår.\n*) Vid behov inväntar färjan skolskjutsar och bussar i linjetrafik.\nSimskälalinjens linfärja +358 (0)457 3798 869, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Timskär (Simskäla).\nAvgångstid från Vattungsrevet (Sandö) är cirka 7 minuter efter angiven avgångstid från\nTimskär.\nOm det inte finns någon trafikant vid Timskär eller Vattungsrevet färjefästet vid angiven\ntid från Timskär, körs inte turen.\nFör att säkerställa att turen körs från Vattungsrevet måste trafikanten befinna sig vid\nVattungsrevets färjefäste senast vid den angivna avgångstiden från Timskär (se vidstå-\nende turlista) eller senast vid avgångstiden från Timskär ringa till färjan på telefon\n+358 (0)457 3798 869.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte\nkan ta mer last.\nFörtur har: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och brådskande\nsjuktransporter.\nVid behov inväntar färjan skolskjutsar och bussar i linjetrafik.\nRetur från Vattungsrevet efter ankomst från Timskär. Färjeföraren kan dock vid behov\nsenarelägga returen från Vattungsrevet med upp till 10 minuter för nyttotrafik och\n5 minuter övrig trafik.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 22,
+    "losslessIntent": true
+  },
+  "canonicalStopNames": {
+    "Timskär": {
+      "sourceContextName": "Simskäla"
+    },
+    "Vattungsrevet": {
+      "sourceContextName": "Sandö"
+    }
+  },
+  "routingPolicy": {
+    "publishedDirection": {
+      "from": "Timskär",
+      "to": "Vattungsrevet",
+      "usesPublishedTimes": true
+    },
+    "returnDirection": {
+      "from": "Vattungsrevet",
+      "to": "Timskär",
+      "departureOffsetMinutesApproximate": 7,
+      "timeNature": "estimated_from_published_Timskär_departure",
+      "serviceActivation": {
+        "passengerMustBeAtPierByPublishedTimskärTime": true,
+        "alternative": "call_ferry_by_published_Timskär_time",
+        "phone": "+3584573798869"
+      },
+      "operatorMayDelayReturnMinutes": {
+        "commercialTraffic": 10,
+        "otherTraffic": 5
+      }
+    }
+  }
+}

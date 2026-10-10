@@ -1,0 +1,246 @@
+{
+  "routeId": "iniokustavi",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-iniokustavi-inio-kustavi-talvi-1.1.-7.5.2026-ja-14.9.-31.12.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "Avgång/Lähtö/Departure",
+          "Må/Ma/Mon",
+          "Ti/Ti/Tu",
+          "Ons/Ke/Wed",
+          "Tors/To/Thu",
+          "Fre/Pe/Fri",
+          "Lö/La/Sat",
+          "Sö/Su/Sun"
+        ],
+        [
+          "Kannvik",
+          "06.30",
+          "06.30",
+          "06.30",
+          "06.30",
+          "06.30",
+          "",
+          ""
+        ],
+        [
+          "Kannvik",
+          "07.30",
+          "07.30",
+          "07.30",
+          "07.30",
+          "07.30",
+          "07.30",
+          ""
+        ],
+        [
+          "Kannvik",
+          "09.30",
+          "09.30",
+          "09.30",
+          "09.30",
+          "09.30",
+          "09.30",
+          ""
+        ],
+        [
+          "Kannvik",
+          "11.00",
+          "11.00",
+          "11.00",
+          "11.00",
+          "11.00",
+          "11.00",
+          "11.00"
+        ],
+        [
+          "Kannvik",
+          "14.45",
+          "14.45",
+          "14.45",
+          "14.45",
+          "14.45",
+          "",
+          "14.45*"
+        ],
+        [
+          "Kannvik",
+          "15.55",
+          "15.55",
+          "15.55",
+          "15.55",
+          "15.55",
+          "15.55",
+          "15.55"
+        ],
+        [
+          "Kannvik",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "17.10#"
+        ],
+        [
+          "Kannvik",
+          "20.30",
+          "",
+          "20.30",
+          "",
+          "20.30",
+          "",
+          "19.15#"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Heponiemi",
+          "07.00",
+          "07.00",
+          "07.00",
+          "07.00",
+          "07.00",
+          "",
+          ""
+        ],
+        [
+          "Heponiemi",
+          "08.10",
+          "08.10",
+          "08.10",
+          "08.10",
+          "08.10",
+          "08.10",
+          ""
+        ],
+        [
+          "Heponiemi",
+          "10.10",
+          "10.10",
+          "10.10",
+          "10.10",
+          "10.10",
+          "10.10",
+          ""
+        ],
+        [
+          "Heponiemi",
+          "11.45",
+          "11.45",
+          "11.45",
+          "11.45",
+          "11.45",
+          "11.45",
+          "11.45"
+        ],
+        [
+          "Heponiemi",
+          "15.20",
+          "15.20",
+          "15.20",
+          "15.20",
+          "15.20",
+          "",
+          "15.20*"
+        ],
+        [
+          "Heponiemi",
+          "16.30",
+          "16.30",
+          "16.30",
+          "16.30",
+          "16.30",
+          "16.30",
+          "16.30"
+        ],
+        [
+          "Heponiemi",
+          "19.00",
+          "19.00",
+          "19.00",
+          "19.00",
+          "19.00",
+          "19.00",
+          "18.30#"
+        ],
+        [
+          "Heponiemi",
+          "21.00",
+          "",
+          "21.00",
+          "",
+          "21.00",
+          "",
+          "19.55#"
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "Uppdaterad/päivitetty/updated 8.10.2025\nINIÖ (Kannvik)-KUSTAVI (Heponiemi)\nms Sterna Tel./puh. 020 7118 706\nVinter / Talvi / Winter 1.1.-7.5.2026, 14.9.-31.12.2026\nAvgång/Lähtö/Departure Må/Ma/Mon Ti/Ti/Tu Ons/Ke/Wed Tors/To/Thu Fre/Pe/Fri Lö/La/Sat Sö/Su/Sun\nKannvik 06.30 06.30 06.30 06.30 06.30\nKannvik 07.30 07.30 07.30 07.30 07.30 07.30\nKannvik 09.30 09.30 09.30 09.30 09.30 09.30\nKannvik 11.00 11.00 11.00 11.00 11.00 11.00 11.00\nKannvik 14.45 14.45 14.45 14.45 14.45 14.45*\nKannvik 15.55 15.55 15.55 15.55 15.55 15.55 15.55\nKannvik 18.00 18.00 18.00 18.00 18.00 18.00 17.10#\nKannvik 20.30 20.30 20.30 19.15#\nHeponiemi 07.00 07.00 07.00 07.00 07.00\nHeponiemi 08.10 08.10 08.10 08.10 08.10 08.10\nHeponiemi 10.10 10.10 10.10 10.10 10.10 10.10\nHeponiemi 11.45 11.45 11.45 11.45 11.45 11.45 11.45\nHeponiemi 15.20 15.20 15.20 15.20 15.20 15.20*\nHeponiemi 16.30 16.30 16.30 16.30 16.30 16.30 16.30\nHeponiemi 19.00 19.00 19.00 19.00 19.00 19.00 18.30#\nHeponiemi 21.00 21.00 21.00 19.55#\n* under perioden / ajalla / during period 1.4.-31.10.2026\n# Ej / Ei / Not 25.12. (juldag/joulupäivä/Christmas Day)\nHelgtrafiken / Pyhäliikenne / Public holidays:\nSö/Su/Sun Sön- och helgdagar / Sunnuntai- ja pyhäpäivät / Sunday and public holidays\nTo/to/Thu 2.4. Fredagens tidtabell / perjantain aikataulu / Friday's schedule\nFre/pe/Fri 3.4. Lördagens tidtabell / Lauantain aikataulu / Saturday's schedule\nFordonen bör vara klara för inlastning 10 min. före avgångstiden, förtur enligt NTM-centralens tillstånd.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa, etuoikeus ELY-keskuksen luvalla.\nVehicles must be ready for loading 10 minutes before departure time, priority is granted with a permit from the ELY Centre.\nTuren reserverad för transport av farliga ämnen, begränsat passagerarantal\nVuoro varattu vaarallisten aineiden kuljetuksiin, matkustajamäärä rajoitettu\nThe turn is reserved for the transport of dangerous goods; the number of passengers is limited\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nTidtabeller: / Aikataulut: / Timetables: www.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 18,
+    "losslessIntent": true
+  },
+  "departureAnnotations": [
+    {
+      "operatingDays": "_2_4___",
+      "from": "Heponiemi",
+      "time": "07:00",
+      "type": "dangerous_goods_transport",
+      "passengerCapacityReduced": true,
+      "userNotice": {
+        "fi": "Vaarallisten aineiden kuljetus, rajoitettu matkustajamäärä",
+        "sv": "Transport av farliga ämnen, begränsat passagerarantal",
+        "en": "Dangerous goods transport, limited number of passengers"
+      }
+    },
+    {
+      "operatingDays": "_2_4___",
+      "from": "Kannvik",
+      "time": "09:30",
+      "type": "dangerous_goods_transport",
+      "passengerCapacityReduced": true,
+      "userNotice": {
+        "fi": "Vaarallisten aineiden kuljetus, rajoitettu matkustajamäärä",
+        "sv": "Transport av farliga ämnen, begränsat passagerarantal",
+        "en": "Dangerous goods transport, limited number of passengers"
+      }
+    }
+  ]
+}

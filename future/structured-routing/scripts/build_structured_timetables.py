@@ -11,14 +11,46 @@ import argparse
 import html
 import json
 import re
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-CHECKS = ROOT / "timetable-checks.json"
-ORIGINALS = ROOT / ".timetable-checker" / "originals"
-OUTPUT = ROOT / "structured-timetables.json"
+EXPERIMENT_ROOT = Path(__file__).resolve().parents[1]
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+CHECKS = REPOSITORY_ROOT / "timetable-checks.json"
+ORIGINALS = REPOSITORY_ROOT / ".timetable-checker" / "originals"
+OUTPUT = EXPERIMENT_ROOT / "structured-timetables.json"
+TRANSCRIPTIONS = EXPERIMENT_ROOT / "structured-timetable-transcriptions"
+
+EXPIRED_PDF_SOURCES = {
+    "finferries-houtskarrutt-houtskarin-reitti-talvi-19.8.2026-30.9.2026",
+    "finferries-utorutt-uton-reitti-talvi-1.9.2026-30.9.2026",
+    "finferries-velkuanreitti-velkuan-reitti-kesa-8.5.-13.9.2026",
+    "finferries-velkuataivassalo-velkuan-reitti-kesa-8.5.-13.9.2026",
+    "alandstrafiken-embarsund-8.6.2026",
+    "alandstrafiken-passbaten",
+    "alandstrafiken-seglinge-linfarja-1.1-13.9",
+}
+
+NON_ROUTING_SOURCES = {
+    # Fuel-only compilation is not a passenger timetable.  Relevant fuel-trip
+    # capacity effects belong to the actual line timetable instead.
+    "alandstrafiken-bransleturlista-2026",
+}
+
+# Finferries uses "yhteysalus" for the multi-stop connection-vessel services,
+# not for point-to-point road ferries.  Every journey on these routes is booked
+# in the common booking system; a cell marker such as y additionally controls
+# whether the vessel calls at that particular pier.
+FINFERRIES_CONNECTION_VESSEL_ROUTES = {
+    "hitisalva", "hitisjurmo", "houtskarrutt", "iniorutt", "nagunorra",
+    "nagusodra", "nagutvar", "pargasrutt", "rymattylanreitti", "utorutt",
+    "velkuanreitti", "velkuataivassalo",
+}
+
+FINFERRIES_ROAD_FERRY_ROUTES = {
+    "iniokustavi", "kasnashitis",
+}
 
 DAY_NAMES = {
     "0": "sunday",
@@ -219,7 +251,7 @@ def extract_row(source: dict, body: str) -> dict:
             "sourceId": source["id"],
             "url": source["url"],
             "sha256": source["fingerprint"]["sha256"],
-            "localFile": str((ORIGINALS / "finferries" / f'{source["id"]}.html').relative_to(ROOT)),
+            "localFile": str((ORIGINALS / "finferries" / f'{source["id"]}.html').relative_to(REPOSITORY_ROOT)),
         },
         "review": {
             "status": "generated_unreviewed",
@@ -263,7 +295,7 @@ def group_routes(schedules: list[dict]) -> list[dict]:
             for departure in direction["departures"]:
                 key = (direction["name"], departure["time"], departure.get("dayOffset", 0))
                 item = route["departures"].setdefault(key, {
-                    "direction": direction["name"],
+                    "from": direction["name"],
                     "time": departure["time"],
                     **({"dayOffset": departure["dayOffset"], "sourceTime": departure["sourceTime"]} if departure.get("dayOffset") else {}),
                     "operations": [],
@@ -283,7 +315,7 @@ def group_routes(schedules: list[dict]) -> list[dict]:
     for route in grouped.values():
         route["departures"] = sorted(
             route["departures"].values(),
-            key=lambda item: (item["direction"], item.get("dayOffset", 0), item["time"]),
+            key=lambda item: (item["from"], item.get("dayOffset", 0), item["time"]),
         )
         route["sources"] = sorted(route["sources"], key=lambda item: item["sourceId"])
         routes.append(route)
@@ -292,14 +324,28 @@ def group_routes(schedules: list[dict]) -> list[dict]:
 
 def build() -> dict:
     checks = json.loads(CHECKS.read_text())
+    as_of_date = date.today()
     schedules = []
     unconverted = []
+    expired_source_count = 0
     for source in checks["sources"]:
         local = ORIGINALS / source["provider"] / f'{source["id"]}.{source["kind"]}'
+        if source["id"] in EXPIRED_PDF_SOURCES:
+            expired_source_count += 1
+            continue
+        if source["id"] in NON_ROUTING_SOURCES or (
+            source["kind"] == "html" and source["id"].endswith("-source")
+        ):
+            continue
         if source["provider"] == "finferries" and source["kind"] == "html":
             body = local.read_text(errors="replace")
             if re.search(r'<li[^>]*>\s*\d{1,2}:\d{2}', body) or re.search(r'liikennöi tarvittaessa|trafikerar vid behov|runs when needed', html.unescape(body), re.I):
-                schedules.append(extract_row(source, body))
+                schedule = extract_row(source, body)
+                valid_to = schedule["calendar"]["validTo"]
+                if valid_to and date.fromisoformat(valid_to) < as_of_date:
+                    expired_source_count += 1
+                    continue
+                schedules.append(schedule)
                 continue
         unconverted.append({
             "sourceId": source["id"],
@@ -311,22 +357,131 @@ def build() -> dict:
         })
 
     routes = group_routes(schedules)
+    routes_by_id = {route["id"]: route for route in routes}
+    sources_by_id = {source["id"]: source for source in checks["sources"]}
+    transcription_count = 0
+    if TRANSCRIPTIONS.exists():
+        for path in sorted(TRANSCRIPTIONS.glob("*.json")):
+            transcription = json.loads(path.read_text())
+            source = sources_by_id[transcription["sourceId"]]
+            transcription["validPeriods"] = [
+                period for period in transcription.get("validPeriods", [])
+                if date.fromisoformat(period["validTo"]) >= as_of_date
+            ]
+            transcription["holidayExceptions"] = [
+                item for item in transcription.get("holidayExceptions", [])
+                if date.fromisoformat(item["date"]) >= as_of_date
+            ]
+            active_trips = []
+            for trip in transcription.get("trips", []):
+                if "validPeriods" in trip:
+                    trip["validPeriods"] = [
+                        period for period in trip["validPeriods"]
+                        if date.fromisoformat(period["validTo"]) >= as_of_date
+                    ]
+                    if not trip["validPeriods"]:
+                        continue
+                active_trips.append(trip)
+            transcription["trips"] = active_trips
+            unconverted = [item for item in unconverted if item["sourceId"] != source["id"]]
+            if not transcription["validPeriods"]:
+                expired_source_count += 1
+                continue
+            route = routes_by_id.setdefault(transcription["routeId"], {
+                "id": transcription["routeId"],
+                "provider": transcription["provider"],
+                "departures": [],
+                "continuousServices": [],
+                "notes": [],
+                "sources": [],
+                "review": transcription["review"],
+            })
+            route["review"] = transcription["review"]
+            route["sources"].append({
+                "sourceId": source["id"],
+                "url": source["url"],
+                "sha256": source["fingerprint"]["sha256"],
+                "localFile": str((ORIGINALS / source["provider"] / f'{source["id"]}.{source["kind"]}').relative_to(REPOSITORY_ROOT)),
+            })
+            for key in (
+                "vessel", "vessels", "sourceLanguageAuthority",
+                "languageConflictPolicy", "validPeriods", "booking",
+                "callConditions", "departureAnnotations", "holidayExceptions", "capacity", "trips",
+                "generalNotes", "onDemandExtra", "sourceAnnotations",
+                "annualSchedulePattern", "extractionDiagnostics",
+                "sourceTables", "sourcePageText",
+                "serviceRole",
+                "routeApplications",
+                "routingPolicy", "canonicalStopNames", "sourceRowExpansions",
+                "sourceRowExpansionPolicy",
+                "timeNotationPolicy",
+                "sourceTableCorrections",
+                "stopAliases",
+                "connections",
+            ):
+                if key in transcription:
+                    route[key] = transcription[key]
+            transcription_count += 1
+    routes = sorted(routes_by_id.values(), key=lambda item: item["id"])
+    for route in routes:
+        if route["provider"] == "finferries" and route["id"] in FINFERRIES_ROAD_FERRY_ROUTES:
+            route["serviceType"] = "road_ferry"
+            route["classificationEvidence"] = {
+                "geoJsonSubtype": "conn2",
+                "terminalCount": 2,
+                "bookingRuleInheritedFromConnectionVessels": False,
+            }
+        if route["provider"] == "finferries" and route["id"] in FINFERRIES_CONNECTION_VESSEL_ROUTES:
+            route["serviceType"] = "connection_vessel"
+            route["classificationEvidence"] = {
+                "geoJsonSubtype": "conn4",
+                "bookingRuleInheritedFromConnectionVessels": True,
+            }
+            route["booking"] = {
+                **route.get("booking", {}),
+                "requiredForAllTrips": True,
+                "url": "https://booking.finferries.fi/",
+            }
+            route["callMarkerPolicy"] = {
+                "journeyReservationIsSeparate": True,
+                "y": "call_at_pier_requires_advance_order",
+                "x": "call_at_pier_when_needed_without_separate_order",
+                "expectedUsage": "y is expected at bookable intermediate calls; terminal times may omit it because every connection-vessel journey already requires a reservation",
+            }
     return {
         "schemaVersion": 1,
         # Use the accepted source set timestamp so unchanged inputs produce an
         # identical version-controlled artifact.
         "generatedAt": checks["acceptedAt"],
         "status": "draft",
+        "timingEstimatePolicy": {
+            "field": "historicalEstimate",
+            "basis": "historical_observations",
+            "role": "advisory",
+            "scheduledTimesTakePrecedence": True,
+            "disclosureRequired": True,
+            "disclosureKey": "timetable.historicalEstimateDisclaimer",
+        },
+        "stopDisplayPolicy": {
+            "primaryName": "selected_locale",
+            "secondaryDomesticName": "when_names_are_not_readily_recognizable_as_the_same_place",
+            "duplicateNameQualifier": "search_results_only_when_same-name_stops_from_different_routes_may_be_confused",
+            "ordinaryRouteAndMapViewsUseQualifier": False,
+            "duplicateNameTestCases": ["Berghamn"],
+        },
         "routes": routes,
         "unconvertedSources": unconverted,
         "statistics": {
             "routeCount": len(routes),
-            "convertedSourceCount": len(schedules),
+            "convertedSourceCount": len(schedules) + transcription_count,
+            "manualTranscriptionCount": transcription_count,
+            "tripCount": sum(len(route.get("trips", [])) for route in routes),
             "scheduledDepartureCount": sum(
                 len(route["departures"])
                 for route in routes
             ),
             "unconvertedSourceCount": len(unconverted),
+            "expiredSourceCount": expired_source_count,
             "unresolvedDepartureNoteCount": sum(
                 operation["noteInterpretationStatus"] == "unresolved"
                 for route in routes
@@ -354,6 +509,40 @@ def validate(data: dict) -> list[str]:
                             datetime.strptime(operation[key], "%Y-%m-%d")
                         except ValueError:
                             errors.append(f'{route["id"]}: invalid {key}')
+        known_conditions = set(route.get("callConditions", {}))
+        trip_ids = set()
+        for trip in route.get("trips", []):
+            if trip["id"] in trip_ids:
+                errors.append(f'{route["id"]}: duplicate trip id {trip["id"]}')
+            trip_ids.add(trip["id"])
+            if not re.fullmatch(r'[1_][2_][3_][4_][5_][6_][7_]', trip["operatingDays"]):
+                errors.append(f'{route["id"]}/{trip["id"]}: invalid operatingDays')
+            if len(trip["calls"]) < 2:
+                errors.append(f'{route["id"]}/{trip["id"]}: fewer than two calls')
+            for call in trip["calls"]:
+                refs = (
+                    ([call["callCondition"]] if call.get("callCondition") else [])
+                    + call.get("additionalConditions", [])
+                    + call.get("conditions", [])
+                )
+                for ref in refs:
+                    if ref not in known_conditions:
+                        errors.append(f'{route["id"]}/{trip["id"]}: unknown call condition {ref}')
+                for value in ([call["time"]] if call.get("time") else []) + call.get("timeAlternatives", []):
+                    if not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', value):
+                        errors.append(f'{route["id"]}/{trip["id"]}: invalid call time {value}')
+                for value in call.get("timeRange", {}).values():
+                    if not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', value):
+                        errors.append(f'{route["id"]}/{trip["id"]}: invalid call time range {value}')
+                estimate = call.get("historicalEstimate")
+                if estimate:
+                    if estimate.get("basis") != "historical_observations":
+                        errors.append(f'{route["id"]}/{trip["id"]}: invalid estimate basis')
+                    if estimate.get("disclosureRequired") is not True:
+                        errors.append(f'{route["id"]}/{trip["id"]}: estimate disclosure is not required')
+                    for value in estimate.get("range", {}).values():
+                        if not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', value):
+                            errors.append(f'{route["id"]}/{trip["id"]}: invalid estimate time {value}')
     return errors
 
 

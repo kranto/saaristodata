@@ -1,0 +1,764 @@
+{
+  "routeId": "nagunorra",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-nagunorra-nauvon-pohjoinen-reitti-talvi-11.8.2026-30.5.2027",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1,
+      2
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-08-11",
+      "validTo": "2027-05-30"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          null,
+          "Må/ma/Mon",
+          "Ti/ti/Tue",
+          "Ons/ke/Wed",
+          "Tors/to/Thu",
+          "Fre/pe/Fri",
+          "Lö/la/Sat",
+          "Sö/su/Sun"
+        ],
+        [
+          "Åvensor",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "11:40y"
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Järvsor",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "12:40y"
+        ],
+        [
+          "Åvensor",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "13:10y"
+        ],
+        [
+          "Åvensor",
+          null,
+          "7:00y",
+          "7:00y",
+          "7:00y",
+          "7:00y",
+          "7:00y",
+          "8:00y",
+          "13:10y"
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Järvsor",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "",
+          "14:10y"
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "8:00y",
+          "",
+          "14:10y"
+        ],
+        [
+          "Innamo",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y*",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "10:00",
+          ""
+        ],
+        [
+          "Åvensor",
+          null,
+          "8:30y",
+          "",
+          "",
+          "8:30y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "y",
+          "",
+          "",
+          "y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Järvsor",
+          "",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Innamo",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "",
+          "y*",
+          "",
+          "y*",
+          "",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "10:20y",
+          "9:30y",
+          "10:20y",
+          "10:20y",
+          "10:20y",
+          "",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "10:50y",
+          "10:50y",
+          "",
+          "10:50y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "y*",
+          "y*",
+          "",
+          "y*",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "11:50y",
+          "11:50y",
+          "",
+          "11:50y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "13:10y",
+          "13:10y",
+          "12:45y",
+          "13:10y",
+          "12:45y",
+          "12:30y",
+          ""
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "",
+          "y*",
+          "",
+          "y*",
+          "y*",
+          ""
+        ],
+        [
+          "Innamo",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Järvsor",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          ""
+        ],
+        [
+          "Åvensor",
+          null,
+          "15:00y",
+          "15:00y",
+          "15:05y",
+          "15:00y",
+          "15:05y",
+          "14:40y",
+          "14:40y"
+        ],
+        [
+          "Åvensor",
+          null,
+          "15:00y",
+          "15:00y",
+          "15:05y",
+          "15:00y",
+          "15:05y",
+          "14:40y",
+          "15:20y"
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "y",
+          "y",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "15:40y",
+          "15:40y",
+          "15:40y",
+          "15:40y",
+          "15:40y",
+          "15:10y",
+          ""
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "",
+          "15:45y",
+          "15:45y",
+          "",
+          "15:45y",
+          "15:50y",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Järvsor",
+          null,
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Innamo",
+          null,
+          "",
+          "y",
+          "",
+          "",
+          "",
+          "",
+          "y"
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "y*",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "",
+          "17:30y",
+          "",
+          "",
+          "",
+          "",
+          "17:10y"
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "17:15y **"
+        ],
+        [
+          "Järvsor",
+          null,
+          "",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "",
+          "",
+          "y",
+          "",
+          "",
+          "y",
+          ""
+        ],
+        [
+          "Åvensor",
+          null,
+          "",
+          "",
+          "16:40y",
+          "",
+          "",
+          "16:45y",
+          ""
+        ],
+        [
+          "Åvensor",
+          null,
+          "",
+          "",
+          "16:40y",
+          "",
+          "16:15y",
+          "",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "",
+          "",
+          "y",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Lavarn (Houtsala)",
+          null,
+          "15:45y",
+          "",
+          "",
+          "15:45y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Järvsor",
+          null,
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Innamo",
+          null,
+          "y",
+          "",
+          "y",
+          "y",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "y",
+          "",
+          "",
+          "y",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "",
+          "y*",
+          "",
+          "y*",
+          "",
+          "y**"
+        ],
+        [
+          "Nagu / Nauvo",
+          null,
+          "",
+          "",
+          "18:40y",
+          "",
+          "18:15y",
+          "",
+          "18:15y **"
+        ],
+        [
+          "Nagu/Nauvo",
+          null,
+          "",
+          "18:00y",
+          "19:10y",
+          "",
+          "18:45y",
+          "",
+          "18:15y **"
+        ],
+        [
+          "Själö/Seili *",
+          null,
+          "",
+          "y*",
+          "y*",
+          "",
+          "y*",
+          "",
+          ""
+        ],
+        [
+          "Innamo",
+          null,
+          "",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Järvsor",
+          null,
+          "",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Maskinnamo",
+          null,
+          "",
+          "y",
+          "y",
+          "",
+          "y",
+          "",
+          "y"
+        ],
+        [
+          "Åvensor",
+          null,
+          "17:30y",
+          "20:15y",
+          "21:10y",
+          "17:30y",
+          "21:00y",
+          "",
+          "20:00y"
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "Helgtrafiken / Pyhäliikenne / Schedule for public holidays 2026:\n31.10. la/Lör/Sat Lö tidtabell / La aikataulu / Sat schedule\n6.12. Sön/su/Sun Sö tidtabell / Su aikataulu / Sun schedule\n24.12. To/to/Thu Onsdagens tidtabell till 18:40 / keskiviikon aikataulu 18:40 asti / Wednesday´s schedule until 18:40\n25.12. Fre/pe/Fri Ingen trafik / ei liikennettä / no traffic\n26.12. Lör/la/Sat Lö tidtabell 12:30 -> / La aikataulu 12:30-> / Sat schedule 12:30->\n31.12 To/to/Thu Fre tidtabell / Pe aikataulu / Fri schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027:\n1.1. Fre/pe/Fri Sö tidtabell / Su aikataulu / Sun schedule\n6.1. Ons/ke/Wed Lö tidtabell / La aikataulu / Sat schedule\n25.3. To/to/Thu Fre tidtabell / Pe aikataulu / Fri schedule\n26.3. Fre/pe/Fri Ingen trafik / ei liikennettä / no traffic\n27.3. Lör/la/Sat Ingen trafik / ei liikennettä / no traffic\n28.3. Sön/su/Sun Lö tidtabell / La aikataulu / Sat schedule\n29.3. Mån/ma/Mon Sö tidtabell / Su aikataulu / Sun schedule\n1.5. Lör/la/Sat Lö tidtabell / La aikataulu / Sat schedule\n6.5. To/to/Thu Lö tidtabell / La aikataulu / Sat schedule"
+        ],
+        [
+          "Reservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nLyftbar frakt bör beställas senast föregående dag före kl. 17 via bokningssystemet.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångstiden.\nFartygets max passagerarmängd 99, max lastkapacitet 25t, max antal personbilar 8.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas."
+        ],
+        [
+          "Autopaikan ja rahdin varaus enintään kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nNostettava rahti tilattava viimeistään edellisenä päivänä klo 17 mennessä varausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 99, max. lastikapasiteetti 25t, henkilöautomäärä 8.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää."
+        ],
+        [
+          "Reservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before departure.\nCargo to be lifted to be ordered the day before by 17 via the booking system.\nVechicles and passengers must be ready for loading 10 min before departure time.\nMax. amount of passengers 99, max. carrying capacity 25t, max. amount of cars 8.\nDue to circumstances there can be changes in the schedule or tours can be cancelled."
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "uppdaterad/päivitetty/updated 3.11.2025 1/2\nNAGU NORRA RUTTOMRÅDE / NAUVON POHJOINEN REITTIALUE /\nNAUVO NORTHERN ROUTE\nVintertidtabell / Talviaikataulu / Winter schedule\n11.8.2026 – 30.5.2027 m/s Innamo Tel./puh. 020 7118 791\nMå/ma/Mon Ti/ti/Tue Ons/ke/Wed Tors/to/Thu Fre/pe/Fri Lö/la/Sat Sö/su/Sun\nÅvensor 11:40y\nMaskinnamo y\nJärvsor y\nLavarn (Houtsala) 12:40y\nÅvensor 13:10y\nÅvensor 7:00y 7:00y 7:00y 7:00y 7:00y 8:00y 13:10y\nMaskinnamo y y y y y y y\nJärvsor y y y y y y y\nLavarn (Houtsala) 8:00y 8:00y 8:00y 8:00y 8:00y 14:10y\nLavarn (Houtsala) 8:00y 8:00y 8:00y 8:00y 8:00y 14:10y\nInnamo y\nSjälö/Seili * y*\nNagu/Nauvo 10:00\nÅvensor 8:30y 8:30y\nMaskinnamo y y\nJärvsor y y y y y\nInnamo y y y y y\nSjälö/Seili * y* y*\nNagu/Nauvo 10:20y 9:30y 10:20y 10:20y 10:20y\nNagu/Nauvo 10:50y 10:50y 10:50y\nSjälö/Seili * y* y* y*\nNagu/Nauvo 11:50y 11:50y 11:50y\nNagu/Nauvo 13:10y 13:10y 12:45y 13:10y 12:45y 12:30y\nSjälö/Seili * y* y* y*\nInnamo y y y y y y\nJärvsor y y y y y y\nMaskinnamo y y y y y y\nÅvensor 15:00y 15:00y 15:05y 15:00y 15:05y 14:40y 14:40y\nÅvensor 15:00y 15:00y 15:05y 15:00y 15:05y 14:40y 15:20y\nMaskinnamo y y y y y\nLavarn (Houtsala) 15:40y 15:40y 15:40y 15:40y 15:40y 15:10y\nLavarn (Houtsala) 15:45y 15:45y 15:45y 15:50y\nMaskinnamo y\nJärvsor y y\nInnamo y y\nSjälö/Seili * y*\nNagu/Nauvo 17:30y 17:10y\nNagu/Nauvo 17:15y **\nJärvsor y y\nMaskinnamo y y\nÅvensor 16:40y 16:45y\nÅvensor 16:40y 16:15y\nMaskinnamo y y\nLavarn (Houtsala) 15:45y 15:45y\nJärvsor y y y y\nInnamo y y y y\nMaskinnamo y y\nSjälö/Seili * y* y* y**\nNagu / Nauvo 18:40y 18:15y 18:15y **\nNagu/Nauvo 18:00y 19:10y 18:45y 18:15y **\nSjälö/Seili * y* y* y*\nInnamo y y y y\nJärvsor y y y y\nMaskinnamo y y y y\nÅvensor 17:30y 20:15y 21:10y 17:30y 21:00y 20:00y\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+    },
+    {
+      "page": 2,
+      "text": "uppdaterad/päivitetty/updated 3.11.2025 2/2\nNAGU NORRA RUTTOMRÅDE / NAUVON POHJOINEN REITTIALUE /\nNAUVO NORTHERN ROUTE\nVintertidtabell / Talviaikataulu / Winter schedule\n11.8.2026 – 30.5.2027 m/s Innamo Tel./puh. 020 7118 791\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\ny = Beställningstur. Beställs senast föregående dag kl. 17:00 via bokningssystemet.\nTilausvuoro. Tilattava viimeistään edellisenä päivänä klo 17:00 varausjärjestelmän kautta.\nNeeds to be ordered the day before by 17:00 via the booking system.\n* = Själö körs inte under tiden / Seiliin ei liikennöidä ajalla / Själö is not operated during 9.5. - 13.9.\ny** = under tiden/Ajalla/During 9.5.-31.5 & 11.8.-13.9 turen körs/vuoro ajetaan/tour is operated 17:50 Nagu-Själö-Innamo-Järvsor-Maskinnamo-Åvensor\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026:\n31.10. la/Lör/Sat Lö tidtabell / La aikataulu / Sat schedule\n6.12. Sön/su/Sun Sö tidtabell / Su aikataulu / Sun schedule\n24.12. To/to/Thu Onsdagens tidtabell till 18:40 / keskiviikon aikataulu 18:40 asti / Wednesday´s schedule until 18:40\n25.12. Fre/pe/Fri Ingen trafik / ei liikennettä / no traffic\n26.12. Lör/la/Sat Lö tidtabell 12:30 -> / La aikataulu 12:30-> / Sat schedule 12:30->\n31.12 To/to/Thu Fre tidtabell / Pe aikataulu / Fri schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027:\n1.1. Fre/pe/Fri Sö tidtabell / Su aikataulu / Sun schedule\n6.1. Ons/ke/Wed Lö tidtabell / La aikataulu / Sat schedule\n25.3. To/to/Thu Fre tidtabell / Pe aikataulu / Fri schedule\n26.3. Fre/pe/Fri Ingen trafik / ei liikennettä / no traffic\n27.3. Lör/la/Sat Ingen trafik / ei liikennettä / no traffic\n28.3. Sön/su/Sun Lö tidtabell / La aikataulu / Sat schedule\n29.3. Mån/ma/Mon Sö tidtabell / Su aikataulu / Sun schedule\n1.5. Lör/la/Sat Lö tidtabell / La aikataulu / Sat schedule\n6.5. To/to/Thu Lö tidtabell / La aikataulu / Sat schedule\nReservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nLyftbar frakt bör beställas senast föregående dag före kl. 17 via bokningssystemet.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångstiden.\nFartygets max passagerarmängd 99, max lastkapacitet 25t, max antal personbilar 8.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nAutopaikan ja rahdin varaus enintään kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nNostettava rahti tilattava viimeistään edellisenä päivänä klo 17 mennessä varausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 99, max. lastikapasiteetti 25t, henkilöautomäärä 8.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before departure.\nCargo to be lifted to be ordered the day before by 17 via the booking system.\nVechicles and passengers must be ready for loading 10 min before departure time.\nMax. amount of passengers 99, max. carrying capacity 25t, max. amount of cars 8.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 60,
+    "losslessIntent": true
+  },
+  "stopAliases": {
+    "Lavarn (Houtsala)": {
+      "canonicalId": "Lavarn",
+      "names": {
+        "fi": "Lavarn",
+        "sv": "Lavarn",
+        "en": "Lavarn"
+      },
+      "sameStop": true,
+      "locationContext": "Houtsala",
+      "locationContextType": "island_or_area",
+      "locationQualifierNeededInNormalDisplay": false,
+      "interpretation": "Lavarn is the unique pier name; Houtsala identifies the surrounding island or area, not another stop and not a disambiguating qualifier."
+    },
+    "Själö/Seili *": {
+      "canonicalId": "Seili",
+      "names": {
+        "fi": "Seili",
+        "sv": "Själö",
+        "en": "Seili"
+      },
+      "sameStop": true,
+      "secondaryDomesticNameRecommended": true,
+      "recommendedDisplays": {
+        "fi": "Seili / Själö",
+        "sv": "Själö / Seili",
+        "en": "Seili / Själö"
+      }
+    },
+    "Nagu/Nauvo": {
+      "canonicalId": "Nagu",
+      "names": {
+        "fi": "Nauvo",
+        "sv": "Nagu",
+        "en": "Nagu"
+      },
+      "sameStop": true
+    },
+    "Nagu / Nauvo": {
+      "canonicalId": "Nagu",
+      "names": {
+        "fi": "Nauvo",
+        "sv": "Nagu",
+        "en": "Nagu"
+      },
+      "sameStop": true
+    }
+  },
+  "routingPolicy": {
+    "yDoubleAsterisk": {
+      "operatingDays": "______7",
+      "validPeriods": [
+        {
+          "validFrom": "2027-05-09",
+          "validTo": "2027-05-31"
+        },
+        {
+          "validFrom": "2026-08-11",
+          "validTo": "2026-09-13"
+        }
+      ],
+      "replacementType": "combine_two_marked_services_into_one",
+      "replaces": [
+        "Nagu-Själö-Nagu",
+        "Nagu-Innamo-Järvsor-Maskinnamo-Åvensor"
+      ],
+      "combinedService": {
+        "departure": {
+          "stop": "Nagu",
+          "time": "17:50"
+        },
+        "stopOrder": [
+          "Nagu",
+          "Själö",
+          "Nagu",
+          "Innamo",
+          "Järvsor",
+          "Maskinnamo",
+          "Åvensor"
+        ],
+        "bookingRequired": true
+      },
+      "doNotOperateReplacedServicesSeparately": true
+    }
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "routeId": "kasnashitis",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-kasnashitis-kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "Avgång/Lähtö",
+          "Må / Ma",
+          "Ti / Ti",
+          "On / Ke",
+          "To / To",
+          "Fr / Pe",
+          "Lö / La",
+          "Sö / Su"
+        ],
+        [
+          "Långnäs",
+          "06.00",
+          "06.00",
+          "06.00",
+          "06.00",
+          "06.00",
+          "",
+          ""
+        ],
+        [
+          "Långnäs",
+          "07.20",
+          "07.20",
+          "07.20",
+          "07.20",
+          "07.20",
+          "07.30",
+          ""
+        ],
+        [
+          "Långnäs",
+          "08.30",
+          "08.30",
+          "08.30",
+          "08.30",
+          "08.30",
+          "09.30",
+          ""
+        ],
+        [
+          "Långnäs",
+          "9.45*",
+          "9.45*",
+          "",
+          "9.45*",
+          "9.45*",
+          "",
+          ""
+        ],
+        [
+          "Långnäs",
+          "11.00",
+          "11.00",
+          "10.00",
+          "11.00",
+          "11.00",
+          "12.00",
+          "11.30"
+        ],
+        [
+          "Långnäs",
+          "14.30",
+          "14.30",
+          "14.30",
+          "14.30",
+          "14.30",
+          "14.30",
+          "14.00"
+        ],
+        [
+          "Långnäs",
+          "16.00",
+          "16.00",
+          "16.00",
+          "16.00",
+          "16.00",
+          "16.00",
+          "16.00*"
+        ],
+        [
+          "Långnäs",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "18.00",
+          "17.30**"
+        ],
+        [
+          "Långnäs",
+          "20.00",
+          "",
+          "20.00",
+          "",
+          "20.00",
+          "20.00*",
+          "18.30**"
+        ],
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Kasnäs",
+          "06.30",
+          "06.30",
+          "06.30",
+          "06.30",
+          "06.30",
+          "",
+          ""
+        ],
+        [
+          "Kasnäs",
+          "08.00",
+          "08.00",
+          "08.00",
+          "08.00",
+          "08.00",
+          "",
+          ""
+        ],
+        [
+          "Kasnäs",
+          "09.00",
+          "09.00",
+          "09.00",
+          "09.00",
+          "09.00",
+          "09.00",
+          ""
+        ],
+        [
+          "Kasnäs",
+          "10.15*",
+          "10.15*",
+          "",
+          "10.15*",
+          "10.15*",
+          "11.30",
+          ""
+        ],
+        [
+          "Kasnäs",
+          "11.30",
+          "11.30",
+          "11.30",
+          "11.30",
+          "11.30",
+          "14.00",
+          "12.00"
+        ],
+        [
+          "Kasnäs",
+          "15.00",
+          "15.00",
+          "15.00",
+          "15.00",
+          "15.00",
+          "15.00",
+          "14.30"
+        ],
+        [
+          "Kasnäs",
+          "16.35",
+          "16.35",
+          "16.35",
+          "16.35",
+          "16.35",
+          "16.35",
+          "16.30*"
+        ],
+        [
+          "Kasnäs",
+          "18.30",
+          "18.30",
+          "18.30",
+          "18.30",
+          "18.30",
+          "18.30",
+          "18.00**"
+        ],
+        [
+          "Kasnäs",
+          "20.30",
+          "",
+          "20.30",
+          "",
+          "20.30",
+          "20.30*",
+          "19.00**"
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "Uppdaterad / päivitetty 8.10.2025\nHITIS-KASNÄS\nms Aurora\n1.1. - 31.12.2026 tfn/puh. 0400 320 092\nAvgång/Lähtö Må / Ma Ti / Ti On / Ke To / To Fr / Pe Lö / La Sö / Su\nLångnäs 06.00 06.00 06.00 06.00 06.00\nLångnäs 07.20 07.20 07.20 07.20 07.20 07.30\nLångnäs 08.30 08.30 08.30 08.30 08.30 09.30\nLångnäs 9.45* 9.45* 9.45* 9.45*\nLångnäs 11.00 11.00 10.00 11.00 11.00 12.00 11.30\nLångnäs 14.30 14.30 14.30 14.30 14.30 14.30 14.00\nLångnäs 16.00 16.00 16.00 16.00 16.00 16.00 16.00*\nLångnäs 18.00 18.00 18.00 18.00 18.00 18.00 17.30**\nLångnäs 20.00 20.00 20.00 20.00* 18.30**\nKasnäs 06.30 06.30 06.30 06.30 06.30\nKasnäs 08.00 08.00 08.00 08.00 08.00\nKasnäs 09.00 09.00 09.00 09.00 09.00 09.00\nKasnäs 10.15* 10.15* 10.15* 10.15* 11.30\nKasnäs 11.30 11.30 11.30 11.30 11.30 14.00 12.00\nKasnäs 15.00 15.00 15.00 15.00 15.00 15.00 14.30\nKasnäs 16.35 16.35 16.35 16.35 16.35 16.35 16.30*\nKasnäs 18.30 18.30 18.30 18.30 18.30 18.30 18.00**\nKasnäs 20.30 20.30 20.30 20.30* 19.00**\n* Under perioden / Ajalla 1.4. - 30.9.\n** Ej / Ei 25.12.\nHelgtrafiken / Pyhäliikenne:\nSö / Su Sön- och helgdagar / Sunnuntai- ja pyhäpäivinä\nTo 2.4. Fredagens tidtabell / Perjantain aikataulu\nTo 18.6. Fredagens tidtabell / Perjantain aikataulu\nFordonen bör vara klara för inlastning 10 min. före avgångstiden, förtur enligt NTM-centralens tillstånd.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa, etuajo-oikeus ELY-keskuksen luvalla.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nTuren reserverad för transport av farliga ämnen, begränsat passagerarantal\nVuoro varattu vaarallisten aineiden kuljetuksiin, matkustajamäärä rajoitettu\nTrafikmeddelanden och uppdaterade tidtabeller: Liikennetiedotteet ja päivitetyt aikataulut: finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 20,
+    "losslessIntent": true
+  },
+  "departureAnnotations": [
+    {
+      "operatingDays": "12345__",
+      "from": "Kasnäs",
+      "time": "06:30",
+      "type": "dangerous_goods_transport",
+      "passengerCapacityReduced": true,
+      "userNotice": {
+        "fi": "Vaarallisten aineiden kuljetus, rajoitettu matkustajamäärä",
+        "sv": "Transport av farliga ämnen, begränsat passagerarantal",
+        "en": "Dangerous goods transport, limited number of passengers"
+      }
+    },
+    {
+      "operatingDays": "12345__",
+      "from": "Långnäs",
+      "time": "08:30",
+      "type": "dangerous_goods_transport",
+      "passengerCapacityReduced": true,
+      "userNotice": {
+        "fi": "Vaarallisten aineiden kuljetus, rajoitettu matkustajamäärä",
+        "sv": "Transport av farliga ämnen, begränsat passagerarantal",
+        "en": "Dangerous goods transport, limited number of passengers"
+      }
+    }
+  ]
+}

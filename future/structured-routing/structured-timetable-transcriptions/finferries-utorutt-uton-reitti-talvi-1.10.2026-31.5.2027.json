@@ -1,0 +1,494 @@
+{
+  "routeId": "utorutt",
+  "provider": "finferries",
+  "sourceLanguageAuthority": "fi",
+  "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
+  "sourceId": "finferries-utorutt-uton-reitti-talvi-1.10.2026-31.5.2027",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-10-01",
+      "validTo": "2027-05-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "",
+          "Må/ma/Mon",
+          "Ti/ti/Tue",
+          "Ons/ke/Wed",
+          "Tors/to/Thu",
+          "Fre/pe/Fri",
+          "Lö/la/Sat",
+          "Sö/su/Sun"
+        ],
+        [
+          "Utö",
+          "06:00y (tx)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Jurmo",
+          "y (tx)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Aspö",
+          "y (tx)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Nötö",
+          "y (tx)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Pärnäs",
+          "08:15y (tx)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Pärnäs",
+          "08:30y",
+          "",
+          "11:10y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Berghamn",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Nötö",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Aspö",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Jurmo",
+          "y",
+          "",
+          "y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Utö",
+          "13:00y",
+          "",
+          "15:30y",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Utö",
+          "13:30y",
+          "",
+          "16:00y",
+          "",
+          "5:30y",
+          "10:00y",
+          "12:00y"
+        ],
+        [
+          "Jurmo",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "y",
+          "13:00y"
+        ],
+        [
+          "Aspö",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Nötö",
+          "y",
+          "",
+          "y",
+          "",
+          "y",
+          "y",
+          "y"
+        ],
+        [
+          "Berghamn",
+          "",
+          "",
+          "",
+          "",
+          "z",
+          "",
+          "y"
+        ],
+        [
+          "Pärnäs",
+          "17:45y",
+          "",
+          "20:30y",
+          "",
+          "10:00y",
+          "14:15y",
+          "17:00y"
+        ],
+        [
+          "Pärnäs",
+          "",
+          "",
+          "",
+          "13:30y",
+          "18:00y",
+          "15:25y",
+          "17:05y (tx)"
+        ],
+        [
+          "Berghamn",
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "",
+          ""
+        ],
+        [
+          "Nötö",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "y",
+          "y (tx)"
+        ],
+        [
+          "Aspö",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "y",
+          "y (tx)"
+        ],
+        [
+          "Jurmo",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "y",
+          "y (tx)"
+        ],
+        [
+          "Utö",
+          "",
+          "",
+          "",
+          "18:15y",
+          "23:00y",
+          "19:55y",
+          "19:30y (tx)"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "Fordon och frakttransporter skall bokas senast föregående dag via bokningssystemet.\nFordon och frakt måste vara vid kajen färdiga att lastas minst en timme före avgångstid.\nPassagerare bör vara i fartyget 10 min. före avgångstiden från Utö / Pärnäs.\nPassagerare från mellanholmarna borde vara vid kajen minst 15 min. före avgångstid.\nFartygets max passagerarmängd 195, max antal personbilar 19.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas."
+        ],
+        [
+          "Ajoneuvojen ja rahdin kuljetus on tilattava vähintään päivä ennen matkaa varausjärjestelmää käyttäen.\nAjoneuvojen ja rahdin tulee olla laiturilla lastausvalmiina tunti ennen lähtöä.\nMatkustajien tulee olla aluksessa 10 min ennen lähtöaikaa Utöstä tai Pärnäisistä.\nVälisaarien matkustajien tulee olla lastausvalmiita vähintään 15 min ennen ilmoitettua lähtöaikaa.\nAluksen max. matkustajamäärä 195, max. henkilöautomäärä 19.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää."
+        ],
+        [
+          "Reservations of vehicle and cargo transports to be made at least on previous day via the booking system.\nVehicles and cargo to be ready for loading at least one hour before departure time.\nPassengers must be in the vessel 10 min before departure time from Utö / Pärnäinen.\nPassengers from islands between to be ready at jetty at least 15 min before departure time.\nMax. amount of passengers 195, max. amount of cars 19.\nDue to circumstances there can be changes in the schedule or tours can be cancelled."
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "uppdaterad / päivitetty / updated 17.9.2026\nUTÖ RUTTOMRÅDE / UTÖN REITTIALUE /\nUTÖ ROUTE\nVintertidtabell / Talviaikataulu / Winter schedule\n1.10.2026 - 31.5.2027 m/s Utö Tel./puh. 020 7118 797\nMå/ma/Mon Ti/ti/Tue Ons/ke/Wed Tors/to/Thu Fre/pe/Fri Lö/la/Sat Sö/su/Sun\nUtö 06:00y (tx)\nJurmo y (tx)\nAspö y (tx)\nNötö y (tx)\nPärnäs 08:15y (tx)\nPärnäs 08:30y 11:10y\nBerghamn\nNötö y y\nAspö y y\nJurmo y y\nUtö 13:00y 15:30y\nUtö 13:30y 16:00y 5:30y 10:00y 12:00y\nJurmo y y y y 13:00y\nAspö y y y y y\nNötö y y y y y\nBerghamn z y\nPärnäs 17:45y 20:30y 10:00y 14:15y 17:00y\nPärnäs 13:30y 18:00y 15:25y 17:05y (tx)\nBerghamn y\nNötö y y y y (tx)\nAspö y y y y (tx)\nJurmo y y y y (tx)\nUtö 18:15y 23:00y 19:55y 19:30y (tx)\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\nVi önskar att passagerarna som ska äta på fartygets restaurang meddelas i förväg via bokningssystemet. Stora grupper via restaurangens telefonnummer.\nToivomme, että ravintolassa ruokailijat ilmoitetaan etukäteen varausjärjestelmän kautta. Suuret ryhmät ravintolan puhelinnumeroon: 044 5000 506.\nWe hope that passengers dining in the vessels restaurant are announced in advance via booking system. Big groups direct to the vessel's restaurant.\ny = Beställs föregående dag innan kl. 17:00 via bokningssystemet.\nTilattava edellisenä päivänä ennen klo 17:00 varausjärjestelmää käyttäen.\nTo be ordered by previous day 17:00 via booking system.\nz = Anlöpes vid behov under ojämna veckor. Beställs föregående dag innan kl. 17:00 via bokningssystemet.\nPoiketaan tarvittaessa parittomina viikkoina. Tilattava varausjärjestelmän kautta viimeistään edellisenä päivänä klo 17:00 mennessä.\nDeviates if necessary on odd numbered weeks. To be ordered at the latest previous day 17:00.\n(tx) = Turer körs med m/s Myrskylintu eller m/s Berghamn, endast persontransport. Turen är främst menad för skolbarn och lokala invånare.\nAvgången och ankomsten sker från/till byabryggan i Utö.\nVuoro ajetaan m/s Myrskylintu tai m/s Berghamn aluksilla. Ainoastaan henkilökuljetus. Vuoro on ensisijaisesti tarkoitettu koululaisille ja paikallisille asukkaille.\nLähtö ja saapuminen tapahtuvat Utön kylälaiturilta.\nTour is operated with m/s Myrskylintu or m/s Berghamn. Only person traffic. The tour is primarily intended for schoolchildren and local residents.\nDeparture and arrival take place at the village pier in Utö.\nDessa turena beställs senast lördag innan kl. 15:00. / Nämä vuorot tulee tilata viimeistään lauantaina klo 15:00 mennessä. /\nThese tours are to be ordered at the latest by Saturday 15:00.\nBussförbindelsen i Pärnäs / Bussiyhteydet Pärnäisissä / Bus connections in Pärnäinen opas.matka.fi\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026:\n6.12. Sön/su/Sun Söndagens tidtabell / Sunnuntain aikataulu / Sunday's schedule\n23.12. Ons/ke/Wed Onsdagens tidtabell / keskiviikon aikataulu / Wednesday´s schedule\n24.12. To/to/Thu Ingen trafik / ei liikennettä / no traffic\n25.12. Fre/pe/Fri Ingen trafik / ei liikennettä / no traffic\n26.12. Lör/la/Sat Onsdagens tidtabell / keskiviikon aikataulu / Wednesday´s schedule\n27.12. Sö/su/Sun Måndagens tidtabell / Maanantain aikataulu / Monday's schedule\n31.12. To/to/Thu Torsdagens tidtabell / torstain aikataulu / Thursday´s schedule\nHelgtrafiken / Pyhäliikenne / Schedule for Public holidays 2027:\n1.1 Fre/pe/Fri Lördagens tidtabell / lauantain aikataulu / Saturday´s schedule\n5.1. Ti/ti/Tue Onsdagens tidtabell / keskiviikon aikataulu / Wednesday´s schedule\n6.1. Ons/ke/Wed Ingen trafik / ei liikennettä / no traffic\n25.3. To/to /Thu Fredagens tidtabell kl. 18:00 -> / perjantain aikataulu klo 18:00-> / Friday´s schedule 18:00->\n26.3. Fre/pe/Fri Ingen trafik / ei liikennettä / No traffic\n27.3. Lör/la /Sat Lördagens tidtabell / lauantain aikataulu / Saturday´s schedule\n28.3. Sö/su/Sun Ingen trafik / Ei liikennettä / No traffic\n29.3. Mån/ma/Mon Söndagens tidtabell / Sunnuntain aikataulu / Sunday's schedule\n30.3. Ti/ti /Tue Måndagens tidtabell / Maanantain aikataulu / Monday's schedule\n1.5 Lör/la /Sat Lördagens tidtabell / lauantain aikataulu / Saturday´s schedule\n6.5 To/to/Thu Torsdagens tidtabell / torstain aikataulu / Thursday´s schedule\nFordon och frakttransporter skall bokas senast föregående dag via bokningssystemet.\nFordon och frakt måste vara vid kajen färdiga att lastas minst en timme före avgångstid.\nPassagerare bör vara i fartyget 10 min. före avgångstiden från Utö / Pärnäs.\nPassagerare från mellanholmarna borde vara vid kajen minst 15 min. före avgångstid.\nFartygets max passagerarmängd 195, max antal personbilar 19.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nAjoneuvojen ja rahdin kuljetus on tilattava vähintään päivä ennen matkaa varausjärjestelmää käyttäen.\nAjoneuvojen ja rahdin tulee olla laiturilla lastausvalmiina tunti ennen lähtöä.\nMatkustajien tulee olla aluksessa 10 min ennen lähtöaikaa Utöstä tai Pärnäisistä.\nVälisaarien matkustajien tulee olla lastausvalmiita vähintään 15 min ennen ilmoitettua lähtöaikaa.\nAluksen max. matkustajamäärä 195, max. henkilöautomäärä 19.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservations of vehicle and cargo transports to be made at least on previous day via the booking system.\nVehicles and cargo to be ready for loading at least one hour before departure time.\nPassengers must be in the vessel 10 min before departure time from Utö / Pärnäinen.\nPassengers from islands between to be ready at jetty at least 15 min before departure time.\nMax. amount of passengers 195, max. amount of cars 19.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus /\nTraffic news, exceptions and the mobile app www.finferries.fi\nVaraa matkasi varausjärjestelmän kautta / Boka din resa via bokningssystemet / Book your trip via the booking system: booking.finferries.fi"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 2,
+    "rowCount": 27,
+    "losslessIntent": true
+  },
+  "serviceRole": {
+    "principalTerminal": "Pärnäs",
+    "principalTerminalNames": {
+      "fi": "Pärnäinen",
+      "sv": "Pärnäs",
+      "en": "Pärnäs"
+    }
+  },
+  "routingPolicy": {
+    "suppressedTransferSuggestions": [
+      {
+        "arrivalTrip": "tx-monday-inbound",
+        "arrivalAtPärnäs": "08:15",
+        "departureTrip": "regular-monday-outbound",
+        "departureFromPärnäs": "08:30",
+        "physicalTransferPossible": true,
+        "recommended": false,
+        "reason": "The tx inbound service has already called at Jurmo, Aspö and Nötö. Transferring at Pärnäs to travel back towards the same islands is not a useful connection."
+      }
+    ]
+  },
+  "callConditions": {
+    "z": {
+      "stop": "Berghamn",
+      "appliesTo": {
+        "operatingDays": "____5__",
+        "trip": "Utö 05:30 - Pärnäs 10:00"
+      },
+      "operation": "booking_required",
+      "bookingDeadline": {
+        "relativeTo": "previous_day",
+        "time": "17:00"
+      },
+      "weekParity": "odd_iso_weeks_only",
+      "availableOnEvenWeeks": false
+    }
+  },
+  "holidayExceptions": [
+    {
+      "date": "2027-03-25",
+      "before": "18:00",
+      "service": "none",
+      "from": "18:00",
+      "scheduleTemplate": "friday",
+      "interpretation": "No service operates before 18:00. The normal Thursday daytime schedule is not combined with the Friday evening schedule; the approximately five-hour journey makes two such rotations impossible."
+    },
+    {
+      "date": "2027-03-29",
+      "scheduleTemplate": "sunday",
+      "shiftedOvernightRotation": "tx-sunday-monday-overnight",
+      "leg": "outbound",
+      "from": "Pärnäs",
+      "departure": "17:05",
+      "to": "Utö",
+      "arrival": "19:30",
+      "continuesOn": "2027-03-30",
+      "bookingDeadline": "2027-03-27T15:00:00+02:00"
+    },
+    {
+      "date": "2027-03-30",
+      "scheduleTemplate": "monday",
+      "shiftedOvernightRotation": "tx-sunday-monday-overnight",
+      "leg": "inbound",
+      "from": "Utö",
+      "departure": "06:00",
+      "to": "Pärnäs",
+      "arrival": "08:15",
+      "otherService": "none",
+      "normalScheduleResumes": "2027-03-31"
+    }
+  ],
+  "trips": [
+    {
+      "id": "tx-sunday-outbound",
+      "rotationId": "tx-sunday-monday-overnight",
+      "operatingDays": "______7",
+      "bookingRequired": true,
+      "bookingDeadline": {
+        "weekday": 6,
+        "time": "15:00",
+        "relation": "preceding_saturday"
+      },
+      "passengerOnly": true,
+      "generalPublicAllowed": true,
+      "vessels": [
+        "Myrskylintu",
+        "Berghamn"
+      ],
+      "continuesAs": "tx-monday-inbound",
+      "userNotices": [
+        {
+          "type": "passenger_only_priority_service",
+          "importance": "important",
+          "messages": {
+            "fi": "Vain henkilökuljetus; vuoro on tarkoitettu ensisijaisesti koululaisille ja paikallisille asukkaille",
+            "sv": "Endast persontransport; turen är främst avsedd för skolbarn och lokala invånare",
+            "en": "Passenger transport only; primarily intended for schoolchildren and local residents"
+          },
+          "effects": {
+            "vehiclesAllowed": false,
+            "localAndSchoolPriority": true,
+            "generalPublicAllowed": true,
+            "showInGeneralJourneySearch": true,
+            "availabilitySubjectToAcceptedBooking": true,
+            "UtöPier": "village_pier"
+          },
+          "sourceAnnotations": [
+            "tx"
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "stop": "Pärnäs",
+          "departure": "17:05"
+        },
+        {
+          "stop": "Nötö",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Aspö",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Jurmo",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Utö",
+          "arrival": "19:30",
+          "pier": "village_pier"
+        }
+      ]
+    },
+    {
+      "id": "tx-monday-inbound",
+      "rotationId": "tx-sunday-monday-overnight",
+      "operatingDays": "1______",
+      "bookingRequired": true,
+      "bookingDeadline": {
+        "weekday": 6,
+        "time": "15:00",
+        "relation": "preceding_saturday"
+      },
+      "passengerOnly": true,
+      "generalPublicAllowed": true,
+      "vessels": [
+        "Myrskylintu",
+        "Berghamn"
+      ],
+      "continuesFrom": "tx-sunday-outbound",
+      "userNotices": [
+        {
+          "type": "passenger_only_priority_service",
+          "importance": "important",
+          "messages": {
+            "fi": "Vain henkilökuljetus; vuoro on tarkoitettu ensisijaisesti koululaisille ja paikallisille asukkaille",
+            "sv": "Endast persontransport; turen är främst avsedd för skolbarn och lokala invånare",
+            "en": "Passenger transport only; primarily intended for schoolchildren and local residents"
+          },
+          "effects": {
+            "vehiclesAllowed": false,
+            "localAndSchoolPriority": true,
+            "generalPublicAllowed": true,
+            "showInGeneralJourneySearch": true,
+            "availabilitySubjectToAcceptedBooking": true,
+            "UtöPier": "village_pier"
+          },
+          "sourceAnnotations": [
+            "tx"
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "stop": "Utö",
+          "departure": "06:00",
+          "pier": "village_pier"
+        },
+        {
+          "stop": "Jurmo",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Aspö",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Nötö",
+          "bookingRequired": true
+        },
+        {
+          "stop": "Pärnäs",
+          "arrival": "08:15"
+        }
+      ]
+    }
+  ]
+}

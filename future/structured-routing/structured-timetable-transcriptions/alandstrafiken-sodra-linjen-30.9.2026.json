@@ -1,0 +1,1131 @@
+{
+  "routeId": "sodralinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-sodra-linjen-30.9.2026",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      9,
+      10,
+      11
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-28",
+      "validTo": "2026-12-22",
+      "schedule": "regular",
+      "sourcePages": [
+        9,
+        10
+      ]
+    },
+    {
+      "validFrom": "2026-12-23",
+      "validTo": "2026-12-25",
+      "schedule": "christmas_special",
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "validFrom": "2026-12-26",
+      "validTo": "2026-12-29",
+      "schedule": "regular",
+      "sourcePages": [
+        9,
+        10
+      ]
+    },
+    {
+      "validFrom": "2026-12-30",
+      "validTo": "2027-01-01",
+      "schedule": "new_year_special",
+      "sourcePages": [
+        11
+      ]
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 9,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "GALTBY – KÖKAR – KYRKOGÅRDSÖ – HUSÖ – SOTTUNGA – ÖVERÖ – LÅNGNÄS",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Galtby\n(Pargas)",
+          "Kökar",
+          "Kyrkogårdsö\n(Kökar)",
+          "Husö\n(Sottunga)",
+          "Sottunga2)",
+          "Överö1)2)\n(Föglö)",
+          "Långnäs2)\n(Lumparland)"
+        ],
+        [
+          "Måndag G – 06:30\nV – 09:00\nS – 15:00",
+          null,
+          null,
+          null,
+          "07:052)",
+          "–",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "09:502)",
+          "10:20",
+          "10:50",
+          "11:30"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Tisdag",
+          "S",
+          "–",
+          "06:30",
+          "–",
+          "07:202)",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          "",
+          "V",
+          "09:30",
+          "12:00",
+          "12:352)",
+          "–",
+          "13:20",
+          "13:50",
+          "14:30"
+        ],
+        [
+          "",
+          "S",
+          "–",
+          "15:00B)",
+          "15:352)B)",
+          "–",
+          "16:20B)",
+          "16:50B)",
+          "17:30"
+        ],
+        [
+          "Onsdag V – 06:30\nG – 09:00\nG – 15:00",
+          null,
+          null,
+          null,
+          "–",
+          "07:202)",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "09:352)",
+          "–",
+          "10:20",
+          "10:50",
+          "11:30"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Torsdag",
+          "S",
+          "–",
+          "06:30",
+          "07:052)",
+          "–",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          "",
+          "V",
+          "–",
+          "15:00",
+          "15:352)",
+          "15:502)",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Fredag G – 06:30\nS 09:30 12:00\nG – 14:45\nV 21:00 23:305)",
+          null,
+          null,
+          null,
+          "–",
+          "07:202)",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "12:502)",
+          "13:20",
+          "13:50",
+          "14:30"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "15:202)",
+          "–",
+          "16:05",
+          "16:35",
+          "17:15"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "00:052)",
+          "–",
+          "00:505)",
+          "01:205)",
+          "01:50"
+        ],
+        [
+          "Lördag",
+          "S",
+          "–",
+          "07:30",
+          "08:052)",
+          "–",
+          "08:50",
+          "09:20",
+          "10:00"
+        ],
+        [
+          "",
+          "G (alt. S)4)",
+          "–",
+          "14:45",
+          "15:202) U)",
+          "15:352) J)",
+          "16:05",
+          "16:35",
+          "17:15"
+        ],
+        [
+          "",
+          "G",
+          "20:153)",
+          "22:353)",
+          "–",
+          "23:252) 3)",
+          "23:553)",
+          "00:253)",
+          "01:05"
+        ],
+        [
+          "Söndag S – 07:30\nS – 14:00\nV 15:15 17:45",
+          null,
+          null,
+          null,
+          "–",
+          "08:202)",
+          "08:50",
+          "09:20",
+          "10:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "14:502)",
+          "15:20",
+          "15:50",
+          "16:30"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "18:202)",
+          "18:352)",
+          "19:05",
+          "19:35",
+          "20:15"
+        ]
+      ]
+    },
+    {
+      "page": 10,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "LÅNGNÄS – ÖVERÖ – SOTTUNGA – HUSÖ – KYRKOGÅRDSÖ – KÖKAR – GALTBY",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Långnäs\n(Lumparland)",
+          "Överö1)\n(Föglö)",
+          "Sottunga",
+          "Husö\n(Sottunga)",
+          "Kyrkogårdsö\n(Kökar)",
+          "Kökar2)",
+          "Galtby2)\n(Pargas)"
+        ],
+        [
+          "Måndag V 06:15 06:50 07:25\nS 12:00 12:35 13:10\nV 16:00 16:35 17:10\nS 18:15 18:50 19:25",
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "08:052)",
+          "08:45",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "13:502)",
+          "14:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "17:452)",
+          "–",
+          "18:30",
+          "21:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "20:052)",
+          "20:45",
+          "–"
+        ],
+        [
+          "Tisdag",
+          "S",
+          "09:15B)",
+          "09:50B)",
+          "10:25B)",
+          "–",
+          "11:052) B)",
+          "11:45",
+          "–"
+        ],
+        [
+          "",
+          "V",
+          "16:00",
+          "16:35",
+          "17:10",
+          "–",
+          "17:502)",
+          "18:30",
+          "–"
+        ],
+        [
+          "",
+          "G",
+          "18:15",
+          "18:50",
+          "19:25",
+          "20:002)",
+          "–",
+          "20:45",
+          "–"
+        ],
+        [
+          "Onsdag G 12:00 12:35 13:10\nS 18:15 18:50 19:25",
+          null,
+          null,
+          null,
+          null,
+          "13:452)",
+          "–",
+          "14:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "20:052)",
+          "20:45",
+          "–"
+        ],
+        [
+          "Torsdag",
+          "V",
+          "09:15",
+          "09:50",
+          "10:25",
+          "11:002)",
+          "–",
+          "11:45",
+          "–"
+        ],
+        [
+          "",
+          "S",
+          "16:00",
+          "16:35",
+          "17:10",
+          "17:452)",
+          "–",
+          "18:30",
+          "21:00"
+        ],
+        [
+          "",
+          "G",
+          "18:15",
+          "18:50",
+          "19:25",
+          "–",
+          "20:052)",
+          "20:45",
+          "–"
+        ],
+        [
+          "Fredag G 12:00 12:35 13:10\nV 16:00 16:35 17:10\nS 19:00 19:35 20:10",
+          null,
+          null,
+          null,
+          null,
+          "13:452)",
+          "–",
+          "14:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "17:502)",
+          "18:30",
+          "20:50"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "20:452)",
+          "–",
+          "21:30",
+          "–"
+        ],
+        [
+          "Lördag",
+          "G",
+          "06:003)",
+          "06:353)",
+          "07:103)",
+          "07:452) 3)",
+          "–",
+          "08:253)",
+          "10:503)"
+        ],
+        [
+          "",
+          "G",
+          "09:154)",
+          "09:504)",
+          "10:254)",
+          "11:002)4)",
+          "11:052)4)",
+          "11:454)",
+          "–"
+        ],
+        [
+          "",
+          "S",
+          "10:303)",
+          "11:053)",
+          "11:403)",
+          "12:152)3)",
+          "12:202)3)",
+          "13:003)",
+          "–"
+        ],
+        [
+          "",
+          "S",
+          "17:30",
+          "18:05",
+          "18:40",
+          "–",
+          "19:202)",
+          "20:00",
+          "–"
+        ],
+        [
+          "Söndag V 09:15 09:50 10:25\nS 11:00 11:35 12:10\nG 17:30 18:05 18:40",
+          null,
+          null,
+          null,
+          null,
+          "11:002)",
+          "11:052)",
+          "11:45",
+          "14:15"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "–",
+          "13:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "19:152)",
+          "–",
+          "20:00",
+          "–"
+        ]
+      ]
+    },
+    {
+      "page": 11,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "GALTBY–KÖKAR–KYRKOGÅRDSÖ–HUSÖ-SOTTUNGA–ÖVERÖ–LÅNGNÄS",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Galtby\n(Pargas)",
+          "Kökar",
+          "Kyrkogårdsö\n(Kökar)",
+          "Husö\n(Sottunga)",
+          "Sottunga2)",
+          "Överö1)2)\n(Föglö)",
+          "Långnäs2)\n(Lumparland)"
+        ],
+        [
+          "Torsdag S – 07:30\n1/1 V – 12:30",
+          null,
+          null,
+          null,
+          "–",
+          "08:202)",
+          "08:50",
+          "09:20",
+          "10:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "13:052)",
+          "13:202)",
+          "13:50",
+          "14:20",
+          "15:00"
+        ],
+        [
+          "Onsdag",
+          "V",
+          "–",
+          "06:30",
+          "–",
+          "07:202)",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          "23/12",
+          "S",
+          "–",
+          "15:00",
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "",
+          "V",
+          "15:15",
+          "17:40",
+          "18:152)",
+          "18:302)",
+          "19:00",
+          "19:30",
+          "20:10"
+        ],
+        [
+          "Torsdag S – 07:30\n24/12 V – 15:00",
+          null,
+          null,
+          null,
+          "08:052)",
+          "08:202)",
+          "08:50",
+          "09:20",
+          "10:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Fredag",
+          "S",
+          "–",
+          "12:30",
+          "–",
+          "13:202)",
+          "13:50",
+          "14:20",
+          "15:00"
+        ],
+        [
+          "25/12",
+          "V",
+          "–",
+          "15:00",
+          "15:352)",
+          "15:502)",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Tisdag 22/12 och Lördag 26/12 2026 Ordinarie turlista",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Onsdag",
+          "V",
+          "–",
+          "06:30",
+          "–",
+          "07:202)",
+          "07:50",
+          "08:20",
+          "09:00"
+        ],
+        [
+          "30/12",
+          "S",
+          "–",
+          "15:00",
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "",
+          "V",
+          "15:15",
+          "17:40",
+          "18:152)",
+          "18:302)",
+          "19:00",
+          "19:30",
+          "20:10"
+        ],
+        [
+          "Torsdag",
+          "S",
+          "–",
+          "07:30",
+          "08:052)",
+          "08:202)",
+          "08:50",
+          "09:20",
+          "10:00"
+        ],
+        [
+          "31/12",
+          "V",
+          "–",
+          "15:00",
+          "15:352)",
+          "–",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "Fredag S – 12:30\n1/1 2027 V – 15:00",
+          null,
+          null,
+          null,
+          "–",
+          "13:202)",
+          "13:50",
+          "14:20",
+          "15:00"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "15:352)",
+          "15:502)",
+          "16:20",
+          "16:50",
+          "17:30"
+        ],
+        [
+          "LÅNGNÄS – ÖVERÖ – SOTTUNGA – HUSÖ – KYRKOGÅRDSÖ – KÖKAR – GALTBY",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          "Färja",
+          "Långnäs\n(Lumparland)",
+          "Överö1)\n(Föglö)",
+          "Sottunga",
+          "Husö\n(Sottunga)",
+          "Kykogårdsö\n(Kökar)",
+          "Kökar2)",
+          "Galtby2)\n(Pargas)"
+        ],
+        [
+          "Torsdag G 11:00 11:35 12:10\n1/1 S 16:00 16:35 17:10",
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "12:502)",
+          "13:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "17:452)",
+          "17:502)",
+          "18:30",
+          "21:00"
+        ],
+        [
+          "Onsdag",
+          "V",
+          "–",
+          "–",
+          "–",
+          "–",
+          "–",
+          "11:45",
+          "14:15"
+        ],
+        [
+          "23/12",
+          "S",
+          "11:00",
+          "11:35",
+          "12:10",
+          "12:452)",
+          "–",
+          "13:30",
+          "–"
+        ],
+        [
+          "",
+          "S",
+          "18.15",
+          "18:50",
+          "19:25",
+          "–",
+          "20:052)",
+          "20:45",
+          "–"
+        ],
+        [
+          "Torsdag V 11:00 11:35 12:10\n24/12 S 16:00 16:35 17:10",
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "12:502)",
+          "13:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "17:452)",
+          "–",
+          "18:30",
+          "–"
+        ],
+        [
+          "Fredag",
+          "V",
+          "11:00",
+          "11:35",
+          "12:10",
+          "–",
+          "12:502)",
+          "13:30",
+          "–"
+        ],
+        [
+          "25/12",
+          "S",
+          "16:00",
+          "16:35",
+          "17:10",
+          "17:452)",
+          "–",
+          "18:30",
+          "–"
+        ],
+        [
+          "Tisdag 22/12 och Lördag 26/12 2026 Ordinarie turlista",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Onsdag V – – –\n30/12 S 11:00 11:35 12:10\nS 18:15 18:50 19:25",
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "–",
+          "11:45",
+          "14:15"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "12:452)",
+          "–",
+          "13:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "20:052)",
+          "20:45",
+          "–"
+        ],
+        [
+          "Torsdag",
+          "V",
+          "11:00",
+          "11:35",
+          "12:10",
+          "–",
+          "12:502)",
+          "13:30",
+          "–"
+        ],
+        [
+          "31/12",
+          "S",
+          "16:00",
+          "16:35",
+          "17:10",
+          "17:452)",
+          "–",
+          "18:30",
+          "–"
+        ],
+        [
+          "Fredag V 11:00 11:35 12:10\n1/1 2027 S 16:00 16:35 17:10",
+          null,
+          null,
+          null,
+          null,
+          "–",
+          "12:502)",
+          "13:30",
+          "–"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          "17:452)",
+          "–",
+          "18:30",
+          "–"
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 9,
+      "text": "20\nSödra linjen 28/9–31/12 2026 UPPDATERAD 29/9 2026\nGALTBY – KÖKAR – KYRKOGÅRDSÖ – HUSÖ – SOTTUNGA – ÖVERÖ – LÅNGNÄS\nFärja Galtby Kökar Kyrkogårdsö Husö Sottunga2) Överö1)2) Långnäs2)\n(Pargas) (Kökar) (Sottunga) (Föglö) (Lumparland)\nMåndag G – 06:30 07:052) – 07:50 08:20 09:00\nV – 09:00 – 09:502) 10:20 10:50 11:30\nS – 15:00 15:352) – 16:20 16:50 17:30\nTisdag S – 06:30 – 07:202) 07:50 08:20 09:00\nV 09:30 12:00 12:352) – 13:20 13:50 14:30\nS – 15:00B) 15:352)B) – 16:20B) 16:50B) 17:30\nOnsdag V – 06:30 – 07:202) 07:50 08:20 09:00\nG – 09:00 09:352) – 10:20 10:50 11:30\nG – 15:00 15:352) – 16:20 16:50 17:30\nTorsdag S – 06:30 07:052) – 07:50 08:20 09:00\nV – 15:00 15:352) 15:502) 16:20 16:50 17:30\nFredag G – 06:30 – 07:202) 07:50 08:20 09:00\nS 09:30 12:00 – 12:502) 13:20 13:50 14:30\nG – 14:45 15:202) – 16:05 16:35 17:15\nV 21:00 23:305) 00:052) – 00:505) 01:205) 01:50\nLördag S – 07:30 08:052) – 08:50 09:20 10:00\nG (alt. S)4) – 14:45 15:202) U) 15:352) J) 16:05 16:35 17:15\nG 20:153) 22:353) – 23:252) 3) 23:553) 00:253) 01:05\nSöndag S – 07:30 – 08:202) 08:50 09:20 10:00\nS – 14:00 – 14:502) 15:20 15:50 16:30\nV 15:15 17:45 18:202) 18:352) 19:05 19:35 20:15\nM/S Gudingen tel. +358 (0)407 693 687, M/S Skiftet tel. +358 (0)400 350 265, M/S Viggen tel. +358 (0)400 330 455. Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION TIETOJA INFORMATION\nPassbåt kombinerar i Sottunga för resenärer utan Jatkoyhteys yhteysveneellä Sottungassa matkus- Passengerboat connection in Sottunga for pas-\nfordon från Husö, Kyrkogårdsö, Finnö och Hästö. tajille ilman ajoneuova Husöstä, Kyrkogårdsöstä, sengers without vehicles from Husö, Kyrkogårdsö,\nInfo om passbåtstrafiken, sid. 23. Finnöstä ja Hästöstä. Tieto yhteysvene liikenteestä, Finnö and Hästö. Info about passboats traffic, p.\n1) Överö angöres mot beställning till färjan senast s. 23. 23.\n45 min före ankomst till Överö. Överö–Långnäs 1) Överöhön liikennöidään tilauksesta ottamalla 1) Via Överö by ordering to the ferry no later than\nyhteyttä lauttaan viimeistään 45 min ennen sen\nkan inte bokas. 45 min prior arrival to Överö. Överö–Långnäs can\nsaapumista Överöhön. Överö–Långnäs ei voi\nnot be booked.\n2) Husö och Kyrkogårdsö angöres mot bokning varata.\ntill Ålandstrafiken senast 1 h före avgång från 2) Husöhön ja Kyrkogårdsöhön liikennöidään vara- 2) Husö and Kyrkogårdsö only by booking to\nstarthamn. Då Kyrkogårdsö angörs försenas uksesta Ålandstrafikenille viimeistään 1 h ennen Ålandstrafiken no later than 1 h before departure\ntiderna efter Kyrkogårdsö med ca 20 min. Då lautan lähtöä lähtösatamasta. Kyrkogårdsöhön in start harbour. When calling Kyrkogårdsö the\nHusö angörs försenas tiderna efter Husö med liikennöitäessä saapumisaika seuraaviin satamiin arrival time to the following harbours is about 20\nca 10 min. Invikning till Kyrkogårdsö eller Husö on n. 20 min ilmoitettua myöhemmin. Husöhön min later. When calling Husö the arrival time is\nliikennöitäessä saapumisaika seuraaviin satamiin\nkan beställas av passagerare med fordon. about 10 min later to the following harbours. The\non noin 10 min myöhemmin. Vuoron voivat varata\nPassagerare utan fordon samt gods som kan ferry to Kyrkogårdsö or Husö can be ordered by\nKyrkogårdsöhön ja Husöhön ajoneuvon kanssa\nhanteras manuellt hänvisas till passbåten, sid. 23. matkustavat. Ilman ajoneuvoa matkustavat sekä passengers with vehicles. Passengers without\nPassagerare utan fordon kan beställa invikning till manuaalisesti käsiteltävät tavarakuljetukset vehicles and goods handled manually are sent\nde turer som saknar kombination med passbåt. ohjataan yhteysveneeseen, s. 23. Ilman ajoneuvoa to the passengerboat, p. 23. Passengers without\nInvikning utan fordon får passagerare till/från matkustavat voivat tehdä varauksen niille laut- wehicles can order the ferry departures that are\nGaltby göra. tavuoroille, jolle ei ole yhteyttä yhteysveneellä. not combined with passengerboat. Trafficing\nLiikkennöinti ilman ajoneuvoa saavat tehdä kaikki without vehicles can be made of all passengers\n3) Trafikerar endast lör 7/2, 11/4, 3/10, 7/11, 5/12. Galtbystä tai Galtbyhyn matkaavat. to/from Galtby.\n4) Trafikeras av M/S Gudingen förutom lör 7/2,\n3) Liikennöidään ainoastaan la 7/2, 11/4, 3/10, 3) Traffic only Sat 7/2, 11/4, 3/10, 7/11, 5/12.\n11/4, 3/10, 7/11, 5/12 som körs av M/S Skiftet.\n7/11, 5/12.\n5) Angöres mot bokning till Ålandstrafiken senast 4) Traffic with M/S Gudingen except Sat 7/2, 11/4,\n4) Liikennöidään M/S Gudingenillä paitsi la 7/2, 3/10, 7/11, 5/12 wich traffics by M/S Skiftet.\n1 h före avg. i starthamn.\n11/4, 3/10, 7/11, 5/12 M/S Skiftetillä.\nB) Trafikerar alla veckor, men udda veckor som 5) Only when booked in advance to Ålandstrafiken\n5) Liikennöidään varauksesta Ålandstrafikenille vii- no later than 1 h before departure in start harbour.\nbränsletur som bokas senast tors kl. 12:00 hos meistään 1 h ennen lautan lähtöä lähtösatamasta.\nÅlandstrafiken. B) Traffic all weeks, but odd weeks as fuel trans-\nB) Liikennöidään joka viikko mutta parittomina port to be booked no later than Thu at 12:00 to\nMax 20 pass medtas på bränsletur. viikkoina polttoainekuljetusvuorona joka varataan\nÅlandst rafiken.\nJ) Körs endast jämna veckor viimeistään to klo 12:00 Ålandstrafikeniltä.\nMax number of pax 20 at fuel transportation.\nU) Körs endast udda veckor Maksimihenkilömäärä polttoainekuljetuksissa 20.\nFordon ska vara klara att köra ombord senast J) Liikennöidään vain parillisina viikkoina. J) Even weeks only.\n15 min före annonserad avgångstid i starthamn. U) Liikennöidään vain parittomina viikkoina. U) Odd weeks only.\nFärjan kan avgå 5 min före utsatt avg. tid förutom Ajoneuvojen tulee olla valmiina lastaukseen Vehicles must be ready to embark at least 15 min\nvid avgång från färjans starthamn. aloitussatamassa 15 min ennen ilmoitettua läh- prior to the dep.time in start harbour. The ferry\ntöaikaa. Lautta voi lähteä 5 min ennen ilmoitettua can depart 5 min before scheduled dep. time\naikaa paitsi lautan lähtösatamasta. except when departing from the ferrys start\nharbour.\nPåsk- och jultrafik, sid. 14, 22. Pääsiäis- ja joululiikenne, s. 14, 22. For Easter and Christmas schedules, p. 14, 22.\nTors 1/1 Se julturlistan. To 1/1 Katso joulun aikataulu. Thu 1/1 See the Christmas schedule.\nTis 6/1 Tisdagstrafik. Ti 6/1 Tiistailiikenne. Tue 6/1 Tuesday schedule.\nTo 15/10 Lisävuoro klo 10:00 Galtbystä\nTors 15/10 Extratur kl. 10:00 från Galtby till Thu 15/10 Additional departure at 10:00\nLångnäsiin M/S Viggenillä, Husöhön\nLångnäs med M/S Viggen, via Husö mot from Galtby to Långnäs with M/S Viggen, via\nliikennöidään varauksesta. Vuoro klo 15:00\nbokning. Avg. kl. 15:00 med M/S Gudingen. Husö by booking in advance. Departure at\nM/S Gudingenillä.\n15:00 with M/S Gudingen."
+    },
+    {
+      "page": 10,
+      "text": "21\nSödra linjen 28/9–31/12 2026 UPPDATERAD 29/9 2026\nLÅNGNÄS – ÖVERÖ – SOTTUNGA – HUSÖ – KYRKOGÅRDSÖ – KÖKAR – GALTBY\nFärja Långnäs Överö1) Sottunga Husö Kyrkogårdsö Kökar2) Galtby2)\n(Lumparland) (Föglö) (Sottunga) (Kökar) (Pargas)\nMåndag V 06:15 06:50 07:25 – 08:052) 08:45 –\nS 12:00 12:35 13:10 – 13:502) 14:30 –\nV 16:00 16:35 17:10 17:452) – 18:30 21:00\nS 18:15 18:50 19:25 – 20:052) 20:45 –\nTisdag S 09:15B) 09:50B) 10:25B) – 11:052) B) 11:45 –\nV 16:00 16:35 17:10 – 17:502) 18:30 –\nG 18:15 18:50 19:25 20:002) – 20:45 –\nOnsdag G 12:00 12:35 13:10 13:452) – 14:30 –\nS 18:15 18:50 19:25 – 20:052) 20:45 –\nTorsdag V 09:15 09:50 10:25 11:002) – 11:45 –\nS 16:00 16:35 17:10 17:452) – 18:30 21:00\nG 18:15 18:50 19:25 – 20:052) 20:45 –\nFredag G 12:00 12:35 13:10 13:452) – 14:30 –\nV 16:00 16:35 17:10 – 17:502) 18:30 20:50\nS 19:00 19:35 20:10 20:452) – 21:30 –\nLördag G 06:003) 06:353) 07:103) 07:452) 3) – 08:253) 10:503)\nG 09:154) 09:504) 10:254) 11:002)4) 11:052)4) 11:454) –\nS 10:303) 11:053) 11:403) 12:152)3) 12:202)3) 13:003) –\nS 17:30 18:05 18:40 – 19:202) 20:00 –\nSöndag V 09:15 09:50 10:25 11:002) 11:052) 11:45 14:15\nS 11:00 11:35 12:10 – – 13:30 –\nG 17:30 18:05 18:40 19:152) – 20:00 –\nM/S Gudingen tel. +358 (0)407 693 687, M/S Skiftet tel. +358 (0)400 350 265, M/S Viggen tel. +358 (0)400 330 455. Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION TIETOJA INFORMATION\nPassbåt kombinerar i Sottunga för resenärer utan Jatkoyhteys yhteysveneellä Sottungassa matkus- Passengerboat connection in Sottunga for pas-\nfordon till Husö, Kyrkogårdsö, Finnö och Hästö. tajille ilman ajoneuova Husöhön, Kyrkogårdsöhön, sengers without vehicles to Husö, Kyrkogårdsö,\nInfo om passbåtstrafiken, sid. 23. Finnöhön ja Hästöhön. Tieto yhteysvene liiken- Finnö and Hästö. Info about passboats traffic, p.\nteestä, s. 23.\n1) Överö angöres mot beställning till färjan senast 1) Överöhön liikennöidään tilauksesta ottamalla 23.\n45 min före ankomst till Överö. Långnäs-Överö yhteyttä lauttaan viimeistään 45 min ennen sen 1) Via Överö by ordering to the respective ferry no\nkan inte bokas. saapumista Överöhön. Långnäs–Överö ei voi later than 45 min prior arrival to Överö. Långnäs–\nvarata. Överö can not be booked.\n2) Husö och Kyrkogårdsö angöres mot bokning\n2) Husöhön ja Kyrkogårdsöhön liikennöidään vara-\ntill Ålandstrafiken senast 1 h före avgång från 2) Husö and Kyrkogårdsö only by booking to\nuksesta Ålandstrafikenille viimeistään 1 h ennen\nstarthamn. Då Kyrkogårdsö angörs försenas Ålandstrafiken no later than 1 h before departure\nlautan lähtöä lähtösatamasta. Kyrkogårdsöhön\ntiderna efter Kyrkogårdsö med ca 20 min. Då liikennöitäessä saapumisaika seuraaviin satamiin in start harbour. When calling Kyrkogårdsö the\nHusö angörs försenas tiderna efter Husö med on n. 20 min ilmoitettua myöhemmin. Husöhön arrival time to the following harbours is about 20\nca 10 min. Invikning till Kyrkogårdsö eller Husö liikennöitäessä saapumisaika seuraaviin satamiin min later. When calling Husö the arrival time is\nkan beställas av passagerare med fordon. on noin 10 min myöhemmin. Vuoron voivat varata about 10 min later to the following harbours. The\nPassagerare utan fordon samt gods som kan Kyrkogårdsöhön ja Husöhön ajoneuvon kanssa ferry to Kyrkogårdsö or Husö can be ordered by\nhanteras manuellt hänvisas till passbåten, sid. 23. matkustavat. Ilman ajoneuvoa matkustavat sekä passengers with vehicles. Passengers without\nPassagerare utan fordon kan beställa invikning till manuaalisesti käsiteltävät tavarakuljetukset vehicles and goods handled manually are sent\nde turer som saknar kombination med passbåt. ohjataan yhteysveneeseen, s. 23. Ilman ajoneuvoa to the passengerboat, p. 23. Passengers without\nInvikning utan fordon får passagerare till/från matkustavat voivat tehdä varauksen niille laut- wehicles can order the ferry departures that are\nGaltby göra. tavuoroille, jolle ei ole yhteyttä yhteysveneellä. not combined with passengerboat. Trafficing\nLiikkennöinti ilman ajoneuvoa saavat tehdä kaikki\nwithout vehicles can be made of all passengers\nGaltbystä tai Galtbyhyn matkaavat.\n3) Trafikerar endast lör 7/2, 11/4, 3/10, 7/11, 5/12. to/from Galtby.\n4) Trafikerar ej lör 7/2, 11/4, 3/10, 7/11, 5/12. 3) Liikennöidään ainoastaan la 7/2, 11/4, 3/10, 3) Traffic only Sat 7/2, 11/4, 3/10, 7/11, 5/12.\n7/11, 5/12.\nB) Trafikerar alla veckor, men udda veckor som 4) No traffic Sat 7/2, 11/4, 3/10, 7/11, 5/12.\nbränsletur som bokas senast tors kl. 12:00 hos 4) Ei liikennöidään la 7/2, 11/4, 3/10, 7/11, 5/12.\nÅlandstrafiken. B) Liikennöidään joka viikko mutta parittomina B) Traffic all weeks, but odd weeks as fuel trans-\nviikkoina polttoainekuljetusvuorona joka varataan port to be booked no later than Thu at 12:00 to\nMax 20 pass medtas på bränsletur. viimeistään to klo 12:00 Ålandstrafikenilta. Ålandst rafiken.\nBegränsad busstrafik under lör, sön och helgdag. Maksimihenkilömäärä polttoainekuljetuksissa 20. Max number of pax 20 at fuel transportation.\nFordon ska vara klara att köra ombord senast Rajoitettu linja-autoliikenne la, su ja pyhäpäivisin. Limited bus connections on Saturdays, Sundays\n15 min före annonserad avgångstid i starthamn. Ajoneuvojen tulee olla valmiina lastaukseen and public holidays.\nF vi ä d r j a a v n g k å a n n g a fr v å g n å f 5 ä r m ja i n n s f ö s r t e a r u t t h s a a m tt n a . vg. tid förutom a ai l k o a i t a u a s . s L a a ta u m tta a s v s o a i l 1 ä 5 h m te i ä n 5 e n m n i e n n e i n lm ne o n it i e lm ttu o a it e lä t h tu tö a - Vehicles must be ready to embark at least 15 min\nprior to the dep.time in start harbour. The ferry\naikaa paitsi lautan lähtösatamasta.\ncan depart 5 min before scheduled dep. time\nexcept when departing from the ferrys start\nharbour.\nPåsk- och jultrafik, sid. 14, 22. Pääsiäis- ja joululiikenne, s. 14, 22. For Easter and Christmas schedules, p. 14, 22.\nTors 1/1 Se julturlistan. To 1/1 Katso joulun aikataulu. Thu 1/1 See the Christmas schedule.\nTis 6/1 Tisdagstrafik. Ti 6/1 Tiistailiikenne. Tue 6/1 Tuesday schedule.\nOns 14/10 Extratur kl. 16:00 från Långnäs till Ke 14/10 Lisävuoro klo 16:00 Långnäsistä Wed 14/10 Additional departure at 16:00\nGaltby med M/S Viggen, via Kyrkogårdsö mot Galtbyhyn M/S Viggenillä, Kyrkogårdsöhön from Långnäs to Galtby with M/S Viggen, via\nbokning. liikennöidään varauksesta. Kyrkogårdsö by booking in advance.\nTors 15/10 Avg. kl. 09:15 med M/S Gudingen. Tors 15/10 Vuoro klo 09:15 M/S Gudingenillä. Tors 15/10 Dep. at 09:15 with M/S Gudingen."
+    },
+    {
+      "page": 11,
+      "text": "22\nSödra linjen 24–26/12 och 30/12 2026–1/1 2027\nJul | Joulu | Christmas UPPDATERAD 29/9 2026\nGALTBY–KÖKAR–KYRKOGÅRDSÖ–HUSÖ-SOTTUNGA–ÖVERÖ–LÅNGNÄS\nFärja Galtby Kökar Kyrkogårdsö Husö Sottunga2) Överö1)2) Långnäs2)\n(Pargas) (Kökar) (Sottunga) (Föglö) (Lumparland)\nTorsdag S – 07:30 – 08:202) 08:50 09:20 10:00\n1/1 V – 12:30 13:052) 13:202) 13:50 14:20 15:00\nOnsdag V – 06:30 – 07:202) 07:50 08:20 09:00\n23/12 S – 15:00 15:352) – 16:20 16:50 17:30\nV 15:15 17:40 18:152) 18:302) 19:00 19:30 20:10\nTorsdag S – 07:30 08:052) 08:202) 08:50 09:20 10:00\n24/12 V – 15:00 15:352) – 16:20 16:50 17:30\nFredag S – 12:30 – 13:202) 13:50 14:20 15:00\n25/12 V – 15:00 15:352) 15:502) 16:20 16:50 17:30\nTisdag 22/12 och Lördag 26/12 2026 Ordinarie turlista\nOnsdag V – 06:30 – 07:202) 07:50 08:20 09:00\n30/12 S – 15:00 15:352) – 16:20 16:50 17:30\nV 15:15 17:40 18:152) 18:302) 19:00 19:30 20:10\nTorsdag S – 07:30 08:052) 08:202) 08:50 09:20 10:00\n31/12 V – 15:00 15:352) – 16:20 16:50 17:30\nFredag S – 12:30 – 13:202) 13:50 14:20 15:00\n1/1 2027 V – 15:00 15:352) 15:502) 16:20 16:50 17:30\nLÅNGNÄS – ÖVERÖ – SOTTUNGA – HUSÖ – KYRKOGÅRDSÖ – KÖKAR – GALTBY\nFärja Långnäs Överö1) Sottunga Husö Kykogårdsö Kökar2) Galtby2)\n(Lumparland) (Föglö) (Sottunga) (Kökar) (Pargas)\nTorsdag G 11:00 11:35 12:10 – 12:502) 13:30 –\n1/1 S 16:00 16:35 17:10 17:452) 17:502) 18:30 21:00\nOnsdag V – – – – – 11:45 14:15\n23/12 S 11:00 11:35 12:10 12:452) – 13:30 –\nS 18.15 18:50 19:25 – 20:052) 20:45 –\nTorsdag V 11:00 11:35 12:10 – 12:502) 13:30 –\n24/12 S 16:00 16:35 17:10 17:452) – 18:30 –\nFredag V 11:00 11:35 12:10 – 12:502) 13:30 –\n25/12 S 16:00 16:35 17:10 17:452) – 18:30 –\nTisdag 22/12 och Lördag 26/12 2026 Ordinarie turlista\nOnsdag V – – – – – 11:45 14:15\n30/12 S 11:00 11:35 12:10 12:452) – 13:30 –\nS 18:15 18:50 19:25 – 20:052) 20:45 –\nTorsdag V 11:00 11:35 12:10 – 12:502) 13:30 –\n31/12 S 16:00 16:35 17:10 17:452) – 18:30 –\nFredag V 11:00 11:35 12:10 – 12:502) 13:30 –\n1/1 2027 S 16:00 16:35 17:10 17:452) – 18:30 –\nM/S Skiftet tel. +358 (0)400 350 265, M/S Viggen tel. +358 (0)400 330 455. Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION INFORMATION INFORMATION\nPassbåt kombinerar i Sottunga för resenärer utan Jatkoyhteys yhteysveneellä Sottungassa mat- Passengerboat connection in Sottunga for\nfordon från/till Husö, Kyrkogårdsö, Finnö och kustajille ilman ajoneuova Husöstä, Kyrkogårdsö- passengers without vehicles from/to Husö, Kyr-\nHästö. Info om passbåtstrafiken, sid. 21. stä, Finnöstä ja Hästöstä tai päin vastoin. Tieto kogårdsö, Finnö and Hästö. Info about passboats\n1) Överö angöres mot beställning till färjan senast yhteysvene liikenteestä, s. 21. traffic, p. 21.\n45 min före ankomst till Överö. Långnäs–Överö– 1) Överöhön liikennöidään tilauksesta ottamalla 1) Via Överö by ordering to the ferry no later than\nLångnäs kan inte bokas. yhteyttä lauttaan viimeistään 45 min ennen sen 45 min prior arrival to Överö. Långnäs–Överö–\nsaapumista Överöhön. Långnäs–Överö–Långnäs Långnäs can not be booked.\n2) Husö och Kyrkogårdsö angöres mot bokning ei voi varata.\ntill Ålandstrafiken senast 1 h före avgång från 2) Husö and Kyrkogårdsö only by booking to\nstarthamn. Då Kyrkogårdsö angörs försenas 2) Husöhön ja Kyrkogårdsöhön liikennöidään vara- Ålandstrafiken no later than 1 h before departure\ntiderna efter Kyrkogårdsö, med ca 20 min. Då uksesta Ålandstrafikenille viimeistään 1 h ennen in start harbour. When calling Kyrkogårdsö the\nHusö angörs försenas tiderna efter Husö, med ca lautan lähtöä lähtösatamasta. Kyrkogårdsöhön arrival time to the following harbours is about 20\n10 min. Invikning till Kyrkogårdsö eller Husö kan liikennöitäessä saapumisaika seuraaviin satamiin min later. When calling Husö the arrival time is\nbeställas av passagerare med fordon. Passage- on n. 20 min ilmoitettua myöhemmin. Husöhön about 10 min later to the following harbours. The\nrare utan fordon samt gods som kan hanteras liikennöitäessä saapumisaika seuraaviin satamiin ferry to Kyrkogårdsö or Husö can be ordered by\nmanuellt hänvisas till passbåten, sid 21. Invikning on noin 10 min myöhemmin. Vuoron voivat varata passengers with vehicles. Passengers without\nutan fordon får passagerare till/från Galtby göra. Kyrkogårdsöhön ja Husöhön ajoneuvon kanssa vehicles and goods handled manually are sent to\nmatkustavat. Ilman ajoneuvoa matkustavat sekä the passengerboats, page 21. Trafficing without\nFordon ska vara klara att köra ombord senast manuaalisesti käsiteltävät tavarakuljetukset vehicles can be made of all passengers to/from\n15 min före annonserad avgångstid i starthamn. ohjataan yhteysveneeseen, ks. 21. Liikkennöinti Galtby.\nFärjan kan avgå 5 min före utsatt avg. tid förutom ilman ajoneuvoa saavat tehdä kaikki Galtbystä tai\nvid avgång från färjans starthamn. Galtbyhyn matkaavat. Vehicles must be ready to embark at least 15 min\nprior to the dep.time in start harbour. The ferry can\nAjoneuvojen tulee olla valmiina lastaukseen depart 5 min before scheduled dep. time except\naloitussatamassa 15 min ennen ilmoitettua läh- when departing from the ferrys start harbour.\ntöaikaa. Lautta voi lähteä 5 min ennen ilmoitettua\naikaa paitsi lautan lähtösatamasta."
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 3,
+    "rowCount": 85,
+    "losslessIntent": true
+  },
+  "callConditions": {
+    "HusöAndKyrkogårdsö": {
+      "stops": [
+        "Husö",
+        "Kyrkogårdsö"
+      ],
+      "operation": "booking_required",
+      "bookingDeadline": {
+        "minutesBeforeDepartureFromOrigin": 60
+      },
+      "withVehicle": {
+        "ferryCallMayBeBooked": true
+      },
+      "withoutVehicle": {
+        "default": "use_connecting_passenger_boat_via_Sottunga",
+        "ferryCallMayBeBookedWhen": [
+          "no_connecting_passenger_boat_is_available",
+          "journey_is_to_or_from_Galtby"
+        ]
+      },
+      "downstreamDelayMinutesApproximate": {
+        "Husö": 10,
+        "Kyrkogårdsö": 20
+      },
+      "combinedCalls": {
+        "assumedDownstreamDelayMinutesApproximate": 30,
+        "calculation": "sum_of_individual_published_delays",
+        "confidence": "low",
+        "historicalValidationRequired": true,
+        "uncertainty": "A smaller fairway appears to connect Husö and Kyrkogårdsö. If the ferries use it, the delays may not be cumulative."
+      }
+    },
+    "Överö": {
+      "operation": "booking_required",
+      "bookingDeadline": {
+        "minutesBeforeEstimatedArrivalAtStop": 45
+      },
+      "eligibleJourneys": {
+        "fromÖverö": "eastbound_beyond_Överö",
+        "toÖverö": "arriving_from_the_east"
+      },
+      "ineligibleJourneys": [
+        "Överö-Långnäs",
+        "Långnäs-Överö"
+      ],
+      "geographicContext": {
+        "GaltbySide": "east",
+        "LångnäsSide": "west"
+      }
+    }
+  },
+  "timeNotationPolicy": {
+    "tripOrigin": {
+      "earliestDepartureOffsetMinutes": 0,
+      "publishedTimeNature": "scheduled_not_early"
+    },
+    "intermediateStops": {
+      "earliestDepartureOffsetMinutes": -5,
+      "latestDepartureOffsetMinutes": 0,
+      "publishedTimeNature": "may_depart_up_to_five_minutes_early",
+      "passengerAdvice": "be_ready_at_least_five_minutes_before_published_time"
+    }
+  },
+  "routingPolicy": {
+    "specialSaturdays": {
+      "dates": [
+        "2026-10-03",
+        "2026-11-07",
+        "2026-12-05"
+      ],
+      "LångnäsToGaltby": {
+        "operateDepartures": [
+          "06:00",
+          "10:30"
+        ],
+        "suppressDeparture": "09:15"
+      },
+      "GaltbyToLångnäs": {
+        "operateDeparture": "20:15",
+        "departure14:45": {
+          "operates": true,
+          "vessel": "M/S Skiftet",
+          "replacesUsualVessel": "M/S Gudingen"
+        }
+      }
+    },
+    "otherSaturdays": {
+      "LångnäsToGaltby": {
+        "operateDeparture": "09:15",
+        "suppressDepartures": [
+          "06:00",
+          "10:30"
+        ]
+      },
+      "GaltbyToLångnäs": {
+        "suppressDeparture": "20:15",
+        "departure14:45": {
+          "operates": true,
+          "vessel": "M/S Gudingen"
+        }
+      }
+    },
+    "sourceFootnoteWarning": "Footnote 4 has different semantics in the two direction tables: service suppression from Långnäs, but only a vessel substitution from Galtby."
+  }
+}

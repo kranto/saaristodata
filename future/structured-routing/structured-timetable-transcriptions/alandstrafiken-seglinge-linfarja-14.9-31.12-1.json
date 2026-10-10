@@ -1,0 +1,224 @@
+{
+  "routeId": "seglingelinjen",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-seglinge-linfarja-14.9-31.12-1",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-09-14",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "AVGÅNGSTIDER FRÅN SEGLINGE (SEGLINGE–SNÄCKÖ)",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "TRAFIK VID BEHOV 22:20–05:40",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "06 001) – – 40 –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "07",
+          "–",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "08 00 – – 40 –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "09",
+          "",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "10 – 10 – – –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "11",
+          "–",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "12 – 10",
+          null,
+          null,
+          "302)",
+          "– 50",
+          null
+        ],
+        [
+          "13",
+          "–",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "14 – 10 – 40 –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "15",
+          "–",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "16 – 10 – – 50",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "17",
+          "–",
+          "–",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "18 – 10 – 40 –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "19",
+          "00",
+          "–",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "20 – 10 – 40 –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "21",
+          "–",
+          "10",
+          "–",
+          "40",
+          "–"
+        ],
+        [
+          "22 00 – – – –",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "TRAFIKUPPEHÅLL",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Alla dagar:",
+          "",
+          "10:30–11:05\n17:00–17:35",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2) Lördag, söndag och helgdag: Rödmarkerad tur utgår.",
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "Seglinge linfärja 14/9–31/12 2026 UPPDATERAD 27/8 2026\nAVGÅNGSTIDER FRÅN SEGLINGE (SEGLINGE–SNÄCKÖ)\nTRAFIK VID BEHOV 22:20–05:40\n06 001) – – 40 –\n07 – 10 – 40 –\n08 00 – – 40 –\n09 10 – 40 –\n10 – 10 – – –\n11 – 10 – 40 –\n12 – 10 302) – 50\n13 – 10 – 40 –\n14 – 10 – 40 –\n15 – 10 – 40 –\n16 – 10 – – 50\n17 – – – 40 –\n18 – 10 – 40 –\n19 00 – – 40 –\n20 – 10 – 40 –\n21 – 10 – 40 –\n22 00 – – – –\nTRAFIKUPPEHÅLL\nAlla dagar: 10:30–11:05\n17:00–17:35\n2) Lördag, söndag och helgdag: Rödmarkerad tur utgår.\nSeglinge linfärja +358 (0)407 685 792, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Seglinge.\nAvgångstid från Snäckö till Seglinge är cirka 7 minuter efter angiven avgångstid från\nSeglinge.\nRetur från Snäckö efter ankomst från Seglinge kan vid behov senareläggas av färje-\nföraren med upp till 10 minuter för nyttotrafik och övriga trafikanter som har en giltig\nförklaring till förseningen.\nOm det inte finns någon trafikant vid Seglinge eller Snäckö färjefäste vid angiven tid från\nSeglinge, körs inte turen.\nFör att säkerhetställa att turen körs från Snäckö måste trafikanten befinna sig vid Snäckö\nfärjefäste senast vid den angivna avgångstiden från Seglinge (se vidstående turlista)\neller senast vid avgångstiden från Seglinge ringa till färjan på telefon +358(0)407 685\n792.\n1) Turen körs endast mot beställning senast kl. 05:45.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nMot beställning senast kl. 10:00 kan särskild tur till gudstjänst på söndagar beställas,\navgångstid kl. 10:55 från Seglinge.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte\nkan ta mer last.\nFörtur har bland annat: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och\nbrådskande sjuktransporter.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 1,
+    "rowCount": 23,
+    "losslessIntent": true
+  }
+}

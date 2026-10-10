@@ -1,0 +1,315 @@
+{
+  "routeId": "alandsvajerfarjor",
+  "provider": "alandstrafiken",
+  "sourceLanguageAuthority": "sv",
+  "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "sourceId": "alandstrafiken-linfarjor",
+  "review": {
+    "status": "machine_extracted_requires_semantic_review",
+    "method": "pdfplumber table extraction",
+    "sourcePages": [
+      1
+    ],
+    "routingReady": false
+  },
+  "validPeriods": [
+    {
+      "validFrom": "2026-01-01",
+      "validTo": "2026-12-31"
+    }
+  ],
+  "sourceTables": [
+    {
+      "page": 1,
+      "tableIndex": 1,
+      "rows": [
+        [
+          "BJÖRKÖLINJEN +358 (0)457 5242 854"
+        ],
+        [
+          "Paus i Mån–Sön, Helgdag\nBjörkö 11:10–11:45\n17:30–18:05\n22:00–06:00*)"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 2,
+      "rows": [
+        [
+          "TÖFTÖLINJEN +358 (0)457 3421 279",
+          null
+        ],
+        [
+          "Paus i Töftö\n(med turlista\n1/1–31/12 2026)",
+          "Alla dagar Lör, Sön, Helgdag\n02:30–03:05 02:30–03:05\n09:10–09:30\n11:55–12:30\n17:55–18:30\n19:55–20:15"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 3,
+      "rows": [
+        [
+          "EMBARSUNDSLINJEN +358 (0)457 3798 871"
+        ],
+        [
+          "Paus i Mån–Sön, Helgdag\nFinholma 10:25–11:00\n(med turlista 17:10–17:45\n1/6–31/8\n2026)"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 4,
+      "rows": [
+        [
+          "SEGLINGELINJEN +358 (0)40 7685 792\nAVG.TIDER FRÅN SEGLINGE",
+          null
+        ],
+        [
+          "Paus i Seglinge\n(med turlista fr.o.m.\n1/1 2026)",
+          "Mån–Sön, Helgdag\n10:30–11:05\n17:00–17:35"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 5,
+      "rows": [
+        [
+          "SIMSKÄLALINJEN +358 (0)457 3798 869",
+          null
+        ],
+        [
+          "Paus i\nSimskäla\n(med turlista\nfr.o.m.\n1/1 2026)",
+          "Mån–Sön, Helgdag\n11:35–12:10\n14:00–14:15\n17:05–17:40"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 6,
+      "rows": [
+        [
+          "ÄNGÖSUNDSLINJEN +358 (0)457 5295 082",
+          null
+        ],
+        [
+          "Paus i\nÄngö",
+          "Mån–Sön, Helgdag\n11:00–11:30\n13:30–14:30 (endast onsdagar jämna veckor)\n19:00–19:30\n22:00–06:00*)"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 7,
+      "rows": [
+        [
+          "BJÖRKÖLINJEN",
+          null
+        ],
+        [
+          "24/12 Trafiken avslutas kl. 22:00, beställningstur köres\nkl. 23:00, 24:00 och 01:00.",
+          null
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00."
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 8,
+      "rows": [
+        [
+          "ÄNGÖSUNDSLINJEN",
+          null
+        ],
+        [
+          "24/12",
+          "Trafiken avslutas kl. 22:00, beställningstur körs\nkl. 23:00, 24:00 och 01:00."
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 9,
+      "rows": [
+        [
+          "EMBARSUNDSLINJEN",
+          null
+        ],
+        [
+          "24/12",
+          "Trafiken avslutas kl. 22:00, beställningstur köres\nkl. 23:00, 24:00 och 01:00."
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00."
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 10,
+      "rows": [
+        [
+          "TÖFTÖLINJEN",
+          null
+        ],
+        [
+          "24/12",
+          "Trafiken avslutas kl. 24:00, beställningstur köres kl.\n01:00."
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 11,
+      "rows": [
+        [
+          "SIMSKÄLALINJEN",
+          null
+        ],
+        [
+          "24/12",
+          "Trafiken avslutas kl. 22:00, beställningstur köres\nkl. 23:00, 24:00 och 01:00."
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00"
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "tableIndex": 12,
+      "rows": [
+        [
+          "SEGLINGELINJEN",
+          null
+        ],
+        [
+          "24/12",
+          "Ordinarie trafik till kl. 18:00, därefter beställningstur\nvarje hel timme t.o.m. kl. 24:00. Retur från Snäckö direkt.\nBeställning senast kl. 18:00."
+        ],
+        [
+          "25/12",
+          "Trafiken återupptas kl. 06:00."
+        ]
+      ]
+    }
+  ],
+  "sourcePageText": [
+    {
+      "page": 1,
+      "text": "11\nLinfärjor | Lossit | Cable Ferries\nLinfärjorna trafikerar antingen med eller utan Lossit liikennöivät joko aikataululla tai ilman. Usually the cable ferries operates according to\nturlista. Närmare information se www.alandstra- Katso lisätietoja osoitteesta www.alandstrafiken. the timetable or without. More information on\nfiken.ax/ turlistor. Fordon ska vara ombord senast ax/fi/aikataulut. Ajoneuvojen on oltava lauttaan www.alandstrafiken.ax/en/t imetables. V ehicles\n5 min. före utsatt trafikuppehåll, på Björkö-, ajettuina viimeistään 5 min. ennen ilmoitettua tau- must be loaded on board at least 5 min. before at\nEmbarsund-, Ängösund-, förutom på Töftölinjen koja (”paus”) ja vastaavasti Björkön, Embarsundin, all scheduled breaks (”paus”), for Björkö, Embar-\nenbart före trafikuppehållet 02:30–03:05. Med Ängösundin paitsi Töftön linjalla ainoastaan sund, Ängösund except on the Töftö line at the\nreservation för ändringar. tauolla 02:30–03:05. Oikeudet muutoksiin pidä- break 02:30–03:05. We reserves the right to make\ntetään. alterations.\nBJÖRKÖLINJEN +358 (0)457 5242 854 TÖFTÖLINJEN +358 (0)457 3421 279\nPaus i Mån–Sön, Helgdag Paus i Töftö Alla dagar Lör, Sön, Helgdag\nBjörkö 11:10–11:45 (med turlista 02:30–03:05 02:30–03:05\n17:30–18:05 1/1–31/12 2026) 09:10–09:30\n22:00–06:00*) 11:55–12:30\n17:55–18:30\n19:55–20:15\nEMBARSUNDSLINJEN +358 (0)457 3798 871\nPaus i Mån–Sön, Helgdag SEGLINGELINJEN +358 (0)40 7685 792\nFinholma 10:25–11:00 AVG.TIDER FRÅN SEGLINGE\n(med turlista 17:10–17:45\n1/6–31/8 Paus i Seglinge Mån–Sön, Helgdag\n2026) (med turlista fr.o.m. 10:30–11:05\n1/1 2026) 17:00–17:35\nSIMSKÄLALINJEN +358 (0)457 3798 869 *) Nattrafik mot beställning före kl. 21:00 (Björkö- och Ängösundslinjen).\nPaus i Mån–Sön, Helgdag *) Yöliikenne tilauksesta, tilaukset klo 21:00 mennessä (Björkön- ja\nSimskäla 11:35–12:10 Ängösundinlinjoilla).\n(med turlista 14:00–14:15 *) Traffic at night by booking in advance before 21:00 (Björkö and Ängö-\nfr.o.m. 17:05–17:40 sunds lines).\n1/1 2026)\nÄNGÖSUNDSLINJEN +358 (0)457 5295 082\nPaus i Mån–Sön, Helgdag\nÄngö 11:00–11:30\n13:30–14:30 (endast onsdagar jämna veckor)\n19:00–19:30\n22:00–06:00*)\nLinfärjornas jul- och nyårsturlista 2026\nBJÖRKÖLINJEN ÄNGÖSUNDSLINJEN\n24/12 Trafiken avslutas kl. 22:00, beställningstur köres 24/12 Trafiken avslutas kl. 22:00, beställningstur körs\nkl. 23:00, 24:00 och 01:00. kl. 23:00, 24:00 och 01:00.\n25/12 Trafiken återupptas kl. 06:00. 25/12 Trafiken återupptas kl. 06:00\nEMBARSUNDSLINJEN TÖFTÖLINJEN\n24/12 Trafiken avslutas kl. 22:00, beställningstur köres 24/12 Trafiken avslutas kl. 24:00, beställningstur köres kl.\nkl. 23:00, 24:00 och 01:00. 01:00.\n25/12 Trafiken återupptas kl. 06:00. 25/12 Trafiken återupptas kl. 06:00\nSIMSKÄLALINJEN SEGLINGELINJEN\n24/12 Trafiken avslutas kl. 22:00, beställningstur köres 24/12 Ordinarie trafik till kl. 18:00, därefter beställningstur\nkl. 23:00, 24:00 och 01:00. varje hel timme t.o.m. kl. 24:00. Retur från Snäckö direkt.\nBeställning senast kl. 18:00.\n25/12 Trafiken återupptas kl. 06:00\n25/12 Trafiken återupptas kl. 06:00.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
+    }
+  ],
+  "extractionDiagnostics": {
+    "tableCount": 12,
+    "rowCount": 30,
+    "losslessIntent": true
+  },
+  "routeApplications": [
+    {
+      "routeId": "seglingelinjen",
+      "normalScheduleContribution": "none_redundant_with_route_timetable",
+      "holidayExceptions": [
+        {
+          "date": "2026-12-24",
+          "regularTrafficUntil": "18:00",
+          "onOrderDepartures": [
+            "19:00",
+            "20:00",
+            "21:00",
+            "22:00",
+            "23:00",
+            "00:00"
+          ],
+          "bookingDeadline": "18:00",
+          "returnFrom": "Snäckö",
+          "returnTiming": "immediately_after_arrival"
+        },
+        {
+          "date": "2026-12-25",
+          "trafficResumes": "06:00"
+        }
+      ]
+    },
+    {
+      "routeId": "simskalalinjen",
+      "normalScheduleContribution": "none_redundant_with_route_timetable",
+      "holidayExceptions": [
+        {
+          "date": "2026-12-24",
+          "trafficEnds": "22:00",
+          "onOrderDepartures": [
+            "23:00",
+            "00:00",
+            "01:00"
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "trafficResumes": "06:00"
+        }
+      ]
+    },
+    {
+      "routeId": "toftolinjen",
+      "normalScheduleContribution": "none_redundant_with_route_timetable",
+      "holidayExceptions": [
+        {
+          "date": "2026-12-24",
+          "trafficEnds": "00:00",
+          "onOrderDepartures": [
+            "01:00"
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "trafficResumes": "06:00"
+        }
+      ]
+    },
+    {
+      "routeId": "embarsundslinjen",
+      "normalScheduleContribution": "active_source",
+      "validPeriods": [
+        {
+          "validFrom": "2026-09-01",
+          "validTo": "2026-12-31"
+        }
+      ],
+      "service": {
+        "type": "continuous_or_on_demand",
+        "operation": "on_demand",
+        "scheduledTimetable": false
+      },
+      "holidayExceptions": [
+        {
+          "date": "2026-12-24",
+          "trafficEnds": "22:00",
+          "onOrderDepartures": [
+            "23:00",
+            "00:00",
+            "01:00"
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "trafficResumes": "06:00"
+        }
+      ]
+    }
+  ]
+}
