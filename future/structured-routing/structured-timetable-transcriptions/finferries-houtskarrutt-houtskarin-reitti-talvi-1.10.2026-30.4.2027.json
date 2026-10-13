@@ -4,6 +4,88 @@
   "sourceLanguageAuthority": "fi",
   "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
   "sourceId": "finferries-houtskarrutt-houtskarin-reitti-talvi-1.10.2026-30.4.2027",
+  "publicTimetableUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti.html",
+  "vessel": "M/S Finnö",
+  "capacity": {
+    "passengers": 50,
+    "cargoTonnes": 5.5,
+    "cars": 2
+  },
+  "contact": {
+    "phones": [
+      "+358 400 720 607"
+    ]
+  },
+  "booking": {
+    "requiredForAllTrips": true,
+    "channel": "https://booking.finferries.fi/",
+    "vehicleAndCargoBookingOpensDaysBefore": 14,
+    "loadingReadinessMinutesBefore": 10,
+    "deadlineRules": [
+      {
+        "appliesTo": "departures_after_16:00",
+        "deadline": {
+          "relativeTo": "same_day",
+          "time": "12:00"
+        }
+      },
+      {
+        "appliesTo": "all_other_y_departures",
+        "deadline": {
+          "relativeTo": "previous_day",
+          "time": "17:00"
+        }
+      }
+    ]
+  },
+  "travelerInformation": {
+    "displayPolicy": "show_all_applicable",
+    "notices": [
+      {
+        "type": "booking_requirement",
+        "appliesTo": "all_trips",
+        "required": true,
+        "channel": "https://booking.finferries.fi/"
+      },
+      {
+        "type": "loading_readiness",
+        "appliesTo": ["passengers", "vehicles"],
+        "minutesBeforeDeparture": 10
+      },
+      {
+        "type": "reservation_hours",
+        "appliesOn": "saturday",
+        "from": "09:00",
+        "to": "15:00"
+      },
+      {
+        "type": "early_departure_rule",
+        "condition": "y*",
+        "meaning": "vessel_may_depart_as_soon_as_all_booked_travelers_are_on_board"
+      },
+      {
+        "type": "ground_transport_connection",
+        "stops": ["Roslax", "Näsby"],
+        "modes": ["call_taxi", "bus"],
+        "url": "https://opas.matka.fi/"
+      },
+      {
+        "type": "inter_route_connection_direction",
+        "routes": ["iniorutt", "houtskarrutt"],
+        "direction": "iniorutt_to_houtskarrutt_only"
+      },
+      {
+        "type": "service_change_warning",
+        "meaning": "schedule_may_change_or_service_may_be_cancelled_due_to_conditions"
+      }
+    ]
+  },
+  "callConditions": {
+    "y": {
+      "operation": "booking_required",
+      "deadlineRule": "route_booking_deadline_rules"
+    }
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",

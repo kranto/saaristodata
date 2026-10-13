@@ -1,0 +1,14 @@
+{
+  "routeAliases": {
+    "hitisalva": "hitisrutt"
+  },
+  "stopAliases": {
+    "hitisalva": {
+      "Stora Ängesö": "Ängesö",
+      "Vänoxa släten": "Vänoxasläten"
+    },
+    "korporutt": {
+      "Korppoo": "Verkan"
+    }
+  }
+}

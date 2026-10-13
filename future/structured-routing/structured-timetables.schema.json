@@ -67,6 +67,42 @@
       }
     },
     "stopDisplayPolicy": { "type": "object" },
+    "pierAccessPolicy": { "type": "object" },
+    "roadRoutingPolicy": {
+      "type": "object",
+      "required": [
+        "roadAndRoadFerryConnectionsFormOneGraph",
+        "separateRoadOrRoadFerryConnectivityFlagRequired",
+        "roadFerryAndCableFerryTerminalsAreRoadVehicleAccessible",
+        "connectionVesselVehicleLoadingCapabilityModeled",
+        "connectionVesselVehicleFeasibilityDelegatedToBookingSystem",
+        "futureRoadEdges"
+      ],
+      "properties": {
+        "roadAndRoadFerryConnectionsFormOneGraph": { "const": true },
+        "separateRoadOrRoadFerryConnectivityFlagRequired": { "const": false },
+        "roadFerryAndCableFerryTerminalsAreRoadVehicleAccessible": { "const": true },
+        "connectionVesselVehicleLoadingCapabilityModeled": { "const": false },
+        "connectionVesselVehicleFeasibilityDelegatedToBookingSystem": { "const": true },
+        "futureRoadEdges": {
+          "type": "object",
+          "required": ["endpoints", "measurements"],
+          "properties": {
+            "endpoints": { "const": "pier_ids" },
+            "measurements": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "distance_km" },
+                { "const": "car_minutes" },
+                { "const": "bicycle_minutes" }
+              ],
+              "items": false
+            }
+          }
+        }
+      }
+    },
+    "travelerInformationPolicy": { "type": "object" },
     "routes": {
       "type": "array",
       "items": {
@@ -99,7 +135,51 @@
           "languageConflictPolicy": { "type": "string" },
           "validPeriods": { "type": "array", "items": { "type": "object" } },
           "booking": { "type": "object" },
+          "pierAccess": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["roadAccess", "suggestForUnspecifiedOrigin", "role"],
+              "properties": {
+                "roadAccess": { "type": "boolean" },
+                "suggestForUnspecifiedOrigin": { "type": "boolean" },
+                "role": { "type": "string" },
+                "displayQualifier": { "type": "string" },
+                "island": { "type": "string" },
+                "locality": { "type": "string" },
+                "berthVariant": { "type": "string" },
+                "relatedPier": { "type": "string" },
+                "connectedToRelatedPierByRoad": { "type": "boolean" },
+                "currentUse": { "type": "object" },
+                "exclusionReason": { "type": "string" }
+              }
+            }
+          },
+          "travelerInformation": { "type": "object" },
           "serviceType": { "type": "string" },
+          "routingService": {
+            "type": "object",
+            "required": [
+              "model", "networkEdge", "terminals",
+              "vehicleAccessAtAllTerminals",
+              "connectionVesselVehicleLoadingCapabilityModeled"
+            ],
+            "properties": {
+              "model": { "enum": ["scheduled_departures", "continuous_or_on_demand", "hybrid_scheduled_and_on_demand"] },
+              "networkEdge": { "const": true },
+              "terminals": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "string" }
+              },
+              "vehicleAccessAtAllTerminals": { "const": true },
+              "connectionVesselVehicleLoadingCapabilityModeled": { "const": false },
+              "crossingMinutes": { "type": "integer", "minimum": 1 },
+              "crossingTimeNature": { "const": "approximate" },
+              "crossingTimeStatus": { "const": "not_available_do_not_invent" }
+            }
+          },
           "classificationEvidence": { "type": "object" },
           "callMarkerPolicy": { "type": "object" },
           "routeApplications": { "type": "array", "items": { "type": "object" } },

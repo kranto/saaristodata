@@ -1,0 +1,104 @@
+{
+  "modelVersion": "ais-driving-v1",
+  "attachedCalls": 6,
+  "outcomes": {
+    "attached_pooled_route_paths": 1,
+    "no_compatible_path_estimates": 2,
+    "pooled_model_incompatible_with_published_trip": 2,
+    "route_without_ais_model": 35,
+    "route_without_structured_trips": 8,
+    "trip_without_matchable_departure": 1
+  },
+  "trips": [
+    {
+      "structuredRouteId": "hitisalva",
+      "aisRouteId": "hitisrutt",
+      "tripId": "weekday-morning",
+      "from": "Dalsbruk",
+      "departure": null,
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "trip_without_matchable_departure",
+      "matchedCalls": 0
+    },
+    {
+      "structuredRouteId": "hitisalva",
+      "aisRouteId": "hitisrutt",
+      "tripId": "weekday-afternoon",
+      "from": "Dalsbruk",
+      "departure": "15:00",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "attached_pooled_route_paths",
+      "matchedCalls": 6,
+      "roundedDeparture": "15:00",
+      "matchedWeekdays": []
+    },
+    {
+      "structuredRouteId": "korporutt",
+      "aisRouteId": "korporutt",
+      "tripId": "tuesday-school-morning-storpensar",
+      "from": "Korppoo",
+      "departure": "07:30",
+      "weekdays": [
+        1
+      ],
+      "status": "no_compatible_path_estimates",
+      "matchedCalls": 0,
+      "roundedDeparture": "07:30",
+      "matchedWeekdays": []
+    },
+    {
+      "structuredRouteId": "korporutt",
+      "aisRouteId": "korporutt",
+      "tripId": "tuesday-school-afternoon-storpensar",
+      "from": "Korppoo",
+      "departure": "15:10",
+      "weekdays": [
+        1
+      ],
+      "status": "no_compatible_path_estimates",
+      "matchedCalls": 0,
+      "roundedDeparture": "15:15",
+      "matchedWeekdays": []
+    },
+    {
+      "structuredRouteId": "utorutt",
+      "aisRouteId": "utorutt",
+      "tripId": "tx-sunday-outbound",
+      "from": "Pärnäs",
+      "departure": "17:05",
+      "weekdays": [
+        6
+      ],
+      "status": "pooled_model_incompatible_with_published_trip",
+      "matchedCalls": 0,
+      "roundedDeparture": "17:00",
+      "matchedWeekdays": []
+    },
+    {
+      "structuredRouteId": "utorutt",
+      "aisRouteId": "utorutt",
+      "tripId": "tx-monday-inbound",
+      "from": "Utö",
+      "departure": "06:00",
+      "weekdays": [
+        0
+      ],
+      "status": "pooled_model_incompatible_with_published_trip",
+      "matchedCalls": 0,
+      "roundedDeparture": "06:00",
+      "matchedWeekdays": []
+    }
+  ]
+}

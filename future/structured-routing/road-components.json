@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "status": "user_supplied_requires_routing_validation",
+  "description": "Pier groups believed to be mutually reachable by road without using any ferry.",
+  "additionalPiers": {
+    "Helsinki": {
+      "lon": 24.9586923,
+      "lat": 60.1608607,
+      "source": "OpenStreetMap amenity=ferry_terminal, Olympiaterminaali, way 327321393"
+    }
+  },
+  "preferredNames": {
+    "TurkuVitharun": "Aurajoki",
+    "Mariehamn": "Maarianhamina",
+    "BerghamnE": "Eckerön Berghamn",
+    "LångnäsH": "Långnäs (Hiittinen)"
+  },
+  "components": [
+    { "id": "houtsala", "piers": ["Havträsk", "Lavarn", "Olofsnäs"] },
+    { "id": "korpo", "piers": ["Verkan", "Galtby", "Retais"] },
+    { "id": "houtskar", "piers": ["Kittuis", "Roslax", "Näsby", "NäsbyI"] },
+    { "id": "kivimo", "piers": ["Kivimo", "BjörköH"] },
+    { "id": "mossala", "piers": ["MossalaE", "Mossala"] },
+    { "id": "palva", "piers": ["PalvaI", "PalvaL"] },
+    { "id": "nagu", "piers": ["Pärnäs", "Krok", "Mattnäs", "Grännäs", "Nagu", "Kirjais", "Prostvik", "Ytterstholm"] },
+    { "id": "pensar", "piers": ["PensarI", "PensarL"] },
+    { "id": "brando", "piers": ["Åva", "Torsholma", "TorsholmaI"] },
+    { "id": "vartsala", "piers": ["Vuosnainen", "Vartsala"] },
+    { "id": "foglo", "piers": ["Degerby", "Finholma"] },
+    { "id": "overo", "piers": ["Jyddö", "Överö"] },
+    { "id": "kumlinge", "piers": ["Kumlinge", "Snäckö"] },
+    { "id": "lappo", "piers": ["Lappo", "LappoL"] },
+    { "id": "vardo", "piers": ["Töftö", "Hummelvik", "Vattungsrevet"] },
+    { "id": "oro", "piers": ["Örö", "ÖröP"], "modes": ["bicycle"] },
+    { "id": "inio", "piers": ["Dalen", "Skagen", "Norrby"] },
+    { "id": "jumo", "piers": ["JumoE", "Kannvik"] },
+    { "id": "aasla", "piers": ["Aasla", "Hanka"] },
+    { "id": "hitis", "piers": ["Rosala", "LångnäsH", "Vikare"] },
+    {
+      "id": "mainland_finland",
+      "piers": [
+        "Kivimaa", "Heponiemi", "Hakkenpää", "Teersalo", "Haapala",
+        "Airismaa", "Lillmälö", "Granvik", "Våno", "Kokkila",
+        "Angelniemi", "Svartnäs", "Kasnäs", "Dalsbruk", "Hanko",
+        "Ulkoluoto", "Turku", "Helsinki", "Naantali", "TurkuVitharun"
+      ]
+    },
+    {
+      "id": "mainland_aland",
+      "piers": [
+        "Skarpnåtö", "SnäcköGeta", "Svinö", "Långnäs", "Norrboda", "Prästö",
+        "Mariehamn", "BerghamnE"
+      ]
+    }
+  ]
+}

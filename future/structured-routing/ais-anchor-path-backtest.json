@@ -1,0 +1,103 @@
+{
+  "status": "temporal_backtest",
+  "modelVersion": "ais-anchor-paths-v1",
+  "testDays": 90,
+  "cutoffUtc": "2026-07-13T05:48:08.786000+00:00",
+  "overall": {
+    "predictions": 36629,
+    "medianAbsoluteErrorMinutes": 1.12,
+    "p90AbsoluteErrorMinutes": 5.83,
+    "within10Minutes": 0.964,
+    "p10P90Coverage": 0.8006
+  },
+  "routes": [
+    {
+      "routeId": "hitisrutt",
+      "predictions": 1492,
+      "medianAbsoluteErrorMinutes": 1.12,
+      "p90AbsoluteErrorMinutes": 4.38,
+      "within10Minutes": 0.9839,
+      "p10P90Coverage": 0.8036
+    },
+    {
+      "routeId": "houtskarrutt",
+      "predictions": 1660,
+      "medianAbsoluteErrorMinutes": 1.0,
+      "p90AbsoluteErrorMinutes": 3.96,
+      "within10Minutes": 0.9886,
+      "p10P90Coverage": 0.7512
+    },
+    {
+      "routeId": "korporutt",
+      "predictions": 961,
+      "medianAbsoluteErrorMinutes": 1.13,
+      "p90AbsoluteErrorMinutes": 4.0,
+      "within10Minutes": 0.9979,
+      "p10P90Coverage": 0.6868
+    },
+    {
+      "routeId": "nagunorra",
+      "predictions": 2528,
+      "medianAbsoluteErrorMinutes": 1.08,
+      "p90AbsoluteErrorMinutes": 4.02,
+      "within10Minutes": 0.9917,
+      "p10P90Coverage": 0.7951
+    },
+    {
+      "routeId": "nagusodra",
+      "predictions": 892,
+      "medianAbsoluteErrorMinutes": 1.1,
+      "p90AbsoluteErrorMinutes": 3.96,
+      "within10Minutes": 1.0,
+      "p10P90Coverage": 0.7422
+    },
+    {
+      "routeId": "norralinjen",
+      "predictions": 10541,
+      "medianAbsoluteErrorMinutes": 2.1,
+      "p90AbsoluteErrorMinutes": 9.99,
+      "within10Minutes": 0.9008,
+      "p10P90Coverage": 0.8502
+    },
+    {
+      "routeId": "pargasrutt",
+      "predictions": 7409,
+      "medianAbsoluteErrorMinutes": 1.02,
+      "p90AbsoluteErrorMinutes": 3.83,
+      "within10Minutes": 0.9977,
+      "p10P90Coverage": 0.7761
+    },
+    {
+      "routeId": "rymattylanreitti",
+      "predictions": 2177,
+      "medianAbsoluteErrorMinutes": 1.03,
+      "p90AbsoluteErrorMinutes": 3.92,
+      "within10Minutes": 0.9959,
+      "p10P90Coverage": 0.7919
+    },
+    {
+      "routeId": "sodralinjen",
+      "predictions": 3773,
+      "medianAbsoluteErrorMinutes": 1.8,
+      "p90AbsoluteErrorMinutes": 6.17,
+      "within10Minutes": 0.9642,
+      "p10P90Coverage": 0.806
+    },
+    {
+      "routeId": "utorutt",
+      "predictions": 672,
+      "medianAbsoluteErrorMinutes": 2.03,
+      "p90AbsoluteErrorMinutes": 7.08,
+      "within10Minutes": 0.9375,
+      "p10P90Coverage": 0.7396
+    },
+    {
+      "routeId": "velkuanreitti",
+      "predictions": 4524,
+      "medianAbsoluteErrorMinutes": 0.88,
+      "p90AbsoluteErrorMinutes": 2.0,
+      "within10Minutes": 0.9991,
+      "p10P90Coverage": 0.79
+    }
+  ]
+}

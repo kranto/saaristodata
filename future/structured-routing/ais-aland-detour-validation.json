@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "routeId": "sodralinjen",
+  "comparison": "complete high-confidence Sottunga-Kökar-Sottunga AIS journeys",
+  "duration": "driving time; intermediate waits excluded",
+  "publishedDelayMinutes": {
+    "Husö": 10,
+    "Kyrkogårdsö": 20,
+    "both": 30
+  },
+  "modelRule": "additive",
+  "conclusion": "cumulative_effect_supported",
+  "caveat": "AIS driving-duration differences are not the same quantity as the timetable's approximate downstream delay.",
+  "groups": [
+    {
+      "detours": "none",
+      "journeys": 178,
+      "p10_minutes": 141.0,
+      "median_minutes": 147.0,
+      "p90_minutes": 157.3,
+      "median_increase_minutes": 0.0
+    },
+    {
+      "detours": "huso",
+      "journeys": 128,
+      "p10_minutes": 151.0,
+      "median_minutes": 157.0,
+      "p90_minutes": 166.3,
+      "median_increase_minutes": 10.0
+    },
+    {
+      "detours": "kyrkogardso",
+      "journeys": 96,
+      "p10_minutes": 154.5,
+      "median_minutes": 159.0,
+      "p90_minutes": 172.0,
+      "median_increase_minutes": 12.0
+    },
+    {
+      "detours": "both",
+      "journeys": 50,
+      "p10_minutes": 165.1,
+      "median_minutes": 169.5,
+      "p90_minutes": 180.2,
+      "median_increase_minutes": 22.5
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "status": "draft",
+  "routes": [
+    {
+      "routeId": "hitisalva",
+      "method": "existing_reviewed_draft",
+      "trips": 2,
+      "calls": 19,
+      "callsWithoutPublishedTime": 17,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "hitisjurmo",
+      "method": "existing_reviewed_draft",
+      "trips": 20,
+      "calls": 117,
+      "callsWithoutPublishedTime": 34,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": true,
+      "holidayTripOverridesNormalized": true,
+      "holidayRules": 4,
+      "holidayTripOverrides": 4
+    },
+    {
+      "routeId": "houtskarrutt",
+      "method": "finferries_weekday_columns",
+      "trips": 18,
+      "calls": 148,
+      "callsWithoutPublishedTime": 112,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "korporutt",
+      "method": "finferries_weekday_columns",
+      "trips": 14,
+      "calls": 65,
+      "callsWithoutPublishedTime": 26,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": true,
+      "holidayTripOverridesNormalized": true,
+      "holidayRules": 15,
+      "holidayTripOverrides": 15
+    },
+    {
+      "routeId": "nagunorra",
+      "method": "finferries_weekday_columns",
+      "trips": 25,
+      "calls": 103,
+      "callsWithoutPublishedTime": 51,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "nagusodra",
+      "method": "finferries_weekday_columns",
+      "trips": 20,
+      "calls": 148,
+      "callsWithoutPublishedTime": 107,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "nagutvar",
+      "method": "finferries_weekday_columns",
+      "trips": 7,
+      "calls": 70,
+      "callsWithoutPublishedTime": 58,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "norralinjen",
+      "method": "aland_regular_tables",
+      "trips": 33,
+      "calls": 139,
+      "callsWithoutPublishedTime": 0,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "pargasrutt",
+      "method": "finferries_weekday_columns",
+      "trips": 19,
+      "calls": 97,
+      "callsWithoutPublishedTime": 53,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "rymattylanreitti",
+      "method": "finferries_weekday_columns",
+      "trips": 20,
+      "calls": 144,
+      "callsWithoutPublishedTime": 82,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "sodralinjen",
+      "method": "aland_regular_tables",
+      "trips": 35,
+      "calls": 189,
+      "callsWithoutPublishedTime": 0,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    },
+    {
+      "routeId": "utorutt",
+      "method": "finferries_weekday_columns",
+      "trips": 12,
+      "calls": 63,
+      "callsWithoutPublishedTime": 38,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": true,
+      "holidayTripOverridesNormalized": true,
+      "holidayRules": 18,
+      "holidayTripOverrides": 18
+    },
+    {
+      "routeId": "velkuanreitti",
+      "method": "finferries_weekday_columns",
+      "trips": 16,
+      "calls": 104,
+      "callsWithoutPublishedTime": 72,
+      "regularScheduleCovered": true,
+      "holidayRulesPreserved": false,
+      "holidayTripOverridesNormalized": false,
+      "holidayRules": 0,
+      "holidayTripOverrides": 0
+    }
+  ],
+  "summary": {
+    "routes": 13,
+    "routesWithTrips": 13,
+    "trips": 241,
+    "calls": 1406,
+    "callsWithoutPublishedTime": 650,
+    "routesWithPreservedHolidayRules": 3,
+    "routesWithNormalizedHolidayTripOverrides": 3
+  }
+}
