@@ -1,0 +1,455 @@
+{
+  "status": "draft_requires_semantic_review",
+  "generatedAt": "2026-10-12T00:00:00+03:00",
+  "routes": [
+    {
+      "routeId": "hammaronsalmi",
+      "aisRouteId": "hammaronsalmi",
+      "trips": 52,
+      "untimedCalls": 52,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 52
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "hitisalva",
+      "aisRouteId": "hitisrutt",
+      "trips": 2,
+      "untimedCalls": 16,
+      "estimatesAttached": 6,
+      "conservativeRangesAttached": 1,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.438,
+      "outcomes": {
+        "conservative_range_attached": 1,
+        "estimate_attached": 6,
+        "missing_departure_anchor": 8,
+        "no_compatible_historical_path": 1,
+        "published_time_preserved": 1
+      },
+      "matchingMethods": {
+        "role_aware_compatible_paths": 6
+      }
+    },
+    {
+      "routeId": "hitisjurmo",
+      "aisRouteId": "hitisrutt",
+      "trips": 20,
+      "untimedCalls": 31,
+      "estimatesAttached": 19,
+      "conservativeRangesAttached": 4,
+      "completionEstimatesAttached": 10,
+      "completionRangesAttached": 3,
+      "holidayEstimateCallsCopied": 10,
+      "coverage": 0.742,
+      "outcomes": {
+        "completion_estimate_attached": 10,
+        "completion_range_attached": 3,
+        "conservative_range_attached": 4,
+        "estimate_attached": 19,
+        "missing_departure_anchor": 7,
+        "no_compatible_historical_path": 1,
+        "published_time_preserved": 66
+      },
+      "matchingMethods": {
+        "role_aware_compatible_paths": 19
+      }
+    },
+    {
+      "routeId": "hogsara",
+      "aisRouteId": "hogsara",
+      "trips": 60,
+      "untimedCalls": 60,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 60
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "houtskarrutt",
+      "aisRouteId": "houtskarrutt",
+      "trips": 18,
+      "untimedCalls": 112,
+      "estimatesAttached": 65,
+      "conservativeRangesAttached": 40,
+      "completionEstimatesAttached": 9,
+      "completionRangesAttached": 9,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.938,
+      "outcomes": {
+        "completion_estimate_attached": 9,
+        "completion_range_attached": 9,
+        "conservative_range_attached": 40,
+        "estimate_attached": 65,
+        "no_compatible_historical_path": 7,
+        "published_time_preserved": 18
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 27,
+        "role_aware_compatible_paths": 38
+      }
+    },
+    {
+      "routeId": "keistio",
+      "aisRouteId": "keistio",
+      "trips": 88,
+      "untimedCalls": 88,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 88
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "kokkila",
+      "aisRouteId": "kokkila",
+      "trips": 55,
+      "untimedCalls": 55,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 55
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "korporutt",
+      "aisRouteId": "korporutt",
+      "trips": 14,
+      "untimedCalls": 26,
+      "estimatesAttached": 16,
+      "conservativeRangesAttached": 5,
+      "completionEstimatesAttached": 10,
+      "completionRangesAttached": 1,
+      "holidayEstimateCallsCopied": 84,
+      "coverage": 0.808,
+      "outcomes": {
+        "completion_estimate_attached": 10,
+        "completion_range_attached": 1,
+        "conservative_range_attached": 5,
+        "estimate_attached": 16,
+        "no_compatible_historical_path": 5,
+        "published_time_preserved": 25
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 3,
+        "role_aware_compatible_paths": 13
+      }
+    },
+    {
+      "routeId": "nagunorra",
+      "aisRouteId": "nagunorra",
+      "trips": 25,
+      "untimedCalls": 51,
+      "estimatesAttached": 51,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 22,
+      "completionRangesAttached": 2,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 1.0,
+      "outcomes": {
+        "completion_estimate_attached": 22,
+        "completion_range_attached": 2,
+        "estimate_attached": 51,
+        "published_time_preserved": 27
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 19,
+        "role_aware_compatible_paths": 32
+      }
+    },
+    {
+      "routeId": "nagusodra",
+      "aisRouteId": "nagusodra",
+      "trips": 20,
+      "untimedCalls": 107,
+      "estimatesAttached": 75,
+      "conservativeRangesAttached": 29,
+      "completionEstimatesAttached": 19,
+      "completionRangesAttached": 1,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.972,
+      "outcomes": {
+        "completion_estimate_attached": 19,
+        "completion_range_attached": 1,
+        "conservative_range_attached": 29,
+        "estimate_attached": 75,
+        "no_compatible_historical_path": 3,
+        "published_time_preserved": 21
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 40,
+        "role_aware_compatible_paths": 35
+      }
+    },
+    {
+      "routeId": "nagutvar",
+      "aisRouteId": "nagutvar",
+      "trips": 7,
+      "untimedCalls": 58,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_ais_source": 58,
+        "published_time_preserved": 5
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "norralinjen",
+      "aisRouteId": "norralinjen",
+      "trips": 33,
+      "untimedCalls": 0,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 4,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 1.0,
+      "outcomes": {
+        "completion_estimate_attached": 4,
+        "published_time_preserved": 106
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "palva",
+      "aisRouteId": "palva",
+      "trips": 79,
+      "untimedCalls": 79,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 79
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "pargasrutt",
+      "aisRouteId": "pargasrutt",
+      "trips": 19,
+      "untimedCalls": 53,
+      "estimatesAttached": 53,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 19,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 1.0,
+      "outcomes": {
+        "completion_estimate_attached": 19,
+        "estimate_attached": 53,
+        "published_time_preserved": 25
+      },
+      "matchingMethods": {
+        "compatible_observed_paths": 53
+      }
+    },
+    {
+      "routeId": "rymattylanreitti",
+      "aisRouteId": "rymattylanreitti",
+      "trips": 20,
+      "untimedCalls": 82,
+      "estimatesAttached": 74,
+      "conservativeRangesAttached": 7,
+      "completionEstimatesAttached": 20,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.988,
+      "outcomes": {
+        "completion_estimate_attached": 20,
+        "conservative_range_attached": 7,
+        "estimate_attached": 74,
+        "incompatible_with_next_published_time": 1,
+        "published_time_preserved": 42
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 28,
+        "role_aware_compatible_paths": 46
+      }
+    },
+    {
+      "routeId": "sodralinjen",
+      "aisRouteId": "sodralinjen",
+      "trips": 35,
+      "untimedCalls": 0,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 22,
+      "completionRangesAttached": 13,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 1.0,
+      "outcomes": {
+        "completion_estimate_attached": 22,
+        "completion_range_attached": 13,
+        "published_time_preserved": 154
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "toftolinjen",
+      "aisRouteId": "toftolinjen",
+      "trips": 128,
+      "untimedCalls": 64,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "missing_departure_anchor": 64,
+        "published_time_preserved": 64
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "utorutt",
+      "aisRouteId": "utorutt",
+      "trips": 12,
+      "untimedCalls": 38,
+      "estimatesAttached": 34,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 71,
+      "coverage": 0.895,
+      "outcomes": {
+        "estimate_attached": 34,
+        "incompatible_with_next_published_time": 1,
+        "no_compatible_historical_path": 3,
+        "published_time_preserved": 13
+      },
+      "matchingMethods": {
+        "compatible_observed_paths": 34
+      }
+    },
+    {
+      "routeId": "vano",
+      "aisRouteId": "vano",
+      "trips": 120,
+      "untimedCalls": 120,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 120
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "vartsala",
+      "aisRouteId": "vartsala",
+      "trips": 88,
+      "untimedCalls": 88,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 88
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "velkuanmaa",
+      "aisRouteId": "velkuanmaa",
+      "trips": 80,
+      "untimedCalls": 80,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 80
+      },
+      "matchingMethods": {}
+    },
+    {
+      "routeId": "velkuanreitti",
+      "aisRouteId": "velkuanreitti",
+      "trips": 16,
+      "untimedCalls": 72,
+      "estimatesAttached": 68,
+      "conservativeRangesAttached": 4,
+      "completionEstimatesAttached": 16,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 1.0,
+      "outcomes": {
+        "completion_estimate_attached": 16,
+        "conservative_range_attached": 4,
+        "estimate_attached": 68,
+        "published_time_preserved": 16
+      },
+      "matchingMethods": {
+        "anchor_compatible_paths": 2,
+        "role_aware_compatible_paths": 66
+      }
+    }
+  ],
+  "summary": {
+    "routes": 22,
+    "untimedCalls": 1332,
+    "estimatesAttached": 461,
+    "conservativeRangesAttached": 90,
+    "completionEstimatesAttached": 151,
+    "completionRangesAttached": 29,
+    "holidayEstimateCallsCopied": 165,
+    "coverage": 0.414,
+    "outcomes": {
+      "completion_estimate_attached": 151,
+      "completion_range_attached": 29,
+      "conservative_range_attached": 90,
+      "estimate_attached": 461,
+      "incompatible_with_next_published_time": 2,
+      "missing_departure_anchor": 79,
+      "no_ais_source": 58,
+      "no_compatible_historical_path": 642,
+      "published_time_preserved": 583
+    },
+    "matchingMethods": {
+      "anchor_compatible_paths": 119,
+      "compatible_observed_paths": 87,
+      "role_aware_compatible_paths": 255
+    }
+  }
+}

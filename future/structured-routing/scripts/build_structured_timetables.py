@@ -49,7 +49,352 @@ FINFERRIES_CONNECTION_VESSEL_ROUTES = {
 }
 
 FINFERRIES_ROAD_FERRY_ROUTES = {
-    "iniokustavi", "kasnashitis",
+    "iniokustavi", "kasnashitis", "korpohoutskar", "korponorrskata",
+    "nagukorpo", "pargasnagu",
+}
+
+FINFERRIES_CABLE_FERRY_ROUTES = {
+    "hammaronsalmi", "hogsar", "hogsara", "keistio", "kivimo",
+    "kokkila", "mossala", "palva", "saverkeit", "skagen", "vano",
+    "vartsala", "velkuanmaa",
+}
+
+ALANDSTRAFIKEN_CABLE_FERRY_ROUTES = {
+    "alandsvajerfarjor", "angosundslinjen", "bjorkolinjen",
+    "embarsundslinjen", "seglingelinjen", "simskalalinjen", "toftolinjen",
+}
+
+ALAND_SCHEDULED_CABLE_FERRIES = {
+    "seglingelinjen": {
+        "terminals": ["Seglinge", "Snäckö"],
+        "crossingMinutes": 7,
+        "returnDepartureOffsetMinutes": 7,
+        "times": [
+            "06:00", "06:40", "07:10", "07:40", "08:00", "08:40",
+            "09:10", "09:40", "10:10", "11:10", "11:40", "12:10",
+            "12:30", "12:50", "13:10", "13:40", "14:10", "14:40",
+            "15:10", "15:40", "16:10", "16:50", "17:40", "18:10",
+            "18:40", "19:00", "19:40", "20:10", "20:40", "21:10",
+            "21:40", "22:00",
+        ],
+        "weekdayOnlyTimes": ["12:30"],
+        "advanceBookingByTime": {"06:00": "05:45"},
+        "tripRunsOnlyWithTraveler": True,
+        "returnMayBeDelayedMinutes": {"commercialTraffic": 10, "otherTrafficWithValidReason": 10},
+        "validPeriods": [{"validFrom": "2026-09-14", "validTo": "2026-12-31"}],
+        "continuousServices": [{
+            "serviceMode": "on_demand", "start": "22:20", "end": "05:40",
+            "crossesMidnight": True, "operatingDays": "1234567",
+        }],
+        "breaks": [{"start": "10:30", "end": "11:05"}, {"start": "17:00", "end": "17:35"}],
+        "sourceId": "alandstrafiken-seglinge-linfarja-14.9-31.12-1",
+        "phone": "+358407685792",
+    },
+    "simskalalinjen": {
+        "terminals": ["Timskär", "Vattungsrevet"],
+        "crossingMinutes": 7,
+        "returnDepartureOffsetMinutes": 7,
+        "times": [
+            "06:10", "06:30", "06:50", "07:10", "07:40", "08:15",
+            "08:45", "09:15", "09:45", "10:15", "10:45", "11:15",
+            "12:15", "12:45", "13:15", "13:45", "14:15", "14:50",
+            "15:15", "15:45", "16:20", "16:50", "17:40", "18:00",
+            "18:30", "19:00", "19:30", "20:00", "20:30", "21:00",
+            "21:30",
+        ],
+        "weekdayOnlyTimes": ["06:50"],
+        "waitForConnectionTimes": ["07:10", "08:15", "13:15"],
+        "tripRunsOnlyWithTraveler": True,
+        "returnMayBeDelayedMinutes": {"commercialTraffic": 10, "otherTraffic": 5},
+        "validPeriods": [{"validFrom": "2026-01-01", "validTo": "2026-12-31"}],
+        "continuousServices": [{
+            "serviceMode": "on_demand", "start": "22:00", "end": "05:50",
+            "crossesMidnight": True, "operatingDays": "1234567",
+        }],
+        "breaks": [
+            {"start": "11:35", "end": "12:10"},
+            {"start": "14:00", "end": "14:15"},
+            {"start": "17:05", "end": "17:40"},
+        ],
+        "sourceId": "alandstrafiken-simskala-1",
+        "phone": "+3584573798869",
+    },
+    "toftolinjen": {
+        "terminals": ["Töftö", "Prästö"],
+        "crossingMinutes": 4,
+        "returnDepartureOffsetRangeMinutes": [5, 7],
+        "times": [
+            *[f"{hour:02d}:{minute:02d}" for hour in range(6, 22) for minute in (0, 15, 30, 45)],
+        ],
+        "weekdayOnlyTimes": [
+            "06:00", "06:15", "06:30", "06:45",
+            "07:00", "07:15", "07:30", "07:45",
+            "09:15", "12:00", "12:15", "18:00", "18:15", "20:00",
+        ],
+        "waitForConnectionTimes": ["06:45", "07:45", "15:45", "16:45", "17:45"],
+        "validPeriods": [{"validFrom": "2026-01-01", "validTo": "2026-12-31"}],
+        "continuousServices": [
+            {"serviceMode": "on_demand", "start": "22:00", "end": "05:50", "crossesMidnight": True, "operatingDays": "12345__"},
+            {"serviceMode": "on_demand", "start": "22:00", "end": "07:50", "crossesMidnight": True, "operatingDays": "_____67", "alsoAppliesOnPublicHolidays": True},
+        ],
+        "breaks": [{"start": "02:30", "end": "03:05", "operatingDays": "1234567"}],
+        "weekendAndHolidayBreaks": [
+            {"start": "09:10", "end": "09:30"},
+            {"start": "11:55", "end": "12:30"},
+            {"start": "17:55", "end": "18:30"},
+            {"start": "19:55", "end": "20:15"},
+        ],
+        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "phone": "+3584573421279",
+    },
+}
+
+ALAND_CONTINUOUS_CABLE_FERRIES = {
+    "bjorkolinjen": {
+        "terminals": ["LappoL", "BjörköK"],
+        "phone": "+3584575242854",
+        "breaks": [{"start": "11:10", "end": "11:45"}, {"start": "17:30", "end": "18:05"}],
+        "night": {"start": "22:00", "end": "06:00", "bookingDeadline": "21:00"},
+    },
+    "embarsundslinjen": {
+        "terminals": ["Finholma", "Jyddö"],
+        "phone": "+3584573798871",
+        "breaks": [{"start": "10:25", "end": "11:00"}, {"start": "17:10", "end": "17:45"}],
+    },
+    "angosundslinjen": {
+        "terminals": ["Norrboda", "Ängö"],
+        "phone": "+3584575295082",
+        "breaks": [
+            {"start": "11:00", "end": "11:30"},
+            {"start": "13:30", "end": "14:30", "only": "even_iso_week_wednesday"},
+            {"start": "19:00", "end": "19:30"},
+        ],
+        "night": {"start": "22:00", "end": "06:00", "bookingDeadline": "21:00"},
+    },
+}
+
+ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS = {
+    "bjorkolinjen": [
+        {"date": "2026-12-24", "trafficEnds": "22:00", "onOrderDepartures": ["23:00", "00:00", "01:00"]},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+    "angosundslinjen": [
+        {"date": "2026-12-24", "trafficEnds": "22:00", "onOrderDepartures": ["23:00", "00:00", "01:00"]},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+    "embarsundslinjen": [
+        {"date": "2026-12-24", "trafficEnds": "22:00", "onOrderDepartures": ["23:00", "00:00", "01:00"]},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+    "simskalalinjen": [
+        {"date": "2026-12-24", "trafficEnds": "22:00", "onOrderDepartures": ["23:00", "00:00", "01:00"]},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+    "seglingelinjen": [
+        {"date": "2026-12-24", "regularTrafficUntil": "18:00", "onOrderDepartures": ["19:00", "20:00", "21:00", "22:00", "23:00", "00:00"], "bookingDeadline": "18:00", "returnFrom": "Snäckö", "returnTiming": "immediately_after_arrival"},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+    "toftolinjen": [
+        {"date": "2026-04-03", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
+        {"date": "2026-05-01", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
+        {"date": "2026-05-14", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
+        {"date": "2026-06-19", "scheduleDayOverride": "friday"},
+        {"date": "2026-12-24", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}, "trafficEnds": "00:00", "onOrderDepartures": ["01:00"]},
+        {"date": "2026-12-25", "trafficResumes": "06:00"},
+    ],
+}
+
+# A routing client sees both scheduled road ferries and on-demand cable ferries
+# as two-terminal edges. Source headings are retained in departures, while this
+# table maps them to the canonical pier names used by the rest of the data.
+# crossingMinutes is included only where the maintained route data already
+# gives an approximate duration; an unknown value is not guessed.
+FERRY_ROUTE_MODELS = {
+    "iniokustavi": {
+        "mode": "road_ferry", "terminals": ["Kannvik", "Heponiemi"],
+        "crossingMinutes": 25,
+        "origins": {"Iniö (Kannvik)": "Kannvik", "Kustavi/Gustavs (Heponiemi)": "Heponiemi"},
+    },
+    "kasnashitis": {
+        "mode": "road_ferry", "terminals": ["Kasnäs", "LångnäsH"],
+        "crossingMinutes": 25,
+        "origins": {"Kasnäs": "Kasnäs", "Hiittinen / Hitis (Långnäs)": "LångnäsH"},
+    },
+    "korpohoutskar": {
+        "mode": "road_ferry", "terminals": ["Galtby", "Kittuis"],
+        "crossingMinutes": 35,
+        "origins": {"Korppoo / Korpo": "Galtby", "Houtskari / Houtskär": "Kittuis"},
+    },
+    "korponorrskata": {
+        "mode": "road_ferry", "terminals": ["Galtby", "Olofsnäs"],
+        "crossingMinutes": 15,
+        "origins": {"Korppoo / Korpo (Galtby)": "Galtby", "Norrskata": "Olofsnäs"},
+    },
+    "nagukorpo": {
+        "mode": "road_ferry", "terminals": ["Pärnäs", "Retais"],
+        "crossingMinutes": 5,
+        "origins": {"Nauvo/Nagu-Korppoo/Korpo": "Pärnäs", "Korppoo/Korpo-Nauvo/Nagu": "Retais"},
+    },
+    "pargasnagu": {
+        "mode": "road_ferry", "terminals": ["Lillmälö", "Prostvik"],
+        "crossingMinutes": 10,
+        "origins": {"Parainen / Pargas": "Lillmälö", "Nauvo / Nagu": "Prostvik"},
+    },
+    "hammaronsalmi": {
+        "mode": "cable_ferry", "terminals": ["Airismaa", "Aasla"],
+        "origins": {"Hämmärönsalmi (Aasla)": "Aasla"},
+    },
+    "hogsar": {"mode": "cable_ferry", "terminals": ["Grännäs", "Ängholm"], "origins": {}},
+    "hogsara": {
+        "mode": "cable_ferry", "terminals": ["Svartnäs", "Högsåra"],
+        "origins": {"Svartnäs": "Svartnäs", "Högsåra": "Högsåra"},
+    },
+    "keistio": {
+        "mode": "cable_ferry", "terminals": ["Dalen", "Keistiö"],
+        "origins": {"Dalen": "Dalen", "Keistiö": "Keistiö"},
+    },
+    "kivimo": {"mode": "cable_ferry", "terminals": ["Roslax", "Kivimo"], "origins": {}},
+    "kokkila": {
+        "mode": "cable_ferry", "terminals": ["Kokkila", "Angelniemi"],
+        "origins": {"Kokkila (saari/ö)": "Kokkila"},
+    },
+    "mossala": {"mode": "cable_ferry", "terminals": ["BjörköH", "MossalaE"], "origins": {}},
+    "palva": {
+        "mode": "cable_ferry", "terminals": ["Teersalo", "PalvaI"],
+        "origins": {"Teersalo": "Teersalo", "Palva": "PalvaI"},
+    },
+    "saverkeit": {"mode": "cable_ferry", "terminals": ["NäsbyI", "Saverkeit"], "origins": {}},
+    "skagen": {"mode": "cable_ferry", "terminals": ["Skagen", "JumoE"], "origins": {}},
+    "vano": {
+        "mode": "cable_ferry", "terminals": ["Våno", "Mielisholm"],
+        "origins": {"Våno (mantere/fastland)": "Våno"},
+    },
+    "vartsala": {
+        "mode": "cable_ferry", "terminals": ["Kivimaa", "Vartsala"],
+        "origins": {"Kustavi/Gustavs (mantere/fastland)": "Kivimaa", "Vartsala (saari/ö)": "Vartsala"},
+    },
+    "velkuanmaa": {
+        "mode": "cable_ferry", "terminals": ["PalvaL", "Velkuanmaa"],
+        "origins": {"Palva": "PalvaL", "Velkuanmaa": "Velkuanmaa"},
+    },
+    "seglingelinjen": {"mode": "cable_ferry", "terminals": ["Seglinge", "Snäckö"], "crossingMinutes": 7, "origins": {}},
+    "simskalalinjen": {"mode": "cable_ferry", "terminals": ["Timskär", "Vattungsrevet"], "crossingMinutes": 7, "origins": {}},
+    "toftolinjen": {"mode": "cable_ferry", "terminals": ["Töftö", "Prästö"], "crossingMinutes": 4, "origins": {}},
+    "bjorkolinjen": {"mode": "cable_ferry", "terminals": ["LappoL", "BjörköK"], "origins": {}},
+    "embarsundslinjen": {"mode": "cable_ferry", "terminals": ["Finholma", "Jyddö"], "origins": {}},
+    "angosundslinjen": {"mode": "cable_ferry", "terminals": ["Norrboda", "Ängö"], "origins": {}},
+}
+
+# Route-scoped because names such as Torsholma occur in more than one
+# archipelago. roadAccess means that a traveller can bring a road vehicle to
+# the pier through the regional road/road-ferry network without first using
+# the connection-vessel service being queried. It deliberately does not mean
+# merely that an island has local roads or that the connection vessel can carry
+# a car. suggestForUnspecifiedOrigin is the stricter routing-search rule used
+# when the user supplies a destination but no origin.
+PIER_ACCESS_BY_ROUTE = {
+    "hitisalva": {
+        "Dalsbruk": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Bolax": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "hitisjurmo": {
+        "Kasnäs": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Dalsbruk": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+    },
+    "houtskarrutt": {
+        "Roslax": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Näsby": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "TorsholmaI": {
+            "roadAccess": True,
+            "suggestForUnspecifiedOrigin": True,
+            "role": "gateway_terminal",
+            "displayQualifier": "Brändö, eastern pier",
+            "island": "Brändö",
+            "locality": "Torsholma",
+            "berthVariant": "east",
+            "relatedPier": "Torsholma",
+            "connectedToRelatedPierByRoad": True,
+        },
+        "Själö": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "iniorutt": {
+        "Kannvik": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Norrby": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "road_accessible_pier"},
+        "Själö": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "korporutt": {
+        "Verkan": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Kittuis": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Havträsk": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "road_accessible_terminal"},
+        "Berghamn": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+        "Storpensor": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "nagunorra": {
+        "Nagu": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Lavarn": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "road_accessible_terminal"},
+        "Seili": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "nagusodra": {
+        "Kirjais": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Borstö": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "overnight_island_terminal"},
+    },
+    "nagutvar": {
+        "Pärnäs": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Kirjais": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Hummelholm": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_call"},
+    },
+    "norralinjen": {
+        "Hummelvik": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal", "displayQualifier": "Vårdö"},
+        "TorsholmaI": {
+            "roadAccess": True,
+            "suggestForUnspecifiedOrigin": True,
+            "role": "temporary_gateway_terminal",
+            "displayQualifier": "Brändö, eastern pier",
+            "island": "Brändö",
+            "locality": "Torsholma",
+            "berthVariant": "east",
+            "relatedPier": "Torsholma",
+            "connectedToRelatedPierByRoad": True,
+            "currentUse": {
+                "state": "northern_line_uses_eastern_pier_while_larger_harbour_is_unavailable",
+                "validThrough": "2026-12-31",
+                "mustBeRecheckedWithNextTimetable": True,
+            },
+        },
+        "Kumlinge": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_terminal"},
+    },
+    "pargasrutt": {
+        "Granvik": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Pensar": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_turnaround"},
+    },
+    "rymattylanreitti": {
+        "Haapala": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+    },
+    "sodralinjen": {
+        "Galtby": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal", "displayQualifier": "Korppoo"},
+        "Långnäs": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal", "displayQualifier": "Lumparland"},
+        "Överö": {
+            "roadAccess": True,
+            "suggestForUnspecifiedOrigin": False,
+            "role": "island_network_intermediate",
+            "displayQualifier": "Föglö",
+            "exclusionReason": "not_a_practical_gateway_for_travelers_who_are_not_already_in_Föglö",
+        },
+        "Kökar": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_terminal"},
+        "Sottunga": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "island_terminal"},
+    },
+    "utorutt": {
+        "Pärnäs": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Utö": {"roadAccess": False, "suggestForUnspecifiedOrigin": False, "role": "overnight_island_terminal"},
+    },
+    "velkuanreitti": {
+        "Teersalo": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Hakkenpää": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "road_accessible_terminal"},
+    },
+    "velkuataivassalo": {
+        "Teersalo": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "gateway_terminal"},
+        "Hakkenpää": {"roadAccess": True, "suggestForUnspecifiedOrigin": True, "role": "road_accessible_terminal"},
+    },
 }
 
 DAY_NAMES = {
@@ -149,8 +494,283 @@ def route_id(source_id: str) -> str:
         "-saturday", "-sunday", "-holiday", "-source",
     ):
         if value.endswith(suffix):
-            return value[: -len(suffix)]
-    return value
+            value = value[: -len(suffix)]
+            break
+    # The HTML source uses the short id "inio", while the maintained route and
+    # PDF transcription use "iniokustavi". They are one routing edge.
+    return {"inio": "iniokustavi"}.get(value, value)
+
+
+def add_minutes(time_value: str, day_offset: int, minutes: int) -> tuple[str, int]:
+    hour, minute = map(int, time_value.split(":"))
+    absolute = day_offset * 24 * 60 + hour * 60 + minute + minutes
+    return f"{(absolute // 60) % 24:02d}:{absolute % 60:02d}", absolute // (24 * 60)
+
+
+def normalize_ferry_route(route: dict, model: dict) -> list[str]:
+    """Add a common two-terminal routing model without discarding source data."""
+    terminals = model["terminals"]
+    route["serviceType"] = model["mode"]
+    route["routingService"] = {
+        "model": "scheduled_departures" if route["departures"] else "continuous_or_on_demand",
+        "networkEdge": True,
+        "terminals": terminals,
+        "vehicleAccessAtAllTerminals": True,
+        "connectionVesselVehicleLoadingCapabilityModeled": False,
+        **({"crossingMinutes": model["crossingMinutes"], "crossingTimeNature": "approximate"}
+           if model.get("crossingMinutes") is not None else
+           {"crossingTimeStatus": "not_available_do_not_invent"}),
+    }
+
+    for service in route["continuousServices"]:
+        service["serviceMode"] = "on_demand"
+        service["terminals"] = terminals
+        if model.get("crossingMinutes") is not None:
+            service["crossingMinutes"] = model["crossingMinutes"]
+
+    trips = []
+    unmapped = []
+    for departure in route["departures"]:
+        origin = model["origins"].get(departure["from"])
+        if origin not in terminals:
+            unmapped.append(departure["from"])
+            continue
+        destination = terminals[1] if origin == terminals[0] else terminals[0]
+        for operation in departure["operations"]:
+            calls = [{
+                "stop": origin,
+                "time": departure["time"],
+                "dayOffset": departure.get("dayOffset", 0),
+                "timeNature": "published_departure",
+            }]
+            destination_call = {"stop": destination}
+            if model.get("crossingMinutes") is not None:
+                arrival, arrival_day = add_minutes(
+                    departure["time"], departure.get("dayOffset", 0), model["crossingMinutes"]
+                )
+                destination_call.update({
+                    "time": arrival,
+                    "dayOffset": arrival_day,
+                    "timeNature": "estimated_from_approximate_crossing_duration",
+                    "offsetMinutes": model["crossingMinutes"],
+                })
+            else:
+                destination_call["timeNature"] = "unknown_crossing_duration"
+            calls.append(destination_call)
+            trips.append({
+                "id": f'{route["id"]}-ferry-{len(trips) + 1:04d}',
+                "operatingDays": operation["operatingDays"],
+                "validPeriods": [{
+                    "validFrom": operation["validFrom"],
+                    "validTo": operation["validTo"],
+                }],
+                "specialDays": operation.get("specialDays", []),
+                "sourceId": operation["sourceId"],
+                "sourceDepartureLabel": departure["from"],
+                "calls": calls,
+                **({"conditions": operation["conditions"]} if operation.get("conditions") else {}),
+                **({"noteRefs": operation["noteRefs"]} if operation.get("noteRefs") else {}),
+                "normalizationStatus": (
+                    "machine_generated_requires_semantic_review"
+                    if operation.get("noteInterpretationStatus") == "unresolved"
+                    else "machine_generated"
+                ),
+            })
+    if route["departures"]:
+        route["trips"] = trips
+    return sorted(set(unmapped))
+
+
+def aland_cable_ferry_trip(
+    route_id_value: str,
+    sequence: int,
+    operating_days: str,
+    valid_periods: list[dict],
+    source_id: str,
+    calls: list[dict],
+    public_holiday_policy: str,
+) -> dict:
+    return {
+        "id": f"{route_id_value}-cable-{sequence:04d}",
+        "operatingDays": operating_days,
+        "validPeriods": valid_periods,
+        "publicHolidayPolicy": public_holiday_policy,
+        "sourceId": source_id,
+        "calls": calls,
+        "normalizationStatus": "manually_normalized_from_visually_verified_pdf",
+    }
+
+
+def normalize_aland_scheduled_cable_ferry(route: dict, schedule: dict) -> None:
+    """Expand a one-shore Åland timetable into both traversable directions."""
+    terminals = schedule["terminals"]
+    route["routingService"].update({
+        "model": "hybrid_scheduled_and_on_demand",
+        "publishedDepartureTerminal": terminals[0],
+        "returnDepartureRule": (
+            {"offsetMinutes": schedule["returnDepartureOffsetMinutes"], "timeNature": "approximate"}
+            if schedule.get("returnDepartureOffsetMinutes") is not None else
+            {"offsetRangeMinutes": schedule["returnDepartureOffsetRangeMinutes"], "timeNature": "approximate"}
+        ),
+    })
+    route["continuousServices"] = []
+    for item in schedule["continuousServices"]:
+        route["continuousServices"].append({
+            **item,
+            "type": "continuous_or_on_demand",
+            "terminals": terminals,
+            "validPeriods": schedule["validPeriods"],
+            "sourceId": schedule["sourceId"],
+            "breaks": schedule["breaks"],
+            **({"weekendAndHolidayBreaks": schedule["weekendAndHolidayBreaks"]}
+               if schedule.get("weekendAndHolidayBreaks") else {}),
+        })
+
+    trips = []
+    weekday_only = set(schedule["weekdayOnlyTimes"])
+    for published in schedule["times"]:
+        weekdays = "12345__" if published in weekday_only else "1234567"
+        holiday_policy = "excluded" if published in weekday_only else "included"
+        arrival, arrival_day = add_minutes(published, 0, schedule["crossingMinutes"])
+        trips.append(aland_cable_ferry_trip(
+            route["id"], len(trips) + 1, weekdays, schedule["validPeriods"], schedule["sourceId"],
+            [
+                {"stop": terminals[0], "time": published, "dayOffset": 0, "timeNature": "published_departure"},
+                {"stop": terminals[1], "time": arrival, "dayOffset": arrival_day, "timeNature": "estimated_crossing_arrival"},
+            ],
+            holiday_policy,
+        ))
+        source_conditions = []
+        if published in schedule.get("waitForConnectionTimes", []):
+            source_conditions.append({
+                "type": "may_wait_for_scheduled_bus_or_school_transport",
+                "sourceMarkedDeparture": published,
+            })
+        if published in schedule.get("advanceBookingByTime", {}):
+            source_conditions.append({
+                "type": "advance_booking",
+                "deadline": schedule["advanceBookingByTime"][published],
+            })
+        if source_conditions:
+            trips[-1]["conditions"] = source_conditions
+
+        if schedule.get("returnDepartureOffsetMinutes") is not None:
+            offset = schedule["returnDepartureOffsetMinutes"]
+            return_departure, return_day = add_minutes(published, 0, offset)
+            return_arrival, return_arrival_day = add_minutes(published, 0, offset + schedule["crossingMinutes"])
+            reverse_calls = [
+                {"stop": terminals[1], "time": return_departure, "dayOffset": return_day, "timeNature": "estimated_return_departure", "offsetMinutes": offset},
+                {"stop": terminals[0], "time": return_arrival, "dayOffset": return_arrival_day, "timeNature": "estimated_crossing_arrival", "offsetMinutes": offset + schedule["crossingMinutes"]},
+            ]
+        else:
+            low, high = schedule["returnDepartureOffsetRangeMinutes"]
+            dep_low, _ = add_minutes(published, 0, low)
+            dep_high, _ = add_minutes(published, 0, high)
+            arr_low, _ = add_minutes(published, 0, low + schedule["crossingMinutes"])
+            arr_high, _ = add_minutes(published, 0, high + schedule["crossingMinutes"])
+            reverse_calls = [
+                {"stop": terminals[1], "timeRange": {"earliest": dep_low, "latest": dep_high}, "timeNature": "estimated_return_departure_range", "offsetRangeMinutes": [low, high]},
+                {"stop": terminals[0], "timeRange": {"earliest": arr_low, "latest": arr_high}, "timeNature": "estimated_crossing_arrival_range", "offsetRangeMinutes": [low + schedule["crossingMinutes"], high + schedule["crossingMinutes"]]},
+            ]
+        trips.append(aland_cable_ferry_trip(
+            route["id"], len(trips) + 1, weekdays, schedule["validPeriods"], schedule["sourceId"],
+            reverse_calls, holiday_policy,
+        ))
+        if source_conditions:
+            trips[-1]["conditions"] = source_conditions
+
+    if route["id"] == "seglingelinjen":
+        published = "10:55"
+        arrival, arrival_day = add_minutes(published, 0, schedule["crossingMinutes"])
+        trips.append({
+            **aland_cable_ferry_trip(
+                route["id"], len(trips) + 1, "______7", schedule["validPeriods"], schedule["sourceId"],
+                [
+                    {"stop": terminals[0], "time": published, "dayOffset": 0, "timeNature": "on_request_departure"},
+                    {"stop": terminals[1], "time": arrival, "dayOffset": arrival_day, "timeNature": "estimated_crossing_arrival"},
+                ],
+                "included",
+            ),
+            "conditions": [{"type": "advance_booking", "deadline": "10:00", "purpose": "sunday_church_service"}],
+        })
+    route["trips"] = trips
+    route["travelerInformation"] = {
+        "queueMode": "non_stop_outside_breaks",
+        "mayDepartWhenDeckIsFullOrCapacityReached": True,
+        "priorityTraffic": [
+            "emergency_vehicles", "scheduled_buses", "fuel_transport",
+            "urgent_medical_transport",
+        ],
+        **({
+            "scheduledTripRunsOnlyWhenTravelerIsWaitingAtEitherTerminal": True,
+            "remoteTerminalTravelerMustBePresentByPublishedOriginTimeOrCallByThatTime": True,
+        } if schedule.get("tripRunsOnlyWithTraveler") else {}),
+        **({"returnMayBeDelayedMinutes": schedule["returnMayBeDelayedMinutes"]}
+           if schedule.get("returnMayBeDelayedMinutes") else {}),
+    }
+    if route["id"] == "toftolinjen":
+        route["travelerInformation"]["vehicleMustBeLoadedBeforeBreak"] = {
+            "minutes": 5,
+            "break": {"start": "02:30", "end": "03:05"},
+        }
+    route["contact"] = {"phone": schedule["phone"]}
+    route["review"] = {
+        **route.get("review", {}),
+        "status": "manually_normalized_from_visually_verified_source",
+        "routingReady": True,
+        "scheduleNormalization": "visually_verified_pdf_colors_and_footnotes",
+    }
+
+
+def add_aland_continuous_cable_ferries(routes_by_id: dict) -> None:
+    aggregate = routes_by_id.get("alandsvajerfarjor")
+    if not aggregate:
+        return
+    valid_periods = aggregate.get("validPeriods", [])
+    for route_id_value, model in ALAND_CONTINUOUS_CABLE_FERRIES.items():
+        daytime = {
+            "type": "continuous_or_on_demand",
+            "serviceMode": "on_demand_without_timetable",
+            "operatingDays": "1234567",
+            "terminals": model["terminals"],
+            "validPeriods": valid_periods,
+            "breaks": model["breaks"],
+            "sourceId": aggregate["sources"][0]["sourceId"],
+        }
+        if model.get("night"):
+            daytime["operatingWindow"] = {"start": model["night"]["end"], "end": model["night"]["start"]}
+            night = {
+                "type": "continuous_or_on_demand",
+                "serviceMode": "advance_booking_required",
+                "operatingDays": "1234567",
+                "terminals": model["terminals"],
+                "validPeriods": valid_periods,
+                "operatingWindow": {"start": model["night"]["start"], "end": model["night"]["end"], "crossesMidnight": True},
+                "bookingDeadline": model["night"]["bookingDeadline"],
+                "sourceId": aggregate["sources"][0]["sourceId"],
+            }
+            services = [daytime, night]
+        else:
+            services = [daytime]
+        route = {
+            "id": route_id_value,
+            "provider": "alandstrafiken",
+            "departures": [],
+            "continuousServices": services,
+            "notes": [],
+            "sources": aggregate["sources"],
+            "validPeriods": valid_periods,
+            "holidayExceptions": ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS.get(route_id_value, []),
+            "contact": {"phone": model["phone"]},
+            "travelerInformation": {
+                "vehicleMustBeLoadedBeforeEveryScheduledBreakMinutes": 5,
+            },
+            "review": {
+                "status": "manually_normalized_from_source_compilation",
+                "routingReady": True,
+            },
+        }
+        routes_by_id[route_id_value] = route
 
 
 def extract_row(source: dict, body: str) -> dict:
@@ -406,7 +1026,8 @@ def build() -> dict:
             for key in (
                 "vessel", "vessels", "sourceLanguageAuthority",
                 "languageConflictPolicy", "validPeriods", "booking",
-                "callConditions", "departureAnnotations", "holidayExceptions", "capacity", "trips",
+                "callConditions", "departureAnnotations", "holidayExceptions", "capacity", "contact",
+                "publicTimetableUrl", "trips",
                 "generalNotes", "onDemandExtra", "sourceAnnotations",
                 "annualSchedulePattern", "extractionDiagnostics",
                 "sourceTables", "sourcePageText",
@@ -418,17 +1039,40 @@ def build() -> dict:
                 "sourceTableCorrections",
                 "stopAliases",
                 "connections",
+                "travelerInformation",
             ):
                 if key in transcription:
                     route[key] = transcription[key]
             transcription_count += 1
+    add_aland_continuous_cable_ferries(routes_by_id)
     routes = sorted(routes_by_id.values(), key=lambda item: item["id"])
+    unmapped_ferry_departures = {}
     for route in routes:
+        if route["id"] in PIER_ACCESS_BY_ROUTE:
+            route["pierAccess"] = PIER_ACCESS_BY_ROUTE[route["id"]]
+        if route["provider"] == "alandstrafiken":
+            if route["id"] in ALANDSTRAFIKEN_CABLE_FERRY_ROUTES:
+                route["serviceType"] = "cable_ferry"
+            else:
+                route["serviceType"] = "alandstrafiken_archipelago_ferry"
+            route["classificationEvidence"] = {
+                "providerNetwork": "alandstrafiken",
+                "separateFromMainlandConnectionVessels": True,
+                "routePattern": "point_to_point_or_multi_stop",
+                "cableFerry": route["id"] in ALANDSTRAFIKEN_CABLE_FERRY_ROUTES,
+            }
         if route["provider"] == "finferries" and route["id"] in FINFERRIES_ROAD_FERRY_ROUTES:
             route["serviceType"] = "road_ferry"
             route["classificationEvidence"] = {
                 "geoJsonSubtype": "conn2",
                 "terminalCount": 2,
+                "bookingRuleInheritedFromConnectionVessels": False,
+            }
+        if route["provider"] == "finferries" and route["id"] in FINFERRIES_CABLE_FERRY_ROUTES:
+            route["serviceType"] = "cable_ferry"
+            route["classificationEvidence"] = {
+                "terminalCount": 2,
+                "partOfRoadRoutingNetwork": True,
                 "bookingRuleInheritedFromConnectionVessels": False,
             }
         if route["provider"] == "finferries" and route["id"] in FINFERRIES_CONNECTION_VESSEL_ROUTES:
@@ -442,12 +1086,27 @@ def build() -> dict:
                 "requiredForAllTrips": True,
                 "url": "https://booking.finferries.fi/",
             }
+            call_conditions = route.get("callConditions", {})
             route["callMarkerPolicy"] = {
                 "journeyReservationIsSeparate": True,
-                "y": "call_at_pier_requires_advance_order",
-                "x": "call_at_pier_when_needed_without_separate_order",
+                "y": call_conditions.get("y", {
+                    "operation": "booking_required",
+                    "interpretationStatus": "route_specific_deadline_not_normalized",
+                }),
+                "x": call_conditions.get("x", {
+                    "operation": "source_specific_condition",
+                    "interpretationStatus": "unresolved",
+                }),
                 "expectedUsage": "y is expected at bookable intermediate calls; terminal times may omit it because every connection-vessel journey already requires a reservation",
             }
+        if route["id"] in FERRY_ROUTE_MODELS:
+            unmapped = normalize_ferry_route(route, FERRY_ROUTE_MODELS[route["id"]])
+            if unmapped:
+                unmapped_ferry_departures[route["id"]] = unmapped
+        if route["id"] in ALAND_SCHEDULED_CABLE_FERRIES:
+            normalize_aland_scheduled_cable_ferry(route, ALAND_SCHEDULED_CABLE_FERRIES[route["id"]])
+        if route["id"] in ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS:
+            route["holidayExceptions"] = ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS[route["id"]]
     return {
         "schemaVersion": 1,
         # Use the accepted source set timestamp so unchanged inputs produce an
@@ -469,6 +1128,37 @@ def build() -> dict:
             "ordinaryRouteAndMapViewsUseQualifier": False,
             "duplicateNameTestCases": ["Berghamn"],
         },
+        "pierAccessPolicy": {
+            "roadAccessDefinition": "reachable with a road vehicle through the regional road and road-ferry network without first using the connection-vessel service being queried",
+            "localIslandRoadAloneIsInsufficient": True,
+            "vehicleCapacityDoesNotImplyRoadAccess": True,
+            "unspecifiedOriginSearch": "include only piers where suggestForUnspecifiedOrigin is true",
+            "routeScopedNames": True,
+        },
+        "roadRoutingPolicy": {
+            "roadAndRoadFerryConnectionsFormOneGraph": True,
+            "separateRoadOrRoadFerryConnectivityFlagRequired": False,
+            "roadFerryAndCableFerryTerminalsAreRoadVehicleAccessible": True,
+            "connectionVesselVehicleLoadingCapabilityModeled": False,
+            "connectionVesselVehicleFeasibilityDelegatedToBookingSystem": True,
+            "futureRoadEdges": {
+                "endpoints": "pier_ids",
+                "measurements": ["distance_km", "car_minutes", "bicycle_minutes"],
+            },
+        },
+        "travelerInformationPolicy": {
+            "showAllApplicableSourceInformation": True,
+            "mustNotSuppress": [
+                "booking_requirement",
+                "booking_deadline",
+                "loading_readiness",
+                "early_departure_rule",
+                "vehicle_restriction",
+                "capacity_limit",
+                "service_exception",
+                "connection_guarantee_or_disclaimer",
+            ],
+        },
         "routes": routes,
         "unconvertedSources": unconverted,
         "statistics": {
@@ -476,6 +1166,18 @@ def build() -> dict:
             "convertedSourceCount": len(schedules) + transcription_count,
             "manualTranscriptionCount": transcription_count,
             "tripCount": sum(len(route.get("trips", [])) for route in routes),
+            "normalizedFerryRouteCount": sum(route["id"] in FERRY_ROUTE_MODELS for route in routes),
+            "normalizedFerryTripCount": sum(
+                len(route.get("trips", []))
+                for route in routes
+                if route["id"] in FERRY_ROUTE_MODELS
+            ),
+            "continuousFerryServiceCount": sum(
+                len(route["continuousServices"])
+                for route in routes
+                if route["id"] in FERRY_ROUTE_MODELS
+            ),
+            "unmappedFerryDepartureLabelCount": sum(map(len, unmapped_ferry_departures.values())),
             "scheduledDepartureCount": sum(
                 len(route["departures"])
                 for route in routes
@@ -499,6 +1201,16 @@ def validate(data: dict) -> list[str]:
         if route["id"] in ids:
             errors.append(f'duplicate id: {route["id"]}')
         ids.add(route["id"])
+        routing_service = route.get("routingService")
+        if routing_service:
+            terminals = routing_service.get("terminals", [])
+            if len(terminals) != 2 or terminals[0] == terminals[1]:
+                errors.append(f'{route["id"]}: ferry routing edge must have two distinct terminals')
+            if route["departures"] and not route.get("trips"):
+                errors.append(f'{route["id"]}: scheduled ferry has no normalized trips')
+            for service in route["continuousServices"]:
+                if service.get("terminals") != terminals:
+                    errors.append(f'{route["id"]}: continuous service terminals differ from routing edge')
         for departure in route["departures"]:
             if not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', departure["time"]):
                 errors.append(f'{route["id"]}: invalid time {departure["time"]}')
