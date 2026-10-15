@@ -75,6 +75,12 @@ Nykyinen käytäntö on kasvattaa kokonaislukua yhdellä.
   historiallisista syistä GeoJSON-tyylinen mutta ei täydellinen
   `FeatureCollection`.
 - `timetables_jpg/`: sovelluksessa näytettävät paikalliset aikataulukuvat.
+- `scripts/audit_ferry_data.py`: nykyisen `data.json`-aineiston rakenteen ja
+  aikataulujen voimassaolon tarkistus.
+- `docs/data-audit-2026-10-08.md`: vuoden 2026 lähde- ja sisältöauditoinnin
+  tulokset.
+- `docs/aland-ferry-pricing-2026.md`: Ålandstrafikenin vuoden 2026
+  hinnoittelun lähdemuistio.
 - `future/structured-routing/structured-timetables.json`: koneellisesti muodostettu rakenteellisen
   aikataulun luonnos. Tietueen `review.status` kertoo tarkistustilan.
 - `future/structured-routing/structured-timetables.schema.json`: rakenteellisen aikataulun JSON Schema.
