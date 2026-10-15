@@ -131,6 +131,18 @@
           "continuousServices": { "type": "array", "items": { "type": "object" } },
           "vessel": { "type": "string" },
           "vessels": { "type": "array", "items": { "type": "string" } },
+          "vesselByCode": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "name": { "type": "string" },
+                "capacity": { "type": "object" },
+                "contact": { "type": "object" }
+              }
+            }
+          },
           "sourceLanguageAuthority": { "enum": ["fi", "sv", "en"] },
           "languageConflictPolicy": { "type": "string" },
           "validPeriods": { "type": "array", "items": { "type": "object" } },
