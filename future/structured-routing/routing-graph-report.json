@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T22:28:04.393629+00:00",
+  "generatedAt": "2026-10-15T11:10:10.679628+00:00",
   "statistics": {
-    "nodeCount": 179,
-    "edgeCount": 6758,
-    "tripPatternCount": 1865,
+    "nodeCount": 184,
+    "edgeCount": 9942,
+    "tripPatternCount": 2542,
     "routeMetadataCount": 46,
-    "routesWithEdgesCount": 39,
-    "routesWithoutEdgesCount": 6,
+    "routesWithEdgesCount": 45,
+    "routesWithoutEdgesCount": 0,
     "sourceContainerRouteCount": 1,
     "nodesWithoutCoordinatesCount": 0,
     "unresolvedStopCount": 0,
@@ -16,88 +16,21 @@
     "edgeCountsByKind": {
       "continuous_ferry": 28,
       "road": 606,
-      "scheduled_service": 6124
+      "scheduled_service": 9308
     },
     "serviceEdgeCountsByType": {
-      "alandstrafiken_archipelago_ferry": 794,
+      "alandstrafiken_archipelago_ferry": 1288,
       "cable_ferry": 905,
-      "connection_vessel": 3790,
+      "connection_vessel": 6480,
       "road_ferry": 663
     },
     "scheduledTimingStatusCounts": {
-      "arrival_unknown": 820,
-      "departure_unknown": 445,
-      "usable": 4859
+      "arrival_unknown": 1230,
+      "departure_unknown": 1651,
+      "usable": 6427
     }
   },
-  "routesWithoutEdges": [
-    {
-      "routeId": "avajurmo",
-      "serviceType": "alandstrafiken_archipelago_ferry",
-      "validPeriods": [
-        {
-          "validFrom": "2026-09-14",
-          "validTo": "2026-12-31"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    },
-    {
-      "routeId": "enklingelinjen",
-      "serviceType": "alandstrafiken_archipelago_ferry",
-      "validPeriods": [
-        {
-          "validFrom": "2026-09-14",
-          "validTo": "2026-12-31"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    },
-    {
-      "routeId": "foglolinjen",
-      "serviceType": "alandstrafiken_archipelago_ferry",
-      "validPeriods": [
-        {
-          "validFrom": "2026-09-01",
-          "validTo": "2026-12-31"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    },
-    {
-      "routeId": "iniorutt",
-      "serviceType": "connection_vessel",
-      "validPeriods": [
-        {
-          "validFrom": "2026-08-19",
-          "validTo": "2027-04-30"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    },
-    {
-      "routeId": "osnasava",
-      "serviceType": "alandstrafiken_archipelago_ferry",
-      "validPeriods": [
-        {
-          "validFrom": "2026-09-14",
-          "validTo": "2026-12-31"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    },
-    {
-      "routeId": "velkuataivassalo",
-      "serviceType": "connection_vessel",
-      "validPeriods": [
-        {
-          "validFrom": "2026-09-14",
-          "validTo": "2027-05-06"
-        }
-      ],
-      "reason": "no normalized trips or continuous-service network edges"
-    }
-  ],
+  "routesWithoutEdges": [],
   "nodesWithoutCoordinates": [],
   "unresolvedStops": [],
   "ambiguousStopGroups": {},

@@ -143,6 +143,10 @@ def selected_route_metadata(route: dict) -> dict:
     for key in keys:
         if key in route:
             result[key] = copy.deepcopy(route[key])
+    result["normalizedHolidayDates"] = [
+        item["date"] for item in route.get("holidayTripOverrides", [])
+        if item.get("date")
+    ]
     return result
 
 
@@ -252,7 +256,13 @@ def main() -> int:
         route_mobility = mobility_for(route_service_type)
         normalized_trips = []
 
-        for trip in route.get("trips", []):
+        source_trips = list(route.get("trips", []))
+        source_trips.extend(
+            trip
+            for override in route.get("holidayTripOverrides", [])
+            for trip in override.get("trips", [])
+        )
+        for trip in source_trips:
             original_trip_id = trip.get("id") or f"trip-{len(normalized_trips) + 1}"
             trip_id = f"{route_id}:{original_trip_id}"
             normalized_trip = copy.deepcopy(trip)
@@ -359,6 +369,7 @@ def main() -> int:
                         "mobility": route_mobility,
                         "schedule": {
                             "operatingDays": trip.get("operatingDays"),
+                            "operatingDate": trip.get("operatingDate"),
                             "validPeriods": copy.deepcopy(trip.get("validPeriods", route.get("validPeriods", []))),
                             "specialDays": copy.deepcopy(trip.get("specialDays", [])),
                             "publicHolidayPolicy": trip.get("publicHolidayPolicy"),

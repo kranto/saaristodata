@@ -4,6 +4,15 @@
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
   "sourceId": "alandstrafiken-ava-osnas-1.9.2026",
+  "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/ava-osnas-1.9.2026.pdf",
+  "vessel": "M/S Ådan",
+  "contact": {"phones": ["+358 (0)18 25 600"]},
+  "booking": {
+    "requiredForAllTrips": false,
+    "loadingReadinessMinutesBefore": 10,
+    "channel": "https://www.alandstrafiken.ax/",
+    "phone": "+358 (0)18 25 600"
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",

@@ -7,8 +7,9 @@ ole tuotannossa eikä sitä julkaista nykyisen Saaristolautat-datan mukana.
 Keskeiset tiedostot:
 
 - `structured-timetables.json`: generoitu rakenteellisen aikataulun luonnos.
-- `structured-connection-timetables.json`: yhteysalusreittien säännölliset
-  viikkoaikataulut matkoiksi normalisoiva kokeellinen aineisto.
+- `structured-connection-timetables.json`: yhteysalusreittien ja reitityksessä
+  tarvittavien Ahvenanmaan aluslinjojen säännölliset viikkoaikataulut matkoiksi
+  normalisoiva kokeellinen aineisto.
 - `connection-trip-normalization-report.json`: normalisoinnin reittikohtainen
   kattavuus ja vielä normalisoimattomien pyhäpäiväpoikkeusten tila.
 - `structured-timetables.schema.json`: luonnoksen JSON Schema.
@@ -151,6 +152,9 @@ python3 future/structured-routing/scripts/route_itinerary.py \
 
 python3 future/structured-routing/scripts/route_itineraries.py \
   Turku Storpensor 2026-10-30 --mode car --same-day
+
+python3 -m unittest discover \
+  -s future/structured-routing/tests -v
 ```
 
 Yhteysalusaikataulun kauttaviivasolu, esimerkiksi `Gloskär/Trunsö` tai
@@ -211,11 +215,15 @@ Varmistus hylkää koko vuoron arviot, jos arvioitu välipysähdys olisi myöhem
 kuin vuoron myöhempi julkaistu aika. Pooled-arvion luottamus on rajattu enintään
 0,75:een ja käyttöliittymän on aina näytettävä historiadataa koskeva ilmoitus.
 
-Yhteysalusluonnoksessa kaikilla 13 tarkastellulla reitillä on nyt säännöllisen
-viikkoaikataulun `trips`-rakenne: yhteensä 241 matkamallia ja 1 406 käyntiä.
-Hiittisten Jurmon, Korppoon ja Utön lähteissä olevat pyhäpäiväsäännöt on lisäksi
-normalisoitu päiväkohtaisiksi korvaaviksi matkoiksi tai liikenteettömiksi
-päiviksi. Korppoon ja Utön aiemmat kahden matkan käsin tehdyt osaluonnokset on
+Kaikilla 19 tarkastellulla yhteysalus- ja Ahvenanmaan alusreitillä on nyt
+säännöllisen viikkoaikataulun `trips`-rakenne: yhteensä 462 matkamallia ja
+1 976 käyntiä. Viimeksi lisätyt reitit ovat Åva–Jurmo, Enklinge–Kumlinge,
+Föglön linja, Iniön lisäreitti, Vuosnainen–Åva ja Velkua–Taivassalo.
+Kymmenen reitin lähteissä olevat pyhäpäiväsäännöt on lisäksi normalisoitu
+päiväkohtaisiksi korvaaviksi matkoiksi tai liikenteettömiksi päiviksi.
+Päiväkohtaiset matkat ovat mukana myös varsinaisessa reititysgraafissa;
+poikkeuspäivänä säännöllinen viikkopohja ei jää niiden rinnalle vahingossa
+voimaan. Korppoon ja Utön aiemmat kahden matkan käsin tehdyt osaluonnokset on
 korvattu lähdetaulukoista poimituilla koko viikkoaikatauluilla.
 
 Puuttuva julkaistu kellonaika löytyi 646 matkan sisäiseltä käynniltä. Niistä
@@ -232,10 +240,10 @@ määräävä. Lopetettu reitti on Ahvenanmaan poikittainen, ei Nauvon poikittai
 Pyhäpäivämatkoihin kopioitiin 139 vastaavan viikkopohjan välilaituriarviota ja
 26 päättymisarviota, yhteensä 165 historiallista ajoitustietoa.
 
-Hakuluettelo sisältää 241 säännöllistä matkamallia, 60 päiväkohtaista
-pyhäpäivämatkaa ja 13 liikenteetöntä poikkeuspäivää. Sisäisissä käynneissä on
-627 julkaistua kellonaikaa, 575 täsmällistä historiallista arviota, 115
-konservatiivista historiallista haarukkaa ja 113 käyntiä ilman aikaa. Arvioiden
+Hakuluettelo sisältää 462 säännöllistä matkamallia, 456 päiväkohtaista
+pyhäpäivämatkaa ja 17 liikenteetöntä poikkeuspäivää. Sisäisissä käynneissä on
+1 332 julkaistua kellonaikaa, 577 täsmällistä historiallista arviota, 113
+konservatiivista historiallista haarukkaa ja 495 käyntiä ilman aikaa. Arvioiden
 ydin on kellonajan sijasta lähtöhetkeen lisättävä minuuttimäärä, joten samaa
 mallia voidaan käyttää myös toteutuneen lähtöajan siirtyessä.
 
@@ -259,6 +267,15 @@ päässä toisistaan. Pohjoinen linja käyttää tätä nykyisin väliaikaisesti
 `alandstrafiken_archipelago_ferry`-ryhmäkseen riippumatta siitä, onko linjalla
 kaksi vai useampia laitureita. Ne eivät ole manner-Suomen yhteysalusreittejä.
 Ålandstrafikenin vaijerilossit kuuluvat erilliseen `cable_ferry`-luokkaan.
+
+Reititysgraafissa on 184 laiturisolmua, 9 942 yhteyttä ja 2 542 matkamallia.
+Kaikilla 45 varsinaisella liikennöintireitillä on vähintään yksi graafiyhteys;
+ainoa 46. reittitietue on Ahvenanmaan vaijerilossien yhteinen lähde- ja
+metatietosäiliö. Graafissa ei ole koordinaatittomia solmuja eikä ratkaisemattomia
+laituritunnisteita. Reitittimen regressiotestit kattavat muun muassa
+Turku–Storpensarin, Turku–Wihurin, Nauvo–Degerbyn sekä uudet Åva–Jurmon,
+Vuosnainen–Åvan ja Iniön lisäreitin yhteydet, Enklingen varausehdon ja Föglön
+jouluaaton tilausvuoron.
 
 Maantielautat ja lossit esitetään reititykselle yhtenäisinä kahden laiturin
 verkon kaarina. `routingService.terminals` nimeää päät, `model` erottaa

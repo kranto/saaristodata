@@ -4,6 +4,31 @@
   "sourceLanguageAuthority": "fi",
   "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
   "sourceId": "finferries-iniorutt-inion-lisareitti-talvi-19.8.2026-30.4.2027",
+  "publicTimetableUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti.html",
+  "vessel": "M/S Kivimo",
+  "capacity": {
+    "passengers": 99,
+    "cargoTonnes": 25,
+    "cars": 8
+  },
+  "contact": {
+    "phones": ["+358207118794"]
+  },
+  "booking": {
+    "requiredForAllTrips": true,
+    "channel": "https://booking.finferries.fi/",
+    "vehicleAndCargoBookingOpensDaysBefore": 14,
+    "loadingReadinessMinutesBefore": 10,
+    "deadlineRules": [
+      {"appliesTo": {"weekdays": ["sunday"]}, "deadline": {"relativeTo": "previous_day", "time": "14:00"}},
+      {"appliesTo": {"weekdays": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]}, "deadline": {"relativeTo": "previous_day", "time": "16:00"}}
+    ]
+  },
+  "callConditions": {
+    "y": {"operation": "booking_required", "deadlineRule": "route_booking_deadline_rules"},
+    "y++": {"operation": "booking_required", "deadlineDay": {"relativeTo": "previous_day", "sourceDoesNotSpecifyTime": true}, "bookingContact": {"source": "route_operator"}},
+    "xy": {"operation": "booking_required", "deadline": {"relativeTo": "same_day", "time": "11:00"}}
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",
