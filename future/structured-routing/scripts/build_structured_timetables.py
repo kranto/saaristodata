@@ -38,6 +38,14 @@ NON_ROUTING_SOURCES = {
     "alandstrafiken-bransleturlista-2026",
 }
 
+# This legacy route/source pair is the same Velkua–Taivassalo timetable as the
+# newer, fully transcribed source below.  Keeping both creates duplicate trips
+# and lets routing choose the copy without vessel, booking and contact data.
+SUPERSEDED_SOURCES = {
+    "finferries-velkuanreitti-velkuan-reitti-talvi-14.9.2026-6.5.2027":
+        "finferries-velkuataivassalo-velkuan-reitti-talvi-14.9.2026-6.5.2027",
+}
+
 # Finferries uses "yhteysalus" for the multi-stop connection-vessel services,
 # not for point-to-point road ferries.  Every journey on these routes is booked
 # in the common booking system; a cell marker such as y additionally controls
@@ -954,8 +962,12 @@ def build() -> dict:
     schedules = []
     unconverted = []
     expired_source_count = 0
+    superseded_source_count = 0
     for source in checks["sources"]:
         local = ORIGINALS / source["provider"] / f'{source["id"]}.{source["kind"]}'
+        if source["id"] in SUPERSEDED_SOURCES:
+            superseded_source_count += 1
+            continue
         if source["id"] in EXPIRED_PDF_SOURCES:
             expired_source_count += 1
             continue
@@ -989,6 +1001,8 @@ def build() -> dict:
     if TRANSCRIPTIONS.exists():
         for path in sorted(TRANSCRIPTIONS.glob("*.json")):
             transcription = json.loads(path.read_text())
+            if transcription["sourceId"] in SUPERSEDED_SOURCES:
+                continue
             source = sources_by_id[transcription["sourceId"]]
             transcription["validPeriods"] = [
                 period for period in transcription.get("validPeriods", [])
@@ -1190,6 +1204,7 @@ def build() -> dict:
             ),
             "unconvertedSourceCount": len(unconverted),
             "expiredSourceCount": expired_source_count,
+            "supersededSourceCount": superseded_source_count,
             "unresolvedDepartureNoteCount": sum(
                 operation["noteInterpretationStatus"] == "unresolved"
                 for route in routes

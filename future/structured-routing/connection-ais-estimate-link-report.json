@@ -106,20 +106,25 @@
     },
     {
       "routeId": "iniorutt",
-      "aisRouteId": "iniorutt",
+      "aisRouteId": "houtskarrutt",
       "trips": 20,
       "untimedCalls": 30,
-      "estimatesAttached": 0,
+      "estimatesAttached": 30,
       "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
+      "completionEstimatesAttached": 8,
+      "completionRangesAttached": 12,
+      "holidayEstimateCallsCopied": 79,
+      "coverage": 1.0,
       "outcomes": {
-        "no_compatible_historical_path": 30,
+        "completion_estimate_attached": 8,
+        "completion_range_attached": 12,
+        "estimate_attached": 30,
         "published_time_preserved": 46
       },
-      "matchingMethods": {}
+      "matchingMethods": {
+        "anchor_compatible_paths": 9,
+        "role_aware_compatible_paths": 21
+      }
     },
     {
       "routeId": "keistio",
@@ -421,7 +426,7 @@
       "matchingMethods": {}
     },
     {
-      "routeId": "velkuanreitti",
+      "routeId": "velkuataivassalo",
       "aisRouteId": "velkuanreitti",
       "trips": 16,
       "untimedCalls": 72,
@@ -429,7 +434,7 @@
       "conservativeRangesAttached": 4,
       "completionEstimatesAttached": 16,
       "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
+      "holidayEstimateCallsCopied": 288,
       "coverage": 1.0,
       "outcomes": {
         "completion_estimate_attached": 16,
@@ -441,49 +446,32 @@
         "anchor_compatible_paths": 2,
         "role_aware_compatible_paths": 66
       }
-    },
-    {
-      "routeId": "velkuataivassalo",
-      "aisRouteId": "velkuataivassalo",
-      "trips": 16,
-      "untimedCalls": 72,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 72,
-        "published_time_preserved": 16
-      },
-      "matchingMethods": {}
     }
   ],
   "summary": {
-    "routes": 24,
-    "untimedCalls": 1434,
-    "estimatesAttached": 463,
+    "routes": 23,
+    "untimedCalls": 1362,
+    "estimatesAttached": 493,
     "conservativeRangesAttached": 88,
-    "completionEstimatesAttached": 151,
-    "completionRangesAttached": 29,
-    "holidayEstimateCallsCopied": 165,
-    "coverage": 0.384,
+    "completionEstimatesAttached": 159,
+    "completionRangesAttached": 41,
+    "holidayEstimateCallsCopied": 532,
+    "coverage": 0.427,
     "outcomes": {
-      "completion_estimate_attached": 151,
-      "completion_range_attached": 29,
+      "completion_estimate_attached": 159,
+      "completion_range_attached": 41,
       "conservative_range_attached": 88,
-      "estimate_attached": 463,
+      "estimate_attached": 493,
       "incompatible_with_next_published_time": 2,
       "missing_departure_anchor": 79,
       "no_ais_source": 58,
-      "no_compatible_historical_path": 744,
-      "published_time_preserved": 645
+      "no_compatible_historical_path": 642,
+      "published_time_preserved": 629
     },
     "matchingMethods": {
-      "anchor_compatible_paths": 121,
+      "anchor_compatible_paths": 130,
       "compatible_observed_paths": 87,
-      "role_aware_compatible_paths": 255
+      "role_aware_compatible_paths": 276
     }
   }
 }

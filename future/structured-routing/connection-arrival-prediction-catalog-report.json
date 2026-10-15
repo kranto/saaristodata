@@ -1,16 +1,16 @@
 {
-  "trips": 918,
-  "regularTrips": 462,
+  "trips": 902,
+  "regularTrips": 446,
   "holidayTrips": 456,
   "noServiceDates": 17,
   "internalCallTimings": {
-    "historical_conservative_range": 113,
-    "historical_typical_and_range": 577,
-    "published": 1332,
-    "unavailable": 495
+    "historical_conservative_range": 131,
+    "historical_typical_and_range": 869,
+    "published": 1316,
+    "unavailable": 113
   },
   "historicalCompletionTimings": {
-    "range_only": 36,
-    "typical_and_range": 170
+    "range_only": 76,
+    "typical_and_range": 237
   }
 }

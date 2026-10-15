@@ -2,94 +2,12 @@
   "status": "experimental_timing_coverage_audit",
   "scope": "internal calls after each trip departure anchor",
   "summary": {
-    "unavailableInternalCalls": 495,
+    "unavailableInternalCalls": 113,
     "knownNoAisSourceCalls": 58,
-    "actionableOrReviewableCalls": 437,
-    "affectedRoutes": 10
+    "actionableOrReviewableCalls": 55,
+    "affectedRoutes": 8
   },
   "routes": [
-    {
-      "routeId": "velkuataivassalo",
-      "unavailableInternalCalls": 312,
-      "affectedStops": [
-        {
-          "stopId": "Talosmeri",
-          "calls": 64
-        },
-        {
-          "stopId": "Lailuoto",
-          "calls": 64
-        },
-        {
-          "stopId": "Rauhala",
-          "calls": 64
-        },
-        {
-          "stopId": "Munninmaa",
-          "calls": 33
-        },
-        {
-          "stopId": "Kettumaa",
-          "calls": 33
-        },
-        {
-          "stopId": "Liettinen",
-          "calls": 31
-        },
-        {
-          "stopId": "Tammisluoto",
-          "calls": 23
-        }
-      ],
-      "serviceKinds": {
-        "holiday_override": 240,
-        "regular": 72
-      },
-      "linkOutcomes": {
-        "no_compatible_historical_path": 72,
-        "published_time_preserved": 16
-      },
-      "recommendedAction": "review_historical_path_compatibility"
-    },
-    {
-      "routeId": "iniorutt",
-      "unavailableInternalCalls": 70,
-      "affectedStops": [
-        {
-          "stopId": "Kvarnholm",
-          "calls": 21
-        },
-        {
-          "stopId": "Perkala",
-          "calls": 15
-        },
-        {
-          "stopId": "Kolko",
-          "calls": 10
-        },
-        {
-          "stopId": "Åselholm",
-          "calls": 10
-        },
-        {
-          "stopId": "Kannvik",
-          "calls": 9
-        },
-        {
-          "stopId": "Norrby",
-          "calls": 5
-        }
-      ],
-      "serviceKinds": {
-        "holiday_override": 40,
-        "regular": 30
-      },
-      "linkOutcomes": {
-        "no_compatible_historical_path": 30,
-        "published_time_preserved": 46
-      },
-      "recommendedAction": "review_historical_path_compatibility"
-    },
     {
       "routeId": "nagutvar",
       "unavailableInternalCalls": 58,
