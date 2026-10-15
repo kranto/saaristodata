@@ -163,14 +163,15 @@ kaksikielinen nimi ja vastaa yhtä Nauvon laituria.
 Skriptit lukevat edelleen repositorion juuressa olevia nykyisiä lähdetietoja
 sekä Gitin ulkopuolisen `.timetable-checker/originals/`-hakemiston tiedostoja.
 
-Ensimmäisen AIS-ajoaikamallin tuottaa `saaristolautat`-repositorion
-`scripts/ais_analysis/build_arrival_prediction_model.py`. Malli sisältää vain
+Ensimmäisen AIS-ajoaikamallin tuottaa
+`future/structured-routing/ais-analysis/build_arrival_prediction_model.py`.
+Malli sisältää vain
 vähintään viisi kertaa samassa viikonpäivä- ja lähtöaikaryhmässä havaitut
 välilaituriketjut. Ajat ovat laiturivälien ajoaikojen summia; välilaitureissa
 vietetty odotusaika ei sisälly arvioon. Tiedosto on luonnos eikä korvaa
 operaattorin julkaisemaa aikataulua.
 
-`scripts/ais_analysis/build_flexible_arrival_model.py` tuottaa uuden
+`future/structured-routing/ais-analysis/build_flexible_arrival_model.py` tuottaa uuden
 aikataulusta riippumattoman luonnoksen. Se yhdistää laiturivälien ajoajat
 kaikista luotettavista havainnoista eikä vaadi saman viikonpäivän tai lähtöajan
 löytymistä historiasta. Täsmälleen havaittu välilaituriketju voidaan käyttää
