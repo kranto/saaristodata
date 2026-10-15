@@ -69,7 +69,8 @@ Nykyinen käytäntö on kasvattaa kokonaislukua yhdellä.
 - `data.js`: reittien ja niihin liittyvien tietojen ylläpidettävä lähde.
 - `data.json`: `data.js`:stä generoitu sovelluksen käyttämä tiedosto.
 - `routes.json`: kartan reittiviivat.
-- `roads.json`: pohjakarttaa täydentävät käsin valitut tieosuudet.
+- `roads.json`: pohjakarttaa täydentävät käsin valitut tieosuudet. Toistettava
+  tuontityönkulku on kuvattu tiedostossa `scripts/roads/README.md`.
 - `saaristo.json`: laiturit, nimet ja muut karttakohteet. Tiedoston juuri on
   historiallisista syistä GeoJSON-tyylinen mutta ei täydellinen
   `FeatureCollection`.

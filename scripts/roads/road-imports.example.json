@@ -1,0 +1,27 @@
+{
+  "routes": [
+    {
+      "id": "example-road",
+      "name": "Esimerkkitie",
+      "minZ": 8,
+      "maxZ": 10,
+      "source": {
+        "type": "osrm",
+        "via": [
+          [21.0000, 60.0000],
+          [21.0500, 60.0200]
+        ]
+      }
+    },
+    {
+      "id": "example-export",
+      "name": "GeoJSON- tai GPX-esimerkki",
+      "minZ": 9,
+      "maxZ": 12,
+      "source": {
+        "type": "file",
+        "path": "imports/example-route.geojson"
+      }
+    }
+  ]
+}

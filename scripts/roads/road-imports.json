@@ -1,0 +1,208 @@
+{
+  "routes": [
+    {
+      "id": "aland40",
+      "name": "Åland väg 40 Hammarland - Gölby",
+      "minZ": 8,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+          [19.781503, 60.193575],
+          [19.947196, 60.191772],
+          [19.951571, 60.197679]
+        ]
+      }
+    },
+    {
+      "id": "aland160",
+      "name": "Åland väg 160 Hammarland-Skarpnåtö",
+      "minZ": 8,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+          [19.766636, 60.205943],
+          [19.753942, 60.326483]
+        ]
+      }
+    },
+    {
+      "id": "aland150",
+      "name": "Åland väg 150 Hammarland-Skarpnåtö",
+      "minZ": 8,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+          [19.740269, 60.216410],
+          [19.708431, 60.259505],
+          [19.741238, 60.255584]
+        ]
+      }
+    },
+    {
+      "id": "kumlinge",
+      "name": "Kumlinge hamn - Snäckö",
+      "minZ": 10,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+          [20.790219, 60.290410],
+          [20.727133, 60.219410]
+        ]
+      }
+    },
+    {
+      "id": "vartsala",
+      "name": "Vartsalan lossi - Vuosnainen",
+      "minZ": 7,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.5408957,21.3191414],
+[60.5072436,21.2470651]
+        ]
+      }
+    },
+    {
+      "id": "tie192",
+      "name": "Tie 192 Raisio - Kivimaa",
+      "minZ": 7,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.5058967,22.1563125],
+[60.6477317,21.8024862],
+[60.5644757,21.6031981],
+[60.5449380,21.3554370],
+[60.5426166,21.3362753]
+        ]
+      }
+    },
+    {
+      "id": "poikko",
+      "name": "Poikko - Riiainen (Haapala)",
+      "minZ": 9,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.4143100,21.8976510],
+[60.4034936,21.8604326],
+[60.3915796,21.9070172]
+        ]
+      }
+    },
+    {
+      "id": "rymättylä",
+      "name": "Naantali - Rymättylä",
+      "minZ": 7,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.4622701,22.0209789],
+[60.4588002,21.9132614],
+[60.3767593,21.9460058]
+        ]
+      }
+    },
+    {
+      "id": "airismaa",
+      "name": "Rymättylä - Hämmärönsalmi",
+      "minZ": 7,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.3767160,21.9461238],
+[60.3162319, 21.9633651]
+        ]
+      }
+    },
+    {
+      "id": "aasla",
+      "name": "Hämmärönsalmi - Hanka",
+      "minZ": 7,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.3137134, 21.9614983],
+[60.2857665,21.9687510]
+        ]
+      }
+    },
+    {
+      "id": "prostvikpärnäs",
+      "name": "Prostvik - Pärnäs",
+      "minZ": 7,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.2225029,22.0978189],
+[60.1927167,21.9093132],
+[60.1638500,21.7045856]
+        ]
+      }
+    },
+    {
+      "id": "kaarinalillmälö",
+      "name": "Kaarina - Lillmälö",
+      "minZ": 7,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.4236308,22.3793221],
+[60.3066989,22.3010015],
+[60.2355227,22.1126032]
+        ]
+      }
+    },
+    {
+      "id": "retaiskorpo",
+      "name": "Retais - Korpo",
+      "minZ": 7,
+      "maxZ": 9,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.1659189,21.6914213],
+[60.1626649,21.5621710]
+        ]
+      }
+    },
+    {
+      "id": "galtby",
+      "name": "Galtby",
+      "minZ": 7,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.1790998,21.5936923],
+[60.1854430,21.5855920]
+        ]
+      }
+    },
+    {
+      "id": "korpoström",
+      "name": "Korpoström",
+      "minZ": 10,
+      "maxZ": 11,
+      "source": {
+        "type": "osrm",
+        "via": [
+[60.1626649,21.5621710],
+[60.1109095,21.5999150]
+        ]
+      }
+    }
+  ]
+}
