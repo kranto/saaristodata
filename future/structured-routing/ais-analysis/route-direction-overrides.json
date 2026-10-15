@@ -1,0 +1,19 @@
+{
+  "routes": {
+    "pargasrutt": {
+      "mainPier": "Granvik",
+      "outboundStopOrder": [
+        "Granvik",
+        "Granholmen",
+        "Heisala",
+        "Björkholm",
+        "Ramsholm",
+        "Stenholm",
+        "Aspholm",
+        "Kuggö",
+        "PensarI"
+      ],
+      "interpretation": "Lineaarinen tilausreitti: menomatkalla jätetään matkustajia ja paluumatkalla poimitaan. Väliin jäävät tilaamattomat laiturit ohitetaan."
+    }
+  }
+}
