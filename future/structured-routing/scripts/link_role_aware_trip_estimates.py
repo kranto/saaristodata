@@ -16,7 +16,16 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 
-ROUTE_ALIASES = {"hitisalva": "hitisrutt", "hitisjurmo": "hitisrutt"}
+ROUTE_ALIASES = {
+    "hitisalva": "hitisrutt",
+    "hitisjurmo": "hitisrutt",
+    # The AIS analysis predates the current timetable identifiers. The
+    # Velkua–Taivassalo service is the same analyzed Velkua route, while the
+    # Iniö additional service uses M/S Kivimo and the Iniö pier observations
+    # already grouped into the Houtskari/Iniö AIS route model.
+    "velkuataivassalo": "velkuanreitti",
+    "iniorutt": "houtskarrutt",
+}
 STOP_ALIASES = {
     "hitisalva": {"Stora Ängesö": "Ängesö", "Vänoxa släten": "Vänoxasläten"},
     "hitisjurmo": {

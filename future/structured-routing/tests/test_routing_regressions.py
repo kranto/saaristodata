@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GRAPH = ROOT / "routing-graph.json"
 REPORT = ROOT / "routing-graph-report.json"
+AIS_LINK_REPORT = ROOT / "connection-ais-estimate-link-report.json"
 ROUTER = ROOT / "scripts" / "route_itinerary.py"
 PUBLIC_ROUTER = ROOT / "scripts" / "query_routes.py"
 
@@ -51,6 +52,7 @@ class RoutingGraphCoverageTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.graph = json.loads(GRAPH.read_text())
         cls.report = json.loads(REPORT.read_text())
+        cls.ais_link_report = json.loads(AIS_LINK_REPORT.read_text())
 
     def test_every_real_route_has_edges(self) -> None:
         self.assertEqual(self.report["statistics"]["routesWithoutEdgesCount"], 0)
@@ -71,6 +73,21 @@ class RoutingGraphCoverageTests(unittest.TestCase):
                 any(edge.get("timingStatus") == "usable" for edge in edges),
                 route_id,
             )
+
+    def test_velkua_and_inio_ais_aliases_have_full_coverage(self) -> None:
+        routes = {
+            item["routeId"]: item
+            for item in self.ais_link_report["routes"]
+        }
+        self.assertEqual(routes["velkuataivassalo"]["aisRouteId"], "velkuanreitti")
+        self.assertEqual(routes["velkuataivassalo"]["coverage"], 1)
+        self.assertEqual(routes["iniorutt"]["aisRouteId"], "houtskarrutt")
+        self.assertEqual(routes["iniorutt"]["coverage"], 1)
+
+    def test_legacy_velkua_duplicate_is_not_in_graph(self) -> None:
+        route_ids = {item["id"] for item in self.graph["routes"]}
+        self.assertIn("velkuataivassalo", route_ids)
+        self.assertNotIn("velkuanreitti", route_ids)
 
 
 class ExampleJourneyTests(unittest.TestCase):
@@ -128,6 +145,26 @@ class ExampleJourneyTests(unittest.TestCase):
         result = route("Vuosnainen", "Åva", "2026-11-02", "09:00")
         self.assert_route_ids(result, ["osnasava"])
         self.assertEqual(result["arrival"], "2026-11-02T11:20")
+
+    def test_velkua_uses_ais_arrival_and_rich_canonical_metadata(self) -> None:
+        result = route("Teersalo", "Talosmeri", "2026-11-02", "05:00")
+        self.assert_route_ids(result, ["velkuataivassalo"])
+        leg = result["legs"][0]
+        self.assertEqual(leg["arrival"], "2026-11-02T06:38")
+        self.assertEqual(leg["arrivalTiming"]["status"], "historical_estimate")
+        self.assertEqual(leg["vessel"], "M/S Kaita")
+        self.assertEqual(leg["capacity"]["cars"], 8)
+        self.assertTrue(leg["booking"]["required"])
+        self.assertIsNotNone(leg["contact"])
+        self.assertIsNotNone(leg["publicTimetableUrl"])
+
+    def test_inio_uses_houtskar_ais_model(self) -> None:
+        result = route("Själö", "Kvarnholm", "2026-11-02", "05:00")
+        self.assert_route_ids(result, ["iniorutt"])
+        leg = result["legs"][0]
+        self.assertEqual(leg["arrival"], "2026-11-02T06:02")
+        self.assertEqual(leg["arrivalTiming"]["status"], "historical_estimate")
+        self.assertGreaterEqual(leg["arrivalTiming"]["sampleSize"], 1)
 
     def test_enklinge_booking_marker_is_resolved(self) -> None:
         result = route("Kumlinge", "Enklinge", "2026-11-02", "05:00")
