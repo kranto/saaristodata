@@ -533,6 +533,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "M/S Doppingen",
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -541,7 +542,38 @@
           "validTo": "2026-12-31"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": false,
+        "loadingReadinessMinutesBefore": 5,
+        "channel": "https://www.alandstrafiken.ax/",
+        "phone": "+358 (0)18 25 600"
+      },
+      "callConditions": {
+        "1": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "trip_departure",
+            "offsetMinutes": -60
+          }
+        },
+        "2": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "previous_day",
+            "time": "20:00"
+          }
+        },
+        "holiday_booking": {
+          "operation": "booking_required"
+        }
+      },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-08/ava-jurmo_25.08.pdf",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 1,
@@ -3904,6 +3936,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "Enklingelinjens färja",
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -3912,7 +3945,38 @@
           "validTo": "2026-12-31"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": false,
+        "loadingReadinessMinutesBefore": 5,
+        "channel": "https://www.alandstrafiken.ax/",
+        "phone": "+358 (0)18 25 600"
+      },
+      "callConditions": {
+        "1": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "trip_departure",
+            "offsetMinutes": -60
+          }
+        },
+        "2": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "previous_day",
+            "time": "20:00"
+          }
+        },
+        "holiday_booking": {
+          "operation": "booking_required"
+        }
+      },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/enklinge-kumlinge-14.9.2026.pdf",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 1,
@@ -4239,6 +4303,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "M/S Skarven",
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -4247,7 +4312,42 @@
           "validTo": "2026-12-31"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": false,
+        "loadingReadinessMinutesBefore": 10,
+        "channel": "phone",
+        "phone": "+358 (0)401 733 600"
+      },
+      "callConditions": {
+        "1": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "same_day",
+            "time": "21:30"
+          },
+          "bookingContact": {
+            "source": "operating_vessel"
+          }
+        },
+        "2": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "previous_day",
+            "time": "21:30"
+          },
+          "bookingContact": {
+            "source": "operating_vessel"
+          }
+        }
+      },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)401 733 600",
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-05/foglo-27.5.2026.pdf",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 2,
@@ -4517,6 +4617,14 @@
           "text": "24\nFöglölinjen 1–31/5 och 1/9–31/12 2026 UPPDATERAD 27/5 2026\nFRÅN DEGERBY (Föglö)\nMåndag Tisdag Onsdag Torsdag Fredag Lördag Söndag\n06:30 06:30 06:30 06:30 06:30 06:152) 06:302)\n07:45 07:45 07:45 07:45 07:45 – –\n09:15 09:15 09:15 09:15 09:15 09:15 –\n10:45 10:45 10:45 10:45 10:45 10:45 10:45\n12:15 12:15 12:15 12:15 12:15 12:15 12:15\n14:05 14:05 14:05 14:05 14:05 14:05 –\n15:35 15:35 15:35 15:35 15:35 15:35 15:35\n17:35 17:35 17:35 17:35B) 17:35 17:35 17:35\n19:45 19:45 19:45 19:45 19:45 – 19:45\n21:05 21:05 21:05 21:05 21:05 21:05 21:05\n23:251) 23:251) 23:251) 23:251) 23:251) 23:251) 23:251)\nFRÅN SVINÖ (Lumparland)\nMåndag Tisdag Onsdag Torsdag Fredag Lördag Söndag\n– – – – – 06:552) –\n07:10 07:10 07:10 07:10 07:10 – 07:102)\n08:30 08:30 08:30 08:30B) 08:30 – –\n10:00 10:00 10:00 10:00 10:00 10:00 –\n11:30 11:30 11:30 11:30 11:30 11:30 11:30\n13:20 13:20 13:20 13:20 13:20 13:20 –\n14:50 14:50 14:50 14:50 14:50 14:50 14:50\n16:55 16:55 16:55 16:55 16:55 16:55 16:55\n18:15 18:15 18:15 18:15 18:15 18:15 18:15\n20:25 20:25 20:25 20:25 20:25 – 20:25\n21:45 21:45 21:45 21:45 21:45 21:45 21:45\n00:051) 00:051) 00:051) 00:051) 00:051) 00:051) 00:051)\nM/S Skarven tel. +358 (0)401 733 600. Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION TIETOJA INFORMATION\n1) Trafikeras mot beställning till färjan senast kl. 1) Liikennöidään tilauksesta. Tilaus suoraan lau- 1) Only by ordering to the ferry, no later than 21:30.\n21:30. talle viimeistään klo 21:30 mennessä. 2) Only by ordering to the ferry the day before at\n2) Mot beställning till färjan dagen före senast kl. 2) Tilauksesta lautalle viimeistään edellisenä 21:30 the latest.\n21:30. iltana klo 21:30. B) B) Fuel transport Thu at 08:30/17:35, to be\nB) Bränsletur tors kl. 08:30/17:35, endast mot B) Polttoainekuljetus to klo 08:30/17:35, ainoas booked no later than Mon at 12:00 to Ålandstrafi-\nbokning senast mån kl. 12:00 hos Ålandstrafiken. taan varauksesta ma klo 12:00 Ålandstrafikenille. ken. Limited capacity.\nBegränsad kapacitet. Rajoitettu kapaciteetti. The vehicles must be ready to embark at least 10\nFordon ska vara klara att köra ombord senast Ajoneuvojen on oltava valmiina lastaukseen min prior to the departure time. Also applies to\n10 min före annonserad avgångstid. Gäller även viimeistään 10 min ennen ilmoitettua lähtöaikaa. vehicles with granted priority.\nförtursfordon. Koskee myös etusijaisia ajoneuovoja.\nTHIS LINE CAN NOT BE BOOKED, you need a\nDENNA LINJE KAN INTE BOKAS, du behöver TÄTÄ LINJAA EI VOIDA VARATA, tarvitset valid ticket, such as an annual pass, tourist pass\ngiltigt färdbevis såsom årskort, turistkort eller voimassa olevan matkalipun, kuten kausikortin, or open ticket.\nöppen biljett. turistikortin tai avoimen lipun.\nAvvikelser: Poikkeuksia: Exceptions:\nTors 1/1 Trafiken inleds kl. 10:45 från Degerby To 1/1 Liikennöinti alkaa klo 10:45 Degerbystä, Thu 1/1 Traffic starts at 10:45 from Degerby,\ndärefter söndagstrafik. ja jatko sunnuntailiikenne. thereafter Sunday schedule.\nTis 6/1, Fre 3/4, Mån 6/4, Lör 31/10, Sön 6/12 Ti 6/1, Pe 3/4, Ma 6/4, La 31/10, Su 6/12 Tue 6/1, Fri 3/4, Mon 6/4, Sat 31/10, Sun 6/12\nSöndags trafik. Sunnuntailiikenne. Sunday schedule.\nTors 24/12 Trafiken avslutas med avg. kl. 16:55 To 24/12 Liikennöinti pysähtyy klo 16:55 vuo- Thu 24/12 Traffic stops with departure at 16:55\nfrån Svinö, därefter körs beställningsturer kl. rolla Svinöstä, jonka jälkeen ajetaan klo 22:25 from Svinö and after that only the tour from\n22:25 från Degerby samt kl. 23:00 från Svinö Degerbystä, sekä klo 23:00 Svinöstä ainoastaan Degerby at 22:25 and from Svinö at 23:00, to be\nmot beställning senast 23/12 kl. 21:30. tilausvuoroja, jotka tulee tehdä viimeistään ordered no later than 23/12 at 21:30.\nFre 25/12 Trafiken inleds kl. 12:15 från Degerby, 23/12 klo 21:30. Fri 25/12 Traffic starts with departure at 12:15\ndärefter söndagstrafik. Pe 25/12 Liikennöinti alkaa klo 12:15 vuorolla from Degerby, thereafter Sunday schedule.\nLör 26/12 Trafiken inleds kl. 10:45 från Degerby, Degerbystä, ja jatko sunnuntaliikenne. Sat 26/12 Traffic starts with departure at 10:45\ndärefter söndagstrafik. La 26/12 Liikennöinti alkaa klo 10:45 Deger- from Degerby, thereafter Sunday schedule.\nTors 31/12 Trafiken avslutas med avg. kl. 20:25 bystä, ja jatko sunnuntaliikenne. Thu 31/12 Traffic stops with departure at 20:25\nfrån Svinö. To 31/12 Liikennöinti pysähtyy klo 20:25 vuo- from Svinö.\nFre 1/1 2027 Trafiken inleds kl. 10:45 från rolla Svinöstä. Fri 1/1 2027 Traffic starts with departure\nDegerby, därefter söndagstrafik. Pe 1/1 2027 Liikennöinti alkaa klo 10:45 Deger- at 10:45 from Degerby, thereafter Sunday\nbystä, ja jatko sunnuntailiikenne. schedule."
         }
       ],
+      "travelerInformation": {
+        "notices": [
+          {
+            "type": "regular_service_not_bookable",
+            "meaning": "valid_ticket_required"
+          }
+        ]
+      },
       "serviceType": "alandstrafiken_archipelago_ferry",
       "classificationEvidence": {
         "providerNetwork": "alandstrafiken",
@@ -14032,6 +14140,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "M/S Kivimo",
       "sourceLanguageAuthority": "fi",
       "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
       "validPeriods": [
@@ -14040,7 +14149,77 @@
           "validTo": "2027-04-30"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": true,
+        "channel": "https://booking.finferries.fi/",
+        "vehicleAndCargoBookingOpensDaysBefore": 14,
+        "loadingReadinessMinutesBefore": 10,
+        "deadlineRules": [
+          {
+            "appliesTo": {
+              "weekdays": [
+                "sunday"
+              ]
+            },
+            "deadline": {
+              "relativeTo": "previous_day",
+              "time": "14:00"
+            }
+          },
+          {
+            "appliesTo": {
+              "weekdays": [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday",
+                "saturday"
+              ]
+            },
+            "deadline": {
+              "relativeTo": "previous_day",
+              "time": "16:00"
+            }
+          }
+        ],
+        "url": "https://booking.finferries.fi/"
+      },
+      "callConditions": {
+        "y": {
+          "operation": "booking_required",
+          "deadlineRule": "route_booking_deadline_rules"
+        },
+        "y++": {
+          "operation": "booking_required",
+          "deadlineDay": {
+            "relativeTo": "previous_day",
+            "sourceDoesNotSpecifyTime": true
+          },
+          "bookingContact": {
+            "source": "route_operator"
+          }
+        },
+        "xy": {
+          "operation": "booking_required",
+          "deadline": {
+            "relativeTo": "same_day",
+            "time": "11:00"
+          }
+        }
+      },
       "holidayExceptions": [],
+      "capacity": {
+        "passengers": 99,
+        "cargoTonnes": 25,
+        "cars": 8
+      },
+      "contact": {
+        "phones": [
+          "+358207118794"
+        ]
+      },
+      "publicTimetableUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/inion-lisareitti.html",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 1,
@@ -14637,15 +14816,11 @@
         "geoJsonSubtype": "conn4",
         "bookingRuleInheritedFromConnectionVessels": true
       },
-      "booking": {
-        "requiredForAllTrips": true,
-        "url": "https://booking.finferries.fi/"
-      },
       "callMarkerPolicy": {
         "journeyReservationIsSeparate": true,
         "y": {
           "operation": "booking_required",
-          "interpretationStatus": "route_specific_deadline_not_normalized"
+          "deadlineRule": "route_booking_deadline_rules"
         },
         "x": {
           "operation": "source_specific_condition",
@@ -44072,6 +44247,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "M/S Ådan",
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -44080,7 +44256,19 @@
           "validTo": "2026-12-31"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": false,
+        "loadingReadinessMinutesBefore": 10,
+        "channel": "https://www.alandstrafiken.ax/",
+        "phone": "+358 (0)18 25 600"
+      },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/ava-osnas-1.9.2026.pdf",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 2,
@@ -82530,6 +82718,7 @@
         ],
         "routingReady": false
       },
+      "vessel": "M/S Kaita",
       "sourceLanguageAuthority": "fi",
       "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
       "validPeriods": [
@@ -82538,7 +82727,91 @@
           "validTo": "2027-05-06"
         }
       ],
+      "booking": {
+        "requiredForAllTrips": true,
+        "channel": "https://booking.finferries.fi/",
+        "vehicleAndCargoBookingOpensDaysBefore": 14,
+        "loadingReadinessMinutesBefore": 10,
+        "deadlineRules": [
+          {
+            "appliesTo": {
+              "weekdays": [
+                "saturday",
+                "sunday"
+              ]
+            },
+            "deadline": {
+              "relativeTo": "previous_day",
+              "time": "17:00"
+            }
+          },
+          {
+            "appliesTo": {
+              "weekdays": [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday"
+              ],
+              "departureBefore": "12:00"
+            },
+            "deadline": {
+              "relativeTo": "previous_day",
+              "time": "17:00"
+            }
+          },
+          {
+            "appliesTo": {
+              "weekdays": [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday"
+              ],
+              "departureTimeFrom": "12:00"
+            },
+            "deadline": {
+              "relativeTo": "same_day",
+              "time": "17:00"
+            }
+          }
+        ],
+        "url": "https://booking.finferries.fi/"
+      },
+      "callConditions": {
+        "x": {
+          "operation": "on_request",
+          "deadline": {
+            "minutesBeforeDepartureFromOrigin": 10
+          }
+        },
+        "y": {
+          "operation": "booking_required",
+          "deadlineRule": "route_booking_deadline_rules"
+        },
+        "y*": {
+          "operation": "booking_required",
+          "deadlineRule": "route_booking_deadline_rules"
+        },
+        "y**": {
+          "operation": "booking_required",
+          "deadlineRule": "route_booking_deadline_rules"
+        }
+      },
       "holidayExceptions": [],
+      "capacity": {
+        "passengers": 100,
+        "cargoTonnes": 25,
+        "cars": 8
+      },
+      "contact": {
+        "phones": [
+          "+358207118795"
+        ]
+      },
+      "publicTimetableUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti.html",
       "trips": [],
       "extractionDiagnostics": {
         "tableCount": 2,
@@ -83195,19 +83468,17 @@
         "geoJsonSubtype": "conn4",
         "bookingRuleInheritedFromConnectionVessels": true
       },
-      "booking": {
-        "requiredForAllTrips": true,
-        "url": "https://booking.finferries.fi/"
-      },
       "callMarkerPolicy": {
         "journeyReservationIsSeparate": true,
         "y": {
           "operation": "booking_required",
-          "interpretationStatus": "route_specific_deadline_not_normalized"
+          "deadlineRule": "route_booking_deadline_rules"
         },
         "x": {
-          "operation": "source_specific_condition",
-          "interpretationStatus": "unresolved"
+          "operation": "on_request",
+          "deadline": {
+            "minutesBeforeDepartureFromOrigin": 10
+          }
         },
         "expectedUsage": "y is expected at bookable intermediate calls; terminal times may omit it because every connection-vessel journey already requires a reservation"
       }
