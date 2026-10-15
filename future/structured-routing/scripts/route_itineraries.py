@@ -89,7 +89,9 @@ def partial_worst_risk(records: list[dict], routes: dict[str, dict]) -> str:
     shift, first_service_index = prefix_road_shift(records, routes)
     for index, item in enumerate(records):
         edge = item["edge"]
-        if edge["kind"] == "road" or index == 0:
+        if edge["kind"] == "road" or not any(
+            previous["edge"]["kind"] != "road" for previous in records[:index]
+        ):
             continue
         ready = item["ready"]
         if shift and index == first_service_index:
@@ -109,7 +111,7 @@ def format_candidate(
     shift, first_service_index = prefix_road_shift(records, routes, start)
     legs = []
     risk_counts = Counter()
-    worst_risk = "relaxed"
+    worst_risk = None
 
     for index, item in enumerate(records):
         edge, instance, ready = item["edge"], item["instance"], item["ready"]
@@ -172,12 +174,14 @@ def format_candidate(
             else:
                 leg["availability"] = edge.get("availability")
 
-            if index > 0 and edge["kind"] == "scheduled_service":
+            if edge["kind"] == "scheduled_service" and any(
+                previous["edge"]["kind"] != "road" for previous in records[:index]
+            ):
                 readiness = route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
                 risk = transfer_risk(leg["waitMinutes"], readiness)
                 leg["transferRisk"] = risk
                 risk_counts[risk["level"]] += 1
-                if RISK_ORDER[risk["level"]] > RISK_ORDER[worst_risk]:
+                if worst_risk is None or RISK_ORDER[risk["level"]] > RISK_ORDER[worst_risk]:
                     worst_risk = risk["level"]
         legs.append(leg)
 
@@ -279,8 +283,8 @@ def candidate_dominates(first: dict, second: dict) -> bool:
     second_departure = datetime.fromisoformat(second["suggestedOriginDeparture"])
     first_arrival = datetime.fromisoformat(first["arrival"])
     second_arrival = datetime.fromisoformat(second["arrival"])
-    first_risk = RISK_ORDER[first["riskSummary"]["worstConnectionRisk"]]
-    second_risk = RISK_ORDER[second["riskSummary"]["worstConnectionRisk"]]
+    first_risk = RISK_ORDER.get(first["riskSummary"]["worstConnectionRisk"], -1)
+    second_risk = RISK_ORDER.get(second["riskSummary"]["worstConnectionRisk"], -1)
     no_worse = (
         first_departure >= second_departure
         and first_arrival <= second_arrival
@@ -294,31 +298,51 @@ def candidate_dominates(first: dict, second: dict) -> bool:
     return no_worse and strictly_better
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("origin")
-    parser.add_argument("destination")
-    parser.add_argument("travel_date", type=date.fromisoformat)
-    parser.add_argument("start_time", type=parse_clock, nargs="?", default=time(0, 0))
-    parser.add_argument("--mode", choices=("car", "motorcycle", "bicycle"), default="car")
-    parser.add_argument("--timing-profile", choices=("typical", "conservative"), default="typical")
-    parser.add_argument("--max-results", type=int, default=12)
-    parser.add_argument("--max-results-per-final-service", type=int, default=3)
-    parser.add_argument("--max-candidates", type=int, default=1000)
-    parser.add_argument("--max-labels-per-node-hour", type=int, default=20)
-    parser.add_argument("--max-legs", type=int, default=12)
-    parser.add_argument("--origin-sweep-minutes", type=int, default=30)
-    parser.add_argument("--same-day", action="store_true")
-    parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
-    args = parser.parse_args()
-
+def find_itineraries(
+    origin: str,
+    destination: str,
+    travel_date: date,
+    start_time: time = time(0, 0),
+    *,
+    mode: str = "car",
+    timing_profile: str = "typical",
+    max_results: int = 12,
+    max_results_per_final_service: int = 3,
+    max_candidates: int = 1000,
+    max_labels_per_node_hour: int = 20,
+    max_legs: int = 12,
+    origin_sweep_minutes: int = 30,
+    same_day: bool = False,
+    graph_path: Path = DEFAULT_GRAPH,
+) -> dict:
+    """Return distinct useful itineraries as a reusable Python API."""
+    if mode not in {"car", "motorcycle", "bicycle"}:
+        raise ValueError(f"unsupported mode: {mode}")
+    if timing_profile not in {"typical", "conservative"}:
+        raise ValueError(f"unsupported timing profile: {timing_profile}")
+    args = argparse.Namespace(
+        origin=origin,
+        destination=destination,
+        travel_date=travel_date,
+        start_time=start_time,
+        mode=mode,
+        timing_profile=timing_profile,
+        max_results=max_results,
+        max_results_per_final_service=max_results_per_final_service,
+        max_candidates=max_candidates,
+        max_labels_per_node_hour=max_labels_per_node_hour,
+        max_legs=max_legs,
+        origin_sweep_minutes=origin_sweep_minutes,
+        same_day=same_day,
+        graph=graph_path,
+    )
     graph = json.loads(args.graph.read_text())
     routes = {item["id"]: item for item in graph["routes"]}
     trip_patterns = {item["id"]: item for item in graph["tripPatterns"]}
     nodes = {item["id"]: item for item in graph["nodes"]}
     for value, label in ((args.origin, "origin"), (args.destination, "destination")):
         if value not in nodes:
-            raise SystemExit(f"unknown {label}: {value}")
+            raise ValueError(f"unknown {label}: {value}")
 
     adjacency: dict[str, list[dict]] = defaultdict(list)
     skipped_continuous_unknown = 0
@@ -491,7 +515,7 @@ def main() -> int:
         item.pop("_finalService", None)
     for index, item in enumerate(results, 1):
         item["rank"] = index
-    print(json.dumps({
+    return {
         "status": "routes_found" if results else "no_route",
         "origin": args.origin,
         "destination": args.destination,
@@ -516,8 +540,47 @@ def main() -> int:
                 "specialized holiday and parity-based break rules still require expansion",
             ],
         },
-    }, ensure_ascii=False, indent=2))
-    return 0 if results else 2
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("origin")
+    parser.add_argument("destination")
+    parser.add_argument("travel_date", type=date.fromisoformat)
+    parser.add_argument("start_time", type=parse_clock, nargs="?", default=time(0, 0))
+    parser.add_argument("--mode", choices=("car", "motorcycle", "bicycle"), default="car")
+    parser.add_argument("--timing-profile", choices=("typical", "conservative"), default="typical")
+    parser.add_argument("--max-results", type=int, default=12)
+    parser.add_argument("--max-results-per-final-service", type=int, default=3)
+    parser.add_argument("--max-candidates", type=int, default=1000)
+    parser.add_argument("--max-labels-per-node-hour", type=int, default=20)
+    parser.add_argument("--max-legs", type=int, default=12)
+    parser.add_argument("--origin-sweep-minutes", type=int, default=30)
+    parser.add_argument("--same-day", action="store_true")
+    parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
+    args = parser.parse_args()
+    try:
+        response = find_itineraries(
+            args.origin,
+            args.destination,
+            args.travel_date,
+            args.start_time,
+            mode=args.mode,
+            timing_profile=args.timing_profile,
+            max_results=args.max_results,
+            max_results_per_final_service=args.max_results_per_final_service,
+            max_candidates=args.max_candidates,
+            max_labels_per_node_hour=args.max_labels_per_node_hour,
+            max_legs=args.max_legs,
+            origin_sweep_minutes=args.origin_sweep_minutes,
+            same_day=args.same_day,
+            graph_path=args.graph,
+        )
+    except ValueError as error:
+        parser.error(str(error))
+    print(json.dumps(response, ensure_ascii=False, indent=2))
+    return 0 if response["status"] == "routes_found" else 2
 
 
 if __name__ == "__main__":

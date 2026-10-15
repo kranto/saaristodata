@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saaristolautat.fi/schemas/route-query-response-v1.json",
+  "title": "Saaristolautat route query response",
+  "type": "object",
+  "required": ["schemaVersion", "status", "query", "resultCount", "itineraries"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "status": { "enum": ["routes_found", "no_route"] },
+    "outcomeReason": { "enum": ["no_itinerary_for_query"] },
+    "query": {
+      "type": "object",
+      "required": ["origin", "destination", "departureNotBefore", "arrivalDeadline", "mode", "timingProfile", "timeZone"],
+      "properties": {
+        "origin": { "type": "string" },
+        "destination": { "type": "string" },
+        "departureNotBefore": { "$ref": "#/$defs/localDateTime" },
+        "arrivalDeadline": { "$ref": "#/$defs/localDateTime" },
+        "mode": { "enum": ["car", "motorcycle", "bicycle"] },
+        "timingProfile": { "enum": ["typical", "conservative"] },
+        "timeZone": { "const": "Europe/Helsinki" }
+      },
+      "additionalProperties": false
+    },
+    "resultCount": { "type": "integer", "minimum": 0 },
+    "itineraries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/itinerary" }
+    },
+    "diagnostics": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "itinerary": {
+      "type": "object",
+      "required": ["rank", "suggestedOriginDeparture", "arrival", "elapsedFromSuggestedDepartureMinutes", "timingProfile", "riskSummary", "timingBasis", "legs"],
+      "properties": {
+        "rank": { "type": "integer", "minimum": 1 },
+        "suggestedOriginDeparture": { "$ref": "#/$defs/localDateTime" },
+        "arrival": { "$ref": "#/$defs/localDateTime" },
+        "elapsedFromSuggestedDepartureMinutes": { "type": "integer", "minimum": 0 },
+        "timingProfile": { "enum": ["typical", "conservative"] },
+        "riskSummary": {
+          "type": "object",
+          "required": ["worstConnectionRisk", "counts"],
+          "properties": {
+            "worstConnectionRisk": {
+              "oneOf": [
+                { "$ref": "#/$defs/riskLevel" },
+                { "type": "null" }
+              ]
+            },
+            "counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+          },
+          "additionalProperties": false
+        },
+        "timingBasis": {
+          "type": "object",
+          "required": ["usesHistoricalEstimate", "usesConservativeHistoricalRange", "unknownIntermediateStopTimes"],
+          "properties": {
+            "usesHistoricalEstimate": { "type": "boolean" },
+            "usesConservativeHistoricalRange": { "type": "boolean" },
+            "unknownIntermediateStopTimes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+          },
+          "additionalProperties": false
+        },
+        "legs": { "type": "array", "items": { "$ref": "#/$defs/leg" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "leg": {
+      "type": "object",
+      "required": ["index", "kind", "from", "to", "readyAtOrigin", "departure", "arrival", "waitMinutes"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 1 },
+        "kind": { "enum": ["road", "scheduled_service", "continuous_ferry"] },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "readyAtOrigin": { "$ref": "#/$defs/localDateTime" },
+        "departure": { "$ref": "#/$defs/localDateTime" },
+        "arrival": { "$ref": "#/$defs/localDateTime" },
+        "waitMinutes": { "type": "integer" },
+        "distanceMeters": { "type": "number", "minimum": 0 },
+        "durationMinutes": { "type": "integer", "minimum": 0 },
+        "routeId": { "type": ["string", "null"] },
+        "tripPatternId": { "type": ["string", "null"] },
+        "serviceType": { "type": ["string", "null"] },
+        "vessel": { "type": ["string", "null"] },
+        "mobilityRule": { "type": ["string", "null"] },
+        "booking": { "type": ["object", "null"] },
+        "contact": { "type": ["object", "null"] },
+        "capacity": { "type": ["object", "null"] },
+        "publicTimetableUrl": { "type": ["string", "null"] },
+        "travelerInformation": { "type": ["object", "null"] },
+        "intermediateStops": { "type": "array", "items": { "$ref": "#/$defs/intermediateStop" } },
+        "departureTiming": { "type": ["object", "null"] },
+        "arrivalTiming": { "type": ["object", "null"] },
+        "availability": { "type": ["object", "null"] },
+        "transferRisk": { "$ref": "#/$defs/transferRisk" },
+        "timingWarnings": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "intermediateStop": {
+      "type": "object",
+      "required": ["id", "mandatory", "timing"],
+      "properties": {
+        "id": { "type": "string" },
+        "mandatory": { "type": "boolean" },
+        "timing": { "type": ["object", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "transferRisk": {
+      "type": "object",
+      "required": ["level", "rawBufferMinutes", "requiredReadinessMinutes", "effectiveBufferMinutes"],
+      "properties": {
+        "level": { "$ref": "#/$defs/riskLevel" },
+        "rawBufferMinutes": { "type": "integer" },
+        "requiredReadinessMinutes": { "type": "integer", "minimum": 0 },
+        "effectiveBufferMinutes": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "riskLevel": {
+      "enum": ["relaxed", "normal", "tight", "very_tight", "below_required_readiness"]
+    },
+    "localDateTime": {
+      "type": "string",
+      "description": "Local civil time in the time zone declared by query.timeZone.",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$"
+    }
+  }
+}

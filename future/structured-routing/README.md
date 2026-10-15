@@ -79,6 +79,14 @@ Keskeiset tiedostot:
   vain aidosti dominoidut vaihtoehdot poistetaan. Näin myöhempi riskialtis
   yhteys säilyy käyttäjän valittavana, mutta aiemmin lähtevä, myöhemmin saapuva
   ja vähintään yhtä riskialtis odotuskierto putoaa pois.
+- `scripts/query_routes.py`: sovellukselle tarkoitettu versio
+  monivaihtoehtohausta. Se palauttaa versionoidun JSON-vastauksen ilman
+  sisäistä diagnostiikkaa, ellei diagnostiikkaa pyydetä erikseen.
+- `route-query-response.schema.json`: sovellukselle tarkoitetun
+  reititysvastauksen JSON Schema.
+- `route-query-timing-audit.json`: reiteittäin ja laitureittain ryhmitelty
+  auditointi niistä matkan sisäisistä käynneistä, joille ei vielä ole
+  julkaistua eikä historiallista aikaa.
 
 Ensimmäiseen aikataulutettuun alukseen johtavalla lautattomalla tieosuudella
 operaattorin ilmoittama lastausvalmiusaika on ehdoton: reittiä ei tarjota, jos
@@ -152,6 +160,11 @@ python3 future/structured-routing/scripts/route_itinerary.py \
 
 python3 future/structured-routing/scripts/route_itineraries.py \
   Turku Storpensor 2026-10-30 --mode car --same-day
+
+python3 future/structured-routing/scripts/query_routes.py \
+  Turku Wihuri 2026-11-01 --mode car --same-day
+
+python3 future/structured-routing/scripts/audit_route_timing_coverage.py
 
 python3 -m unittest discover \
   -s future/structured-routing/tests -v

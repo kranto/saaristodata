@@ -1,0 +1,377 @@
+{
+  "status": "experimental_timing_coverage_audit",
+  "scope": "internal calls after each trip departure anchor",
+  "summary": {
+    "unavailableInternalCalls": 495,
+    "knownNoAisSourceCalls": 58,
+    "actionableOrReviewableCalls": 437,
+    "affectedRoutes": 10
+  },
+  "routes": [
+    {
+      "routeId": "velkuataivassalo",
+      "unavailableInternalCalls": 312,
+      "affectedStops": [
+        {
+          "stopId": "Talosmeri",
+          "calls": 64
+        },
+        {
+          "stopId": "Lailuoto",
+          "calls": 64
+        },
+        {
+          "stopId": "Rauhala",
+          "calls": 64
+        },
+        {
+          "stopId": "Munninmaa",
+          "calls": 33
+        },
+        {
+          "stopId": "Kettumaa",
+          "calls": 33
+        },
+        {
+          "stopId": "Liettinen",
+          "calls": 31
+        },
+        {
+          "stopId": "Tammisluoto",
+          "calls": 23
+        }
+      ],
+      "serviceKinds": {
+        "holiday_override": 240,
+        "regular": 72
+      },
+      "linkOutcomes": {
+        "no_compatible_historical_path": 72,
+        "published_time_preserved": 16
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "iniorutt",
+      "unavailableInternalCalls": 70,
+      "affectedStops": [
+        {
+          "stopId": "Kvarnholm",
+          "calls": 21
+        },
+        {
+          "stopId": "Perkala",
+          "calls": 15
+        },
+        {
+          "stopId": "Kolko",
+          "calls": 10
+        },
+        {
+          "stopId": "Åselholm",
+          "calls": 10
+        },
+        {
+          "stopId": "Kannvik",
+          "calls": 9
+        },
+        {
+          "stopId": "Norrby",
+          "calls": 5
+        }
+      ],
+      "serviceKinds": {
+        "holiday_override": 40,
+        "regular": 30
+      },
+      "linkOutcomes": {
+        "no_compatible_historical_path": 30,
+        "published_time_preserved": 46
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "nagutvar",
+      "unavailableInternalCalls": 58,
+      "affectedStops": [
+        {
+          "stopId": "Mattnäs",
+          "calls": 8
+        },
+        {
+          "stopId": "Ängsö",
+          "calls": 7
+        },
+        {
+          "stopId": "Lånholm",
+          "calls": 7
+        },
+        {
+          "stopId": "Berghamn",
+          "calls": 5
+        },
+        {
+          "stopId": "Byskär",
+          "calls": 5
+        },
+        {
+          "stopId": "Brännskär",
+          "calls": 5
+        },
+        {
+          "stopId": "Hummelholm",
+          "calls": 5
+        },
+        {
+          "stopId": "Pärnäs",
+          "calls": 4
+        },
+        {
+          "stopId": "Krok",
+          "calls": 4
+        },
+        {
+          "stopId": "Stenskär",
+          "calls": 4
+        },
+        {
+          "stopId": "Gullkrona",
+          "calls": 4
+        }
+      ],
+      "serviceKinds": {
+        "regular": 58
+      },
+      "linkOutcomes": {
+        "no_ais_source": 58,
+        "published_time_preserved": 5
+      },
+      "recommendedAction": "keep_unknown_no_ais_source"
+    },
+    {
+      "routeId": "korporutt",
+      "unavailableInternalCalls": 18,
+      "affectedStops": [
+        {
+          "stopId": "Finnö",
+          "calls": 5
+        },
+        {
+          "stopId": "Käldersö",
+          "calls": 5
+        },
+        {
+          "stopId": "Elvsö",
+          "calls": 5
+        },
+        {
+          "stopId": "Kittuis",
+          "calls": 3
+        }
+      ],
+      "serviceKinds": {
+        "holiday_override": 13,
+        "regular": 5
+      },
+      "linkOutcomes": {
+        "completion_estimate_attached": 10,
+        "completion_range_attached": 1,
+        "conservative_range_attached": 5,
+        "estimate_attached": 16,
+        "no_compatible_historical_path": 5,
+        "published_time_preserved": 25
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "hitisalva",
+      "unavailableInternalCalls": 9,
+      "affectedStops": [
+        {
+          "stopId": "Grönvik",
+          "calls": 2
+        },
+        {
+          "stopId": "Bolax",
+          "calls": 1
+        },
+        {
+          "stopId": "Bötesö",
+          "calls": 1
+        },
+        {
+          "stopId": "Djupö",
+          "calls": 1
+        },
+        {
+          "stopId": "Stora Ängesö",
+          "calls": 1
+        },
+        {
+          "stopId": "Vänoxaby",
+          "calls": 1
+        },
+        {
+          "stopId": "Vänoxa släten",
+          "calls": 1
+        },
+        {
+          "stopId": "Biskopsö",
+          "calls": 1
+        }
+      ],
+      "serviceKinds": {
+        "regular": 9
+      },
+      "linkOutcomes": {
+        "conservative_range_attached": 1,
+        "estimate_attached": 6,
+        "missing_departure_anchor": 8,
+        "no_compatible_historical_path": 1,
+        "published_time_preserved": 1
+      },
+      "recommendedAction": "add_or_recover_departure_anchor_before_matching"
+    },
+    {
+      "routeId": "utorutt",
+      "unavailableInternalCalls": 9,
+      "affectedStops": [
+        {
+          "stopId": "Berghamn",
+          "calls": 6
+        },
+        {
+          "stopId": "Jurmo",
+          "calls": 3
+        }
+      ],
+      "serviceKinds": {
+        "holiday_override": 5,
+        "regular": 4
+      },
+      "linkOutcomes": {
+        "estimate_attached": 34,
+        "incompatible_with_next_published_time": 1,
+        "no_compatible_historical_path": 3,
+        "published_time_preserved": 13
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "hitisjurmo",
+      "unavailableInternalCalls": 8,
+      "affectedStops": [
+        {
+          "stopId": "Stora Ängesö",
+          "calls": 1
+        },
+        {
+          "stopId": "Bötesö",
+          "calls": 1
+        },
+        {
+          "stopId": "Djupö",
+          "calls": 1
+        },
+        {
+          "stopId": "Vänöxaby",
+          "calls": 1
+        },
+        {
+          "stopId": "Vänöxa, Släten",
+          "calls": 1
+        },
+        {
+          "stopId": "Biskopsö",
+          "calls": 1
+        },
+        {
+          "stopId": "Dalsbruk",
+          "calls": 1
+        },
+        {
+          "stopId": "Vänö/Tunnhamn",
+          "calls": 1
+        }
+      ],
+      "serviceKinds": {
+        "regular": 8
+      },
+      "linkOutcomes": {
+        "completion_estimate_attached": 10,
+        "completion_range_attached": 3,
+        "conservative_range_attached": 4,
+        "estimate_attached": 19,
+        "missing_departure_anchor": 7,
+        "no_compatible_historical_path": 1,
+        "published_time_preserved": 66
+      },
+      "recommendedAction": "add_or_recover_departure_anchor_before_matching"
+    },
+    {
+      "routeId": "houtskarrutt",
+      "unavailableInternalCalls": 7,
+      "affectedStops": [
+        {
+          "stopId": "Salmis",
+          "calls": 7
+        }
+      ],
+      "serviceKinds": {
+        "regular": 7
+      },
+      "linkOutcomes": {
+        "completion_estimate_attached": 9,
+        "completion_range_attached": 9,
+        "conservative_range_attached": 40,
+        "estimate_attached": 65,
+        "no_compatible_historical_path": 7,
+        "published_time_preserved": 18
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "nagusodra",
+      "unavailableInternalCalls": 3,
+      "affectedStops": [
+        {
+          "stopId": "Gloskär/Trunsö",
+          "calls": 3
+        }
+      ],
+      "serviceKinds": {
+        "regular": 3
+      },
+      "linkOutcomes": {
+        "completion_estimate_attached": 19,
+        "completion_range_attached": 1,
+        "conservative_range_attached": 29,
+        "estimate_attached": 75,
+        "no_compatible_historical_path": 3,
+        "published_time_preserved": 21
+      },
+      "recommendedAction": "review_historical_path_compatibility"
+    },
+    {
+      "routeId": "rymattylanreitti",
+      "unavailableInternalCalls": 1,
+      "affectedStops": [
+        {
+          "stopId": "Pähkinäinen",
+          "calls": 1
+        }
+      ],
+      "serviceKinds": {
+        "regular": 1
+      },
+      "linkOutcomes": {
+        "completion_estimate_attached": 20,
+        "conservative_range_attached": 5,
+        "estimate_attached": 76,
+        "incompatible_with_next_published_time": 1,
+        "published_time_preserved": 42
+      },
+      "recommendedAction": "keep_unknown_due_to_published_time_constraint"
+    }
+  ]
+}

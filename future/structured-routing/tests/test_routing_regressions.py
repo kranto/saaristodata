@@ -14,11 +14,28 @@ ROOT = Path(__file__).resolve().parents[1]
 GRAPH = ROOT / "routing-graph.json"
 REPORT = ROOT / "routing-graph-report.json"
 ROUTER = ROOT / "scripts" / "route_itinerary.py"
+PUBLIC_ROUTER = ROOT / "scripts" / "query_routes.py"
 
 
 def route(origin: str, destination: str, date: str, time: str = "00:00") -> dict:
     completed = subprocess.run(
         [sys.executable, str(ROUTER), origin, destination, date, time, "--mode", "car"],
+        cwd=ROOT.parents[1],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if completed.returncode not in {0, 2}:
+        raise AssertionError(completed.stderr or completed.stdout)
+    return json.loads(completed.stdout)
+
+
+def public_routes(origin: str, destination: str, date: str, time: str = "00:00") -> dict:
+    completed = subprocess.run(
+        [
+            sys.executable, str(PUBLIC_ROUTER), origin, destination, date, time,
+            "--mode", "car", "--same-day", "--max-results", "3",
+        ],
         cwd=ROOT.parents[1],
         check=False,
         capture_output=True,
@@ -77,6 +94,30 @@ class ExampleJourneyTests(unittest.TestCase):
         self.assert_route_ids(
             result, ["nagukorpo", "sodralinjen", "embarsundslinjen"]
         )
+
+    def test_nagu_to_all_reviewed_foglo_destinations(self) -> None:
+        expected = {
+            "Överö": ["nagukorpo", "sodralinjen"],
+            "Jyddö": ["nagukorpo", "sodralinjen"],
+            "Finholma": ["nagukorpo", "sodralinjen", "embarsundslinjen"],
+            "Degerby": ["nagukorpo", "sodralinjen", "embarsundslinjen"],
+        }
+        for destination, route_ids in expected.items():
+            with self.subTest(destination=destination):
+                result = route("Nagu", destination, "2026-11-03")
+                self.assert_route_ids(result, route_ids)
+
+    def test_public_response_enforces_first_boarding_readiness(self) -> None:
+        result = public_routes("Turku", "Wihuri", "2026-11-01")
+        self.assertEqual(result["schemaVersion"], "1.0")
+        self.assertNotIn("diagnostics", result)
+        self.assertEqual(result["status"], "routes_found")
+        first = result["itineraries"][0]
+        self.assertEqual(first["suggestedOriginDeparture"], "2026-11-01T06:55")
+        self.assertEqual(first["legs"][0]["arrival"], "2026-11-01T07:50")
+        self.assertNotIn("transferRisk", first["legs"][1])
+        self.assertIsNone(first["riskSummary"]["worstConnectionRisk"])
+        self.assertTrue(first["timingBasis"]["usesHistoricalEstimate"])
 
     def test_ava_jurmo_is_routable(self) -> None:
         result = route("Åva", "JurmoB", "2026-11-02", "05:00")

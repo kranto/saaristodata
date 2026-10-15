@@ -704,12 +704,12 @@ def main() -> int:
     cursor = destination_state
     while cursor != initial_state:
         previous_state, record = previous[cursor]
-        raw_legs.append((previous_state[0], cursor[0], record))
+        raw_legs.append((previous_state[0], cursor[0], previous_state[1], record))
         cursor = previous_state
     raw_legs.reverse()
 
     legs = []
-    for index, (from_id, to_id, record) in enumerate(raw_legs):
+    for index, (from_id, to_id, had_used_ferry, record) in enumerate(raw_legs):
         edge, instance, ready = record["edge"], record["instance"], record["ready"]
         leg = {
             "index": index + 1,
@@ -758,7 +758,7 @@ def main() -> int:
                     ]
             else:
                 leg["availability"] = edge.get("availability")
-        if index > 0 and edge["kind"] == "scheduled_service":
+        if had_used_ferry and edge["kind"] == "scheduled_service":
             readiness = routes[edge["routeId"]].get("booking", {}).get("loadingReadinessMinutesBefore", 0)
             leg["transferRisk"] = transfer_risk(leg["waitMinutes"], readiness)
         legs.append(leg)
