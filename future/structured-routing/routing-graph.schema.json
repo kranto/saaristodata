@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saaristolautat.example/schemas/routing-graph.schema.json",
+  "title": "Saaristolautat time-dependent routing graph",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "status",
+    "sources",
+    "policies",
+    "nodes",
+    "edges",
+    "routes",
+    "tripPatterns",
+    "statistics"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "status": { "enum": ["routing_ready", "review_required"] },
+    "generatedAt": { "type": "string" },
+    "sources": { "type": "object" },
+    "policies": { "type": "object" },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "serviceType"],
+        "properties": {
+          "id": { "type": "string" },
+          "serviceType": { "type": "string" }
+        }
+      }
+    },
+    "tripPatterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "routeId", "serviceType", "calls", "routability"],
+        "properties": {
+          "id": { "type": "string" },
+          "routeId": { "type": "string" },
+          "serviceType": { "type": "string" },
+          "calls": { "type": "array" },
+          "routability": { "enum": ["routable", "review_required"] }
+        }
+      }
+    },
+    "statistics": { "type": "object" }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "kind", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "enum": ["pier", "alternative_stop_group", "unresolved_stop"] },
+        "name": { "type": "string" },
+        "coordinates": {
+          "type": "object",
+          "required": ["lon", "lat"],
+          "properties": {
+            "lon": { "type": "number" },
+            "lat": { "type": "number" }
+          }
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "kind", "from", "to"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": {
+          "enum": [
+            "road",
+            "scheduled_service",
+            "continuous_ferry",
+            "ambiguous_stop_membership"
+          ]
+        },
+        "from": { "type": "string" },
+        "to": { "type": "string" }
+      }
+    }
+  }
+}

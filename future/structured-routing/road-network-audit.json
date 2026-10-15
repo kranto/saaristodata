@@ -1,346 +1,26 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-13T10:03:01.911917+00:00",
+  "generatedAt": "2026-10-13T14:46:18.326650+00:00",
   "method": {
     "candidateRule": "3 nearest piers outside asserted component, max 10 km",
     "routeRule": "auto route with ferry edges excluded both when snapping endpoints and on the route",
-    "snapRule": "both pier points must be within 250 m of an auto-routable non-ferry edge",
-    "warning": "Candidates are leads for review, not automatic component merges."
+    "snapRule": "both pier points must be within 150 m of an auto-routable non-ferry edge",
+    "plausibilityRule": "routed distance must be at least 100 m and half the straight-line distance, but no more than 30 km or five times the straight-line distance",
+    "warning": "Candidates are leads for review, not automatic component merges.",
+    "modeledFerryRule": "pairs of components joined by a modeled road or cable ferry remain separate",
+    "manualExclusionRule": "user-confirmed false road snaps remain separate and are not proposed again",
+    "regionRule": "candidate audit excludes points west of longitude 19 (Sweden)"
   },
   "statistics": {
-    "pierCount": 204,
-    "assertedComponentPierCount": 73,
-    "singletonPierCount": 131,
+    "pierCount": 205,
+    "assertedComponentPierCount": 85,
+    "singletonPierCount": 120,
     "candidatePairCount": 344,
-    "possibleMissingConnectionCount": 17,
-    "uncertainCount": 86,
-    "newRouterRequestCount": 344
+    "possibleMissingConnectionCount": 0,
+    "uncertainCount": 73,
+    "newRouterRequestCount": 0
   },
-  "possibleMissingConnections": [
-    {
-      "from": "Airismaa",
-      "to": "Maisaari",
-      "fromComponent": "mainland_finland",
-      "toComponent": null,
-      "airDistanceMeters": 4210,
-      "fromRoadSnapDistanceMeters": 5,
-      "toRoadSnapDistanceMeters": 3,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 7126,
-        "durationSeconds": 1149,
-        "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "BerghamnK",
-      "to": "Kittuis",
-      "fromComponent": null,
-      "toComponent": "houtskar",
-      "airDistanceMeters": 8574,
-      "fromRoadSnapDistanceMeters": 29,
-      "toRoadSnapDistanceMeters": 1,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 10221,
-        "durationSeconds": 1023,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Bergö",
-      "to": "Ängö",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 5522,
-      "fromRoadSnapDistanceMeters": 0,
-      "toRoadSnapDistanceMeters": 9,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 3749,
-        "durationSeconds": 411,
-        "displayMinutes": 7,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Bolax",
-      "to": "Vänoxaby",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 6240,
-      "fromRoadSnapDistanceMeters": 5,
-      "toRoadSnapDistanceMeters": 46,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 1782,
-        "durationSeconds": 1285,
-        "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Bolax",
-      "to": "Vänoxasläten",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 6066,
-      "fromRoadSnapDistanceMeters": 5,
-      "toRoadSnapDistanceMeters": 19,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 1742,
-        "durationSeconds": 1257,
-        "displayMinutes": 21,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Brännskär",
-      "to": "Kirjais",
-      "fromComponent": null,
-      "toComponent": "nagu",
-      "airDistanceMeters": 4536,
-      "fromRoadSnapDistanceMeters": 6,
-      "toRoadSnapDistanceMeters": 4,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5824,
-        "durationSeconds": 1026,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Dalsbruk",
-      "to": "Söderlångvik",
-      "fromComponent": "mainland_finland",
-      "toComponent": null,
-      "airDistanceMeters": 4669,
-      "fromRoadSnapDistanceMeters": 49,
-      "toRoadSnapDistanceMeters": 4,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 7810,
-        "durationSeconds": 1016,
-        "displayMinutes": 17,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Elvsö",
-      "to": "Verkan",
-      "fromComponent": null,
-      "toComponent": "korpo",
-      "airDistanceMeters": 5816,
-      "fromRoadSnapDistanceMeters": 19,
-      "toRoadSnapDistanceMeters": 7,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 6346,
-        "durationSeconds": 1523,
-        "displayMinutes": 26,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Haapala",
-      "to": "Ruotsalainen",
-      "fromComponent": "mainland_finland",
-      "toComponent": null,
-      "airDistanceMeters": 3847,
-      "fromRoadSnapDistanceMeters": 2,
-      "toRoadSnapDistanceMeters": 2,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 1484,
-        "durationSeconds": 435,
-        "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Härklot",
-      "to": "Själö",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2158,
-      "fromRoadSnapDistanceMeters": 3,
-      "toRoadSnapDistanceMeters": 7,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 472,
-        "durationSeconds": 341,
-        "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "LångnäsH",
-      "to": "Rosala",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2798,
-      "fromRoadSnapDistanceMeters": 7,
-      "toRoadSnapDistanceMeters": 6,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5054,
-        "durationSeconds": 657,
-        "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "LångnäsH",
-      "to": "Vikare",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 4745,
-      "fromRoadSnapDistanceMeters": 7,
-      "toRoadSnapDistanceMeters": 49,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 7200,
-        "durationSeconds": 708,
-        "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Peno",
-      "to": "PensarI",
-      "fromComponent": null,
-      "toComponent": "pensar",
-      "airDistanceMeters": 2039,
-      "fromRoadSnapDistanceMeters": 229,
-      "toRoadSnapDistanceMeters": 3,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 2772,
-        "durationSeconds": 739,
-        "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Peno",
-      "to": "PensarL",
-      "fromComponent": null,
-      "toComponent": "pensar",
-      "airDistanceMeters": 926,
-      "fromRoadSnapDistanceMeters": 229,
-      "toRoadSnapDistanceMeters": 12,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 1771,
-        "durationSeconds": 509,
-        "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "StockholmStadsgården",
-      "to": "StockholmVärtan",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 3765,
-      "fromRoadSnapDistanceMeters": 51,
-      "toRoadSnapDistanceMeters": 21,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 11715,
-        "durationSeconds": 1271,
-        "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": true
-      }
-    },
-    {
-      "from": "Turku",
-      "to": "TurkuVitharun",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2087,
-      "fromRoadSnapDistanceMeters": 111,
-      "toRoadSnapDistanceMeters": 8,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 2633,
-        "durationSeconds": 608,
-        "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Vänoxaby",
-      "to": "Vänoxasläten",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 702,
-      "fromRoadSnapDistanceMeters": 46,
-      "toRoadSnapDistanceMeters": 19,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 39,
-        "durationSeconds": 29,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    }
-  ],
+  "possibleMissingConnections": [],
   "uncertainConnections": [
     {
       "from": "Aasla",
@@ -356,46 +36,23 @@
         "distanceMeters": 6867,
         "durationSeconds": 1425,
         "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
-      "from": "Aspö",
-      "to": "Björkö",
+      "from": "Aspholm",
+      "to": "Stenholm",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 5996,
-      "fromRoadSnapDistanceMeters": 12,
-      "toRoadSnapDistanceMeters": 4502,
+      "airDistanceMeters": 795,
+      "fromRoadSnapDistanceMeters": 2,
+      "toRoadSnapDistanceMeters": 786,
       "classification": "uncertain_far_road_snap",
       "route": {
         "status": "ok",
-        "distanceMeters": 309,
-        "durationSeconds": 103,
-        "displayMinutes": 2,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Aspö",
-      "to": "Träskholm",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 8294,
-      "fromRoadSnapDistanceMeters": 12,
-      "toRoadSnapDistanceMeters": 3418,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 309,
-        "durationSeconds": 103,
-        "displayMinutes": 2,
-        "hasFerry": false,
-        "hasToll": false,
+        "distanceMeters": 169,
+        "durationSeconds": 44,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -413,8 +70,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -432,8 +87,6 @@
         "distanceMeters": 542,
         "durationSeconds": 223,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -451,8 +104,6 @@
         "distanceMeters": 1460,
         "durationSeconds": 1059,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -470,8 +121,6 @@
         "distanceMeters": 1917,
         "durationSeconds": 1077,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -489,8 +138,6 @@
         "distanceMeters": 1460,
         "durationSeconds": 1059,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -508,8 +155,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -527,8 +172,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -546,8 +189,6 @@
         "distanceMeters": 1601,
         "durationSeconds": 850,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -565,8 +206,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -584,8 +223,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -603,27 +240,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Bolax",
-      "to": "Bötesö",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 5446,
-      "fromRoadSnapDistanceMeters": 5,
-      "toRoadSnapDistanceMeters": 1570,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 654,
-        "durationSeconds": 471,
-        "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -641,8 +257,6 @@
         "distanceMeters": 2343,
         "durationSeconds": 1163,
         "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -660,8 +274,6 @@
         "distanceMeters": 52,
         "durationSeconds": 45,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -679,46 +291,6 @@
         "distanceMeters": 462,
         "durationSeconds": 336,
         "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Brännskär",
-      "to": "Rockelholm",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 5071,
-      "fromRoadSnapDistanceMeters": 6,
-      "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Brännskär",
-      "to": "Ytterstholm",
-      "fromComponent": null,
-      "toComponent": "nagu",
-      "airDistanceMeters": 4588,
-      "fromRoadSnapDistanceMeters": 6,
-      "toRoadSnapDistanceMeters": 289,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -736,46 +308,6 @@
         "distanceMeters": 488,
         "durationSeconds": 355,
         "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Byskär",
-      "to": "Rockelholm",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 4832,
-      "fromRoadSnapDistanceMeters": 383,
-      "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Byskär",
-      "to": "Ytterstholm",
-      "fromComponent": null,
-      "toComponent": "nagu",
-      "airDistanceMeters": 4600,
-      "fromRoadSnapDistanceMeters": 383,
-      "toRoadSnapDistanceMeters": 289,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -793,27 +325,6 @@
         "distanceMeters": 327,
         "durationSeconds": 235,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Bötesö",
-      "to": "Vänoxaby",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 3005,
-      "fromRoadSnapDistanceMeters": 1570,
-      "toRoadSnapDistanceMeters": 46,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 1127,
-        "durationSeconds": 814,
-        "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -831,46 +342,6 @@
         "distanceMeters": 1087,
         "durationSeconds": 785,
         "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Elvsö",
-      "to": "Finnö",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 4950,
-      "fromRoadSnapDistanceMeters": 19,
-      "toRoadSnapDistanceMeters": 2192,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 5489,
-        "durationSeconds": 1411,
-        "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Elvsö",
-      "to": "Käldersö",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 3101,
-      "fromRoadSnapDistanceMeters": 19,
-      "toRoadSnapDistanceMeters": 1475,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 4532,
-        "durationSeconds": 1339,
-        "displayMinutes": 23,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -888,8 +359,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -907,8 +376,6 @@
         "distanceMeters": 5960,
         "durationSeconds": 873,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -926,8 +393,6 @@
         "distanceMeters": 3930,
         "durationSeconds": 1054,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -945,8 +410,6 @@
         "distanceMeters": 3627,
         "durationSeconds": 772,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -964,8 +427,6 @@
         "distanceMeters": 7120,
         "durationSeconds": 1268,
         "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -983,8 +444,6 @@
         "distanceMeters": 1228,
         "durationSeconds": 854,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1002,8 +461,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1021,8 +478,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1040,8 +495,23 @@
         "distanceMeters": 3481,
         "durationSeconds": 750,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Granholmen",
+      "to": "Mielisholm",
+      "fromComponent": null,
+      "toComponent": null,
+      "airDistanceMeters": 4169,
+      "fromRoadSnapDistanceMeters": 475,
+      "toRoadSnapDistanceMeters": 3,
+      "classification": "uncertain_far_road_snap",
+      "route": {
+        "status": "ok",
+        "distanceMeters": 12879,
+        "durationSeconds": 1672,
+        "displayMinutes": 28,
         "hasHighway": false
       }
     },
@@ -1059,46 +529,6 @@
         "distanceMeters": 12942,
         "durationSeconds": 1701,
         "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Grännäs",
-      "to": "Rockelholm",
-      "fromComponent": "nagu",
-      "toComponent": null,
-      "airDistanceMeters": 7783,
-      "fromRoadSnapDistanceMeters": 1,
-      "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 22807,
-        "durationSeconds": 2743,
-        "displayMinutes": 46,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Grönvik",
-      "to": "Vänoxaby",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 1772,
-      "fromRoadSnapDistanceMeters": 841,
-      "toRoadSnapDistanceMeters": 46,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 800,
-        "durationSeconds": 578,
-        "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1116,46 +546,6 @@
         "distanceMeters": 760,
         "durationSeconds": 550,
         "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Grötö",
-      "to": "Knivskär",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 7919,
-      "fromRoadSnapDistanceMeters": 2088,
-      "toRoadSnapDistanceMeters": 7685,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 620,
-        "durationSeconds": 156,
-        "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Grötö",
-      "to": "Stenskär",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2093,
-      "fromRoadSnapDistanceMeters": 2088,
-      "toRoadSnapDistanceMeters": 2,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 0,
-        "durationSeconds": 0,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1173,8 +563,6 @@
         "distanceMeters": 22,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1182,7 +570,7 @@
       "from": "Helsingholm",
       "to": "Söderlångvik",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "mainland_finland",
       "airDistanceMeters": 8363,
       "fromRoadSnapDistanceMeters": 5180,
       "toRoadSnapDistanceMeters": 4,
@@ -1192,8 +580,6 @@
         "distanceMeters": 10277,
         "durationSeconds": 1330,
         "displayMinutes": 23,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1211,8 +597,6 @@
         "distanceMeters": 9335,
         "durationSeconds": 1413,
         "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1230,8 +614,6 @@
         "distanceMeters": 2941,
         "durationSeconds": 656,
         "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1249,8 +631,6 @@
         "distanceMeters": 9679,
         "durationSeconds": 1531,
         "displayMinutes": 26,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1268,46 +648,23 @@
         "distanceMeters": 9852,
         "durationSeconds": 1444,
         "displayMinutes": 25,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
-      "from": "Kettumaa",
-      "to": "Wihuri",
+      "from": "Jermo",
+      "to": "Sorpo",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 3796,
-      "fromRoadSnapDistanceMeters": 20,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
+      "airDistanceMeters": 213,
+      "fromRoadSnapDistanceMeters": 4,
+      "toRoadSnapDistanceMeters": 0,
+      "classification": "uncertain_implausibly_short_route",
       "route": {
         "status": "ok",
-        "distanceMeters": 912,
-        "durationSeconds": 661,
-        "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Kittuis",
-      "to": "Luk",
-      "fromComponent": "houtskar",
-      "toComponent": null,
-      "airDistanceMeters": 7584,
-      "fromRoadSnapDistanceMeters": 1,
-      "toRoadSnapDistanceMeters": 1032,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 6666,
-        "durationSeconds": 1078,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
+        "distanceMeters": 11,
+        "durationSeconds": 8,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -1325,8 +682,6 @@
         "distanceMeters": 620,
         "durationSeconds": 157,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1344,8 +699,6 @@
         "distanceMeters": 3400,
         "durationSeconds": 1274,
         "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1363,8 +716,6 @@
         "distanceMeters": 2593,
         "durationSeconds": 887,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1373,8 +724,8 @@
       "to": "Pyytti",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 474,
-      "fromRoadSnapDistanceMeters": 0,
+      "airDistanceMeters": 498,
+      "fromRoadSnapDistanceMeters": 36,
       "toRoadSnapDistanceMeters": 395,
       "classification": "uncertain_far_road_snap",
       "route": {
@@ -1382,27 +733,6 @@
         "distanceMeters": 162,
         "durationSeconds": 122,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Korvenmaa",
-      "to": "Wihuri",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 1097,
-      "fromRoadSnapDistanceMeters": 0,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 162,
-        "durationSeconds": 122,
-        "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1420,8 +750,6 @@
         "distanceMeters": 2437,
         "durationSeconds": 532,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1439,8 +767,6 @@
         "distanceMeters": 3945,
         "durationSeconds": 774,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1458,8 +784,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1477,8 +801,6 @@
         "distanceMeters": 2854,
         "durationSeconds": 955,
         "displayMinutes": 16,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1496,8 +818,6 @@
         "distanceMeters": 4788,
         "durationSeconds": 1171,
         "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1515,8 +835,6 @@
         "distanceMeters": 687,
         "durationSeconds": 495,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1534,8 +852,6 @@
         "distanceMeters": 170,
         "durationSeconds": 122,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1553,8 +869,6 @@
         "distanceMeters": 751,
         "durationSeconds": 544,
         "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1572,8 +886,6 @@
         "distanceMeters": 517,
         "durationSeconds": 373,
         "displayMinutes": 7,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1591,8 +903,6 @@
         "distanceMeters": 258,
         "durationSeconds": 187,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1610,27 +920,6 @@
         "distanceMeters": 718,
         "durationSeconds": 518,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Luk",
-      "to": "NäsbyI",
-      "fromComponent": null,
-      "toComponent": "houtskar",
-      "airDistanceMeters": 8416,
-      "fromRoadSnapDistanceMeters": 1032,
-      "toRoadSnapDistanceMeters": 3,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 10031,
-        "durationSeconds": 1415,
-        "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1648,8 +937,6 @@
         "distanceMeters": 7361,
         "durationSeconds": 917,
         "displayMinutes": 16,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1667,8 +954,6 @@
         "distanceMeters": 7447,
         "durationSeconds": 803,
         "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1686,8 +971,6 @@
         "distanceMeters": 3427,
         "durationSeconds": 743,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1705,8 +988,6 @@
         "distanceMeters": 2437,
         "durationSeconds": 534,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1724,8 +1005,6 @@
         "distanceMeters": 1228,
         "durationSeconds": 854,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1743,8 +1022,6 @@
         "distanceMeters": 7705,
         "durationSeconds": 1042,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1762,8 +1039,57 @@
         "distanceMeters": 1601,
         "durationSeconds": 847,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Pakinainen",
+      "to": "Wihuri",
+      "fromComponent": null,
+      "toComponent": null,
+      "airDistanceMeters": 2240,
+      "fromRoadSnapDistanceMeters": 4,
+      "toRoadSnapDistanceMeters": 998,
+      "classification": "uncertain_far_road_snap",
+      "route": {
+        "status": "ok",
+        "distanceMeters": 2723,
+        "durationSeconds": 1961,
+        "displayMinutes": 33,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Peno",
+      "to": "PensarI",
+      "fromComponent": null,
+      "toComponent": "pensar",
+      "airDistanceMeters": 2039,
+      "fromRoadSnapDistanceMeters": 229,
+      "toRoadSnapDistanceMeters": 3,
+      "classification": "uncertain_far_road_snap",
+      "route": {
+        "status": "ok",
+        "distanceMeters": 2772,
+        "durationSeconds": 739,
+        "displayMinutes": 13,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Peno",
+      "to": "PensarL",
+      "fromComponent": null,
+      "toComponent": "pensar",
+      "airDistanceMeters": 926,
+      "fromRoadSnapDistanceMeters": 229,
+      "toRoadSnapDistanceMeters": 12,
+      "classification": "uncertain_far_road_snap",
+      "route": {
+        "status": "ok",
+        "distanceMeters": 1771,
+        "durationSeconds": 509,
+        "displayMinutes": 9,
         "hasHighway": false
       }
     },
@@ -1781,34 +1107,13 @@
         "distanceMeters": 7,
         "durationSeconds": 6,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Pyytti",
-      "to": "Wihuri",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 656,
-      "fromRoadSnapDistanceMeters": 395,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 0,
-        "durationSeconds": 0,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "Ramsholm",
       "to": "Stenholm",
-      "fromComponent": null,
+      "fromComponent": "heisala",
       "toComponent": null,
       "airDistanceMeters": 1063,
       "fromRoadSnapDistanceMeters": 2,
@@ -1819,8 +1124,6 @@
         "distanceMeters": 946,
         "durationSeconds": 261,
         "displayMinutes": 5,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1838,8 +1141,6 @@
         "distanceMeters": 606,
         "durationSeconds": 437,
         "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1857,8 +1158,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1876,8 +1175,6 @@
         "distanceMeters": 7089,
         "durationSeconds": 969,
         "displayMinutes": 17,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1895,8 +1192,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1911,11 +1206,9 @@
       "classification": "uncertain_far_road_snap",
       "route": {
         "status": "ok",
-        "distanceMeters": 214,
-        "durationSeconds": 155,
+        "distanceMeters": 203,
+        "durationSeconds": 147,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -1933,27 +1226,23 @@
         "distanceMeters": 3945,
         "durationSeconds": 777,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
-      "from": "Vänö",
-      "to": "ÖröP",
-      "fromComponent": null,
-      "toComponent": "oro",
-      "airDistanceMeters": 8803,
-      "fromRoadSnapDistanceMeters": 6560,
-      "toRoadSnapDistanceMeters": 53,
-      "classification": "uncertain_far_road_snap",
+      "from": "Töftö",
+      "to": "Ängö",
+      "fromComponent": "vardo",
+      "toComponent": null,
+      "airDistanceMeters": 5812,
+      "fromRoadSnapDistanceMeters": 4,
+      "toRoadSnapDistanceMeters": 9,
+      "classification": "uncertain_implausibly_long_route",
       "route": {
         "status": "ok",
-        "distanceMeters": 687,
-        "durationSeconds": 496,
-        "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
+        "distanceMeters": 62108,
+        "durationSeconds": 3349,
+        "displayMinutes": 56,
         "hasHighway": false
       }
     },
@@ -1971,8 +1260,6 @@
         "distanceMeters": 989,
         "durationSeconds": 712,
         "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     }
@@ -1986,14 +1273,12 @@
       "airDistanceMeters": 283,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 5,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 11557,
-        "durationSeconds": 44996,
-        "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -2007,13 +1292,9 @@
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 15671,
-        "durationSeconds": 45500,
-        "displayMinutes": 759,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2030,8 +1311,6 @@
         "distanceMeters": 6867,
         "durationSeconds": 1425,
         "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2043,14 +1322,12 @@
       "airDistanceMeters": 3396,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 8671,
-        "durationSeconds": 44596,
-        "displayMinutes": 744,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 5157,
+        "durationSeconds": 520,
+        "displayMinutes": 9,
         "hasHighway": false
       }
     },
@@ -2062,15 +1339,11 @@
       "airDistanceMeters": 4210,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 7126,
-        "durationSeconds": 1149,
-        "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2087,8 +1360,6 @@
         "distanceMeters": 2741,
         "durationSeconds": 44192,
         "displayMinutes": 737,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2106,8 +1377,6 @@
         "distanceMeters": 4315,
         "durationSeconds": 44784,
         "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2115,18 +1384,16 @@
       "from": "Aspholm",
       "to": "Ramsholm",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 685,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "user_confirmed_separate_islands",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 3689,
-        "durationSeconds": 44410,
-        "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 452,
+        "durationSeconds": 145,
+        "displayMinutes": 3,
         "hasHighway": false
       }
     },
@@ -2138,14 +1405,12 @@
       "airDistanceMeters": 795,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 786,
-      "classification": "not_connected_without_ferry",
+      "classification": "uncertain_far_road_snap",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 2182,
-        "durationSeconds": 43914,
-        "displayMinutes": 732,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 169,
+        "durationSeconds": 44,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -2157,15 +1422,11 @@
       "airDistanceMeters": 5996,
       "fromRoadSnapDistanceMeters": 12,
       "toRoadSnapDistanceMeters": 4502,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 309,
-        "durationSeconds": 103,
-        "displayMinutes": 2,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2178,13 +1439,9 @@
       "toRoadSnapDistanceMeters": 29,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 36587,
-        "durationSeconds": 48726,
-        "displayMinutes": 813,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2195,15 +1452,11 @@
       "airDistanceMeters": 8294,
       "fromRoadSnapDistanceMeters": 12,
       "toRoadSnapDistanceMeters": 3418,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 309,
-        "durationSeconds": 103,
-        "displayMinutes": 2,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2217,11 +1470,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 10911,
-        "durationSeconds": 88501,
-        "displayMinutes": 1476,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 6299,
+        "durationSeconds": 88054,
+        "displayMinutes": 1468,
         "hasHighway": false
       }
     },
@@ -2236,11 +1487,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 7620,
-        "durationSeconds": 44784,
-        "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 3008,
+        "durationSeconds": 44337,
+        "displayMinutes": 739,
         "hasHighway": false
       }
     },
@@ -2255,11 +1504,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 10323,
-        "durationSeconds": 45048,
-        "displayMinutes": 751,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 5711,
+        "durationSeconds": 44602,
+        "displayMinutes": 744,
         "hasHighway": false
       }
     },
@@ -2274,11 +1521,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 11442,
-        "durationSeconds": 45433,
-        "displayMinutes": 758,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 6830,
+        "durationSeconds": 44986,
+        "displayMinutes": 750,
         "hasHighway": false
       }
     },
@@ -2296,8 +1541,6 @@
         "distanceMeters": 14741,
         "durationSeconds": 46351,
         "displayMinutes": 773,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2311,13 +1554,9 @@
       "toRoadSnapDistanceMeters": 2639,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 44376,
-        "durationSeconds": 49188,
-        "displayMinutes": 820,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2334,8 +1573,6 @@
         "distanceMeters": 19505,
         "durationSeconds": 46731,
         "displayMinutes": 779,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2347,15 +1584,11 @@
       "airDistanceMeters": 8574,
       "fromRoadSnapDistanceMeters": 29,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 10221,
-        "durationSeconds": 1023,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2387,8 +1620,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2402,13 +1633,9 @@
       "toRoadSnapDistanceMeters": 12,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 78197,
-        "durationSeconds": 91537,
-        "displayMinutes": 1526,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2421,13 +1648,9 @@
       "toRoadSnapDistanceMeters": 14,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 12731,
-        "durationSeconds": 44708,
-        "displayMinutes": 746,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2440,13 +1663,9 @@
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 7634,
-        "durationSeconds": 44261,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2457,15 +1676,11 @@
       "airDistanceMeters": 5522,
       "fromRoadSnapDistanceMeters": 0,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 3749,
-        "durationSeconds": 411,
-        "displayMinutes": 7,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2478,13 +1693,9 @@
       "toRoadSnapDistanceMeters": 1,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 26118,
-        "durationSeconds": 89493,
-        "displayMinutes": 1492,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2498,11 +1709,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 11221,
-        "durationSeconds": 45280,
-        "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 13771,
+        "durationSeconds": 45580,
+        "displayMinutes": 760,
         "hasHighway": false
       }
     },
@@ -2520,8 +1729,6 @@
         "distanceMeters": 542,
         "durationSeconds": 223,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2536,11 +1743,26 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 4718,
-        "durationSeconds": 45356,
-        "displayMinutes": 756,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 7268,
+        "durationSeconds": 45656,
+        "displayMinutes": 761,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Biskopsö",
+      "to": "Söderlångvik",
+      "fromComponent": null,
+      "toComponent": "mainland_finland",
+      "airDistanceMeters": 9786,
+      "fromRoadSnapDistanceMeters": 0,
+      "toRoadSnapDistanceMeters": 4,
+      "classification": "not_connected_without_ferry",
+      "route": {
+        "status": "ferry_used_rejected",
+        "distanceMeters": 20839,
+        "durationSeconds": 46335,
+        "displayMinutes": 773,
         "hasHighway": false
       }
     },
@@ -2554,13 +1776,9 @@
       "toRoadSnapDistanceMeters": 46,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 4552,
-        "durationSeconds": 45259,
-        "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -2574,11 +1792,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 3957,
-        "durationSeconds": 44803,
-        "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 6507,
+        "durationSeconds": 45103,
+        "displayMinutes": 752,
         "hasHighway": false
       }
     },
@@ -2593,11 +1809,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 23841,
-        "durationSeconds": 46703,
-        "displayMinutes": 779,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 26391,
+        "durationSeconds": 47003,
+        "displayMinutes": 784,
         "hasHighway": false
       }
     },
@@ -2612,11 +1826,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 7476,
-        "durationSeconds": 45404,
-        "displayMinutes": 757,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 7682,
+        "durationSeconds": 45455,
+        "displayMinutes": 758,
         "hasHighway": false
       }
     },
@@ -2631,11 +1843,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 6459,
-        "durationSeconds": 45174,
-        "displayMinutes": 753,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 4208,
+        "durationSeconds": 44711,
+        "displayMinutes": 746,
         "hasHighway": false
       }
     },
@@ -2643,18 +1853,16 @@
       "from": "Björkholm",
       "to": "Heisala",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 1552,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 0,
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 9846,
-        "durationSeconds": 45359,
-        "displayMinutes": 756,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 10052,
+        "durationSeconds": 45411,
+        "displayMinutes": 757,
         "hasHighway": false
       }
     },
@@ -2669,11 +1877,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 29104,
-        "durationSeconds": 90545,
+        "distanceMeters": 29310,
+        "durationSeconds": 90597,
         "displayMinutes": 1510,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2688,11 +1894,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 29336,
-        "durationSeconds": 134097,
-        "displayMinutes": 2235,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 29063,
+        "durationSeconds": 90545,
+        "displayMinutes": 1510,
         "hasHighway": false
       }
     },
@@ -2710,8 +1914,6 @@
         "distanceMeters": 1460,
         "durationSeconds": 1059,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2729,8 +1931,6 @@
         "distanceMeters": 1917,
         "durationSeconds": 1077,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2748,8 +1948,6 @@
         "distanceMeters": 1460,
         "durationSeconds": 1059,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2761,14 +1959,12 @@
       "airDistanceMeters": 3178,
       "fromRoadSnapDistanceMeters": 7,
       "toRoadSnapDistanceMeters": 38,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 5016,
-        "durationSeconds": 44013,
-        "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 2959,
+        "durationSeconds": 313,
+        "displayMinutes": 6,
         "hasHighway": false
       }
     },
@@ -2780,14 +1976,12 @@
       "airDistanceMeters": 336,
       "fromRoadSnapDistanceMeters": 7,
       "toRoadSnapDistanceMeters": 10,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 3108,
-        "durationSeconds": 43837,
-        "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -2799,14 +1993,12 @@
       "airDistanceMeters": 5034,
       "fromRoadSnapDistanceMeters": 7,
       "toRoadSnapDistanceMeters": 34,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 12798,
         "durationSeconds": 44646,
         "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2818,14 +2010,12 @@
       "airDistanceMeters": 5393,
       "fromRoadSnapDistanceMeters": 7,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 14652,
         "durationSeconds": 44740,
         "displayMinutes": 746,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2837,14 +2027,12 @@
       "airDistanceMeters": 5302,
       "fromRoadSnapDistanceMeters": 7,
       "toRoadSnapDistanceMeters": 5,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 8044,
-        "durationSeconds": 44093,
-        "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 7615,
+        "durationSeconds": 761,
+        "displayMinutes": 13,
         "hasHighway": false
       }
     },
@@ -2862,8 +2050,6 @@
         "distanceMeters": 19485,
         "durationSeconds": 89231,
         "displayMinutes": 1488,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2875,14 +2061,12 @@
       "airDistanceMeters": 3070,
       "fromRoadSnapDistanceMeters": 10,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 3291,
         "durationSeconds": 43717,
         "displayMinutes": 729,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2894,14 +2078,12 @@
       "airDistanceMeters": 584,
       "fromRoadSnapDistanceMeters": 10,
       "toRoadSnapDistanceMeters": 18,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 588,
         "durationSeconds": 43452,
         "displayMinutes": 725,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2919,8 +2101,6 @@
         "distanceMeters": 4100,
         "durationSeconds": 44361,
         "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2938,8 +2118,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2957,8 +2135,6 @@
         "distanceMeters": 2034,
         "durationSeconds": 44055,
         "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2976,8 +2152,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -2995,8 +2169,6 @@
         "distanceMeters": 1601,
         "durationSeconds": 850,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3014,8 +2186,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3033,8 +2203,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3052,8 +2220,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3065,15 +2231,11 @@
       "airDistanceMeters": 5446,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 1570,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 654,
-        "durationSeconds": 471,
-        "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3084,15 +2246,11 @@
       "airDistanceMeters": 6240,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 46,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 1782,
-        "durationSeconds": 1285,
-        "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3103,15 +2261,11 @@
       "airDistanceMeters": 6066,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 19,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 1742,
-        "durationSeconds": 1257,
-        "displayMinutes": 21,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3143,8 +2297,6 @@
         "distanceMeters": 2343,
         "durationSeconds": 1163,
         "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3162,8 +2314,6 @@
         "distanceMeters": 52,
         "durationSeconds": 45,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3181,8 +2331,6 @@
         "distanceMeters": 462,
         "durationSeconds": 336,
         "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3194,15 +2342,11 @@
       "airDistanceMeters": 4536,
       "fromRoadSnapDistanceMeters": 6,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5824,
-        "durationSeconds": 1026,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3213,15 +2357,11 @@
       "airDistanceMeters": 5071,
       "fromRoadSnapDistanceMeters": 6,
       "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3234,13 +2374,9 @@
       "toRoadSnapDistanceMeters": 2,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 15005,
-        "durationSeconds": 46278,
-        "displayMinutes": 772,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3251,15 +2387,11 @@
       "airDistanceMeters": 4588,
       "fromRoadSnapDistanceMeters": 6,
       "toRoadSnapDistanceMeters": 289,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3276,8 +2408,6 @@
         "distanceMeters": 488,
         "durationSeconds": 355,
         "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3289,15 +2419,11 @@
       "airDistanceMeters": 4832,
       "fromRoadSnapDistanceMeters": 383,
       "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3308,15 +2434,11 @@
       "airDistanceMeters": 4600,
       "fromRoadSnapDistanceMeters": 383,
       "toRoadSnapDistanceMeters": 289,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5989,
-        "durationSeconds": 1733,
-        "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3333,8 +2455,6 @@
         "distanceMeters": 327,
         "durationSeconds": 235,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3346,15 +2466,11 @@
       "airDistanceMeters": 3005,
       "fromRoadSnapDistanceMeters": 1570,
       "toRoadSnapDistanceMeters": 46,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 1127,
-        "durationSeconds": 814,
-        "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3371,8 +2487,6 @@
         "distanceMeters": 1087,
         "durationSeconds": 785,
         "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3384,14 +2498,12 @@
       "airDistanceMeters": 3332,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 9344,
         "durationSeconds": 44441,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3403,14 +2515,12 @@
       "airDistanceMeters": 1583,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 9436,
         "durationSeconds": 44990,
         "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3428,8 +2538,6 @@
         "distanceMeters": 13578,
         "durationSeconds": 88258,
         "displayMinutes": 1471,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3447,8 +2555,6 @@
         "distanceMeters": 22862,
         "durationSeconds": 90567,
         "displayMinutes": 1510,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3466,28 +2572,22 @@
         "distanceMeters": 10746,
         "durationSeconds": 44975,
         "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "Dalsbruk",
-      "to": "Söderlångvik",
+      "to": "Vänoxaby",
       "fromComponent": "mainland_finland",
       "toComponent": null,
-      "airDistanceMeters": 4669,
+      "airDistanceMeters": 7616,
       "fromRoadSnapDistanceMeters": 49,
-      "toRoadSnapDistanceMeters": 4,
-      "classification": "possible_missing_same_road_component",
+      "toRoadSnapDistanceMeters": 46,
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 7810,
-        "durationSeconds": 1016,
-        "displayMinutes": 17,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3498,14 +2598,12 @@
       "airDistanceMeters": 9279,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 12099,
-        "durationSeconds": 44238,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 11610,
+        "durationSeconds": 766,
+        "displayMinutes": 13,
         "hasHighway": false
       }
     },
@@ -3523,8 +2621,6 @@
         "distanceMeters": 8728,
         "durationSeconds": 44312,
         "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -3542,8 +2638,23 @@
         "distanceMeters": 4243,
         "durationSeconds": 45046,
         "displayMinutes": 751,
-        "hasFerry": true,
-        "hasToll": false,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Djupö",
+      "to": "Vikare",
+      "fromComponent": null,
+      "toComponent": "hitis",
+      "airDistanceMeters": 6948,
+      "fromRoadSnapDistanceMeters": 1585,
+      "toRoadSnapDistanceMeters": 49,
+      "classification": "not_connected_without_ferry",
+      "route": {
+        "status": "ferry_used_rejected",
+        "distanceMeters": 26692,
+        "durationSeconds": 47957,
+        "displayMinutes": 800,
         "hasHighway": false
       }
     },
@@ -3561,8 +2672,6 @@
         "distanceMeters": 3482,
         "durationSeconds": 44493,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3580,8 +2689,6 @@
         "distanceMeters": 23366,
         "durationSeconds": 46393,
         "displayMinutes": 774,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3593,15 +2700,11 @@
       "airDistanceMeters": 4950,
       "fromRoadSnapDistanceMeters": 19,
       "toRoadSnapDistanceMeters": 2192,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 5489,
-        "durationSeconds": 1411,
-        "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3612,15 +2715,11 @@
       "airDistanceMeters": 3101,
       "fromRoadSnapDistanceMeters": 19,
       "toRoadSnapDistanceMeters": 1475,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 4532,
-        "durationSeconds": 1339,
-        "displayMinutes": 23,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3631,15 +2730,11 @@
       "airDistanceMeters": 5816,
       "fromRoadSnapDistanceMeters": 19,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 6346,
-        "durationSeconds": 1523,
-        "displayMinutes": 26,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -3656,8 +2751,6 @@
         "distanceMeters": 4370,
         "durationSeconds": 44020,
         "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3675,8 +2768,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3694,8 +2785,6 @@
         "distanceMeters": 26404,
         "durationSeconds": 46089,
         "displayMinutes": 769,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3713,8 +2802,6 @@
         "distanceMeters": 18956,
         "durationSeconds": 45288,
         "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3732,8 +2819,6 @@
         "distanceMeters": 26921,
         "durationSeconds": 46119,
         "displayMinutes": 769,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3745,14 +2830,12 @@
       "airDistanceMeters": 213,
       "fromRoadSnapDistanceMeters": 22,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 7479,
-        "durationSeconds": 43980,
-        "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 8,
+        "durationSeconds": 1,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -3767,11 +2850,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 26706,
-        "durationSeconds": 89243,
-        "displayMinutes": 1488,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 18979,
+        "durationSeconds": 45247,
+        "displayMinutes": 755,
         "hasHighway": false
       }
     },
@@ -3783,14 +2864,12 @@
       "airDistanceMeters": 4179,
       "fromRoadSnapDistanceMeters": 22,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 12496,
-        "durationSeconds": 44350,
-        "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 4770,
+        "durationSeconds": 353,
+        "displayMinutes": 6,
         "hasHighway": false
       }
     },
@@ -3808,8 +2887,6 @@
         "distanceMeters": 5960,
         "durationSeconds": 873,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3827,8 +2904,6 @@
         "distanceMeters": 15181,
         "durationSeconds": 45190,
         "displayMinutes": 754,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3846,8 +2921,6 @@
         "distanceMeters": 3930,
         "durationSeconds": 1054,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3865,8 +2938,6 @@
         "distanceMeters": 3627,
         "durationSeconds": 772,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3878,14 +2949,12 @@
       "airDistanceMeters": 5672,
       "fromRoadSnapDistanceMeters": 13,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6880,
         "durationSeconds": 44348,
         "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3903,8 +2972,6 @@
         "distanceMeters": 7120,
         "durationSeconds": 1268,
         "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3916,14 +2983,12 @@
       "airDistanceMeters": 3762,
       "fromRoadSnapDistanceMeters": 13,
       "toRoadSnapDistanceMeters": 5,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 4010,
         "durationSeconds": 44010,
         "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3941,8 +3006,6 @@
         "distanceMeters": 1228,
         "durationSeconds": 854,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3960,8 +3023,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3979,8 +3040,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -3998,8 +3057,6 @@
         "distanceMeters": 3481,
         "durationSeconds": 750,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4007,7 +3064,7 @@
       "from": "Granholmen",
       "to": "Heisala",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 1591,
       "fromRoadSnapDistanceMeters": 475,
       "toRoadSnapDistanceMeters": 0,
@@ -4017,8 +3074,6 @@
         "distanceMeters": 5839,
         "durationSeconds": 44804,
         "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4030,14 +3085,12 @@
       "airDistanceMeters": 4169,
       "fromRoadSnapDistanceMeters": 475,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "uncertain_far_road_snap",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 14602,
-        "durationSeconds": 45513,
-        "displayMinutes": 759,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 12879,
+        "durationSeconds": 1672,
+        "displayMinutes": 28,
         "hasHighway": false
       }
     },
@@ -4055,8 +3108,6 @@
         "distanceMeters": 12942,
         "durationSeconds": 1701,
         "displayMinutes": 29,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4064,18 +3115,16 @@
       "from": "Granvik",
       "to": "Heisala",
       "fromComponent": "mainland_finland",
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 2159,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 0,
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 4821,
-        "durationSeconds": 44576,
-        "displayMinutes": 743,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 2364,
+        "durationSeconds": 44063,
+        "displayMinutes": 735,
         "hasHighway": false
       }
     },
@@ -4087,14 +3136,12 @@
       "airDistanceMeters": 3250,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 14333,
-        "durationSeconds": 45071,
-        "displayMinutes": 752,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 12610,
+        "durationSeconds": 1230,
+        "displayMinutes": 21,
         "hasHighway": false
       }
     },
@@ -4106,15 +3153,11 @@
       "airDistanceMeters": 7783,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 2639,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 22807,
-        "durationSeconds": 2743,
-        "displayMinutes": 46,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4131,8 +3174,6 @@
         "distanceMeters": 12138,
         "durationSeconds": 48527,
         "displayMinutes": 809,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4144,14 +3185,12 @@
       "airDistanceMeters": 307,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 0,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 5482,
-        "durationSeconds": 43877,
-        "displayMinutes": 732,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -4163,15 +3202,11 @@
       "airDistanceMeters": 1772,
       "fromRoadSnapDistanceMeters": 841,
       "toRoadSnapDistanceMeters": 46,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 800,
-        "durationSeconds": 578,
-        "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4188,8 +3223,6 @@
         "distanceMeters": 760,
         "durationSeconds": 550,
         "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4207,8 +3240,6 @@
         "distanceMeters": 24618,
         "durationSeconds": 47116,
         "displayMinutes": 786,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4222,13 +3253,9 @@
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 5394,
-        "durationSeconds": 44660,
-        "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4241,13 +3268,9 @@
       "toRoadSnapDistanceMeters": 4,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 9180,
-        "durationSeconds": 45251,
-        "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4258,15 +3281,11 @@
       "airDistanceMeters": 7919,
       "fromRoadSnapDistanceMeters": 2088,
       "toRoadSnapDistanceMeters": 7685,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 620,
-        "durationSeconds": 156,
-        "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4277,15 +3296,11 @@
       "airDistanceMeters": 2093,
       "fromRoadSnapDistanceMeters": 2088,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 0,
-        "durationSeconds": 0,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4298,13 +3313,9 @@
       "toRoadSnapDistanceMeters": 1123,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 5416,
-        "durationSeconds": 44676,
-        "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4318,11 +3329,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 5394,
-        "durationSeconds": 44665,
-        "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 5314,
+        "durationSeconds": 44510,
+        "displayMinutes": 742,
         "hasHighway": false
       }
     },
@@ -4340,8 +3349,6 @@
         "distanceMeters": 22,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4359,8 +3366,6 @@
         "distanceMeters": 38654,
         "durationSeconds": 47767,
         "displayMinutes": 797,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4372,15 +3377,11 @@
       "airDistanceMeters": 3847,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 1484,
-        "durationSeconds": 435,
-        "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4397,8 +3398,6 @@
         "distanceMeters": 39372,
         "durationSeconds": 48284,
         "displayMinutes": 805,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4410,14 +3409,12 @@
       "airDistanceMeters": 4879,
       "fromRoadSnapDistanceMeters": 10,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 60507,
         "durationSeconds": 48748,
         "displayMinutes": 813,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4429,14 +3426,12 @@
       "airDistanceMeters": 4645,
       "fromRoadSnapDistanceMeters": 10,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 61119,
         "durationSeconds": 48783,
         "displayMinutes": 814,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4454,8 +3449,6 @@
         "distanceMeters": 62058,
         "durationSeconds": 92416,
         "displayMinutes": 1541,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4469,13 +3462,9 @@
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 12786,
-        "durationSeconds": 45100,
-        "displayMinutes": 752,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4492,8 +3481,6 @@
         "distanceMeters": 6328,
         "durationSeconds": 48215,
         "displayMinutes": 804,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4511,8 +3498,6 @@
         "distanceMeters": 2251,
         "durationSeconds": 44033,
         "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4530,15 +3515,13 @@
         "distanceMeters": 5582,
         "durationSeconds": 44550,
         "displayMinutes": 743,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
     {
       "from": "Heisala",
       "to": "Jermo",
-      "fromComponent": null,
+      "fromComponent": "heisala",
       "toComponent": null,
       "airDistanceMeters": 3319,
       "fromRoadSnapDistanceMeters": 0,
@@ -4549,15 +3532,13 @@
         "distanceMeters": 27467,
         "durationSeconds": 89949,
         "displayMinutes": 1500,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "Heisala",
       "to": "Sorpo",
-      "fromComponent": null,
+      "fromComponent": "heisala",
       "toComponent": null,
       "airDistanceMeters": 3178,
       "fromRoadSnapDistanceMeters": 0,
@@ -4565,18 +3546,16 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 27698,
-        "durationSeconds": 133501,
-        "displayMinutes": 2226,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 27220,
+        "durationSeconds": 89897,
+        "displayMinutes": 1499,
         "hasHighway": false
       }
     },
     {
       "from": "Heisala",
       "to": "Våno",
-      "fromComponent": null,
+      "fromComponent": "heisala",
       "toComponent": "mainland_finland",
       "airDistanceMeters": 5064,
       "fromRoadSnapDistanceMeters": 0,
@@ -4587,8 +3566,6 @@
         "distanceMeters": 15031,
         "durationSeconds": 45314,
         "displayMinutes": 756,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4606,8 +3583,6 @@
         "distanceMeters": 26849,
         "durationSeconds": 46813,
         "displayMinutes": 781,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4615,7 +3590,7 @@
       "from": "Helsingholm",
       "to": "Söderlångvik",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "mainland_finland",
       "airDistanceMeters": 8363,
       "fromRoadSnapDistanceMeters": 5180,
       "toRoadSnapDistanceMeters": 4,
@@ -4625,8 +3600,6 @@
         "distanceMeters": 10277,
         "durationSeconds": 1330,
         "displayMinutes": 23,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4638,14 +3611,12 @@
       "airDistanceMeters": 5538,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 5946,
         "durationSeconds": 44831,
         "displayMinutes": 748,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4663,8 +3634,6 @@
         "distanceMeters": 10423,
         "durationSeconds": 88837,
         "displayMinutes": 1481,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4676,14 +3645,12 @@
       "airDistanceMeters": 8850,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 12,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 21202,
         "durationSeconds": 45452,
         "displayMinutes": 758,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4698,11 +3665,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 12568,
+        "distanceMeters": 12567,
         "durationSeconds": 89154,
         "displayMinutes": 1486,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4720,8 +3685,40 @@
         "distanceMeters": 4187,
         "durationSeconds": 44317,
         "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Holma",
+      "to": "LångnäsH",
+      "fromComponent": null,
+      "toComponent": "hitis",
+      "airDistanceMeters": 6041,
+      "fromRoadSnapDistanceMeters": 16,
+      "toRoadSnapDistanceMeters": 7,
+      "classification": "not_connected_without_ferry",
+      "route": {
+        "status": "ferry_used_rejected",
+        "distanceMeters": 9139,
+        "durationSeconds": 45083,
+        "displayMinutes": 752,
+        "hasHighway": false
+      }
+    },
+    {
+      "from": "Holma",
+      "to": "Rosala",
+      "fromComponent": null,
+      "toComponent": "hitis",
+      "airDistanceMeters": 6599,
+      "fromRoadSnapDistanceMeters": 16,
+      "toRoadSnapDistanceMeters": 6,
+      "classification": "not_connected_without_ferry",
+      "route": {
+        "status": "ferry_used_rejected",
+        "distanceMeters": 14194,
+        "durationSeconds": 45740,
+        "displayMinutes": 763,
         "hasHighway": false
       }
     },
@@ -4739,8 +3736,6 @@
         "distanceMeters": 8294,
         "durationSeconds": 44723,
         "displayMinutes": 746,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4758,8 +3753,6 @@
         "distanceMeters": 9335,
         "durationSeconds": 1413,
         "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4777,8 +3770,6 @@
         "distanceMeters": 2941,
         "durationSeconds": 656,
         "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4796,8 +3787,6 @@
         "distanceMeters": 9679,
         "durationSeconds": 1531,
         "displayMinutes": 26,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4815,8 +3804,6 @@
         "distanceMeters": 9852,
         "durationSeconds": 1444,
         "displayMinutes": 25,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4828,14 +3815,12 @@
       "airDistanceMeters": 8017,
       "fromRoadSnapDistanceMeters": 12,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 11686,
-        "durationSeconds": 44223,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 11149,
+        "durationSeconds": 736,
+        "displayMinutes": 13,
         "hasHighway": false
       }
     },
@@ -4853,8 +3838,6 @@
         "distanceMeters": 11536,
         "durationSeconds": 45507,
         "displayMinutes": 759,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4872,8 +3855,6 @@
         "distanceMeters": 11753,
         "durationSeconds": 44855,
         "displayMinutes": 748,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4891,8 +3872,6 @@
         "distanceMeters": 13690,
         "durationSeconds": 46120,
         "displayMinutes": 769,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4910,8 +3889,6 @@
         "distanceMeters": 2447,
         "durationSeconds": 43675,
         "displayMinutes": 728,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4923,15 +3900,11 @@
       "airDistanceMeters": 2158,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 472,
-        "durationSeconds": 341,
-        "displayMinutes": 6,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -4948,8 +3921,6 @@
         "distanceMeters": 6541,
         "durationSeconds": 44859,
         "displayMinutes": 748,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4967,8 +3938,6 @@
         "distanceMeters": 86799,
         "durationSeconds": 185202,
         "displayMinutes": 3087,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -4986,8 +3955,6 @@
         "distanceMeters": 10916,
         "durationSeconds": 45251,
         "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -4999,14 +3966,12 @@
       "airDistanceMeters": 4410,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 8380,
         "durationSeconds": 44834,
         "displayMinutes": 748,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -5018,14 +3983,12 @@
       "airDistanceMeters": 1572,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 4273,
         "durationSeconds": 44432,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -5033,18 +3996,16 @@
       "from": "Högsåra",
       "to": "Söderlångvik",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "mainland_finland",
       "airDistanceMeters": 9365,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 18672,
         "durationSeconds": 46000,
         "displayMinutes": 767,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -5059,11 +4020,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 6501,
-        "durationSeconds": 45066,
-        "displayMinutes": 752,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 8706,
+        "durationSeconds": 45661,
+        "displayMinutes": 762,
         "hasHighway": false
       }
     },
@@ -5078,11 +4037,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 11221,
-        "durationSeconds": 46375,
-        "displayMinutes": 773,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 12235,
+        "durationSeconds": 46702,
+        "displayMinutes": 779,
         "hasHighway": false
       }
     },
@@ -5097,11 +4054,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 11036,
-        "durationSeconds": 46245,
-        "displayMinutes": 771,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 12050,
+        "durationSeconds": 46572,
+        "displayMinutes": 777,
         "hasHighway": false
       }
     },
@@ -5113,14 +4068,12 @@
       "airDistanceMeters": 213,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 0,
-      "classification": "not_connected_without_ferry",
+      "classification": "uncertain_implausibly_short_route",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 231,
-        "durationSeconds": 43552,
-        "displayMinutes": 726,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 11,
+        "durationSeconds": 8,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -5138,8 +4091,6 @@
         "distanceMeters": 8566,
         "durationSeconds": 44405,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5151,14 +4102,12 @@
       "airDistanceMeters": 1945,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6716,
         "durationSeconds": 44240,
         "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5170,14 +4119,12 @@
       "airDistanceMeters": 599,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 16,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 7714,
         "durationSeconds": 44301,
         "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5192,11 +4139,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 20074,
-        "durationSeconds": 46695,
-        "displayMinutes": 779,
-        "hasFerry": true,
-        "hasToll": true,
+        "distanceMeters": 16012,
+        "durationSeconds": 46469,
+        "displayMinutes": 775,
         "hasHighway": false
       }
     },
@@ -5211,11 +4156,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 3492,
-        "durationSeconds": 43884,
-        "displayMinutes": 732,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 2943,
+        "durationSeconds": 43799,
+        "displayMinutes": 730,
         "hasHighway": false
       }
     },
@@ -5233,8 +4176,6 @@
         "distanceMeters": 19226,
         "durationSeconds": 45263,
         "displayMinutes": 755,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5249,11 +4190,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 6134,
-        "durationSeconds": 45030,
-        "displayMinutes": 751,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 7326,
+        "durationSeconds": 45298,
+        "displayMinutes": 755,
         "hasHighway": false
       }
     },
@@ -5268,11 +4207,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 5949,
-        "durationSeconds": 44900,
-        "displayMinutes": 749,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 7141,
+        "durationSeconds": 45168,
+        "displayMinutes": 753,
         "hasHighway": false
       }
     },
@@ -5290,8 +4227,6 @@
         "distanceMeters": 4477,
         "durationSeconds": 44006,
         "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5303,14 +4238,12 @@
       "airDistanceMeters": 4695,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6473,
         "durationSeconds": 44051,
         "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5322,14 +4255,12 @@
       "airDistanceMeters": 3974,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 16,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 7471,
         "durationSeconds": 44112,
         "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5337,18 +4268,16 @@
       "from": "Kasnäs",
       "to": "LångnäsH",
       "fromComponent": "mainland_finland",
-      "toComponent": null,
+      "toComponent": "hitis",
       "airDistanceMeters": 5778,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6473,
         "durationSeconds": 44495,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5356,18 +4285,16 @@
       "from": "Kasnäs",
       "to": "Vikare",
       "fromComponent": "mainland_finland",
-      "toComponent": null,
+      "toComponent": "hitis",
       "airDistanceMeters": 6401,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 49,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 13673,
         "durationSeconds": 45203,
         "displayMinutes": 754,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5379,14 +4306,12 @@
       "airDistanceMeters": 3541,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6308,
         "durationSeconds": 44715,
         "displayMinutes": 746,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5398,14 +4323,12 @@
       "airDistanceMeters": 3909,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 16,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 7715,
         "durationSeconds": 44802,
         "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5423,8 +4346,6 @@
         "distanceMeters": 4077,
         "durationSeconds": 44963,
         "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5442,8 +4363,6 @@
         "distanceMeters": 13858,
         "durationSeconds": 47142,
         "displayMinutes": 786,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5452,18 +4371,14 @@
       "to": "Wihuri",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 3796,
+      "airDistanceMeters": 3793,
       "fromRoadSnapDistanceMeters": 20,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
+      "toRoadSnapDistanceMeters": 998,
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 912,
-        "durationSeconds": 661,
-        "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -5480,8 +4395,6 @@
         "distanceMeters": 26921,
         "durationSeconds": 46119,
         "displayMinutes": 769,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5499,8 +4412,6 @@
         "distanceMeters": 26921,
         "durationSeconds": 46119,
         "displayMinutes": 769,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5518,8 +4429,6 @@
         "distanceMeters": 5644,
         "durationSeconds": 44479,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5537,8 +4446,6 @@
         "distanceMeters": 16342,
         "durationSeconds": 45585,
         "displayMinutes": 760,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5550,15 +4457,11 @@
       "airDistanceMeters": 7584,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 1032,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 6666,
-        "durationSeconds": 1078,
-        "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -5569,14 +4472,12 @@
       "airDistanceMeters": 3843,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 17008,
-        "durationSeconds": 45056,
-        "displayMinutes": 751,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 13030,
+        "durationSeconds": 1279,
+        "displayMinutes": 22,
         "hasHighway": false
       }
     },
@@ -5588,14 +4489,12 @@
       "airDistanceMeters": 921,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 12,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 6971,
         "durationSeconds": 44289,
         "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5607,14 +4506,12 @@
       "airDistanceMeters": 6262,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 22,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 7277,
         "durationSeconds": 44091,
         "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5626,14 +4523,12 @@
       "airDistanceMeters": 5393,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 10,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 9380,
-        "durationSeconds": 44276,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 7744,
+        "durationSeconds": 755,
+        "displayMinutes": 13,
         "hasHighway": false
       }
     },
@@ -5645,14 +4540,12 @@
       "airDistanceMeters": 2138,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 34,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 20524,
-        "durationSeconds": 45542,
-        "displayMinutes": 760,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 4764,
+        "durationSeconds": 580,
+        "displayMinutes": 10,
         "hasHighway": false
       }
     },
@@ -5664,14 +4557,12 @@
       "airDistanceMeters": 3843,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 22379,
-        "durationSeconds": 45636,
-        "displayMinutes": 761,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 6619,
+        "durationSeconds": 674,
+        "displayMinutes": 12,
         "hasHighway": false
       }
     },
@@ -5683,14 +4574,12 @@
       "airDistanceMeters": 183,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 5,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 15770,
-        "durationSeconds": 44989,
-        "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -5704,13 +4593,9 @@
       "toRoadSnapDistanceMeters": 6722,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 17195,
-        "durationSeconds": 46738,
-        "displayMinutes": 779,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -5727,8 +4612,6 @@
         "distanceMeters": 620,
         "durationSeconds": 157,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5746,8 +4629,6 @@
         "distanceMeters": 10951,
         "durationSeconds": 88057,
         "displayMinutes": 1468,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5762,11 +4643,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 10774,
-        "durationSeconds": 45530,
-        "displayMinutes": 759,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 8563,
+        "durationSeconds": 44935,
+        "displayMinutes": 749,
         "hasHighway": false
       }
     },
@@ -5784,8 +4663,6 @@
         "distanceMeters": 11949,
         "durationSeconds": 88118,
         "displayMinutes": 1469,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5803,8 +4680,6 @@
         "distanceMeters": 3400,
         "durationSeconds": 1274,
         "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5822,8 +4697,6 @@
         "distanceMeters": 2593,
         "durationSeconds": 887,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5832,17 +4705,15 @@
       "to": "Pakinainen",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 1219,
-      "fromRoadSnapDistanceMeters": 0,
-      "toRoadSnapDistanceMeters": 2,
+      "airDistanceMeters": 1172,
+      "fromRoadSnapDistanceMeters": 36,
+      "toRoadSnapDistanceMeters": 4,
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 2789,
-        "durationSeconds": 44422,
-        "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 3626,
+        "durationSeconds": 45054,
+        "displayMinutes": 751,
         "hasHighway": false
       }
     },
@@ -5851,8 +4722,8 @@
       "to": "Pyytti",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 474,
-      "fromRoadSnapDistanceMeters": 0,
+      "airDistanceMeters": 498,
+      "fromRoadSnapDistanceMeters": 36,
       "toRoadSnapDistanceMeters": 395,
       "classification": "uncertain_far_road_snap",
       "route": {
@@ -5860,8 +4731,6 @@
         "distanceMeters": 162,
         "durationSeconds": 122,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5870,18 +4739,14 @@
       "to": "Pähkinäinen",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 4015,
-      "fromRoadSnapDistanceMeters": 0,
+      "airDistanceMeters": 3979,
+      "fromRoadSnapDistanceMeters": 36,
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 114239,
-        "durationSeconds": 102570,
-        "displayMinutes": 1710,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -5889,18 +4754,14 @@
       "to": "Ruotsalainen",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 4617,
-      "fromRoadSnapDistanceMeters": 0,
+      "airDistanceMeters": 4608,
+      "fromRoadSnapDistanceMeters": 36,
       "toRoadSnapDistanceMeters": 2,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 41747,
-        "durationSeconds": 48758,
-        "displayMinutes": 813,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -5908,17 +4769,15 @@
       "to": "Wihuri",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 1097,
-      "fromRoadSnapDistanceMeters": 0,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
+      "airDistanceMeters": 1158,
+      "fromRoadSnapDistanceMeters": 36,
+      "toRoadSnapDistanceMeters": 998,
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 162,
-        "durationSeconds": 122,
-        "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
+        "status": "ferry_used_rejected",
+        "distanceMeters": 5506,
+        "durationSeconds": 46378,
+        "displayMinutes": 773,
         "hasHighway": false
       }
     },
@@ -5936,8 +4795,6 @@
         "distanceMeters": 2437,
         "durationSeconds": 532,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5949,14 +4806,12 @@
       "airDistanceMeters": 4930,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 8749,
         "durationSeconds": 44308,
         "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5974,8 +4829,6 @@
         "distanceMeters": 3945,
         "durationSeconds": 774,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -5993,8 +4846,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6012,8 +4863,6 @@
         "distanceMeters": 4350,
         "durationSeconds": 44507,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6031,8 +4880,6 @@
         "distanceMeters": 1578,
         "durationSeconds": 43766,
         "displayMinutes": 730,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6050,8 +4897,6 @@
         "distanceMeters": 3321,
         "durationSeconds": 44159,
         "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6059,18 +4904,16 @@
       "from": "Kuggö",
       "to": "Ramsholm",
       "fromComponent": null,
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 2766,
       "fromRoadSnapDistanceMeters": 17,
       "toRoadSnapDistanceMeters": 2,
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 5692,
-        "durationSeconds": 45124,
-        "displayMinutes": 753,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 5172,
+        "durationSeconds": 44916,
+        "displayMinutes": 749,
         "hasHighway": false
       }
     },
@@ -6088,8 +4931,6 @@
         "distanceMeters": 4185,
         "durationSeconds": 44628,
         "displayMinutes": 744,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6107,8 +4948,6 @@
         "distanceMeters": 18896,
         "durationSeconds": 45778,
         "displayMinutes": 763,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6120,14 +4959,12 @@
       "airDistanceMeters": 9416,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 17,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 12096,
         "durationSeconds": 44364,
         "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6141,13 +4978,9 @@
       "toRoadSnapDistanceMeters": 7,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 14163,
-        "durationSeconds": 46465,
-        "displayMinutes": 775,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -6164,8 +4997,6 @@
         "distanceMeters": 2854,
         "durationSeconds": 955,
         "displayMinutes": 16,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6183,8 +5014,6 @@
         "distanceMeters": 4788,
         "durationSeconds": 1171,
         "displayMinutes": 20,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6217,8 +5046,6 @@
         "distanceMeters": 4938,
         "durationSeconds": 44774,
         "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6236,8 +5063,6 @@
         "distanceMeters": 5550,
         "durationSeconds": 44809,
         "displayMinutes": 747,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6255,8 +5080,6 @@
         "distanceMeters": 1906,
         "durationSeconds": 43886,
         "displayMinutes": 732,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6274,8 +5097,6 @@
         "distanceMeters": 920,
         "durationSeconds": 43538,
         "displayMinutes": 726,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6293,8 +5114,6 @@
         "distanceMeters": 2561,
         "durationSeconds": 44127,
         "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6312,8 +5131,6 @@
         "distanceMeters": 6489,
         "durationSeconds": 88443,
         "displayMinutes": 1475,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6331,8 +5148,6 @@
         "distanceMeters": 37955,
         "durationSeconds": 137668,
         "displayMinutes": 2295,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6350,8 +5165,6 @@
         "distanceMeters": 37785,
         "durationSeconds": 137545,
         "displayMinutes": 2293,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6369,8 +5182,6 @@
         "distanceMeters": 42716,
         "durationSeconds": 138717,
         "displayMinutes": 2312,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6388,8 +5199,6 @@
         "distanceMeters": 5458,
         "durationSeconds": 44188,
         "displayMinutes": 737,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6407,8 +5216,6 @@
         "distanceMeters": 8161,
         "durationSeconds": 44453,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6426,8 +5233,6 @@
         "distanceMeters": 6081,
         "durationSeconds": 44514,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -6445,8 +5250,6 @@
         "distanceMeters": 5059,
         "durationSeconds": 44646,
         "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6464,8 +5267,6 @@
         "distanceMeters": 8332,
         "durationSeconds": 45174,
         "displayMinutes": 753,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6483,8 +5284,6 @@
         "distanceMeters": 687,
         "durationSeconds": 495,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6502,8 +5301,6 @@
         "distanceMeters": 170,
         "durationSeconds": 122,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6521,8 +5318,6 @@
         "distanceMeters": 751,
         "durationSeconds": 544,
         "displayMinutes": 10,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6540,8 +5335,6 @@
         "distanceMeters": 10774,
         "durationSeconds": 46947,
         "displayMinutes": 783,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6559,8 +5352,6 @@
         "distanceMeters": 517,
         "durationSeconds": 373,
         "displayMinutes": 7,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6578,8 +5369,6 @@
         "distanceMeters": 258,
         "durationSeconds": 187,
         "displayMinutes": 4,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6597,8 +5386,6 @@
         "distanceMeters": 10086,
         "durationSeconds": 46451,
         "displayMinutes": 775,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6616,8 +5403,6 @@
         "distanceMeters": 13568,
         "durationSeconds": 45723,
         "displayMinutes": 763,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6635,8 +5420,6 @@
         "distanceMeters": 5506,
         "durationSeconds": 44485,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6654,8 +5437,6 @@
         "distanceMeters": 718,
         "durationSeconds": 518,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6667,14 +5448,12 @@
       "airDistanceMeters": 1642,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 0,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 1826,
         "durationSeconds": 43811,
         "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6682,7 +5461,7 @@
       "from": "Lillmälö",
       "to": "Ramsholm",
       "fromComponent": "mainland_finland",
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 8279,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 2,
@@ -6692,8 +5471,6 @@
         "distanceMeters": 23695,
         "durationSeconds": 46682,
         "displayMinutes": 779,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6711,8 +5488,6 @@
         "distanceMeters": 24473,
         "durationSeconds": 46819,
         "displayMinutes": 781,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6730,8 +5505,6 @@
         "distanceMeters": 5256,
         "durationSeconds": 44471,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -6749,8 +5522,6 @@
         "distanceMeters": 4567,
         "durationSeconds": 44160,
         "displayMinutes": 737,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -6768,8 +5539,6 @@
         "distanceMeters": 14413,
         "durationSeconds": 89693,
         "displayMinutes": 1495,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -6781,15 +5550,11 @@
       "airDistanceMeters": 8416,
       "fromRoadSnapDistanceMeters": 1032,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 10031,
-        "durationSeconds": 1415,
-        "displayMinutes": 24,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -6800,14 +5565,12 @@
       "airDistanceMeters": 9935,
       "fromRoadSnapDistanceMeters": 14,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 57945,
-        "durationSeconds": 46643,
-        "displayMinutes": 778,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 57341,
+        "durationSeconds": 3144,
+        "displayMinutes": 53,
         "hasHighway": false
       }
     },
@@ -6819,59 +5582,19 @@
       "airDistanceMeters": 4133,
       "fromRoadSnapDistanceMeters": 14,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
-      "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 8968,
-        "durationSeconds": 44232,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "LångnäsH",
-      "to": "Rosala",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2798,
-      "fromRoadSnapDistanceMeters": 7,
-      "toRoadSnapDistanceMeters": 6,
-      "classification": "possible_missing_same_road_component",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ok",
-        "distanceMeters": 5054,
-        "durationSeconds": 657,
-        "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "LångnäsH",
-      "to": "Vikare",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 4745,
-      "fromRoadSnapDistanceMeters": 7,
-      "toRoadSnapDistanceMeters": 49,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 7200,
-        "durationSeconds": 708,
+        "distanceMeters": 8424,
+        "durationSeconds": 677,
         "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "LångnäsH",
       "to": "Örö",
-      "fromComponent": null,
+      "fromComponent": "hitis",
       "toComponent": "oro",
       "airDistanceMeters": 9263,
       "fromRoadSnapDistanceMeters": 7,
@@ -6886,7 +5609,7 @@
     {
       "from": "LångnäsH",
       "to": "ÖröP",
-      "fromComponent": null,
+      "fromComponent": "hitis",
       "toComponent": "oro",
       "airDistanceMeters": 8899,
       "fromRoadSnapDistanceMeters": 7,
@@ -6912,8 +5635,6 @@
         "distanceMeters": 7361,
         "durationSeconds": 917,
         "displayMinutes": 16,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6931,8 +5652,6 @@
         "distanceMeters": 7447,
         "durationSeconds": 803,
         "displayMinutes": 14,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6950,8 +5669,6 @@
         "distanceMeters": 8232,
         "durationSeconds": 44277,
         "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6969,8 +5686,6 @@
         "distanceMeters": 3427,
         "durationSeconds": 743,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -6988,8 +5703,6 @@
         "distanceMeters": 2437,
         "durationSeconds": 534,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7007,8 +5720,6 @@
         "distanceMeters": 1228,
         "durationSeconds": 854,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7022,13 +5733,9 @@
       "toRoadSnapDistanceMeters": 2733,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 14284,
-        "durationSeconds": 45981,
-        "displayMinutes": 767,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7045,8 +5752,6 @@
         "distanceMeters": 5423,
         "durationSeconds": 44509,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7064,8 +5769,6 @@
         "distanceMeters": 7705,
         "durationSeconds": 1042,
         "displayMinutes": 18,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7077,14 +5780,12 @@
       "airDistanceMeters": 5024,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 0,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 14318,
-        "durationSeconds": 44516,
-        "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 13989,
+        "durationSeconds": 1186,
+        "displayMinutes": 20,
         "hasHighway": false
       }
     },
@@ -7096,14 +5797,12 @@
       "airDistanceMeters": 224,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 1660,
-        "durationSeconds": 43812,
-        "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -7121,8 +5820,6 @@
         "distanceMeters": 36077,
         "durationSeconds": 134436,
         "displayMinutes": 2241,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7140,8 +5837,6 @@
         "distanceMeters": 50745,
         "durationSeconds": 179699,
         "displayMinutes": 2995,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7156,11 +5851,9 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 14360,
-        "durationSeconds": 88141,
-        "displayMinutes": 1470,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 12725,
+        "durationSeconds": 44619,
+        "displayMinutes": 744,
         "hasHighway": false
       }
     },
@@ -7178,8 +5871,6 @@
         "distanceMeters": 7601,
         "durationSeconds": 45191,
         "displayMinutes": 754,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7197,8 +5888,6 @@
         "distanceMeters": 14287,
         "durationSeconds": 46240,
         "displayMinutes": 771,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7216,8 +5905,6 @@
         "distanceMeters": 6274,
         "durationSeconds": 47925,
         "displayMinutes": 799,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7229,14 +5916,12 @@
       "airDistanceMeters": 3471,
       "fromRoadSnapDistanceMeters": 2,
       "toRoadSnapDistanceMeters": 0,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 6157,
-        "durationSeconds": 43904,
-        "displayMinutes": 732,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 5828,
+        "durationSeconds": 573,
+        "displayMinutes": 10,
         "hasHighway": false
       }
     },
@@ -7248,14 +5933,12 @@
       "airDistanceMeters": 5887,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 62955,
-        "durationSeconds": 46859,
-        "displayMinutes": 781,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 62351,
+        "durationSeconds": 3360,
+        "displayMinutes": 57,
         "hasHighway": false
       }
     },
@@ -7267,14 +5950,12 @@
       "airDistanceMeters": 295,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 3884,
-        "durationSeconds": 43850,
-        "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 2,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -7292,8 +5973,6 @@
         "distanceMeters": 20236,
         "durationSeconds": 90363,
         "displayMinutes": 1507,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7311,8 +5990,6 @@
         "distanceMeters": 19495,
         "durationSeconds": 89791,
         "displayMinutes": 1497,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7324,14 +6001,12 @@
       "airDistanceMeters": 2121,
       "fromRoadSnapDistanceMeters": 34,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 6126,
-        "durationSeconds": 44097,
-        "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 2148,
+        "durationSeconds": 321,
+        "displayMinutes": 6,
         "hasHighway": false
       }
     },
@@ -7343,14 +6018,12 @@
       "airDistanceMeters": 426,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 9048,
-        "durationSeconds": 44322,
-        "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -7364,13 +6037,9 @@
       "toRoadSnapDistanceMeters": 7,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 2920,
-        "durationSeconds": 44016,
-        "displayMinutes": 734,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7387,8 +6056,6 @@
         "distanceMeters": 4100,
         "durationSeconds": 44361,
         "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7406,8 +6073,6 @@
         "distanceMeters": 89956,
         "durationSeconds": 185629,
         "displayMinutes": 3094,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7425,8 +6090,6 @@
         "distanceMeters": 88908,
         "durationSeconds": 185559,
         "displayMinutes": 3093,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7444,8 +6107,6 @@
         "distanceMeters": 1601,
         "durationSeconds": 847,
         "displayMinutes": 15,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7463,8 +6124,6 @@
         "distanceMeters": 8587,
         "durationSeconds": 44991,
         "displayMinutes": 750,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7476,14 +6135,12 @@
       "airDistanceMeters": 4657,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 7,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 7311,
         "durationSeconds": 44433,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7492,17 +6149,15 @@
       "to": "Pyytti",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 1570,
-      "fromRoadSnapDistanceMeters": 2,
+      "airDistanceMeters": 1560,
+      "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 395,
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 2458,
-        "durationSeconds": 44157,
-        "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 3294,
+        "durationSeconds": 44790,
+        "displayMinutes": 747,
         "hasHighway": false
       }
     },
@@ -7511,18 +6166,14 @@
       "to": "Pähkinäinen",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 2811,
-      "fromRoadSnapDistanceMeters": 2,
+      "airDistanceMeters": 2822,
+      "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 114239,
-        "durationSeconds": 102570,
-        "displayMinutes": 1710,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7530,18 +6181,14 @@
       "to": "Ruotsalainen",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 4454,
-      "fromRoadSnapDistanceMeters": 2,
+      "airDistanceMeters": 4451,
+      "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 2,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 41747,
-        "durationSeconds": 48758,
-        "displayMinutes": 813,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7549,17 +6196,15 @@
       "to": "Wihuri",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 2222,
-      "fromRoadSnapDistanceMeters": 2,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "not_connected_without_ferry",
+      "airDistanceMeters": 2240,
+      "fromRoadSnapDistanceMeters": 4,
+      "toRoadSnapDistanceMeters": 998,
+      "classification": "uncertain_far_road_snap",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 2458,
-        "durationSeconds": 44157,
-        "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 2723,
+        "durationSeconds": 1961,
+        "displayMinutes": 33,
         "hasHighway": false
       }
     },
@@ -7577,8 +6222,6 @@
         "distanceMeters": 4054,
         "durationSeconds": 44455,
         "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7590,14 +6233,12 @@
       "airDistanceMeters": 1004,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 2397,
         "durationSeconds": 43822,
         "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7615,8 +6256,6 @@
         "distanceMeters": 4666,
         "durationSeconds": 44490,
         "displayMinutes": 742,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7628,14 +6267,12 @@
       "airDistanceMeters": 937,
       "fromRoadSnapDistanceMeters": 1,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 938,
         "durationSeconds": 43634,
         "displayMinutes": 728,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7647,14 +6284,12 @@
       "airDistanceMeters": 2039,
       "fromRoadSnapDistanceMeters": 229,
       "toRoadSnapDistanceMeters": 3,
-      "classification": "possible_missing_same_road_component",
+      "classification": "uncertain_far_road_snap",
       "route": {
         "status": "ok",
         "distanceMeters": 2772,
         "durationSeconds": 739,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7666,14 +6301,12 @@
       "airDistanceMeters": 926,
       "fromRoadSnapDistanceMeters": 229,
       "toRoadSnapDistanceMeters": 12,
-      "classification": "possible_missing_same_road_component",
+      "classification": "uncertain_far_road_snap",
       "route": {
         "status": "ok",
         "distanceMeters": 1771,
         "durationSeconds": 509,
         "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7691,8 +6324,6 @@
         "distanceMeters": 7501,
         "durationSeconds": 45615,
         "displayMinutes": 761,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7710,8 +6341,6 @@
         "distanceMeters": 7,
         "durationSeconds": 6,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7729,8 +6358,6 @@
         "distanceMeters": 5801,
         "durationSeconds": 44055,
         "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7738,7 +6365,7 @@
       "from": "Prostvik",
       "to": "Ramsholm",
       "fromComponent": "nagu",
-      "toComponent": null,
+      "toComponent": "heisala",
       "airDistanceMeters": 7538,
       "fromRoadSnapDistanceMeters": 0,
       "toRoadSnapDistanceMeters": 2,
@@ -7748,8 +6375,6 @@
         "distanceMeters": 25347,
         "durationSeconds": 90472,
         "displayMinutes": 1508,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7767,8 +6392,6 @@
         "distanceMeters": 20764,
         "durationSeconds": 49006,
         "displayMinutes": 817,
-        "hasFerry": true,
-        "hasToll": true,
         "hasHighway": false
       }
     },
@@ -7786,8 +6409,6 @@
         "distanceMeters": 26126,
         "durationSeconds": 90609,
         "displayMinutes": 1511,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7799,14 +6420,12 @@
       "airDistanceMeters": 394,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 4,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 561,
-        "durationSeconds": 43504,
-        "displayMinutes": 726,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 0,
+        "durationSeconds": 0,
+        "displayMinutes": 1,
         "hasHighway": false
       }
     },
@@ -7818,14 +6437,12 @@
       "airDistanceMeters": 6116,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 62767,
-        "durationSeconds": 46912,
-        "displayMinutes": 782,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 62223,
+        "durationSeconds": 3357,
+        "displayMinutes": 56,
         "hasHighway": false
       }
     },
@@ -7839,13 +6456,9 @@
       "toRoadSnapDistanceMeters": 3,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 114239,
-        "durationSeconds": 102570,
-        "displayMinutes": 1710,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7853,17 +6466,15 @@
       "to": "Wihuri",
       "fromComponent": null,
       "toComponent": null,
-      "airDistanceMeters": 656,
+      "airDistanceMeters": 686,
       "fromRoadSnapDistanceMeters": 395,
-      "toRoadSnapDistanceMeters": 984,
-      "classification": "uncertain_far_road_snap",
+      "toRoadSnapDistanceMeters": 998,
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 0,
-        "durationSeconds": 0,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
+        "status": "ferry_used_rejected",
+        "distanceMeters": 5174,
+        "durationSeconds": 46107,
+        "displayMinutes": 769,
         "hasHighway": false
       }
     },
@@ -7877,13 +6488,9 @@
       "toRoadSnapDistanceMeters": 2733,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 39145,
-        "durationSeconds": 57554,
-        "displayMinutes": 960,
-        "hasFerry": true,
-        "hasToll": true,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -7894,21 +6501,19 @@
       "airDistanceMeters": 787,
       "fromRoadSnapDistanceMeters": 3,
       "toRoadSnapDistanceMeters": 1,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 784,
         "durationSeconds": 43474,
         "displayMinutes": 725,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "Ramsholm",
       "to": "Stenholm",
-      "fromComponent": null,
+      "fromComponent": "heisala",
       "toComponent": null,
       "airDistanceMeters": 1063,
       "fromRoadSnapDistanceMeters": 2,
@@ -7919,8 +6524,6 @@
         "distanceMeters": 946,
         "durationSeconds": 261,
         "displayMinutes": 5,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7932,14 +6535,12 @@
       "airDistanceMeters": 1263,
       "fromRoadSnapDistanceMeters": 6,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
+      "classification": "user_confirmed_separate_islands",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 2821,
-        "durationSeconds": 44249,
-        "displayMinutes": 738,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 1176,
+        "durationSeconds": 267,
+        "displayMinutes": 5,
         "hasHighway": false
       }
     },
@@ -7957,8 +6558,6 @@
         "distanceMeters": 2593,
         "durationSeconds": 44130,
         "displayMinutes": 736,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -7976,15 +6575,13 @@
         "distanceMeters": 606,
         "durationSeconds": 437,
         "displayMinutes": 8,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
     {
       "from": "Rosala",
       "to": "Örö",
-      "fromComponent": null,
+      "fromComponent": "hitis",
       "toComponent": "oro",
       "airDistanceMeters": 6465,
       "fromRoadSnapDistanceMeters": 6,
@@ -7999,7 +6596,7 @@
     {
       "from": "Rosala",
       "to": "ÖröP",
-      "fromComponent": null,
+      "fromComponent": "hitis",
       "toComponent": "oro",
       "airDistanceMeters": 6150,
       "fromRoadSnapDistanceMeters": 6,
@@ -8019,14 +6616,12 @@
       "airDistanceMeters": 4183,
       "fromRoadSnapDistanceMeters": 5,
       "toRoadSnapDistanceMeters": 2,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 10609,
-        "durationSeconds": 44456,
-        "displayMinutes": 741,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 6631,
+        "durationSeconds": 679,
+        "displayMinutes": 12,
         "hasHighway": false
       }
     },
@@ -8040,13 +6635,9 @@
       "toRoadSnapDistanceMeters": 2733,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 26923,
-        "durationSeconds": 46930,
-        "displayMinutes": 783,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -8063,8 +6654,6 @@
         "distanceMeters": 0,
         "durationSeconds": 0,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8076,14 +6665,12 @@
       "airDistanceMeters": 1002,
       "fromRoadSnapDistanceMeters": 17,
       "toRoadSnapDistanceMeters": 5,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 1174,
         "durationSeconds": 43615,
         "displayMinutes": 727,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8097,13 +6684,9 @@
       "toRoadSnapDistanceMeters": 8,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 87271,
-        "durationSeconds": 185543,
-        "displayMinutes": 3093,
-        "hasFerry": true,
-        "hasToll": true,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -8116,13 +6699,9 @@
       "toRoadSnapDistanceMeters": 7,
       "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 11389,
-        "durationSeconds": 45591,
-        "displayMinutes": 760,
-        "hasFerry": true,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -8139,8 +6718,6 @@
         "distanceMeters": 14334,
         "durationSeconds": 45011,
         "displayMinutes": 751,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8155,31 +6732,10 @@
       "classification": "not_connected_without_ferry",
       "route": {
         "status": "ferry_used_rejected",
-        "distanceMeters": 5416,
-        "durationSeconds": 44676,
-        "displayMinutes": 745,
-        "hasFerry": true,
-        "hasToll": false,
+        "distanceMeters": 5336,
+        "durationSeconds": 44521,
+        "displayMinutes": 743,
         "hasHighway": false
-      }
-    },
-    {
-      "from": "StockholmStadsgården",
-      "to": "StockholmVärtan",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 3765,
-      "fromRoadSnapDistanceMeters": 51,
-      "toRoadSnapDistanceMeters": 21,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 11715,
-        "durationSeconds": 1271,
-        "displayMinutes": 22,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": true
       }
     },
     {
@@ -8196,8 +6752,6 @@
         "distanceMeters": 7089,
         "durationSeconds": 969,
         "displayMinutes": 17,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8209,14 +6763,12 @@
       "airDistanceMeters": 9851,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 12396,
-        "durationSeconds": 44298,
-        "displayMinutes": 739,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 11852,
+        "durationSeconds": 743,
+        "displayMinutes": 13,
         "hasHighway": false
       }
     },
@@ -8234,8 +6786,6 @@
         "distanceMeters": 2034,
         "durationSeconds": 44055,
         "displayMinutes": 735,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8253,8 +6803,6 @@
         "distanceMeters": 10345,
         "durationSeconds": 46639,
         "displayMinutes": 778,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8272,8 +6820,6 @@
         "distanceMeters": 1677,
         "durationSeconds": 43808,
         "displayMinutes": 731,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8291,8 +6837,6 @@
         "distanceMeters": 5605,
         "durationSeconds": 88124,
         "displayMinutes": 1469,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8304,14 +6848,12 @@
       "airDistanceMeters": 1075,
       "fromRoadSnapDistanceMeters": 9,
       "toRoadSnapDistanceMeters": 17,
-      "classification": "not_connected_without_ferry",
+      "classification": "separated_by_modeled_ferry",
       "route": {
         "status": "ferry_used_rejected",
         "distanceMeters": 11641,
         "durationSeconds": 44390,
         "displayMinutes": 740,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8329,8 +6871,6 @@
         "distanceMeters": 21,
         "durationSeconds": 16,
         "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8345,30 +6885,9 @@
       "classification": "uncertain_far_road_snap",
       "route": {
         "status": "ok",
-        "distanceMeters": 214,
-        "durationSeconds": 155,
+        "distanceMeters": 203,
+        "durationSeconds": 147,
         "displayMinutes": 3,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
-      }
-    },
-    {
-      "from": "Turku",
-      "to": "TurkuVitharun",
-      "fromComponent": null,
-      "toComponent": null,
-      "airDistanceMeters": 2087,
-      "fromRoadSnapDistanceMeters": 111,
-      "toRoadSnapDistanceMeters": 8,
-      "classification": "possible_missing_same_road_component",
-      "route": {
-        "status": "ok",
-        "distanceMeters": 2633,
-        "durationSeconds": 608,
-        "displayMinutes": 11,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8386,8 +6905,6 @@
         "distanceMeters": 3945,
         "durationSeconds": 777,
         "displayMinutes": 13,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8399,21 +6916,19 @@
       "airDistanceMeters": 5812,
       "fromRoadSnapDistanceMeters": 4,
       "toRoadSnapDistanceMeters": 9,
-      "classification": "not_connected_without_ferry",
+      "classification": "uncertain_implausibly_long_route",
       "route": {
-        "status": "ferry_used_rejected",
-        "distanceMeters": 63255,
-        "durationSeconds": 90404,
-        "displayMinutes": 1507,
-        "hasFerry": true,
-        "hasToll": false,
+        "status": "ok",
+        "distanceMeters": 62108,
+        "durationSeconds": 3349,
+        "displayMinutes": 56,
         "hasHighway": false
       }
     },
     {
       "from": "Vikare",
       "to": "Ängesö",
-      "fromComponent": null,
+      "fromComponent": "hitis",
       "toComponent": null,
       "airDistanceMeters": 5777,
       "fromRoadSnapDistanceMeters": 49,
@@ -8424,8 +6939,6 @@
         "distanceMeters": 22466,
         "durationSeconds": 46329,
         "displayMinutes": 773,
-        "hasFerry": true,
-        "hasToll": false,
         "hasHighway": false
       }
     },
@@ -8437,15 +6950,11 @@
       "airDistanceMeters": 702,
       "fromRoadSnapDistanceMeters": 46,
       "toRoadSnapDistanceMeters": 19,
-      "classification": "possible_missing_same_road_component",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 39,
-        "durationSeconds": 29,
-        "displayMinutes": 1,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -8456,15 +6965,11 @@
       "airDistanceMeters": 8803,
       "fromRoadSnapDistanceMeters": 6560,
       "toRoadSnapDistanceMeters": 53,
-      "classification": "uncertain_far_road_snap",
+      "classification": "not_connected_without_ferry",
       "route": {
-        "status": "ok",
-        "distanceMeters": 687,
-        "durationSeconds": 496,
-        "displayMinutes": 9,
-        "hasFerry": false,
-        "hasToll": false,
-        "hasHighway": false
+        "status": "route_not_found",
+        "httpStatus": 400,
+        "error": "{\"error_code\":442,\"error\":\"No path could be found for input\",\"status_code\":400,\"status\":\"Bad Request\"}"
       }
     },
     {
@@ -8481,8 +6986,6 @@
         "distanceMeters": 989,
         "durationSeconds": 712,
         "displayMinutes": 12,
-        "hasFerry": false,
-        "hasToll": false,
         "hasHighway": false
       }
     }

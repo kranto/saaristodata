@@ -3604,7 +3604,7 @@
           "callCondition": "y"
         },
         {
-          "stop": "Vänö or Tunnhamn",
+          "stop": "Vänö/Tunnhamn",
           "occurrence": 1,
           "timing": {
             "kind": "unavailable"
@@ -23826,25 +23826,6 @@
           "callCondition": "y"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_conservative_range",
-            "elapsedMinutes": {
-              "possible": [
-                49.8,
-                105
-              ]
-            },
-            "sampleSize": 81,
-            "matchingMethod": "conservative_role_range",
-            "modelVersion": "combined-conservative-ranges-v1",
-            "typicalTimeAvailable": false,
-            "disclosureRequired": true
-          },
-          "callCondition": "y"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -23861,6 +23842,30 @@
               ]
             },
             "sampleSize": 9,
+            "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "y"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                50.8,
+                55.2,
+                63.9
+              ],
+              "possible": [
+                49.8,
+                69.0
+              ]
+            },
+            "sampleSize": 5,
             "pathVariants": 1,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
@@ -24313,25 +24318,6 @@
           "callCondition": "y"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_conservative_range",
-            "elapsedMinutes": {
-              "possible": [
-                49.8,
-                150
-              ]
-            },
-            "sampleSize": 81,
-            "matchingMethod": "conservative_role_range",
-            "modelVersion": "combined-conservative-ranges-v1",
-            "typicalTimeAvailable": false,
-            "disclosureRequired": true
-          },
-          "callCondition": "y"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -24348,6 +24334,30 @@
               ]
             },
             "sampleSize": 9,
+            "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "y"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                50.8,
+                55.2,
+                63.9
+              ],
+              "possible": [
+                49.8,
+                69.0
+              ]
+            },
+            "sampleSize": 5,
             "pathVariants": 1,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
@@ -24535,30 +24545,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -24576,6 +24562,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -24732,30 +24742,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -24773,6 +24759,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -24910,30 +24920,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -24951,6 +24937,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -25131,30 +25141,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -25172,6 +25158,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -25550,30 +25560,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -25591,6 +25577,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -25843,30 +25853,6 @@
           "callCondition": "y"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "y"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -25883,6 +25869,30 @@
               ]
             },
             "sampleSize": 72,
+            "pathVariants": 3,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "y"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                50.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                49.8,
+                72.0
+              ]
+            },
+            "sampleSize": 63,
             "pathVariants": 3,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
@@ -26046,30 +26056,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -26087,6 +26073,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -26224,30 +26234,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -26265,6 +26251,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -26445,30 +26455,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -26486,6 +26472,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -26642,30 +26652,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -26683,6 +26669,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -26852,30 +26862,6 @@
           "callCondition": "x"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "x"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -26893,6 +26879,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "x"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -27030,30 +27040,6 @@
           "callCondition": "y"
         },
         {
-          "stop": "Wihuri",
-          "occurrence": 1,
-          "timing": {
-            "kind": "historical_typical_and_range",
-            "elapsedMinutes": {
-              "typical": [
-                57.8,
-                62.0,
-                64.2
-              ],
-              "possible": [
-                56.0,
-                66.0
-              ]
-            },
-            "sampleSize": 16,
-            "pathVariants": 1,
-            "matchingMethod": "anchor_compatible_paths",
-            "modelVersion": "ais-anchor-paths-v2",
-            "disclosureRequired": true
-          },
-          "callCondition": "y"
-        },
-        {
           "stop": "Pyytti",
           "occurrence": 1,
           "timing": {
@@ -27071,6 +27057,30 @@
             },
             "sampleSize": 57,
             "pathVariants": 1,
+            "matchingMethod": "anchor_compatible_paths",
+            "modelVersion": "ais-anchor-paths-v2",
+            "disclosureRequired": true
+          },
+          "callCondition": "y"
+        },
+        {
+          "stop": "Wihuri",
+          "occurrence": 1,
+          "timing": {
+            "kind": "historical_typical_and_range",
+            "elapsedMinutes": {
+              "typical": [
+                57.8,
+                64.9,
+                67.2
+              ],
+              "possible": [
+                56.0,
+                72.0
+              ]
+            },
+            "sampleSize": 58,
+            "pathVariants": 2,
             "matchingMethod": "anchor_compatible_paths",
             "modelVersion": "ais-anchor-paths-v2",
             "disclosureRequired": true
@@ -36786,6 +36796,10 @@
     {
       "routeId": "korporutt",
       "date": "2027-05-01"
+    },
+    {
+      "routeId": "rymattylanreitti",
+      "date": "2026-10-31"
     },
     {
       "routeId": "utorutt",

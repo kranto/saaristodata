@@ -3,6 +3,86 @@
   "provider": "alandstrafiken",
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf",
+  "booking": {
+    "loadingReadinessMinutesBefore": 15,
+    "requiredForAllTrips": false,
+    "recommendedForVehicles": true,
+    "vehicleSpaceGuaranteedOnlyWithBooking": true,
+    "unbookedVehiclePolicy": "accepted_subject_to_available_space_and_ticket_purchase_at_harbour",
+    "deadline": {
+      "relativeTo": "departure_from_starting_harbour",
+      "offsetMinutes": -60
+    },
+    "channel": "https://www.alandstrafiken.ax/",
+    "phone": "+358 (0)18 25 600",
+    "email": "info@alandstrafiken.ax"
+  },
+  "contact": {
+    "phones": [
+      "+358 (0)18 25 600"
+    ]
+  },
+  "vesselByCode": {
+    "G": {
+      "name": "M/S Gudingen",
+      "capacity": {
+        "persons": 195,
+        "cars": 23,
+        "trucks": 4
+      },
+      "contact": {
+        "phones": [
+          "+358 (0)40 769 3687"
+        ]
+      }
+    },
+    "S": {
+      "name": "M/S Skiftet",
+      "capacity": {
+        "persons": 200,
+        "cars": 24,
+        "trucks": 4
+      },
+      "contact": {
+        "phones": [
+          "+358 (0)400 350 265"
+        ]
+      }
+    },
+    "V": {
+      "name": "M/S Viggen",
+      "capacity": {
+        "persons": 250,
+        "cars": 38,
+        "trucks": 4
+      },
+      "contact": {
+        "phones": [
+          "+358 (0)400 330 455"
+        ]
+      }
+    }
+  },
+  "travelerInformation": {
+    "farePolicy": {
+      "vehicles": "paid",
+      "passengersInVehicle": "free",
+      "pedestrians": "free"
+    },
+    "notices": [
+      {
+        "type": "vehicle_loading_readiness",
+        "minutesBeforeDeparture": 15,
+        "appliesAt": "trip_origin"
+      },
+      {
+        "type": "possible_early_departure",
+        "minutesBeforePublishedTime": 5,
+        "appliesAt": "intermediate_stops"
+      }
+    ]
+  },
   "sourceId": "alandstrafiken-sodra-linjen-30.9.2026",
   "review": {
     "status": "machine_extracted_requires_semantic_review",
@@ -1034,6 +1114,9 @@
       "bookingDeadline": {
         "minutesBeforeDepartureFromOrigin": 60
       },
+      "bookingContact": {
+        "source": "route_operator"
+      },
       "withVehicle": {
         "ferryCallMayBeBooked": true
       },
@@ -1058,12 +1141,15 @@
     },
     "Överö": {
       "operation": "booking_required",
+      "appliesWhenBoardingAtStop": true,
       "bookingDeadline": {
         "minutesBeforeEstimatedArrivalAtStop": 45
       },
+      "bookingContact": {
+        "source": "operating_vessel"
+      },
       "eligibleJourneys": {
-        "fromÖverö": "eastbound_beyond_Överö",
-        "toÖverö": "arriving_from_the_east"
+        "fromÖverö": "eastbound_beyond_Överö"
       },
       "ineligibleJourneys": [
         "Överö-Långnäs",

@@ -29,7 +29,8 @@ from build_road_network import (
 
 EXPERIMENT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = EXPERIMENT / "road-network-audit.json"
-DEFAULT_LOCATE_CACHE = EXPERIMENT / ".road-locate-cache.json"
+DEFAULT_LOCATE_CACHE = EXPERIMENT / ".road-locate-cache-v2.json"
+DEFAULT_TIMETABLES = EXPERIMENT / "structured-timetables.json"
 
 
 def haversine_m(a: dict, b: dict) -> float:
@@ -86,25 +87,44 @@ def main() -> int:
     parser.add_argument("--components", type=Path, default=DEFAULT_COMPONENTS)
     parser.add_argument("--route-cache", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--locate-cache", type=Path, default=DEFAULT_LOCATE_CACHE)
+    parser.add_argument("--timetables", type=Path, default=DEFAULT_TIMETABLES)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--router", default=DEFAULT_ROUTER)
     parser.add_argument("--nearest", type=int, default=3)
     parser.add_argument("--max-air-distance-km", type=float, default=10)
-    parser.add_argument("--max-snap-distance-m", type=float, default=250)
+    parser.add_argument("--max-snap-distance-m", type=float, default=150)
     parser.add_argument("--request-delay", type=float, default=0.02)
     args = parser.parse_args()
 
     piers = load_piers(args.piers)
     components_data = json.loads(args.components.read_text())
     piers.update(components_data.get("additionalPiers", {}))
+    piers.update(components_data.get("routingCoordinateOverrides", {}))
     component_by_pier = {
         pier: component["id"]
         for component in components_data["components"]
         for pier in component["piers"]
     }
 
+    timetable_data = json.loads(args.timetables.read_text())
+    excluded_connections = {
+        frozenset(item["piers"]): item.get("reason")
+        for item in components_data.get("excludedAuditConnections", [])
+    }
+    ferry_component_pairs = set()
+    for route in timetable_data["routes"]:
+        service = route.get("routingService", {})
+        terminals = service.get("terminals", [])
+        if service.get("networkEdge") and len(terminals) == 2:
+            ferry_component_pairs.add(frozenset(component_by_pier.get(ref, f"singleton:{ref}") for ref in terminals))
+
     locate_cache = json.loads(args.locate_cache.read_text()) if args.locate_cache.exists() else {}
-    missing_locates = [ref for ref in sorted(piers) if ref not in locate_cache]
+    missing_locates = [
+        ref for ref in sorted(piers)
+        if ref not in locate_cache
+        or abs(locate_cache[ref].get("input_lat", math.inf) - piers[ref]["lat"]) > 1e-7
+        or abs(locate_cache[ref].get("input_lon", math.inf) - piers[ref]["lon"]) > 1e-7
+    ]
     for offset in range(0, len(missing_locates), 25):
         refs = missing_locates[offset:offset + 25]
         results = locate(args.router, [piers[ref] for ref in refs])
@@ -122,7 +142,10 @@ def main() -> int:
         candidates = sorted(
             (haversine_m(point, other_point), other_ref)
             for other_ref, other_point in piers.items()
-            if other_ref != ref and component_key(other_ref) != component_key(ref)
+            if other_ref != ref
+            and piers[ref]["lon"] >= 19
+            and other_point["lon"] >= 19
+            and component_key(other_ref) != component_key(ref)
         )[:args.nearest]
         for distance_m, other_ref in candidates:
             if distance_m <= args.max_air_distance_km * 1000:
@@ -143,12 +166,22 @@ def main() -> int:
         result = normalized_route(route_cache[key])
         from_snap = snap_distance_m(piers[from_id], locate_cache[from_id])
         to_snap = snap_distance_m(piers[to_id], locate_cache[to_id])
-        if result["status"] != "ok":
+        component_pair = frozenset((component_key(from_id), component_key(to_id)))
+        pier_pair = frozenset((from_id, to_id))
+        if pier_pair in excluded_connections:
+            classification = "user_confirmed_separate_islands"
+        elif component_pair in ferry_component_pairs:
+            classification = "separated_by_modeled_ferry"
+        elif result["status"] != "ok":
             classification = "not_connected_without_ferry"
         elif from_snap is None or to_snap is None:
             classification = "uncertain_missing_road_snap"
         elif max(from_snap, to_snap) > args.max_snap_distance_m:
             classification = "uncertain_far_road_snap"
+        elif result["distanceMeters"] < max(100, haversine_m(piers[from_id], piers[to_id]) * 0.5):
+            classification = "uncertain_implausibly_short_route"
+        elif result["distanceMeters"] > max(30_000, haversine_m(piers[from_id], piers[to_id]) * 5):
+            classification = "uncertain_implausibly_long_route"
         else:
             classification = "possible_missing_same_road_component"
         checks.append({
@@ -172,7 +205,11 @@ def main() -> int:
             "candidateRule": f"{args.nearest} nearest piers outside asserted component, max {args.max_air_distance_km:g} km",
             "routeRule": "auto route with ferry edges excluded both when snapping endpoints and on the route",
             "snapRule": f"both pier points must be within {args.max_snap_distance_m:g} m of an auto-routable non-ferry edge",
+            "plausibilityRule": "routed distance must be at least 100 m and half the straight-line distance, but no more than 30 km or five times the straight-line distance",
             "warning": "Candidates are leads for review, not automatic component merges.",
+            "modeledFerryRule": "pairs of components joined by a modeled road or cable ferry remain separate",
+            "manualExclusionRule": "user-confirmed false road snaps remain separate and are not proposed again",
+            "regionRule": "candidate audit excludes points west of longitude 19 (Sweden)",
         },
         "statistics": {
             "pierCount": len(piers),

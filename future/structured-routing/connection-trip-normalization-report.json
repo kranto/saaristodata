@@ -116,10 +116,10 @@
       "calls": 144,
       "callsWithoutPublishedTime": 82,
       "regularScheduleCovered": true,
-      "holidayRulesPreserved": false,
-      "holidayTripOverridesNormalized": false,
-      "holidayRules": 0,
-      "holidayTripOverrides": 0
+      "holidayRulesPreserved": true,
+      "holidayTripOverridesNormalized": true,
+      "holidayRules": 1,
+      "holidayTripOverrides": 1
     },
     {
       "routeId": "sodralinjen",
@@ -164,7 +164,7 @@
     "trips": 241,
     "calls": 1406,
     "callsWithoutPublishedTime": 650,
-    "routesWithPreservedHolidayRules": 3,
-    "routesWithNormalizedHolidayTripOverrides": 3
+    "routesWithPreservedHolidayRules": 4,
+    "routesWithNormalizedHolidayTripOverrides": 4
   }
 }

@@ -16,6 +16,12 @@
       "+358 40 673 6697"
     ]
   },
+  "holidayExceptions": [
+    {
+      "date": "2026-10-31",
+      "action": "no_service"
+    }
+  ],
   "booking": {
     "requiredForAllTrips": true,
     "channel": "https://booking.finferries.fi/",

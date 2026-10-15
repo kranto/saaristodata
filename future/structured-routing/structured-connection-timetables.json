@@ -3817,7 +3817,8 @@
               "end": "17:45"
             }
           ],
-          "sourceId": "alandstrafiken-linfarjor"
+          "sourceId": "alandstrafiken-linfarjor",
+          "crossingMinutes": 5
         }
       ],
       "notes": [],
@@ -3876,7 +3877,8 @@
         ],
         "vehicleAccessAtAllTerminals": true,
         "connectionVesselVehicleLoadingCapabilityModeled": false,
-        "crossingTimeStatus": "not_available_do_not_invent"
+        "crossingMinutes": 5,
+        "crossingTimeNature": "approximate"
       }
     },
     {
@@ -8149,7 +8151,7 @@
               "callCondition": "y"
             },
             {
-              "stop": "Vänö or Tunnhamn",
+              "stop": "Vänö/Tunnhamn",
               "time": null,
               "callCondition": "y"
             },
@@ -64685,7 +64687,12 @@
           }
         }
       },
-      "holidayExceptions": [],
+      "holidayExceptions": [
+        {
+          "date": "2026-10-31",
+          "action": "no_service"
+        }
+      ],
       "capacity": {
         "passengers": 100,
         "cargoTonnes": 25,
@@ -64720,12 +64727,12 @@
               "callCondition": "y"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "y",
               "callCondition": "y"
             },
@@ -64846,12 +64853,12 @@
               "callCondition": "y"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "y",
               "callCondition": "y"
             },
@@ -64915,12 +64922,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -64978,12 +64985,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65036,12 +65043,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65104,12 +65111,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65225,12 +65232,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65297,12 +65304,12 @@
               "callCondition": "y"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "y",
               "callCondition": "y"
             },
@@ -65361,12 +65368,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65419,12 +65426,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65487,12 +65494,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65550,12 +65557,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65618,12 +65625,12 @@
               "callCondition": "x"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "x",
               "callCondition": "x"
             },
@@ -65676,12 +65683,12 @@
               "callCondition": "y"
             },
             {
-              "stop": "Wihuri",
+              "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y"
             },
             {
-              "stop": "Pyytti",
+              "stop": "Wihuri",
               "sourceValue": "y",
               "callCondition": "y"
             },
@@ -66268,12 +66275,23 @@
         },
         "expectedUsage": "y is expected at bookable intermediate calls; terminal times may omit it because every connection-vessel journey already requires a reservation"
       },
+      "holidayTripOverrides": [
+        {
+          "date": "2026-10-31",
+          "action": "no_service",
+          "sourceRule": {
+            "date": "2026-10-31",
+            "action": "no_service"
+          },
+          "trips": []
+        }
+      ],
       "tripNormalization": {
         "method": "finferries_weekday_columns",
         "status": "machine_generated_requires_semantic_review",
         "regularScheduleCovered": true,
-        "holidayRulesPreserved": false,
-        "holidayTripOverridesNormalized": false
+        "holidayRulesPreserved": true,
+        "holidayTripOverridesNormalized": true
       }
     },
     {
@@ -70835,6 +70853,47 @@
         ],
         "routingReady": false
       },
+      "vesselByCode": {
+        "G": {
+          "name": "M/S Gudingen",
+          "capacity": {
+            "persons": 195,
+            "cars": 23,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)40 769 3687"
+            ]
+          }
+        },
+        "S": {
+          "name": "M/S Skiftet",
+          "capacity": {
+            "persons": 200,
+            "cars": 24,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)400 350 265"
+            ]
+          }
+        },
+        "V": {
+          "name": "M/S Viggen",
+          "capacity": {
+            "persons": 250,
+            "cars": 38,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)400 330 455"
+            ]
+          }
+        }
+      },
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -70873,6 +70932,20 @@
           ]
         }
       ],
+      "booking": {
+        "loadingReadinessMinutesBefore": 15,
+        "requiredForAllTrips": false,
+        "recommendedForVehicles": true,
+        "vehicleSpaceGuaranteedOnlyWithBooking": true,
+        "unbookedVehiclePolicy": "accepted_subject_to_available_space_and_ticket_purchase_at_harbour",
+        "deadline": {
+          "relativeTo": "departure_from_starting_harbour",
+          "offsetMinutes": -60
+        },
+        "channel": "https://www.alandstrafiken.ax/",
+        "phone": "+358 (0)18 25 600",
+        "email": "info@alandstrafiken.ax"
+      },
       "callConditions": {
         "HusöAndKyrkogårdsö": {
           "stops": [
@@ -70882,6 +70955,9 @@
           "operation": "booking_required",
           "bookingDeadline": {
             "minutesBeforeDepartureFromOrigin": 60
+          },
+          "bookingContact": {
+            "source": "route_operator"
           },
           "withVehicle": {
             "ferryCallMayBeBooked": true
@@ -70907,12 +70983,15 @@
         },
         "Överö": {
           "operation": "booking_required",
+          "appliesWhenBoardingAtStop": true,
           "bookingDeadline": {
             "minutesBeforeEstimatedArrivalAtStop": 45
           },
+          "bookingContact": {
+            "source": "operating_vessel"
+          },
           "eligibleJourneys": {
-            "fromÖverö": "eastbound_beyond_Överö",
-            "toÖverö": "arriving_from_the_east"
+            "fromÖverö": "eastbound_beyond_Överö"
           },
           "ineligibleJourneys": [
             "Överö-Långnäs",
@@ -70925,6 +71004,12 @@
         }
       },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf",
       "trips": [
         {
           "id": "sodralinjen-normalized-001",
@@ -73427,6 +73512,25 @@
           "publishedTimeNature": "may_depart_up_to_five_minutes_early",
           "passengerAdvice": "be_ready_at_least_five_minutes_before_published_time"
         }
+      },
+      "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free"
+        },
+        "notices": [
+          {
+            "type": "vehicle_loading_readiness",
+            "minutesBeforeDeparture": 15,
+            "appliesAt": "trip_origin"
+          },
+          {
+            "type": "possible_early_departure",
+            "minutesBeforePublishedTime": 5,
+            "appliesAt": "intermediate_stops"
+          }
+        ]
       },
       "pierAccess": {
         "Galtby": {

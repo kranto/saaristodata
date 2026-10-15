@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "aliases": {
+    "Nagu / Nauvo": {
+      "canonicalId": "Nagu",
+      "reason": "bilingual timetable spelling"
+    },
+    "Pensar": {
+      "canonicalId": "PensarI",
+      "reason": "connection-vessel pier; PensarL is the road-ferry pier"
+    },
+    "Stora Ängesö": {
+      "canonicalId": "Ängesö",
+      "reason": "expanded island name in the timetable"
+    },
+    "Sövdö": {
+      "canonicalId": "Södö",
+      "reason": "timetable spelling variant"
+    },
+    "Torsholma (Norrviken)": {
+      "canonicalId": "Torsholma",
+      "reason": "Norrviken identifies the main Torsholma harbour"
+    },
+    "Vänoxa släten": {
+      "canonicalId": "Vänoxasläten",
+      "reason": "spelling variant"
+    },
+    "Vänöxa, Släten": {
+      "canonicalId": "Vänoxasläten",
+      "reason": "spelling variant"
+    },
+    "Vänöxaby": {
+      "canonicalId": "Vänoxaby",
+      "reason": "spelling variant"
+    }
+  },
+  "multiStopCells": {
+    "Gloskär/Trunsö": {
+      "members": ["Gloskär", "Trunsö"],
+      "allMembersMayBeCalled": true,
+      "eachMemberConditional": true,
+      "reason": "slash notation in the source means that either or both piers may be called"
+    },
+    "Vänö/Tunnhamn": {
+      "members": ["Vänö", "Tunnhamn"],
+      "allMembersMayBeCalled": true,
+      "eachMemberConditional": true,
+      "reason": "slash notation in the source means that either or both piers may be called"
+    }
+  },
+  "ambiguousStopGroups": {}
+}

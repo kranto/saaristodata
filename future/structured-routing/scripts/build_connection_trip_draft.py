@@ -174,6 +174,23 @@ def append_expanded_calls(calls: list[dict], stops: list[str], parsed: dict) -> 
         calls.append(call)
 
 
+def apply_route_specific_call_order(route_id: str, calls: list[dict]) -> list[dict]:
+    """Apply reviewed sailing order where the PDF row order is not chronological."""
+    if route_id != "rymattylanreitti":
+        return calls
+    # The Rymättylä PDF lists demand-call rows as Wihuri, Pyytti, but AIS
+    # journeys consistently reach Pyytti before Wihuri on this branch. The
+    # table's vertical row order is therefore not the sailing order.
+    wihuri = next((index for index, call in enumerate(calls) if call["stop"] == "Wihuri"), None)
+    pyytti = next((index for index, call in enumerate(calls) if call["stop"] == "Pyytti"), None)
+    if wihuri is not None and pyytti is not None and wihuri < pyytti:
+        result = list(calls)
+        pyytti_call = result.pop(pyytti)
+        result.insert(wihuri, pyytti_call)
+        return result
+    return calls
+
+
 def strip_nonchronological_intermediate_time(active: list[dict], parsed: dict) -> dict:
     """Keep a source marker but do not treat a backwards daytime time as this trip's time."""
     if "time" not in parsed:
@@ -194,6 +211,7 @@ def strip_nonchronological_intermediate_time(active: list[dict], parsed: dict) -
 def finish_trip(trips: list[dict], calls: list[dict] | None, day: str, route_id: str) -> None:
     if not calls or len(calls) < 2 or "time" not in calls[0]:
         return
+    calls = apply_route_specific_call_order(route_id, calls)
     trips.append({
         "id": f"{route_id}-{day}-{len(trips) + 1:03d}",
         "operatingDays": day_pattern(day),

@@ -281,21 +281,21 @@
       "aisRouteId": "rymattylanreitti",
       "trips": 20,
       "untimedCalls": 82,
-      "estimatesAttached": 74,
-      "conservativeRangesAttached": 7,
+      "estimatesAttached": 76,
+      "conservativeRangesAttached": 5,
       "completionEstimatesAttached": 20,
       "completionRangesAttached": 0,
       "holidayEstimateCallsCopied": 0,
       "coverage": 0.988,
       "outcomes": {
         "completion_estimate_attached": 20,
-        "conservative_range_attached": 7,
-        "estimate_attached": 74,
+        "conservative_range_attached": 5,
+        "estimate_attached": 76,
         "incompatible_with_next_published_time": 1,
         "published_time_preserved": 42
       },
       "matchingMethods": {
-        "anchor_compatible_paths": 28,
+        "anchor_compatible_paths": 30,
         "role_aware_compatible_paths": 46
       }
     },
@@ -429,8 +429,8 @@
   "summary": {
     "routes": 22,
     "untimedCalls": 1332,
-    "estimatesAttached": 461,
-    "conservativeRangesAttached": 90,
+    "estimatesAttached": 463,
+    "conservativeRangesAttached": 88,
     "completionEstimatesAttached": 151,
     "completionRangesAttached": 29,
     "holidayEstimateCallsCopied": 165,
@@ -438,8 +438,8 @@
     "outcomes": {
       "completion_estimate_attached": 151,
       "completion_range_attached": 29,
-      "conservative_range_attached": 90,
-      "estimate_attached": 461,
+      "conservative_range_attached": 88,
+      "estimate_attached": 463,
       "incompatible_with_next_published_time": 2,
       "missing_departure_anchor": 79,
       "no_ais_source": 58,
@@ -447,7 +447,7 @@
       "published_time_preserved": 583
     },
     "matchingMethods": {
-      "anchor_compatible_paths": 119,
+      "anchor_compatible_paths": 121,
       "compatible_observed_paths": 87,
       "role_aware_compatible_paths": 255
     }

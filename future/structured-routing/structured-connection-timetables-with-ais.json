@@ -3817,7 +3817,8 @@
               "end": "17:45"
             }
           ],
-          "sourceId": "alandstrafiken-linfarjor"
+          "sourceId": "alandstrafiken-linfarjor",
+          "crossingMinutes": 5
         }
       ],
       "notes": [],
@@ -3876,7 +3877,8 @@
         ],
         "vehicleAccessAtAllTerminals": true,
         "connectionVesselVehicleLoadingCapabilityModeled": false,
-        "crossingTimeStatus": "not_available_do_not_invent"
+        "crossingMinutes": 5,
+        "crossingTimeNature": "approximate"
       }
     },
     {
@@ -9574,7 +9576,7 @@
               }
             },
             {
-              "stop": "Vänö or Tunnhamn",
+              "stop": "Vänö/Tunnhamn",
               "time": null,
               "callCondition": "y"
             },
@@ -83552,7 +83554,12 @@
           }
         }
       },
-      "holidayExceptions": [],
+      "holidayExceptions": [
+        {
+          "date": "2026-10-31",
+          "action": "no_service"
+        }
+      ],
       "capacity": {
         "passengers": 100,
         "cargoTonnes": 25,
@@ -83654,38 +83661,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "y",
-              "callCondition": "y",
-              "historicalRangeEstimate": {
-                "basis": "historical_ais_role_fallback_range",
-                "range": {
-                  "earliest": "06:50",
-                  "latest": "07:45"
-                },
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 81,
-                "roleVariants": 1,
-                "possibleMinutes": [
-                  49.8,
-                  105
-                ],
-                "constrainedByNextPublishedCall": true,
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "conservative_role_range",
-                "modelVersion": "combined-conservative-ranges-v1",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "typicalTimeAvailable": false,
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y",
@@ -83711,6 +83686,45 @@
                 "possibleMinutes": [
                   45.8,
                   63.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "y",
+              "callCondition": "y",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "06:55",
+                "range": {
+                  "earliest": "06:50",
+                  "latest": "07:09"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 5,
+                "pathVariants": 1,
+                "typicalMinutes": [
+                  50.8,
+                  55.2,
+                  63.9
+                ],
+                "possibleMinutes": [
+                  49.8,
+                  69.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -84259,38 +84273,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "y",
-              "callCondition": "y",
-              "historicalRangeEstimate": {
-                "basis": "historical_ais_role_fallback_range",
-                "range": {
-                  "earliest": "08:50",
-                  "latest": "10:30"
-                },
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 81,
-                "roleVariants": 1,
-                "possibleMinutes": [
-                  49.8,
-                  150
-                ],
-                "constrainedByNextPublishedCall": true,
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "conservative_role_range",
-                "modelVersion": "combined-conservative-ranges-v1",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "typicalTimeAvailable": false,
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y",
@@ -84316,6 +84298,45 @@
                 "possibleMinutes": [
                   45.8,
                   63.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "y",
+              "callCondition": "y",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "08:55",
+                "range": {
+                  "earliest": "08:50",
+                  "latest": "09:09"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 5,
+                "pathVariants": 1,
+                "typicalMinutes": [
+                  50.8,
+                  55.2,
+                  63.9
+                ],
+                "possibleMinutes": [
+                  49.8,
+                  69.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -84561,45 +84582,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "10:02",
-                "range": {
-                  "earliest": "09:56",
-                  "latest": "10:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -84625,6 +84607,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "10:05",
+                "range": {
+                  "earliest": "09:56",
+                  "latest": "10:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -84823,45 +84844,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "11:17",
-                "range": {
-                  "earliest": "11:11",
-                  "latest": "11:21"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -84887,6 +84869,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "11:20",
+                "range": {
+                  "earliest": "11:11",
+                  "latest": "11:27"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -85053,45 +85074,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "11:17",
-                "range": {
-                  "earliest": "11:11",
-                  "latest": "11:21"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -85117,6 +85099,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "11:20",
+                "range": {
+                  "earliest": "11:11",
+                  "latest": "11:27"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -85354,45 +85375,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "11:17",
-                "range": {
-                  "earliest": "11:11",
-                  "latest": "11:21"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -85418,6 +85400,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "11:20",
+                "range": {
+                  "earliest": "11:11",
+                  "latest": "11:27"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -85884,45 +85905,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "15:02",
-                "range": {
-                  "earliest": "14:56",
-                  "latest": "15:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -85948,6 +85930,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "15:05",
+                "range": {
+                  "earliest": "14:56",
+                  "latest": "15:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -86266,45 +86287,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "y",
-              "callCondition": "y",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "16:02",
-                "range": {
-                  "earliest": "15:56",
-                  "latest": "16:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y",
@@ -86330,6 +86312,45 @@
                 "possibleMinutes": [
                   45.8,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "y",
+              "callCondition": "y",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "16:05",
+                "range": {
+                  "earliest": "15:50",
+                  "latest": "16:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 63,
+                "pathVariants": 3,
+                "typicalMinutes": [
+                  50.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  49.8,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -86536,45 +86557,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "17:02",
-                "range": {
-                  "earliest": "16:56",
-                  "latest": "17:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -86600,6 +86582,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "17:05",
+                "range": {
+                  "earliest": "16:56",
+                  "latest": "17:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -86766,45 +86787,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "17:02",
-                "range": {
-                  "earliest": "16:56",
-                  "latest": "17:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -86830,6 +86812,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "17:05",
+                "range": {
+                  "earliest": "16:56",
+                  "latest": "17:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -87067,45 +87088,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "17:02",
-                "range": {
-                  "earliest": "16:56",
-                  "latest": "17:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -87131,6 +87113,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "17:05",
+                "range": {
+                  "earliest": "16:56",
+                  "latest": "17:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -87329,45 +87350,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "17:02",
-                "range": {
-                  "earliest": "16:56",
-                  "latest": "17:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -87393,6 +87375,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "17:05",
+                "range": {
+                  "earliest": "16:56",
+                  "latest": "17:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -87603,45 +87624,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "x",
-              "callCondition": "x",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "17:02",
-                "range": {
-                  "earliest": "16:56",
-                  "latest": "17:06"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "x",
               "callCondition": "x",
@@ -87667,6 +87649,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "x",
+              "callCondition": "x",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "17:05",
+                "range": {
+                  "earliest": "16:56",
+                  "latest": "17:12"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -87833,45 +87854,6 @@
               }
             },
             {
-              "stop": "Wihuri",
-              "sourceValue": "y",
-              "callCondition": "y",
-              "historicalEstimate": {
-                "basis": "historical_ais_compatible_paths",
-                "typical": "19:32",
-                "range": {
-                  "earliest": "19:26",
-                  "latest": "19:36"
-                },
-                "dayOffset": 0,
-                "rangeDayOffsets": [
-                  0,
-                  0
-                ],
-                "sampleSize": 16,
-                "pathVariants": 1,
-                "typicalMinutes": [
-                  57.8,
-                  62.0,
-                  64.2
-                ],
-                "possibleMinutes": [
-                  56.0,
-                  66.0
-                ],
-                "constrainedByNextPublishedCall": true,
-                "callRole": "single_loop_call",
-                "compatibleHistoricalRoles": [
-                  "single_loop_call",
-                  "turnaround"
-                ],
-                "matchingMethod": "anchor_compatible_paths",
-                "modelVersion": "ais-anchor-paths-v2",
-                "generatedAt": "2026-10-12T00:00:00+03:00",
-                "disclosureRequired": true
-              }
-            },
-            {
               "stop": "Pyytti",
               "sourceValue": "y",
               "callCondition": "y",
@@ -87897,6 +87879,45 @@
                 "possibleMinutes": [
                   54.0,
                   66.0
+                ],
+                "constrainedByNextPublishedCall": true,
+                "callRole": "single_loop_call",
+                "compatibleHistoricalRoles": [
+                  "single_loop_call",
+                  "turnaround"
+                ],
+                "matchingMethod": "anchor_compatible_paths",
+                "modelVersion": "ais-anchor-paths-v2",
+                "generatedAt": "2026-10-12T00:00:00+03:00",
+                "disclosureRequired": true
+              }
+            },
+            {
+              "stop": "Wihuri",
+              "sourceValue": "y",
+              "callCondition": "y",
+              "historicalEstimate": {
+                "basis": "historical_ais_compatible_paths",
+                "typical": "19:35",
+                "range": {
+                  "earliest": "19:26",
+                  "latest": "19:42"
+                },
+                "dayOffset": 0,
+                "rangeDayOffsets": [
+                  0,
+                  0
+                ],
+                "sampleSize": 58,
+                "pathVariants": 2,
+                "typicalMinutes": [
+                  57.8,
+                  64.9,
+                  67.2
+                ],
+                "possibleMinutes": [
+                  56.0,
+                  72.0
                 ],
                 "constrainedByNextPublishedCall": true,
                 "callRole": "single_loop_call",
@@ -88563,12 +88584,23 @@
         },
         "expectedUsage": "y is expected at bookable intermediate calls; terminal times may omit it because every connection-vessel journey already requires a reservation"
       },
+      "holidayTripOverrides": [
+        {
+          "date": "2026-10-31",
+          "action": "no_service",
+          "sourceRule": {
+            "date": "2026-10-31",
+            "action": "no_service"
+          },
+          "trips": []
+        }
+      ],
       "tripNormalization": {
         "method": "finferries_weekday_columns",
         "status": "machine_generated_requires_semantic_review",
         "regularScheduleCovered": true,
-        "holidayRulesPreserved": false,
-        "holidayTripOverridesNormalized": false
+        "holidayRulesPreserved": true,
+        "holidayTripOverridesNormalized": true
       }
     },
     {
@@ -93130,6 +93162,47 @@
         ],
         "routingReady": false
       },
+      "vesselByCode": {
+        "G": {
+          "name": "M/S Gudingen",
+          "capacity": {
+            "persons": 195,
+            "cars": 23,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)40 769 3687"
+            ]
+          }
+        },
+        "S": {
+          "name": "M/S Skiftet",
+          "capacity": {
+            "persons": 200,
+            "cars": 24,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)400 350 265"
+            ]
+          }
+        },
+        "V": {
+          "name": "M/S Viggen",
+          "capacity": {
+            "persons": 250,
+            "cars": 38,
+            "trucks": 4
+          },
+          "contact": {
+            "phones": [
+              "+358 (0)400 330 455"
+            ]
+          }
+        }
+      },
       "sourceLanguageAuthority": "sv",
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
@@ -93168,6 +93241,20 @@
           ]
         }
       ],
+      "booking": {
+        "loadingReadinessMinutesBefore": 15,
+        "requiredForAllTrips": false,
+        "recommendedForVehicles": true,
+        "vehicleSpaceGuaranteedOnlyWithBooking": true,
+        "unbookedVehiclePolicy": "accepted_subject_to_available_space_and_ticket_purchase_at_harbour",
+        "deadline": {
+          "relativeTo": "departure_from_starting_harbour",
+          "offsetMinutes": -60
+        },
+        "channel": "https://www.alandstrafiken.ax/",
+        "phone": "+358 (0)18 25 600",
+        "email": "info@alandstrafiken.ax"
+      },
       "callConditions": {
         "HusöAndKyrkogårdsö": {
           "stops": [
@@ -93177,6 +93264,9 @@
           "operation": "booking_required",
           "bookingDeadline": {
             "minutesBeforeDepartureFromOrigin": 60
+          },
+          "bookingContact": {
+            "source": "route_operator"
           },
           "withVehicle": {
             "ferryCallMayBeBooked": true
@@ -93202,12 +93292,15 @@
         },
         "Överö": {
           "operation": "booking_required",
+          "appliesWhenBoardingAtStop": true,
           "bookingDeadline": {
             "minutesBeforeEstimatedArrivalAtStop": 45
           },
+          "bookingContact": {
+            "source": "operating_vessel"
+          },
           "eligibleJourneys": {
-            "fromÖverö": "eastbound_beyond_Överö",
-            "toÖverö": "arriving_from_the_east"
+            "fromÖverö": "eastbound_beyond_Överö"
           },
           "ineligibleJourneys": [
             "Överö-Långnäs",
@@ -93220,6 +93313,12 @@
         }
       },
       "holidayExceptions": [],
+      "contact": {
+        "phones": [
+          "+358 (0)18 25 600"
+        ]
+      },
+      "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf",
       "trips": [
         {
           "id": "sodralinjen-normalized-001",
@@ -96913,6 +97012,25 @@
           "publishedTimeNature": "may_depart_up_to_five_minutes_early",
           "passengerAdvice": "be_ready_at_least_five_minutes_before_published_time"
         }
+      },
+      "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free"
+        },
+        "notices": [
+          {
+            "type": "vehicle_loading_readiness",
+            "minutesBeforeDeparture": 15,
+            "appliesAt": "trip_origin"
+          },
+          {
+            "type": "possible_early_departure",
+            "minutesBeforePublishedTime": 5,
+            "appliesAt": "intermediate_stops"
+          }
+        ]
       },
       "pierAccess": {
         "Galtby": {

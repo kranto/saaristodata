@@ -281,7 +281,13 @@ FERRY_ROUTE_MODELS = {
     "simskalalinjen": {"mode": "cable_ferry", "terminals": ["Timskär", "Vattungsrevet"], "crossingMinutes": 7, "origins": {}},
     "toftolinjen": {"mode": "cable_ferry", "terminals": ["Töftö", "Prästö"], "crossingMinutes": 4, "origins": {}},
     "bjorkolinjen": {"mode": "cable_ferry", "terminals": ["LappoL", "BjörköK"], "origins": {}},
-    "embarsundslinjen": {"mode": "cable_ferry", "terminals": ["Finholma", "Jyddö"], "origins": {}},
+    # The maintained pier coordinates put this short crossing at about 210 m.
+    # Five minutes is a conservative routing approximation comparable to the
+    # other short cable-ferry crossings; it is not a published timetable time.
+    "embarsundslinjen": {
+        "mode": "cable_ferry", "terminals": ["Finholma", "Jyddö"],
+        "crossingMinutes": 5, "origins": {},
+    },
     "angosundslinjen": {"mode": "cable_ferry", "terminals": ["Norrboda", "Ängö"], "origins": {}},
 }
 
@@ -1024,7 +1030,7 @@ def build() -> dict:
                 "localFile": str((ORIGINALS / source["provider"] / f'{source["id"]}.{source["kind"]}').relative_to(REPOSITORY_ROOT)),
             })
             for key in (
-                "vessel", "vessels", "sourceLanguageAuthority",
+                "vessel", "vessels", "vesselByCode", "sourceLanguageAuthority",
                 "languageConflictPolicy", "validPeriods", "booking",
                 "callConditions", "departureAnnotations", "holidayExceptions", "capacity", "contact",
                 "publicTimetableUrl", "trips",

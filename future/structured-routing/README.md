@@ -48,6 +48,62 @@ Keskeiset tiedostot:
   vastaavuudet kahden aineiston välillä.
 - `structured-timetable-transcriptions/`: PDF-lähteiden litteroinnit.
 - `scripts/`: aineiston poiminta- ja generointityökalut.
+- `road-components.json`: ylläpidetty laiturien ryhmittely yhtenäisiin,
+  lautattomiin tiealueisiin sekä tarkistetut auditoinnin poissulut.
+- `road-network.json`: OpenStreetMap/Valhalla-reitityksellä validoidut suunnatut
+  laiturivälit, etäisyydet sekä auton ja polkupyörän ajoajat.
+- `road-network-audit.json`: lähimpien muiden laiturien tarkistus mahdollisten
+  puuttuvien tiealuejäsenyyksien löytämiseksi.
+- `road-network-review.md`: ihmiselle tarkoitettu tarkistuslista tiealueista ja
+  kaikista laituriväleistä.
+- `routing-stop-overrides.json`: reitityksessä käytettävät laiturinimien
+  vastaavuudet sekä useita mahdollisia laiturikäyntejä sisältävien
+  aikataulusolujen rakenteinen tulkinta.
+- `routing-graph.json`: tieverkon, aikataulutetut ja jatkuvat lauttayhteydet
+  sekä yhteysalusvuorot yhdistävä ajasta riippuva reititysgraafi.
+- `routing-graph-report.json`: graafin kattavuus ja vielä puuttuvat
+  normalisoidut reitit.
+- `routing-graph.schema.json`: reititysgraafin JSON Schema.
+- `scripts/query_direct_services.py`: yhden suoran aikataulutetun yhteyden
+  päiväkohtainen tarkistustyökalu.
+- `scripts/route_itinerary.py`: kokeellinen ajasta riippuva reitinhaku, joka
+  yhdistää lautattomat tieosuudet, aikataulutetut lauttavuorot ja tunnetun
+  ylitysajan sisältävät jatkuvat lossiyhteydet. Vaihtoriski ilmoitetaan
+  yhteysvälikohtaisesti.
+- `scripts/route_itineraries.py`: saman haun useita eri lauttavuoroketjuja
+  säilyttävä versio. Se voi rajata saapumisen samalle päivälle ja siirtää
+  matkan alun tieosuudet juuri ennen ensimmäistä lauttaa. Haku yhdistää
+  rajatun monivaihtoehtohaun lähtöaikapyyhkäisyyn: jokaisesta pyyhkäisyn
+  lähtöhetkestä säilytetään aikaisin toteuttamiskelpoinen reitti, minkä jälkeen
+  vain aidosti dominoidut vaihtoehdot poistetaan. Näin myöhempi riskialtis
+  yhteys säilyy käyttäjän valittavana, mutta aiemmin lähtevä, myöhemmin saapuva
+  ja vähintään yhtä riskialtis odotuskierto putoaa pois.
+
+Ensimmäiseen aikataulutettuun alukseen johtavalla lautattomalla tieosuudella
+operaattorin ilmoittama lastausvalmiusaika on ehdoton: reittiä ei tarjota, jos
+laituriin saavutaan sen jälkeen. Kun matkalla on jo käytetty lauttaa,
+seuraavan aluksen lastausvalmiusaika ei karsi vaihtoehtoa. Se näkyy kyseisen
+vaihdon riskiluokituksessa, jotta käyttäjä voi itse valita tiukan yhteyden.
+Reitti edellyttää silti, että käytetty saapumisaika ei ole seuraavan aluksen
+lähtöajan jälkeen.
+
+Laiturikohtaiset kausirajoitukset käsitellään reitittimen sisällä. Suljetun
+kauden laituria ei voi käyttää lähtö- tai määräpaikkana, ja se poistetaan myös
+vuoron palautettavista välipysähdyksistä. Kausirajoituksen lähdemetadataa tai
+kohteen kuvailevaa luokitusta ei palauteta käyttöliittymän suodatettavaksi.
+
+Aikataulun lähdemerkkejä, kuten `x` ja `y`, ei palauteta reittivastauksessa.
+Reititin ratkaisee niiden perusteella matkakohtaisen varausvaatimuksen ja
+palauttaa `booking.deadline`-kentässä täydellisen paikallisen päivämäärän ja
+kellonajan. `previous_operating_day` lasketaan reitin vuorokalenterista ja
+poikkeuspäivistä eikä jätetä käyttöliittymän tulkittavaksi.
+
+Jokainen lauttalegi sisältää `intermediateStops`-listan. Välilaiturista
+palautetaan tunniste, tulkittu `mandatory`-arvo ja `timing`: julkaistu aika tai
+historiallinen AIS-arvio täydellisinä päivämäärä-kellonaikoina sekä mahdollinen
+vaihteluväli. Pakollisuudessa huomioidaan sekä aikataulusolun merkintä että
+laituriin kohdistuva reittitason ehto. Jos välilaiturin aikaa ei tunneta,
+`timing` on `null`.
 - `ROUTING_PLAN.md`: reitityksen suunnitelma ja perustelut.
 - `STRUCTURED_TIMETABLE_UNCERTAINTIES.md`: tarkistettavat tulkinnat.
 
@@ -81,7 +137,28 @@ python3 future/structured-routing/scripts/build_connection_prediction_catalog.py
   future/structured-routing/structured-connection-timetables-with-ais.json \
   future/structured-routing/connection-arrival-prediction-catalog.json \
   future/structured-routing/connection-arrival-prediction-catalog-report.json
+
+python3 future/structured-routing/scripts/build_road_network.py
+python3 future/structured-routing/scripts/audit_road_components.py
+python3 future/structured-routing/scripts/build_road_network_review.py
+python3 future/structured-routing/scripts/build_routing_graph.py
+
+python3 future/structured-routing/scripts/query_direct_services.py \
+  Roslax Bockholm 2026-11-02 --mode car
+
+python3 future/structured-routing/scripts/route_itinerary.py \
+  Verkan Storpensor 2026-10-30 12:00 --mode car
+
+python3 future/structured-routing/scripts/route_itineraries.py \
+  Turku Storpensor 2026-10-30 --mode car --same-day
 ```
+
+Yhteysalusaikataulun kauttaviivasolu, esimerkiksi `Gloskär/Trunsö` tai
+`Vänö/Tunnhamn`, tarkoittaa kahta itsenäisesti ehdollista laiturikäyntiä:
+vuoro voi käydä kummassa tahansa tai molemmissa. Graafi laajentaa solun
+erillisiksi laitureiksi ja tuottaa saman vuoron sisäiset ohitussärmät, joten
+kumpaakaan käyntiä ei tulkita pakolliseksi. Sen sijaan `Nagu / Nauvo` on
+kaksikielinen nimi ja vastaa yhtä Nauvon laituria.
 
 Skriptit lukevat edelleen repositorion juuressa olevia nykyisiä lähdetietoja
 sekä Gitin ulkopuolisen `.timetable-checker/originals/`-hakemiston tiedostoja.
@@ -213,6 +290,31 @@ yhteys tie- tai maantielautan, ei tarvita. Maantielauttojen ja lossien kaikki
 laiturit oletetaan autolla saavutettaviksi. Yhteysaluksen kykyä lastata auto
 yksittäisessä saarilaiturissa ei mallinneta, vaan matkan ajoneuvokelpoisuuden
 lopullinen tarkistus jää varausjärjestelmälle.
+
+Lautattomassa tiegraafissa on nyt 23 tiealuetta ja 85 laituria. Niistä syntyy
+606 suunnattua laituriväliä ja 1 210 auton tai polkupyörän reititystulosta.
+Jokaisen tuloksen reitti on hyväksytty vain, jos Valhalla ei ilmoita sillä
+lauttaosuutta. `hasFerry`- ja `hasToll`-kenttiä ei kirjoiteta tuloksiin, koska
+lauttomuus on hyväksymisehto eikä Suomen aineistossa tarvita tiemaksutietoa.
+Öröllä muodostetaan vain pyöräreitit. Julkisen reitittimen 150 kilometrin
+pyörärajaa pidemmät Helsinki-yhteydet koostetaan kahdesta hyväksytystä
+osareitistä Salo-välipisteen kautta; sovellus voi myöhemmin jättää näin pitkät
+pyöräsiirtymät kokonaan ehdottamatta.
+
+Laiturin karttakoordinaatti ja tiereitityksen ankkuri voidaan pitää erillään.
+Eckerön Berghamnissa reititys alkaa satama-alueen liittymästä Eckerövägenillä,
+koska varsinaisen laituripisteen yksisuuntainen palvelutieverkko tuotti
+keinotekoisen 9–11 minuutin suuntaeron. Kartalla käytetään edelleen oikeaa
+laiturikoordinaattia.
+
+Auditointi vertaa ylläpidettyjä tiealueita lähimpiin muihin laitureihin. Se
+ottaa huomioon rakenteiseen aikatauluun mallinnetut maantielautta- ja
+lossiyhteydet eikä ehdota niiden vastarantojen yhdistämistä samaksi
+tiealueeksi. Lisäksi se torjuu epäuskottavan lyhyet ja pitkät reitit sekä
+käyttäjän erillisiksi saariksi vahvistamat Aspholm–Ramsholm- ja
+Rauhala–Talosmeri-parit. Viimeisin ajo ei löytänyt yhtään tarkistamatonta,
+todennäköistä puuttuvaa tieyhteyttä. Söderlångvik kuuluu manner-Suomen
+tiealueeseen ja Ramsholm sekä Heisala omaan yhteiseen tiealueeseensa.
 
 Hakutuloksen on näytettävä kaikki valittuun matkaan soveltuva lähdeaikataulun
 matkustajainformaatio. `travelerInformation` säilyttää muun muassa

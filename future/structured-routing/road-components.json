@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "user_supplied_requires_routing_validation",
+  "status": "routing_validated_and_audited",
   "description": "Pier groups believed to be mutually reachable by road without using any ferry.",
   "additionalPiers": {
     "Helsinki": {
@@ -9,12 +9,30 @@
       "source": "OpenStreetMap amenity=ferry_terminal, Olympiaterminaali, way 327321393"
     }
   },
+  "routingCoordinateOverrides": {
+    "BerghamnE": {
+      "lon": 19.54107,
+      "lat": 60.223033,
+      "source": "OpenStreetMap way 25208185, Eckerövägen/1",
+      "reason": "route from the public-road entrance instead of the one-way terminal service-road network"
+    }
+  },
   "preferredNames": {
     "TurkuVitharun": "Aurajoki",
     "Mariehamn": "Maarianhamina",
     "BerghamnE": "Eckerön Berghamn",
     "LångnäsH": "Långnäs (Hiittinen)"
   },
+  "excludedAuditConnections": [
+    {
+      "piers": ["Aspholm", "Ramsholm"],
+      "reason": "user-confirmed separate islands; endpoint road snapping crosses the water"
+    },
+    {
+      "piers": ["Rauhala", "Talosmeri"],
+      "reason": "user-confirmed separate islands; endpoint road snapping crosses the water"
+    }
+  ],
   "components": [
     { "id": "houtsala", "piers": ["Havträsk", "Lavarn", "Olofsnäs"] },
     { "id": "korpo", "piers": ["Verkan", "Galtby", "Retais"] },
@@ -36,13 +54,15 @@
     { "id": "jumo", "piers": ["JumoE", "Kannvik"] },
     { "id": "aasla", "piers": ["Aasla", "Hanka"] },
     { "id": "hitis", "piers": ["Rosala", "LångnäsH", "Vikare"] },
+    { "id": "heisala", "piers": ["Ramsholm", "Heisala"] },
     {
       "id": "mainland_finland",
       "piers": [
         "Kivimaa", "Heponiemi", "Hakkenpää", "Teersalo", "Haapala",
         "Airismaa", "Lillmälö", "Granvik", "Våno", "Kokkila",
         "Angelniemi", "Svartnäs", "Kasnäs", "Dalsbruk", "Hanko",
-        "Ulkoluoto", "Turku", "Helsinki", "Naantali", "TurkuVitharun"
+        "Ulkoluoto", "Turku", "Helsinki", "Naantali", "TurkuVitharun",
+        "Söderlångvik"
       ]
     },
     {
