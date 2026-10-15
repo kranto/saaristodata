@@ -28,6 +28,11 @@ DEFAULT_OUTPUT = EXPERIMENT / "road-network.json"
 DEFAULT_CACHE = EXPERIMENT / ".road-routing-cache.json"
 DEFAULT_ROUTER = "https://valhalla1.openstreetmap.de/route"
 PROFILES = ("auto", "bicycle")
+ROUTING_ONLY_POINTS = {
+    # A neutral mainland waypoint prevents the public Valhalla instance's
+    # 150 km bicycle limit from forcing a detour through a coastal pier.
+    "Salo": {"lat": 60.3833, "lon": 23.1333},
+}
 SSL_CONTEXT = ssl.create_default_context(cafile="/etc/ssl/cert.pem")
 
 
@@ -128,16 +133,81 @@ def normalized_route(result: dict) -> dict:
         "distanceMeters": round(distance_km * 1000),
         "durationSeconds": round(seconds),
         "displayMinutes": max(1, math.ceil(seconds / 60)),
-        "hasFerry": has_ferry,
-        "hasToll": bool(summary.get("has_toll")),
         "hasHighway": bool(summary.get("has_highway")),
     }
+
+
+def resolve_distance_limit_routes(
+    transfers: list[dict], components: list[dict], piers: dict[str, dict],
+    cache: dict, args: argparse.Namespace,
+) -> int:
+    """Join two successful legs when the public router rejects a long bicycle route.
+
+    Valhalla's public instance caps bicycle paths at 150 km. Every stitched
+    result remains a real, ferry-free routed path; the selected component pier
+    is recorded so the small possible detour stays visible to reviewers.
+    """
+    results = {
+        (transfer["componentId"], transfer["from"], transfer["to"], profile): result
+        for transfer in transfers
+        for profile, result in transfer["modes"].items()
+    }
+    component_piers = {component["id"]: component["piers"] for component in components}
+    new_requests = 0
+
+    def routed_leg(profile: str, from_id: str, to_id: str, start: dict, end: dict) -> dict:
+        nonlocal new_requests
+        key = route_key(profile, from_id, to_id, start, end)
+        if key not in cache:
+            cache[key] = request_route(args.router, profile, start, end)
+            args.cache.write_text(json.dumps(cache, ensure_ascii=False))
+            new_requests += 1
+            if args.request_delay:
+                time.sleep(args.request_delay)
+        return normalized_route(cache[key])
+
+    for transfer in transfers:
+        component_id = transfer["componentId"]
+        for profile, result in list(transfer["modes"].items()):
+            if result.get("status") != "route_not_found" or '"error_code":154' not in result.get("error", ""):
+                continue
+            candidates = []
+            for via, point in ROUTING_ONLY_POINTS.items():
+                first = routed_leg(profile, transfer["from"], f"routing:{via}", piers[transfer["from"]], point)
+                second = routed_leg(profile, f"routing:{via}", transfer["to"], point, piers[transfer["to"]])
+                if first.get("status") == "ok" and second.get("status") == "ok":
+                    candidates.append((first["durationSeconds"] + second["durationSeconds"], via, first, second))
+            for via in component_piers[component_id]:
+                if via in (transfer["from"], transfer["to"]):
+                    continue
+                first = results.get((component_id, transfer["from"], via, profile))
+                second = results.get((component_id, via, transfer["to"], profile))
+                if not first or not second or first.get("status") != "ok" or second.get("status") != "ok":
+                    continue
+                candidates.append((first["durationSeconds"] + second["durationSeconds"], via, first, second))
+            if not candidates:
+                continue
+            seconds, via, first, second = min(candidates)
+            stitched = {
+                "status": "ok",
+                "distanceMeters": first["distanceMeters"] + second["distanceMeters"],
+                "durationSeconds": seconds,
+                "displayMinutes": max(1, math.ceil(seconds / 60)),
+                "hasHighway": bool(first.get("hasHighway") or second.get("hasHighway")),
+                "routingVia": via,
+                "routingNote": "two ferry-free routes joined because the router limits bicycle paths to 150 km",
+            }
+            transfer["modes"][profile] = stitched
+            results[(component_id, transfer["from"], transfer["to"], profile)] = stitched
+    return new_requests
 
 
 def build(args: argparse.Namespace) -> dict:
     components_data = json.loads(args.components.read_text())
     piers = load_piers(args.piers)
     piers.update(components_data.get("additionalPiers", {}))
+    routing_piers = {ref: dict(point) for ref, point in piers.items()}
+    routing_piers.update(components_data.get("routingCoordinateOverrides", {}))
     cache = json.loads(args.cache.read_text()) if args.cache.exists() else {}
     requested = {pier for component in components_data["components"] for pier in component["piers"]}
     missing = sorted(requested - set(piers))
@@ -145,7 +215,6 @@ def build(args: argparse.Namespace) -> dict:
         raise SystemExit(f"pier coordinates missing: {', '.join(missing)}")
 
     transfers = []
-    failures = []
     request_count = 0
     mode_result_count = 0
     for component in components_data["components"]:
@@ -158,9 +227,9 @@ def build(args: argparse.Namespace) -> dict:
                 modes = {}
                 for profile in component_profiles:
                     mode_result_count += 1
-                    key = route_key(profile, from_id, to_id, piers[from_id], piers[to_id])
+                    key = route_key(profile, from_id, to_id, routing_piers[from_id], routing_piers[to_id])
                     if key not in cache:
-                        cache[key] = request_route(args.router, profile, piers[from_id], piers[to_id])
+                        cache[key] = request_route(args.router, profile, routing_piers[from_id], routing_piers[to_id])
                         args.cache.write_text(json.dumps(cache, ensure_ascii=False))
                         request_count += 1
                         if request_count == 1 or request_count % 25 == 0:
@@ -175,18 +244,28 @@ def build(args: argparse.Namespace) -> dict:
                         modes[profile] = normalized_route(cache[key])
                     except (KeyError, TypeError, ValueError) as exc:
                         modes[profile] = {"status": "routing_response_invalid", "error": str(exc)}
-                    if modes[profile]["status"] != "ok":
-                        failures.append({
-                            "componentId": component["id"], "from": from_id,
-                            "to": to_id, "profile": profile,
-                            "result": modes[profile],
-                        })
                 transfers.append({
                     "componentId": component["id"],
                     "from": from_id,
                     "to": to_id,
                     "modes": modes,
                 })
+
+    request_count += resolve_distance_limit_routes(
+        transfers, components_data["components"], routing_piers, cache, args,
+    )
+    failures = [
+        {
+            "componentId": transfer["componentId"],
+            "from": transfer["from"],
+            "to": transfer["to"],
+            "profile": profile,
+            "result": result,
+        }
+        for transfer in transfers
+        for profile, result in transfer["modes"].items()
+        if result["status"] != "ok"
+    ]
 
     return {
         "schemaVersion": 1,
@@ -204,6 +283,10 @@ def build(args: argparse.Namespace) -> dict:
         "components": components_data["components"],
         "preferredNames": components_data.get("preferredNames", {}),
         "pierCoordinates": {pier: piers[pier] for pier in sorted(requested)},
+        "routingCoordinateOverrides": {
+            pier: components_data["routingCoordinateOverrides"][pier]
+            for pier in sorted(requested & set(components_data.get("routingCoordinateOverrides", {})))
+        },
         "transfers": transfers,
         "failures": failures,
         "statistics": {
