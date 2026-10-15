@@ -105,6 +105,23 @@
       }
     },
     {
+      "routeId": "iniorutt",
+      "aisRouteId": "iniorutt",
+      "trips": 20,
+      "untimedCalls": 30,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 30,
+        "published_time_preserved": 46
+      },
+      "matchingMethods": {}
+    },
+    {
       "routeId": "keistio",
       "aisRouteId": "keistio",
       "trips": 88,
@@ -424,17 +441,34 @@
         "anchor_compatible_paths": 2,
         "role_aware_compatible_paths": 66
       }
+    },
+    {
+      "routeId": "velkuataivassalo",
+      "aisRouteId": "velkuataivassalo",
+      "trips": 16,
+      "untimedCalls": 72,
+      "estimatesAttached": 0,
+      "conservativeRangesAttached": 0,
+      "completionEstimatesAttached": 0,
+      "completionRangesAttached": 0,
+      "holidayEstimateCallsCopied": 0,
+      "coverage": 0.0,
+      "outcomes": {
+        "no_compatible_historical_path": 72,
+        "published_time_preserved": 16
+      },
+      "matchingMethods": {}
     }
   ],
   "summary": {
-    "routes": 22,
-    "untimedCalls": 1332,
+    "routes": 24,
+    "untimedCalls": 1434,
     "estimatesAttached": 463,
     "conservativeRangesAttached": 88,
     "completionEstimatesAttached": 151,
     "completionRangesAttached": 29,
     "holidayEstimateCallsCopied": 165,
-    "coverage": 0.414,
+    "coverage": 0.384,
     "outcomes": {
       "completion_estimate_attached": 151,
       "completion_range_attached": 29,
@@ -443,8 +477,8 @@
       "incompatible_with_next_published_time": 2,
       "missing_departure_anchor": 79,
       "no_ais_source": 58,
-      "no_compatible_historical_path": 642,
-      "published_time_preserved": 583
+      "no_compatible_historical_path": 744,
+      "published_time_preserved": 645
     },
     "matchingMethods": {
       "anchor_compatible_paths": 121,

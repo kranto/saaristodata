@@ -4,6 +4,22 @@
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
   "sourceId": "alandstrafiken-foglo-27.5.2026",
+  "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-05/foglo-27.5.2026.pdf",
+  "vessel": "M/S Skarven",
+  "contact": {"phones": ["+358 (0)401 733 600", "+358 (0)18 25 600"]},
+  "booking": {
+    "requiredForAllTrips": false,
+    "loadingReadinessMinutesBefore": 10,
+    "channel": "phone",
+    "phone": "+358 (0)401 733 600"
+  },
+  "callConditions": {
+    "1": {"operation": "booking_required", "deadline": {"relativeTo": "same_day", "time": "21:30"}, "bookingContact": {"source": "operating_vessel"}},
+    "2": {"operation": "booking_required", "deadline": {"relativeTo": "previous_day", "time": "21:30"}, "bookingContact": {"source": "operating_vessel"}}
+  },
+  "travelerInformation": {
+    "notices": [{"type": "regular_service_not_bookable", "meaning": "valid_ticket_required"}]
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",

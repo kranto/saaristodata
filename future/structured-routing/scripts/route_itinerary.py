@@ -12,6 +12,7 @@ import argparse
 import copy
 import heapq
 import json
+import re
 from collections import defaultdict
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
@@ -64,6 +65,10 @@ def holiday_pattern(route: dict, day: date) -> tuple[str | None, str | None]:
 
 def service_runs(route: dict, schedule: dict, day: date) -> bool:
     if not valid_on(day, schedule.get("validPeriods", [])):
+        return False
+    if schedule.get("operatingDate"):
+        return schedule["operatingDate"] == day.isoformat()
+    if day.isoformat() in route.get("normalizedHolidayDates", []):
         return False
     action, replacement = holiday_pattern(route, day)
     if action == "no_service":
@@ -313,10 +318,20 @@ def route_deadline_rule(route: dict, departure: datetime, edge_from: str | None 
                 }
             return item.get("deadline")
         if isinstance(applies, dict):
-            if (
-                applies.get("departureFrom") == edge_from
-                and applies.get("time") == departure.strftime("%H:%M")
-            ):
+            weekdays = applies.get("weekdays")
+            weekday_matches = not weekdays or departure.strftime("%A").lower() in weekdays
+            departure_stop = applies.get("departureStop")
+            if applies.get("departureFrom") and not re.fullmatch(r"\d{2}:\d{2}", applies["departureFrom"]):
+                departure_stop = applies["departureFrom"]
+            stop_matches = not departure_stop or departure_stop == edge_from
+            exact_matches = not applies.get("time") or applies["time"] == departure.strftime("%H:%M")
+            clock = departure.strftime("%H:%M")
+            lower = applies.get("departureTimeFrom")
+            if applies.get("departureFrom") and re.fullmatch(r"\d{2}:\d{2}", applies["departureFrom"]):
+                lower = applies["departureFrom"]
+            lower_matches = not lower or clock >= lower
+            upper_matches = not applies.get("departureBefore") or clock < applies["departureBefore"]
+            if weekday_matches and stop_matches and exact_matches and lower_matches and upper_matches:
                 return item.get("deadline")
     return booking.get("deadline")
 

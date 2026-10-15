@@ -29,6 +29,57 @@ NAMED_DAY_PATTERNS = {
 }
 
 ADDITIONAL_HOLIDAY_RULES = {
+    "avajurmo": [
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "17:25", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-25", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "11:05", "notAfter": "16:55"},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "11:05", "notAfter": "16:55"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "17:25", "forceCallCondition": "holiday_booking"},
+    ],
+    "enklingelinjen": [
+        {"date": "2026-10-14", "action": "use_day_pattern", "scheduleTemplate": "wednesday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-10-15", "action": "use_day_pattern", "scheduleTemplate": "thursday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-10-16", "action": "use_day_pattern", "scheduleTemplate": "friday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-23", "action": "use_day_pattern", "scheduleTemplate": "wednesday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "thursday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-25", "action": "use_day_pattern", "scheduleTemplate": "sunday", "forceCallCondition": "holiday_booking",
+         "extraTrips": [["Kumlinge", "06:30", "Enklinge", "06:45"], ["Enklinge", "06:45", "Kumlinge", "07:00"], ["Kumlinge", "21:45", "Enklinge", "22:00"], ["Enklinge", "22:00", "Kumlinge", "22:15"]]},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "sunday", "forceCallCondition": "holiday_booking",
+         "extraTrips": [["Kumlinge", "06:30", "Enklinge", "06:45"], ["Enklinge", "06:45", "Kumlinge", "07:00"], ["Kumlinge", "21:45", "Enklinge", "22:00"], ["Enklinge", "22:00", "Kumlinge", "22:15"]]},
+        {"date": "2026-12-27", "action": "use_day_pattern", "scheduleTemplate": "sunday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-28", "action": "use_day_pattern", "scheduleTemplate": "monday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-29", "action": "use_day_pattern", "scheduleTemplate": "tuesday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-30", "action": "use_day_pattern", "scheduleTemplate": "wednesday", "forceCallCondition": "holiday_booking"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "thursday", "forceCallCondition": "holiday_booking"},
+    ],
+    "foglolinjen": [
+        {"date": "2026-10-31", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2026-12-06", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "16:55",
+         "extraTrips": [["Degerby", "22:25", "Svinö", "22:55"], ["Svinö", "23:00", "Degerby", "23:30"]]},
+        {"date": "2026-12-25", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "12:15"},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "10:45"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "20:25"},
+    ],
+    "iniorutt": [
+        {"date": "2026-12-06", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2026-12-25", "action": "no_service"},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "friday"},
+        {"date": "2027-01-01", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2027-01-06", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2027-03-25", "action": "use_day_pattern", "scheduleTemplate": "friday"},
+        {"date": "2027-03-26", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2027-03-27", "action": "no_service"},
+        {"date": "2027-03-28", "action": "no_service"},
+        {"date": "2027-03-29", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+    ],
+    "osnasava": [
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "17:30"},
+        {"date": "2026-12-25", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "16:05", "notAfter": "17:00"},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notBefore": "13:05", "notAfter": "19:00"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "thursday", "notAfter": "17:30"},
+    ],
     "korporutt": [
         {"date": "2026-12-06", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
         {"date": "2026-12-23", "action": "use_day_pattern", "scheduleTemplate": "friday"},
@@ -66,16 +117,31 @@ ADDITIONAL_HOLIDAY_RULES = {
         {"date": "2027-05-01", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
         {"date": "2027-05-06", "action": "use_day_pattern", "scheduleTemplate": "thursday"},
     ],
+    "velkuataivassalo": [
+        {"date": "2026-12-06", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2026-12-24", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2026-12-25", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2026-12-26", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2026-12-31", "action": "use_day_pattern", "scheduleTemplate": "sunday", "notAfter": "17:45"},
+        {"date": "2027-01-01", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+        {"date": "2027-01-06", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2027-03-25", "action": "use_day_pattern", "scheduleTemplate": "friday"},
+        {"date": "2027-03-26", "action": "use_day_pattern", "scheduleTemplate": "saturday"},
+        {"date": "2027-03-29", "action": "use_day_pattern", "scheduleTemplate": "sunday"},
+    ],
 }
 
 TARGET_ROUTES = {
-    "hitisalva", "hitisjurmo", "houtskarrutt", "korporutt", "nagunorra",
-    "nagusodra", "nagutvar", "norralinjen", "pargasrutt",
+    "avajurmo", "enklingelinjen", "foglolinjen", "hitisalva", "hitisjurmo",
+    "houtskarrutt", "iniorutt", "korporutt", "nagunorra", "nagusodra",
+    "nagutvar", "norralinjen", "osnasava", "pargasrutt",
     "rymattylanreitti", "sodralinjen", "utorutt", "velkuanreitti",
+    "velkuataivassalo",
 }
 
 FINFERRIES_TERMINALS = {
     "houtskarrutt": {"Själö", "Roslax", "Näsby", "TorsholmaI", "Kannvik", "Norrby"},
+    "iniorutt": {"Kannvik", "Själö"},
     "nagunorra": {"Åvensor", "Lavarn", "Nagu"},
     "nagusodra": {"Kirjais"},
     "nagutvar": {"Hummelholm", "Pärnäs", "Kirjais"},
@@ -84,6 +150,21 @@ FINFERRIES_TERMINALS = {
     "korporutt": {"Verkan"},
     "utorutt": {"Pärnäs", "Utö"},
     "velkuanreitti": {"Teersalo", "Hakkenpää"},
+    "velkuataivassalo": {"Teersalo", "Hakkenpää"},
+}
+
+ALAND_TWO_TERMINAL_ROUTES = {
+    "avajurmo": {"terminals": ["JurmoB", "Åva"], "tablePairs": [(0, 1, 2), (0, 4, 5)], "startRow": 2},
+    "enklingelinjen": {"terminals": ["Kumlinge", "Enklinge"], "tablePairs": [(0, 1, 2), (0, 4, 5)], "startRow": 1},
+    "osnasava": {"terminals": ["Vuosnainen", "Åva"], "tablePairs": [(0, 1, 2), (1, 0, 1)], "startRow": 2},
+}
+
+ALAND_DAY_GROUP_LABELS = {
+    "Måndag": ["monday"],
+    "Tisdag": ["tuesday", "wednesday", "thursday"],
+    "Fredag": ["friday"],
+    "Lördag": ["saturday"],
+    "Söndag": ["sunday"],
 }
 
 STOP_ALIASES = {
@@ -152,14 +233,15 @@ def parse_cell(value: str | None) -> dict | None:
     result = {"sourceValue": source}
     if match:
         result["time"] = f"{int(match.group(1)):02d}:{match.group(2)}"
-    marker = re.search(r"(?<![A-Za-z])[yx](?![A-Za-z])", source, re.I)
+    marker = re.search(r"(?<![A-Za-z])(xy|y\+\+|y\*\*|y\*|y|x)(?![A-Za-z])", source, re.I)
     if marker:
         result["callCondition"] = marker.group(0).lower()
     if source.startswith("~"):
         result["timeNature"] = "approximate"
     elif match and "(" in source[: match.start() + 1]:
         result["timeNature"] = "estimated_intermediate"
-    notes = re.findall(r"\*+|\++|\d+\)|[A-Z]\)", source)
+    annotation_source = source[match.end():] if match else source
+    notes = re.findall(r"\*+|\++|\d+\)|[A-ZÅ]+\)", annotation_source)
     if notes:
         result["sourceAnnotations"] = notes
     return result
@@ -256,6 +338,7 @@ def normalize_holiday_overrides(route: dict) -> list[dict]:
         cutoff = rule.get("notBefore")
         if not cutoff and re.fullmatch(r"\d{1,2}:\d{2}", str(rule.get("from", ""))):
             cutoff = rule["from"]
+        end_cutoff = rule.get("notAfter")
         no_service = rule.get("action") == "no_service" or (
             rule.get("service") == "none" and not cutoff
         )
@@ -284,16 +367,30 @@ def normalize_holiday_overrides(route: dict) -> list[dict]:
             )
             if cutoff and departure and departure < cutoff:
                 continue
+            if end_cutoff and departure and departure > end_cutoff:
+                continue
             holiday_trip = copy.deepcopy(trip)
             holiday_trip["sourceTemplateId"] = trip["id"]
             holiday_trip["id"] = f"{rule['date']}-{trip['id']}"
             holiday_trip["operatingDate"] = rule["date"]
             holiday_trip.pop("operatingDays", None)
             if rule.get("forceCallCondition"):
-                for call in holiday_trip.get("calls", []):
-                    if call.get("callCondition"):
-                        call["callCondition"] = rule["forceCallCondition"]
+                calls = holiday_trip.get("calls", [])
+                if calls:
+                    calls[0]["callCondition"] = rule["forceCallCondition"]
             selected.append(holiday_trip)
+        for extra_index, extra in enumerate(rule.get("extraTrips", []), start=1):
+            origin, departure, destination, arrival = extra
+            extra_trip = {
+                "id": f"{rule['date']}-{route['id']}-extra-{extra_index:02d}",
+                "operatingDate": rule["date"],
+                "normalizationStatus": "manually_normalized_holiday_exception",
+                "calls": [
+                    {"stop": origin, "time": departure, "timeNature": "published_departure", "callCondition": rule.get("forceCallCondition", "1")},
+                    {"stop": destination, "time": arrival, "timeNature": "published_arrival"},
+                ],
+            }
+            selected.append(extra_trip)
         overrides.append({
             "date": rule["date"],
             "action": "replace_regular_schedule",
@@ -458,6 +555,139 @@ def normalize_aland(route: dict) -> list[dict]:
     return merge_identical_trips(trips, route_id)
 
 
+def source_time_tokens(value: object) -> list[str]:
+    """Extract source times with their immediately following footnote markers."""
+    if value in (None, ""):
+        return []
+    return re.findall(r"\d{1,2}:\d{2}(?:(?:[A-ZÅ]+|\d+)\))*", str(value))
+
+
+def aland_row_day_group(value: object, current: list[str] | None) -> list[str] | None:
+    text = str(value or "").strip()
+    for label, days in ALAND_DAY_GROUP_LABELS.items():
+        if text.startswith(label):
+            return days
+    return current
+
+
+def normalized_two_terminal_trip(
+    route_id: str, days: list[str], origin: str, destination: str,
+    departure_source: str, arrival_source: str, sequence: int,
+) -> dict:
+    departure = parse_cell(departure_source) or {}
+    arrival = parse_cell(arrival_source) or {}
+    for parsed in (departure, arrival):
+        annotations = parsed.get("sourceAnnotations", [])
+        if "1)" in annotations:
+            parsed["callCondition"] = "1"
+        elif "2)" in annotations:
+            parsed["callCondition"] = "2"
+    departure_minutes = int(departure["time"][:2]) * 60 + int(departure["time"][3:])
+    arrival_minutes = int(arrival["time"][:2]) * 60 + int(arrival["time"][3:])
+    if arrival_minutes < departure_minutes:
+        arrival["dayOffset"] = 1
+    return {
+        "id": f"{route_id}-normalized-{sequence:03d}",
+        "operatingDays": "".join(
+            str(index + 1) if day in days else "_"
+            for index, day in enumerate(WEEKDAYS)
+        ),
+        "normalizationStatus": "machine_generated_from_two_terminal_source_table",
+        "calls": [
+            {"stop": origin, **departure, "timeNature": "published_departure"},
+            {"stop": destination, **arrival, "timeNature": "published_arrival"},
+        ],
+    }
+
+
+def normalize_aland_two_terminal(route: dict) -> list[dict]:
+    """Normalize the small Åland two-terminal tables, including packed PDF rows."""
+    spec = ALAND_TWO_TERMINAL_ROUTES[route["id"]]
+    terminals = spec["terminals"]
+    trips = []
+    current_days = None
+    primary_table = route["sourceTables"][0]
+    for row_index in range(spec["startRow"], len(primary_table["rows"])):
+        primary_row = primary_table["rows"][row_index]
+        current_days = aland_row_day_group(primary_row[0] if primary_row else None, current_days)
+        if not current_days:
+            continue
+        for table_index, departure_column, arrival_column in spec["tablePairs"]:
+            table = route["sourceTables"][table_index]
+            if row_index >= len(table["rows"]):
+                continue
+            row = table["rows"][row_index]
+            # Packed extraction rows put both values in one cell, while ordinary
+            # rows keep departure and arrival in adjacent cells.
+            combined = " ".join(
+                str(row[column] or "")
+                for column in (departure_column, arrival_column)
+                if column < len(row)
+            )
+            tokens = source_time_tokens(combined)
+            if not tokens and table_index == 0 and departure_column == 1:
+                tokens = source_time_tokens(row[0] if row else None)
+            if len(tokens) % 2:
+                continue
+            if table_index == 0 and departure_column in {1, 4}:
+                direction = 0 if departure_column == 1 else 1
+            else:
+                direction = table_index
+            origin = terminals[direction]
+            destination = terminals[1 - direction]
+            for token_index in range(0, len(tokens), 2):
+                trips.append(normalized_two_terminal_trip(
+                    route["id"], current_days, origin, destination,
+                    tokens[token_index], tokens[token_index + 1], len(trips) + 1,
+                ))
+    return merge_identical_trips(trips, route["id"])
+
+
+def add_clock_minutes(value: str, minutes: int, day_offset: int = 0) -> tuple[str, int]:
+    hour, minute = map(int, value.split(":"))
+    absolute = day_offset * 1440 + hour * 60 + minute + minutes
+    return f"{absolute // 60 % 24:02d}:{absolute % 60:02d}", absolute // 1440
+
+
+def normalize_foglo(route: dict) -> list[dict]:
+    """Normalize Föglö's departure-only table with its published 30 min crossing."""
+    trips = []
+    directions = [("Degerby", "Svinö"), ("Svinö", "Degerby")]
+    for table, (origin, destination) in zip(route["sourceTables"][:2], directions):
+        for day_index, day in enumerate(WEEKDAYS):
+            tokens = []
+            for row in table["rows"][2:]:
+                if day_index < len(row):
+                    tokens.extend(source_time_tokens(row[day_index]))
+            seen = set()
+            for source_value in tokens:
+                parsed = parse_cell(source_value) or {}
+                annotations = parsed.get("sourceAnnotations", [])
+                if "1)" in annotations:
+                    parsed["callCondition"] = "1"
+                elif "2)" in annotations:
+                    parsed["callCondition"] = "2"
+                departure = parsed.get("time")
+                if not departure or departure in seen:
+                    continue
+                seen.add(departure)
+                departure_offset = 1 if departure < "03:00" else 0
+                arrival, arrival_offset = add_clock_minutes(departure, 30, departure_offset)
+                trips.append({
+                    "id": f"foglolinjen-normalized-{len(trips) + 1:03d}",
+                    "operatingDays": day_pattern(day),
+                    "normalizationStatus": "machine_generated_from_departure_table",
+                    "calls": [
+                        {"stop": origin, **parsed, "dayOffset": departure_offset,
+                         "timeNature": "published_departure"},
+                        {"stop": destination, "time": arrival, "dayOffset": arrival_offset,
+                         "timeNature": "estimated_from_published_crossing_duration",
+                         "offsetMinutes": 30},
+                    ],
+                })
+    return merge_identical_trips(trips, route["id"])
+
+
 def main() -> None:
     args = parse_args()
     source = json.loads(args.source.read_text(encoding="utf-8"))
@@ -474,6 +704,14 @@ def main() -> None:
             generated = normalize_finferries(route)
             if generated:
                 method = "finferries_weekday_columns"
+        elif route["id"] in ALAND_TWO_TERMINAL_ROUTES:
+            generated = normalize_aland_two_terminal(route)
+            if generated:
+                method = "aland_two_terminal_tables"
+        elif route["id"] == "foglolinjen":
+            generated = normalize_foglo(route)
+            if generated:
+                method = "aland_departure_columns_with_crossing_duration"
         elif not original_count and route["id"] in {"norralinjen", "sodralinjen"}:
             generated = normalize_aland(route)
             method = "aland_regular_tables"

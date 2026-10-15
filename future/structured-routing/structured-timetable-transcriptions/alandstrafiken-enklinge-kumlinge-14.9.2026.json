@@ -4,6 +4,20 @@
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
   "sourceId": "alandstrafiken-enklinge-kumlinge-14.9.2026",
+  "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/enklinge-kumlinge-14.9.2026.pdf",
+  "vessel": "Enklingelinjens färja",
+  "contact": {"phones": ["+358 (0)18 25 600"]},
+  "booking": {
+    "requiredForAllTrips": false,
+    "loadingReadinessMinutesBefore": 5,
+    "channel": "https://www.alandstrafiken.ax/",
+    "phone": "+358 (0)18 25 600"
+  },
+  "callConditions": {
+    "1": {"operation": "booking_required", "deadline": {"relativeTo": "trip_departure", "offsetMinutes": -60}},
+    "2": {"operation": "booking_required", "deadline": {"relativeTo": "previous_day", "time": "20:00"}},
+    "holiday_booking": {"operation": "booking_required"}
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",

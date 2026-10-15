@@ -4,6 +4,33 @@
   "sourceLanguageAuthority": "fi",
   "languageConflictPolicy": "Mainland Finland source: Finnish is the default authority when language versions conflict",
   "sourceId": "finferries-velkuataivassalo-velkuan-reitti-talvi-14.9.2026-6.5.2027",
+  "publicTimetableUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuan-reitti.html",
+  "vessel": "M/S Kaita",
+  "capacity": {
+    "passengers": 100,
+    "cargoTonnes": 25,
+    "cars": 8
+  },
+  "contact": {
+    "phones": ["+358207118795"]
+  },
+  "booking": {
+    "requiredForAllTrips": true,
+    "channel": "https://booking.finferries.fi/",
+    "vehicleAndCargoBookingOpensDaysBefore": 14,
+    "loadingReadinessMinutesBefore": 10,
+    "deadlineRules": [
+      {"appliesTo": {"weekdays": ["saturday", "sunday"]}, "deadline": {"relativeTo": "previous_day", "time": "17:00"}},
+      {"appliesTo": {"weekdays": ["monday", "tuesday", "wednesday", "thursday", "friday"], "departureBefore": "12:00"}, "deadline": {"relativeTo": "previous_day", "time": "17:00"}},
+      {"appliesTo": {"weekdays": ["monday", "tuesday", "wednesday", "thursday", "friday"], "departureTimeFrom": "12:00"}, "deadline": {"relativeTo": "same_day", "time": "17:00"}}
+    ]
+  },
+  "callConditions": {
+    "x": {"operation": "on_request", "deadline": {"minutesBeforeDepartureFromOrigin": 10}},
+    "y": {"operation": "booking_required", "deadlineRule": "route_booking_deadline_rules"},
+    "y*": {"operation": "booking_required", "deadlineRule": "route_booking_deadline_rules"},
+    "y**": {"operation": "booking_required", "deadlineRule": "route_booking_deadline_rules"}
+  },
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",
