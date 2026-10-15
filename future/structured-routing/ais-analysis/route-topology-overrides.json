@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "status": "analysis_only",
+  "routes": {
+    "rymattylanreitti": {
+      "terminals": [
+        "Haapala"
+      ],
+      "topology": "mixed_out_and_back_with_branch_loops",
+      "timetableEvidence": "The timetable starts and ends journeys at Haapala, repeats Ruotsalainen on longer journeys, and lists other demand stops between the two Ruotsalainen calls.",
+      "interpretation": "Ruotsalainen is often a repeated trunk call. Other piers can be turnarounds or single calls on a branch loop; a single call alone is not proof of a ring route."
+    },
+    "velkuanreitti": {
+      "terminals": [
+        "Teersalo",
+        "Hakkenpää"
+      ],
+      "topology": "mixed_closed_loops_and_terminal_to_terminal",
+      "timetableEvidence": "The timetable contains both Teersalo return journeys and journeys between Teersalo and Hakkenpää, with demand stops in varying order.",
+      "interpretation": "Closed Teersalo journeys and terminal-to-terminal journeys must be separated. Rauhala is frequently repeated, while most other piers are called once or used as a turnaround."
+    },
+    "nagunorra": {
+      "terminals": [
+        "Nagu",
+        "Lavarn"
+      ],
+      "topology": "two_terminal_line_with_local_return_journeys",
+      "timetableEvidence": "The timetable contains journeys between Nagu and Lavarn in both directions and separate local return journeys such as Nagu-Seili-Nagu.",
+      "interpretation": "Calls on Nagu-Lavarn journeys are terminal-to-terminal calls. Closed journeys are classified separately, including exact turnaround patterns."
+    },
+    "nagusodra": {
+      "terminals": [
+        "Kirjais"
+      ],
+      "topology": "branched_closed_journeys_with_turnarounds",
+      "timetableEvidence": "The timetable starts and ends journeys at Kirjais and lists several groups of on-demand piers; AIS sequences contain both immediate turnarounds and longer closed journeys.",
+      "interpretation": "Most observed piers are called once on a closed journey, but this is recorded as an observation rather than treated as proof that every service is a ring route."
+    },
+    "hitisrutt": {
+      "terminals": [
+        "Kasnäs",
+        "Dalsbruk"
+      ],
+      "topology": "two_terminal_line_with_closed_island_branches",
+      "timetableEvidence": "The service contains journeys between Kasnäs and Dalsbruk as well as separate return journeys from Kasnäs to island branches.",
+      "interpretation": "Terminal-to-terminal calls and closed island journeys are separated. Exact A-B-A calls are treated as turnarounds."
+    },
+    "houtskarrutt": {
+      "terminals": [
+        "Kannvik",
+        "Norrby",
+        "Näsby",
+        "Roslax",
+        "TorsholmaI"
+      ],
+      "topology": "multi_terminal_network_with_closed_branches",
+      "timetableEvidence": "The route area contains several published endpoint pairs and short return branches from Kannvik.",
+      "interpretation": "Each observed terminal pair is retained. Closed journeys and exact turnaround calls are modeled separately from terminal-to-terminal traffic."
+    },
+    "korporutt": {
+      "terminals": [
+        "Verkan",
+        "Havträsk",
+        "Kittuis"
+      ],
+      "topology": "multi_terminal_network_with_closed_branches",
+      "timetableEvidence": "Published services connect Verkan, Havträsk and Kittuis and also include return branches from a terminal.",
+      "interpretation": "Terminal-pair direction is the primary structural key. A closed journey can contain a turnaround or a longer branch loop."
+    },
+    "norralinjen": {
+      "terminals": [
+        "Hummelvik",
+        "Kumlinge",
+        "Torsholma"
+      ],
+      "topology": "published_multi_terminal_timetable",
+      "scheduleKnowledge": "complete_published_timetable",
+      "timetableEvidence": "Ålandstrafiken publishes stop times in both directions on Hummelvik-Enklinge-Kumlinge-Lappo-Torsholma, including partial journeys starting or ending at Kumlinge.",
+      "interpretation": "The published timetable determines the service order. AIS is used to validate driving times and realized optional calls, not to infer an alternative schedule."
+    },
+    "sodralinjen": {
+      "terminals": [
+        "Galtby",
+        "Sottunga",
+        "Överö",
+        "Långnäs"
+      ],
+      "topology": "published_multi_terminal_timetable_with_optional_detours",
+      "scheduleKnowledge": "complete_published_timetable",
+      "timetableEvidence": "Ålandstrafiken publishes stop times in both directions on Galtby-Kökar-Kyrkogårdsö-Husö-Sottunga-Överö-Långnäs. Husö and Kyrkogårdsö are optional booked calls.",
+      "interpretation": "The published timetable determines the base journey. AIS validates realized travel and detour effects.",
+      "scheduleRules": {
+        "optionalDetourDelayMinutes": {
+          "Husö": 10,
+          "Kyrkogårdsö": 20
+        },
+        "combination": "additive",
+        "combinedDelayMinutes": 30,
+        "basis": "published individual delays plus confirmed route geometry",
+        "confidence": "confirmed_for_analysis"
+      }
+    },
+    "utorutt": {
+      "terminals": [
+        "Pärnäs",
+        "Utö"
+      ],
+      "topology": "published_bidirectional_line",
+      "scheduleKnowledge": "complete_published_timetable",
+      "timetableEvidence": "The published timetable gives separate trips in both directions on Pärnäs-Nötö-Aspö-Jurmo-Utö.",
+      "interpretation": "The timetable determines direction and stop order. The last-year complete AIS sample is too small to infer topology independently."
+    }
+  }
+}

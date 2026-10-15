@@ -1,0 +1,20 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Saaristomeren AIS-analyysialue",
+    "source": "Digitoitu käyttäjän 2026-10-11 toimittamasta karttarajauksesta",
+    "note": "Likimääräinen rajaus; kulmapisteitä voi tarkentaa ilman analyysikoodin muuttamista."
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [20.02, 60.515],
+        [22.82, 60.745],
+        [23.04, 59.676],
+        [20.18, 59.692],
+        [20.02, 60.515]
+      ]
+    ]
+  }
+}
