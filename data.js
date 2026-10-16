@@ -1231,7 +1231,7 @@ fdata = {
     Hällö: { mun: "Geta", type: "1" },
     SnäcköGeta: { name: "Snäckö", mun: "Geta", type: "1" },
     
-    TurkuVitharun: { name: "Aurajoki", name_sv: "Aura å", name_en: "Aurajoki River", mun: "Turku", type: "1" },
+    TurkuVitharun: { name: "Aurajoki", name_sv: "Aura å", name_en: "Aura River", mun: "Turku", type: "1" },
 
 //    NaantaliVanhakaupunki: { name: "Naantalin vanhakaupunki", name_sv: "Nådendals gamla stan", name_en: "Naantali Old Town", mun: "Naantali" },
     NaantaliVanhakaupunki: { name: "Naantali", name_sv: "Nådendal", mun: "Naantali", type: "1" },
@@ -1494,7 +1494,7 @@ fdata = {
       ],
     },
     nauvohankaturku: {
-      name: "Yhdistelmä M/S Aalto & M/S Östern", name_sv: "Kombination M/S Aalto & M/S Östern", name_en: "Combined M/S Aalto & M/S Östern", specifier: "",
+      name: "Yhdistelmä M/S Aalto & M/S Östern", name_sv: "Kombinerad tidtabell: M/S Aalto & M/S Östern", name_en: "Combined timetable: M/S Aalto & M/S Östern", specifier: "",
       link: "https://www.ostern.fi/b/ms-aalto-taydentaa-ms-osternin-kapasiteettia-pienella-rengastiella",
       tables: [
         { validFrom: "2020-07-21", validTo: "2020-08-16", images: ["Aaltoaikataulu_muokattu-1.jpg"]},
@@ -1526,7 +1526,7 @@ fdata = {
       ],
     },
     houtskarrutt: {
-      name: "Houtskarin reitti - M/S Finnö", name_sv: "Houtskär rutt - M/S Finnö", name_en: "Houtskär Route - M/S Finnö", specifier: "",
+      name: "Houtskarin reitti - M/S Finnö", name_sv: "Houtskärsrutten - M/S Finnö", name_en: "Houtskär Route - M/S Finnö", specifier: "",
       link: "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/houtskarin-reitti.html",
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/houtskarsrutten.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/houtskar-route.html",
@@ -1845,7 +1845,7 @@ fdata = {
     foglolinjen: {
       name: "Föglölinjen",
       name_fi: "Föglön linja",
-      name_en: "Föglo line",
+      name_en: "Föglö line",
       specifier: "Svinö - Degerby",
       piers: ["Svinö", "Degerby"],
       operator: "alandstrafiken",
@@ -1942,9 +1942,9 @@ fdata = {
       },
       notes: [
         { 
-        content: "<div>Bergö and Sottunga are not served regularly</div>",
+        content: "<div>Calls at Bergö and Sottunga are infrequent</div>",
         content_fi: "<div>Bergössä ja Sottungassa poiketaan vain harvoin</div>",
-        content_sv: "<div>Bergö och Sottunga trafikeras ovanligen</div>"
+        content_sv: "<div>Bergö och Sottunga angörs endast sällan</div>"
       }
       ],
       timetables: "tvarlinjen",
@@ -2115,7 +2115,7 @@ fdata = {
     },
     rymattylanreitti: {
       name: "Rymättylän reitti",
-      name_sv: "Rimito rutt",
+      name_sv: "Rimito ruttområde",
       name_en: "Rymättylä Route",
       specifier: "",
       piers: ["Haapala", "Ruotsalainen", "Korvenmaa", "Wihuri", "Pyytti", "Pakinainen", "Pähkinäinen", "Samsaari", "Maisaari"],
@@ -2131,7 +2131,7 @@ fdata = {
     },
     korporutt: {
       name: "Korppoon reitti",
-      name_sv: "Korpo rutt",
+      name_sv: "Korpo ruttområde",
       name_en: "Korpo Route",
       specifier: "",
       piers: ["Verkan", "Finnö", "Käldersö", "Elvsö", "BerghamnK", "Luk", "Kittuis", "Lillpensor", "Storpensor", "Havträsk", "Brunskär", "Österskär", "Kälö"],
@@ -2146,7 +2146,7 @@ fdata = {
     },
     houtskarrutt: {
       name: "Houtskarin reitti ja Iniön lisäreitti",
-      name_sv: "Houtskär rutt och Iniö tilläggsrutt",
+      name_sv: "Houtskärsrutten och Iniö tilläggsrutt",
       name_en: "Houtskär Route and Iniö Additional Route",
       specifier: "",
       piers: ["Näsby","Roslax","Ytterstö","Lempmo","Salmis","Lammholm","Norrby","Sördö","Lempnäs","Äpplö","Bockholm", "Södö", "Nåtö","TorsholmaI","Själö","Härklot","Kvarnholm","Åselholm","Perkala","PerkalaP","Kolko","Kannvik"],
@@ -2163,7 +2163,7 @@ fdata = {
 
     utorutt: {
       name: "Utön reitti",
-      name_sv: "Utö rutt",
+      name_sv: "Utö ruttområde",
       name_en: "Utö Route",
       specifier: "",
       piers: ["Pärnäs", "Berghamn", "Nötö", "Aspö", "Jurmo", "Utö"],
@@ -2239,7 +2239,7 @@ fdata = {
 
     pargasrutt: {
       name: "Paraisten reitti",
-      name_sv: "Pargas rutt",
+      name_sv: "Pargas ruttområde",
       name_en: "Pargas Route",
       specifier: "",
       piers: ["Granvik", "Granholmen", "Heisala", "Björkholm", "Ramsholm", "Stenholm", "Aspholm", "Kuggö", "PensarI"],
@@ -2256,7 +2256,7 @@ fdata = {
 
     hitisrutt: {
       name: "Hiittisten reitti",
-      name_sv: "Hitis rutt",
+      name_sv: "Hitis ruttområde",
       name_en: "Hitis Route",
       specifier: "",
       piers: ["Kasnäs", "Tunnhamn", "Vänö", "Holma", "Helsingholm", "Örö", "ÖröP", "Ängesö", "Bolax", "Bötesö", "Grönvik", "Djupö", "Vänoxaby", "Vänoxasläten", "Biskopsö", "Dalsbruk"],
@@ -2464,8 +2464,8 @@ fdata = {
       features: {
           interval_L: ["times.ondemandcheckpauses"],
           interval_fi: "Kesä - elokuussa klo 6 - 22 aikataulun mukaan 2 - 3 kertaa tunnissa, muulloin tarvittaessa",
-          interval_sv: "Juni - Aug kl 6 - 22 enligt tidtabellen 2 - 3 gånger i timme. Andra tider: Trafikerar vid behov",
-          interval_en: "June - Aug 6:00 to 22:00 with schedule 2 to 3 times an hour. Other times: Runs when needed",
+          interval_sv: "Juni–augusti kl. 6–22 enligt tidtabell 2–3 gånger i timmen. Övriga tider vid behov",
+          interval_en: "From June to August, 6:00–22:00, 2–3 times an hour according to the timetable. At other times, on demand",
         },
       timetables: ["embarsundslinjen"]
     },
@@ -2495,13 +2495,13 @@ fdata = {
       features: {
         interval_fi: "Liikennöi tarvittessa ma-pe 6.00-23.00, la 7.00-23.00, su 8.30-22.00. Tauot 9.40-10.00, 12.40-13.00, 16.20-16.40, 19.10-19.30",
         interval_sv: "Trafikerar enligt behov må-fr 6.00-23.00, lö 7.00-23.00, sö 8.30-22.00. Pauser 9.40-10.00, 12.40-13.00, 16.20-16.40, 19.10-19.30",
-        interval_en: "Runs when needed Mon-Fri 6AM-11PM, Sat 7AM-11PM, Sun 8:30AM-10PM. Breaks 9:40-10:00, 12:40-13:00, 16:20-16:40, 19:10-19:30",
+        interval_en: "Runs when needed Mon–Fri 6 AM–11 PM, Sat 7 AM–11 PM, Sun 8:30 AM–10 PM. Breaks 9:40–10:00, 12:40–13:00, 16:20–16:40, 19:10–19:30",
       },
       notes: [
       { 
         content_fi: "<div>Lossi lähtee Skagenista aina 15 ja 30 min ennen M/S Auran lähtöä Kannvikista Heponiemeen (Kustavi).</div>",
-        content_sv: "<div>Färjan  avgår från Skagen alltid 15 och 30 min före M/S Auras avgång från Kannvik till Heponimi (Gustavs).</div>",
-        content_en: "<div>The ferry departures from Skagen always 15 and 30 minutes before M/S Aura's departure from Kannvik to Heponiemi (Kustavi).</div>"
+        content_sv: "<div>Färjan avgår alltid från Skagen 15 och 30 minuter före M/S Auras avgång från Kannvik till Heponiemi (Gustavs).</div>",
+        content_en: "<div>The ferry always departs from Skagen 15 and 30 minutes before M/S Aura departs from Kannvik for Heponiemi (Kustavi).</div>"
       }
       ],
       timetables: ["skagen"]
@@ -2514,7 +2514,7 @@ fdata = {
       features: {
         interval_fi: "Liikennöi tarvittessa ma-pe 6.00-22.00, la 7.00-22.00, su 8.00-22.00. Tauot 8.30-8.50, 11.00-11.30, 16.30-16.50, 19.00-19.30.",
         interval_sv: "Trafikerar enligt behov må-fr 6.00-22.00, lö 7.00-22.00, sö 8.00-22.00. Pauser 8.30-8.50, 11.00-11.30, 16.30-16.50, 19.00-19.30.",
-        interval_en: "Runs when needed Mon-Fri 6AM-10PM, Sat 7AM-10PM, Sun 8AM-10PM. Breaks 8:30-8:50, 11:00-11:30, 16.:0-16:50, 19:00-19:30",
+        interval_en: "Runs when needed Mon–Fri 6 AM–10 PM, Sat 7 AM–10 PM, Sun 8 AM–10 PM. Breaks 8:30–8:50, 11:00–11:30, 16:30–16:50, 19:00–19:30",
       },
       timetables: ["sorpo"]
     },
@@ -2525,8 +2525,8 @@ fdata = {
       vessels: ["pettu"],
       features: {
         interval_fi: "Liikennöi 15 minuutin välein klo 7.30-19.30.",
-        interval_sv: "Trafikerar varje 15 minuter kl 7.30-19.30.",
-        interval_en: "Runs every 15 minutes between 7.30 AM and 7.30 PM",
+        interval_sv: "Trafikerar var 15:e minut kl. 7.30–19.30.",
+        interval_en: "Runs every 15 minutes from 7:30 AM to 7:30 PM.",
       },
       timetables: ["pettu"]
     },
@@ -2627,7 +2627,7 @@ fdata = {
       features: {
         interval_fi: "Turku - Seili - Nauvo kerran päivässä,<br/>Seili - Nauvo lisäksi 1-5 kertaa päivässä",
         interval_sv: "Åbo - Själö - Nagu en gång om dagen,<br/>Själö - Nagu ytterligare 1-5 gånger om dagen",
-        interval_en: "Turku - Själö - Nagu once a day,<br/>Själö - Nagu  additional 1-5 times a day",
+        interval_en: "Turku - Själö - Nagu once a day,<br/>Själö - Nagu an additional 1-5 times a day",
         cost_L: "cost.applies",
         duration_fi: "Turku - Seili 1 tunti 45 minuuttia,<br/>Seili - Nauvo 30 minuuttia",
         duration_sv: "Åbo - Själö 1 timme 45 minuter,<br/>Själö - Nagu 30 minuter",
@@ -2725,36 +2725,36 @@ fdata = {
     sname_en: "Turku - Mariehamn/Långnäs - Stockholm",
     operators: ["Viking"], legs: [2, 3, 4, 5, 6, 8, 9, 11, 13],
     description_fi: "2 kertaa päivässä, kesto n. 11 tuntia",
-    description_sv: "2 gånger om dagen, längd ca 11 timmar",
-    description_en: "twice a day, duration about 11 hours"},
+    description_sv: "2 gånger om dagen, restid ca 11 timmar",
+    description_en: "twice a day, journey time about 11 hours"},
   { sname: "Turku - Maarianhamina/Långnäs - Tukholma", 
     sname_sv: "Åbo - Mariehamn/Långnäs - Stockholm",
     sname_en: "Turku - Mariehamn/Långnäs - Stockholm",
     operators: ["Silja"], legs: [2, 3, 4, 5, 6, 8, 9, 11, 12],
     description_fi: "kerran päivässä, kesto n. 11 tuntia",
-    description_sv: "en gång om dagen, längd ca 11 timmar",
-    description_en: "once a day, duration about 11 hours"},
+    description_sv: "en gång om dagen, restid ca 11 timmar",
+    description_en: "once a day, journey time about 11 hours"},
   { sname: "Helsinki - Maarianhamina - Tukholma",
     sname_sv: "Helsingfors - Mariehamn - Stockholm",
     sname_en: "Helsinki - Mariehamn - Stockholm",
     operators: ["Viking"], legs: [7, 6, 9, 11, 13, 15],
     description_fi: "kerran päivässä, kesto n. 17,5 tuntia",
-    description_sv: "en gång om dagen, längd ca 17,5 timmar",
-    description_en: "once a day, duration about 17,5 hours"},
+    description_sv: "en gång om dagen, restid ca 17,5 timmar",
+    description_en: "once a day, journey time about 17.5 hours"},
   { sname: "Helsinki - Maarianhamina - Tukholma",
     sname_sv: "Helsingfors - Mariehamn - Stockholm",
     sname_en: "Helsinki - Mariehamn - Stockholm",
     operators: ["Silja"], legs: [7, 6, 9, 11, 12, 15],
     description_fi: "kerran päivässä, kesto n. 17,5 tuntia",
-    description_sv: "en gång om dagen, längd ca 17,5 timmar",
-    description_en: "once a day, duration about 17,5 hours"},
+    description_sv: "en gång om dagen, restid ca 17,5 timmar",
+    description_en: "once a day, journey time about 17.5 hours"},
   { sname: "Tallinna - Maarianhamina - Tukholma",
     sname_sv: "Tallinn - Mariehamn - Stockholm",
     sname_en: "Tallinn - Mariehamn - Stockholm",
     operators: ["Tallink"], legs: [7, 6, 9, 11, 12, 16],
     description_fi: "kerran kahdessa päivässä, kesto n. 17,5 tuntia",
-    description_sv: "en gång om två dagar, längd ca 17,5 timmar",
-    description_en: "every other day, duration about 17,5 hours"},
+    description_sv: "en gång varannan dag, restid ca 17,5 timmar",
+    description_en: "every other day, journey time about 17.5 hours"},
   // { sname: "Mariehamn - Stockholm",
   //   sname_fi: "Maarianhamina - Tukholma",
   //   operators: ["Viking"], legs: [9, 11, 13],
@@ -2769,14 +2769,14 @@ fdata = {
   //   description_en: "2-3 times a day, duration about 2.5 hours, bus connection to Stockholm"},
   { sname: "Eckerö - Grisslehamn", operators: ["Eckerolinjen"], legs: [14],
     description_fi: "2-3 kertaa päivässä, kesto n. 2 tuntia",
-    description_sv: "2-3 gånger om dagen, längd ca 2 timmar",
-    description_en: "2-3 times a day, duration about 2 hours"},
+    description_sv: "2-3 gånger om dagen, restid ca 2 timmar",
+    description_en: "2-3 times a day, journey time about 2 hours"},
   { sname: "Naantali - Långnäs - Kapellskär",
     sname_sv: "Nådendal - Långnäs - Kapellskär",
     operators: ["Finnlines"], legs: [1, 3, 4, 5, 8, 10],
     description_fi: "2 kertaa päivässä, kesto n. 8,5 tuntia",
-    description_sv: "2 gånger om dagen, längd ca 8,5 timmar",
-    description_en: "twice a day, duration about 8.5 hours"},
+    description_sv: "2 gånger om dagen, restid ca 8,5 timmar",
+    description_en: "twice a day, journey time about 8.5 hours"},
   ],
   lauttaOperators: {
     Viking: {name: "Viking Line", logo: "img/vikingline.png", height: 15, link: "https://www.vikingline.fi/"},
