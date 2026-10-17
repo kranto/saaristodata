@@ -99,6 +99,15 @@ ei pidä esittää julkaistuna aikatauluaikana.
   sisäistä diagnostiikkaa, ellei diagnostiikkaa pyydetä erikseen.
 - `route-query-response.schema.json`: sovellukselle tarkoitetun
   reititysvastauksen JSON Schema.
+- `scripts/query_address_routes.py`: osoitteet geokoodaava ja ulkoiset
+  lautattomat tieosuudet saariston aikataulureititykseen yhdistävä kokeellinen
+  ovelta ovelle -haku.
+- `address-route-query-response.schema.json`: osoitehaun vastauksen JSON
+  Schema. Varsinaiset matkavaihtoehdot käyttävät samaa rakennetta kuin
+  laiturista laituriin tehtävä haku.
+- `scripts/external_routing.py`: vaihdettavat Nominatim- ja Valhalla-sovittimet.
+  Julkiset palvelimet sopivat kehityskokeisiin; tuotannossa niiden tilalla on
+  käytettävä sovelluksen omia tai erikseen sovittuja palveluja.
 - `scripts/build_external_routing_stop_index.py`: koostaa yleisen
   reitityspalvelun lauttaan nousukoordinaattien tunnistamiseen käytettävän
   pysähdyspaikka- ja tiealuehakemiston. Vanhan sovellusdatan `pier`-tyyppiä ei
@@ -194,11 +203,34 @@ python3 future/structured-routing/scripts/route_itineraries.py \
 python3 future/structured-routing/scripts/query_routes.py \
   Turku Wihuri 2026-11-01 --mode car --same-day
 
+python3 future/structured-routing/scripts/query_address_routes.py \
+  "Hallituskatu 13, Tampere" "Norra Finbyvägen 8, Sund" \
+  2026-11-03 --mode car --same-day
+
 python3 future/structured-routing/scripts/audit_route_timing_coverage.py
 
 python3 -m unittest discover \
   -s future/structured-routing/tests -v
 ```
+
+Osoitehaussa geokoodatusta pisteestä etsitään lähin tunnettu ankkurilaituri ja
+pyydetään yleiseltä reitityspalvelulta reitti sinne lautat sallittuina. Jos
+reitillä ei ole lauttaa, piste kuuluu ankkurin tiealueeseen. Muussa tapauksessa
+ensimmäinen enintään 500 metrin päästä tunnistettu lauttaan nousupaikka ratkaisee
+tiealueen; tätä edeltävät tuntemattomat lautat ohitetaan.
+
+Tiealueen tunnistamisen jälkeen lähtöosoite liitetään lautattomilla tieosuuksilla
+alueen kaikkiin reititysgraafin laitureihin ja määränpää vastaavasti oman
+tiealueensa laitureihin. Sisäinen ajasta riippuva reititin valitsee niiden
+väliltä käyttökelpoiset lautta- ja yhteysalusketjut. Ensimmäisen aluksen
+lastausvalmiusaika siirtää myös osoitteesta lähdön oikeaan ajankohtaan.
+
+Valhallan julkisen demopalvelimen matriisihaku on rajattu lyhyemmäksi kuin sen
+tavallinen reittihaku. Jos matriisi ei siksi tuota yhtään tieosuutta, kokeilu
+hakee tavallisella reittihaulla enintään kahdeksan maantieteellisesti lähintä
+laituria. Tuotantopalvelussa tulee käyttää riittävän suuren matriisirajan
+Valhalla-instanssia, jolloin kaikki saman tiealueen laiturit voidaan vertailla
+yhdellä pyynnöllä. Yli 150 kilometrin pyöräosuuksia ei hyväksytä.
 
 Yhteysalusaikataulun kauttaviivasolu, esimerkiksi `Gloskär/Trunsö` tai
 `Vänö/Tunnhamn`, tarkoittaa kahta itsenäisesti ehdollista laiturikäyntiä:
