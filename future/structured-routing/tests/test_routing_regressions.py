@@ -89,6 +89,29 @@ class RoutingGraphCoverageTests(unittest.TestCase):
         self.assertIn("velkuataivassalo", route_ids)
         self.assertNotIn("velkuanreitti", route_ids)
 
+    def test_all_continuous_crossings_have_a_routing_duration(self) -> None:
+        edge_ids = {
+            edge["id"]
+            for edge in self.graph["edges"]
+            if edge["kind"] == "continuous_ferry"
+            and edge.get("crossingMinutes") is None
+        }
+        self.assertEqual(edge_ids, set())
+
+    def test_commercial_ferries_are_in_the_graph(self) -> None:
+        route_ids = {
+            edge["routeId"]
+            for edge in self.graph["edges"]
+            if edge.get("serviceType") == "commercial_ferry"
+        }
+        self.assertEqual(route_ids, {
+            "finnlines-naantali-langnas",
+            "tallink-helsinki-aland",
+            "tallink-turku-aland",
+            "viking-helsinki-aland",
+            "viking-turku-aland",
+        })
+
 
 class ExampleJourneyTests(unittest.TestCase):
     def assert_route_ids(self, result: dict, expected: list[str]) -> None:
@@ -106,10 +129,11 @@ class ExampleJourneyTests(unittest.TestCase):
         self.assert_route_ids(result, ["rymattylanreitti"])
         self.assertLess(result["arrival"], "2026-11-01T10:30")
 
-    def test_nagu_to_degerby_uses_southern_line_and_foglo_road_network(self) -> None:
+    def test_nagu_to_degerby_uses_the_now_complete_earliest_road_ferry_path(self) -> None:
         result = route("Nagu", "Degerby", "2026-11-03")
         self.assert_route_ids(
-            result, ["nagukorpo", "sodralinjen", "embarsundslinjen"]
+            result,
+            ["pargasnagu", "vartsala", "osnasava", "norralinjen", "toftolinjen", "foglolinjen"],
         )
 
     def test_nagu_to_all_reviewed_foglo_destinations(self) -> None:
@@ -117,12 +141,39 @@ class ExampleJourneyTests(unittest.TestCase):
             "Överö": ["nagukorpo", "sodralinjen"],
             "Jyddö": ["nagukorpo", "sodralinjen"],
             "Finholma": ["nagukorpo", "sodralinjen", "embarsundslinjen"],
-            "Degerby": ["nagukorpo", "sodralinjen", "embarsundslinjen"],
+            "Degerby": ["pargasnagu", "vartsala", "osnasava", "norralinjen", "toftolinjen", "foglolinjen"],
         }
         for destination, route_ids in expected.items():
             with self.subTest(destination=destination):
                 result = route("Nagu", destination, "2026-11-03")
                 self.assert_route_ids(result, route_ids)
+
+    def test_open_ended_vartsala_timetable_is_routable(self) -> None:
+        result = route("Kivimaa", "Vartsala", "2026-11-03", "08:00")
+        self.assert_route_ids(result, ["vartsala"])
+        self.assertEqual(result["arrival"], "2026-11-03T08:18")
+
+    def test_published_commercial_ferry_examples(self) -> None:
+        examples = [
+            ("Turku", "Mariehamn", "08:00", "viking-turku-aland", "2026-11-03T14:10"),
+            ("Naantali", "Långnäs", "09:00", "finnlines-naantali-langnas", "2026-11-03T15:45"),
+        ]
+        for origin, destination, departure, route_id, arrival in examples:
+            with self.subTest(origin=origin, destination=destination):
+                result = route(origin, destination, "2026-11-03", departure)
+                self.assert_route_ids(result, [route_id])
+                self.assertEqual(result["arrival"], arrival)
+
+    def test_commercial_origin_specific_vehicle_readiness(self) -> None:
+        just_early_enough = route("Långnäs", "Turku", "2026-11-03", "13:35")
+        self.assert_route_ids(just_early_enough, ["tallink-turku-aland"])
+        too_late_for_tallink = route("Långnäs", "Turku", "2026-11-03", "13:36")
+        self.assert_route_ids(too_late_for_tallink, ["finnlines-naantali-langnas"])
+
+    def test_finnlines_cancelled_holiday_night_departure_is_not_used(self) -> None:
+        result = route("Naantali", "Långnäs", "2026-12-27", "18:00")
+        route_ids = [leg["routeId"] for leg in result["legs"] if leg.get("routeId")]
+        self.assertNotIn("finnlines-naantali-langnas", route_ids)
 
     def test_public_response_enforces_first_boarding_readiness(self) -> None:
         result = public_routes("Turku", "Wihuri", "2026-11-01")

@@ -1,0 +1,2275 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T21:02:33.147993+00:00",
+  "description": "Known water-transport stops used to map external-router ferry boarding coordinates to the internal ferry-free road areas.",
+  "matchingPolicy": {
+    "method": "nearest_known_stop",
+    "maximumDistanceMeters": 500,
+    "roadAreaDetection": "scan ferry boardings from the query origin and use the first boarding whose nearest known stop is within the maximum distance",
+    "unknownEarlierFerries": "ignored",
+    "arrivalStopRequired": false
+  },
+  "stops": [
+    {
+      "id": "Aasla",
+      "coordinates": {
+        "lon": 21.96155,
+        "lat": 60.3138
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Aasla",
+      "roadAreaId": "aasla",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Airismaa",
+      "coordinates": {
+        "lon": 21.96326,
+        "lat": 60.3162
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Airismaa",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Angelniemi",
+      "coordinates": {
+        "lon": 22.943916,
+        "lat": 60.31275
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Angelniemi",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Aspholm",
+      "coordinates": {
+        "lon": 22.175431,
+        "lat": 60.16559
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Aspholm",
+      "roadAreaId": "stop:Aspholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Aspö",
+      "coordinates": {
+        "lon": 21.61429,
+        "lat": 59.951518
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Aspö",
+      "roadAreaId": "stop:Aspö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Asterholma",
+      "coordinates": {
+        "lon": 21.03399,
+        "lat": 60.30409
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Asterholma",
+      "roadAreaId": "stop:Asterholma",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bengtskär",
+      "coordinates": {
+        "lon": 22.500117,
+        "lat": 59.723477
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bengtskär",
+      "roadAreaId": "stop:Bengtskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Berghamn",
+      "coordinates": {
+        "lon": 21.80163,
+        "lat": 60.05439
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Berghamn",
+      "roadAreaId": "stop:Berghamn",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "BerghamnE",
+      "coordinates": {
+        "lon": 19.535583,
+        "lat": 60.22562
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Eckerön Berghamn",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "BerghamnK",
+      "coordinates": {
+        "lon": 21.30346,
+        "lat": 60.14876
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "BerghamnK",
+      "roadAreaId": "stop:BerghamnK",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bergö",
+      "coordinates": {
+        "lon": 20.39284,
+        "lat": 60.16268
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bergö",
+      "roadAreaId": "stop:Bergö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Biskopsö",
+      "coordinates": {
+        "lon": 22.559911,
+        "lat": 59.971083
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Biskopsö",
+      "roadAreaId": "stop:Biskopsö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Björkholm",
+      "coordinates": {
+        "lon": 22.23607,
+        "lat": 60.18521
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Björkholm",
+      "roadAreaId": "stop:Björkholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Björkö",
+      "coordinates": {
+        "lon": 21.69181,
+        "lat": 59.914106
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Björkö",
+      "roadAreaId": "stop:Björkö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "BjörköH",
+      "coordinates": {
+        "lon": 21.40591,
+        "lat": 60.26568
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "BjörköH",
+      "roadAreaId": "kivimo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "BjörköK",
+      "coordinates": {
+        "lon": 20.94159,
+        "lat": 60.31105
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "BjörköK",
+      "roadAreaId": "stop:BjörköK",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bockholm",
+      "coordinates": {
+        "lon": 21.19089,
+        "lat": 60.31457
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bockholm",
+      "roadAreaId": "stop:Bockholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bodö",
+      "coordinates": {
+        "lon": 21.75024,
+        "lat": 59.908368
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bodö",
+      "roadAreaId": "stop:Bodö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bolax",
+      "coordinates": {
+        "lon": 22.710532,
+        "lat": 59.945743
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bolax",
+      "roadAreaId": "stop:Bolax",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Borstö",
+      "coordinates": {
+        "lon": 21.96935,
+        "lat": 59.8621
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Borstö",
+      "roadAreaId": "stop:Borstö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Brunskär",
+      "coordinates": {
+        "lon": 21.50121,
+        "lat": 60.04182
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Brunskär",
+      "roadAreaId": "stop:Brunskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Brännskär",
+      "coordinates": {
+        "lon": 21.97593,
+        "lat": 60.08634
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Brännskär",
+      "roadAreaId": "stop:Brännskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Byskär",
+      "coordinates": {
+        "lon": 21.96986,
+        "lat": 60.08417
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Byskär",
+      "roadAreaId": "stop:Byskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Bötesö",
+      "coordinates": {
+        "lon": 22.612814,
+        "lat": 59.943749
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Bötesö",
+      "roadAreaId": "stop:Bötesö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Dalen",
+      "coordinates": {
+        "lon": 21.37135,
+        "lat": 60.38157
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Dalen",
+      "roadAreaId": "inio",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Dalsbruk",
+      "coordinates": {
+        "lon": 22.513464,
+        "lat": 60.019246
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Dalsbruk",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Degerby",
+      "coordinates": {
+        "lon": 20.38586,
+        "lat": 60.03185
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Degerby",
+      "roadAreaId": "foglo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Djupö",
+      "coordinates": {
+        "lon": 22.560336,
+        "lat": 59.956664
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Djupö",
+      "roadAreaId": "stop:Djupö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Elvsö",
+      "coordinates": {
+        "lon": 21.48066,
+        "lat": 60.13858
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Elvsö",
+      "roadAreaId": "stop:Elvsö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Enklinge",
+      "coordinates": {
+        "lon": 20.75108,
+        "lat": 60.31836
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Enklinge",
+      "roadAreaId": "stop:Enklinge",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Fagerholm",
+      "coordinates": {
+        "lon": 21.69828,
+        "lat": 60.11203
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Fagerholm",
+      "roadAreaId": "stop:Fagerholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Finholma",
+      "coordinates": {
+        "lon": 20.5264,
+        "lat": 60.0746
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Finholma",
+      "roadAreaId": "foglo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Finnö",
+      "coordinates": {
+        "lon": 21.5089,
+        "lat": 60.18082
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Finnö",
+      "roadAreaId": "stop:Finnö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Galtby",
+      "coordinates": {
+        "lon": 21.58553,
+        "lat": 60.18546
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Galtby",
+      "roadAreaId": "korpo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Gloskär",
+      "coordinates": {
+        "lon": 21.77519,
+        "lat": 59.880943
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Gloskär",
+      "roadAreaId": "stop:Gloskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Granholmen",
+      "coordinates": {
+        "lon": 22.249604,
+        "lat": 60.19066
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Granholmen",
+      "roadAreaId": "stop:Granholmen",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Granvik",
+      "coordinates": {
+        "lon": 22.261401,
+        "lat": 60.19651
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Granvik",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Grisslehamn",
+      "coordinates": {
+        "lon": 18.81546,
+        "lat": 60.09814
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Grisslehamn",
+      "roadAreaId": "stop:Grisslehamn",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Grännäs",
+      "coordinates": {
+        "lon": 21.87891,
+        "lat": 60.16967
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Grännäs",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Grönvik",
+      "coordinates": {
+        "lon": 22.591623,
+        "lat": 59.957799
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Grönvik",
+      "roadAreaId": "stop:Grönvik",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Grötö",
+      "coordinates": {
+        "lon": 22.015421,
+        "lat": 60.07999
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Grötö",
+      "roadAreaId": "stop:Grötö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Gullkrona",
+      "coordinates": {
+        "lon": 22.083056,
+        "lat": 60.08828
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Gullkrona",
+      "roadAreaId": "stop:Gullkrona",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Haapala",
+      "coordinates": {
+        "lon": 21.80943,
+        "lat": 60.39456
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Haapala",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Hakkenpää",
+      "coordinates": {
+        "lon": 21.61341,
+        "lat": 60.49925
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Hakkenpää",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Hanka",
+      "coordinates": {
+        "lon": 21.96883,
+        "lat": 60.28578
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Hanka",
+      "roadAreaId": "aasla",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Hanko",
+      "coordinates": {
+        "lon": 22.9637498,
+        "lat": 59.8192902
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Hanko",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Havträsk",
+      "coordinates": {
+        "lon": 21.56386,
+        "lat": 60.23532
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Havträsk",
+      "roadAreaId": "houtsala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Heisala",
+      "coordinates": {
+        "lon": 22.258966,
+        "lat": 60.17713
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Heisala",
+      "roadAreaId": "heisala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Helsingholm",
+      "coordinates": {
+        "lon": 22.283115,
+        "lat": 60.03144
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Helsingholm",
+      "roadAreaId": "stop:Helsingholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Helsinki",
+      "coordinates": {
+        "lon": 24.9586923,
+        "lat": 60.1608607
+      },
+      "coordinateSource": "OpenStreetMap amenity=ferry_terminal, Olympiaterminaali, way 327321393",
+      "name": "Helsinki",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Heponiemi",
+      "coordinates": {
+        "lon": 21.43499,
+        "lat": 60.48521
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Heponiemi",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Holma",
+      "coordinates": {
+        "lon": 22.366826,
+        "lat": 59.908183
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Holma",
+      "roadAreaId": "stop:Holma",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Hummelholm",
+      "coordinates": {
+        "lon": 21.79674,
+        "lat": 60.10078
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Hummelholm",
+      "roadAreaId": "stop:Hummelholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Hummelvik",
+      "coordinates": {
+        "lon": 20.41354,
+        "lat": 60.22439
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Hummelvik",
+      "roadAreaId": "vardo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Husö",
+      "coordinates": {
+        "lon": 20.80729,
+        "lat": 60.06463
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Husö",
+      "roadAreaId": "stop:Husö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Härklot",
+      "coordinates": {
+        "lon": 21.17876,
+        "lat": 60.35584
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Härklot",
+      "roadAreaId": "stop:Härklot",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Högsåra",
+      "coordinates": {
+        "lon": 22.369194,
+        "lat": 59.954602
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Högsåra",
+      "roadAreaId": "stop:Högsåra",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Innamo",
+      "coordinates": {
+        "lon": 21.75198,
+        "lat": 60.24948
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Innamo",
+      "roadAreaId": "stop:Innamo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Jermo",
+      "coordinates": {
+        "lon": 22.285522,
+        "lat": 60.15036
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Jermo",
+      "roadAreaId": "stop:Jermo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "JumoE",
+      "coordinates": {
+        "lon": 21.36995,
+        "lat": 60.41153
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "JumoE",
+      "roadAreaId": "jumo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Jurmo",
+      "coordinates": {
+        "lon": 21.58476,
+        "lat": 59.827089
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Jurmo",
+      "roadAreaId": "stop:Jurmo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "JurmoB",
+      "coordinates": {
+        "lon": 21.07405,
+        "lat": 60.51594
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "JurmoB",
+      "roadAreaId": "stop:JurmoB",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Jyddö",
+      "coordinates": {
+        "lon": 20.52712,
+        "lat": 60.07648
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Jyddö",
+      "roadAreaId": "overo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Järvsor",
+      "coordinates": {
+        "lon": 21.69576,
+        "lat": 60.26119
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Järvsor",
+      "roadAreaId": "stop:Järvsor",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kannvik",
+      "coordinates": {
+        "lon": 21.3963,
+        "lat": 60.4392
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kannvik",
+      "roadAreaId": "jumo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kapellskär",
+      "coordinates": {
+        "lon": 19.066601,
+        "lat": 59.722831
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kapellskär",
+      "roadAreaId": "stop:Kapellskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kasnäs",
+      "coordinates": {
+        "lon": 22.412002,
+        "lat": 59.921237
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kasnäs",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Keistiö",
+      "coordinates": {
+        "lon": 21.34945,
+        "lat": 60.37232
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Keistiö",
+      "roadAreaId": "stop:Keistiö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kettumaa",
+      "coordinates": {
+        "lon": 21.69075,
+        "lat": 60.40349
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kettumaa",
+      "roadAreaId": "stop:Kettumaa",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Killingholm",
+      "coordinates": {
+        "lon": 21.67834,
+        "lat": 60.11103
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Killingholm",
+      "roadAreaId": "stop:Killingholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kirjais",
+      "coordinates": {
+        "lon": 22.018189,
+        "lat": 60.12127
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kirjais",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kittuis",
+      "coordinates": {
+        "lon": 21.43814,
+        "lat": 60.18693
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kittuis",
+      "roadAreaId": "houtskar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kivimaa",
+      "coordinates": {
+        "lon": 21.33622,
+        "lat": 60.54261
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kivimaa",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kivimo",
+      "coordinates": {
+        "lon": 21.33563,
+        "lat": 60.23504
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kivimo",
+      "roadAreaId": "kivimo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Knivskär",
+      "coordinates": {
+        "lon": 21.97548,
+        "lat": 60.01162
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Knivskär",
+      "roadAreaId": "stop:Knivskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kokkila",
+      "coordinates": {
+        "lon": 22.943401,
+        "lat": 60.31823
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kokkila",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kolko",
+      "coordinates": {
+        "lon": 21.41017,
+        "lat": 60.41868
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kolko",
+      "roadAreaId": "stop:Kolko",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kopparholm",
+      "coordinates": {
+        "lon": 21.8998,
+        "lat": 59.967932
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kopparholm",
+      "roadAreaId": "stop:Kopparholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Korvenmaa",
+      "coordinates": {
+        "lon": 21.681,
+        "lat": 60.3653
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Korvenmaa",
+      "roadAreaId": "stop:Korvenmaa",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Krok",
+      "coordinates": {
+        "lon": 21.73558,
+        "lat": 60.12742
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Krok",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kuggö",
+      "coordinates": {
+        "lon": 22.161226,
+        "lat": 60.14787
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kuggö",
+      "roadAreaId": "stop:Kuggö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kumlinge",
+      "coordinates": {
+        "lon": 20.78945,
+        "lat": 60.29049
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kumlinge",
+      "roadAreaId": "kumlinge",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Kvarnholm",
+      "coordinates": {
+        "lon": 21.19791,
+        "lat": 60.39214
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kvarnholm",
+      "roadAreaId": "stop:Kvarnholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kyrkogårdsö",
+      "coordinates": {
+        "lon": 20.82505,
+        "lat": 60.031
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kyrkogårdsö",
+      "roadAreaId": "stop:Kyrkogårdsö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Käldersö",
+      "coordinates": {
+        "lon": 21.49639,
+        "lat": 60.16535
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Käldersö",
+      "roadAreaId": "stop:Käldersö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kälö",
+      "coordinates": {
+        "lon": 21.35432,
+        "lat": 60.07668
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kälö",
+      "roadAreaId": "stop:Kälö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Kökar",
+      "coordinates": {
+        "lon": 20.89234,
+        "lat": 59.945804
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Kökar",
+      "roadAreaId": "stop:Kökar",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lailuoto",
+      "coordinates": {
+        "lon": 21.66673,
+        "lat": 60.45487
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lailuoto",
+      "roadAreaId": "stop:Lailuoto",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lammholm",
+      "coordinates": {
+        "lon": 21.31327,
+        "lat": 60.3387
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lammholm",
+      "roadAreaId": "stop:Lammholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lappo",
+      "coordinates": {
+        "lon": 20.99583,
+        "lat": 60.31744
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lappo",
+      "roadAreaId": "lappo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "LappoL",
+      "coordinates": {
+        "lon": 20.95217,
+        "lat": 60.31141
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "LappoL",
+      "roadAreaId": "lappo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Lavarn",
+      "coordinates": {
+        "lon": 21.59882,
+        "lat": 60.25695
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lavarn",
+      "roadAreaId": "houtsala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Lempmo",
+      "coordinates": {
+        "lon": 21.26656,
+        "lat": 60.3194
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lempmo",
+      "roadAreaId": "stop:Lempmo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lempnäs",
+      "coordinates": {
+        "lon": 21.29519,
+        "lat": 60.30254
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lempnäs",
+      "roadAreaId": "stop:Lempnäs",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Liettinen",
+      "coordinates": {
+        "lon": 21.75471,
+        "lat": 60.424
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Liettinen",
+      "roadAreaId": "stop:Liettinen",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lillmälö",
+      "coordinates": {
+        "lon": 22.112581,
+        "lat": 60.23541
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lillmälö",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Lillpensor",
+      "coordinates": {
+        "lon": 21.55142,
+        "lat": 60.24677
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lillpensor",
+      "roadAreaId": "stop:Lillpensor",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Luk",
+      "coordinates": {
+        "lon": 21.32105,
+        "lat": 60.15144
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Luk",
+      "roadAreaId": "stop:Luk",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Långnäs",
+      "coordinates": {
+        "lon": 20.29975,
+        "lat": 60.11704
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Långnäs",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "LångnäsH",
+      "coordinates": {
+        "lon": 22.448759,
+        "lat": 59.872651
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Långnäs (Hiittinen)",
+      "roadAreaId": "hitis",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Lånholm",
+      "coordinates": {
+        "lon": 21.74151,
+        "lat": 60.12132
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lånholm",
+      "roadAreaId": "stop:Lånholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Lökholm",
+      "coordinates": {
+        "lon": 21.88236,
+        "lat": 59.91246
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Lökholm",
+      "roadAreaId": "stop:Lökholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Maisaari",
+      "coordinates": {
+        "lon": 21.89392,
+        "lat": 60.33217
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Maisaari",
+      "roadAreaId": "stop:Maisaari",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Mariehamn",
+      "coordinates": {
+        "lon": 19.927654,
+        "lat": 60.09202
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Maarianhamina",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Maskinnamo",
+      "coordinates": {
+        "lon": 21.63716,
+        "lat": 60.28334
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Maskinnamo",
+      "roadAreaId": "stop:Maskinnamo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Mattnäs",
+      "coordinates": {
+        "lon": 21.81116,
+        "lat": 60.13772
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Mattnäs",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Mielisholm",
+      "coordinates": {
+        "lon": 22.306484,
+        "lat": 60.21529
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Mielisholm",
+      "roadAreaId": "stop:Mielisholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Mossala",
+      "coordinates": {
+        "lon": 21.43913,
+        "lat": 60.28904
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Mossala",
+      "roadAreaId": "mossala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "MossalaE",
+      "coordinates": {
+        "lon": 21.406,
+        "lat": 60.2687
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "MossalaE",
+      "roadAreaId": "mossala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Munninmaa",
+      "coordinates": {
+        "lon": 21.68096,
+        "lat": 60.42039
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Munninmaa",
+      "roadAreaId": "stop:Munninmaa",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Naantali",
+      "coordinates": {
+        "lon": 22.040076,
+        "lat": 60.45806
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Naantali",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Nagu",
+      "coordinates": {
+        "lon": 21.91165,
+        "lat": 60.19404
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Nagu",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Norrboda",
+      "coordinates": {
+        "lon": 20.2896,
+        "lat": 60.1531
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Norrboda",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Norrby",
+      "coordinates": {
+        "lon": 21.38994,
+        "lat": 60.39709
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Norrby",
+      "roadAreaId": "inio",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Näsby",
+      "coordinates": {
+        "lon": 21.36801,
+        "lat": 60.2245
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Näsby",
+      "roadAreaId": "houtskar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "NäsbyI",
+      "coordinates": {
+        "lon": 21.39553,
+        "lat": 60.21745
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "NäsbyI",
+      "roadAreaId": "houtskar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Nåtö",
+      "coordinates": {
+        "lon": 21.15718,
+        "lat": 60.34126
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Nåtö",
+      "roadAreaId": "stop:Nåtö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Nötö",
+      "coordinates": {
+        "lon": 21.75574,
+        "lat": 59.95385
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Nötö",
+      "roadAreaId": "stop:Nötö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Olofsnäs",
+      "coordinates": {
+        "lon": 21.55873,
+        "lat": 60.21656
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Olofsnäs",
+      "roadAreaId": "houtsala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Pakinainen",
+      "coordinates": {
+        "lon": 21.68785,
+        "lat": 60.35532
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Pakinainen",
+      "roadAreaId": "stop:Pakinainen",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "PalvaI",
+      "coordinates": {
+        "lon": 21.67566,
+        "lat": 60.46787
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "PalvaI",
+      "roadAreaId": "palva",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "PalvaL",
+      "coordinates": {
+        "lon": 21.64825,
+        "lat": 60.46117
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "PalvaL",
+      "roadAreaId": "palva",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Peno",
+      "coordinates": {
+        "lon": 22.100801,
+        "lat": 60.14415
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Peno",
+      "roadAreaId": "stop:Peno",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "PensarI",
+      "coordinates": {
+        "lon": 22.136839,
+        "lat": 60.14796
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "PensarI",
+      "roadAreaId": "pensar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "PensarL",
+      "coordinates": {
+        "lon": 22.109835,
+        "lat": 60.15116
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "PensarL",
+      "roadAreaId": "pensar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Perkala",
+      "coordinates": {
+        "lon": 21.47417,
+        "lat": 60.36726
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Perkala",
+      "roadAreaId": "stop:Perkala",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "PerkalaP",
+      "coordinates": {
+        "lon": 21.4766,
+        "lat": 60.37945
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "PerkalaP",
+      "roadAreaId": "stop:PerkalaP",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Pettu",
+      "coordinates": {
+        "lon": 22.92293,
+        "lat": 60.03848
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Pettu",
+      "roadAreaId": "stop:Pettu",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Prostvik",
+      "coordinates": {
+        "lon": 22.097969,
+        "lat": 60.22255
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Prostvik",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Prästö",
+      "coordinates": {
+        "lon": 20.2722,
+        "lat": 60.20799
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Prästö",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Pyytti",
+      "coordinates": {
+        "lon": 21.672818,
+        "lat": 60.367219
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Pyytti",
+      "roadAreaId": "stop:Pyytti",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Pähkinäinen",
+      "coordinates": {
+        "lon": 21.695021,
+        "lat": 60.330193
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Pähkinäinen",
+      "roadAreaId": "stop:Pähkinäinen",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Pärnäs",
+      "coordinates": {
+        "lon": 21.70495,
+        "lat": 60.16376
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Pärnäs",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Ramsholm",
+      "coordinates": {
+        "lon": 22.1841,
+        "lat": 60.16999
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ramsholm",
+      "roadAreaId": "heisala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Rauhala",
+      "coordinates": {
+        "lon": 21.6978,
+        "lat": 60.4489
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Rauhala",
+      "roadAreaId": "stop:Rauhala",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Retais",
+      "coordinates": {
+        "lon": 21.69141,
+        "lat": 60.16592
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Retais",
+      "roadAreaId": "korpo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Rockelholm",
+      "coordinates": {
+        "lon": 21.88857,
+        "lat": 60.09984
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Rockelholm",
+      "roadAreaId": "stop:Rockelholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Rosala",
+      "coordinates": {
+        "lon": 22.415102,
+        "lat": 59.854007
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Rosala",
+      "roadAreaId": "hitis",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Roslax",
+      "coordinates": {
+        "lon": 21.33517,
+        "lat": 60.23341
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Roslax",
+      "roadAreaId": "houtskar",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Ruotsalainen",
+      "coordinates": {
+        "lon": 21.76463,
+        "lat": 60.36798
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ruotsalainen",
+      "roadAreaId": "stop:Ruotsalainen",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Salmis",
+      "coordinates": {
+        "lon": 21.309627,
+        "lat": 60.324138
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Salmis",
+      "roadAreaId": "stop:Salmis",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Samsaari",
+      "coordinates": {
+        "lon": 21.82749,
+        "lat": 60.31902
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Samsaari",
+      "roadAreaId": "stop:Samsaari",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Sandholm",
+      "coordinates": {
+        "lon": 21.80896,
+        "lat": 59.903751
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Sandholm",
+      "roadAreaId": "stop:Sandholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Saverkeit",
+      "coordinates": {
+        "lon": 21.40314,
+        "lat": 60.2168
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Saverkeit",
+      "roadAreaId": "stop:Saverkeit",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Seglinge",
+      "coordinates": {
+        "lon": 20.71015,
+        "lat": 60.21551
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Seglinge",
+      "roadAreaId": "stop:Seglinge",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Seili",
+      "coordinates": {
+        "lon": 21.95514,
+        "lat": 60.23638
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Seili",
+      "roadAreaId": "stop:Seili",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Själö",
+      "coordinates": {
+        "lon": 21.17333,
+        "lat": 60.37506
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Själö",
+      "roadAreaId": "stop:Själö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Skagen",
+      "coordinates": {
+        "lon": 21.36853,
+        "lat": 60.40619
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Skagen",
+      "roadAreaId": "inio",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Skarpnåtö",
+      "coordinates": {
+        "lon": 19.761014,
+        "lat": 60.32684
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Skarpnåtö",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Snäckö",
+      "coordinates": {
+        "lon": 20.7267,
+        "lat": 60.2192
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Snäckö",
+      "roadAreaId": "kumlinge",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "SnäcköGeta",
+      "coordinates": {
+        "lon": 19.793711,
+        "lat": 60.35636
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "SnäcköGeta",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Sorpo",
+      "coordinates": {
+        "lon": 22.28183,
+        "lat": 60.15091
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Sorpo",
+      "roadAreaId": "stop:Sorpo",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Sottunga",
+      "coordinates": {
+        "lon": 20.68222,
+        "lat": 60.10997
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Sottunga",
+      "roadAreaId": "stop:Sottunga",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Stenholm",
+      "coordinates": {
+        "lon": 22.164897,
+        "lat": 60.17045
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Stenholm",
+      "roadAreaId": "stop:Stenholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Stenskär",
+      "coordinates": {
+        "lon": 22.048895,
+        "lat": 60.0713
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Stenskär",
+      "roadAreaId": "stop:Stenskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "StockholmStadsgården",
+      "coordinates": {
+        "lon": 18.096542,
+        "lat": 59.317076
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "StockholmStadsgården",
+      "roadAreaId": "stop:StockholmStadsgården",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "StockholmVärtan",
+      "coordinates": {
+        "lon": 18.108902,
+        "lat": 59.350346
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "StockholmVärtan",
+      "roadAreaId": "stop:StockholmVärtan",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Storpensor",
+      "coordinates": {
+        "lon": 21.50838,
+        "lat": 60.23262
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Storpensor",
+      "roadAreaId": "stop:Storpensor",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Svartnäs",
+      "coordinates": {
+        "lon": 22.3952,
+        "lat": 59.9491
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Svartnäs",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Svinö",
+      "coordinates": {
+        "lon": 20.26762,
+        "lat": 60.06655
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Svinö",
+      "roadAreaId": "mainland_aland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Söderlångvik",
+      "coordinates": {
+        "lon": 22.43366,
+        "lat": 60.032413
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Söderlångvik",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Södö",
+      "coordinates": {
+        "lon": 21.19725,
+        "lat": 60.327
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Södö",
+      "roadAreaId": "stop:Södö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Sördö",
+      "coordinates": {
+        "lon": 21.29178,
+        "lat": 60.28351
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Sördö",
+      "roadAreaId": "stop:Sördö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Tallinn",
+      "coordinates": {
+        "lon": 24.770607,
+        "lat": 59.443868
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Tallinn",
+      "roadAreaId": "stop:Tallinn",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Talosmeri",
+      "coordinates": {
+        "lon": 21.6817,
+        "lat": 60.45702
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Talosmeri",
+      "roadAreaId": "stop:Talosmeri",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Tammisluoto",
+      "coordinates": {
+        "lon": 21.7408,
+        "lat": 60.414549
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Tammisluoto",
+      "roadAreaId": "stop:Tammisluoto",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Teersalo",
+      "coordinates": {
+        "lon": 21.69396,
+        "lat": 60.4674
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Teersalo",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Timskär",
+      "coordinates": {
+        "lon": 20.36536,
+        "lat": 60.33153
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Timskär",
+      "roadAreaId": "stop:Timskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Torsholma",
+      "coordinates": {
+        "lon": 21.03804,
+        "lat": 60.35669
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Torsholma",
+      "roadAreaId": "brando",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "TorsholmaI",
+      "coordinates": {
+        "lon": 21.07092,
+        "lat": 60.36376
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "TorsholmaI",
+      "roadAreaId": "brando",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Triören",
+      "coordinates": {
+        "lon": 22.07765,
+        "lat": 60.09818
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Triören",
+      "roadAreaId": "stop:Triören",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Trunsö",
+      "coordinates": {
+        "lon": 21.77237,
+        "lat": 59.882509
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Trunsö",
+      "roadAreaId": "stop:Trunsö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Träskholm",
+      "coordinates": {
+        "lon": 21.74222,
+        "lat": 59.913374
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Träskholm",
+      "roadAreaId": "stop:Träskholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Tunnhamn",
+      "coordinates": {
+        "lon": 22.183598,
+        "lat": 59.928128
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Tunnhamn",
+      "roadAreaId": "stop:Tunnhamn",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Turku",
+      "coordinates": {
+        "lon": 22.217016,
+        "lat": 60.43461
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Turku",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "TurkuVitharun",
+      "coordinates": {
+        "lon": 22.250924800019448,
+        "lat": 60.443111402972306
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Aurajoki",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Tveskiftsholm",
+      "coordinates": {
+        "lon": 21.74986,
+        "lat": 60.1057
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Tveskiftsholm",
+      "roadAreaId": "stop:Tveskiftsholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Töftö",
+      "coordinates": {
+        "lon": 20.27766,
+        "lat": 60.20571
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Töftö",
+      "roadAreaId": "vardo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Ulkoluoto",
+      "coordinates": {
+        "lon": 22.915098,
+        "lat": 60.04117
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ulkoluoto",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Utö",
+      "coordinates": {
+        "lon": 21.36823,
+        "lat": 59.786521
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Utö",
+      "roadAreaId": "stop:Utö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Vartsala",
+      "coordinates": {
+        "lon": 21.31969,
+        "lat": 60.54101
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vartsala",
+      "roadAreaId": "vartsala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Vattungsrevet",
+      "coordinates": {
+        "lon": 20.37225,
+        "lat": 60.32248
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vattungsrevet",
+      "roadAreaId": "vardo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Velkuanmaa",
+      "coordinates": {
+        "lon": 21.6365,
+        "lat": 60.45505
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Velkuanmaa",
+      "roadAreaId": "stop:Velkuanmaa",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Verkan",
+      "coordinates": {
+        "lon": 21.55669,
+        "lat": 60.17469
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Verkan",
+      "roadAreaId": "korpo",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Vikare",
+      "coordinates": {
+        "lon": 22.517099,
+        "lat": 59.898055
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vikare",
+      "roadAreaId": "hitis",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Vuosnainen",
+      "coordinates": {
+        "lon": 21.24712,
+        "lat": 60.50727
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vuosnainen",
+      "roadAreaId": "vartsala",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Vänoxaby",
+      "coordinates": {
+        "lon": 22.610178,
+        "lat": 59.970745
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vänoxaby",
+      "roadAreaId": "stop:Vänoxaby",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Vänoxasläten",
+      "coordinates": {
+        "lon": 22.608219,
+        "lat": 59.964509
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vänoxasläten",
+      "roadAreaId": "stop:Vänoxasläten",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Vänö",
+      "coordinates": {
+        "lon": 22.196503,
+        "lat": 59.868326
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Vänö",
+      "roadAreaId": "stop:Vänö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Våno",
+      "coordinates": {
+        "lon": 22.303866,
+        "lat": 60.21683
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Våno",
+      "roadAreaId": "mainland_finland",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Wihuri",
+      "coordinates": {
+        "lon": 21.6647,
+        "lat": 60.3719
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Wihuri",
+      "roadAreaId": "stop:Wihuri",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Ytterstholm",
+      "coordinates": {
+        "lon": 21.9265,
+        "lat": 60.11944
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ytterstholm",
+      "roadAreaId": "nagu",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Ytterstö",
+      "coordinates": {
+        "lon": 21.26433,
+        "lat": 60.31606
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ytterstö",
+      "roadAreaId": "stop:Ytterstö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Ängesö",
+      "coordinates": {
+        "lon": 22.506408,
+        "lat": 59.949735
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ängesö",
+      "roadAreaId": "stop:Ängesö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Ängholm",
+      "coordinates": {
+        "lon": 21.8803,
+        "lat": 60.167
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ängholm",
+      "roadAreaId": "stop:Ängholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Ängsö",
+      "coordinates": {
+        "lon": 21.72374,
+        "lat": 60.10431
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ängsö",
+      "roadAreaId": "stop:Ängsö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Ängö",
+      "coordinates": {
+        "lon": 20.29453,
+        "lat": 60.15412
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Ängö",
+      "roadAreaId": "stop:Ängö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Äpplö",
+      "coordinates": {
+        "lon": 21.21944,
+        "lat": 60.31009
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Äpplö",
+      "roadAreaId": "stop:Äpplö",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Åselholm",
+      "coordinates": {
+        "lon": 21.22032,
+        "lat": 60.4155
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Åselholm",
+      "roadAreaId": "stop:Åselholm",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Åva",
+      "coordinates": {
+        "lon": 21.05814,
+        "lat": 60.50327
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Åva",
+      "roadAreaId": "brando",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Åvensor",
+      "coordinates": {
+        "lon": 21.57819,
+        "lat": 60.2983
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Åvensor",
+      "roadAreaId": "stop:Åvensor",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Örö",
+      "coordinates": {
+        "lon": 22.337143,
+        "lat": 59.811043
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Örö",
+      "roadAreaId": "oro",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "ÖröP",
+      "coordinates": {
+        "lon": 22.324812,
+        "lat": 59.822362
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "ÖröP",
+      "roadAreaId": "oro",
+      "roadAreaKind": "maintained_component"
+    },
+    {
+      "id": "Österskär",
+      "coordinates": {
+        "lon": 21.29162,
+        "lat": 59.978844
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Österskär",
+      "roadAreaId": "stop:Österskär",
+      "roadAreaKind": "singleton_stop"
+    },
+    {
+      "id": "Överö",
+      "coordinates": {
+        "lon": 20.51087,
+        "lat": 60.11138
+      },
+      "coordinateSource": "saaristolautat/public/data/saaristo.json",
+      "name": "Överö",
+      "roadAreaId": "overo",
+      "roadAreaKind": "maintained_component"
+    }
+  ],
+  "statistics": {
+    "stopCount": 205,
+    "maintainedComponentStopCount": 85,
+    "singletonStopCount": 120,
+    "maintainedRoadAreaCount": 23
+  }
+}

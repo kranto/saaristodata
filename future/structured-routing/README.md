@@ -7,6 +7,10 @@ ole tuotannossa eikä sitä julkaista nykyisen Saaristolautat-datan mukana.
 Keskeiset tiedostot:
 
 - `structured-timetables.json`: generoitu rakenteellisen aikataulun luonnos.
+- `commercial-ferry-timetables.json`: virallisista operaattorilähteistä
+  litteroidut Turun, Naantalin ja Helsingin sekä Ahvenanmaan väliset Tallinkin,
+  Viking Linen ja Finnlinesin reittivuorot, poikkeukset, varauslinkit ja
+  lähtöselvitysehdot. Hinnat ovat dynaamisia eikä niitä tallenneta numeroina.
 - `structured-connection-timetables.json`: yhteysalusreittien ja reitityksessä
   tarvittavien Ahvenanmaan aluslinjojen säännölliset viikkoaikataulut matkoiksi
   normalisoiva kokeellinen aineisto.
@@ -57,6 +61,12 @@ Keskeiset tiedostot:
   puuttuvien tiealuejäsenyyksien löytämiseksi.
 - `road-network-review.md`: ihmiselle tarkoitettu tarkistuslista tiealueista ja
   kaikista laituriväleistä.
+- `external-routing-stop-index.json`: kaikkien tunnettujen vesiliikenteen
+  pysähdyspaikkojen koordinaatit ja niistä johdetut lautattomat tiealueet.
+  Ylläpidetyn monen pysähdyspaikan tiealueen ulkopuoliset paikat muodostavat
+  yhden pysähdyspaikan tiealueen.
+- `external-routing-stop-index.schema.json`: ulkoisen reitityksen
+  pysähdyspaikkahakemiston JSON Schema.
 - `routing-stop-overrides.json`: reitityksessä käytettävät laiturinimien
   vastaavuudet sekä useita mahdollisia laiturikäyntejä sisältävien
   aikataulusolujen rakenteinen tulkinta.
@@ -71,6 +81,11 @@ Keskeiset tiedostot:
   yhdistää lautattomat tieosuudet, aikataulutetut lauttavuorot ja tunnetun
   ylitysajan sisältävät jatkuvat lossiyhteydet. Vaihtoriski ilmoitetaan
   yhteysvälikohtaisesti.
+
+Lossien `crossingMinutes` on reititysaika rannasta rantaan. Kentän
+`crossingTimeBasis` kertoo, perustuuko se viranomaisen liikenneanalyysiin,
+muuhun lähdetietoon vai reitin pituudesta tehtyyn vertailuarvioon. Jälkimmäistä
+ei pidä esittää julkaistuna aikatauluaikana.
 - `scripts/route_itineraries.py`: saman haun useita eri lauttavuoroketjuja
   säilyttävä versio. Se voi rajata saapumisen samalle päivälle ja siirtää
   matkan alun tieosuudet juuri ennen ensimmäistä lauttaa. Haku yhdistää
@@ -84,6 +99,16 @@ Keskeiset tiedostot:
   sisäistä diagnostiikkaa, ellei diagnostiikkaa pyydetä erikseen.
 - `route-query-response.schema.json`: sovellukselle tarkoitetun
   reititysvastauksen JSON Schema.
+- `scripts/build_external_routing_stop_index.py`: koostaa yleisen
+  reitityspalvelun lauttaan nousukoordinaattien tunnistamiseen käytettävän
+  pysähdyspaikka- ja tiealuehakemiston. Vanhan sovellusdatan `pier`-tyyppiä ei
+  muuteta, mutta uusi aineisto käyttää yleistermiä `stop`.
+- `scripts/classify_external_route.py`: lukee ajo-ohjeet sisältävän Valhalla-
+  vastauksen, purkaa reittigeometrian ja palauttaa ensimmäisen lauttaan
+  nousupaikan, jonka lähin tunnettu pysähdyspaikka on enintään 500 metrin
+  päässä. Aiemmat tuntemattomat lautat ohitetaan eikä vastarannan
+  tunnistamista vaadita tiealueen päättelemiseksi. Jos reitillä ei ole
+  lauttaa, kysytty piste saa tunnetun ankkuripisteen tiealueen.
 - `route-query-timing-audit.json`: reiteittäin ja laitureittain ryhmitelty
   auditointi niistä matkan sisäisistä käynneistä, joille ei vielä ole
   julkaistua eikä historiallista aikaa.
@@ -150,7 +175,12 @@ python3 future/structured-routing/scripts/build_connection_prediction_catalog.py
 python3 future/structured-routing/scripts/build_road_network.py
 python3 future/structured-routing/scripts/audit_road_components.py
 python3 future/structured-routing/scripts/build_road_network_review.py
+python3 future/structured-routing/scripts/build_external_routing_stop_index.py
+python3 future/structured-routing/scripts/build_external_routing_stop_index.py --check
 python3 future/structured-routing/scripts/build_routing_graph.py
+
+python3 future/structured-routing/scripts/classify_external_route.py \
+  valhalla-route-response.json --anchor-road-area mainland_finland
 
 python3 future/structured-routing/scripts/query_direct_services.py \
   Roslax Bockholm 2026-11-02 --mode car

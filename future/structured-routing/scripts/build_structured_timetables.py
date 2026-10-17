@@ -21,6 +21,7 @@ CHECKS = REPOSITORY_ROOT / "timetable-checks.json"
 ORIGINALS = REPOSITORY_ROOT / ".timetable-checker" / "originals"
 OUTPUT = EXPERIMENT_ROOT / "structured-timetables.json"
 TRANSCRIPTIONS = EXPERIMENT_ROOT / "structured-timetable-transcriptions"
+COMMERCIAL_FERRIES = EXPERIMENT_ROOT / "commercial-ferry-timetables.json"
 
 EXPIRED_PDF_SOURCES = {
     "finferries-houtskarrutt-houtskarin-reitti-talvi-19.8.2026-30.9.2026",
@@ -215,8 +216,11 @@ ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS = {
 # A routing client sees both scheduled road ferries and on-demand cable ferries
 # as two-terminal edges. Source headings are retained in departures, while this
 # table maps them to the canonical pier names used by the rest of the data.
-# crossingMinutes is included only where the maintained route data already
-# gives an approximate duration; an unknown value is not guessed.
+# crossingMinutes is a routing duration from departure to arrival.  The source
+# and the derivation are retained because several cable-ferry operators publish
+# only the route length and departure times, not a formal crossing duration.
+# Values based on an official transport analysis are kept separate from values
+# reported by a local or route-information source.
 FERRY_ROUTE_MODELS = {
     "iniokustavi": {
         "mode": "road_ferry", "terminals": ["Kannvik", "Heponiemi"],
@@ -250,53 +254,125 @@ FERRY_ROUTE_MODELS = {
     },
     "hammaronsalmi": {
         "mode": "cable_ferry", "terminals": ["Airismaa", "Aasla"],
+        "crossingMinutes": 3,
+        "returnImmediatelyAfterPublishedCrossing": True,
+        "crossingTimeBasis": "current_route_information_estimate",
+        "crossingTimeSourceUrl": "https://lautta.junatiedot.fi/hammaronsalmen-lossi",
         "origins": {"Hämmärönsalmi (Aasla)": "Aasla"},
     },
-    "hogsar": {"mode": "cable_ferry", "terminals": ["Grännäs", "Ängholm"], "origins": {}},
+    "hogsar": {
+        "mode": "cable_ferry", "terminals": ["Grännäs", "Ängholm"],
+        "crossingMinutes": 3,
+        "crossingTimeBasis": "estimate_from_official_319_m_route_length",
+        "crossingTimeSourceUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/hogsar.html",
+        "origins": {},
+    },
     "hogsara": {
         "mode": "cable_ferry", "terminals": ["Svartnäs", "Högsåra"],
+        "crossingMinutes": 10,
+        "crossingTimeBasis": "local_destination_route_information",
+        "crossingTimeSourceUrl": "https://www.farmorscafe.fi/sv/yhteystiedot/",
         "origins": {"Svartnäs": "Svartnäs", "Högsåra": "Högsåra"},
     },
     "keistio": {
         "mode": "cable_ferry", "terminals": ["Dalen", "Keistiö"],
+        "crossingMinutes": 12,
+        "crossingTimeBasis": "local_archipelago_route_information",
+        "crossingTimeSourceUrl": "https://www.vskylat.fi/wp-content/uploads/2021/11/Keistio.pdf",
         "origins": {"Dalen": "Dalen", "Keistiö": "Keistiö"},
     },
-    "kivimo": {"mode": "cable_ferry", "terminals": ["Roslax", "Kivimo"], "origins": {}},
+    "kivimo": {
+        "mode": "cable_ferry", "terminals": ["Roslax", "Kivimo"],
+        "crossingMinutes": 1,
+        "crossingTimeBasis": "official_transport_analysis_travel_time",
+        "crossingTimeSourceUrl": "https://www.doria.fi/bitstream/handle/10024/172554/vj_2019-42_978-952-317-721-5.pdf?sequence=5&isAllowed=y",
+        "origins": {},
+    },
     "kokkila": {
         "mode": "cable_ferry", "terminals": ["Kokkila", "Angelniemi"],
+        "crossingMinutes": 6,
+        "returnImmediatelyAfterPublishedCrossing": True,
+        "crossingTimeBasis": "current_route_information_estimate",
+        "crossingTimeSourceUrl": "https://lautta.junatiedot.fi/kokkila-lossi",
         "origins": {"Kokkila (saari/ö)": "Kokkila"},
     },
-    "mossala": {"mode": "cable_ferry", "terminals": ["BjörköH", "MossalaE"], "origins": {}},
+    "mossala": {
+        "mode": "cable_ferry", "terminals": ["BjörköH", "MossalaE"],
+        "crossingMinutes": 2,
+        "crossingTimeBasis": "official_transport_analysis_travel_time",
+        "crossingTimeSourceUrl": "https://www.doria.fi/bitstream/handle/10024/172554/vj_2019-42_978-952-317-721-5.pdf?sequence=5&isAllowed=y",
+        "origins": {},
+    },
     "palva": {
         "mode": "cable_ferry", "terminals": ["Teersalo", "PalvaI"],
+        "crossingMinutes": 8,
+        "crossingTimeBasis": "current_route_information_estimate",
+        "crossingTimeSourceUrl": "https://fi.ferje.info/palva-lossi",
         "origins": {"Teersalo": "Teersalo", "Palva": "PalvaI"},
     },
-    "saverkeit": {"mode": "cable_ferry", "terminals": ["NäsbyI", "Saverkeit"], "origins": {}},
-    "skagen": {"mode": "cable_ferry", "terminals": ["Skagen", "JumoE"], "origins": {}},
+    "saverkeit": {
+        "mode": "cable_ferry", "terminals": ["NäsbyI", "Saverkeit"],
+        "crossingMinutes": 2,
+        "crossingTimeBasis": "official_transport_analysis_travel_time",
+        "crossingTimeSourceUrl": "https://www.doria.fi/bitstream/handle/10024/172554/vj_2019-42_978-952-317-721-5.pdf?sequence=5&isAllowed=y",
+        "origins": {},
+    },
+    "skagen": {
+        "mode": "cable_ferry", "terminals": ["Skagen", "JumoE"],
+        "crossingMinutes": 5,
+        "crossingTimeBasis": "route_information_estimate",
+        "crossingTimeSourceUrl": "https://www.2cv.fi/lautat-raid2papp-reitilla-kesakuussa-2017/",
+        "origins": {},
+    },
     "vano": {
         "mode": "cable_ferry", "terminals": ["Våno", "Mielisholm"],
+        "crossingMinutes": 3,
+        "returnImmediatelyAfterPublishedCrossing": True,
+        "crossingTimeBasis": "current_route_information_estimate",
+        "crossingTimeSourceUrl": "https://fi.ferje.info/vanon-lossi",
         "origins": {"Våno (mantere/fastland)": "Våno"},
     },
     "vartsala": {
         "mode": "cable_ferry", "terminals": ["Kivimaa", "Vartsala"],
+        "crossingMinutes": 8,
+        "crossingTimeBasis": "upper_bound_of_current_route_information_estimate",
+        "crossingTimeSourceUrl": "https://fi.ferje.info/vartsalan-lossi",
         "origins": {"Kustavi/Gustavs (mantere/fastland)": "Kivimaa", "Vartsala (saari/ö)": "Vartsala"},
     },
     "velkuanmaa": {
         "mode": "cable_ferry", "terminals": ["PalvaL", "Velkuanmaa"],
+        "crossingMinutes": 8,
+        "crossingTimeBasis": "estimate_from_route_length_and_published_departure_spacing",
+        "crossingTimeSourceUrl": "https://www.finferries.fi/lauttaliikenne/lauttapaikat-ja-aikataulut/velkuanmaa.html",
         "origins": {"Palva": "PalvaL", "Velkuanmaa": "Velkuanmaa"},
     },
     "seglingelinjen": {"mode": "cable_ferry", "terminals": ["Seglinge", "Snäckö"], "crossingMinutes": 7, "origins": {}},
     "simskalalinjen": {"mode": "cable_ferry", "terminals": ["Timskär", "Vattungsrevet"], "crossingMinutes": 7, "origins": {}},
     "toftolinjen": {"mode": "cable_ferry", "terminals": ["Töftö", "Prästö"], "crossingMinutes": 4, "origins": {}},
-    "bjorkolinjen": {"mode": "cable_ferry", "terminals": ["LappoL", "BjörköK"], "origins": {}},
-    # The maintained pier coordinates put this short crossing at about 210 m.
+    "bjorkolinjen": {
+        "mode": "cable_ferry", "terminals": ["LappoL", "BjörköK"],
+        "crossingMinutes": 5,
+        "crossingDistanceMeters": 555,
+        "crossingTimeBasis": "estimate_from_route_length_and_comparable_aland_cable_ferries",
+        "origins": {},
+    },
+    # The maintained route length for this short crossing is 215 m.
     # Five minutes is a conservative routing approximation comparable to the
     # other short cable-ferry crossings; it is not a published timetable time.
     "embarsundslinjen": {
         "mode": "cable_ferry", "terminals": ["Finholma", "Jyddö"],
-        "crossingMinutes": 5, "origins": {},
+        "crossingMinutes": 5,
+        "crossingDistanceMeters": 215,
+        "crossingTimeBasis": "maintained_conservative_routing_estimate",
+        "origins": {},
     },
-    "angosundslinjen": {"mode": "cable_ferry", "terminals": ["Norrboda", "Ängö"], "origins": {}},
+    "angosundslinjen": {
+        "mode": "cable_ferry", "terminals": ["Norrboda", "Ängö"],
+        "crossingMinutes": 4,
+        "crossingDistanceMeters": 280,
+        "crossingTimeBasis": "estimate_from_route_length_and_comparable_aland_cable_ferries",
+        "origins": {},
+    },
 }
 
 # Route-scoped because names such as Torsholma occur in more than one
@@ -531,7 +607,16 @@ def normalize_ferry_route(route: dict, model: dict) -> list[str]:
         "terminals": terminals,
         "vehicleAccessAtAllTerminals": True,
         "connectionVesselVehicleLoadingCapabilityModeled": False,
-        **({"crossingMinutes": model["crossingMinutes"], "crossingTimeNature": "approximate"}
+        **({
+            "crossingMinutes": model["crossingMinutes"],
+            "crossingTimeNature": "approximate",
+            **({"crossingTimeBasis": model["crossingTimeBasis"]}
+               if model.get("crossingTimeBasis") else {}),
+            **({"crossingTimeSourceUrl": model["crossingTimeSourceUrl"]}
+               if model.get("crossingTimeSourceUrl") else {}),
+            **({"crossingDistanceMeters": model["crossingDistanceMeters"]}
+               if model.get("crossingDistanceMeters") is not None else {}),
+        }
            if model.get("crossingMinutes") is not None else
            {"crossingTimeStatus": "not_available_do_not_invent"}),
     }
@@ -571,7 +656,7 @@ def normalize_ferry_route(route: dict, model: dict) -> list[str]:
             else:
                 destination_call["timeNature"] = "unknown_crossing_duration"
             calls.append(destination_call)
-            trips.append({
+            normalized_trip = {
                 "id": f'{route["id"]}-ferry-{len(trips) + 1:04d}',
                 "operatingDays": operation["operatingDays"],
                 "validPeriods": [{
@@ -589,7 +674,35 @@ def normalize_ferry_route(route: dict, model: dict) -> list[str]:
                     if operation.get("noteInterpretationStatus") == "unresolved"
                     else "machine_generated"
                 ),
-            })
+            }
+            trips.append(normalized_trip)
+            if model.get("returnImmediatelyAfterPublishedCrossing"):
+                reverse_departure, reverse_departure_day = add_minutes(
+                    departure["time"], departure.get("dayOffset", 0), model["crossingMinutes"]
+                )
+                reverse_arrival, reverse_arrival_day = add_minutes(
+                    departure["time"], departure.get("dayOffset", 0), 2 * model["crossingMinutes"]
+                )
+                trips.append({
+                    **normalized_trip,
+                    "id": f'{route["id"]}-ferry-{len(trips) + 1:04d}',
+                    "calls": [
+                        {
+                            "stop": destination,
+                            "time": reverse_departure,
+                            "dayOffset": reverse_departure_day,
+                            "timeNature": "estimated_immediate_return_departure",
+                            "offsetMinutes": model["crossingMinutes"],
+                        },
+                        {
+                            "stop": origin,
+                            "time": reverse_arrival,
+                            "dayOffset": reverse_arrival_day,
+                            "timeNature": "estimated_from_approximate_crossing_duration",
+                            "offsetMinutes": 2 * model["crossingMinutes"],
+                        },
+                    ],
+                })
     if route["departures"]:
         route["trips"] = trips
     return sorted(set(unmapped))
@@ -633,6 +746,7 @@ def normalize_aland_scheduled_cable_ferry(route: dict, schedule: dict) -> None:
             **item,
             "type": "continuous_or_on_demand",
             "terminals": terminals,
+            "crossingMinutes": schedule["crossingMinutes"],
             "validPeriods": schedule["validPeriods"],
             "sourceId": schedule["sourceId"],
             "breaks": schedule["breaks"],
@@ -1064,6 +1178,14 @@ def build() -> dict:
                 if key in transcription:
                     route[key] = transcription[key]
             transcription_count += 1
+    commercial_route_count = 0
+    if COMMERCIAL_FERRIES.exists():
+        commercial_data = json.loads(COMMERCIAL_FERRIES.read_text())
+        for commercial_route in commercial_data["routes"]:
+            if commercial_route["id"] in routes_by_id:
+                raise ValueError(f'duplicate commercial ferry route id: {commercial_route["id"]}')
+            routes_by_id[commercial_route["id"]] = commercial_route
+            commercial_route_count += 1
     add_aland_continuous_cable_ferries(routes_by_id)
     routes = sorted(routes_by_id.values(), key=lambda item: item["id"])
     unmapped_ferry_departures = {}
@@ -1185,6 +1307,7 @@ def build() -> dict:
             "routeCount": len(routes),
             "convertedSourceCount": len(schedules) + transcription_count,
             "manualTranscriptionCount": transcription_count,
+            "commercialFerryRouteCount": commercial_route_count,
             "tripCount": sum(len(route.get("trips", [])) for route in routes),
             "normalizedFerryRouteCount": sum(route["id"] in FERRY_ROUTE_MODELS for route in routes),
             "normalizedFerryTripCount": sum(

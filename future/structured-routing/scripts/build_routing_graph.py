@@ -47,7 +47,10 @@ def service_type(route: dict) -> str:
 
 
 def mobility_for(service: str) -> dict:
-    if service in {"road_ferry", "cable_ferry", "alandstrafiken_archipelago_ferry"}:
+    if service in {
+        "road_ferry", "cable_ferry", "alandstrafiken_archipelago_ferry",
+        "commercial_ferry",
+    }:
         return {mode: "allowed" for mode in ("foot", "bicycle", "motorcycle", "car")}
     if service == "connection_vessel":
         return {

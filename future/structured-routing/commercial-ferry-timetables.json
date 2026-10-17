@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-15",
+  "scope": "Published Finland–Åland legs of commercial Finland–Sweden ferry services",
+  "routes": [
+    {
+      "id": "finnlines-naantali-langnas",
+      "provider": "finnlines",
+      "serviceType": "commercial_ferry",
+      "departures": [],
+      "continuousServices": [],
+      "validPeriods": [
+        {"validFrom": "2026-10-15", "validTo": "2026-12-31"}
+      ],
+      "vessels": ["Finncanopus", "Finnsirius"],
+      "vesselByCode": {
+        "FINNCANOPUS": {"name": "Finncanopus"},
+        "FINNSIRIUS": {"name": "Finnsirius"}
+      },
+      "booking": {
+        "requiredForAllTrips": true,
+        "url": "https://booking.finnlines.com/",
+        "loadingReadinessMinutesBefore": 60,
+        "loadingReadinessMinutesBeforeByOrigin": {
+          "Naantali": 60,
+          "Långnäs": {"car": 45, "motorcycle": 45, "bicycle": 30, "foot": 30}
+        }
+      },
+      "travelerInformation": {
+        "farePolicy": {"passengers": "paid", "vehicles": "paid", "pricing": "dynamic"},
+        "checkInRules": [
+          {"origin": "Naantali", "allPassengersMinutesBeforeDeparture": 60},
+          {"origin": "Långnäs", "vehicleDayDepartureMinutesBeforeDeparture": 45, "footPassengerDayDepartureMinutesBeforeDeparture": 30, "nightDepartureCheckIn": "on_board"}
+        ],
+        "documents": ["booking_number", "identity_document", "vehicle_registration_document_when_travelling_with_vehicle"],
+        "notices": [
+          {"type": "published_times_are_local"},
+          {"type": "advance_ticket_required"}
+        ]
+      },
+      "publicTimetableUrl": "https://www.finnlines.com/fi/reitit/naantali-langnas-kapellskar-reitti/",
+      "contact": {
+        "phones": ["+358923143100"],
+        "email": "passenger@finnlines.com"
+      },
+      "trips": [
+        {"id": "naantali-langnas-motu-day", "operatingDays": "12_____", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-13"}, {"validFrom": "2026-12-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "FINNCANOPUS", "calls": [{"stop": "Naantali", "time": "10:45", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "15:45", "timeNature": "published_arrival"}]},
+        {"id": "naantali-langnas-wesu-day", "operatingDays": "__34567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "FINNCANOPUS", "calls": [{"stop": "Naantali", "time": "10:00", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "14:45", "timeNature": "published_arrival"}]},
+        {"id": "naantali-langnas-night", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-10-29"}, {"validFrom": "2026-11-01", "validTo": "2026-12-23"}], "vesselCode": "FINNSIRIUS", "calls": [{"stop": "Naantali", "time": "22:45", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "03:45", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "langnas-naantali-motu-day", "operatingDays": "12_____", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-10-30"}, {"validFrom": "2026-11-02", "validTo": "2026-12-13"}, {"validFrom": "2026-12-15", "validTo": "2026-12-23"}], "vesselCode": "FINNCANOPUS", "calls": [{"stop": "Långnäs", "time": "15:15", "timeNature": "published_departure"}, {"stop": "Naantali", "time": "19:55", "timeNature": "published_arrival"}]},
+        {"id": "langnas-naantali-wesu-day", "operatingDays": "__34567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-10-30"}, {"validFrom": "2026-11-02", "validTo": "2026-12-23"}], "vesselCode": "FINNCANOPUS", "calls": [{"stop": "Långnäs", "time": "15:30", "timeNature": "published_departure"}, {"stop": "Naantali", "time": "20:10", "timeNature": "published_arrival"}]},
+        {"id": "langnas-naantali-night", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-24"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "FINNSIRIUS", "calls": [{"stop": "Långnäs", "time": "02:10", "timeNature": "published_departure"}, {"stop": "Naantali", "time": "07:15", "timeNature": "published_arrival"}]}
+      ],
+      "holidayExceptions": [
+        {"date": "2026-10-30", "description": "No 22:45 departure from Naantali"},
+        {"date": "2026-10-31", "description": "No 22:45 departure from Naantali and no day sailing from Kapellskär through Långnäs to Naantali"},
+        {"date": "2026-11-01", "description": "No day sailing from Kapellskär through Långnäs to Naantali"},
+        {"date": "2026-12-14", "description": "No day sailing in either direction"},
+        {"date": "2026-12-24", "description": "Regular Naantali departures replaced by a Christmas cruise not generally bookable"},
+        {"date": "2026-12-25", "description": "No sailings"},
+        {"from": "2026-12-26", "to": "2026-12-31", "description": "Only day departures from Naantali and night departures from Långnäs operate"}
+      ],
+      "notes": [],
+      "sources": [
+        {"sourceId": "finnlines-naantali-langnas-route-2026", "url": "https://www.finnlines.com/fi/reitit/naantali-langnas-kapellskar-reitti/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "finnlines-naantali-check-in-2026", "url": "https://www.finnlines.com/passengers/good-to-know/find-your-way-to-the-harbour/naantali/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "finnlines-langnas-check-in-2026", "url": "https://www.finnlines.com/passengers/good-to-know/find-your-way-to-the-harbour/langnas/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "finnlines-naantali-langnas-changes-2026", "url": "https://www.finnlines.com/sv/passagerare/finnlines-linjer/tidtabellsandringar-kapellskar-langnas-nadendal/", "retrievedAt": "2026-10-15"}
+      ],
+      "review": {"status": "manually_transcribed_from_official_current_sources", "routingReady": true}
+    },
+    {
+      "id": "tallink-turku-aland",
+      "provider": "tallink",
+      "serviceType": "commercial_ferry",
+      "departures": [],
+      "continuousServices": [],
+      "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}],
+      "vessel": "Baltic Princess",
+      "booking": {"requiredForAllTrips": true, "url": "https://booking.tallink.com/", "loadingReadinessMinutesBefore": 30, "loadingReadinessMinutesBeforeByOrigin": {"Långnäs": {"car": 45, "motorcycle": 45, "bicycle": 30, "foot": 30}}},
+      "travelerInformation": {
+        "farePolicy": {"passengers": "paid", "vehicles": "paid", "pricing": "dynamic"},
+        "checkInRules": [
+          {"origin": "Turku", "allPassengersMinutesBeforeDeparture": 30, "boardingClosesMinutesBeforeDeparture": 20},
+          {"origin": "Långnäs", "vehicleMinutesBeforeDeparture": 45, "footPassengerMinutesBeforeDeparture": 30}
+        ],
+        "documents": ["booking_number", "travel_document", "vehicle_registration_document_when_travelling_with_vehicle"],
+        "notices": [{"type": "published_times_are_local"}, {"type": "advance_ticket_required"}]
+      },
+      "publicTimetableUrl": "https://www.tallink.com/fi/aikataulut",
+      "contact": {"phones": ["+35810804133"], "url": "https://www.tallink.com/fi/hyva-tietaa/asiakaspalvelu"},
+      "trips": [
+        {"id": "turku-langnas-regular", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-10-30"}, {"validFrom": "2026-11-02", "validTo": "2026-11-20"}, {"validFrom": "2026-11-22", "validTo": "2026-12-31"}], "calls": [{"stop": "Turku", "time": "19:30", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "00:30", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "turku-langnas-charter-20261031", "operatingDays": "_____6_", "operatingDate": "2026-10-31", "calls": [{"stop": "Turku", "time": "19:30", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "00:40", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "turku-langnas-charter-20261101", "operatingDays": "______7", "operatingDate": "2026-11-01", "calls": [{"stop": "Turku", "time": "19:30", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "00:40", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "turku-langnas-charter-20261121", "operatingDays": "_____6_", "operatingDate": "2026-11-21", "calls": [{"stop": "Turku", "time": "19:30", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "00:40", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "langnas-turku", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}], "calls": [{"stop": "Långnäs", "time": "14:20", "timeNature": "published_departure"}, {"stop": "Turku", "time": "18:30", "timeNature": "published_arrival"}]}
+      ],
+      "notes": [],
+      "sources": [
+        {"sourceId": "tallink-cargo-timetable-2026", "url": "https://image.tallink.com/image/upload/cargo/terms-and-conditions/timetables-cargo.pdf", "retrievedAt": "2026-10-15"},
+        {"sourceId": "tallink-check-in-2026", "url": "https://www.tallink.com/fi/hyva-tietaa/lahtoselvitys-laivaannousu", "retrievedAt": "2026-10-15"},
+        {"sourceId": "tallink-customer-service-2026", "url": "https://www.tallink.com/fi/hyva-tietaa/asiakaspalvelu", "retrievedAt": "2026-10-15"}
+      ],
+      "review": {"status": "manually_transcribed_from_official_current_sources", "routingReady": true}
+    },
+    {
+      "id": "tallink-helsinki-aland",
+      "provider": "tallink",
+      "serviceType": "commercial_ferry",
+      "departures": [],
+      "continuousServices": [],
+      "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}],
+      "vessels": ["Silja Serenade", "Silja Symphony"],
+      "booking": {"requiredForAllTrips": true, "url": "https://booking.tallink.com/", "loadingReadinessMinutesBefore": 30, "loadingReadinessMinutesBeforeByOrigin": {"Mariehamn": {"car": 90, "motorcycle": 90, "bicycle": 90, "foot": 15}}},
+      "travelerInformation": {
+        "farePolicy": {"passengers": "paid", "vehicles": "paid", "pricing": "dynamic"},
+        "checkInRules": [
+          {"origin": "Helsinki", "allPassengersMinutesBeforeDeparture": 30, "boardingClosesMinutesBeforeDeparture": 20},
+          {"origin": "Mariehamn", "vehicleMinutesBeforeDeparture": 90, "otherPassengersMinutesBeforeDeparture": 15}
+        ],
+        "documents": ["booking_number", "travel_document", "vehicle_registration_document_when_travelling_with_vehicle"],
+        "notices": [{"type": "published_times_are_local"}, {"type": "advance_ticket_required"}, {"type": "night_arrival_wakeup_not_automatic", "stop": "Mariehamn"}]
+      },
+      "publicTimetableUrl": "https://www.tallink.com/fi/aikataulut",
+      "contact": {"phones": ["+35810804133"], "url": "https://www.tallink.com/fi/hyva-tietaa/asiakaspalvelu"},
+      "trips": [
+        {"id": "helsinki-mariehamn", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}], "calls": [{"stop": "Helsinki", "time": "16:45", "timeNature": "published_departure"}, {"stop": "Mariehamn", "time": "04:15", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "mariehamn-helsinki", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}], "calls": [{"stop": "Mariehamn", "time": "23:55", "timeNature": "published_departure"}, {"stop": "Helsinki", "time": "10:30", "dayOffset": 1, "timeNature": "published_arrival"}]}
+      ],
+      "notes": [],
+      "sources": [
+        {"sourceId": "tallink-cargo-timetable-2026", "url": "https://image.tallink.com/image/upload/cargo/terms-and-conditions/timetables-cargo.pdf", "retrievedAt": "2026-10-15"},
+        {"sourceId": "tallink-check-in-2026", "url": "https://www.tallink.com/fi/hyva-tietaa/lahtoselvitys-laivaannousu", "retrievedAt": "2026-10-15"},
+        {"sourceId": "tallink-ports-2026", "url": "https://www.tallink.com/fi/hyva-tietaa/satamat-terminaalit", "retrievedAt": "2026-10-15"},
+        {"sourceId": "tallink-customer-service-2026", "url": "https://www.tallink.com/fi/hyva-tietaa/asiakaspalvelu", "retrievedAt": "2026-10-15"}
+      ],
+      "review": {"status": "manually_transcribed_from_official_current_sources", "routingReady": true}
+    },
+    {
+      "id": "viking-turku-aland",
+      "provider": "vikingline",
+      "serviceType": "commercial_ferry",
+      "departures": [],
+      "continuousServices": [],
+      "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}],
+      "vessels": ["Viking Glory", "Viking Grace"],
+      "vesselByCode": {"GLORY": {"name": "Viking Glory"}, "GRACE": {"name": "Viking Grace"}},
+      "booking": {"requiredForAllTrips": true, "url": "https://www.sales.vikingline.com/regular-trips/", "loadingReadinessMinutesBefore": 30},
+      "travelerInformation": {
+        "farePolicy": {"passengers": "paid", "vehicles": "paid", "pricing": "dynamic"},
+        "checkInRules": [{"allOrigins": true, "vehicleMinutesBeforeDeparture": 30, "footPassengerMinutesBeforeDeparture": 30, "checkInAndBoardingCloseMinutesBeforeDeparture": 20}],
+        "documents": ["booking_number", "travel_document", "vehicle_document_when_travelling_with_vehicle"],
+        "notices": [{"type": "published_times_are_local"}, {"type": "advance_ticket_required"}]
+      },
+      "publicTimetableUrl": "https://www.sales.vikingline.com/timetable/stockholm-turku/",
+      "contact": {"phones": ["+35834399880"], "email": "individual.sales@vikingline.com", "url": "https://www.sales.vikingline.com/contact/"},
+      "trips": [
+        {"id": "turku-mariehamn", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "GLORY", "calls": [{"stop": "Turku", "time": "08:45", "timeNature": "published_departure"}, {"stop": "Mariehamn", "time": "14:10", "timeNature": "published_arrival"}]},
+        {"id": "mariehamn-turku", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "GRACE", "calls": [{"stop": "Mariehamn", "time": "14:25", "timeNature": "published_departure"}, {"stop": "Turku", "time": "19:50", "timeNature": "published_arrival"}]},
+        {"id": "turku-langnas", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-22"}, {"validFrom": "2026-12-25", "validTo": "2026-12-31"}], "vesselCode": "GRACE", "calls": [{"stop": "Turku", "time": "20:55", "timeNature": "published_departure"}, {"stop": "Långnäs", "time": "01:05", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "langnas-turku", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "vesselCode": "GLORY", "calls": [{"stop": "Långnäs", "time": "03:20", "timeNature": "published_departure"}, {"stop": "Turku", "time": "07:35", "timeNature": "published_arrival"}]}
+      ],
+      "holidayExceptions": [
+        {"date": "2026-12-23", "description": "No regular Viking Grace sailing from Turku"},
+        {"date": "2026-12-24", "description": "No regular Viking Grace or Viking Glory sailing from Turku"},
+        {"date": "2026-12-25", "description": "Viking Grace resumes from Turku at 20:55; no regular Viking Glory morning sailing"}
+      ],
+      "notes": [],
+      "sources": [
+        {"sourceId": "viking-turku-aland-2026", "url": "https://www.sales.vikingline.com/timetable/stockholm-turku/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "viking-check-in-2026", "url": "https://www.sales.vikingline.com/good-to-know/check-in/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "viking-customer-service-2026", "url": "https://www.sales.vikingline.com/contact/", "retrievedAt": "2026-10-15"}
+      ],
+      "review": {"status": "manually_transcribed_from_official_current_sources", "routingReady": true}
+    },
+    {
+      "id": "viking-helsinki-aland",
+      "provider": "vikingline",
+      "serviceType": "commercial_ferry",
+      "departures": [],
+      "continuousServices": [],
+      "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-31"}],
+      "vessels": ["Gabriella", "Viking Cinderella"],
+      "booking": {"requiredForAllTrips": true, "url": "https://www.sales.vikingline.com/regular-trips/", "loadingReadinessMinutesBefore": 30},
+      "travelerInformation": {
+        "farePolicy": {"passengers": "paid", "vehicles": "paid", "pricing": "dynamic"},
+        "checkInRules": [{"allOrigins": true, "vehicleMinutesBeforeDeparture": 30, "footPassengerMinutesBeforeDeparture": 30, "checkInAndBoardingCloseMinutesBeforeDeparture": 20}],
+        "documents": ["booking_number", "travel_document", "vehicle_document_when_travelling_with_vehicle"],
+        "notices": [{"type": "published_times_are_local"}, {"type": "advance_ticket_required"}]
+      },
+      "publicTimetableUrl": "https://www.sales.vikingline.com/timetable/stockholm-helsinki/",
+      "contact": {"phones": ["+35834399880"], "email": "individual.sales@vikingline.com", "url": "https://www.sales.vikingline.com/contact/"},
+      "trips": [
+        {"id": "helsinki-mariehamn", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "calls": [{"stop": "Helsinki", "time": "17:00", "timeNature": "published_departure"}, {"stop": "Mariehamn", "time": "04:25", "dayOffset": 1, "timeNature": "published_arrival"}]},
+        {"id": "mariehamn-helsinki", "operatingDays": "1234567", "validPeriods": [{"validFrom": "2026-10-15", "validTo": "2026-12-23"}, {"validFrom": "2026-12-26", "validTo": "2026-12-31"}], "calls": [{"stop": "Mariehamn", "time": "23:00", "timeNature": "published_departure"}, {"stop": "Helsinki", "time": "10:10", "dayOffset": 1, "timeNature": "published_arrival"}]}
+      ],
+      "holidayExceptions": [
+        {"date": "2026-12-24", "description": "Christmas cruises replace the regular timetable"},
+        {"date": "2026-12-25", "description": "Christmas cruises replace the regular timetable"}
+      ],
+      "notes": [],
+      "sources": [
+        {"sourceId": "viking-helsinki-aland-2026", "url": "https://www.sales.vikingline.com/timetable/stockholm-helsinki/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "viking-check-in-2026", "url": "https://www.sales.vikingline.com/good-to-know/check-in/", "retrievedAt": "2026-10-15"},
+        {"sourceId": "viking-customer-service-2026", "url": "https://www.sales.vikingline.com/contact/", "retrievedAt": "2026-10-15"}
+      ],
+      "review": {"status": "manually_transcribed_from_official_current_sources", "routingReady": true}
+    }
+  ]
+}
