@@ -82,6 +82,17 @@
         "waitMinutes": { "type": "integer" },
         "distanceMeters": { "type": "number", "minimum": 0 },
         "durationMinutes": { "type": "integer", "minimum": 0 },
+        "externalRouting": {
+          "type": "object",
+          "required": ["provider", "role", "roadAreaId", "ferriesExcluded"],
+          "properties": {
+            "provider": { "type": "string" },
+            "role": { "enum": ["access", "egress", "direct"] },
+            "roadAreaId": { "type": "string" },
+            "ferriesExcluded": { "const": true }
+          },
+          "additionalProperties": false
+        },
         "routeId": { "type": ["string", "null"] },
         "tripPatternId": { "type": ["string", "null"] },
         "serviceType": { "type": ["string", "null"] },

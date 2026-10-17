@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import heapq
 import itertools
 import json
@@ -139,6 +140,8 @@ def format_candidate(
                 "distanceMeters": instance["road"]["distanceMeters"],
                 "durationMinutes": round((arrival - departure).total_seconds() / 60),
             })
+            if edge.get("externalRouting"):
+                leg["externalRouting"] = edge["externalRouting"]
         else:
             route = routes[edge["routeId"]]
             vessel = operating_vessel(route, edge, trip_patterns)
@@ -314,6 +317,7 @@ def find_itineraries(
     origin_sweep_minutes: int = 30,
     same_day: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
+    graph_data: dict | None = None,
 ) -> dict:
     """Return distinct useful itineraries as a reusable Python API."""
     if mode not in {"car", "motorcycle", "bicycle"}:
@@ -336,7 +340,11 @@ def find_itineraries(
         same_day=same_day,
         graph=graph_path,
     )
-    graph = json.loads(args.graph.read_text())
+    graph = (
+        copy.deepcopy(graph_data)
+        if graph_data is not None
+        else json.loads(args.graph.read_text())
+    )
     routes = {item["id"]: item for item in graph["routes"]}
     trip_patterns = {item["id"]: item for item in graph["tripPatterns"]}
     nodes = {item["id"]: item for item in graph["nodes"]}

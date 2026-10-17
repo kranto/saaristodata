@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saaristolautat.fi/schemas/address-route-query-response.schema.json",
+  "title": "Saaristolautat address route query response",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "status",
+    "query",
+    "resultCount",
+    "itineraries",
+    "externalServices"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "status": { "enum": ["routes_found", "no_route"] },
+    "outcomeReason": { "enum": ["no_itinerary_for_query"] },
+    "query": {
+      "type": "object",
+      "required": [
+        "origin",
+        "destination",
+        "departureNotBefore",
+        "arrivalDeadline",
+        "mode",
+        "timingProfile",
+        "timeZone",
+        "originAddress",
+        "destinationAddress",
+        "originRoadArea",
+        "destinationRoadArea"
+      ],
+      "properties": {
+        "origin": { "const": "address:origin" },
+        "destination": { "const": "address:destination" },
+        "departureNotBefore": { "$ref": "route-query-response.schema.json#/$defs/localDateTime" },
+        "arrivalDeadline": { "$ref": "route-query-response.schema.json#/$defs/localDateTime" },
+        "mode": { "enum": ["car", "motorcycle", "bicycle"] },
+        "timingProfile": { "enum": ["typical", "conservative"] },
+        "timeZone": { "const": "Europe/Helsinki" },
+        "originAddress": { "$ref": "#/$defs/address" },
+        "destinationAddress": { "$ref": "#/$defs/address" },
+        "originRoadArea": { "$ref": "#/$defs/roadArea" },
+        "destinationRoadArea": { "$ref": "#/$defs/roadArea" }
+      },
+      "additionalProperties": false
+    },
+    "resultCount": { "type": "integer", "minimum": 0 },
+    "itineraries": {
+      "type": "array",
+      "items": { "$ref": "route-query-response.schema.json#/$defs/itinerary" }
+    },
+    "externalServices": {
+      "type": "object",
+      "required": ["geocoding", "roadRouting", "attribution"],
+      "properties": {
+        "geocoding": { "type": "string" },
+        "roadRouting": { "type": "string" },
+        "attribution": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "diagnostics": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "coordinate": {
+      "type": "object",
+      "required": ["lat", "lon"],
+      "properties": {
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lon": { "type": "number", "minimum": -180, "maximum": 180 }
+      },
+      "additionalProperties": false
+    },
+    "address": {
+      "type": "object",
+      "required": ["query", "displayName", "coordinates", "provider", "attribution"],
+      "properties": {
+        "query": { "type": "string" },
+        "displayName": { "type": "string" },
+        "coordinates": { "$ref": "#/$defs/coordinate" },
+        "address": { "type": ["object", "null"] },
+        "provider": { "type": "string" },
+        "attribution": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "roadArea": {
+      "type": "object",
+      "required": ["id", "inference"],
+      "properties": {
+        "id": { "type": "string" },
+        "inference": { "type": "string" },
+        "matchedStop": { "type": "object" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
