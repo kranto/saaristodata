@@ -3,22 +3,6 @@
   "generatedAt": "2026-10-12T00:00:00+03:00",
   "routes": [
     {
-      "routeId": "hammaronsalmi",
-      "aisRouteId": "hammaronsalmi",
-      "trips": 52,
-      "untimedCalls": 52,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 52
-      },
-      "matchingMethods": {}
-    },
-    {
       "routeId": "hitisalva",
       "aisRouteId": "hitisrutt",
       "trips": 2,
@@ -65,22 +49,6 @@
       }
     },
     {
-      "routeId": "hogsara",
-      "aisRouteId": "hogsara",
-      "trips": 60,
-      "untimedCalls": 60,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 60
-      },
-      "matchingMethods": {}
-    },
-    {
       "routeId": "houtskarrutt",
       "aisRouteId": "houtskarrutt",
       "trips": 18,
@@ -125,38 +93,6 @@
         "anchor_compatible_paths": 9,
         "role_aware_compatible_paths": 21
       }
-    },
-    {
-      "routeId": "keistio",
-      "aisRouteId": "keistio",
-      "trips": 88,
-      "untimedCalls": 88,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 88
-      },
-      "matchingMethods": {}
-    },
-    {
-      "routeId": "kokkila",
-      "aisRouteId": "kokkila",
-      "trips": 55,
-      "untimedCalls": 55,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 55
-      },
-      "matchingMethods": {}
     },
     {
       "routeId": "korporutt",
@@ -263,22 +199,6 @@
       "matchingMethods": {}
     },
     {
-      "routeId": "palva",
-      "aisRouteId": "palva",
-      "trips": 79,
-      "untimedCalls": 79,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 79
-      },
-      "matchingMethods": {}
-    },
-    {
       "routeId": "pargasrutt",
       "aisRouteId": "pargasrutt",
       "trips": 19,
@@ -378,54 +298,6 @@
       }
     },
     {
-      "routeId": "vano",
-      "aisRouteId": "vano",
-      "trips": 120,
-      "untimedCalls": 120,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 120
-      },
-      "matchingMethods": {}
-    },
-    {
-      "routeId": "vartsala",
-      "aisRouteId": "vartsala",
-      "trips": 88,
-      "untimedCalls": 88,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 88
-      },
-      "matchingMethods": {}
-    },
-    {
-      "routeId": "velkuanmaa",
-      "aisRouteId": "velkuanmaa",
-      "trips": 80,
-      "untimedCalls": 80,
-      "estimatesAttached": 0,
-      "conservativeRangesAttached": 0,
-      "completionEstimatesAttached": 0,
-      "completionRangesAttached": 0,
-      "holidayEstimateCallsCopied": 0,
-      "coverage": 0.0,
-      "outcomes": {
-        "no_compatible_historical_path": 80
-      },
-      "matchingMethods": {}
-    },
-    {
       "routeId": "velkuataivassalo",
       "aisRouteId": "velkuanreitti",
       "trips": 16,
@@ -449,14 +321,14 @@
     }
   ],
   "summary": {
-    "routes": 23,
-    "untimedCalls": 1362,
+    "routes": 15,
+    "untimedCalls": 740,
     "estimatesAttached": 493,
     "conservativeRangesAttached": 88,
     "completionEstimatesAttached": 159,
     "completionRangesAttached": 41,
     "holidayEstimateCallsCopied": 532,
-    "coverage": 0.427,
+    "coverage": 0.785,
     "outcomes": {
       "completion_estimate_attached": 159,
       "completion_range_attached": 41,
@@ -465,7 +337,7 @@
       "incompatible_with_next_published_time": 2,
       "missing_departure_anchor": 79,
       "no_ais_source": 58,
-      "no_compatible_historical_path": 642,
+      "no_compatible_historical_path": 20,
       "published_time_preserved": 629
     },
     "matchingMethods": {

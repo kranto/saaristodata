@@ -34,11 +34,12 @@ def at_clock(day: date, value: str, day_offset: int = 0) -> datetime:
 def valid_on(day: date, periods: list[dict]) -> bool:
     if not periods:
         return True
-    return any(
-        date.fromisoformat(item["validFrom"]) <= day <= date.fromisoformat(item["validTo"])
-        for item in periods
-        if item.get("validFrom") and item.get("validTo")
-    )
+    for item in periods:
+        start = date.fromisoformat(item["validFrom"]) if item.get("validFrom") else None
+        end = date.fromisoformat(item["validTo"]) if item.get("validTo") else None
+        if (start is None or start <= day) and (end is None or day <= end):
+            return True
+    return False
 
 
 def pattern_runs(pattern: str | None, day: date) -> bool:
@@ -607,8 +608,16 @@ def transfer_risk(wait_minutes: int, readiness_minutes: int) -> dict:
     }
 
 
-def loading_readiness_minutes(route: dict) -> int:
-    return route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+def loading_readiness_minutes(route: dict, origin: str, mode: str) -> int:
+    booking = route.get("booking", {})
+    origin_rule = booking.get("loadingReadinessMinutesBeforeByOrigin", {}).get(origin)
+    if isinstance(origin_rule, int):
+        return origin_rule
+    if isinstance(origin_rule, dict):
+        value = origin_rule.get(mode, origin_rule.get("default"))
+        if value is not None:
+            return value
+    return booking.get("loadingReadinessMinutesBefore", 0)
 
 
 def main() -> int:
@@ -671,7 +680,13 @@ def main() -> int:
                 }
             elif edge["kind"] == "scheduled_service":
                 route = routes[edge["routeId"]]
-                readiness = 0 if has_used_ferry else loading_readiness_minutes(route)
+                # A ferry loop back to the journey origin must not turn the
+                # original boarding into a nominal transfer and thereby
+                # bypass its full check-in/readiness requirement.
+                is_real_transfer = has_used_ferry and node_id != args.origin
+                readiness = 0 if is_real_transfer else loading_readiness_minutes(
+                    route, edge["from"], args.mode
+                )
                 boarding_ready = moment + timedelta(minutes=readiness)
                 instance = next_scheduled_instance(edge, route, boarding_ready, args.timing_profile)
                 if not instance:
@@ -759,7 +774,9 @@ def main() -> int:
             else:
                 leg["availability"] = edge.get("availability")
         if had_used_ferry and edge["kind"] == "scheduled_service":
-            readiness = routes[edge["routeId"]].get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+            readiness = loading_readiness_minutes(
+                routes[edge["routeId"]], edge["from"], args.mode
+            )
             leg["transferRisk"] = transfer_risk(leg["waitMinutes"], readiness)
         legs.append(leg)
 

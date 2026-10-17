@@ -189,6 +189,9 @@
               "connectionVesselVehicleLoadingCapabilityModeled": { "const": false },
               "crossingMinutes": { "type": "integer", "minimum": 1 },
               "crossingTimeNature": { "const": "approximate" },
+              "crossingTimeBasis": { "type": "string" },
+              "crossingTimeSourceUrl": { "type": "string", "format": "uri" },
+              "crossingDistanceMeters": { "type": "integer", "minimum": 1 },
               "crossingTimeStatus": { "const": "not_available_do_not_invent" }
             }
           },

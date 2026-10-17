@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://saaristolautat.fi/schema/external-routing-stop-index.schema.json",
+  "title": "External routing stop index",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "matchingPolicy", "stops", "statistics"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "description": {"type": "string"},
+    "matchingPolicy": {
+      "type": "object",
+      "required": [
+        "method", "maximumDistanceMeters", "roadAreaDetection",
+        "unknownEarlierFerries", "arrivalStopRequired"
+      ],
+      "properties": {
+        "method": {"const": "nearest_known_stop"},
+        "maximumDistanceMeters": {"type": "number", "exclusiveMinimum": 0},
+        "roadAreaDetection": {"type": "string"},
+        "unknownEarlierFerries": {"const": "ignored"},
+        "arrivalStopRequired": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "stops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id", "name", "coordinates", "coordinateSource",
+          "roadAreaId", "roadAreaKind"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "coordinates": {
+            "type": "object",
+            "required": ["lon", "lat"],
+            "properties": {
+              "lon": {"type": "number", "minimum": -180, "maximum": 180},
+              "lat": {"type": "number", "minimum": -90, "maximum": 90}
+            },
+            "additionalProperties": false
+          },
+          "coordinateSource": {"type": "string"},
+          "roadAreaId": {"type": "string", "minLength": 1},
+          "roadAreaKind": {
+            "enum": ["maintained_component", "singleton_stop"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "required": [
+        "stopCount", "maintainedComponentStopCount", "singletonStopCount",
+        "maintainedRoadAreaCount"
+      ],
+      "properties": {
+        "stopCount": {"type": "integer", "minimum": 0},
+        "maintainedComponentStopCount": {"type": "integer", "minimum": 0},
+        "singletonStopCount": {"type": "integer", "minimum": 0},
+        "maintainedRoadAreaCount": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
