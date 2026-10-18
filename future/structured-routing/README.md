@@ -493,6 +493,11 @@ esimerkit valmistuivat noin 1–2,4 sekunnissa ja kylmä osoitehaku paikallisell
 Valhallalla noin 4,4 sekunnissa. Nämä ovat kehityskoneen suuntaa-antavia
 lukuja, eivät rajapinnan suorituskykytakuu.
 
+Hakugraafista lasketaan lisäksi jokaiselle solmulle vähimmäislegimäärä
+määränpäähän. Haara katkaistaan heti, jos jäljellä oleva 12 legin raja ei voi
+enää riittää. Tämä pudotti kolmen päivän Turku–Storpensor-testin noin 7,8
+sekunnista noin 4,8 sekuntiin muuttamatta palautettuja vaihtoehtoja.
+
 Eri lähtöhetkiä ei käydä enää läpi kiinteällä 30 minuutin askelluksella.
 Reititin siirtyy suoraan hetkeen, jolloin ensimmäinen saavutettavissa oleva
 aikatauluvuoro menetetään tai yhteysriskin luokka vaihtuu. Näin harvoin

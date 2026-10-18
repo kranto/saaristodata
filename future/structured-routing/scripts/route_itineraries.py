@@ -8,7 +8,7 @@ import bisect
 import heapq
 import itertools
 import json
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict, deque
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
 
@@ -286,6 +286,7 @@ def earliest_candidate_from_seed(
     adjacency: dict[str, list[dict]], routes: dict[str, dict], origin: str, destination: str,
     seed: datetime, deadline: datetime, mode: str, timing_profile: str, max_legs: int,
     scheduled_instances: ScheduledInstanceIndex | None = None,
+    minimum_legs_to_destination: dict[str, int] | None = None,
 ) -> tuple[list[dict], datetime] | None:
     """Return the earliest feasible itinerary after one exact origin seed.
 
@@ -294,15 +295,13 @@ def earliest_candidate_from_seed(
     not disappear merely because an earlier label reached the same road node.
     """
     serial = itertools.count()
-    queue = [(seed, next(serial), origin, [], (origin,))]
+    queue = [(seed, next(serial), origin, [], (origin,), None, False)]
     best: dict[tuple[str, str | None], datetime] = {}
     while queue:
-        moment, _, node_id, records, visited_nodes = heapq.heappop(queue)
-        last_trip = (
-            records[-1]["edge"].get("tripPatternId")
-            if records and records[-1]["edge"]["kind"] == "scheduled_service"
-            else None
-        )
+        (
+            moment, _, node_id, records, visited_nodes, last_trip,
+            has_used_service,
+        ) = heapq.heappop(queue)
         state = (node_id, last_trip)
         if moment >= best.get(state, datetime.max):
             continue
@@ -312,6 +311,11 @@ def earliest_candidate_from_seed(
         if moment > deadline or len(records) >= max_legs:
             continue
         for edge in adjacency.get(node_id, []):
+            if minimum_legs_to_destination is not None and (
+                edge["to"] not in minimum_legs_to_destination
+                or len(records) + 1 + minimum_legs_to_destination[edge["to"]] > max_legs
+            ):
+                continue
             if edge["to"] in visited_nodes and edge["to"] != destination:
                 continue
             if (
@@ -323,17 +327,20 @@ def earliest_candidate_from_seed(
                 continue
             instance = edge_instance(
                 edge, routes, moment, mode, timing_profile,
-                enforce_loading_readiness=not any(
-                    item["edge"]["kind"] != "road" for item in records
-                ),
+                enforce_loading_readiness=not has_used_service,
                 scheduled_instances=scheduled_instances,
             )
             if not instance or instance["arrival"] > deadline:
                 continue
             record = {"edge": edge, "instance": instance, "ready": moment}
+            next_last_trip = (
+                edge.get("tripPatternId")
+                if edge["kind"] == "scheduled_service" else None
+            )
             heapq.heappush(queue, (
                 instance["arrival"], next(serial), edge["to"], records + [record],
                 visited_nodes + (edge["to"],),
+                next_last_trip, has_used_service or edge["kind"] != "road",
             ))
     return None
 
@@ -492,6 +499,19 @@ def find_itineraries(
     scheduled_instances = ScheduledInstanceIndex(
         graph["edges"], routes, start, deadline, args.timing_profile,
     )
+    reverse_adjacency: dict[str, set[str]] = defaultdict(set)
+    for from_node, edges in adjacency.items():
+        for edge in edges:
+            reverse_adjacency[edge["to"]].add(from_node)
+    minimum_legs_to_destination = {args.destination: 0}
+    reverse_queue = deque([args.destination])
+    while reverse_queue:
+        node_id = reverse_queue.popleft()
+        next_distance = minimum_legs_to_destination[node_id] + 1
+        for previous_node in reverse_adjacency.get(node_id, ()):
+            if previous_node not in minimum_legs_to_destination:
+                minimum_legs_to_destination[previous_node] = next_distance
+                reverse_queue.append(previous_node)
     serial = itertools.count()
     # The diverse search needs one initial label. Later useful departures are
     # covered explicitly by the bounded earliest-arrival sweep below. Seeding
@@ -567,6 +587,11 @@ def find_itineraries(
         expansions += 1
 
         for edge in adjacency.get(node_id, []):
+            if (
+                edge["to"] not in minimum_legs_to_destination
+                or len(records) + 1 + minimum_legs_to_destination[edge["to"]] > args.max_legs
+            ):
+                continue
             if edge["to"] in visited_nodes and edge["to"] != args.destination:
                 continue
             if (
@@ -634,6 +659,7 @@ def find_itineraries(
             found = earliest_candidate_from_seed(
                 adjacency, routes, args.origin, args.destination, seed, sweep_deadline,
                 args.mode, args.timing_profile, args.max_legs, scheduled_instances,
+                minimum_legs_to_destination,
             )
             if not found:
                 continue
