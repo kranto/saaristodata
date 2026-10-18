@@ -493,6 +493,12 @@ esimerkit valmistuivat noin 1–2,4 sekunnissa ja kylmä osoitehaku paikallisell
 Valhallalla noin 4,4 sekunnissa. Nämä ovat kehityskoneen suuntaa-antavia
 lukuja, eivät rajapinnan suorituskykytakuu.
 
+Eri lähtöhetkiä ei käydä enää läpi kiinteällä 30 minuutin askelluksella.
+Reititin siirtyy suoraan hetkeen, jolloin ensimmäinen saavutettavissa oleva
+aikatauluvuoro menetetään tai yhteysriskin luokka vaihtuu. Näin harvoin
+liikennöidyllä reitillä ei lasketa kymmeniä keskenään samanlaisia hakuja, ja
+riskiluokan raja löytyy minuutin tarkkuudella askelvälistä riippumatta.
+
 Kun `sameDay` on `false`, reititin etsii enintään kolmen päivän aikajänteeltä
 ensimmäisen päivän, jona määränpäähän voidaan saapua, ja palauttaa kyseisen
 saapumispäivän hyödylliset vaihtoehdot. Myöhempien päivien samanlaisia vuoroja
