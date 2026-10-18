@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 import sys
 from contextlib import asynccontextmanager
@@ -32,7 +34,7 @@ from route_itinerary import DEFAULT_GRAPH  # noqa: E402
 from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
-SERVICE_VERSION = "0.1.0"
+SERVICE_VERSION = "0.2.0"
 
 
 class RouteRequest(BaseModel):
@@ -84,6 +86,13 @@ def configure_dependencies(app: FastAPI) -> None:
     app.state.stop_index_path = environment_path(
         "ROUTING_STOP_INDEX_PATH", DEFAULT_STOP_INDEX,
     )
+    graph_bytes = app.state.graph_path.read_bytes()
+    stop_index_bytes = app.state.stop_index_path.read_bytes()
+    app.state.graph_data = json.loads(graph_bytes)
+    app.state.stop_index_data = json.loads(stop_index_bytes)
+    app.state.data_version = hashlib.sha256(
+        graph_bytes + b"\0" + stop_index_bytes
+    ).hexdigest()
 
 
 @asynccontextmanager
@@ -107,8 +116,16 @@ def create_app() -> FastAPI:
 
     @application.post("/route")
     async def route(request: RouteRequest) -> dict:
+        response_cache_key = {
+            "serviceVersion": SERVICE_VERSION,
+            "dataVersion": getattr(application.state, "data_version", "injected"),
+            "request": request.model_dump(mode="json", by_alias=True),
+        }
+        cached = application.state.cache.get("routing:response", response_cache_key)
+        if cached is not None:
+            return cached
         try:
-            return await run_in_threadpool(
+            result = await run_in_threadpool(
                 query_address_routes,
                 request.origin,
                 request.destination,
@@ -122,9 +139,13 @@ def create_app() -> FastAPI:
                 include_external_geometry=request.include_geometry,
                 graph_path=application.state.graph_path,
                 stop_index_path=application.state.stop_index_path,
+                graph_data=getattr(application.state, "graph_data", None),
+                stop_index_data=getattr(application.state, "stop_index_data", None),
                 geocoder=application.state.geocoder,
                 router=application.state.router,
             )
+            application.state.cache.set("routing:response", response_cache_key, result)
+            return result
         except ValueError as error:
             raise HTTPException(status_code=422, detail=str(error)) from error
         except RuntimeError as error:
