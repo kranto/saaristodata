@@ -462,7 +462,10 @@ avulla ja käyttää niiden välissä omaa saariston reititysgraafia. Vain valit
 reittivaihtoehtojen ulkoisille tieosuuksille haetaan lopuksi karttageometria.
 Nominatimin ja Valhallan onnistuneet JSON-vastaukset tallennetaan pysyvään
 SQLite-välimuistiin. Välimuistin oletuskesto on 30 päivää ja polku kontissa
-`/var/cache/saaristolautat/routes.sqlite3`.
+`/var/cache/saaristolautat/routes.sqlite3`. Myös täysin saman pyynnön valmis
+reititysvastaus tallennetaan samaan välimuistiin. Avaimessa on mukana
+reititysgraafin ja laiturihakemiston sisältötiiviste, joten uusi data ei käytä
+vanhan aineiston tuloksia.
 
 Käynnistys palvelimella:
 
@@ -479,6 +482,22 @@ Kontti käyttää aluksi yhtä palvelinprosessia. Näin Nominatimin vähintään
 sekunnin kutsuväli ja SQLite-välimuistin kirjoitukset pysyvät yhden prosessin
 hallinnassa. Hitaat ulkoiset haut suoritetaan säikeissä, joten ne eivät estä
 palvelinta vastaanottamasta muita HTTP-yhteyksiä.
+
+Sisäinen hakukone esilaskee kyselyn aikavälin toteutuvat vuorot ja niiden
+poikkeuspäivät `ScheduledInstanceIndex`-indeksiin. Samaa kalenteriehtoa ei näin
+tulkita uudelleen jokaiselle hakutilalle. Hakutilat karsitaan lisäksi
+saapumisajan, mahdollisimman myöhäisen lähtöajan ja yhteysriskin muodostamalla
+Pareto-rintamalla. Lokakuun 2026 paikallisessa vertailussa Turku–Wihuri-haun
+kesto putosi noin 20 sekunnista noin yhteen sekuntiin. Muut yhden päivän
+esimerkit valmistuivat noin 1–2,4 sekunnissa ja kylmä osoitehaku paikallisella
+Valhallalla noin 4,4 sekunnissa. Nämä ovat kehityskoneen suuntaa-antavia
+lukuja, eivät rajapinnan suorituskykytakuu.
+
+Kun `sameDay` on `false`, reititin etsii enintään kolmen päivän aikajänteeltä
+ensimmäisen päivän, jona määränpäähän voidaan saapua, ja palauttaa kyseisen
+saapumispäivän hyödylliset vaihtoehdot. Myöhempien päivien samanlaisia vuoroja
+ei lasketa turhaan eikä palauteta ensimmäisten käyttökelpoisten yhteyksien
+jälkeen.
 
 Tuotannossa on asetettava tunnistettava, yhteystiedon sisältävä
 `ROUTING_USER_AGENT`. Valhallalle suositellaan omaa instanssia tai palvelua,

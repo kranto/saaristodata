@@ -21,7 +21,11 @@ from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
 class FakeGeocoder:
+    def __init__(self) -> None:
+        self.calls = 0
+
     def geocode(self, query: str) -> dict:
+        self.calls += 1
         coordinates = (
             {"lat": 61.5, "lon": 23.7}
             if query == "Origin address"
@@ -126,6 +130,23 @@ class RoutingServiceTests(unittest.TestCase):
             "surprise": True,
         })
         self.assertEqual(response.status_code, 422)
+
+    def test_identical_route_response_is_served_from_cache(self) -> None:
+        request = {
+            "origin": "Origin address",
+            "destination": "Wihuri address",
+            "date": "2026-11-01",
+            "mode": "car",
+            "sameDay": True,
+            "maxResults": 2,
+        }
+        first = self.client.post("/route", json=request)
+        calls_after_first = self.client.app.state.geocoder.calls
+        second = self.client.post("/route", json=request)
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(second.json(), first.json())
+        self.assertEqual(self.client.app.state.geocoder.calls, calls_after_first)
 
     def test_start_time_must_be_a_local_minute(self) -> None:
         response = self.client.post("/route", json={

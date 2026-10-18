@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-import copy
+import bisect
 import heapq
 import itertools
 import json
@@ -25,6 +25,9 @@ from route_itinerary import (
     routing_intermediate_stops,
     routing_traveler_information,
     transfer_risk,
+    scheduled_edge_available,
+    service_runs,
+    timing_datetime,
 )
 
 
@@ -36,6 +39,76 @@ RISK_ORDER = {
     "below_required_readiness": 4,
 }
 DEFAULT_ORIGIN_BOARDING_BUFFER_MINUTES = 15
+
+
+class ScheduledInstanceIndex:
+    """Materialize each timetable edge once for the query horizon.
+
+    The original search interpreted operating days, holiday exceptions and
+    timing ranges every time a label inspected an outgoing edge. A moderately
+    broad query can inspect the same edge millions of times. This index keeps
+    the exact same timetable semantics but turns the hot-path operation into a
+    binary search over already resolved departures.
+    """
+
+    def __init__(
+        self,
+        edges: list[dict],
+        routes: dict[str, dict],
+        start: datetime,
+        deadline: datetime,
+        profile: str,
+    ) -> None:
+        self._values: dict[str, tuple[list[datetime], list[dict]]] = {}
+        first_day = start.date()
+        final_day = deadline.date()
+        day_count = (final_day - first_day).days + 1
+        days = [first_day + timedelta(days=offset) for offset in range(day_count)]
+        for edge in edges:
+            if edge["kind"] != "scheduled_service":
+                continue
+            route = routes[edge["routeId"]]
+            schedule = edge["schedule"]
+            instances = []
+            for service_day in days:
+                if not service_runs(route, schedule, service_day):
+                    continue
+                if not scheduled_edge_available(edge, route, service_day):
+                    continue
+                departure = timing_datetime(
+                    schedule.get("departure", {}), service_day,
+                    role="departure", profile=profile,
+                )
+                arrival = timing_datetime(
+                    schedule.get("arrival", {}), service_day,
+                    role="arrival", profile=profile,
+                )
+                if departure is None or arrival is None:
+                    continue
+                while arrival < departure:
+                    arrival += timedelta(days=1)
+                if arrival == departure and edge["from"] != edge["to"]:
+                    continue
+                if departure > deadline or arrival < start:
+                    continue
+                instances.append({
+                    "departure": departure,
+                    "arrival": arrival,
+                    "serviceDate": service_day.isoformat(),
+                })
+            if instances:
+                instances.sort(key=lambda item: item["departure"])
+                self._values[edge["id"]] = (
+                    [item["departure"] for item in instances], instances,
+                )
+
+    def next(self, edge: dict, ready: datetime) -> dict | None:
+        value = self._values.get(edge["id"])
+        if value is None:
+            return None
+        departures, instances = value
+        index = bisect.bisect_left(departures, ready)
+        return instances[index] if index < len(instances) else None
 
 
 def service_signature(records: list[dict]) -> tuple:
@@ -83,26 +156,6 @@ def partial_origin_departure(records: list[dict], routes: dict[str, dict], start
         return start
     shift, _ = prefix_road_shift(records, routes, start)
     return records[0]["instance"]["departure"] + shift
-
-
-def partial_worst_risk(records: list[dict], routes: dict[str, dict]) -> str:
-    worst = "relaxed"
-    shift, first_service_index = prefix_road_shift(records, routes)
-    for index, item in enumerate(records):
-        edge = item["edge"]
-        if edge["kind"] == "road" or not any(
-            previous["edge"]["kind"] != "road" for previous in records[:index]
-        ):
-            continue
-        ready = item["ready"]
-        if shift and index == first_service_index:
-            ready += shift
-        wait = round((item["instance"]["departure"] - ready).total_seconds() / 60)
-        readiness = routes[edge["routeId"]].get("booking", {}).get("loadingReadinessMinutesBefore", 0)
-        level = transfer_risk(wait, readiness)["level"]
-        if RISK_ORDER[level] > RISK_ORDER[worst]:
-            worst = level
-    return worst
 
 
 def format_candidate(
@@ -207,6 +260,7 @@ def format_candidate(
 def edge_instance(
     edge: dict, routes: dict[str, dict], moment: datetime, mode: str, timing_profile: str,
     *, enforce_loading_readiness: bool = False,
+    scheduled_instances: ScheduledInstanceIndex | None = None,
 ) -> dict | None:
     if edge["kind"] == "road":
         duration_seconds, details = road_duration(edge, mode)  # type: ignore[misc]
@@ -222,6 +276,8 @@ def edge_instance(
             if enforce_loading_readiness else 0
         )
         boarding_ready = moment + timedelta(minutes=readiness)
+        if scheduled_instances is not None:
+            return scheduled_instances.next(edge, boarding_ready)
         return next_scheduled_instance(edge, route, boarding_ready, timing_profile)
     return next_continuous_instance(edge, moment)
 
@@ -229,6 +285,7 @@ def edge_instance(
 def earliest_candidate_from_seed(
     adjacency: dict[str, list[dict]], routes: dict[str, dict], origin: str, destination: str,
     seed: datetime, deadline: datetime, mode: str, timing_profile: str, max_legs: int,
+    scheduled_instances: ScheduledInstanceIndex | None = None,
 ) -> tuple[list[dict], datetime] | None:
     """Return the earliest feasible itinerary after one exact origin seed.
 
@@ -269,6 +326,7 @@ def earliest_candidate_from_seed(
                 enforce_loading_readiness=not any(
                     item["edge"]["kind"] != "road" for item in records
                 ),
+                scheduled_instances=scheduled_instances,
             )
             if not instance or instance["arrival"] > deadline:
                 continue
@@ -315,6 +373,7 @@ def find_itineraries(
     max_labels_per_node_hour: int = 20,
     max_legs: int = 12,
     origin_sweep_minutes: int = 30,
+    include_seed_sweep: bool = True,
     same_day: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     graph_data: dict | None = None,
@@ -340,12 +399,14 @@ def find_itineraries(
         same_day=same_day,
         graph=graph_path,
     )
-    graph = (
-        copy.deepcopy(graph_data)
-        if graph_data is not None
-        else json.loads(args.graph.read_text())
-    )
-    routes = {item["id"]: item for item in graph["routes"]}
+    graph = graph_data if graph_data is not None else json.loads(args.graph.read_text())
+    # Route dictionaries receive a query-local schedule index below. Keep the
+    # large graph immutable so a long-lived service can safely reuse it across
+    # requests without deep-copying nearly ten thousand edges.
+    routes = {
+        item["id"]: {**item, "_schedules": []}
+        for item in graph["routes"]
+    }
     trip_patterns = {item["id"]: item for item in graph["tripPatterns"]}
     nodes = {item["id"]: item for item in graph["nodes"]}
     for value, label in ((args.origin, "origin"), (args.destination, "destination")):
@@ -373,32 +434,59 @@ def find_itineraries(
         datetime.combine(args.travel_date, time(23, 59, 59))
         if args.same_day else start + timedelta(days=3)
     )
+    scheduled_instances = ScheduledInstanceIndex(
+        graph["edges"], routes, start, deadline, args.timing_profile,
+    )
     serial = itertools.count()
-    queue = []
-    seed = start
-    while seed <= deadline:
-        heapq.heappush(queue, (seed, next(serial), args.origin, [], (args.origin,)))
-        seed += timedelta(minutes=args.origin_sweep_minutes)
+    # The diverse search needs one initial label. Later useful departures are
+    # covered explicitly by the bounded earliest-arrival sweep below. Seeding
+    # both searches every 30 minutes duplicated most of the state space,
+    # particularly for a three-day query.
+    queue = [(
+        start, next(serial), args.origin, [], (args.origin,),
+        start, "relaxed", False,
+    )]
     accepted_per_node_hour = Counter()
-    best_origin_departure_by_state = {}
+    pareto_frontiers: dict[tuple, list[tuple[datetime, datetime]]] = defaultdict(list)
     candidates_by_signature = {}
     expansions = 0
+    first_result_day_deadline: datetime | None = None
 
     while queue and len(candidates_by_signature) < args.max_candidates:
-        moment, _, node_id, records, visited_nodes = heapq.heappop(queue)
+        (
+            moment, _, node_id, records, visited_nodes,
+            origin_departure, worst_risk, has_used_service,
+        ) = heapq.heappop(queue)
+        if first_result_day_deadline is not None and moment > first_result_day_deadline:
+            break
         if moment > deadline:
             continue
-        state_key = (
-            node_id,
-            moment,
-            records[-1]["edge"].get("tripPatternId") if records else None,
-            partial_worst_risk(records, routes),
-        )
-        origin_departure = partial_origin_departure(records, routes, start)
-        if origin_departure <= best_origin_departure_by_state.get(state_key, datetime.min):
+        previous_trip = records[-1]["edge"].get("tripPatternId") if records else None
+        # Whether a vessel has already been used changes both first-boarding
+        # readiness enforcement and transfer-risk semantics. It is therefore
+        # part of the routing state, especially after continuous road ferries
+        # which have no tripPatternId of their own.
+        state_key = (node_id, previous_trip, worst_risk, has_used_service)
+        frontier = pareto_frontiers[state_key]
+        if any(
+            previous_arrival <= moment and previous_departure >= origin_departure
+            for previous_arrival, previous_departure in frontier
+        ):
             continue
-        best_origin_departure_by_state[state_key] = origin_departure
+        pareto_frontiers[state_key] = [
+            (previous_arrival, previous_departure)
+            for previous_arrival, previous_departure in frontier
+            if not (
+                moment <= previous_arrival
+                and origin_departure >= previous_departure
+            )
+        ]
+        pareto_frontiers[state_key].append((moment, origin_departure))
         if node_id == args.destination:
+            if not args.same_day and first_result_day_deadline is None:
+                first_result_day_deadline = datetime.combine(
+                    moment.date(), time(23, 59, 59),
+                )
             signature = service_signature(records)
             final_service = signature[-1] if signature else ("road_only",)
             candidate = format_candidate(
@@ -413,9 +501,8 @@ def find_itineraries(
                 candidates_by_signature[signature] = candidate
             continue
         hour_bucket = moment.replace(minute=0, second=0, microsecond=0)
-        previous_trip = records[-1]["edge"].get("tripPatternId") if records else None
         label_bucket = (
-            node_id, hour_bucket, partial_worst_risk(records, routes), previous_trip,
+            node_id, hour_bucket, worst_risk, previous_trip,
         )
         accepted_per_node_hour[label_bucket] += 1
         if accepted_per_node_hour[label_bucket] > args.max_labels_per_node_hour:
@@ -439,18 +526,39 @@ def find_itineraries(
                 continue
             instance = edge_instance(
                 edge, routes, moment, args.mode, args.timing_profile,
-                enforce_loading_readiness=not any(
-                    item["edge"]["kind"] != "road" for item in records
-                ),
+                enforce_loading_readiness=not has_used_service,
+                scheduled_instances=scheduled_instances,
             )
             if not instance:
                 continue
             if instance["arrival"] > deadline:
                 continue
             record = {"edge": edge, "instance": instance, "ready": moment}
+            next_records = records + [record]
+            next_has_used_service = has_used_service or edge["kind"] != "road"
+            next_origin_departure = origin_departure
+            if not records and edge["kind"] == "road":
+                next_origin_departure = instance["departure"]
+            if not has_used_service and edge["kind"] != "road":
+                next_origin_departure = partial_origin_departure(
+                    next_records, routes, start,
+                )
+            next_worst_risk = worst_risk
+            if has_used_service and edge["kind"] != "road":
+                route = routes[edge["routeId"]]
+                wait = round(
+                    (instance["departure"] - moment).total_seconds() / 60
+                )
+                readiness = route.get("booking", {}).get(
+                    "loadingReadinessMinutesBefore", 0,
+                )
+                level = transfer_risk(wait, readiness)["level"]
+                if RISK_ORDER[level] > RISK_ORDER[next_worst_risk]:
+                    next_worst_risk = level
             heapq.heappush(queue, (
-                instance["arrival"], next(serial), edge["to"], records + [record],
-                visited_nodes + (edge["to"],),
+                instance["arrival"], next(serial), edge["to"], next_records,
+                visited_nodes + (edge["to"],), next_origin_departure,
+                next_worst_risk, next_has_used_service,
             ))
 
     # Preserve useful later-departure chains that the bounded diverse-label
@@ -458,29 +566,31 @@ def find_itineraries(
     # earliest-arrival itinerary; identical ferry sequences are deduplicated.
     swept_seed_count = 0
     swept_candidate_count = 0
-    seed = start
-    while seed <= deadline:
-        swept_seed_count += 1
-        found = earliest_candidate_from_seed(
-            adjacency, routes, args.origin, args.destination, seed, deadline,
-            args.mode, args.timing_profile, args.max_legs,
-        )
-        if found:
-            records, arrival = found
-            signature = service_signature(records)
-            final_service = signature[-1] if signature else ("road_only",)
-            candidate = format_candidate(
-                records, routes, start, arrival, args.mode, args.timing_profile, trip_patterns
+    if include_seed_sweep:
+        sweep_deadline = first_result_day_deadline or deadline
+        seed = start
+        while seed <= sweep_deadline:
+            swept_seed_count += 1
+            found = earliest_candidate_from_seed(
+                adjacency, routes, args.origin, args.destination, seed, sweep_deadline,
+                args.mode, args.timing_profile, args.max_legs, scheduled_instances,
             )
-            candidate["_finalService"] = final_service
-            previous_candidate = candidates_by_signature.get(signature)
-            if (
-                previous_candidate is None
-                or candidate["suggestedOriginDeparture"] > previous_candidate["suggestedOriginDeparture"]
-            ):
-                candidates_by_signature[signature] = candidate
-                swept_candidate_count += 1
-        seed += timedelta(minutes=args.origin_sweep_minutes)
+            if found:
+                records, arrival = found
+                signature = service_signature(records)
+                final_service = signature[-1] if signature else ("road_only",)
+                candidate = format_candidate(
+                    records, routes, start, arrival, args.mode, args.timing_profile, trip_patterns
+                )
+                candidate["_finalService"] = final_service
+                previous_candidate = candidates_by_signature.get(signature)
+                if (
+                    previous_candidate is None
+                    or candidate["suggestedOriginDeparture"] > previous_candidate["suggestedOriginDeparture"]
+                ):
+                    candidates_by_signature[signature] = candidate
+                    swept_candidate_count += 1
+            seed += timedelta(minutes=args.origin_sweep_minutes)
 
     candidates = list(candidates_by_signature.values())
     candidates = [
@@ -542,6 +652,10 @@ def find_itineraries(
             "originSweepMinutes": args.origin_sweep_minutes,
             "sweptSeedCount": swept_seed_count,
             "sweptCandidateUpdates": swept_candidate_count,
+            "firstResultDayDeadline": (
+                first_result_day_deadline.isoformat(timespec="minutes")
+                if first_result_day_deadline else None
+            ),
             "limitations": [
                 "result diversity is based on distinct ferry-service sequences",
                 "continuous ferry edges without a known crossing time are not routable",

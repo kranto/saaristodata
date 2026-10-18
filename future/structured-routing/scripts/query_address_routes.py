@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import copy
 import json
 import math
 from datetime import date, time
@@ -194,7 +193,14 @@ def add_external_edges(
     mode: str,
 ) -> dict:
     """Return a graph augmented with address access and egress road edges."""
-    result = copy.deepcopy(graph)
+    # Only the top-level node and edge arrays are extended. Their existing
+    # members stay immutable, so copying the whole graph for every request is
+    # unnecessary and expensive.
+    result = {
+        **graph,
+        "nodes": list(graph["nodes"]),
+        "edges": list(graph["edges"]),
+    }
     origin_stops = area_stops(index, result, origin_area_id)
     destination_stops = area_stops(index, result, destination_area_id)
     if not origin_stops:
@@ -317,13 +323,19 @@ def query_address_routes(
     include_external_geometry: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     stop_index_path: Path = DEFAULT_STOP_INDEX,
+    graph_data: dict | None = None,
+    stop_index_data: dict | None = None,
     geocoder=None,
     router=None,
 ) -> dict:
     geocoder = geocoder or NominatimGeocoder()
     router = router or ValhallaRouter()
-    graph = json.loads(graph_path.read_text())
-    index = json.loads(stop_index_path.read_text())
+    graph = graph_data if graph_data is not None else json.loads(graph_path.read_text())
+    index = (
+        stop_index_data
+        if stop_index_data is not None
+        else json.loads(stop_index_path.read_text())
+    )
 
     origin = geocoder.geocode(origin_query)
     destination = geocoder.geocode(destination_query)
