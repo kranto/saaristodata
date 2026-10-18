@@ -47,6 +47,7 @@ def build(stops_path: Path, components_path: Path) -> dict:
     components_data = json.loads(components_path.read_text())
     stops = load_known_stops(stops_path)
     preferred_names = components_data.get("preferredNames", {})
+    routing_overrides = components_data.get("routingCoordinateOverrides", {})
 
     for stop_id, point in components_data.get("additionalPiers", {}).items():
         stops[stop_id] = {
@@ -74,6 +75,15 @@ def build(stops_path: Path, components_path: Path) -> dict:
 
     for stop_id, stop in stops.items():
         stop["name"] = preferred_names.get(stop_id, stop_id)
+        if stop_id in routing_overrides:
+            point = routing_overrides[stop_id]
+            stop["routingCoordinates"] = {
+                "lon": point["lon"],
+                "lat": point["lat"],
+            }
+            stop["routingCoordinateSource"] = point.get(
+                "source", "road-components.json routing override"
+            )
         component_id = component_by_stop.get(stop_id)
         if component_id:
             stop["roadAreaId"] = component_id

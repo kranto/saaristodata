@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T21:02:33.147993+00:00",
+  "generatedAt": "2026-10-18T11:33:34.633205+00:00",
   "description": "Known water-transport stops used to map external-router ferry boarding coordinates to the internal ferry-free road areas.",
   "matchingPolicy": {
     "method": "nearest_known_stop",
@@ -106,6 +106,11 @@
       },
       "coordinateSource": "saaristolautat/public/data/saaristo.json",
       "name": "Eckerön Berghamn",
+      "routingCoordinates": {
+        "lon": 19.54107,
+        "lat": 60.223033
+      },
+      "routingCoordinateSource": "OpenStreetMap way 25208185, Eckerövägen/1",
       "roadAreaId": "mainland_aland",
       "roadAreaKind": "maintained_component"
     },
