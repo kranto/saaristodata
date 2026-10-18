@@ -49,6 +49,25 @@ class FastRouteSearchTests(unittest.TestCase):
         )
         self.assertTrue(all("_schedules" not in route for route in self.graph["routes"]))
 
+    def test_adaptive_sweep_finds_all_wihuri_departures_without_half_hour_scan(self) -> None:
+        result = find_itineraries(
+            "Turku", "Wihuri", date(2026, 11, 1),
+            same_day=True, max_results=10, graph_data=self.graph,
+        )
+        self.assertEqual(
+            [item["suggestedOriginDeparture"] for item in result["results"]],
+            [
+                "2026-11-01T06:55",
+                "2026-11-01T12:55",
+                "2026-11-01T14:55",
+            ],
+        )
+        self.assertEqual(
+            result["diagnostics"]["sweepStrategy"],
+            "adaptive_first_service_boundaries",
+        )
+        self.assertLessEqual(result["diagnostics"]["sweptSeedCount"], 4)
+
 
 if __name__ == "__main__":
     unittest.main()

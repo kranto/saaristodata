@@ -338,6 +338,63 @@ def earliest_candidate_from_seed(
     return None
 
 
+def next_adaptive_sweep_seeds(
+    records: list[dict],
+    seed: datetime,
+    routes: dict[str, dict],
+    deadline: datetime,
+) -> list[datetime]:
+    """Return the next meaningful origin times for one earliest itinerary.
+
+    Before the first scheduled departure, road and continuous-ferry legs move
+    with the origin time. The itinerary changes only at a transfer-risk
+    boundary or when that scheduled departure can no longer be reached. A
+    fixed 30-minute sweep therefore repeats the same search many times and can
+    still miss a boundary by almost half an hour.
+    """
+    has_used_service = False
+    for item in records:
+        edge = item["edge"]
+        if edge["kind"] != "scheduled_service":
+            has_used_service |= edge["kind"] != "road"
+            continue
+        instance = item["instance"]
+        ready = item["ready"]
+        route = routes[edge["routeId"]]
+        readiness = (
+            route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+            if not has_used_service else 0
+        )
+        catch_slack = round(
+            (instance["departure"] - ready).total_seconds() / 60
+        ) - readiness
+        values = []
+        # One minute beyond the usable slack forces the earliest-arrival
+        # search to select a different first scheduled departure.
+        if catch_slack >= 0:
+            values.append(seed + timedelta(minutes=catch_slack + 1))
+        if has_used_service:
+            booking_readiness = route.get("booking", {}).get(
+                "loadingReadinessMinutesBefore", 0,
+            )
+            effective_buffer = round(
+                (instance["departure"] - ready).total_seconds() / 60
+            ) - booking_readiness
+            # Last whole-minute value in each weaker risk class. Crossing the
+            # threshold produces normal, tight, very tight and finally a
+            # below-readiness alternative when each is feasible.
+            for target_buffer in (29, 14, 4, -1):
+                shift = effective_buffer - target_buffer
+                if shift > 0:
+                    values.append(seed + timedelta(minutes=shift))
+        future_values = sorted({value for value in values if seed < value <= deadline})
+        # Advance to the closest boundary only. Later boundaries are discovered
+        # from the next earliest itinerary; enqueueing every boundary here
+        # creates a branching sweep and repeats the same searches.
+        return future_values[:1]
+    return []
+
+
 def candidate_dominates(first: dict, second: dict) -> bool:
     """Whether first is unambiguously preferable to second."""
     first_departure = datetime.fromisoformat(first["suggestedOriginDeparture"])
@@ -372,7 +429,6 @@ def find_itineraries(
     max_candidates: int = 1000,
     max_labels_per_node_hour: int = 20,
     max_legs: int = 12,
-    origin_sweep_minutes: int = 30,
     include_seed_sweep: bool = True,
     same_day: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
@@ -395,7 +451,6 @@ def find_itineraries(
         max_candidates=max_candidates,
         max_labels_per_node_hour=max_labels_per_node_hour,
         max_legs=max_legs,
-        origin_sweep_minutes=origin_sweep_minutes,
         same_day=same_day,
         graph=graph_path,
     )
@@ -568,29 +623,39 @@ def find_itineraries(
     swept_candidate_count = 0
     if include_seed_sweep:
         sweep_deadline = first_result_day_deadline or deadline
-        seed = start
-        while seed <= sweep_deadline:
+        pending_seeds = [start]
+        seen_seeds = set()
+        while pending_seeds:
+            seed = heapq.heappop(pending_seeds)
+            if seed in seen_seeds or seed > sweep_deadline:
+                continue
+            seen_seeds.add(seed)
             swept_seed_count += 1
             found = earliest_candidate_from_seed(
                 adjacency, routes, args.origin, args.destination, seed, sweep_deadline,
                 args.mode, args.timing_profile, args.max_legs, scheduled_instances,
             )
-            if found:
-                records, arrival = found
-                signature = service_signature(records)
-                final_service = signature[-1] if signature else ("road_only",)
-                candidate = format_candidate(
-                    records, routes, start, arrival, args.mode, args.timing_profile, trip_patterns
-                )
-                candidate["_finalService"] = final_service
-                previous_candidate = candidates_by_signature.get(signature)
-                if (
-                    previous_candidate is None
-                    or candidate["suggestedOriginDeparture"] > previous_candidate["suggestedOriginDeparture"]
-                ):
-                    candidates_by_signature[signature] = candidate
-                    swept_candidate_count += 1
-            seed += timedelta(minutes=args.origin_sweep_minutes)
+            if not found:
+                continue
+            records, arrival = found
+            signature = service_signature(records)
+            final_service = signature[-1] if signature else ("road_only",)
+            candidate = format_candidate(
+                records, routes, start, arrival, args.mode, args.timing_profile, trip_patterns
+            )
+            candidate["_finalService"] = final_service
+            previous_candidate = candidates_by_signature.get(signature)
+            if (
+                previous_candidate is None
+                or candidate["suggestedOriginDeparture"] > previous_candidate["suggestedOriginDeparture"]
+            ):
+                candidates_by_signature[signature] = candidate
+                swept_candidate_count += 1
+            for next_seed in next_adaptive_sweep_seeds(
+                records, seed, routes, sweep_deadline,
+            ):
+                if next_seed not in seen_seeds:
+                    heapq.heappush(pending_seeds, next_seed)
 
     candidates = list(candidates_by_signature.values())
     candidates = [
@@ -649,7 +714,7 @@ def find_itineraries(
             "skippedContinuousEdgesWithoutCrossingTime": skipped_continuous_unknown,
             "maxLabelsPerNodeHour": args.max_labels_per_node_hour,
             "maxLegs": args.max_legs,
-            "originSweepMinutes": args.origin_sweep_minutes,
+            "sweepStrategy": "adaptive_first_service_boundaries",
             "sweptSeedCount": swept_seed_count,
             "sweptCandidateUpdates": swept_candidate_count,
             "firstResultDayDeadline": (
@@ -678,7 +743,6 @@ def main() -> int:
     parser.add_argument("--max-candidates", type=int, default=1000)
     parser.add_argument("--max-labels-per-node-hour", type=int, default=20)
     parser.add_argument("--max-legs", type=int, default=12)
-    parser.add_argument("--origin-sweep-minutes", type=int, default=30)
     parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     args = parser.parse_args()
@@ -695,7 +759,6 @@ def main() -> int:
             max_candidates=args.max_candidates,
             max_labels_per_node_hour=args.max_labels_per_node_hour,
             max_legs=args.max_legs,
-            origin_sweep_minutes=args.origin_sweep_minutes,
             same_day=args.same_day,
             graph_path=args.graph,
         )
