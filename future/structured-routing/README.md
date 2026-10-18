@@ -64,7 +64,11 @@ Keskeiset tiedostot:
 - `external-routing-stop-index.json`: kaikkien tunnettujen vesiliikenteen
   pysähdyspaikkojen koordinaatit ja niistä johdetut lautattomat tiealueet.
   Ylläpidetyn monen pysähdyspaikan tiealueen ulkopuoliset paikat muodostavat
-  yhden pysähdyspaikan tiealueen.
+  yhden pysähdyspaikan tiealueen. Varsinainen pysähdyspaikan koordinaatti
+  säilytetään lauttojen tunnistamista varten, mutta tarvittaessa sillä voi olla
+  erillinen `routingCoordinates`-piste maantieverkon puolella. Lautattomissa
+  tiehauissa Valhallaa estetään lisäksi ankkuroimasta päätepistettä
+  lauttageometriaan.
 - `external-routing-stop-index.schema.json`: ulkoisen reitityksen
   pysähdyspaikkahakemiston JSON Schema.
 - `routing-stop-overrides.json`: reitityksessä käytettävät laiturinimien
@@ -429,3 +433,72 @@ Ankkurimallin 90 päivän ajallisessa takautuvassa testissä syntyi 36 629
 ennustetta. Mediaanivirhe oli 1,12 minuuttia, p90-virhe 5,83 minuuttia ja 96,4 %
 ennusteista oli enintään kymmenen minuutin päässä toteumasta. P10–p90-haarukka
 sisälsi toteuman 80,1 %:ssa tapauksista.
+
+## Reitityspalvelu
+
+`service/app.py` julkaisee osoitteesta osoitteeseen -reitityksen FastAPI-
+palveluna. Ensimmäisessä versiossa on kaksi rajapintaa:
+
+- `GET /health` palauttaa palvelun tilan ja version
+- `POST /route` ottaa vastaan `route-request.schema.json`-muotoisen pyynnön ja
+  palauttaa `address-route-query-response.schema.json`-muotoisen vastauksen
+
+Esimerkkipyyntö:
+
+```sh
+curl http://127.0.0.1:8082/route \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "origin": "Hallituskatu 13, Tampere",
+    "destination": "Norra Finbyvägen 8, Sund",
+    "date": "2026-11-03",
+    "mode": "car",
+    "sameDay": true
+  }'
+```
+
+Palvelu geokoodaa osoitteet Nominatimilla, tunnistaa tiealueet Valhallan
+avulla ja käyttää niiden välissä omaa saariston reititysgraafia. Vain valittujen
+reittivaihtoehtojen ulkoisille tieosuuksille haetaan lopuksi karttageometria.
+Nominatimin ja Valhallan onnistuneet JSON-vastaukset tallennetaan pysyvään
+SQLite-välimuistiin. Välimuistin oletuskesto on 30 päivää ja polku kontissa
+`/var/cache/saaristolautat/routes.sqlite3`.
+
+Käynnistys palvelimella:
+
+```sh
+docker compose up -d --build
+```
+
+`compose.yml` kuuntelee vain palvelimen omassa osoitteessa
+`127.0.0.1:8082`. `deploy/nginx-location.conf` sisältää nginxin käänteisen
+välityksen mallin. FastAPIn koneellisesti muodostama rajapintakuvaus löytyy
+palvelun käydessä osoitteesta `/docs`.
+
+Kontti käyttää aluksi yhtä palvelinprosessia. Näin Nominatimin vähintään yhden
+sekunnin kutsuväli ja SQLite-välimuistin kirjoitukset pysyvät yhden prosessin
+hallinnassa. Hitaat ulkoiset haut suoritetaan säikeissä, joten ne eivät estä
+palvelinta vastaanottamasta muita HTTP-yhteyksiä.
+
+Tuotannossa on asetettava tunnistettava, yhteystiedon sisältävä
+`ROUTING_USER_AGENT`. Valhallalle suositellaan omaa instanssia tai palvelua,
+jonka matriisirajat kattavat Suomen ja Ahvenanmaan laituriehdokkaat. Jos
+matriisihaku ei onnistu, reititin tarkistaa kaikki tiealueen laiturit
+yksittäisinä hakuina. Se ei enää rajaa ehdokkaita kahdeksaan lähimpään, joten
+oikea reitti ei jää tämän optimoinnin vuoksi löytymättä; pysyvä välimuisti
+estää samojen hakujen toistumisen.
+
+Oman reitittimen, paikallisen Valhallan ja Google Mapsin lokakuussa 2026 tehty
+vertailu sekä sen rajaukset on dokumentoitu tiedostossa
+[`ROUTING_ENGINE_COMPARISON.md`](ROUTING_ENGINE_COMPARISON.md). Vertailu
+vahvistaa, että yleistä reitityspalvelua käytetään vain saaristoreitin alku- ja
+loppupään tieosuuksiin; se ei korvaa aikataulutettua sisäistä graafia.
+
+Paikallinen kehitys:
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt
+.venv/bin/uvicorn service.app:app --reload
+.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+```

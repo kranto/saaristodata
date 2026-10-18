@@ -1,0 +1,16 @@
+services:
+  routing-api:
+    build: .
+    restart: unless-stopped
+    environment:
+      ROUTING_USER_AGENT: "Saaristolautat routing service/0.1 (set-contact-address)"
+      # For production, point this at a Valhalla instance whose matrix limits
+      # cover all Finnish and Aland road-area candidates.
+      VALHALLA_URL: "https://valhalla1.openstreetmap.de"
+    volumes:
+      - routing-cache:/var/cache/saaristolautat
+    ports:
+      - "127.0.0.1:8082:8000"
+
+volumes:
+  routing-cache:

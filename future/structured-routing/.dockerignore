@@ -1,0 +1,9 @@
+*
+!requirements.txt
+!Dockerfile
+!scripts/
+!scripts/*.py
+!service/
+!service/*.py
+!routing-graph.json
+!external-routing-stop-index.json

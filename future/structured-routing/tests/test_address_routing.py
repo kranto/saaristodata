@@ -73,6 +73,27 @@ class FakeLimitedMatrixRouter(FakeRouter):
         return {"durationSeconds": 900, "distanceMeters": 10_000}
 
 
+class FakePartialMatrixRouter(FakeRouter):
+    def __init__(self) -> None:
+        self.measured = []
+
+    def matrix(
+        self, sources: list[dict], targets: list[dict], mode: str,
+        *, exclude_ferries: bool = True,
+    ) -> list[dict]:
+        return [
+            {"from_index": 0, "to_index": 0, "time": 600, "distance": 5},
+            {"from_index": 0, "to_index": 1, "time": None, "distance": None},
+        ]
+
+    def measure_route(
+        self, origin: dict, destination: dict, mode: str,
+        *, exclude_ferries: bool = True,
+    ) -> dict:
+        self.measured.append((origin, destination))
+        return {"durationSeconds": 900, "distanceMeters": 10_000}
+
+
 class AddressGraphTests(unittest.TestCase):
     def test_all_stops_in_each_road_area_become_candidates(self) -> None:
         graph = {
@@ -113,7 +134,7 @@ class AddressGraphTests(unittest.TestCase):
         )
         self.assertEqual([item["toIndex"] for item in values], [0])
 
-    def test_matrix_limit_falls_back_to_bounded_individual_routes(self) -> None:
+    def test_matrix_limit_falls_back_to_all_individual_routes(self) -> None:
         graph = {
             "nodes": [{"id": f"A{number}"} for number in range(10)] + [{"id": "B"}],
             "edges": [],
@@ -141,7 +162,26 @@ class AddressGraphTests(unittest.TestCase):
             edge for edge in result["edges"]
             if edge["from"] == ORIGIN_NODE
         ]
-        self.assertEqual(len(access), 8)
+        self.assertEqual(len(access), 10)
+
+    def test_null_matrix_entry_falls_back_to_individual_route(self) -> None:
+        router = FakePartialMatrixRouter()
+        graph = {"nodes": [{"id": "A"}, {"id": "B"}, {"id": "C"}], "edges": []}
+        index = {
+            "stops": [
+                {"id": "A", "roadAreaId": "origin", "coordinates": {"lat": 1, "lon": 1}},
+                {"id": "B", "roadAreaId": "origin", "coordinates": {"lat": 1, "lon": 2}},
+                {"id": "C", "roadAreaId": "destination", "coordinates": {"lat": 2, "lon": 2}},
+            ]
+        }
+        location = {"displayName": "Address", "coordinates": {"lat": 0, "lon": 0}}
+        result = add_external_edges(
+            graph, index, router, location, location,
+            "origin", "destination", "car",
+        )
+        access = [edge for edge in result["edges"] if edge["from"] == ORIGIN_NODE]
+        self.assertEqual({edge["to"] for edge in access}, {"A", "B"})
+        self.assertGreaterEqual(len(router.measured), 1)
 
     def test_address_query_uses_external_access_and_internal_schedule(self) -> None:
         result = query_address_routes(

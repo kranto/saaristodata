@@ -12,13 +12,14 @@ from __future__ import annotations
 import json
 import os
 import ssl
+import threading
 import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from classify_external_route import classify, distance_meters
+from classify_external_route import classify, decode_polyline, distance_meters
 
 
 DEFAULT_NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
@@ -71,21 +72,30 @@ class NominatimGeocoder:
         user_agent: str = DEFAULT_USER_AGENT,
         timeout: float = 30,
         minimum_interval_seconds: float = 1,
+        cache=None,
     ) -> None:
         self.endpoint = endpoint
         self.user_agent = user_agent
         self.timeout = timeout
         self.minimum_interval_seconds = minimum_interval_seconds
+        self.cache = cache
         self._last_request_at: float | None = None
         self._cache: dict[str, dict] = {}
+        self._request_lock = threading.Lock()
 
     def geocode(self, query: str) -> dict:
-        if query in self._cache:
-            return dict(self._cache[query])
-        if self._last_request_at is not None:
-            wait = self.minimum_interval_seconds - (time.monotonic() - self._last_request_at)
-            if wait > 0:
-                time.sleep(wait)
+        normalized_query = " ".join(query.casefold().split())
+        if normalized_query in self._cache:
+            result = dict(self._cache[normalized_query])
+            result["query"] = query
+            return result
+        cache_key = {"endpoint": self.endpoint, "query": normalized_query}
+        cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
+        if cached is not None:
+            result = dict(cached)
+            result["query"] = query
+            self._cache[normalized_query] = result
+            return dict(result)
         parameters = urlencode({
             "q": query,
             "format": "jsonv2",
@@ -94,12 +104,27 @@ class NominatimGeocoder:
             "countrycodes": "fi",
             "accept-language": "fi,sv,en",
         })
-        request = Request(
-            f"{self.endpoint}?{parameters}",
-            headers={"User-Agent": self.user_agent, "Accept": "application/json"},
-        )
-        results = _read_json(request, self.timeout)
-        self._last_request_at = time.monotonic()
+        with self._request_lock:
+            # Another request may have populated the cache while this thread
+            # was waiting for the provider-wide rate-limit lock.
+            cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
+            if cached is not None:
+                result = dict(cached)
+                result["query"] = query
+                self._cache[normalized_query] = result
+                return dict(result)
+            if self._last_request_at is not None:
+                wait = self.minimum_interval_seconds - (
+                    time.monotonic() - self._last_request_at
+                )
+                if wait > 0:
+                    time.sleep(wait)
+            request = Request(
+                f"{self.endpoint}?{parameters}",
+                headers={"User-Agent": self.user_agent, "Accept": "application/json"},
+            )
+            results = _read_json(request, self.timeout)
+            self._last_request_at = time.monotonic()
         if not isinstance(results, list) or not results:
             raise ValueError(f"address was not found: {query}")
         item = results[0]
@@ -111,7 +136,9 @@ class NominatimGeocoder:
             "provider": "Nominatim",
             "attribution": "© OpenStreetMap contributors",
         }
-        self._cache[query] = result
+        if self.cache:
+            self.cache.set("nominatim:search", cache_key, result)
+        self._cache[normalized_query] = result
         return dict(result)
 
 
@@ -124,12 +151,18 @@ class ValhallaRouter:
         *,
         user_agent: str = DEFAULT_USER_AGENT,
         timeout: float = 60,
+        cache=None,
     ) -> None:
         self.endpoint = endpoint.rstrip("/")
         self.user_agent = user_agent
         self.timeout = timeout
+        self.cache = cache
 
     def _post(self, action: str, payload: dict) -> dict:
+        cache_key = {"endpoint": self.endpoint, "payload": payload}
+        cached = self.cache.get(f"valhalla:{action}", cache_key) if self.cache else None
+        if cached is not None:
+            return dict(cached)
         request = Request(
             f"{self.endpoint}/{action}",
             data=json.dumps(payload).encode("utf-8"),
@@ -143,7 +176,29 @@ class ValhallaRouter:
         result = _read_json(request, self.timeout)
         if not isinstance(result, dict):
             raise RuntimeError("external routing service returned a non-object response")
+        if self.cache:
+            self.cache.set(f"valhalla:{action}", cache_key, result)
         return result
+
+    @staticmethod
+    def _locations(locations: list[dict], *, exclude_ferries: bool) -> list[dict]:
+        """Prepare Valhalla locations without mutating caller-owned points.
+
+        Excluding ferry traversal in the costing model is not enough when a
+        terminal coordinate correlates directly to the ferry edge.  In that
+        case Valhalla cannot leave or reach the location at all.  Excluding
+        ferry edges from location correlation makes the same coordinate snap
+        to its road-side terminal approach instead.
+        """
+        prepared = []
+        for location in locations:
+            item = dict(location)
+            if exclude_ferries:
+                search_filter = dict(item.get("search_filter", {}))
+                search_filter["exclude_ferry"] = True
+                item["search_filter"] = search_filter
+            prepared.append(item)
+        return prepared
 
     def route(
         self, origin: dict, destination: dict, mode: str, *,
@@ -155,7 +210,9 @@ class ValhallaRouter:
             if exclude_ferries else {"use_ferry": 1}
         )
         return self._post("route", {
-            "locations": [origin, destination],
+            "locations": self._locations(
+                [origin, destination], exclude_ferries=exclude_ferries,
+            ),
             "costing": costing,
             "costing_options": {costing: options},
             "directions_options": {"units": "kilometers"},
@@ -178,6 +235,29 @@ class ValhallaRouter:
             "distanceMeters": max(0, round(float(summary["length"]) * 1000)),
         }
 
+    def route_geometry(
+        self, origin: dict, destination: dict, mode: str, *,
+        exclude_ferries: bool = True,
+    ) -> dict | None:
+        response = self.route(
+            origin, destination, mode, exclude_ferries=exclude_ferries,
+        )
+        trip = response.get("trip") or {}
+        if exclude_ferries and (trip.get("summary") or {}).get("has_ferry"):
+            return None
+        coordinates = []
+        for leg in trip.get("legs", []):
+            shape = leg.get("shape")
+            if not shape:
+                continue
+            for point in decode_polyline(shape):
+                coordinate = [point["lon"], point["lat"]]
+                if not coordinates or coordinates[-1] != coordinate:
+                    coordinates.append(coordinate)
+        if len(coordinates) < 2:
+            return None
+        return {"type": "LineString", "coordinates": coordinates}
+
     def matrix(
         self,
         sources: list[dict],
@@ -188,8 +268,8 @@ class ValhallaRouter:
     ) -> list[dict]:
         costing = valhalla_costing(mode)
         response = self._post("sources_to_targets", {
-            "sources": sources,
-            "targets": targets,
+            "sources": self._locations(sources, exclude_ferries=exclude_ferries),
+            "targets": self._locations(targets, exclude_ferries=exclude_ferries),
             "costing": costing,
             "costing_options": {costing: {"exclude_ferries": exclude_ferries}},
             "units": "kilometers",
@@ -223,7 +303,11 @@ class ValhallaRouter:
         )
         if anchor is None:
             raise ValueError(f"road-area anchor is not in the stop index: {anchor_stop_id}")
-        response = self.route(point, anchor["coordinates"], mode)
+        response = self.route(
+            point,
+            anchor.get("routingCoordinates", anchor["coordinates"]),
+            mode,
+        )
         result = classify(
             response,
             index,

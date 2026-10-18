@@ -28,7 +28,10 @@ DEFAULT_STOP_INDEX = EXPERIMENT / "external-routing-stop-index.json"
 ORIGIN_NODE = "address:origin"
 DESTINATION_NODE = "address:destination"
 MAX_BICYCLE_EXTERNAL_METERS = 150_000
-MAX_ROUTE_FALLBACK_CANDIDATES = 8
+
+
+def routing_coordinates(stop: dict) -> dict:
+    return stop.get("routingCoordinates", stop["coordinates"])
 
 
 def graph_stop_ids(graph: dict) -> set[str]:
@@ -113,12 +116,14 @@ def external_measurements(
     *,
     fallback_from_source: bool,
 ) -> list[dict]:
-    """Use a matrix first, then a bounded route-by-route fallback.
+    """Use a matrix first, then a complete route-by-route fallback.
 
     The public Valhalla demo has a shorter distance limit for matrices than
     for ordinary routes.  A production deployment can use a Valhalla instance
-    with a larger matrix limit; the fallback keeps the prototype useful with
-    the public service without issuing a request for every known stop.
+    with a larger matrix limit. The complete fallback is intentionally slower,
+    but it never drops a valid access point merely because it was not among a
+    fixed number of geographically nearest stops. Persistent caching keeps the
+    cost bounded after the first query.
     """
     try:
         values = usable_matrix_entries(
@@ -129,23 +134,31 @@ def external_measurements(
         )
     except RuntimeError:
         values = []
-    if values:
-        return values
+    completed_pairs = {
+        (item["fromIndex"], item["toIndex"])
+        for item in values
+    }
 
     if fallback_from_source:
         point = sources[0]
         ranked = sorted(
             range(len(targets)),
             key=lambda index: distance_meters(point, targets[index]),
-        )[:MAX_ROUTE_FALLBACK_CANDIDATES]
-        pairs = [(0, target_index) for target_index in ranked]
+        )
+        pairs = [
+            (0, target_index) for target_index in ranked
+            if (0, target_index) not in completed_pairs
+        ]
     else:
         point = targets[0]
         ranked = sorted(
             range(len(sources)),
             key=lambda index: distance_meters(sources[index], point),
-        )[:MAX_ROUTE_FALLBACK_CANDIDATES]
-        pairs = [(source_index, 0) for source_index in ranked]
+        )
+        pairs = [
+            (source_index, 0) for source_index in ranked
+            if (source_index, 0) not in completed_pairs
+        ]
 
     for source_index, target_index in pairs:
         try:
@@ -209,7 +222,7 @@ def add_external_edges(
     access_values = external_measurements(
         router,
         [origin["coordinates"]],
-        [item["coordinates"] for item in origin_stops],
+        [routing_coordinates(item) for item in origin_stops],
         mode,
         fallback_from_source=True,
     )
@@ -222,7 +235,7 @@ def add_external_edges(
 
     egress_values = external_measurements(
         router,
-        [item["coordinates"] for item in destination_stops],
+        [routing_coordinates(item) for item in destination_stops],
         [destination["coordinates"]],
         mode,
         fallback_from_source=False,
@@ -261,6 +274,35 @@ def public_road_area(classification: dict) -> dict:
     return result
 
 
+def enrich_external_geometries(
+    response: dict,
+    router,
+    origin: dict,
+    destination: dict,
+    index: dict,
+    mode: str,
+) -> None:
+    """Fetch geometry only for external road legs in selected itineraries."""
+    coordinates = {
+        item["id"]: routing_coordinates(item) for item in index["stops"]
+    }
+    coordinates[ORIGIN_NODE] = origin["coordinates"]
+    coordinates[DESTINATION_NODE] = destination["coordinates"]
+    geometries = {}
+    for itinerary in response.get("itineraries", []):
+        for leg in itinerary.get("legs", []):
+            if "externalRouting" not in leg:
+                continue
+            pair = (leg["from"], leg["to"])
+            if pair not in geometries:
+                geometries[pair] = router.route_geometry(
+                    coordinates[pair[0]], coordinates[pair[1]], mode,
+                    exclude_ferries=True,
+                )
+            if geometries[pair] is not None:
+                leg["externalRouting"]["geometry"] = geometries[pair]
+
+
 def query_address_routes(
     origin_query: str,
     destination_query: str,
@@ -272,6 +314,7 @@ def query_address_routes(
     same_day: bool = False,
     max_results: int = 12,
     include_diagnostics: bool = False,
+    include_external_geometry: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     stop_index_path: Path = DEFAULT_STOP_INDEX,
     geocoder=None,
@@ -310,6 +353,10 @@ def query_address_routes(
         graph_data=augmented,
     )
     response = public_response(internal, include_diagnostics=include_diagnostics)
+    if include_external_geometry:
+        enrich_external_geometries(
+            response, router, origin, destination, index, mode,
+        )
     response["query"].update({
         "originAddress": origin,
         "destinationAddress": destination,
@@ -335,6 +382,7 @@ def main() -> int:
     parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--max-results", type=int, default=12)
     parser.add_argument("--include-diagnostics", action="store_true")
+    parser.add_argument("--include-external-geometry", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     parser.add_argument("--stop-index", type=Path, default=DEFAULT_STOP_INDEX)
     parser.add_argument("--nominatim-url", default=DEFAULT_NOMINATIM_URL)
@@ -354,6 +402,7 @@ def main() -> int:
             same_day=args.same_day,
             max_results=args.max_results,
             include_diagnostics=args.include_diagnostics,
+            include_external_geometry=args.include_external_geometry,
             graph_path=args.graph,
             stop_index_path=args.stop_index,
             geocoder=geocoder,
