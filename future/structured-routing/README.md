@@ -474,9 +474,15 @@ docker compose up -d --build
 ```
 
 `compose.yml` kuuntelee vain palvelimen omassa osoitteessa
-`127.0.0.1:8082`. `deploy/nginx-location.conf` sisältää nginxin käänteisen
-välityksen mallin. FastAPIn koneellisesti muodostama rajapintakuvaus löytyy
-palvelun käydessä osoitteesta `/docs`.
+`127.0.0.1:8082`. Sama compose käynnistää Suomen aineistoa käyttävän Valhallan
+osoitteeseen `127.0.0.1:18083`; reititys-API käyttää sitä compose-verkon sisällä
+osoitteella `http://valhalla:8002`. Valhallan aineisto säilytetään nimetyllä
+levyllä `saaristolautat-valhalla-finland`, joten kontin uudelleenluonti ei
+rakennuta noin kymmenen gigatavun aineistoa uudelleen. Ensimmäinen käynnistys
+uudella palvelimella lataa ja rakentaa aineiston ennen API:n käynnistymistä.
+`deploy/nginx-location.conf` sisältää nginxin käänteisen välityksen mallin.
+FastAPIn koneellisesti muodostama rajapintakuvaus löytyy palvelun käydessä
+osoitteesta `/docs`.
 
 Kontti käyttää aluksi yhtä palvelinprosessia. Näin Nominatimin vähintään yhden
 sekunnin kutsuväli ja SQLite-välimuistin kirjoitukset pysyvät yhden prosessin

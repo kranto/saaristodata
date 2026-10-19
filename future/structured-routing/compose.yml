@@ -2,15 +2,44 @@ services:
   routing-api:
     build: .
     restart: unless-stopped
+    depends_on:
+      valhalla:
+        condition: service_healthy
     environment:
       ROUTING_USER_AGENT: "Saaristolautat routing service/0.1 (set-contact-address)"
-      # For production, point this at a Valhalla instance whose matrix limits
-      # cover all Finnish and Aland road-area candidates.
-      VALHALLA_URL: "https://valhalla1.openstreetmap.de"
+      VALHALLA_URL: "http://valhalla:8002"
     volumes:
       - routing-cache:/var/cache/saaristolautat
     ports:
       - "127.0.0.1:8082:8000"
 
+  valhalla:
+    image: ghcr.io/valhalla/valhalla-scripted:latest
+    restart: unless-stopped
+    environment:
+      tile_urls: "https://download.geofabrik.de/europe/finland-latest.osm.pbf"
+      use_tiles_ignore_pbf: "True"
+      build_tar: "True"
+      serve_tiles: "True"
+      update_existing_config: "True"
+      force_rebuild: "False"
+      build_admins: "True"
+      build_time_zones: "True"
+      build_elevation: "False"
+      build_transit: "False"
+      use_default_speeds_config: "True"
+    volumes:
+      - valhalla-data:/custom_files
+    ports:
+      - "127.0.0.1:18083:8002"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:8002/status"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+
 volumes:
   routing-cache:
+  valhalla-data:
+    name: saaristolautat-valhalla-finland
