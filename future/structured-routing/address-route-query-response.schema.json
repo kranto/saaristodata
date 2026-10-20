@@ -50,6 +50,7 @@
       "type": "array",
       "items": { "$ref": "route-query-response.schema.json#/$defs/itinerary" }
     },
+    "decisionGraph": { "$ref": "route-query-response.schema.json#/$defs/decisionGraph" },
     "externalServices": {
       "type": "object",
       "required": ["geocoding", "roadRouting", "attribution"],

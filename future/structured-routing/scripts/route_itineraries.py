@@ -423,6 +423,115 @@ def candidate_dominates(first: dict, second: dict) -> bool:
     return no_worse and strictly_better
 
 
+def build_decision_graph(candidates: list[dict], origin: str, destination: str) -> dict:
+    """Compact complete candidate paths into a time-expanded decision graph.
+
+    Equal place-and-time states and equal following legs are shared. This
+    preserves locally safer prefixes that the normal itinerary list may omit,
+    while avoiding a full copy of every common suffix.
+    """
+    nodes: dict[tuple[str, str], dict] = {}
+    connections: dict[str, dict] = {}
+    connection_keys: dict[str, str] = {}
+    origin_node_ids = set()
+    destination_node_ids = set()
+
+    def node_id(location: str, timestamp: str) -> str:
+        key = (location, timestamp)
+        if key not in nodes:
+            identifier = f"n{len(nodes) + 1}"
+            nodes[key] = {
+                "id": identifier,
+                "location": location,
+                "time": timestamp,
+            }
+        return nodes[key]["id"]
+
+    for candidate in candidates:
+        legs = candidate.get("legs", [])
+        if not legs:
+            continue
+        origin_node_ids.add(node_id(origin, legs[0]["readyAtOrigin"]))
+        for leg in legs:
+            from_node = node_id(leg["from"], leg["readyAtOrigin"])
+            to_node = node_id(leg["to"], leg["arrival"])
+            public_leg = {key: value for key, value in leg.items() if key != "index"}
+            key = json.dumps(
+                [from_node, to_node, public_leg],
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            if key not in connection_keys:
+                identifier = f"c{len(connections) + 1}"
+                connection_keys[key] = identifier
+                connections[identifier] = {
+                    "id": identifier,
+                    "fromNode": from_node,
+                    "toNode": to_node,
+                    "leg": public_leg,
+                }
+        destination_node_ids.add(node_id(destination, legs[-1]["arrival"]))
+
+    transfer_groups: dict[tuple, list[dict]] = defaultdict(list)
+    for connection in connections.values():
+        leg = connection["leg"]
+        risk = leg.get("transferRisk")
+        if leg["kind"] != "scheduled_service" or risk is None:
+            continue
+        service_key = (
+            leg.get("routeId"), leg.get("tripPatternId"), leg["from"], leg["to"],
+            leg["departure"], leg["arrival"],
+        )
+        transfer_groups[service_key].append({
+            "connectionId": connection["id"],
+            "readyAtOrigin": leg["readyAtOrigin"],
+            "waitMinutes": leg["waitMinutes"],
+            "risk": risk,
+        })
+
+    transfer_choices = []
+    for service_key, variants in transfer_groups.items():
+        best_by_level = {}
+        for variant in variants:
+            level = variant["risk"]["level"]
+            previous = best_by_level.get(level)
+            if previous is None or variant["readyAtOrigin"] > previous["readyAtOrigin"]:
+                best_by_level[level] = variant
+        variants = list(best_by_level.values())
+        if len(variants) < 2:
+            continue
+        route_id, trip_pattern_id, from_stop, to_stop, departure, arrival = service_key
+        variants.sort(
+            key=lambda item: (
+                RISK_ORDER[item["risk"]["level"]],
+                -item["risk"]["effectiveBufferMinutes"],
+                item["readyAtOrigin"],
+            )
+        )
+        transfer_choices.append({
+            "id": f"t{len(transfer_choices) + 1}",
+            "service": {
+                "routeId": route_id,
+                "tripPatternId": trip_pattern_id,
+                "from": from_stop,
+                "to": to_stop,
+                "departure": departure,
+                "arrival": arrival,
+            },
+            "variants": variants,
+        })
+
+    return {
+        "candidatePathCount": len(candidates),
+        "nodes": list(nodes.values()),
+        "connections": list(connections.values()),
+        "originNodeIds": sorted(origin_node_ids),
+        "destinationNodeIds": sorted(destination_node_ids),
+        "transferChoices": transfer_choices,
+    }
+
+
 def find_itineraries(
     origin: str,
     destination: str,
@@ -437,6 +546,7 @@ def find_itineraries(
     max_labels_per_node_hour: int = 20,
     max_legs: int = 12,
     include_seed_sweep: bool = True,
+    include_decision_graph: bool = False,
     same_day: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     graph_data: dict | None = None,
@@ -684,6 +794,10 @@ def find_itineraries(
                     heapq.heappush(pending_seeds, next_seed)
 
     candidates = list(candidates_by_signature.values())
+    decision_graph = (
+        build_decision_graph(candidates, args.origin, args.destination)
+        if include_decision_graph else None
+    )
     candidates = [
         candidate for candidate in candidates
         if not any(
@@ -724,7 +838,7 @@ def find_itineraries(
         item.pop("_finalService", None)
     for index, item in enumerate(results, 1):
         item["rank"] = index
-    return {
+    response = {
         "status": "routes_found" if results else "no_route",
         "origin": args.origin,
         "destination": args.destination,
@@ -754,6 +868,9 @@ def find_itineraries(
             ],
         },
     }
+    if decision_graph is not None:
+        response["decisionGraph"] = decision_graph
+    return response
 
 
 def main() -> int:
@@ -769,6 +886,7 @@ def main() -> int:
     parser.add_argument("--max-candidates", type=int, default=1000)
     parser.add_argument("--max-labels-per-node-hour", type=int, default=20)
     parser.add_argument("--max-legs", type=int, default=12)
+    parser.add_argument("--include-decision-graph", action="store_true")
     parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     args = parser.parse_args()
@@ -785,6 +903,7 @@ def main() -> int:
             max_candidates=args.max_candidates,
             max_labels_per_node_hour=args.max_labels_per_node_hour,
             max_legs=args.max_legs,
+            include_decision_graph=args.include_decision_graph,
             same_day=args.same_day,
             graph_path=args.graph,
         )

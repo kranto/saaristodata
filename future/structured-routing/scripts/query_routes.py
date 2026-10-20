@@ -61,6 +61,8 @@ def public_response(internal: dict, *, include_diagnostics: bool = False) -> dic
     }
     if not itineraries:
         response["outcomeReason"] = "no_itinerary_for_query"
+    if "decisionGraph" in internal:
+        response["decisionGraph"] = internal["decisionGraph"]
     if include_diagnostics:
         response["diagnostics"] = internal["diagnostics"]
     return response
@@ -77,6 +79,7 @@ def query_routes(
     same_day: bool = False,
     max_results: int = 12,
     include_diagnostics: bool = False,
+    include_decision_graph: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
 ) -> dict:
     internal = find_itineraries(
@@ -88,6 +91,7 @@ def query_routes(
         timing_profile=timing_profile,
         same_day=same_day,
         max_results=max_results,
+        include_decision_graph=include_decision_graph,
         graph_path=graph_path,
     )
     return public_response(internal, include_diagnostics=include_diagnostics)
@@ -104,6 +108,7 @@ def main() -> int:
     parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--max-results", type=int, default=12)
     parser.add_argument("--include-diagnostics", action="store_true")
+    parser.add_argument("--include-decision-graph", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     args = parser.parse_args()
     try:
@@ -117,6 +122,7 @@ def main() -> int:
             same_day=args.same_day,
             max_results=args.max_results,
             include_diagnostics=args.include_diagnostics,
+            include_decision_graph=args.include_decision_graph,
             graph_path=args.graph,
         )
     except ValueError as error:

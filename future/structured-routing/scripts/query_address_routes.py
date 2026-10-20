@@ -320,6 +320,7 @@ def query_address_routes(
     same_day: bool = False,
     max_results: int = 12,
     include_diagnostics: bool = False,
+    include_decision_graph: bool = False,
     include_external_geometry: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     stop_index_path: Path = DEFAULT_STOP_INDEX,
@@ -361,6 +362,7 @@ def query_address_routes(
         same_day=same_day,
         max_results=max_results,
         max_legs=16,
+        include_decision_graph=include_decision_graph,
         graph_path=graph_path,
         graph_data=augmented,
     )
@@ -394,6 +396,7 @@ def main() -> int:
     parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--max-results", type=int, default=12)
     parser.add_argument("--include-diagnostics", action="store_true")
+    parser.add_argument("--include-decision-graph", action="store_true")
     parser.add_argument("--include-external-geometry", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     parser.add_argument("--stop-index", type=Path, default=DEFAULT_STOP_INDEX)
@@ -414,6 +417,7 @@ def main() -> int:
             same_day=args.same_day,
             max_results=args.max_results,
             include_diagnostics=args.include_diagnostics,
+            include_decision_graph=args.include_decision_graph,
             include_external_geometry=args.include_external_geometry,
             graph_path=args.graph,
             stop_index_path=args.stop_index,
