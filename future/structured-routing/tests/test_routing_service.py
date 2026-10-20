@@ -104,7 +104,8 @@ class RoutingServiceTests(unittest.TestCase):
     def test_route_preview(self) -> None:
         response = self.client.get("/route")
         self.assertEqual(response.status_code, 200)
-        self.assertIn("Valitse, missä otat riskin", response.text)
+        self.assertIn("Näe vaihtoehtoiset lauttavuorot", response.text)
+        self.assertIn("Mahdolliset vuorot tällä lauttavälillä", response.text)
         self.assertIn("includeDecisionGraph", response.text)
 
     def test_route_returns_address_itineraries_and_geometry(self) -> None:
