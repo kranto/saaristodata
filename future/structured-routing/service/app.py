@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from starlette.concurrency import run_in_threadpool
 
@@ -34,7 +35,8 @@ from route_itinerary import DEFAULT_GRAPH  # noqa: E402
 from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
-SERVICE_VERSION = "0.2.0"
+SERVICE_VERSION = "0.3.0"
+ROUTE_PREVIEW = ROOT / "service" / "route-preview.html"
 
 
 class RouteRequest(BaseModel):
@@ -51,6 +53,7 @@ class RouteRequest(BaseModel):
     same_day: bool = Field(default=True, alias="sameDay")
     max_results: int = Field(default=12, ge=1, le=24, alias="maxResults")
     include_diagnostics: bool = Field(default=False, alias="includeDiagnostics")
+    include_decision_graph: bool = Field(default=False, alias="includeDecisionGraph")
     include_geometry: bool = Field(default=True, alias="includeGeometry")
 
     @field_validator("start_time")
@@ -109,10 +112,17 @@ def create_app() -> FastAPI:
         version=SERVICE_VERSION,
         lifespan=lifespan,
     )
-
     @application.get("/health")
     async def health() -> dict:
         return {"status": "ok", "version": SERVICE_VERSION}
+
+    @application.get("/", include_in_schema=False)
+    async def root() -> RedirectResponse:
+        return RedirectResponse(url="/route")
+
+    @application.get("/route", response_class=HTMLResponse, include_in_schema=False)
+    async def route_preview() -> HTMLResponse:
+        return HTMLResponse(ROUTE_PREVIEW.read_text(encoding="utf-8"))
 
     @application.post("/route")
     async def route(request: RouteRequest) -> dict:
@@ -136,6 +146,7 @@ def create_app() -> FastAPI:
                 same_day=request.same_day,
                 max_results=request.max_results,
                 include_diagnostics=request.include_diagnostics,
+                include_decision_graph=request.include_decision_graph,
                 include_external_geometry=request.include_geometry,
                 graph_path=application.state.graph_path,
                 stop_index_path=application.state.stop_index_path,

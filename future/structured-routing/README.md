@@ -440,8 +440,16 @@ sisälsi toteuman 80,1 %:ssa tapauksista.
 palveluna. Ensimmäisessä versiossa on kaksi rajapintaa:
 
 - `GET /health` palauttaa palvelun tilan ja version
+- `GET /route` avaa kokeellisen reittihakunäkymän selaimessa
 - `POST /route` ottaa vastaan `route-request.schema.json`-muotoisen pyynnön ja
   palauttaa `address-route-query-response.schema.json`-muotoisen vastauksen
+
+Kun palvelu on käynnissä paikallisesti, käyttöliittymä löytyy osoitteesta
+`http://127.0.0.1:8082/route`. Se näyttää tavalliset reittiehdotukset ja tarjoaa
+legikohtaisen riskivalinnan vain niille lauttavuoroille, joista päätösgraafissa
+on vaihtoehtoisia vaihtomarginaaleja. Valinta rakentaa koko matkaketjun
+uudelleen valitun yhteyden ympärille, jolloin myös tarvittava lähtöaika ja
+edeltävät syöttöyhteydet muuttuvat.
 
 Esimerkkipyyntö:
 
@@ -456,6 +464,24 @@ curl http://127.0.0.1:8082/route \
     "sameDay": true
   }'
 ```
+
+Käyttöliittymän legikohtaisia riskivalintoja voi kokeilla lisäämällä pyyntöön
+`"includeDecisionGraph": true`. Tavallinen `itineraries`-lista säilyy tällöin
+ennallaan, ja vastaukseen lisätään `decisionGraph`. Se muodostetaan ennen
+kokonaisreittien loppukarsintaa ja sisältää kaikki haussa löytyneet
+käyttökelpoiset polut yhteisenä aika–paikka-graafina:
+
+- `nodes` ovat tietyn laiturin tai paikan tiloja tiettynä kellonaikana
+- `connections` ovat niiden välisiä tie- ja lauttalegejä
+- `originNodeIds` ja `destinationNodeIds` rajaavat graafin alku- ja lopputilat
+- `transferChoices` kokoaa saman täsmällisen lauttavuoron vaihtoehtoiset
+  vaihtomarginaalit; kustakin riskiluokasta palautetaan viimeisin mahdollinen
+  saapuminen vaihtopaikkaan
+
+Ensimmäisen aluksen lastausvalmius ei ole valinnainen riski eikä siitä siksi
+muodosteta `transferChoices`-valintaa. Graafi voi olla satoja kilotavuja, joten
+se on oletuksena pois käytöstä ja kannattaa pyytää vain reitin
+muokkausnäkymää varten.
 
 Palvelu geokoodaa osoitteet Nominatimilla, tunnistaa tiealueet Valhallan
 avulla ja käyttää niiden välissä omaa saariston reititysgraafia. Vain valittujen

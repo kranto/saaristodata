@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saaristolautat – reittikokeilu</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #12253a;
+      --muted: #617184;
+      --sea: #075985;
+      --sea-deep: #07324b;
+      --foam: #eef8f8;
+      --paper: #fffdf8;
+      --line: #cbd9dd;
+      --orange: #e96b38;
+      --green: #2f7d64;
+      --yellow: #b7791f;
+      --red: #b84444;
+      --shadow: 0 16px 48px rgba(18, 37, 58, .11);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 3%, rgba(79, 173, 180, .22), transparent 27rem),
+        linear-gradient(180deg, #f7fbfa 0, #edf4f2 100%);
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1440px, 100%); margin: 0 auto; padding: 28px clamp(18px, 4vw, 56px) 64px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+    .eyebrow { margin: 0 0 7px; color: var(--sea); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 4vw, 50px); line-height: 1; letter-spacing: -.035em; }
+    .lede { max-width: 720px; margin: 12px 0 0; color: var(--muted); line-height: 1.55; }
+    .api-state { display: flex; align-items: center; gap: 8px; white-space: nowrap; color: var(--muted); font-size: 13px; }
+    .api-state::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #9aa8b4; }
+    .api-state.ok::before { background: #35a26f; box-shadow: 0 0 0 4px rgba(53, 162, 111, .12); }
+    .search-card { background: rgba(255, 253, 248, .94); border: 1px solid rgba(150, 171, 175, .45); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
+    form { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) 160px 110px 120px auto; gap: 12px; align-items: end; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 750; letter-spacing: .025em; }
+    input, select { width: 100%; border: 1px solid #bdcdd1; border-radius: 11px; background: #fff; color: var(--ink); padding: 12px 13px; outline: none; }
+    input:focus, select:focus { border-color: var(--sea); box-shadow: 0 0 0 3px rgba(7, 89, 133, .12); }
+    .primary { min-height: 43px; border: 0; border-radius: 11px; padding: 0 20px; color: white; background: var(--sea); font-weight: 800; box-shadow: 0 8px 20px rgba(7, 89, 133, .22); }
+    .primary:hover { background: var(--sea-deep); }
+    .primary:disabled { opacity: .55; cursor: wait; }
+    .status { min-height: 28px; padding: 12px 4px 0; color: var(--muted); font-size: 13px; }
+    .status.error { color: var(--red); }
+    .workspace { display: grid; grid-template-columns: minmax(260px, 360px) minmax(0, 1fr); gap: 22px; margin-top: 22px; align-items: start; }
+    .panel { background: rgba(255, 253, 248, .93); border: 1px solid rgba(150, 171, 175, .45); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+    .panel-head { padding: 18px 20px 14px; border-bottom: 1px solid #dce6e6; }
+    .panel-head h2 { margin: 0; font-size: 18px; }
+    .panel-head p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .results { padding: 9px; display: grid; gap: 7px; max-height: calc(100vh - 280px); overflow: auto; }
+    .result { width: 100%; border: 1px solid transparent; border-radius: 13px; background: transparent; text-align: left; padding: 13px; color: inherit; }
+    .result:hover { background: #f1f7f5; }
+    .result.active { border-color: #76aab7; background: #eaf4f3; }
+    .result-time { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; }
+    .result-time span:last-child { color: var(--sea); }
+    .result-meta { display: flex; align-items: center; gap: 7px; margin-top: 7px; color: var(--muted); font-size: 12px; }
+    .risk { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 800; }
+    .risk-none, .risk-relaxed { color: #1f684f; background: #dff2e8; }
+    .risk-normal { color: #7d5918; background: #fff0c9; }
+    .risk-tight { color: #983e27; background: #ffe0d5; }
+    .risk-very_tight, .risk-below_required_readiness { color: #8d2d39; background: #ffd9df; }
+    .detail { min-height: 480px; }
+    .journey-summary { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding: 22px 24px 18px; border-bottom: 1px solid #dce6e6; }
+    .journey-summary h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; }
+    .journey-summary p { margin: 6px 0 0; color: var(--muted); }
+    .reset { border: 1px solid #b9cbcf; border-radius: 10px; padding: 8px 11px; color: var(--sea); background: white; font-size: 12px; font-weight: 800; }
+    .timeline { padding: 20px 24px 28px; }
+    .leg { position: relative; display: grid; grid-template-columns: 72px 24px minmax(0, 1fr); column-gap: 13px; min-height: 94px; }
+    .leg::after { content: ""; position: absolute; left: 83px; top: 25px; bottom: -6px; width: 2px; background: #bbd1d4; }
+    .leg:last-child::after { display: none; }
+    .clock { padding-top: 3px; text-align: right; font-size: 14px; font-weight: 850; font-variant-numeric: tabular-nums; }
+    .marker { position: relative; z-index: 1; margin-top: 2px; width: 20px; height: 20px; border: 4px solid var(--paper); border-radius: 50%; background: var(--sea); box-shadow: 0 0 0 1px #90adb3; }
+    .leg.road .marker { background: #7e909d; }
+    .leg-card { padding: 0 0 22px; min-width: 0; }
+    .leg-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 850; }
+    .leg-sub { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .choices { margin-top: 11px; padding: 11px; border-radius: 12px; background: #f0f6f4; border: 1px solid #d3e2df; }
+    .choices strong { display: block; margin-bottom: 8px; font-size: 12px; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .choice { border: 1px solid #bfd0d2; border-radius: 999px; padding: 7px 10px; background: white; color: var(--ink); font-size: 12px; font-weight: 750; }
+    .choice:hover, .choice.active { border-color: var(--orange); box-shadow: inset 0 0 0 1px var(--orange); }
+    .choice small { color: var(--muted); font-weight: 650; }
+    .experiment { margin: 0 24px 22px 133px; padding: 13px 15px; border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0; background: #fff3e9; color: #6d442d; font-size: 13px; line-height: 1.5; }
+    .empty { padding: 70px 24px; text-align: center; color: var(--muted); }
+    .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
+    .loading { animation: pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .45; } }
+    @media (max-width: 1100px) {
+      form { grid-template-columns: 1fr 1fr 150px 110px; }
+      form .mode, form .submit { grid-column: span 2; }
+    }
+    @media (max-width: 760px) {
+      .shell { padding: 20px 14px 44px; }
+      header { display: block; }
+      .api-state { margin-top: 14px; }
+      form { grid-template-columns: 1fr 1fr; }
+      form .address { grid-column: 1 / -1; }
+      form .mode, form .submit { grid-column: auto; }
+      .workspace { grid-template-columns: 1fr; }
+      .results { max-height: none; display: flex; overflow-x: auto; }
+      .result { min-width: 230px; }
+      .journey-summary { align-items: flex-start; }
+      .journey-summary h2 { font-size: 25px; }
+      .timeline { padding-inline: 15px; }
+      .leg { grid-template-columns: 58px 22px minmax(0, 1fr); column-gap: 10px; }
+      .leg::after { left: 68px; }
+      .experiment { margin-left: 92px; margin-right: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">Saaristolautat · kokeellinen reititin</p>
+        <h1>Valitse, missä otat riskin</h1>
+        <p class="lede">Tutki koko matkaketjua ja vaihda yksittäisen lauttayhteyden vaihtovaraa. Näet heti, miten valinta muuttaa aikaisempia lähtöjä.</p>
+      </div>
+      <div id="apiState" class="api-state">Tarkistetaan palvelua…</div>
+    </header>
+
+    <section class="search-card">
+      <form id="searchForm">
+        <label class="address">Lähtöpaikka<input id="origin" value="Turku" autocomplete="street-address"></label>
+        <label class="address">Määränpää<input id="destination" value="Storpensor" autocomplete="street-address"></label>
+        <label>Päivä<input id="date" type="date" value="2026-10-30"></label>
+        <label>Aikaisintaan<input id="startTime" type="time" value="00:00"></label>
+        <label class="mode">Kulkutapa<select id="mode"><option value="car">Auto</option><option value="motorcycle">Moottoripyörä</option><option value="bicycle">Polkupyörä</option></select></label>
+        <button id="submit" class="primary submit" type="submit">Etsi reitit</button>
+      </form>
+      <div id="status" class="status">Osoitteet geokoodataan ja saariston sisäinen osuus lasketaan päätösgraafina.</div>
+    </section>
+
+    <section class="workspace">
+      <aside class="panel">
+        <div class="panel-head"><h2>Reittivaihtoehdot</h2><p id="resultCount">Ei hakua</p></div>
+        <div id="results" class="results"><div class="empty"><strong>Aloita haulla</strong>Valitse lähtöpaikka, kohde ja päivä.</div></div>
+      </aside>
+      <article id="detail" class="panel detail"><div class="empty"><strong>Matkaketju avautuu tähän</strong>Legikohtaiset riskivalinnat näkyvät vain kohdissa, joissa vaihtoehto todella muuttaa reittiä.</div></article>
+    </section>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const isFilePreview = window.location.protocol === "file:";
+    const routeUrl = "http://127.0.0.1:8082/route";
+    const searchStorageKey = "saaristolautat.routePreview.search.v1";
+    const searchFieldIds = ["origin", "destination", "date", "startTime", "mode"];
+    const riskRank = { relaxed: 0, normal: 1, tight: 2, very_tight: 3, below_required_readiness: 4 };
+    const riskLabel = { relaxed: "Väljä", normal: "Normaali", tight: "Tiukka", very_tight: "Hyvin tiukka", below_required_readiness: "Alle lastausvalmiuden" };
+    let response = null;
+    let displayedLegs = [];
+    let activeResult = 0;
+    let experimentText = "";
+
+    const clock = (value) => value ? value.slice(11, 16) : "–";
+    const minutes = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
+    const formatDuration = (value) => {
+      const total = Math.round(value);
+      if (total < 60) return `${total} min`;
+      const hours = Math.floor(total / 60), remainder = total % 60;
+      return remainder ? `${hours} t ${remainder} min` : `${hours} t`;
+    };
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+    const riskPill = (level) => `<span class="risk risk-${level || "none"}">${level ? riskLabel[level] : "Ei vaihtoriskiä"}</span>`;
+    const serviceKey = (leg) => [leg.routeId, leg.tripPatternId, leg.from, leg.to, leg.departure, leg.arrival].join("|");
+    const placeName = (value) => escapeHtml(value === "address:origin" ? $("origin").value : value === "address:destination" ? $("destination").value : value);
+    const serviceName = (leg) => escapeHtml(leg.vessel || (leg.serviceType === "road_ferry" ? "Maantielautta" : leg.serviceType === "connection_vessel" ? "Yhteysalus" : leg.routeId || "Lautta"));
+
+    function routeUrlWithSearch() {
+      const url = new URL(routeUrl);
+      searchFieldIds.forEach((id) => url.searchParams.set(id, $(id).value));
+      return url.toString();
+    }
+
+    function restoreSearch() {
+      try {
+        const query = new URLSearchParams(window.location.search);
+        if (searchFieldIds.some((id) => query.has(id))) {
+          searchFieldIds.forEach((id) => {
+            if (query.has(id)) $(id).value = query.get(id);
+          });
+          saveSearch();
+          return;
+        }
+        const saved = JSON.parse(localStorage.getItem(searchStorageKey));
+        if (!saved || typeof saved !== "object") return;
+        searchFieldIds.forEach((id) => {
+          if (typeof saved[id] === "string") $(id).value = saved[id];
+        });
+      } catch (_) {
+        // The form remains usable even when browser storage is unavailable.
+      }
+    }
+
+    function saveSearch() {
+      try {
+        const values = Object.fromEntries(searchFieldIds.map((id) => [id, $(id).value]));
+        localStorage.setItem(searchStorageKey, JSON.stringify(values));
+      } catch (_) {
+        // The form remains usable even when browser storage is unavailable.
+      }
+    }
+
+    async function health() {
+      if (isFilePreview) {
+        $("apiState").textContent = "Tiedostopreview";
+        $("status").className = "status error";
+        $("status").innerHTML = `Tämä tiedostopreview ei voi kutsua paikallista API-palvelua. <a href="${escapeHtml(routeUrlWithSearch())}">Avaa toimiva reititin</a>.`;
+        $("submit").textContent = "Avaa toimiva reititin";
+        return;
+      }
+      try {
+        const value = await fetch("/health").then((item) => item.json());
+        $("apiState").classList.add("ok");
+        $("apiState").textContent = `Palvelu ${value.version} käytettävissä`;
+      } catch (_) {
+        $("apiState").textContent = "Palveluun ei saada yhteyttä";
+      }
+    }
+
+    function renderResults() {
+      const list = response?.itineraries || [];
+      $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
+      $("results").innerHTML = list.map((item, index) => {
+        const level = item.riskSummary.worstConnectionRisk;
+        return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
+          <div class="result-time"><span>${clock(item.suggestedOriginDeparture)}</span><span>${clock(item.arrival)}</span></div>
+          <div class="result-meta">${formatDuration(item.elapsedFromSuggestedDepartureMinutes)} ${riskPill(level)}</div>
+        </button>`;
+      }).join("");
+      document.querySelectorAll("[data-result]").forEach((button) => button.addEventListener("click", () => {
+        activeResult = Number(button.dataset.result);
+        displayedLegs = response.itineraries[activeResult].legs;
+        experimentText = "";
+        renderResults(); renderDetail();
+      }));
+    }
+
+    function choicesFor(leg) {
+      if (!response?.decisionGraph || leg.kind !== "scheduled_service" || !leg.transferRisk) return null;
+      return response.decisionGraph.transferChoices.find((item) => serviceKey(item.service) === serviceKey(leg));
+    }
+
+    function renderDetail() {
+      if (!displayedLegs.length) return;
+      const start = displayedLegs[0].departure;
+      const end = displayedLegs[displayedLegs.length - 1].arrival;
+      const routeName = `${placeName(displayedLegs[0].from)} – ${placeName(displayedLegs[displayedLegs.length - 1].to)}`;
+      const timeline = displayedLegs.map((leg) => {
+        const risk = leg.transferRisk;
+        const choice = choicesFor(leg);
+        const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
+        const detail = leg.kind === "road"
+          ? `${placeName(leg.from)} → ${placeName(leg.to)} · ${(leg.distanceMeters / 1000).toFixed(1)} km`
+          : `${placeName(leg.from)} ${clock(leg.departure)} → ${placeName(leg.to)} ${clock(leg.arrival)}${risk ? ` · vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}` : ""}`;
+        const buttons = choice ? `<div class="choices"><strong>Valitse vaihtovara tähän vuoroon</strong><div class="choice-row">${choice.variants.map((variant) => `<button class="choice ${variant.connectionId === leg._connectionId ? "active" : ""}" data-choice="${choice.id}" data-connection="${variant.connectionId}">${riskLabel[variant.risk.level]} · ${formatDuration(variant.risk.effectiveBufferMinutes)} <small>(valmiina ${clock(variant.readyAtOrigin)})</small></button>`).join("")}</div></div>` : "";
+        return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
+          <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
+          <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div>${buttons}</div>
+        </div>`;
+      }).join("");
+      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
+      $("resetRoute").addEventListener("click", () => { displayedLegs = response.itineraries[activeResult].legs; experimentText = ""; renderDetail(); });
+      document.querySelectorAll("[data-connection]").forEach((button) => button.addEventListener("click", () => selectVariant(button.dataset.connection)));
+    }
+
+    function graphMaps() {
+      const graph = response.decisionGraph;
+      const connections = new Map(graph.connections.map((item) => [item.id, item]));
+      const incoming = new Map(), outgoing = new Map();
+      graph.connections.forEach((item) => {
+        if (!incoming.has(item.toNode)) incoming.set(item.toNode, []);
+        if (!outgoing.has(item.fromNode)) outgoing.set(item.fromNode, []);
+        incoming.get(item.toNode).push(item); outgoing.get(item.fromNode).push(item);
+      });
+      return { graph, connections, incoming, outgoing };
+    }
+
+    function pathRisk(path) {
+      return path.reduce((worst, edge) => Math.max(worst, riskRank[edge.leg.transferRisk?.level] ?? -1), -1);
+    }
+
+    function bestPrefix(target, maps) {
+      const origins = new Set(maps.graph.originNodeIds), memo = new Map(), visiting = new Set();
+      function walk(node) {
+        if (origins.has(node)) return [{ edges: [], origin: node, risk: -1 }];
+        if (memo.has(node)) return memo.get(node);
+        if (visiting.has(node)) return [];
+        visiting.add(node);
+        const values = [];
+        for (const edge of maps.incoming.get(node) || []) {
+          for (const prior of walk(edge.fromNode)) values.push({ edges: [...prior.edges, edge], origin: prior.origin, risk: Math.max(prior.risk, riskRank[edge.leg.transferRisk?.level] ?? -1) });
+        }
+        visiting.delete(node);
+        values.sort((a, b) => {
+          const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
+          if (aOkay !== bOkay) return aOkay ? -1 : 1;
+          const at = maps.graph.nodes.find((n) => n.id === a.origin)?.time || "";
+          const bt = maps.graph.nodes.find((n) => n.id === b.origin)?.time || "";
+          return bt.localeCompare(at) || a.risk - b.risk || a.edges.length - b.edges.length;
+        });
+        const result = values.slice(0, 8);
+        memo.set(node, result); return result;
+      }
+      return walk(target)[0] || null;
+    }
+
+    function bestSuffix(start, maps) {
+      const destinations = new Set(maps.graph.destinationNodeIds), memo = new Map(), visiting = new Set();
+      function walk(node) {
+        if (destinations.has(node)) return [{ edges: [], destination: node, risk: -1 }];
+        if (memo.has(node)) return memo.get(node);
+        if (visiting.has(node)) return [];
+        visiting.add(node);
+        const values = [];
+        for (const edge of maps.outgoing.get(node) || []) {
+          for (const rest of walk(edge.toNode)) values.push({ edges: [edge, ...rest.edges], destination: rest.destination, risk: Math.max(rest.risk, riskRank[edge.leg.transferRisk?.level] ?? -1) });
+        }
+        visiting.delete(node);
+        values.sort((a, b) => {
+          const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
+          if (aOkay !== bOkay) return aOkay ? -1 : 1;
+          const at = maps.graph.nodes.find((n) => n.id === a.destination)?.time || "9999";
+          const bt = maps.graph.nodes.find((n) => n.id === b.destination)?.time || "9999";
+          return at.localeCompare(bt) || a.risk - b.risk || a.edges.length - b.edges.length;
+        });
+        const result = values.slice(0, 8);
+        memo.set(node, result); return result;
+      }
+      return walk(start)[0] || null;
+    }
+
+    function selectVariant(connectionId) {
+      const maps = graphMaps(), selected = maps.connections.get(connectionId);
+      const prefix = bestPrefix(selected.fromNode, maps), suffix = bestSuffix(selected.toNode, maps);
+      if (!prefix || !suffix) { experimentText = "Tälle valinnalle ei löytynyt kokonaista polkua graafista."; renderDetail(); return; }
+      const edges = [...prefix.edges, selected, ...suffix.edges];
+      displayedLegs = edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
+      const risk = selected.leg.transferRisk;
+      experimentText = `<strong>Kokeilu:</strong> ${placeName(selected.leg.from)} ${clock(selected.leg.departure)}, ${riskLabel[risk.level].toLowerCase()} vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}. Aikaisempi matkaketju ja lähtöaika on laskettu tämän valinnan ympärille.`;
+      renderDetail();
+    }
+
+    $("searchForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      saveSearch();
+      if (isFilePreview) {
+        window.location.assign(routeUrlWithSearch());
+        return;
+      }
+      const button = $("submit"); button.disabled = true; button.textContent = "Lasketaan…";
+      $("status").className = "status loading"; $("status").textContent = "Geokoodataan osoitteet, haetaan lauttaketjut ja muodostetaan päätösgraafi…";
+      try {
+        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
+        const payload = await result.json();
+        if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
+        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; experimentText = "";
+        $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${payload.resultCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
+        renderResults();
+        if (displayedLegs.length) renderDetail();
+      } catch (error) {
+        $("status").className = "status error"; $("status").textContent = error.message;
+      } finally { button.disabled = false; button.textContent = "Etsi reitit"; }
+    });
+
+    restoreSearch();
+    searchFieldIds.forEach((id) => {
+      $(id).addEventListener("input", saveSearch);
+      $(id).addEventListener("change", saveSearch);
+    });
+    health();
+  </script>
+</body>
+</html>

@@ -27,6 +27,7 @@
       "type": "array",
       "items": { "$ref": "#/$defs/itinerary" }
     },
+    "decisionGraph": { "$ref": "#/$defs/decisionGraph" },
     "diagnostics": { "type": "object" }
   },
   "additionalProperties": false,
@@ -70,7 +71,7 @@
     },
     "leg": {
       "type": "object",
-      "required": ["index", "kind", "from", "to", "readyAtOrigin", "departure", "arrival", "waitMinutes"],
+      "required": ["kind", "from", "to", "readyAtOrigin", "departure", "arrival", "waitMinutes"],
       "properties": {
         "index": { "type": "integer", "minimum": 1 },
         "kind": { "enum": ["road", "scheduled_service", "continuous_ferry"] },
@@ -131,6 +132,82 @@
         "rawBufferMinutes": { "type": "integer" },
         "requiredReadinessMinutes": { "type": "integer", "minimum": 0 },
         "effectiveBufferMinutes": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "decisionGraph": {
+      "type": "object",
+      "required": ["candidatePathCount", "nodes", "connections", "originNodeIds", "destinationNodeIds", "transferChoices"],
+      "properties": {
+        "candidatePathCount": { "type": "integer", "minimum": 0 },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "location", "time"],
+            "properties": {
+              "id": { "type": "string" },
+              "location": { "type": "string" },
+              "time": { "$ref": "#/$defs/localDateTime" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "fromNode", "toNode", "leg"],
+            "properties": {
+              "id": { "type": "string" },
+              "fromNode": { "type": "string" },
+              "toNode": { "type": "string" },
+              "leg": { "$ref": "#/$defs/leg" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "originNodeIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "destinationNodeIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "transferChoices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "service", "variants"],
+            "properties": {
+              "id": { "type": "string" },
+              "service": {
+                "type": "object",
+                "required": ["routeId", "tripPatternId", "from", "to", "departure", "arrival"],
+                "properties": {
+                  "routeId": { "type": ["string", "null"] },
+                  "tripPatternId": { "type": ["string", "null"] },
+                  "from": { "type": "string" },
+                  "to": { "type": "string" },
+                  "departure": { "$ref": "#/$defs/localDateTime" },
+                  "arrival": { "$ref": "#/$defs/localDateTime" }
+                },
+                "additionalProperties": false
+              },
+              "variants": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": ["connectionId", "readyAtOrigin", "waitMinutes", "risk"],
+                  "properties": {
+                    "connectionId": { "type": "string" },
+                    "readyAtOrigin": { "$ref": "#/$defs/localDateTime" },
+                    "waitMinutes": { "type": "integer" },
+                    "risk": { "$ref": "#/$defs/transferRisk" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
       },
       "additionalProperties": false
     },

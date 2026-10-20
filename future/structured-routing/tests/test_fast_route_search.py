@@ -68,6 +68,40 @@ class FastRouteSearchTests(unittest.TestCase):
         )
         self.assertLessEqual(result["diagnostics"]["sweptSeedCount"], 4)
 
+    def test_decision_graph_keeps_leg_specific_risk_alternatives(self) -> None:
+        result = find_itineraries(
+            "Turku", "Storpensor", date(2026, 10, 30),
+            same_day=True, max_results=20, graph_data=self.graph,
+            include_decision_graph=True,
+        )
+        graph = result["decisionGraph"]
+        self.assertGreater(graph["candidatePathCount"], result["resultCount"])
+        node_ids = {item["id"] for item in graph["nodes"]}
+        connection_ids = {item["id"] for item in graph["connections"]}
+        self.assertTrue(set(graph["originNodeIds"]) <= node_ids)
+        self.assertTrue(set(graph["destinationNodeIds"]) <= node_ids)
+        self.assertTrue(all(
+            item["fromNode"] in node_ids and item["toNode"] in node_ids
+            for item in graph["connections"]
+        ))
+        self.assertTrue(all(
+            variant["connectionId"] in connection_ids
+            for item in graph["transferChoices"]
+            for variant in item["variants"]
+        ))
+        choice = next(
+            item for item in graph["transferChoices"]
+            if item["service"]["from"] == "Pärnäs"
+            and item["service"]["departure"] == "2026-10-30T13:00"
+        )
+        self.assertEqual(
+            {
+                item["risk"]["level"]: item["risk"]["effectiveBufferMinutes"]
+                for item in choice["variants"]
+            },
+            {"relaxed": 35, "tight": 5},
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

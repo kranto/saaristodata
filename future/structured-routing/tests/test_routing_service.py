@@ -101,6 +101,12 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["status"], "ok")
 
+    def test_route_preview(self) -> None:
+        response = self.client.get("/route")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Valitse, missä otat riskin", response.text)
+        self.assertIn("includeDecisionGraph", response.text)
+
     def test_route_returns_address_itineraries_and_geometry(self) -> None:
         response = self.client.post("/route", json={
             "origin": "Origin address",
@@ -130,6 +136,22 @@ class RoutingServiceTests(unittest.TestCase):
             "surprise": True,
         })
         self.assertEqual(response.status_code, 422)
+
+    def test_route_can_include_compact_decision_graph(self) -> None:
+        response = self.client.post("/route", json={
+            "origin": "Origin address",
+            "destination": "Wihuri address",
+            "date": "2026-11-01",
+            "mode": "car",
+            "sameDay": True,
+            "includeDecisionGraph": True,
+            "includeGeometry": False,
+        })
+        self.assertEqual(response.status_code, 200, response.text)
+        graph = response.json()["decisionGraph"]
+        self.assertGreater(graph["candidatePathCount"], 0)
+        self.assertTrue(graph["originNodeIds"])
+        self.assertTrue(graph["destinationNodeIds"])
 
     def test_identical_route_response_is_served_from_cache(self) -> None:
         request = {
