@@ -82,12 +82,17 @@
     .leg-card { padding: 0 0 22px; min-width: 0; }
     .leg-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 850; }
     .leg-sub { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .choices { margin-top: 11px; padding: 11px; border-radius: 12px; background: #f0f6f4; border: 1px solid #d3e2df; }
-    .choices strong { display: block; margin-bottom: 8px; font-size: 12px; }
-    .choice-row { display: flex; flex-wrap: wrap; gap: 7px; }
-    .choice { border: 1px solid #bfd0d2; border-radius: 999px; padding: 7px 10px; background: white; color: var(--ink); font-size: 12px; font-weight: 750; }
-    .choice:hover, .choice.active { border-color: var(--orange); box-shadow: inset 0 0 0 1px var(--orange); }
-    .choice small { color: var(--muted); font-weight: 650; }
+    .sailings { margin-top: 13px; padding: 12px; border-radius: 13px; background: #f0f6f4; border: 1px solid #d3e2df; }
+    .sailings > strong { display: block; margin-bottom: 9px; font-size: 12px; }
+    .sailing-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; padding: 1px; }
+    .sailing { min-width: 0; border: 1px solid #bfd0d2; border-radius: 12px; background: white; overflow: hidden; }
+    .sailing.active { border-color: var(--orange); box-shadow: inset 0 0 0 1px var(--orange); }
+    .sailing-time { width: 100%; border: 0; padding: 9px 10px 7px; background: transparent; color: var(--ink); text-align: left; font-size: 15px; font-weight: 850; font-variant-numeric: tabular-nums; }
+    .sailing-time:hover { background: #f8fbfa; }
+    .sailing-risks { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 8px 9px; }
+    .sailing-risk { border: 0; border-radius: 999px; padding: 4px 7px; font-size: 10px; font-weight: 800; }
+    .sailing-risk.active { outline: 2px solid var(--orange); outline-offset: 1px; }
+    .sailing-risk small { font-size: inherit; font-weight: inherit; opacity: .8; }
     .experiment { margin: 0 24px 22px 133px; padding: 13px 15px; border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0; background: #fff3e9; color: #6d442d; font-size: 13px; line-height: 1.5; }
     .empty { padding: 70px 24px; text-align: center; color: var(--muted); }
     .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
@@ -121,8 +126,8 @@
     <header>
       <div>
         <p class="eyebrow">Saaristolautat · kokeellinen reititin</p>
-        <h1>Valitse, missä otat riskin</h1>
-        <p class="lede">Tutki koko matkaketjua ja vaihda yksittäisen lauttayhteyden vaihtovaraa. Näet heti, miten valinta muuttaa aikaisempia lähtöjä.</p>
+        <h1>Näe vaihtoehtoiset lauttavuorot</h1>
+        <p class="lede">Tutki koko matkaketjua ja vertaile jokaisella lauttavälillä useita lähtö- ja saapumisaikoja. Värikoodi kertoo vaihtoriskin, ja valinta laskee muun matkaketjun uudelleen.</p>
       </div>
       <div id="apiState" class="api-state">Tarkistetaan palvelua…</div>
     </header>
@@ -144,7 +149,7 @@
         <div class="panel-head"><h2>Reittivaihtoehdot</h2><p id="resultCount">Ei hakua</p></div>
         <div id="results" class="results"><div class="empty"><strong>Aloita haulla</strong>Valitse lähtöpaikka, kohde ja päivä.</div></div>
       </aside>
-      <article id="detail" class="panel detail"><div class="empty"><strong>Matkaketju avautuu tähän</strong>Legikohtaiset riskivalinnat näkyvät vain kohdissa, joissa vaihtoehto todella muuttaa reittiä.</div></article>
+      <article id="detail" class="panel detail"><div class="empty"><strong>Matkaketju avautuu tähän</strong>Lauttaväleillä näytetään samalla kertaa useita mahdollisia vuoroja ja niiden vaihtoriskit.</div></article>
     </section>
   </main>
 
@@ -245,9 +250,65 @@
       }));
     }
 
-    function choicesFor(leg) {
-      if (!response?.decisionGraph || leg.kind !== "scheduled_service" || !leg.transferRisk) return null;
-      return response.decisionGraph.transferChoices.find((item) => serviceKey(item.service) === serviceKey(leg));
+    const crossingKey = (leg) => [leg.serviceType, leg.from, leg.to].join("|");
+
+    function preferredVariant(variants) {
+      const preference = { normal: 0, relaxed: 1, tight: 2, very_tight: 3, below_required_readiness: 4, none: 5 };
+      return [...variants].sort((a, b) => {
+        const aLevel = a.leg.transferRisk?.level || "none";
+        const bLevel = b.leg.transferRisk?.level || "none";
+        return preference[aLevel] - preference[bLevel]
+          || (b.leg.readyAtOrigin || "").localeCompare(a.leg.readyAtOrigin || "");
+      })[0];
+    }
+
+    function sailingAlternatives(leg) {
+      if (!response?.decisionGraph || leg.kind !== "scheduled_service") return [];
+      const matching = response.decisionGraph.connections.filter((item) => (
+        item.leg.kind === "scheduled_service"
+        && crossingKey(item.leg) === crossingKey(leg)
+        && item.leg.departure.slice(0, 10) === leg.departure.slice(0, 10)
+      ));
+      const byService = new Map();
+      matching.forEach((item) => {
+        const key = serviceKey(item.leg);
+        if (!byService.has(key)) byService.set(key, new Map());
+        const level = item.leg.transferRisk?.level || "none";
+        const previous = byService.get(key).get(level);
+        if (!previous || (item.leg.readyAtOrigin || "") > (previous.leg.readyAtOrigin || "")) {
+          byService.get(key).set(level, item);
+        }
+      });
+      let groups = [...byService.entries()].map(([key, variants]) => ({
+        key,
+        variants: [...variants.values()].sort((a, b) => (
+          (riskRank[a.leg.transferRisk?.level] ?? -1) - (riskRank[b.leg.transferRisk?.level] ?? -1)
+        )),
+      })).sort((a, b) => a.variants[0].leg.departure.localeCompare(b.variants[0].leg.departure));
+      if (groups.length > 7) {
+        const current = Math.max(0, groups.findIndex((item) => item.key === serviceKey(leg)));
+        const start = Math.max(0, Math.min(current - 3, groups.length - 7));
+        groups = groups.slice(start, start + 7);
+      }
+      return groups.length > 1 || groups.some((item) => item.variants.length > 1) ? groups : [];
+    }
+
+    function renderSailingAlternatives(leg) {
+      const groups = sailingAlternatives(leg);
+      if (!groups.length) return "";
+      return `<div class="sailings"><strong>Mahdolliset vuorot tällä lauttavälillä</strong><div class="sailing-row">${groups.map((group) => {
+        const service = group.variants[0].leg;
+        const selectedService = serviceKey(service) === serviceKey(leg);
+        const preferred = preferredVariant(group.variants);
+        const riskButtons = group.variants.map((variant) => {
+          const risk = variant.leg.transferRisk;
+          const active = variant.id === leg._connectionId
+            || (!leg._connectionId && selectedService && (risk?.level || "none") === (leg.transferRisk?.level || "none"));
+          const label = risk ? `${riskLabel[risk.level]} <small>· ${formatDuration(risk.effectiveBufferMinutes)}</small>` : "Ei vaihtoa";
+          return `<button class="sailing-risk risk-${risk?.level || "none"} ${active ? "active" : ""}" data-connection="${variant.id}">${label}</button>`;
+        }).join("");
+        return `<div class="sailing ${selectedService ? "active" : ""}"><button class="sailing-time" data-connection="${preferred.id}">${clock(service.departure)} → ${clock(service.arrival)}</button><div class="sailing-risks">${riskButtons}</div></div>`;
+      }).join("")}</div></div>`;
     }
 
     function renderDetail() {
@@ -257,12 +318,11 @@
       const routeName = `${placeName(displayedLegs[0].from)} – ${placeName(displayedLegs[displayedLegs.length - 1].to)}`;
       const timeline = displayedLegs.map((leg) => {
         const risk = leg.transferRisk;
-        const choice = choicesFor(leg);
         const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
         const detail = leg.kind === "road"
           ? `${placeName(leg.from)} → ${placeName(leg.to)} · ${(leg.distanceMeters / 1000).toFixed(1)} km`
           : `${placeName(leg.from)} ${clock(leg.departure)} → ${placeName(leg.to)} ${clock(leg.arrival)}${risk ? ` · vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}` : ""}`;
-        const buttons = choice ? `<div class="choices"><strong>Valitse vaihtovara tähän vuoroon</strong><div class="choice-row">${choice.variants.map((variant) => `<button class="choice ${variant.connectionId === leg._connectionId ? "active" : ""}" data-choice="${choice.id}" data-connection="${variant.connectionId}">${riskLabel[variant.risk.level]} · ${formatDuration(variant.risk.effectiveBufferMinutes)} <small>(valmiina ${clock(variant.readyAtOrigin)})</small></button>`).join("")}</div></div>` : "";
+        const buttons = renderSailingAlternatives(leg);
         return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
           <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
           <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div>${buttons}</div>
@@ -270,7 +330,7 @@
       }).join("");
       $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
       $("resetRoute").addEventListener("click", () => { displayedLegs = response.itineraries[activeResult].legs; experimentText = ""; renderDetail(); });
-      document.querySelectorAll("[data-connection]").forEach((button) => button.addEventListener("click", () => selectVariant(button.dataset.connection)));
+      document.querySelectorAll("[data-connection]").forEach((button) => button.addEventListener("click", () => selectConnection(button.dataset.connection)));
     }
 
     function graphMaps() {
@@ -339,14 +399,17 @@
       return walk(start)[0] || null;
     }
 
-    function selectVariant(connectionId) {
+    function selectConnection(connectionId) {
       const maps = graphMaps(), selected = maps.connections.get(connectionId);
       const prefix = bestPrefix(selected.fromNode, maps), suffix = bestSuffix(selected.toNode, maps);
       if (!prefix || !suffix) { experimentText = "Tälle valinnalle ei löytynyt kokonaista polkua graafista."; renderDetail(); return; }
       const edges = [...prefix.edges, selected, ...suffix.edges];
       displayedLegs = edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
       const risk = selected.leg.transferRisk;
-      experimentText = `<strong>Kokeilu:</strong> ${placeName(selected.leg.from)} ${clock(selected.leg.departure)}, ${riskLabel[risk.level].toLowerCase()} vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}. Aikaisempi matkaketju ja lähtöaika on laskettu tämän valinnan ympärille.`;
+      const riskText = risk
+        ? `${riskLabel[risk.level].toLowerCase()} vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}`
+        : "ei edeltävää lauttavaihtoa";
+      experimentText = `<strong>Valittu vuoro:</strong> ${placeName(selected.leg.from)} ${clock(selected.leg.departure)} → ${placeName(selected.leg.to)} ${clock(selected.leg.arrival)}, ${riskText}. Muu matkaketju ja lähtöaika on laskettu valinnan ympärille.`;
       renderDetail();
     }
 
