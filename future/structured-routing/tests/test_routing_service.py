@@ -110,6 +110,7 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Tauko autoiluosuudella", response.text)
         self.assertIn("function ganttModeIcon", response.text)
         self.assertIn('class="gantt-mode-icon"', response.text)
+        self.assertIn("window.history.replaceState", response.text)
         self.assertIn("väljää joustoa", response.text)
         self.assertIn("followsDisplayedApproach", response.text)
         self.assertNotIn('"Ei vaihtoa"', response.text)
