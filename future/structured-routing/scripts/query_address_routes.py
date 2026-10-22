@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import unicodedata
 from datetime import date, time
 from pathlib import Path
 
@@ -27,6 +28,57 @@ DEFAULT_STOP_INDEX = EXPERIMENT / "external-routing-stop-index.json"
 ORIGIN_NODE = "address:origin"
 DESTINATION_NODE = "address:destination"
 MAX_BICYCLE_EXTERNAL_METERS = 150_000
+
+
+def normalized_place_name(value: str) -> str:
+    return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+
+def known_stop(index: dict, query: str) -> dict | None:
+    """Resolve an unambiguous stop id or name before external geocoding."""
+    normalized = normalized_place_name(query)
+    explicit_stop = False
+    for suffix in (" (lauttaranta)", " lauttaranta"):
+        if normalized.endswith(suffix):
+            normalized = normalized.removesuffix(suffix).strip()
+            explicit_stop = True
+            break
+    matches = [
+        item for item in index["stops"]
+        if normalized in {
+            normalized_place_name(item["id"]),
+            normalized_place_name(item.get("name", item["id"])),
+        }
+        and (explicit_stop or item.get("roadAreaKind") == "singleton_stop")
+    ]
+    return matches[0] if len(matches) == 1 else None
+
+
+def resolve_endpoint(index: dict, query: str, geocoder) -> dict:
+    stop = known_stop(index, query)
+    if stop is None:
+        return geocoder.geocode(query)
+    return {
+        "query": query,
+        "displayName": stop.get("name", stop["id"]),
+        "coordinates": routing_coordinates(stop),
+        "provider": "saaristolautat",
+        "routingStopId": stop["id"],
+    }
+
+
+def endpoint_classification(index: dict, endpoint: dict, router, mode: str) -> dict:
+    stop_id = endpoint.get("routingStopId")
+    if stop_id is None:
+        return router.infer_road_area(endpoint["coordinates"], index, mode=mode)
+    stop = next(item for item in index["stops"] if item["id"] == stop_id)
+    return {
+        "roadArea": {
+            "id": stop["roadAreaId"],
+            "inference": "known_stop_name",
+            "stop": {"id": stop["id"], "name": stop.get("name", stop["id"])},
+        },
+    }
 
 
 def routing_coordinates(stop: dict) -> dict:
@@ -191,6 +243,9 @@ def add_external_edges(
     origin_area_id: str,
     destination_area_id: str,
     mode: str,
+    *,
+    origin_stop_id: str | None = None,
+    destination_stop_id: str | None = None,
 ) -> dict:
     """Return a graph augmented with address access and egress road edges."""
     # Only the top-level node and edge arrays are extended. Their existing
@@ -201,35 +256,33 @@ def add_external_edges(
         "nodes": list(graph["nodes"]),
         "edges": list(graph["edges"]),
     }
-    origin_stops = area_stops(index, result, origin_area_id)
-    destination_stops = area_stops(index, result, destination_area_id)
-    if not origin_stops:
+    origin_stops = [] if origin_stop_id else area_stops(index, result, origin_area_id)
+    destination_stops = [] if destination_stop_id else area_stops(index, result, destination_area_id)
+    if not origin_stop_id and not origin_stops:
         raise ValueError(f"road area has no routing stops: {origin_area_id}")
-    if not destination_stops:
+    if not destination_stop_id and not destination_stops:
         raise ValueError(f"road area has no routing stops: {destination_area_id}")
 
-    result["nodes"].extend([
-        {
+    if not origin_stop_id:
+        result["nodes"].append({
             "id": ORIGIN_NODE,
             "kind": "address",
             "name": origin["displayName"],
             "coordinates": origin["coordinates"],
             "roadComponentIds": [f"external:{origin_area_id}"],
-        },
-        {
+        })
+    if not destination_stop_id:
+        result["nodes"].append({
             "id": DESTINATION_NODE,
             "kind": "address",
             "name": destination["displayName"],
             "coordinates": destination["coordinates"],
             "roadComponentIds": [f"external:{destination_area_id}"],
-        },
-    ])
+        })
 
-    access_values = external_measurements(
-        router,
-        [origin["coordinates"]],
-        [routing_coordinates(item) for item in origin_stops],
-        mode,
+    access_values = [] if origin_stop_id else external_measurements(
+        router, [origin["coordinates"]],
+        [routing_coordinates(item) for item in origin_stops], mode,
         fallback_from_source=True,
     )
     for value in access_values:
@@ -239,7 +292,7 @@ def add_external_edges(
             mode=mode, role="access", road_area_id=origin_area_id,
         ))
 
-    egress_values = external_measurements(
+    egress_values = [] if destination_stop_id else external_measurements(
         router,
         [routing_coordinates(item) for item in destination_stops],
         [destination["coordinates"]],
@@ -253,7 +306,7 @@ def add_external_edges(
             mode=mode, role="egress", road_area_id=destination_area_id,
         ))
 
-    if origin_area_id == destination_area_id:
+    if not origin_stop_id and not destination_stop_id and origin_area_id == destination_area_id:
         direct_values = external_measurements(
             router,
             [origin["coordinates"]], [destination["coordinates"]], mode,
@@ -265,9 +318,9 @@ def add_external_edges(
                 mode=mode, role="direct", road_area_id=origin_area_id,
             ))
 
-    if not access_values:
+    if not origin_stop_id and not access_values:
         raise ValueError("no ferry-free road route from the origin to a routing stop")
-    if not egress_values:
+    if not destination_stop_id and not egress_values:
         raise ValueError("no ferry-free road route from a routing stop to the destination")
     return result
 
@@ -338,23 +391,23 @@ def query_address_routes(
         else json.loads(stop_index_path.read_text())
     )
 
-    origin = geocoder.geocode(origin_query)
-    destination = geocoder.geocode(destination_query)
-    origin_classification = router.infer_road_area(
-        origin["coordinates"], index, mode=mode
-    )
-    destination_classification = router.infer_road_area(
-        destination["coordinates"], index, mode=mode
-    )
+    origin = resolve_endpoint(index, origin_query, geocoder)
+    destination = resolve_endpoint(index, destination_query, geocoder)
+    origin_classification = endpoint_classification(index, origin, router, mode)
+    destination_classification = endpoint_classification(index, destination, router, mode)
     origin_area_id = origin_classification["roadArea"]["id"]
     destination_area_id = destination_classification["roadArea"]["id"]
     augmented = add_external_edges(
         graph, index, router, origin, destination,
         origin_area_id, destination_area_id, mode,
+        origin_stop_id=origin.get("routingStopId"),
+        destination_stop_id=destination.get("routingStopId"),
     )
+    origin_node = origin.get("routingStopId", ORIGIN_NODE)
+    destination_node = destination.get("routingStopId", DESTINATION_NODE)
     internal = find_itineraries(
-        ORIGIN_NODE,
-        DESTINATION_NODE,
+        origin_node,
+        destination_node,
         travel_date,
         start_time,
         mode=mode,

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import sys
+import json
 import unittest
 from datetime import date
 from pathlib import Path
@@ -13,9 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from query_address_routes import (  # noqa: E402
+    DEFAULT_STOP_INDEX,
     DESTINATION_NODE,
     ORIGIN_NODE,
     add_external_edges,
+    known_stop,
     query_address_routes,
     usable_matrix_entries,
 )
@@ -34,6 +37,17 @@ class FakeGeocoder:
             "provider": "test",
             "attribution": "test data",
         }
+
+
+class KnownStopTrackingGeocoder(FakeGeocoder):
+    def __init__(self) -> None:
+        self.queries = []
+
+    def geocode(self, query: str) -> dict:
+        self.queries.append(query)
+        if query.casefold() in {"wihuri", "ruotsalainen", "maisaari"}:
+            raise AssertionError("known stop names must not be sent to external geocoding")
+        return super().geocode(query)
 
 
 class FakeRouter:
@@ -95,6 +109,16 @@ class FakePartialMatrixRouter(FakeRouter):
 
 
 class AddressGraphTests(unittest.TestCase):
+    def test_known_stop_names_are_case_insensitive_and_unambiguous(self) -> None:
+        index = json.loads(DEFAULT_STOP_INDEX.read_text())
+        self.assertEqual(known_stop(index, "wihuri")["id"], "Wihuri")
+        self.assertEqual(known_stop(index, "RUOTSALAINEN")["id"], "Ruotsalainen")
+        self.assertEqual(known_stop(index, "maisaari")["id"], "Maisaari")
+        self.assertIsNone(known_stop(index, "Kumlinge"))
+        self.assertEqual(
+            known_stop(index, "Kumlinge (lauttaranta)")["id"], "Kumlinge",
+        )
+
     def test_all_stops_in_each_road_area_become_candidates(self) -> None:
         graph = {
             "nodes": [
@@ -203,6 +227,24 @@ class AddressGraphTests(unittest.TestCase):
         self.assertEqual(first["legs"][-1]["to"], DESTINATION_NODE)
         route_ids = {leg.get("routeId") for leg in first["legs"]}
         self.assertIn("rymattylanreitti", route_ids)
+
+    def test_known_destination_stop_bypasses_geocoding_and_external_egress(self) -> None:
+        geocoder = KnownStopTrackingGeocoder()
+        result = query_address_routes(
+            "Origin address",
+            "wihuri",
+            date(2026, 11, 1),
+            mode="car",
+            same_day=True,
+            max_results=2,
+            geocoder=geocoder,
+            router=FakeRouter(),
+        )
+        self.assertEqual(result["status"], "routes_found")
+        self.assertEqual(geocoder.queries, ["Origin address"])
+        self.assertEqual(result["query"]["destinationAddress"]["displayName"], "Wihuri")
+        self.assertEqual(result["query"]["destinationRoadArea"]["inference"], "known_stop_name")
+        self.assertEqual(result["itineraries"][0]["legs"][-1]["to"], "Wihuri")
 
 
 if __name__ == "__main__":
