@@ -57,6 +57,37 @@ class ConciseAddressNameTests(unittest.TestCase):
 
         self.assertEqual(concise_address_name(result), "Fiskö, Brändö")
 
+    def test_place_search_does_not_turn_into_nearest_road(self) -> None:
+        result = {
+            "name": "Hastersboda",
+            "displayName": "Hastersboda, Föglövägen, Föglö, Åland, Suomi",
+            "address": {
+                "road": "Föglövägen",
+                "village": "Hastersboda",
+                "municipality": "Föglö",
+            },
+        }
+
+        self.assertEqual(concise_address_name(result), "Hastersboda, Föglö")
+
+    def test_cached_geocoder_result_prefers_feature_name_over_address_hierarchy(self) -> None:
+        result = {
+            "displayName": (
+                "Hastersboda, Föglövägen, Brändö, Finholma, Föglö, "
+                "Ahvenanmaan saaristo, Ahvenanmaa, Suomi"
+            ),
+            "address": {
+                "highway": "Hastersboda",
+                "road": "Föglövägen",
+                "hamlet": "Brändö",
+                "village": "Finholma",
+                "town": "Föglö",
+                "municipality": "Ahvenanmaan saaristo",
+            },
+        }
+
+        self.assertEqual(concise_address_name(result), "Hastersboda, Föglö")
+
     def test_municipality_is_used_when_city_is_absent(self) -> None:
         result = {
             "displayName": "Saaristotie 1, Parainen, Suomi",

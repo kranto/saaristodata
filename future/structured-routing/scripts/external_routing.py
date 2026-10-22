@@ -48,27 +48,32 @@ def concise_address_name(result: dict) -> str:
         None,
     )
 
-    street_address = " ".join(
-        str(value).strip() for value in (street, house_number) if value
+    street_address = (
+        f"{str(street).strip()} {str(house_number).strip()}"
+        if street and house_number else ""
     )
     if street_address and municipality:
         return f"{street_address}, {municipality}"
     if street_address:
         return street_address
 
-    place = result.get("name") or next(
-        (
-            address.get(key)
-            for key in (
-                "island", "islet", "hamlet", "locality", "neighbourhood",
-                "suburb", "quarter", "village",
-            )
-            if address.get(key)
-        ),
-        None,
-    )
+    place = result.get("name")
     if not place and result.get("displayName"):
         place = str(result["displayName"]).split(",", 1)[0].strip()
+    if not place:
+        place = next(
+            (
+                address.get(key)
+                for key in (
+                    "island", "islet", "hamlet", "locality", "neighbourhood",
+                    "suburb", "quarter", "village",
+                )
+                if address.get(key)
+            ),
+            None,
+        )
+    if not place and street:
+        place = street
     if place and municipality and str(place).casefold() != str(municipality).casefold():
         return f"{place}, {municipality}"
     if place:

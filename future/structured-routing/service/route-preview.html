@@ -235,6 +235,13 @@
       return url.toString();
     }
 
+    function syncSearchToCurrentUrl() {
+      if (isFilePreview) return;
+      const url = new URL(window.location.href);
+      searchFieldIds.forEach((id) => url.searchParams.set(id, $(id).value));
+      window.history.replaceState(null, "", url);
+    }
+
     function restoreSearch() {
       try {
         const query = new URLSearchParams(window.location.search);
@@ -250,6 +257,7 @@
         searchFieldIds.forEach((id) => {
           if (typeof saved[id] === "string") $(id).value = saved[id];
         });
+        syncSearchToCurrentUrl();
       } catch (_) {
         // The form remains usable even when browser storage is unavailable.
       }
@@ -259,6 +267,7 @@
       try {
         const values = Object.fromEntries(searchFieldIds.map((id) => [id, $(id).value]));
         localStorage.setItem(searchStorageKey, JSON.stringify(values));
+        syncSearchToCurrentUrl();
       } catch (_) {
         // The form remains usable even when browser storage is unavailable.
       }
