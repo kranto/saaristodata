@@ -94,6 +94,45 @@
     .sailing-risk.active { outline: 2px solid var(--orange); outline-offset: 1px; }
     .sailing-risk small { font-size: inherit; font-weight: inherit; opacity: .8; }
     .experiment { margin: 0 24px 22px 133px; padding: 13px 15px; border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0; background: #fff3e9; color: #6d442d; font-size: 13px; line-height: 1.5; }
+    .gantt { margin: 18px 24px 8px; border: 1px solid #d3e2df; border-radius: 15px; background: #f8fbfa; overflow: hidden; }
+    .gantt-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding: 14px 16px 12px; border-bottom: 1px solid #dce6e6; }
+    .gantt-head h3 { margin: 0; font-size: 15px; }
+    .gantt-head p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+    .gantt-impact { flex: 0 0 auto; color: var(--green); font-size: 12px; font-weight: 800; }
+    .pause-controls { display: grid; grid-template-columns: minmax(170px, .8fr) minmax(210px, 1.2fr); gap: 14px; padding: 12px 16px; background: #eef6f4; border-bottom: 1px solid #dce6e6; }
+    .pause-controls[hidden] { display: none; }
+    .pause-range-head { display: flex; justify-content: space-between; gap: 12px; }
+    .pause-range-head output { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .pause-controls input { padding: 0; accent-color: var(--green); }
+    .gantt-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 10px 16px 2px; color: var(--muted); font-size: 11px; }
+    .gantt-key { display: inline-flex; align-items: center; gap: 5px; }
+    .gantt-swatch { width: 16px; height: 7px; border-radius: 3px; background: var(--swatch); }
+    .gantt-chart { padding: 10px 14px 14px; overflow: hidden; }
+    .gantt-axis, .gantt-row { display: grid; grid-template-columns: minmax(105px, 145px) minmax(0, 1fr); gap: 9px; }
+    .gantt-axis { height: 22px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+    .gantt-axis-line, .gantt-lane { position: relative; min-width: 0; }
+    .gantt-tick { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+    .gantt-tick:first-child { transform: none; }
+    .gantt-tick:last-child { transform: translateX(-100%); }
+    .gantt-row { min-height: 45px; }
+    .gantt-label { align-self: center; font-size: 11px; line-height: 1.2; }
+    .gantt-label-title { display: flex; align-items: center; gap: 7px; }
+    .gantt-mode-icon { flex: 0 0 auto; width: 24px; height: 24px; color: #546d7a; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .gantt-label-title span { min-width: 0; }
+    .gantt-label small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+    .gantt-lane { border-bottom: 1px solid #dce6e6; }
+    .gantt-gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: #dce6e6; }
+    .gantt-bar { position: absolute; top: 10px; height: 16px; min-width: 3px; border-radius: 4px; background: var(--bar); }
+    .gantt-road { --bar: #7e909d; }
+    .gantt-ferry { --bar: var(--sea); }
+    .gantt-alternative { top: 14px; height: 8px; opacity: .22; }
+    .gantt-buffer-relaxed { --bar: #dff2e8; top: 8px; height: 20px; }
+    .gantt-buffer-normal { --bar: #fff0c9; top: 8px; height: 20px; }
+    .gantt-buffer-tight { --bar: #ffe0d5; top: 8px; height: 20px; }
+    .gantt-buffer-very-tight { --bar: #ffd9df; top: 8px; height: 20px; }
+    .gantt-readiness { --bar: #d9dee2; top: 8px; height: 20px; }
+    .gantt-pause { --bar: var(--green); min-width: 0; z-index: 2; transition: width .2s ease; }
+    .pause-note { padding: 0 16px 13px; color: var(--muted); font-size: 11px; }
     .empty { padding: 70px 24px; text-align: center; color: var(--muted); }
     .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
     .loading { animation: pulse 1.4s ease-in-out infinite; }
@@ -118,6 +157,9 @@
       .leg { grid-template-columns: 58px 22px minmax(0, 1fr); column-gap: 10px; }
       .leg::after { left: 68px; }
       .experiment { margin-left: 92px; margin-right: 15px; }
+      .gantt { margin-inline: 15px; }
+      .pause-controls { grid-template-columns: 1fr; }
+      .gantt-axis, .gantt-row { grid-template-columns: 82px minmax(0, 1fr); gap: 6px; }
     }
   </style>
 </head>
@@ -165,6 +207,7 @@
     let displayedLegs = [];
     let activeResult = 0;
     let experimentText = "";
+    let pausePlan = null;
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
     const minutes = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
@@ -177,7 +220,13 @@
     const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
     const riskPill = (level) => `<span class="risk risk-${level || "none"}">${level ? riskLabel[level] : "Ei vaihtoriskiä"}</span>`;
     const serviceKey = (leg) => [leg.routeId, leg.tripPatternId, leg.from, leg.to, leg.departure, leg.arrival].join("|");
-    const placeName = (value) => escapeHtml(value === "address:origin" ? $("origin").value : value === "address:destination" ? $("destination").value : value);
+    const placeName = (value) => escapeHtml(
+      value === "address:origin"
+        ? response?.query?.originAddress?.displayName || $("origin").value
+        : value === "address:destination"
+          ? response?.query?.destinationAddress?.displayName || $("destination").value
+          : `${value} (lauttaranta)`,
+    );
     const serviceName = (leg) => escapeHtml(leg.vessel || (leg.serviceType === "road_ferry" ? "Maantielautta" : leg.serviceType === "connection_vessel" ? "Yhteysalus" : leg.routeId || "Lautta"));
 
     function routeUrlWithSearch() {
@@ -246,11 +295,22 @@
         activeResult = Number(button.dataset.result);
         displayedLegs = response.itineraries[activeResult].legs;
         experimentText = "";
+        pausePlan = null;
         renderResults(); renderDetail();
       }));
     }
 
     const crossingKey = (leg) => [leg.serviceType, leg.from, leg.to].join("|");
+    const approachKey = (leg) => [leg.kind, leg.serviceType || "", leg.from, leg.to].join("|");
+
+    function followsDisplayedApproach(connection, displayedLeg) {
+      const index = displayedLegs.indexOf(displayedLeg);
+      if (index <= 0) return true;
+      const expected = approachKey(displayedLegs[index - 1]);
+      return response.decisionGraph.connections.some((item) => (
+        item.toNode === connection.fromNode && approachKey(item.leg) === expected
+      ));
+    }
 
     function preferredVariant(variants) {
       const preference = { normal: 0, relaxed: 1, tight: 2, very_tight: 3, below_required_readiness: 4, none: 5 };
@@ -268,6 +328,7 @@
         item.leg.kind === "scheduled_service"
         && crossingKey(item.leg) === crossingKey(leg)
         && item.leg.departure.slice(0, 10) === leg.departure.slice(0, 10)
+        && followsDisplayedApproach(item, leg)
       ));
       const byService = new Map();
       matching.forEach((item) => {
@@ -300,15 +361,182 @@
         const service = group.variants[0].leg;
         const selectedService = serviceKey(service) === serviceKey(leg);
         const preferred = preferredVariant(group.variants);
-        const riskButtons = group.variants.map((variant) => {
+        const riskButtons = group.variants.filter((variant) => variant.leg.transferRisk).map((variant) => {
           const risk = variant.leg.transferRisk;
           const active = variant.id === leg._connectionId
             || (!leg._connectionId && selectedService && (risk?.level || "none") === (leg.transferRisk?.level || "none"));
-          const label = risk ? `${riskLabel[risk.level]} <small>· ${formatDuration(risk.effectiveBufferMinutes)}</small>` : "Ei vaihtoa";
+          const label = `${riskLabel[risk.level]} <small>· ${formatDuration(risk.effectiveBufferMinutes)}</small>`;
           return `<button class="sailing-risk risk-${risk?.level || "none"} ${active ? "active" : ""}" data-connection="${variant.id}">${label}</button>`;
         }).join("");
         return `<div class="sailing ${selectedService ? "active" : ""}"><button class="sailing-time" data-connection="${preferred.id}">${clock(service.departure)} → ${clock(service.arrival)}</button><div class="sailing-risks">${riskButtons}</div></div>`;
       }).join("")}</div></div>`;
+    }
+
+    function riskForRemainingBuffer(value) {
+      if (value < 0) return "below_required_readiness";
+      if (value < 5) return "very_tight";
+      if (value < 15) return "tight";
+      if (value < 30) return "normal";
+      return "relaxed";
+    }
+
+    function pauseCandidates() {
+      const riskFloor = { relaxed: 30, normal: 15, tight: 5, very_tight: 0, below_required_readiness: 0 };
+      return displayedLegs.map((leg, serviceIndex) => {
+        if (leg.kind !== "scheduled_service" || leg.waitMinutes <= 0) return null;
+        const roadIndex = serviceIndex - 1;
+        const roadLeg = displayedLegs[roadIndex];
+        if (!roadLeg || roadLeg.kind !== "road" || roadLeg.to !== leg.from) return null;
+        const isFerryConnection = displayedLegs.slice(0, roadIndex).some((item) => item.kind === "scheduled_service");
+        if (!isFerryConnection) return null;
+        const { readiness, available } = waitProfile(leg);
+        const maxMinutes = available + readiness;
+        if (maxMinutes < 5) return null;
+        const currentRisk = leg.transferRisk?.level || riskForRemainingBuffer(available);
+        return {
+          id: `${roadIndex}:${serviceKey(leg)}`,
+          serviceIndex,
+          roadIndex,
+          from: roadLeg.from,
+          to: roadLeg.to,
+          available,
+          maxMinutes,
+          safeMinutes: Math.max(0, available - (riskFloor[currentRisk] ?? 0)),
+          readiness,
+          currentRisk,
+        };
+      }).filter(Boolean);
+    }
+
+    function ganttScale() {
+      const start = new Date(displayedLegs[0].departure).getTime();
+      const end = new Date(displayedLegs[displayedLegs.length - 1].arrival).getTime();
+      const total = Math.max(1, (end - start) / 60000);
+      const position = (value) => Math.max(0, Math.min(100, ((new Date(value).getTime() - start) / 60000) / total * 100));
+      const width = (from, to) => Math.max(.45, position(to) - position(from));
+      const step = total <= 360 ? 60 : total <= 720 ? 120 : 180;
+      const startClockMinutes = Number(displayedLegs[0].departure.slice(11, 13)) * 60 + Number(displayedLegs[0].departure.slice(14, 16));
+      const labelAt = (offset) => {
+        const value = (startClockMinutes + offset) % (24 * 60);
+        return `${String(Math.floor(value / 60)).padStart(2, "0")}.${String(value % 60).padStart(2, "0")}`;
+      };
+      const ticks = [{ label: clock(displayedLegs[0].departure).replace(":", "."), left: 0 }];
+      let firstOffset = (step - startClockMinutes % step) % step;
+      if (firstOffset === 0) firstOffset = step;
+      for (let offset = firstOffset; offset < total; offset += step) {
+        if (offset >= 25 && total - offset >= 25) {
+          ticks.push({ label: labelAt(offset), left: offset / total * 100 });
+        }
+      }
+      ticks.push({ label: clock(displayedLegs[displayedLegs.length - 1].arrival).replace(":", "."), left: 100 });
+      return { start, end, total, position, width, ticks };
+    }
+
+    function ganttGrid(scale) {
+      return scale.ticks.map((tick) => `<i class="gantt-gridline" style="left:${tick.left.toFixed(2)}%"></i>`).join("");
+    }
+
+    function ganttModeIcon(leg) {
+      if (leg.kind === "scheduled_service") {
+        return `<svg class="gantt-mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17 3 14h18l-2 3c-2.5 2.7-11.5 2.7-14 0Z"/><path d="M7 14V7h10v7M12 7V3M9 3h6M4 21c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/></svg>`;
+      }
+      if ((response?.query?.mode || $("mode").value) === "bicycle") {
+        return `<svg class="gantt-mode-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="m5.5 17.5 4-7h4l5 7M9.5 10.5l4 7M7.5 7.5h3M13.5 10.5l2-3"/></svg>`;
+      }
+      return `<svg class="gantt-mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 16-1-4 2-5h12l2 5-1 4H5Z"/><path d="M6 12h12M7 7l-1-2M17 7l1-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>`;
+    }
+
+    function waitProfile(leg) {
+      const readiness = leg.transferRisk?.requiredReadinessMinutes
+        ?? leg.booking?.loadingReadinessMinutesBefore
+        ?? 15;
+      const available = leg.transferRisk?.effectiveBufferMinutes
+        ?? Math.max(0, leg.waitMinutes - readiness);
+      return { readiness: Math.max(0, readiness), available: Math.max(0, available) };
+    }
+
+    function ganttMarkup() {
+      if (!displayedLegs.length) return "";
+      const scale = ganttScale();
+      const candidates = pauseCandidates();
+      if (!pausePlan || !candidates.some((item) => item.id === pausePlan.id)) {
+        pausePlan = candidates.length ? { id: candidates[0].id, minutes: 0 } : null;
+      }
+      const selectedPause = pausePlan && candidates.find((item) => item.id === pausePlan.id);
+      const plannedPauseMinutes = pausePlan?.minutes ?? 0;
+      const controls = candidates.length ? `<div class="pause-controls">
+        <label>Tauko autoiluosuudella<select id="pauseStop">${candidates.map((item) => `<option value="${escapeHtml(item.id)}" ${item.id === pausePlan?.id ? "selected" : ""}>${placeName(item.from)}–${placeName(item.to)} · ${formatDuration(item.safeMinutes)} väljää joustoa</option>`).join("")}</select></label>
+        <label><span class="pause-range-head"><span>Tauon pituus</span><output id="pauseDuration">${formatDuration(plannedPauseMinutes)}</output></span><input id="pauseSlider" type="range" min="0" max="${selectedPause.maxMinutes}" step="1" value="${plannedPauseMinutes}"></label>
+      </div>` : "";
+      const axis = scale.ticks.map((tick) => `<span class="gantt-tick" style="left:${tick.left.toFixed(2)}%">${tick.label}</span>`).join("");
+      const rows = [];
+      displayedLegs.forEach((leg, index) => {
+        const alternatives = leg.kind === "scheduled_service" ? sailingAlternatives(leg).flatMap((item) => item.variants.slice(0, 1)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
+        const alternativeBars = alternatives.map((item) => `<i class="gantt-bar gantt-ferry gantt-alternative" style="left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Vaihtoehto ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></i>`).join("");
+        const barClass = leg.kind === "road" ? "gantt-road" : "gantt-ferry";
+        const title = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
+        let bufferBars = "", pause = "", labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
+        if (leg.kind === "road") {
+          const nextLeg = displayedLegs[index + 1];
+          if (nextLeg?.kind === "scheduled_service" && nextLeg.from === leg.to && nextLeg.waitMinutes > 0) {
+            const profile = waitProfile(nextLeg);
+            const relaxedMinutes = Math.max(0, profile.available - 30);
+            const normalMinutes = Math.min(15, Math.max(0, profile.available - 15));
+            const tightMinutes = Math.min(10, Math.max(0, profile.available - 5));
+            const veryTightMinutes = Math.min(5, profile.available);
+            const segment = (offset, length, className) => length > 0
+              ? `<i class="gantt-bar ${className}" style="left:${scale.position(new Date(new Date(leg.arrival).getTime() + offset * 60000).toISOString()).toFixed(2)}%;width:${(length / scale.total * 100).toFixed(2)}%"></i>`
+              : "";
+            const candidate = candidates.find((item) => item.roadIndex === index);
+            const pauseMinutes = pausePlan && candidate?.id === pausePlan.id ? pausePlan.minutes : 0;
+            bufferBars = segment(0, relaxedMinutes, "gantt-buffer-relaxed")
+              + segment(relaxedMinutes, normalMinutes, "gantt-buffer-normal")
+              + segment(relaxedMinutes + normalMinutes, tightMinutes, "gantt-buffer-tight")
+              + segment(relaxedMinutes + normalMinutes + tightMinutes, veryTightMinutes, "gantt-buffer-very-tight")
+              + segment(profile.available, profile.readiness, "gantt-readiness");
+            pause = pausePlan && candidate?.id === pausePlan.id
+              ? `<i class="gantt-bar gantt-pause" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(pauseMinutes / scale.total * 100).toFixed(2)}%"></i>`
+              : "";
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)}${candidate?.safeMinutes ? ` · ${formatDuration(candidate.safeMinutes)} väljää joustoa` : profile.readiness ? ` · lastausvalmius ${formatDuration(profile.readiness)}` : ""}`;
+          } else {
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)}`;
+          }
+        }
+        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${placeName(leg.from)}–${placeName(leg.to)}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>${bufferBars}${pause}</div></div>`);
+      });
+      const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";
+      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Käytä lauttaa edeltävän ajon joustoa esimerkiksi matkan varrella pysähtymiseen.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#dff2e8"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#fff0c9"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffe0d5"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffd9df"></i>Hyvin tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
+    }
+
+    function updatePauseDisplay() {
+      const candidates = pauseCandidates();
+      const selected = pausePlan && candidates.find((item) => item.id === pausePlan.id);
+      if (!selected) return;
+      const remaining = selected.available - pausePlan.minutes;
+      const level = riskForRemainingBuffer(remaining);
+      const output = $("pauseDuration"), note = $("pauseNote");
+      if (output) output.value = formatDuration(pausePlan.minutes);
+      if (note) note.innerHTML = pausePlan.minutes
+        ? `${formatDuration(pausePlan.minutes)} tauko välillä ${placeName(selected.from)}–${placeName(selected.to)} · ${remaining >= 0 ? `joustoa jää ${formatDuration(remaining)}` : `lastausvalmiudesta tingitään ${formatDuration(-remaining)}`} · ${riskPill(level)}`
+        : `Ei taukoa · välillä ${placeName(selected.from)}–${placeName(selected.to)} on ${formatDuration(selected.safeMinutes)} väljää joustoa · ${riskPill(selected.currentRisk)}`;
+    }
+
+    function bindPauseControls() {
+      const stop = $("pauseStop"), slider = $("pauseSlider");
+      if (!stop || !slider) return;
+      stop.addEventListener("change", () => {
+        const selected = pauseCandidates().find((item) => item.id === stop.value);
+        pausePlan = { id: selected.id, minutes: Math.min(pausePlan?.minutes || 0, selected.maxMinutes) };
+        renderDetail();
+      });
+      slider.addEventListener("input", () => {
+        pausePlan.minutes = Number(slider.value);
+        const bar = document.querySelector(".gantt-pause");
+        const scale = ganttScale();
+        if (bar) bar.style.width = `${pausePlan.minutes / scale.total * 100}%`;
+        updatePauseDisplay();
+      });
+      updatePauseDisplay();
     }
 
     function renderDetail() {
@@ -328,9 +556,10 @@
           <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div>${buttons}</div>
         </div>`;
       }).join("");
-      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
-      $("resetRoute").addEventListener("click", () => { displayedLegs = response.itineraries[activeResult].legs; experimentText = ""; renderDetail(); });
+      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${ganttMarkup()}${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
+      $("resetRoute").addEventListener("click", () => { displayedLegs = response.itineraries[activeResult].legs; experimentText = ""; pausePlan = null; renderDetail(); });
       document.querySelectorAll("[data-connection]").forEach((button) => button.addEventListener("click", () => selectConnection(button.dataset.connection)));
+      bindPauseControls();
     }
 
     function graphMaps() {
@@ -405,6 +634,7 @@
       if (!prefix || !suffix) { experimentText = "Tälle valinnalle ei löytynyt kokonaista polkua graafista."; renderDetail(); return; }
       const edges = [...prefix.edges, selected, ...suffix.edges];
       displayedLegs = edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
+      pausePlan = null;
       const risk = selected.leg.transferRisk;
       const riskText = risk
         ? `${riskLabel[risk.level].toLowerCase()} vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}`
@@ -426,12 +656,13 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; experimentText = "";
+        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; experimentText = ""; pausePlan = null;
         $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${payload.resultCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
         if (displayedLegs.length) renderDetail();
       } catch (error) {
         $("status").className = "status error"; $("status").textContent = error.message;
+        $("detail").innerHTML = `<div class="empty"><strong>Matkaketjua ei voitu näyttää</strong>${escapeHtml(error.message)}</div>`;
       } finally { button.disabled = false; button.textContent = "Etsi reitit"; }
     });
 

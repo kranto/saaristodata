@@ -106,6 +106,14 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("Näe vaihtoehtoiset lauttavuorot", response.text)
         self.assertIn("Mahdolliset vuorot tällä lauttavälillä", response.text)
+        self.assertIn("Matka aikajanalla", response.text)
+        self.assertIn("Tauko autoiluosuudella", response.text)
+        self.assertIn("function ganttModeIcon", response.text)
+        self.assertIn('class="gantt-mode-icon"', response.text)
+        self.assertIn("väljää joustoa", response.text)
+        self.assertIn("followsDisplayedApproach", response.text)
+        self.assertNotIn('"Ei vaihtoa"', response.text)
+        self.assertIn("originAddress?.displayName", response.text)
         self.assertIn("includeDecisionGraph", response.text)
 
     def test_route_returns_address_itineraries_and_geometry(self) -> None:

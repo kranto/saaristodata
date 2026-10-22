@@ -27,6 +27,64 @@ DEFAULT_VALHALLA_URL = "https://valhalla1.openstreetmap.de"
 DEFAULT_USER_AGENT = "Saaristolautat-route-prototype/1.0"
 
 
+def concise_address_name(result: dict) -> str:
+    """Return the part of a Finnish address that is useful in an itinerary."""
+    address = result.get("address") or {}
+    street = next(
+        (
+            address.get(key)
+            for key in ("road", "pedestrian", "residential", "footway", "path")
+            if address.get(key)
+        ),
+        None,
+    )
+    house_number = address.get("house_number")
+    municipality = next(
+        (
+            address.get(key)
+            for key in ("city", "town", "municipality", "village")
+            if address.get(key)
+        ),
+        None,
+    )
+
+    street_address = " ".join(
+        str(value).strip() for value in (street, house_number) if value
+    )
+    if street_address and municipality:
+        return f"{street_address}, {municipality}"
+    if street_address:
+        return street_address
+
+    place = result.get("name") or next(
+        (
+            address.get(key)
+            for key in (
+                "island", "islet", "hamlet", "locality", "neighbourhood",
+                "suburb", "quarter", "village",
+            )
+            if address.get(key)
+        ),
+        None,
+    )
+    if not place and result.get("displayName"):
+        place = str(result["displayName"]).split(",", 1)[0].strip()
+    if place and municipality and str(place).casefold() != str(municipality).casefold():
+        return f"{place}, {municipality}"
+    if place:
+        return str(place)
+    if municipality:
+        return str(municipality)
+    return str(result.get("displayName") or result.get("query") or "")
+
+
+def _normalize_geocoded_result(result: dict, query: str) -> dict:
+    normalized = dict(result)
+    normalized["query"] = query
+    normalized["displayName"] = concise_address_name(normalized)
+    return normalized
+
+
 def _read_json(request: Request, timeout: float) -> object:
     default_paths = ssl.get_default_verify_paths()
     configured_cafile = os.environ.get(default_paths.openssl_cafile_env)
@@ -86,14 +144,12 @@ class NominatimGeocoder:
     def geocode(self, query: str) -> dict:
         normalized_query = " ".join(query.casefold().split())
         if normalized_query in self._cache:
-            result = dict(self._cache[normalized_query])
-            result["query"] = query
+            result = _normalize_geocoded_result(self._cache[normalized_query], query)
             return result
         cache_key = {"endpoint": self.endpoint, "query": normalized_query}
         cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
         if cached is not None:
-            result = dict(cached)
-            result["query"] = query
+            result = _normalize_geocoded_result(cached, query)
             self._cache[normalized_query] = result
             return dict(result)
         parameters = urlencode({
@@ -109,8 +165,7 @@ class NominatimGeocoder:
             # was waiting for the provider-wide rate-limit lock.
             cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
             if cached is not None:
-                result = dict(cached)
-                result["query"] = query
+                result = _normalize_geocoded_result(cached, query)
                 self._cache[normalized_query] = result
                 return dict(result)
             if self._last_request_at is not None:
@@ -128,14 +183,15 @@ class NominatimGeocoder:
         if not isinstance(results, list) or not results:
             raise ValueError(f"address was not found: {query}")
         item = results[0]
-        result = {
+        result = _normalize_geocoded_result({
             "query": query,
+            "name": item.get("name"),
             "displayName": item["display_name"],
             "coordinates": {"lat": float(item["lat"]), "lon": float(item["lon"])},
             "address": item.get("address"),
             "provider": "Nominatim",
             "attribution": "© OpenStreetMap contributors",
-        }
+        }, query)
         if self.cache:
             self.cache.set("nominatim:search", cache_key, result)
         self._cache[normalized_query] = result
