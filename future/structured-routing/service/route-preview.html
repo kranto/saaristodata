@@ -62,6 +62,7 @@
     .result-time { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; }
     .result-time span:last-child { color: var(--sea); }
     .result-meta { display: flex; align-items: center; gap: 7px; margin-top: 7px; color: var(--muted); font-size: 12px; }
+    .result-route { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .risk { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 800; }
     .risk-none, .risk-relaxed { color: #1f684f; background: #dff2e8; }
     .risk-normal { color: #7d5918; background: #fff0c9; }
@@ -82,17 +83,6 @@
     .leg-card { padding: 0 0 22px; min-width: 0; }
     .leg-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 850; }
     .leg-sub { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .sailings { margin-top: 13px; padding: 12px; border-radius: 13px; background: #f0f6f4; border: 1px solid #d3e2df; }
-    .sailings > strong { display: block; margin-bottom: 9px; font-size: 12px; }
-    .sailing-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; padding: 1px; }
-    .sailing { min-width: 0; border: 1px solid #bfd0d2; border-radius: 12px; background: white; overflow: hidden; }
-    .sailing.active { border-color: var(--orange); box-shadow: inset 0 0 0 1px var(--orange); }
-    .sailing-time { width: 100%; border: 0; padding: 9px 10px 7px; background: transparent; color: var(--ink); text-align: left; font-size: 15px; font-weight: 850; font-variant-numeric: tabular-nums; }
-    .sailing-time:hover { background: #f8fbfa; }
-    .sailing-risks { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 8px 9px; }
-    .sailing-risk { border: 0; border-radius: 999px; padding: 4px 7px; font-size: 10px; font-weight: 800; }
-    .sailing-risk.active { outline: 2px solid var(--orange); outline-offset: 1px; }
-    .sailing-risk small { font-size: inherit; font-weight: inherit; opacity: .8; }
     .experiment { margin: 0 24px 22px 133px; padding: 13px 15px; border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0; background: #fff3e9; color: #6d442d; font-size: 13px; line-height: 1.5; }
     .gantt { margin: 18px 24px 8px; border: 1px solid #d3e2df; border-radius: 15px; background: #f8fbfa; overflow: hidden; }
     .gantt-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding: 14px 16px 12px; border-bottom: 1px solid #dce6e6; }
@@ -122,16 +112,20 @@
     .gantt-label small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
     .gantt-lane { border-bottom: 1px solid #dce6e6; }
     .gantt-gridline { position: absolute; top: 0; bottom: 0; width: 1px; background: #dce6e6; }
-    .gantt-bar { position: absolute; top: 10px; height: 16px; min-width: 3px; border-radius: 4px; background: var(--bar); }
+    .gantt-bar { position: absolute; top: 10px; height: 16px; min-width: 3px; border: 0; border-radius: 4px; padding: 0; background: var(--bar); }
     .gantt-road { --bar: #7e909d; }
     .gantt-ferry { --bar: var(--sea); }
-    .gantt-alternative { top: 14px; height: 8px; opacity: .22; }
+    .gantt-ferry-choice { z-index: 3; min-width: 11px; cursor: pointer; transition: opacity .15s, transform .15s, box-shadow .15s; }
+    .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
+    .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
+    .gantt-alternative { top: 14px; height: 8px; opacity: .32; }
     .gantt-buffer-relaxed { --bar: #dff2e8; top: 8px; height: 20px; }
     .gantt-buffer-normal { --bar: #fff0c9; top: 8px; height: 20px; }
     .gantt-buffer-tight { --bar: #ffe0d5; top: 8px; height: 20px; }
     .gantt-buffer-very-tight { --bar: #ffd9df; top: 8px; height: 20px; }
     .gantt-readiness { --bar: #d9dee2; top: 8px; height: 20px; }
     .gantt-pause { --bar: var(--green); min-width: 0; z-index: 2; transition: width .2s ease; }
+    .gantt-transfer-risk { display: inline-flex; margin-top: 3px; padding: 2px 6px; font-size: 9px; vertical-align: middle; }
     .pause-note { padding: 0 16px 13px; color: var(--muted); font-size: 11px; }
     .empty { padding: 70px 24px; text-align: center; color: var(--muted); }
     .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
@@ -208,6 +202,7 @@
     let activeResult = 0;
     let experimentText = "";
     let pausePlan = null;
+    const selectedSailings = new Map();
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
     const minutes = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
@@ -217,16 +212,36 @@
       const hours = Math.floor(total / 60), remainder = total % 60;
       return remainder ? `${hours} t ${remainder} min` : `${hours} t`;
     };
+    const formatDistance = (meters) => `${(Number(meters) / 1000).toFixed(1)} km`;
     const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
     const riskPill = (level) => `<span class="risk risk-${level || "none"}">${level ? riskLabel[level] : "Ei vaihtoriskiä"}</span>`;
     const serviceKey = (leg) => [leg.routeId, leg.tripPatternId, leg.from, leg.to, leg.departure, leg.arrival].join("|");
-    const placeName = (value) => escapeHtml(
+    const rawPlaceName = (value) => (
       value === "address:origin"
         ? response?.query?.originAddress?.displayName || $("origin").value
         : value === "address:destination"
           ? response?.query?.destinationAddress?.displayName || $("destination").value
-          : `${value} (lauttaranta)`,
+          : value
     );
+    const placeName = (value) => escapeHtml(rawPlaceName(value));
+    const comparablePlaceName = (value) => String(rawPlaceName(value))
+      .split(",", 1)[0]
+      .trim()
+      .toLocaleLowerCase("fi");
+    const legPlaceName = (leg, side) => {
+      const value = leg[side];
+      let suffix = "";
+      if (leg.kind === "road") {
+        const matchesOrigin = side === "to"
+          && leg.from === "address:origin"
+          && comparablePlaceName(value) === comparablePlaceName(leg.from);
+        const matchesDestination = side === "from"
+          && leg.to === "address:destination"
+          && comparablePlaceName(value) === comparablePlaceName(leg.to);
+        if (matchesOrigin || matchesDestination) suffix = " (lauttaranta)";
+      }
+      return escapeHtml(`${rawPlaceName(value)}${suffix}`);
+    };
     const serviceName = (leg) => escapeHtml(leg.vessel || (leg.serviceType === "road_ferry" ? "Maantielautta" : leg.serviceType === "connection_vessel" ? "Yhteysalus" : leg.routeId || "Lautta"));
 
     function routeUrlWithSearch() {
@@ -290,19 +305,42 @@
       }
     }
 
+    const routeShape = (legs) => legs.map((leg) => (
+      [leg.kind, leg.serviceType || "", leg.routeId || "", leg.from, leg.to].join(":")
+    )).join(">");
+    const routeOptionKey = (item) => `${routeShape(item.legs)}|${item.arrival}`;
+    const displayedRouteOptionKey = () => displayedLegs.length
+      ? `${routeShape(displayedLegs)}|${displayedLegs[displayedLegs.length - 1].arrival}`
+      : "";
+
+    function mainRouteOptions() {
+      const unique = new Map();
+      (response?.itineraries || []).forEach((item, index) => {
+        const key = routeOptionKey(item);
+        if (!unique.has(key)) unique.set(key, { item, index, key });
+      });
+      return [...unique.values()];
+    }
+
+    function itineraryRouteLabel(item) {
+      const sailings = item.legs.filter((leg) => leg.kind === "scheduled_service");
+      return sailings.map((leg) => `${leg.from}–${leg.to}`).join(" · ") || "Tieyhteys";
+    }
+
     function renderResults() {
-      const list = response?.itineraries || [];
+      const list = mainRouteOptions();
       $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
-      $("results").innerHTML = list.map((item, index) => {
-        const level = item.riskSummary.worstConnectionRisk;
-        return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
+      const currentKey = displayedRouteOptionKey();
+      $("results").innerHTML = list.map(({ item, index, key }) => {
+        return `<button class="result ${key === currentKey ? "active" : ""}" data-result="${index}">
           <div class="result-time"><span>${clock(item.suggestedOriginDeparture)}</span><span>${clock(item.arrival)}</span></div>
-          <div class="result-meta">${formatDuration(item.elapsedFromSuggestedDepartureMinutes)} ${riskPill(level)}</div>
+          <div class="result-meta"><span>${formatDuration(item.elapsedFromSuggestedDepartureMinutes)}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(item))}</span></div>
         </button>`;
       }).join("");
       document.querySelectorAll("[data-result]").forEach((button) => button.addEventListener("click", () => {
         activeResult = Number(button.dataset.result);
         displayedLegs = response.itineraries[activeResult].legs;
+        selectedSailings.clear();
         experimentText = "";
         pausePlan = null;
         renderResults(); renderDetail();
@@ -322,7 +360,7 @@
     }
 
     function preferredVariant(variants) {
-      const preference = { normal: 0, relaxed: 1, tight: 2, very_tight: 3, below_required_readiness: 4, none: 5 };
+      const preference = { relaxed: 0, normal: 1, tight: 2, very_tight: 3, below_required_readiness: 4, none: 5 };
       return [...variants].sort((a, b) => {
         const aLevel = a.leg.transferRisk?.level || "none";
         const bLevel = b.leg.transferRisk?.level || "none";
@@ -361,24 +399,6 @@
         groups = groups.slice(start, start + 7);
       }
       return groups.length > 1 || groups.some((item) => item.variants.length > 1) ? groups : [];
-    }
-
-    function renderSailingAlternatives(leg) {
-      const groups = sailingAlternatives(leg);
-      if (!groups.length) return "";
-      return `<div class="sailings"><strong>Mahdolliset vuorot tällä lauttavälillä</strong><div class="sailing-row">${groups.map((group) => {
-        const service = group.variants[0].leg;
-        const selectedService = serviceKey(service) === serviceKey(leg);
-        const preferred = preferredVariant(group.variants);
-        const riskButtons = group.variants.filter((variant) => variant.leg.transferRisk).map((variant) => {
-          const risk = variant.leg.transferRisk;
-          const active = variant.id === leg._connectionId
-            || (!leg._connectionId && selectedService && (risk?.level || "none") === (leg.transferRisk?.level || "none"));
-          const label = `${riskLabel[risk.level]} <small>· ${formatDuration(risk.effectiveBufferMinutes)}</small>`;
-          return `<button class="sailing-risk risk-${risk?.level || "none"} ${active ? "active" : ""}" data-connection="${variant.id}">${label}</button>`;
-        }).join("");
-        return `<div class="sailing ${selectedService ? "active" : ""}"><button class="sailing-time" data-connection="${preferred.id}">${clock(service.departure)} → ${clock(service.arrival)}</button><div class="sailing-risks">${riskButtons}</div></div>`;
-      }).join("")}</div></div>`;
     }
 
     function riskForRemainingBuffer(value) {
@@ -464,6 +484,24 @@
       return { readiness: Math.max(0, readiness), available: Math.max(0, available) };
     }
 
+    function displayedConnection(leg) {
+      if (!response?.decisionGraph || leg.kind !== "scheduled_service") return null;
+      const matching = response.decisionGraph.connections.filter((item) => (
+        item.leg.kind === "scheduled_service"
+        && serviceKey(item.leg) === serviceKey(leg)
+        && followsDisplayedApproach(item, leg)
+      ));
+      if (leg._connectionId) {
+        const exact = matching.find((item) => item.id === leg._connectionId);
+        if (exact) return exact;
+      }
+      const sameRisk = matching.find((item) => (
+        (item.leg.transferRisk?.level || "none") === (leg.transferRisk?.level || "none")
+        && (!leg.readyAtOrigin || item.leg.readyAtOrigin === leg.readyAtOrigin)
+      ));
+      return sameRisk || (matching.length ? preferredVariant(matching) : null);
+    }
+
     function ganttMarkup() {
       if (!displayedLegs.length) return "";
       const scale = ganttScale();
@@ -480,8 +518,8 @@
       const axis = scale.ticks.map((tick) => `<span class="gantt-tick" style="left:${tick.left.toFixed(2)}%">${tick.label}</span>`).join("");
       const rows = [];
       displayedLegs.forEach((leg, index) => {
-        const alternatives = leg.kind === "scheduled_service" ? sailingAlternatives(leg).flatMap((item) => item.variants.slice(0, 1)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
-        const alternativeBars = alternatives.map((item) => `<i class="gantt-bar gantt-ferry gantt-alternative" style="left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Vaihtoehto ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></i>`).join("");
+        const alternatives = leg.kind === "scheduled_service" ? sailingAlternatives(leg).map((item) => preferredVariant(item.variants)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
+        const alternativeBars = alternatives.map((item) => `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" style="left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`).join("");
         const barClass = leg.kind === "road" ? "gantt-road" : "gantt-ferry";
         const title = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
         let bufferBars = "", pause = "", labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
@@ -506,15 +544,24 @@
             pause = pausePlan && candidate?.id === pausePlan.id
               ? `<i class="gantt-bar gantt-pause" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(pauseMinutes / scale.total * 100).toFixed(2)}%"></i>`
               : "";
-            labelDetail = `ajo ${formatDuration(leg.durationMinutes)}${candidate?.safeMinutes ? ` · ${formatDuration(candidate.safeMinutes)} väljää joustoa` : profile.readiness ? ` · lastausvalmius ${formatDuration(profile.readiness)}` : ""}`;
+            const transferRisk = nextLeg.transferRisk;
+            const riskLevel = transferRisk?.level || riskForRemainingBuffer(profile.available);
+            const riskInfo = transferRisk
+              ? `<span class="risk risk-${riskLevel} gantt-transfer-risk">${riskLabel[riskLevel]} · +${formatDuration(profile.available)}</span>`
+              : profile.readiness ? ` · lastausvalmius ${formatDuration(profile.readiness)}` : "";
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} ${riskInfo}`;
           } else {
-            labelDetail = `ajo ${formatDuration(leg.durationMinutes)}`;
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}`;
           }
         }
-        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${placeName(leg.from)}–${placeName(leg.to)}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>${bufferBars}${pause}</div></div>`);
+        const selectedConnection = displayedConnection(leg);
+        const selectedBar = leg.kind === "scheduled_service" && selectedConnection
+          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected" data-connection="${selectedConnection.id}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="Valittu ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="Valittu lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
+          : `<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
+        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${selectedBar}${bufferBars}${pause}</div></div>`);
       });
       const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";
-      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Käytä lauttaa edeltävän ajon joustoa esimerkiksi matkan varrella pysähtymiseen.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#dff2e8"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#fff0c9"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffe0d5"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffd9df"></i>Hyvin tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
+      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Vaihtovara näkyy sitä edeltävällä ajo-osuudella.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#dff2e8"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#fff0c9"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffe0d5"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffd9df"></i>Hyvin tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
     }
 
     function updatePauseDisplay() {
@@ -553,20 +600,27 @@
       const start = displayedLegs[0].departure;
       const end = displayedLegs[displayedLegs.length - 1].arrival;
       const routeName = `${placeName(displayedLegs[0].from)} – ${placeName(displayedLegs[displayedLegs.length - 1].to)}`;
-      const timeline = displayedLegs.map((leg) => {
-        const risk = leg.transferRisk;
+      const timeline = displayedLegs.map((leg, index) => {
+        const nextLeg = displayedLegs[index + 1];
+        const risk = leg.kind === "road" && nextLeg?.kind === "scheduled_service" ? nextLeg.transferRisk : null;
         const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
         const detail = leg.kind === "road"
-          ? `${placeName(leg.from)} → ${placeName(leg.to)} · ${(leg.distanceMeters / 1000).toFixed(1)} km`
-          : `${placeName(leg.from)} ${clock(leg.departure)} → ${placeName(leg.to)} ${clock(leg.arrival)}${risk ? ` · vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}` : ""}`;
-        const buttons = renderSailingAlternatives(leg);
+          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${risk ? ` · +${formatDuration(risk.effectiveBufferMinutes)} ylimääräistä aikaa` : ""}`
+          : `${legPlaceName(leg, "from")} ${clock(leg.departure)} → ${legPlaceName(leg, "to")} ${clock(leg.arrival)}`;
         return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
           <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
-          <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div>${buttons}</div>
+          <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
         </div>`;
       }).join("");
       $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${ganttMarkup()}${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
-      $("resetRoute").addEventListener("click", () => { displayedLegs = response.itineraries[activeResult].legs; experimentText = ""; pausePlan = null; renderDetail(); });
+      $("resetRoute").addEventListener("click", () => {
+        displayedLegs = response.itineraries[activeResult].legs;
+        selectedSailings.clear();
+        experimentText = "";
+        pausePlan = null;
+        renderResults();
+        renderDetail();
+      });
       document.querySelectorAll("[data-connection]").forEach((button) => button.addEventListener("click", () => selectConnection(button.dataset.connection)));
       bindPauseControls();
     }
@@ -583,72 +637,81 @@
       return { graph, connections, incoming, outgoing };
     }
 
-    function pathRisk(path) {
-      return path.reduce((worst, edge) => Math.max(worst, riskRank[edge.leg.transferRisk?.level] ?? -1), -1);
-    }
+    function bestSelectedPath(maps) {
+      const pinnedServices = [...new Set(selectedSailings.values())];
+      const pinBits = new Map(pinnedServices.map((key, index) => [key, 2 ** index]));
+      const allPins = 2 ** pinnedServices.length - 1;
+      const destinations = new Set(maps.graph.destinationNodeIds);
+      const nodeTimes = new Map(maps.graph.nodes.map((node) => [node.id, node.time]));
+      const memo = new Map(), visiting = new Set();
 
-    function bestPrefix(target, maps) {
-      const origins = new Set(maps.graph.originNodeIds), memo = new Map(), visiting = new Set();
-      function walk(node) {
-        if (origins.has(node)) return [{ edges: [], origin: node, risk: -1 }];
-        if (memo.has(node)) return memo.get(node);
-        if (visiting.has(node)) return [];
-        visiting.add(node);
-        const values = [];
-        for (const edge of maps.incoming.get(node) || []) {
-          for (const prior of walk(edge.fromNode)) values.push({ edges: [...prior.edges, edge], origin: prior.origin, risk: Math.max(prior.risk, riskRank[edge.leg.transferRisk?.level] ?? -1) });
-        }
-        visiting.delete(node);
-        values.sort((a, b) => {
-          const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-          if (aOkay !== bOkay) return aOkay ? -1 : 1;
-          const at = maps.graph.nodes.find((n) => n.id === a.origin)?.time || "";
-          const bt = maps.graph.nodes.find((n) => n.id === b.origin)?.time || "";
-          return bt.localeCompare(at) || a.risk - b.risk || a.edges.length - b.edges.length;
-        });
-        const result = values.slice(0, 8);
-        memo.set(node, result); return result;
+      function compareSuffix(a, b) {
+        const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
+        if (aOkay !== bOkay) return aOkay ? -1 : 1;
+        return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+          || a.risk - b.risk
+          || a.edges.length - b.edges.length;
       }
-      return walk(target)[0] || null;
-    }
 
-    function bestSuffix(start, maps) {
-      const destinations = new Set(maps.graph.destinationNodeIds), memo = new Map(), visiting = new Set();
-      function walk(node) {
-        if (destinations.has(node)) return [{ edges: [], destination: node, risk: -1 }];
-        if (memo.has(node)) return memo.get(node);
-        if (visiting.has(node)) return [];
-        visiting.add(node);
-        const values = [];
+      function walk(node, mask) {
+        const state = `${node}|${mask}`;
+        if (destinations.has(node)) return mask === allPins ? { edges: [], destination: node, risk: -1 } : null;
+        if (memo.has(state)) return memo.get(state);
+        if (visiting.has(state)) return null;
+        visiting.add(state);
+        let best = null;
         for (const edge of maps.outgoing.get(node) || []) {
-          for (const rest of walk(edge.toNode)) values.push({ edges: [edge, ...rest.edges], destination: rest.destination, risk: Math.max(rest.risk, riskRank[edge.leg.transferRisk?.level] ?? -1) });
+          if (edge.leg.kind === "scheduled_service") {
+            const pinned = selectedSailings.get(crossingKey(edge.leg));
+            if (pinned && serviceKey(edge.leg) !== pinned) continue;
+          }
+          const nextMask = mask | (pinBits.get(serviceKey(edge.leg)) || 0);
+          const rest = walk(edge.toNode, nextMask);
+          if (!rest) continue;
+          const candidate = {
+            edges: [edge, ...rest.edges],
+            destination: rest.destination,
+            risk: Math.max(rest.risk, riskRank[edge.leg.transferRisk?.level] ?? -1),
+          };
+          if (!best || compareSuffix(candidate, best) < 0) best = candidate;
         }
-        visiting.delete(node);
-        values.sort((a, b) => {
-          const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-          if (aOkay !== bOkay) return aOkay ? -1 : 1;
-          const at = maps.graph.nodes.find((n) => n.id === a.destination)?.time || "9999";
-          const bt = maps.graph.nodes.find((n) => n.id === b.destination)?.time || "9999";
-          return at.localeCompare(bt) || a.risk - b.risk || a.edges.length - b.edges.length;
-        });
-        const result = values.slice(0, 8);
-        memo.set(node, result); return result;
+        visiting.delete(state);
+        memo.set(state, best);
+        return best;
       }
-      return walk(start)[0] || null;
+
+      const candidates = maps.graph.originNodeIds.map((origin) => {
+        const suffix = walk(origin, 0);
+        return suffix ? { ...suffix, origin } : null;
+      }).filter(Boolean);
+      candidates.sort((a, b) => {
+        const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
+        if (aOkay !== bOkay) return aOkay ? -1 : 1;
+        return (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
+          || (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+          || a.risk - b.risk
+          || a.edges.length - b.edges.length;
+      });
+      return candidates[0] || null;
     }
 
     function selectConnection(connectionId) {
       const maps = graphMaps(), selected = maps.connections.get(connectionId);
-      const prefix = bestPrefix(selected.fromNode, maps), suffix = bestSuffix(selected.toNode, maps);
-      if (!prefix || !suffix) { experimentText = "Tälle valinnalle ei löytynyt kokonaista polkua graafista."; renderDetail(); return; }
-      const edges = [...prefix.edges, selected, ...suffix.edges];
-      displayedLegs = edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
+      if (!selected) return;
+      const key = crossingKey(selected.leg);
+      const previous = selectedSailings.get(key);
+      selectedSailings.set(key, serviceKey(selected.leg));
+      const path = bestSelectedPath(maps);
+      if (!path) {
+        if (previous) selectedSailings.set(key, previous); else selectedSailings.delete(key);
+        experimentText = "Näiden lauttavalintojen yhdistelmälle ei löytynyt kokonaista matkaketjua.";
+        renderDetail();
+        return;
+      }
+      displayedLegs = path.edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
       pausePlan = null;
-      const risk = selected.leg.transferRisk;
-      const riskText = risk
-        ? `${riskLabel[risk.level].toLowerCase()} vaihtovara ${formatDuration(risk.effectiveBufferMinutes)}`
-        : "ei edeltävää lauttavaihtoa";
-      experimentText = `<strong>Valittu vuoro:</strong> ${placeName(selected.leg.from)} ${clock(selected.leg.departure)} → ${placeName(selected.leg.to)} ${clock(selected.leg.arrival)}, ${riskText}. Muu matkaketju ja lähtöaika on laskettu valinnan ympärille.`;
+      experimentText = `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
+      renderResults();
       renderDetail();
     }
 
@@ -665,8 +728,9 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; experimentText = ""; pausePlan = null;
-        $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${payload.resultCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
+        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); experimentText = ""; pausePlan = null;
+        const routeCount = mainRouteOptions().length;
+        $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
         if (displayedLegs.length) renderDetail();
       } catch (error) {
