@@ -100,6 +100,48 @@ class ConciseAddressNameTests(unittest.TestCase):
 
         self.assertEqual(concise_address_name(result), "Saaristotie 1, Parainen")
 
+    def test_former_municipality_is_kept_in_place_hierarchy(self) -> None:
+        result = {
+            "name": "Näsby",
+            "displayName": "Näsby, Houtskari, Parainen, Varsinais-Suomi, Suomi",
+            "address": {
+                "village": "Näsby",
+                "region": "Houtskari",
+                "municipality": "Parainen",
+            },
+        }
+
+        self.assertEqual(concise_address_name(result), "Näsby, Houtskari, Parainen")
+
+    def test_former_municipality_is_kept_in_street_address(self) -> None:
+        result = {
+            "displayName": "Kirkkotie 1, Rymättylä, Naantali, Suomi",
+            "address": {
+                "house_number": "1",
+                "road": "Kirkkotie",
+                "village": "Rymättylä",
+                "city": "Naantali",
+            },
+        }
+
+        self.assertEqual(
+            concise_address_name(result),
+            "Kirkkotie 1, Rymättylä, Naantali",
+        )
+
+    def test_swedish_area_name_is_normalized_for_finnish_ui(self) -> None:
+        result = {
+            "name": "Näsby",
+            "displayName": "Näsby, Houtskär, Pargas, Finland",
+            "address": {
+                "village": "Näsby",
+                "region": "Houtskär",
+                "municipality": "Pargas",
+            },
+        }
+
+        self.assertEqual(concise_address_name(result), "Näsby, Houtskari, Pargas")
+
 
 if __name__ == "__main__":
     unittest.main()

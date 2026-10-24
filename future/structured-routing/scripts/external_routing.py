@@ -26,6 +26,41 @@ DEFAULT_NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 DEFAULT_VALHALLA_URL = "https://valhalla1.openstreetmap.de"
 DEFAULT_USER_AGENT = "Saaristolautat-route-prototype/1.0"
 
+TRADITIONAL_ARCHIPELAGO_AREAS = {
+    "houtskari": "Houtskari",
+    "houtskär": "Houtskari",
+    "korppoo": "Korppoo",
+    "korpo": "Korppoo",
+    "nauvo": "Nauvo",
+    "nagu": "Nauvo",
+    "parainen": "Parainen",
+    "pargas": "Parainen",
+    "iniö": "Iniö",
+    "velkua": "Velkua",
+    "rymättylä": "Rymättylä",
+    "rimito": "Rymättylä",
+}
+
+
+def traditional_archipelago_area(result: dict) -> str | None:
+    """Find a familiar former municipality in Nominatim's place hierarchy."""
+    address = result.get("address") or {}
+    values = [str(value).strip() for value in address.values() if value]
+    values.extend(
+        part.strip()
+        for part in str(result.get("displayName") or "").split(",")
+        if part.strip()
+    )
+    candidates = [
+        TRADITIONAL_ARCHIPELAGO_AREAS[value.casefold()]
+        for value in values
+        if value.casefold() in TRADITIONAL_ARCHIPELAGO_AREAS
+    ]
+    return next(
+        (candidate for candidate in candidates if candidate != "Parainen"),
+        candidates[0] if candidates else None,
+    )
+
 
 def concise_address_name(result: dict) -> str:
     """Return the part of a Finnish address that is useful in an itinerary."""
@@ -47,15 +82,25 @@ def concise_address_name(result: dict) -> str:
         ),
         None,
     )
+    area = traditional_archipelago_area(result)
+
+    def with_location_hierarchy(primary: str) -> str:
+        parts = [primary]
+        for value in (area, municipality):
+            if value and all(
+                str(value).casefold() != str(part).casefold() for part in parts
+            ):
+                parts.append(str(value))
+        return ", ".join(parts)
 
     street_address = (
         f"{str(street).strip()} {str(house_number).strip()}"
         if street and house_number else ""
     )
     if street_address and municipality:
-        return f"{street_address}, {municipality}"
+        return with_location_hierarchy(street_address)
     if street_address:
-        return street_address
+        return with_location_hierarchy(street_address)
 
     place = result.get("name")
     if not place and result.get("displayName"):
@@ -74,10 +119,8 @@ def concise_address_name(result: dict) -> str:
         )
     if not place and street:
         place = street
-    if place and municipality and str(place).casefold() != str(municipality).casefold():
-        return f"{place}, {municipality}"
     if place:
-        return str(place)
+        return with_location_hierarchy(str(place))
     if municipality:
         return str(municipality)
     return str(result.get("displayName") or result.get("query") or "")
