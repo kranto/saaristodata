@@ -3,6 +3,23 @@
   "provider": "alandstrafiken",
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
+  "booking": {
+    "loadingReadinessMinutesBefore": 15
+  },
+  "travelerInformation": {
+    "notices": [
+      {
+        "type": "vehicle_loading_readiness",
+        "minutesBeforeDeparture": 15,
+        "appliesAt": "trip_origin"
+      },
+      {
+        "type": "possible_early_departure",
+        "minutesBeforePublishedTime": 5,
+        "appliesAt": "intermediate_stops"
+      }
+    ]
+  },
   "sourceId": "alandstrafiken-huto-11.9.2026",
   "review": {
     "status": "machine_extracted_requires_semantic_review",

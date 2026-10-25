@@ -38,7 +38,26 @@ RISK_ORDER = {
     "very_tight": 3,
     "below_required_readiness": 4,
 }
-DEFAULT_ORIGIN_BOARDING_BUFFER_MINUTES = 15
+
+
+def default_origin_boarding_buffer_minutes(
+    records: list[dict], first_service_index: int,
+) -> int:
+    """Return a distance-independent safety margin for the initial drive.
+
+    This is not a published loading-readiness requirement. It only absorbs
+    ordinary uncertainty in the road ETA before the first ferry.
+    """
+    driving_minutes = sum(
+        (item["instance"]["arrival"] - item["instance"]["departure"]).total_seconds() / 60
+        for item in records[:first_service_index]
+        if item["edge"]["kind"] == "road"
+    )
+    if driving_minutes < 60:
+        return 5
+    if driving_minutes < 120:
+        return 10
+    return 15
 
 
 class ScheduledInstanceIndex:
@@ -139,7 +158,9 @@ def prefix_road_shift(
     readiness = routes[first_service["edge"]["routeId"]].get("booking", {}).get(
         "loadingReadinessMinutesBefore", 0
     )
-    boarding_buffer = readiness if readiness else DEFAULT_ORIGIN_BOARDING_BUFFER_MINUTES
+    boarding_buffer = readiness or default_origin_boarding_buffer_minutes(
+        records, first_service_index,
+    )
     target = first_service["instance"]["departure"] - timedelta(
         minutes=boarding_buffer
     )
@@ -390,7 +411,7 @@ def next_adaptive_sweep_seeds(
             # Last whole-minute value in each weaker risk class. Crossing the
             # threshold produces normal, tight, very tight and finally a
             # below-readiness alternative when each is feasible.
-            for target_buffer in (29, 14, 4, -1):
+            for target_buffer in (29, 4, 0, -1):
                 shift = effective_buffer - target_buffer
                 if shift > 0:
                     values.append(seed + timedelta(minutes=shift))
@@ -410,6 +431,31 @@ def candidate_dominates(first: dict, second: dict) -> bool:
     second_arrival = datetime.fromisoformat(second["arrival"])
     first_risk = RISK_ORDER.get(first["riskSummary"]["worstConnectionRisk"], -1)
     second_risk = RISK_ORDER.get(second["riskSummary"]["worstConnectionRisk"], -1)
+    # A relaxed connection is not intrinsically better than a normal one if
+    # both lead through the same services to the same arrival. In that case
+    # retain the later useful feeder: waiting at the preceding ferry landing
+    # is not a passenger benefit.
+    first_shape = tuple(
+        (leg["kind"], leg.get("routeId"), leg["from"], leg["to"])
+        for leg in first["legs"]
+    )
+    second_shape = tuple(
+        (leg["kind"], leg.get("routeId"), leg["from"], leg["to"])
+        for leg in second["legs"]
+    )
+    comparable_safe_feeders = (
+        first_departure == second_departure
+        and first_arrival == second_arrival
+        and first_risk <= RISK_ORDER["normal"]
+        and second_risk <= RISK_ORDER["normal"]
+        and first_shape == second_shape
+    )
+    if comparable_safe_feeders:
+        return (
+            candidate_departure_preference(first)
+            > candidate_departure_preference(second)
+        )
+
     no_worse = (
         first_departure >= second_departure
         and first_arrival <= second_arrival
@@ -420,7 +466,48 @@ def candidate_dominates(first: dict, second: dict) -> bool:
         or first_arrival < second_arrival
         or first_risk < second_risk
     )
-    return no_worse and strictly_better
+    if no_worse and strictly_better:
+        return True
+
+    # Do not preserve a long detour merely because it has a looser transfer.
+    # If both candidates board the same physical sailing, the better one gets
+    # off earlier, reaches the destination earlier with no more ferry legs,
+    # and still satisfies a normal connection margin, continuing past that
+    # useful stop and returning through another ferry is never worthwhile.
+    first_services = [
+        leg for leg in first["legs"] if leg["kind"] == "scheduled_service"
+    ]
+    second_services = [
+        leg for leg in second["legs"] if leg["kind"] == "scheduled_service"
+    ]
+    first_instances = {
+        (leg.get("routeId"), leg.get("tripPatternId"), leg["departure"])
+        for leg in first_services
+    }
+    second_instances = {
+        (leg.get("routeId"), leg.get("tripPatternId"), leg["departure"])
+        for leg in second_services
+    }
+    redundant_same_sailing_detour = (
+        first_departure >= second_departure
+        and first_arrival < second_arrival
+        and first_risk <= RISK_ORDER["normal"]
+        and len(first_services) <= len(second_services)
+        and bool(first_instances & second_instances)
+    )
+    return redundant_same_sailing_detour
+
+
+def candidate_departure_preference(candidate: dict) -> tuple:
+    """Prefer later useful legs when otherwise selecting the same risk class."""
+    return (
+        candidate["suggestedOriginDeparture"],
+        tuple(
+            leg["departure"]
+            for leg in candidate["legs"]
+            if leg["kind"] != "road"
+        ),
+    )
 
 
 def build_decision_graph(candidates: list[dict], origin: str, destination: str) -> dict:
@@ -646,12 +733,24 @@ def find_itineraries(
             break
         if moment > deadline:
             continue
-        previous_trip = records[-1]["edge"].get("tripPatternId") if records else None
+        # Keep the feeder sailing identity across a following road leg. Two
+        # different ferries can reach the same island road network and still
+        # catch the same onward departure; collapsing them at the road node
+        # would always retain the earliest feeder and hide later useful ones.
+        recent_trips = tuple(reversed([
+            (
+                item["edge"].get("routeId"),
+                item["edge"].get("tripPatternId"),
+                item["instance"]["departure"].isoformat(),
+            )
+            for item in reversed(records)
+            if item["edge"]["kind"] == "scheduled_service"
+        ][:2]))
         # Whether a vessel has already been used changes both first-boarding
         # readiness enforcement and transfer-risk semantics. It is therefore
         # part of the routing state, especially after continuous road ferries
         # which have no tripPatternId of their own.
-        state_key = (node_id, previous_trip, worst_risk, has_used_service)
+        state_key = (node_id, recent_trips, worst_risk, has_used_service)
         frontier = pareto_frontiers[state_key]
         if any(
             previous_arrival <= moment and previous_departure >= origin_departure
@@ -687,7 +786,7 @@ def find_itineraries(
             continue
         hour_bucket = moment.replace(minute=0, second=0, microsecond=0)
         label_bucket = (
-            node_id, hour_bucket, worst_risk, previous_trip,
+            node_id, hour_bucket, worst_risk, recent_trips,
         )
         accepted_per_node_hour[label_bucket] += 1
         if accepted_per_node_hour[label_bucket] > args.max_labels_per_node_hour:
@@ -810,7 +909,7 @@ def find_itineraries(
         grouped[candidate["_finalService"]].append(candidate)
     selected = []
     for group in grouped.values():
-        group.sort(key=lambda item: item["suggestedOriginDeparture"], reverse=True)
+        group.sort(key=candidate_departure_preference, reverse=True)
         chosen = []
         seen_risks = set()
         for candidate in group:
