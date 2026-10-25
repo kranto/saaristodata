@@ -212,6 +212,12 @@
       const hours = Math.floor(total / 60), remainder = total % 60;
       return remainder ? `${hours} t ${remainder} min` : `${hours} t`;
     };
+    const bufferTimeLabel = (value) => {
+      const minutes = Math.round(value);
+      if (minutes < 0) return `${formatDuration(-minutes)} vaaditun lastausvalmiuden jälkeen`;
+      if (minutes === 0) return "ei ylimääräistä aikaa";
+      return `${formatDuration(minutes)} ylimääräistä aikaa`;
+    };
     const formatDistance = (meters) => `${(Number(meters) / 1000).toFixed(1)} km`;
     const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
     const riskPill = (level) => `<span class="risk risk-${level || "none"}">${level ? riskLabel[level] : "Ei vaihtoriskiä"}</span>`;
@@ -527,7 +533,7 @@
         ?? 0;
       const available = leg.transferRisk?.effectiveBufferMinutes
         ?? Math.max(0, leg.waitMinutes - readiness);
-      return { readiness: Math.max(0, readiness), available: Math.max(0, available) };
+      return { readiness: Math.max(0, readiness), available };
     }
 
     function displayedConnection(leg) {
@@ -578,12 +584,14 @@
             const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
             const isShortWait = profile.available < 5 || riskLevel === "below_required_readiness";
             const waitClass = isShortWait ? "gantt-wait-short" : "gantt-wait-safe";
-            bufferBars = `<i class="gantt-bar ${waitClass}" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(profile.available / scale.total * 100).toFixed(2)}%" title="${profile.available ? `${formatDuration(profile.available)} ylimääräistä aikaa` : "Ei ylimääräistä aikaa"}"></i>`;
+            if (profile.available > 0) {
+              bufferBars = `<i class="gantt-bar ${waitClass}" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(profile.available / scale.total * 100).toFixed(2)}%" title="${bufferTimeLabel(profile.available)}"></i>`;
+            }
             pause = pausePlan && candidate?.id === pausePlan.id
               ? `<i class="gantt-bar gantt-pause" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(pauseMinutes / scale.total * 100).toFixed(2)}%"></i>`
               : "";
             const extraTimeClass = isShortWait ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
-            const extraTimeLabel = profile.available ? `+${formatDuration(profile.available)}` : "ei ylimääräistä aikaa";
+            const extraTimeLabel = bufferTimeLabel(profile.available);
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} · <span class="${extraTimeClass}">${extraTimeLabel}</span>`;
           } else {
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}`;
@@ -652,7 +660,7 @@
         const risk = leg.kind === "road" && nextLeg?.kind === "scheduled_service" ? nextLeg.transferRisk : null;
         const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
         const detail = leg.kind === "road"
-          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${risk ? ` · +${formatDuration(risk.effectiveBufferMinutes)} ylimääräistä aikaa` : ""}`
+          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${risk ? ` · ${bufferTimeLabel(risk.effectiveBufferMinutes)}` : ""}`
           : `${legPlaceName(leg, "from")} ${clock(leg.departure)} → ${legPlaceName(leg, "to")} ${clock(leg.arrival)}`;
         return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
           <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
