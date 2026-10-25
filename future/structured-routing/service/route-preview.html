@@ -119,7 +119,11 @@
     .gantt-ferry { --bar: var(--sea); }
     .gantt-ferry-choice { z-index: 3; min-width: 11px; cursor: pointer; transition: opacity .15s, transform .15s, box-shadow .15s; }
     .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
-    .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
+    .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #75a8b5; }
+    .gantt-ferry-pinned { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
+    .gantt-choice-swatch { width: 17px; height: 9px; border-radius: 3px; background: var(--sea); box-shadow: 0 0 0 2px var(--choice-outline); }
+    .gantt-choice-auto { --choice-outline: #75a8b5; }
+    .gantt-choice-pinned { --choice-outline: var(--orange); }
     .gantt-alternative { top: 14px; height: 8px; opacity: .32; }
     .gantt-wait-safe { --bar: #bfe7d3; top: 8px; height: 20px; }
     .gantt-wait-short { --bar: #f3a79f; top: 8px; height: 20px; min-width: 5px; }
@@ -589,6 +593,23 @@
       return sameRisk || (matching.length ? preferredVariant(matching) : null);
     }
 
+    function sailingBarLayout(items) {
+      const laneEnds = [];
+      const laneByKey = new Map();
+      [...items].sort((a, b) => (
+        new Date(a.leg.departure) - new Date(b.leg.departure)
+        || new Date(a.leg.arrival) - new Date(b.leg.arrival)
+      )).forEach((item) => {
+        const start = new Date(item.leg.departure).getTime();
+        const end = new Date(item.leg.arrival).getTime();
+        let lane = laneEnds.findIndex((laneEnd) => laneEnd <= start);
+        if (lane < 0) lane = laneEnds.length;
+        laneEnds[lane] = end;
+        laneByKey.set(item.key, lane);
+      });
+      return { laneByKey, laneCount: Math.max(1, laneEnds.length) };
+    }
+
     function ganttMarkup() {
       if (!displayedLegs.length) return "";
       const scale = ganttScale();
@@ -606,7 +627,20 @@
       const rows = [];
       displayedLegs.forEach((leg, index) => {
         const alternatives = leg.kind === "scheduled_service" ? sailingAlternatives(leg).map((item) => preferredVariant(item.variants)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
-        const alternativeBars = alternatives.map((item) => `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" style="left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`).join("");
+        const selectedConnection = displayedConnection(leg);
+        const selectedKey = selectedConnection?.id || "selected";
+        const sailingLayout = leg.kind === "scheduled_service"
+          ? sailingBarLayout([
+            { key: selectedKey, leg },
+            ...alternatives.map((item) => ({ key: item.id, leg: item.leg })),
+          ])
+          : { laneByKey: new Map(), laneCount: 1 };
+        const selectedLane = sailingLayout.laneByKey.get(selectedKey) || 0;
+        const ferryRowHeight = Math.max(45, 32 + (sailingLayout.laneCount - 1) * 18);
+        const alternativeBars = alternatives.map((item) => {
+          const lane = sailingLayout.laneByKey.get(item.id) || 0;
+          return `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" style="top:${12 + lane * 18}px;left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`;
+        }).join("");
         const barClass = leg.kind === "road" ? "gantt-road" : "gantt-ferry";
         const title = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
         let bufferBars = "", readinessBar = "", pause = "", labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
@@ -639,19 +673,20 @@
             const { readiness } = waitProfile(leg);
             if (readiness > 0) {
               const readinessStart = new Date(new Date(leg.departure).getTime() - readiness * 60000).toISOString();
-              readinessBar = `<i class="gantt-bar gantt-readiness" style="left:${scale.position(readinessStart).toFixed(2)}%;width:${(readiness / scale.total * 100).toFixed(2)}%" title="Lastausvalmius ${formatDuration(readiness)} ennen lähtöä"></i>`;
+              readinessBar = `<i class="gantt-bar gantt-readiness" style="top:${8 + selectedLane * 18}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${(readiness / scale.total * 100).toFixed(2)}%" title="Lastausvalmius ${formatDuration(readiness)} ennen lähtöä"></i>`;
             }
           }
         }
-        const selectedConnection = displayedConnection(leg);
+        const isPinned = leg.kind === "scheduled_service"
+          && selectedSailings.get(crossingKey(leg)) === serviceKey(leg);
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
-          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected" data-connection="${selectedConnection.id}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="Valittu ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="Valittu lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
-          : `<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
+          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${isPinned ? " gantt-ferry-pinned" : ""}" data-connection="${selectedConnection.id}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${isPinned ? "Lukittu" : "Automaattisesti valittu"} ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
+          : `<i class="gantt-bar ${barClass}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
         const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
-        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
+        rows.push(`<div class="gantt-row" style="min-height:${leg.kind === "scheduled_service" ? ferryRowHeight : 45}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
       });
       const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";
-      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajon jälkeinen vihreä tai punainen palkki näyttää lauttarantaan jäävän ajan.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#bfe7d3"></i>Ylimääräinen aika</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#f3a79f"></i>Alle 5 min</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
+      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajon jälkeinen vihreä tai punainen palkki näyttää lauttarantaan jäävän ajan.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#bfe7d3"></i>Ylimääräinen aika</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#f3a79f"></i>Alle 5 min</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-auto"></i>Automaattinen valinta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-pinned"></i>Lukittu valinta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
     }
 
     function updatePauseDisplay() {
@@ -809,9 +844,9 @@
       candidates.sort((a, b) => {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
         return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
-          || (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || a.risk - b.risk
+          || (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
           || a.edges.length - b.edges.length;
       });
       return candidates[0] || null;
