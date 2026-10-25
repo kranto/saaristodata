@@ -13,6 +13,28 @@
     "channel": "https://www.alandstrafiken.ax/",
     "phone": "+358 (0)18 25 600"
   },
+  "travelerInformation": {
+    "farePolicy": {
+      "vehicles": "paid",
+      "passengersInVehicle": "free",
+      "pedestrians": "free",
+      "paidWhenDepartingFrom": [
+        "Vuosnainen"
+      ]
+    }
+  },
+  "connections": [
+    {
+      "type": "published_road_connection",
+      "fromStop": "Åva",
+      "toStop": "TorsholmaI",
+      "toRouteId": "norralinjen",
+      "arrivalTimes": ["07:15", "13:50", "14:20", "14:25", "16:50", "19:25", "19:45", "20:25"],
+      "maximumMinutesFromArrivalToDeparture": 60,
+      "guaranteed": false,
+      "sourceMeaning": "The timetable marks a possible connection, but Åland's government does not guarantee it."
+    }
+  ],
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",

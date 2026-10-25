@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from route_itineraries import (  # noqa: E402
     ScheduledInstanceIndex,
+    annotate_transit_charge,
     candidate_departure_preference,
     candidate_dominates,
     default_origin_boarding_buffer_minutes,
@@ -169,6 +170,111 @@ class FastRouteSearchTests(unittest.TestCase):
             ],
         }
         self.assertTrue(candidate_dominates(direct, detour))
+
+    def test_different_commercial_operators_remain_distinct_choices(self) -> None:
+        def candidate(operator: str, departure: str, arrival: str) -> dict:
+            return {
+                "suggestedOriginDeparture": departure,
+                "arrival": arrival,
+                "riskSummary": {"worstConnectionRisk": None},
+                "legs": [{
+                    "kind": "scheduled_service",
+                    "routeId": operator.lower().replace(" ", "-"),
+                    "operator": operator,
+                    "from": "Långnäs",
+                    "to": "Turku",
+                    "departure": departure,
+                }],
+            }
+
+        faster = candidate("Tallink Silja", "2026-10-26T14:20", "2026-10-26T18:30")
+        slower = candidate("Viking Line", "2026-10-26T13:20", "2026-10-26T19:50")
+        self.assertFalse(candidate_dominates(faster, slower))
+
+    def test_published_aland_connection_is_not_ranked_below_readiness(self) -> None:
+        result = find_itineraries(
+            "Vuosnainen", "Hummelvik", date(2026, 10, 25), time(12, 30),
+            same_day=True, max_results=5, graph_data=self.graph,
+        )
+        connection = result["results"][0]["legs"][-1]
+        self.assertEqual(connection["publishedConnection"], {
+            "guaranteed": False,
+            "source": "published_timetable",
+        })
+        self.assertEqual(connection["transferRisk"]["level"], "normal")
+        self.assertEqual(connection["transferRisk"]["effectiveBufferMinutes"], -14)
+
+    def test_non_bookable_foglo_service_keeps_loading_readiness(self) -> None:
+        result = find_itineraries(
+            "Degerby", "Svinö", date(2026, 10, 25), time(11, 0),
+            same_day=True, max_results=2, graph_data=self.graph,
+        )
+        leg = result["results"][0]["legs"][0]
+        self.assertFalse(leg["booking"]["required"])
+        self.assertEqual(leg["booking"]["loadingReadinessMinutesBefore"], 10)
+        self.assertEqual(leg["travelerInformation"]["farePolicy"]["vehicles"], "paid")
+        self.assertEqual(
+            leg["travelerInformation"]["farePolicy"]["paidWhenDepartingFrom"],
+            ["Svinö"],
+        )
+
+    def test_vuosnainen_vehicle_charge_is_departure_specific(self) -> None:
+        result = find_itineraries(
+            "Vuosnainen", "Åva", date(2026, 10, 25), time(12, 30),
+            same_day=True, max_results=1, graph_data=self.graph,
+        )
+        policy = result["results"][0]["legs"][0]["travelerInformation"]["farePolicy"]
+        self.assertEqual(policy["vehicles"], "paid")
+        self.assertEqual(policy["paidWhenDepartingFrom"], ["Vuosnainen"])
+
+    def test_aland_transit_charge_requires_complete_gateway_pair(self) -> None:
+        def south_leg(destination: str) -> dict:
+            return {
+                "kind": "scheduled_service",
+                "routeId": "sodralinjen",
+                "from": "Galtby",
+                "to": destination,
+                "travelerInformation": {
+                    "farePolicy": {
+                        "vehicles": "paid",
+                        "transitChargePairs": [
+                            {
+                                "from": "Galtby",
+                                "to": "Långnäs",
+                                "chargeLegEndpoint": "Galtby",
+                            },
+                            {
+                                "from": "Galtby",
+                                "to": "Svinö",
+                                "chargeLegEndpoint": "Galtby",
+                            },
+                        ],
+                    },
+                },
+            }
+
+        overo_only = [south_leg("Överö")]
+        self.assertIsNone(annotate_transit_charge(overo_only))
+        self.assertNotIn("fare", overo_only[0])
+
+        galtby_langnas = [south_leg("Långnäs")]
+        summary = annotate_transit_charge(galtby_langnas)
+        self.assertEqual(summary["transitPair"], {"from": "Galtby", "to": "Långnäs"})
+        self.assertEqual(
+            galtby_langnas[0]["fare"]["chargeType"],
+            "aland_archipelago_transit",
+        )
+
+        galtby_svino = [
+            south_leg("Överö"),
+            {"kind": "road", "from": "Överö", "to": "Svinö"},
+        ]
+        summary = annotate_transit_charge(galtby_svino)
+        self.assertEqual(summary["transitPair"], {"from": "Galtby", "to": "Svinö"})
+        self.assertEqual(
+            galtby_svino[0]["fare"]["chargeType"],
+            "aland_archipelago_transit",
+        )
 
     def test_adaptive_sweep_finds_all_wihuri_departures_without_half_hour_scan(self) -> None:
         result = find_itineraries(

@@ -63,6 +63,8 @@
     .result-time span:last-child { color: var(--sea); }
     .result-meta { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px; min-width: 0; margin-top: 7px; color: var(--muted); font-size: 12px; }
     .result-route { min-width: 0; white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
+    .charge { display: inline-flex; align-items: center; width: fit-content; border-radius: 999px; padding: 2px 7px; background: #f8e8b7; color: #684c00; font-size: 11px; font-weight: 850; white-space: nowrap; }
+    .published-connection { display: inline-flex; align-items: center; width: fit-content; border-radius: 999px; padding: 2px 7px; background: #dcebf5; color: #24516a; font-size: 11px; font-weight: 850; }
     .risk { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 800; }
     .risk-none, .risk-relaxed { color: #1f684f; background: #dff2e8; }
     .risk-normal { color: #7d5918; background: #fff0c9; }
@@ -205,6 +207,12 @@
     const selectedSailings = new Map();
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
+    const clockBefore = (value, offsetMinutes) => {
+      if (!value || !offsetMinutes) return clock(value);
+      const [hours, minutes] = value.slice(11, 16).split(":").map(Number);
+      const valueMinutes = (hours * 60 + minutes - offsetMinutes + 24 * 60) % (24 * 60);
+      return `${String(Math.floor(valueMinutes / 60)).padStart(2, "0")}:${String(valueMinutes % 60).padStart(2, "0")}`;
+    };
     const minutes = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
     const formatDuration = (value) => {
       const total = Math.round(value);
@@ -248,7 +256,30 @@
       }
       return escapeHtml(`${rawPlaceName(value)}${suffix}`);
     };
-    const serviceName = (leg) => escapeHtml(leg.vessel || (leg.serviceType === "road_ferry" ? "Maantielautta" : leg.serviceType === "connection_vessel" ? "Yhteysalus" : leg.routeId || "Lautta"));
+    const serviceName = (leg) => {
+      const fallback = leg.serviceType === "road_ferry" ? "Maantielautta" : leg.serviceType === "connection_vessel" ? "Yhteysalus" : leg.routeId || "Lautta";
+      return escapeHtml([leg.operator, leg.vessel || fallback].filter(Boolean).join(" · "));
+    };
+
+    function chargeLabel(leg) {
+      const policy = leg.travelerInformation?.farePolicy;
+      if (!policy) return "";
+      const mode = response?.query?.mode || $("mode").value;
+      const paid = mode === "bicycle"
+        ? policy.bicycles === "paid" || policy.vehicles === "paid"
+        : policy.vehicles === "paid";
+      if (!paid) return "";
+      if (
+        Array.isArray(policy.paidWhenDepartingFrom)
+        && !policy.paidWhenDepartingFrom.includes(leg.from)
+      ) return "";
+      return leg.fare?.chargeType === "aland_archipelago_transit" ? "€ Kauttakulkumaksu" : "€";
+    }
+
+    function itineraryChargeLabel(item) {
+      if (item.fareSummary?.transitCharge) return "€ Kauttakulkumaksu";
+      return item.legs.some((leg) => chargeLabel(leg)) ? "€" : "";
+    }
 
     function routeUrlWithSearch() {
       const url = new URL(routeUrl);
@@ -341,7 +372,7 @@
 
     function itineraryRouteLabel(item) {
       const sailings = item.legs.filter((leg) => leg.kind === "scheduled_service");
-      return sailings.map((leg) => `${leg.from}–${leg.to}`).join(" · ") || "Tieyhteys";
+      return sailings.map((leg) => `${leg.operator ? `${leg.operator}: ` : ""}${leg.from}–${leg.to}`).join(" · ") || "Tieyhteys";
     }
 
     function renderResults() {
@@ -350,7 +381,7 @@
       $("results").innerHTML = list.map(({ item, index }) => {
         return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
           <div class="result-time"><span>${clock(item.suggestedOriginDeparture)}</span><span>${clock(item.arrival)}</span></div>
-          <div class="result-meta"><span>${formatDuration(item.elapsedFromSuggestedDepartureMinutes)}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(item))}</span></div>
+          <div class="result-meta"><span>${formatDuration(item.elapsedFromSuggestedDepartureMinutes)}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(item))}${itineraryChargeLabel(item) ? ` <span class="charge">${itineraryChargeLabel(item)}</span>` : ""}</span></div>
         </button>`;
       }).join("");
       document.querySelectorAll("[data-result]").forEach((button) => button.addEventListener("click", () => {
@@ -527,10 +558,14 @@
       return `<svg class="gantt-mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 16-1-4 2-5h12l2 5-1 4H5Z"/><path d="M6 12h12M7 7l-1-2M17 7l1-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>`;
     }
 
-    function waitProfile(leg) {
-      const readiness = leg.transferRisk?.requiredReadinessMinutes
+    function loadingReadinessMinutes(leg) {
+      return leg.transferRisk?.requiredReadinessMinutes
         ?? leg.booking?.loadingReadinessMinutesBefore
         ?? 0;
+    }
+
+    function waitProfile(leg) {
+      const readiness = loadingReadinessMinutes(leg);
       const available = leg.transferRisk?.effectiveBufferMinutes
         ?? Math.max(0, leg.waitMinutes - readiness);
       return { readiness: Math.max(0, readiness), available };
@@ -582,7 +617,7 @@
             const candidate = candidates.find((item) => item.roadIndex === index);
             const pauseMinutes = pausePlan && candidate?.id === pausePlan.id ? pausePlan.minutes : 0;
             const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
-            const isShortWait = profile.available < 5 || riskLevel === "below_required_readiness";
+            const isShortWait = !nextLeg.publishedConnection && (profile.available < 5 || riskLevel === "below_required_readiness");
             const waitClass = isShortWait ? "gantt-wait-short" : "gantt-wait-safe";
             if (profile.available > 0) {
               bufferBars = `<i class="gantt-bar ${waitClass}" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(profile.available / scale.total * 100).toFixed(2)}%" title="${bufferTimeLabel(profile.available)}"></i>`;
@@ -591,7 +626,9 @@
               ? `<i class="gantt-bar gantt-pause" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(pauseMinutes / scale.total * 100).toFixed(2)}%"></i>`
               : "";
             const extraTimeClass = isShortWait ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
-            const extraTimeLabel = bufferTimeLabel(profile.available);
+            const extraTimeLabel = nextLeg.publishedConnection
+              ? "aikatauluun merkitty yhteys (ei taattu)"
+              : bufferTimeLabel(profile.available);
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} · <span class="${extraTimeClass}">${extraTimeLabel}</span>`;
           } else {
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}`;
@@ -610,7 +647,8 @@
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
           ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected" data-connection="${selectedConnection.id}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="Valittu ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="Valittu lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
           : `<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
-        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
+        const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
+        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
       });
       const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";
       return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajon jälkeinen vihreä tai punainen palkki näyttää lauttarantaan jäävän ajan.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#bfe7d3"></i>Ylimääräinen aika</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#f3a79f"></i>Alle 5 min</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
@@ -658,13 +696,16 @@
       const timeline = displayedLegs.map((leg, index) => {
         const nextLeg = displayedLegs[index + 1];
         const risk = leg.kind === "road" && nextLeg?.kind === "scheduled_service" ? nextLeg.transferRisk : null;
-        const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
+        const publishedConnection = leg.kind === "road" && nextLeg?.publishedConnection;
+        const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
+        const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : `${serviceName(leg)}${charge ? ` <span class="charge">${charge}</span>` : ""}`;
+        const readiness = leg.kind === "scheduled_service" ? loadingReadinessMinutes(leg) : 0;
         const detail = leg.kind === "road"
-          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${risk ? ` · ${bufferTimeLabel(risk.effectiveBufferMinutes)}` : ""}`
-          : `${legPlaceName(leg, "from")} ${clock(leg.departure)} → ${legPlaceName(leg, "to")} ${clock(leg.arrival)}`;
+          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${publishedConnection ? " · aikatauluun merkitty yhteys (ei taattu)" : risk ? ` · ${bufferTimeLabel(risk.effectiveBufferMinutes)}` : ""}`
+          : `${legPlaceName(leg, "from")} ${clock(leg.departure)}${readiness ? ` (lastausvalmius ${clockBefore(leg.departure, readiness)})` : ""} → ${legPlaceName(leg, "to")} ${clock(leg.arrival)}`;
         return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
           <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
-          <div class="leg-card"><div class="leg-title">${vehicle}${risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
+          <div class="leg-card"><div class="leg-title">${vehicle}${publishedConnection ? `<span class="published-connection">Aikatauluyhteys</span>` : risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
         </div>`;
       }).join("");
       $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${ganttMarkup()}${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;

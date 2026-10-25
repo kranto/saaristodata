@@ -21,6 +21,8 @@ from route_itinerary import (
     range_datetimes,
     road_duration,
     operating_vessel,
+    loading_readiness_minutes,
+    commercial_operator,
     routing_booking_requirement,
     routing_intermediate_stops,
     routing_traveler_information,
@@ -145,7 +147,8 @@ def service_signature(records: list[dict]) -> tuple:
 
 
 def prefix_road_shift(
-    records: list[dict], routes: dict[str, dict], not_before: datetime | None = None,
+    records: list[dict], routes: dict[str, dict], mode: str,
+    not_before: datetime | None = None,
 ) -> tuple[timedelta, int | None]:
     """Move an all-road prefix later so the first ferry is reached just in time."""
     first_service_index = next(
@@ -155,8 +158,8 @@ def prefix_road_shift(
     if first_service_index is None or first_service_index == 0:
         return timedelta(0), first_service_index
     first_service = records[first_service_index]
-    readiness = routes[first_service["edge"]["routeId"]].get("booking", {}).get(
-        "loadingReadinessMinutesBefore", 0
+    readiness = loading_readiness_minutes(
+        routes[first_service["edge"]["routeId"]], first_service["edge"]["from"], mode,
     )
     boarding_buffer = readiness or default_origin_boarding_buffer_minutes(
         records, first_service_index,
@@ -172,18 +175,84 @@ def prefix_road_shift(
     return shift, first_service_index
 
 
-def partial_origin_departure(records: list[dict], routes: dict[str, dict], start: datetime) -> datetime:
+def partial_origin_departure(
+    records: list[dict], routes: dict[str, dict], start: datetime, mode: str,
+) -> datetime:
     if not records:
         return start
-    shift, _ = prefix_road_shift(records, routes, start)
+    shift, _ = prefix_road_shift(records, routes, mode, start)
     return records[0]["instance"]["departure"] + shift
+
+
+def published_road_connection(
+    records: list[dict], index: int, routes: dict[str, dict],
+) -> dict | None:
+    if index < 2 or records[index - 1]["edge"]["kind"] != "road":
+        return None
+    current = records[index]
+    feeder = records[index - 2]
+    if feeder["edge"]["kind"] != "scheduled_service":
+        return None
+    road_edge = records[index - 1]["edge"]
+    feeder_route = routes[feeder["edge"]["routeId"]]
+    feeder_arrival = feeder["instance"]["arrival"]
+    elapsed = round(
+        (current["instance"]["departure"] - feeder_arrival).total_seconds() / 60
+    )
+    for connection in feeder_route.get("connections", []):
+        if (
+            connection.get("type") == "published_road_connection"
+            and connection.get("fromStop") == road_edge["from"]
+            and connection.get("toStop") == road_edge["to"]
+            and connection.get("toRouteId") == current["edge"].get("routeId")
+            and feeder_arrival.strftime("%H:%M") in connection.get("arrivalTimes", [])
+            and 0 <= elapsed <= connection.get("maximumMinutesFromArrivalToDeparture", 0)
+        ):
+            return {
+                "guaranteed": bool(connection.get("guaranteed")),
+                "source": "published_timetable",
+            }
+    return None
+
+
+def annotate_transit_charge(legs: list[dict]) -> dict | None:
+    """Mark an Åland transit charge only for a complete gateway-to-gateway chain."""
+    if not legs:
+        return None
+    locations = [legs[0]["from"], *(leg["to"] for leg in legs)]
+    location_set = set(locations)
+    for leg in legs:
+        policy = (leg.get("travelerInformation") or {}).get("farePolicy") or {}
+        for pair in policy.get("transitChargePairs", []):
+            start, end = pair.get("from"), pair.get("to")
+            if not start or not end or not {start, end}.issubset(location_set):
+                continue
+            endpoint = pair.get("chargeLegEndpoint")
+            charged_leg = next(
+                (
+                    candidate for candidate in legs
+                    if candidate.get("routeId") == leg.get("routeId")
+                    and endpoint in {candidate.get("from"), candidate.get("to")}
+                ),
+                leg,
+            )
+            charged_leg["fare"] = {
+                "paid": True,
+                "chargeType": "aland_archipelago_transit",
+            }
+            return {
+                "paid": True,
+                "transitCharge": True,
+                "transitPair": {"from": start, "to": end},
+            }
+    return None
 
 
 def format_candidate(
     records: list[dict], routes: dict[str, dict], start: datetime, destination_arrival: datetime,
     mode: str, timing_profile: str, trip_patterns: dict[str, dict],
 ) -> dict:
-    shift, first_service_index = prefix_road_shift(records, routes, start)
+    shift, first_service_index = prefix_road_shift(records, routes, mode, start)
     legs = []
     risk_counts = Counter()
     worst_risk = None
@@ -223,11 +292,12 @@ def format_candidate(
                 "routeId": edge["routeId"],
                 "tripPatternId": edge.get("tripPatternId"),
                 "serviceType": edge.get("serviceType"),
+                "operator": commercial_operator(route),
                 "vessel": vessel.get("name") if vessel else None,
                 "mobilityRule": edge.get("mobility", {}).get(mode),
                 "booking": routing_booking_requirement(
                     edge, route, date.fromisoformat(instance["serviceDate"]),
-                    instance["departure"], instance["arrival"], trip_patterns,
+                    instance["departure"], instance["arrival"], trip_patterns, mode,
                 ),
                 "contact": vessel.get("contact") if vessel else route.get("contact"),
                 "capacity": vessel.get("capacity") if vessel else route.get("capacity"),
@@ -251,11 +321,17 @@ def format_candidate(
             else:
                 leg["availability"] = edge.get("availability")
 
+            published_connection = published_road_connection(records, index, routes)
+            if published_connection:
+                leg["publishedConnection"] = published_connection
+
             if edge["kind"] == "scheduled_service" and any(
                 previous["edge"]["kind"] != "road" for previous in records[:index]
             ):
-                readiness = route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+                readiness = loading_readiness_minutes(route, edge["from"], mode)
                 risk = transfer_risk(leg["waitMinutes"], readiness)
+                if published_connection and RISK_ORDER[risk["level"]] > RISK_ORDER["normal"]:
+                    risk["level"] = "normal"
                 leg["transferRisk"] = risk
                 risk_counts[risk["level"]] += 1
                 if worst_risk is None or RISK_ORDER[risk["level"]] > RISK_ORDER[worst_risk]:
@@ -263,7 +339,7 @@ def format_candidate(
         legs.append(leg)
 
     suggested_departure = legs[0]["departure"] if legs else start.isoformat(timespec="minutes")
-    return {
+    result = {
         "suggestedOriginDeparture": suggested_departure,
         "arrival": destination_arrival.isoformat(timespec="minutes"),
         "elapsedFromSuggestedDepartureMinutes": round(
@@ -276,6 +352,10 @@ def format_candidate(
         },
         "legs": legs,
     }
+    fare_summary = annotate_transit_charge(legs)
+    if fare_summary:
+        result["fareSummary"] = fare_summary
+    return result
 
 
 def edge_instance(
@@ -293,7 +373,7 @@ def edge_instance(
     if edge["kind"] == "scheduled_service":
         route = routes[edge["routeId"]]
         readiness = (
-            route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+            loading_readiness_minutes(route, edge["from"], mode)
             if enforce_loading_readiness else 0
         )
         boarding_ready = moment + timedelta(minutes=readiness)
@@ -371,6 +451,7 @@ def next_adaptive_sweep_seeds(
     seed: datetime,
     routes: dict[str, dict],
     deadline: datetime,
+    mode: str,
 ) -> list[datetime]:
     """Return the next meaningful origin times for one earliest itinerary.
 
@@ -390,7 +471,7 @@ def next_adaptive_sweep_seeds(
         ready = item["ready"]
         route = routes[edge["routeId"]]
         readiness = (
-            route.get("booking", {}).get("loadingReadinessMinutesBefore", 0)
+            loading_readiness_minutes(route, edge["from"], mode)
             if not has_used_service else 0
         )
         catch_slack = round(
@@ -402,9 +483,7 @@ def next_adaptive_sweep_seeds(
         if catch_slack >= 0:
             values.append(seed + timedelta(minutes=catch_slack + 1))
         if has_used_service:
-            booking_readiness = route.get("booking", {}).get(
-                "loadingReadinessMinutesBefore", 0,
-            )
+            booking_readiness = loading_readiness_minutes(route, edge["from"], mode)
             effective_buffer = round(
                 (instance["departure"] - ready).total_seconds() / 60
             ) - booking_readiness
@@ -425,6 +504,17 @@ def next_adaptive_sweep_seeds(
 
 def candidate_dominates(first: dict, second: dict) -> bool:
     """Whether first is unambiguously preferable to second."""
+    first_operators = tuple(
+        leg["operator"] for leg in first["legs"] if leg.get("operator")
+    )
+    second_operators = tuple(
+        leg["operator"] for leg in second["legs"] if leg.get("operator")
+    )
+    # A traveller may deliberately prefer Viking Line, Tallink Silja or
+    # Finnlines even when another operator is faster. Keep one result per
+    # commercial operator chain for the UI to compare.
+    if (first_operators or second_operators) and first_operators != second_operators:
+        return False
     first_departure = datetime.fromisoformat(first["suggestedOriginDeparture"])
     second_departure = datetime.fromisoformat(second["suggestedOriginDeparture"])
     first_arrival = datetime.fromisoformat(first["arrival"])
@@ -830,7 +920,7 @@ def find_itineraries(
                 next_origin_departure = instance["departure"]
             if not has_used_service and edge["kind"] != "road":
                 next_origin_departure = partial_origin_departure(
-                    next_records, routes, start,
+                    next_records, routes, start, mode,
                 )
             next_worst_risk = worst_risk
             if has_used_service and edge["kind"] != "road":
@@ -838,10 +928,13 @@ def find_itineraries(
                 wait = round(
                     (instance["departure"] - moment).total_seconds() / 60
                 )
-                readiness = route.get("booking", {}).get(
-                    "loadingReadinessMinutesBefore", 0,
-                )
+                readiness = loading_readiness_minutes(route, edge["from"], mode)
                 level = transfer_risk(wait, readiness)["level"]
+                if (
+                    published_road_connection(next_records, len(next_records) - 1, routes)
+                    and RISK_ORDER[level] > RISK_ORDER["normal"]
+                ):
+                    level = "normal"
                 if RISK_ORDER[level] > RISK_ORDER[next_worst_risk]:
                     next_worst_risk = level
             heapq.heappush(queue, (
@@ -887,7 +980,7 @@ def find_itineraries(
                 candidates_by_signature[signature] = candidate
                 swept_candidate_count += 1
             for next_seed in next_adaptive_sweep_seeds(
-                records, seed, routes, sweep_deadline,
+                records, seed, routes, sweep_deadline, args.mode,
             ):
                 if next_seed not in seen_seeds:
                     heapq.heappush(pending_seeds, next_seed)

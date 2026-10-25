@@ -65,6 +65,24 @@
           },
           "additionalProperties": false
         },
+        "fareSummary": {
+          "type": "object",
+          "required": ["paid", "transitCharge", "transitPair"],
+          "properties": {
+            "paid": { "const": true },
+            "transitCharge": { "const": true },
+            "transitPair": {
+              "type": "object",
+              "required": ["from", "to"],
+              "properties": {
+                "from": { "type": "string" },
+                "to": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
         "legs": { "type": "array", "items": { "$ref": "#/$defs/leg" }, "minItems": 1 }
       },
       "additionalProperties": false
@@ -98,6 +116,7 @@
         "routeId": { "type": ["string", "null"] },
         "tripPatternId": { "type": ["string", "null"] },
         "serviceType": { "type": ["string", "null"] },
+        "operator": { "type": ["string", "null"] },
         "vessel": { "type": ["string", "null"] },
         "mobilityRule": { "type": ["string", "null"] },
         "booking": { "type": ["object", "null"] },
@@ -105,6 +124,24 @@
         "capacity": { "type": ["object", "null"] },
         "publicTimetableUrl": { "type": ["string", "null"] },
         "travelerInformation": { "type": ["object", "null"] },
+        "fare": {
+          "type": "object",
+          "required": ["paid", "chargeType"],
+          "properties": {
+            "paid": { "const": true },
+            "chargeType": { "const": "aland_archipelago_transit" }
+          },
+          "additionalProperties": false
+        },
+        "publishedConnection": {
+          "type": "object",
+          "required": ["guaranteed", "source"],
+          "properties": {
+            "guaranteed": { "type": "boolean" },
+            "source": { "const": "published_timetable" }
+          },
+          "additionalProperties": false
+        },
         "intermediateStops": { "type": "array", "items": { "$ref": "#/$defs/intermediateStop" } },
         "departureTiming": { "type": ["object", "null"] },
         "arrivalTiming": { "type": ["object", "null"] },

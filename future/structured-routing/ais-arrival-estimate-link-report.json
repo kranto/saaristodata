@@ -5,8 +5,8 @@
     "attached_pooled_route_paths": 1,
     "no_compatible_path_estimates": 2,
     "pooled_model_incompatible_with_published_trip": 2,
-    "route_without_ais_model": 35,
-    "route_without_structured_trips": 8,
+    "route_without_ais_model": 40,
+    "route_without_structured_trips": 7,
     "trip_without_matchable_departure": 1
   },
   "trips": [

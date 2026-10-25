@@ -339,7 +339,7 @@ def route_deadline_rule(route: dict, departure: datetime, edge_from: str | None 
 
 def routing_booking_requirement(
     edge: dict, route: dict, service_day: date, departure: datetime,
-    arrival: datetime, trip_patterns: dict[str, dict],
+    arrival: datetime, trip_patterns: dict[str, dict], mode: str,
 ) -> dict | None:
     booking = route.get("booking") or {}
     conditions = edge.get("conditions") or {}
@@ -395,9 +395,12 @@ def routing_booking_requirement(
             )
             if resolved:
                 deadline_candidates.append(resolved)
-    if not required and not recommended and not deadline_candidates:
+    loading_readiness = loading_readiness_minutes(route, edge["from"], mode)
+    if not required and not recommended and not deadline_candidates and not loading_readiness:
         return None
     result = {"required": required}
+    if loading_readiness:
+        result["loadingReadinessMinutesBefore"] = loading_readiness
     if recommended and not required:
         result["recommended"] = True
     if deadline_candidates:
@@ -620,6 +623,18 @@ def loading_readiness_minutes(route: dict, origin: str, mode: str) -> int:
     return booking.get("loadingReadinessMinutesBefore", 0)
 
 
+COMMERCIAL_OPERATOR_NAMES = {
+    "finnlines": "Finnlines",
+    "tallink": "Tallink Silja",
+    "vikingline": "Viking Line",
+}
+
+
+def commercial_operator(route: dict) -> str | None:
+    """Return a passenger-facing operator name for commercial ferries."""
+    return COMMERCIAL_OPERATOR_NAMES.get(route.get("provider"))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("origin")
@@ -746,11 +761,12 @@ def main() -> int:
                 "routeId": edge["routeId"],
                 "tripPatternId": edge.get("tripPatternId"),
                 "serviceType": edge.get("serviceType"),
+                "operator": commercial_operator(route),
                 "vessel": vessel.get("name") if vessel else None,
                 "mobilityRule": edge.get("mobility", {}).get(args.mode),
                 "booking": routing_booking_requirement(
                     edge, route, date.fromisoformat(instance["serviceDate"]),
-                    instance["departure"], instance["arrival"], trip_patterns,
+                    instance["departure"], instance["arrival"], trip_patterns, args.mode,
                 ),
                 "contact": vessel.get("contact") if vessel else route.get("contact"),
                 "capacity": vessel.get("capacity") if vessel else route.get("capacity"),
