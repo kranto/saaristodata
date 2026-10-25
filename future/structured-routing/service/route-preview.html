@@ -201,6 +201,7 @@
     let activeResult = 0;
     let experimentText = "";
     let pausePlan = null;
+    let ganttViewport = null;
     const selectedSailings = new Map();
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
@@ -308,9 +309,6 @@
       [leg.kind, leg.serviceType || "", leg.routeId || "", leg.from, leg.to].join(":")
     )).join(">");
     const routeOptionKey = (item) => `${routeShape(item.legs)}|${item.arrival}`;
-    const displayedRouteOptionKey = () => displayedLegs.length
-      ? `${routeShape(displayedLegs)}|${displayedLegs[displayedLegs.length - 1].arrival}`
-      : "";
 
     function mainRouteOptions() {
       const unique = new Map();
@@ -343,9 +341,8 @@
     function renderResults() {
       const list = mainRouteOptions();
       $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
-      const currentKey = displayedRouteOptionKey();
-      $("results").innerHTML = list.map(({ item, index, key }) => {
-        return `<button class="result ${key === currentKey ? "active" : ""}" data-result="${index}">
+      $("results").innerHTML = list.map(({ item, index }) => {
+        return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
           <div class="result-time"><span>${clock(item.suggestedOriginDeparture)}</span><span>${clock(item.arrival)}</span></div>
           <div class="result-meta"><span>${formatDuration(item.elapsedFromSuggestedDepartureMinutes)}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(item))}</span></div>
         </button>`;
@@ -356,6 +353,7 @@
         selectedSailings.clear();
         experimentText = "";
         pausePlan = null;
+        ganttViewport = null;
         renderResults(); renderDetail();
       }));
     }
@@ -450,19 +448,54 @@
       }).filter(Boolean);
     }
 
+    function displayedExtent() {
+      return {
+        start: new Date(displayedLegs[0].departure).getTime(),
+        end: new Date(displayedLegs[displayedLegs.length - 1].arrival).getTime(),
+      };
+    }
+
+    function resetGanttViewport() {
+      const extent = displayedExtent();
+      const routeStart = extent.start;
+      const routeEnd = extent.end;
+      displayedLegs.filter((leg) => leg.kind === "scheduled_service").forEach((leg) => {
+        const prefixDuration = new Date(leg.departure).getTime() - routeStart;
+        const suffixDuration = routeEnd - new Date(leg.arrival).getTime();
+        sailingAlternatives(leg).forEach((group) => {
+          group.variants.forEach((item) => {
+            const alternativeDeparture = new Date(item.leg.departure).getTime();
+            const alternativeArrival = new Date(item.leg.arrival).getTime();
+            extent.start = Math.min(extent.start, alternativeDeparture - prefixDuration);
+            extent.end = Math.max(extent.end, alternativeArrival + suffixDuration);
+          });
+        });
+      });
+      extent.start -= 15 * 60000;
+      ganttViewport = extent;
+    }
+
+    function ensureGanttViewport() {
+      if (!ganttViewport) resetGanttViewport();
+      const extent = displayedExtent();
+      ganttViewport.start = Math.min(ganttViewport.start, extent.start);
+      ganttViewport.end = Math.max(ganttViewport.end, extent.end);
+    }
+
     function ganttScale() {
-      const start = new Date(displayedLegs[0].departure).getTime();
-      const end = new Date(displayedLegs[displayedLegs.length - 1].arrival).getTime();
+      ensureGanttViewport();
+      const { start, end } = ganttViewport;
       const total = Math.max(1, (end - start) / 60000);
       const position = (value) => Math.max(0, Math.min(100, ((new Date(value).getTime() - start) / 60000) / total * 100));
       const width = (from, to) => Math.max(.45, position(to) - position(from));
       const step = total <= 360 ? 60 : total <= 720 ? 120 : 180;
-      const startClockMinutes = Number(displayedLegs[0].departure.slice(11, 13)) * 60 + Number(displayedLegs[0].departure.slice(14, 16));
+      const startDate = new Date(start);
+      const startClockMinutes = startDate.getHours() * 60 + startDate.getMinutes();
       const labelAt = (offset) => {
         const value = (startClockMinutes + offset) % (24 * 60);
         return `${String(Math.floor(value / 60)).padStart(2, "0")}.${String(value % 60).padStart(2, "0")}`;
       };
-      const ticks = [{ label: clock(displayedLegs[0].departure).replace(":", "."), left: 0 }];
+      const ticks = [{ label: labelAt(0), left: 0 }];
       let firstOffset = (step - startClockMinutes % step) % step;
       if (firstOffset === 0) firstOffset = step;
       for (let offset = firstOffset; offset < total; offset += step) {
@@ -470,7 +503,7 @@
           ticks.push({ label: labelAt(offset), left: offset / total * 100 });
         }
       }
-      ticks.push({ label: clock(displayedLegs[displayedLegs.length - 1].arrival).replace(":", "."), left: 100 });
+      ticks.push({ label: labelAt(total), left: 100 });
       return { start, end, total, position, width, ticks };
     }
 
@@ -632,6 +665,7 @@
         selectedSailings.clear();
         experimentText = "";
         pausePlan = null;
+        ganttViewport = null;
         renderResults();
         renderDetail();
       });
@@ -648,6 +682,31 @@
         if (!outgoing.has(item.fromNode)) outgoing.set(item.fromNode, []);
         incoming.get(item.toNode).push(item); outgoing.get(item.fromNode).push(item);
       });
+      // A decision-graph path only contains the timed states that occurred in
+      // that candidate. When an earlier feeder is selected, the traveller may
+      // still wait at the same landing and join a later candidate suffix.
+      // Link each state to the next known state at the same location so the
+      // path search can represent that wait without showing it as a journey leg.
+      const nodesByLocation = new Map();
+      graph.nodes.forEach((node) => {
+        if (!nodesByLocation.has(node.location)) nodesByLocation.set(node.location, []);
+        nodesByLocation.get(node.location).push(node);
+      });
+      nodesByLocation.forEach((nodes) => {
+        nodes.sort((a, b) => a.time.localeCompare(b.time));
+        for (let index = 0; index + 1 < nodes.length; index += 1) {
+          const from = nodes[index], to = nodes[index + 1];
+          if (from.time === to.time) continue;
+          if (!outgoing.has(from.id)) outgoing.set(from.id, []);
+          outgoing.get(from.id).push({
+            id: `wait:${from.id}:${to.id}`,
+            fromNode: from.id,
+            toNode: to.id,
+            virtualWait: true,
+            leg: { kind: "wait", from: from.location, to: to.location, departure: from.time, arrival: to.time },
+          });
+        }
+      });
       return { graph, connections, incoming, outgoing };
     }
 
@@ -661,8 +720,8 @@
 
       function compareSuffix(a, b) {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-        if (aOkay !== bOkay) return aOkay ? -1 : 1;
         return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+          || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || a.risk - b.risk
           || a.edges.length - b.edges.length;
       }
@@ -700,9 +759,9 @@
       }).filter(Boolean);
       candidates.sort((a, b) => {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-        if (aOkay !== bOkay) return aOkay ? -1 : 1;
-        return (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
-          || (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+        return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+          || (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
+          || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || a.risk - b.risk
           || a.edges.length - b.edges.length;
       });
@@ -722,7 +781,9 @@
         renderDetail();
         return;
       }
-      displayedLegs = path.edges.map((item) => ({ ...item.leg, _connectionId: item.id }));
+      displayedLegs = path.edges
+        .filter((item) => !item.virtualWait)
+        .map((item) => ({ ...item.leg, _connectionId: item.id }));
       pausePlan = null;
       experimentText = `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
       renderResults();
@@ -742,7 +803,7 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); experimentText = ""; pausePlan = null;
+        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); experimentText = ""; pausePlan = null; ganttViewport = null;
         const routeCount = mainRouteOptions().length;
         $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
