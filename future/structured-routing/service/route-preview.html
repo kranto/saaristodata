@@ -682,7 +682,7 @@
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
           ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${isPinned ? " gantt-ferry-pinned" : ""}" data-connection="${selectedConnection.id}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${isPinned ? "Lukittu" : "Automaattisesti valittu"} ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
           : `<i class="gantt-bar ${barClass}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
-        const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
+        const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
         rows.push(`<div class="gantt-row" style="min-height:${leg.kind === "scheduled_service" ? ferryRowHeight : 45}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
       });
       const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";

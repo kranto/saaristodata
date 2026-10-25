@@ -141,6 +141,7 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("vaaditun lastausvalmiuden jälkeen", response.text)
         self.assertIn("aikatauluun merkitty yhteys (ei taattu)", response.text)
         self.assertIn("Kauttakulkumaksu", response.text)
+        self.assertIn('chargeLabel(leg) ? "€" : ""', response.text)
         self.assertIn("policy.paidWhenDepartingFrom.includes(leg.from)", response.text)
         self.assertIn("leg.operator", response.text)
         self.assertNotIn('` · +${formatDuration(risk.effectiveBufferMinutes)}', response.text)
