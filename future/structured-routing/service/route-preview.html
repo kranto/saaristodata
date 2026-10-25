@@ -56,13 +56,13 @@
     .panel-head h2 { margin: 0; font-size: 18px; }
     .panel-head p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
     .results { padding: 9px; display: grid; gap: 7px; max-height: calc(100vh - 280px); overflow: auto; }
-    .result { width: 100%; border: 1px solid transparent; border-radius: 13px; background: transparent; text-align: left; padding: 13px; color: inherit; }
+    .result { width: 100%; min-width: 0; overflow: hidden; border: 1px solid transparent; border-radius: 13px; background: transparent; text-align: left; padding: 13px; color: inherit; }
     .result:hover { background: #f1f7f5; }
     .result.active { border-color: #76aab7; background: #eaf4f3; }
     .result-time { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; }
     .result-time span:last-child { color: var(--sea); }
-    .result-meta { display: flex; align-items: center; gap: 7px; margin-top: 7px; color: var(--muted); font-size: 12px; }
-    .result-route { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .result-meta { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px; min-width: 0; margin-top: 7px; color: var(--muted); font-size: 12px; }
+    .result-route { min-width: 0; white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
     .risk { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 800; }
     .risk-none, .risk-relaxed { color: #1f684f; background: #dff2e8; }
     .risk-normal { color: #7d5918; background: #fff0c9; }
@@ -119,13 +119,12 @@
     .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
     .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
     .gantt-alternative { top: 14px; height: 8px; opacity: .32; }
-    .gantt-buffer-relaxed { --bar: #dff2e8; top: 8px; height: 20px; }
-    .gantt-buffer-normal { --bar: #fff0c9; top: 8px; height: 20px; }
-    .gantt-buffer-tight { --bar: #ffe0d5; top: 8px; height: 20px; }
-    .gantt-buffer-very-tight { --bar: #ffd9df; top: 8px; height: 20px; }
-    .gantt-readiness { --bar: #d9dee2; top: 8px; height: 20px; }
+    .gantt-wait-safe { --bar: #bfe7d3; top: 8px; height: 20px; }
+    .gantt-wait-short { --bar: #f3a79f; top: 8px; height: 20px; min-width: 5px; }
+    .gantt-readiness { --bar: #d9dee2; top: 8px; height: 20px; z-index: 1; }
     .gantt-pause { --bar: var(--green); min-width: 0; z-index: 2; transition: width .2s ease; }
-    .gantt-transfer-risk { display: inline-flex; margin-top: 3px; padding: 2px 6px; font-size: 9px; vertical-align: middle; }
+    .gantt-extra-time { color: var(--green); font-weight: 800; }
+    .gantt-extra-time-short { color: #a43e35; }
     .pause-note { padding: 0 16px 13px; color: var(--muted); font-size: 11px; }
     .empty { padding: 70px 24px; text-align: center; color: var(--muted); }
     .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
@@ -317,7 +316,21 @@
       const unique = new Map();
       (response?.itineraries || []).forEach((item, index) => {
         const key = routeOptionKey(item);
-        if (!unique.has(key)) unique.set(key, { item, index, key });
+        const value = { item, index, key };
+        const previous = unique.get(key);
+        // Relaxed and normal are both ordinary, recommended connections.
+        // Prefer the later useful feeder between them instead of sending the
+        // traveller unnecessarily early to wait at the ferry landing.
+        const preference = { relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 };
+        const level = item.riskSummary?.worstConnectionRisk || "normal";
+        const previousLevel = previous?.item.riskSummary?.worstConnectionRisk || "normal";
+        const serviceDepartures = item.legs.filter((leg) => leg.kind === "scheduled_service").map((leg) => leg.departure).join("|");
+        const previousDepartures = previous?.item.legs.filter((leg) => leg.kind === "scheduled_service").map((leg) => leg.departure).join("|") || "";
+        if (!previous
+          || preference[level] < preference[previousLevel]
+          || (preference[level] === preference[previousLevel] && serviceDepartures > previousDepartures)) {
+          unique.set(key, value);
+        }
       });
       return [...unique.values()];
     }
@@ -403,14 +416,14 @@
 
     function riskForRemainingBuffer(value) {
       if (value < 0) return "below_required_readiness";
-      if (value < 5) return "very_tight";
-      if (value < 15) return "tight";
+      if (value === 0) return "very_tight";
+      if (value < 5) return "tight";
       if (value < 30) return "normal";
       return "relaxed";
     }
 
     function pauseCandidates() {
-      const riskFloor = { relaxed: 30, normal: 15, tight: 5, very_tight: 0, below_required_readiness: 0 };
+      const riskFloor = { relaxed: 30, normal: 5, tight: 1, very_tight: 0, below_required_readiness: 0 };
       return displayedLegs.map((leg, serviceIndex) => {
         if (leg.kind !== "scheduled_service" || leg.waitMinutes <= 0) return null;
         const roadIndex = serviceIndex - 1;
@@ -478,7 +491,7 @@
     function waitProfile(leg) {
       const readiness = leg.transferRisk?.requiredReadinessMinutes
         ?? leg.booking?.loadingReadinessMinutesBefore
-        ?? 15;
+        ?? 0;
       const available = leg.transferRisk?.effectiveBufferMinutes
         ?? Math.max(0, leg.waitMinutes - readiness);
       return { readiness: Math.max(0, readiness), available: Math.max(0, available) };
@@ -522,46 +535,44 @@
         const alternativeBars = alternatives.map((item) => `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" style="left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" title="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`).join("");
         const barClass = leg.kind === "road" ? "gantt-road" : "gantt-ferry";
         const title = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
-        let bufferBars = "", pause = "", labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
+        let bufferBars = "", readinessBar = "", pause = "", labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
         if (leg.kind === "road") {
           const nextLeg = displayedLegs[index + 1];
           if (nextLeg?.kind === "scheduled_service" && nextLeg.from === leg.to && nextLeg.waitMinutes > 0) {
             const profile = waitProfile(nextLeg);
-            const relaxedMinutes = Math.max(0, profile.available - 30);
-            const normalMinutes = Math.min(15, Math.max(0, profile.available - 15));
-            const tightMinutes = Math.min(10, Math.max(0, profile.available - 5));
-            const veryTightMinutes = Math.min(5, profile.available);
-            const segment = (offset, length, className) => length > 0
-              ? `<i class="gantt-bar ${className}" style="left:${scale.position(new Date(new Date(leg.arrival).getTime() + offset * 60000).toISOString()).toFixed(2)}%;width:${(length / scale.total * 100).toFixed(2)}%"></i>`
-              : "";
             const candidate = candidates.find((item) => item.roadIndex === index);
             const pauseMinutes = pausePlan && candidate?.id === pausePlan.id ? pausePlan.minutes : 0;
-            bufferBars = segment(0, relaxedMinutes, "gantt-buffer-relaxed")
-              + segment(relaxedMinutes, normalMinutes, "gantt-buffer-normal")
-              + segment(relaxedMinutes + normalMinutes, tightMinutes, "gantt-buffer-tight")
-              + segment(relaxedMinutes + normalMinutes + tightMinutes, veryTightMinutes, "gantt-buffer-very-tight")
-              + segment(profile.available, profile.readiness, "gantt-readiness");
+            const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
+            const isShortWait = profile.available < 5 || riskLevel === "below_required_readiness";
+            const waitClass = isShortWait ? "gantt-wait-short" : "gantt-wait-safe";
+            bufferBars = `<i class="gantt-bar ${waitClass}" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(profile.available / scale.total * 100).toFixed(2)}%" title="${profile.available ? `${formatDuration(profile.available)} ylimääräistä aikaa` : "Ei ylimääräistä aikaa"}"></i>`;
             pause = pausePlan && candidate?.id === pausePlan.id
               ? `<i class="gantt-bar gantt-pause" style="left:${scale.position(leg.arrival).toFixed(2)}%;width:${(pauseMinutes / scale.total * 100).toFixed(2)}%"></i>`
               : "";
-            const transferRisk = nextLeg.transferRisk;
-            const riskLevel = transferRisk?.level || riskForRemainingBuffer(profile.available);
-            const riskInfo = transferRisk
-              ? `<span class="risk risk-${riskLevel} gantt-transfer-risk">${riskLabel[riskLevel]} · +${formatDuration(profile.available)}</span>`
-              : profile.readiness ? ` · lastausvalmius ${formatDuration(profile.readiness)}` : "";
-            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} ${riskInfo}`;
+            const extraTimeClass = isShortWait ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
+            const extraTimeLabel = profile.available ? `+${formatDuration(profile.available)}` : "ei ylimääräistä aikaa";
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} · <span class="${extraTimeClass}">${extraTimeLabel}</span>`;
           } else {
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}`;
+          }
+        } else if (leg.kind === "scheduled_service") {
+          const previousLeg = displayedLegs[index - 1];
+          if (previousLeg?.kind === "road" && previousLeg.to === leg.from && leg.waitMinutes > 0) {
+            const { readiness } = waitProfile(leg);
+            if (readiness > 0) {
+              const readinessStart = new Date(new Date(leg.departure).getTime() - readiness * 60000).toISOString();
+              readinessBar = `<i class="gantt-bar gantt-readiness" style="left:${scale.position(readinessStart).toFixed(2)}%;width:${(readiness / scale.total * 100).toFixed(2)}%" title="Lastausvalmius ${formatDuration(readiness)} ennen lähtöä"></i>`;
+            }
           }
         }
         const selectedConnection = displayedConnection(leg);
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
           ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected" data-connection="${selectedConnection.id}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="Valittu ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="Valittu lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
           : `<i class="gantt-bar ${barClass}" style="left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
-        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${selectedBar}${bufferBars}${pause}</div></div>`);
+        rows.push(`<div class="gantt-row"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span></div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
       });
       const note = selectedPause ? `<div class="pause-note" id="pauseNote"></div>` : "";
-      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Vaihtovara näkyy sitä edeltävällä ajo-osuudella.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#dff2e8"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#fff0c9"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffe0d5"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#ffd9df"></i>Hyvin tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
+      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajon jälkeinen vihreä tai punainen palkki näyttää lauttarantaan jäävän ajan.</p></div><span class="gantt-impact" id="pauseImpact">Saapumisaika ei muutu</span></div>${controls}<div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7e909d"></i>Ajo</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#bfe7d3"></i>Ylimääräinen aika</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#f3a79f"></i>Alle 5 min</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#d9dee2"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div>${note}</section>`;
     }
 
     function updatePauseDisplay() {
@@ -572,9 +583,12 @@
       const level = riskForRemainingBuffer(remaining);
       const output = $("pauseDuration"), note = $("pauseNote");
       if (output) output.value = formatDuration(pausePlan.minutes);
-      if (note) note.innerHTML = pausePlan.minutes
-        ? `${formatDuration(pausePlan.minutes)} tauko välillä ${placeName(selected.from)}–${placeName(selected.to)} · ${remaining >= 0 ? `joustoa jää ${formatDuration(remaining)}` : `lastausvalmiudesta tingitään ${formatDuration(-remaining)}`} · ${riskPill(level)}`
-        : `Ei taukoa · välillä ${placeName(selected.from)}–${placeName(selected.to)} on ${formatDuration(selected.safeMinutes)} väljää joustoa · ${riskPill(selected.currentRisk)}`;
+      if (note) {
+        const remainingClass = remaining < 5 ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
+        note.innerHTML = pausePlan.minutes
+          ? `${formatDuration(pausePlan.minutes)} tauko välillä ${placeName(selected.from)}–${placeName(selected.to)} · ${remaining >= 0 ? `<span class="${remainingClass}">${formatDuration(remaining)} ylimääräistä aikaa jää</span>` : `<span class="${remainingClass}">lastausvalmiudesta tingitään ${formatDuration(-remaining)}</span>`}`
+          : `Ei taukoa · välillä ${placeName(selected.from)}–${placeName(selected.to)} on <span class="${remainingClass}">${formatDuration(selected.available)} ylimääräistä aikaa</span>`;
+      }
     }
 
     function bindPauseControls() {

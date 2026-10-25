@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T20:28:32.181570+00:00",
+  "generatedAt": "2026-10-24T13:38:44.874465+00:00",
   "statistics": {
     "nodeCount": 184,
-    "edgeCount": 9879,
-    "tripPatternCount": 2772,
+    "edgeCount": 9833,
+    "tripPatternCount": 2726,
     "routeMetadataCount": 50,
     "routesWithEdgesCount": 49,
     "routesWithoutEdgesCount": 0,
@@ -16,19 +16,19 @@
     "edgeCountsByKind": {
       "continuous_ferry": 28,
       "road": 606,
-      "scheduled_service": 9245
+      "scheduled_service": 9199
     },
     "serviceEdgeCountsByType": {
       "alandstrafiken_archipelago_ferry": 1288,
       "cable_ferry": 1132,
       "commercial_ferry": 19,
       "connection_vessel": 6171,
-      "road_ferry": 663
+      "road_ferry": 617
     },
     "scheduledTimingStatusCounts": {
       "arrival_unknown": 226,
       "departure_unknown": 478,
-      "usable": 8541
+      "usable": 8495
     }
   },
   "routesWithoutEdges": [],

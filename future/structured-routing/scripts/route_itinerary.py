@@ -592,9 +592,9 @@ def transfer_risk(wait_minutes: int, readiness_minutes: int) -> dict:
     effective = wait_minutes - readiness_minutes
     if effective < 0:
         level = "below_required_readiness"
-    elif effective < 5:
+    elif effective == 0:
         level = "very_tight"
-    elif effective < 15:
+    elif effective < 5:
         level = "tight"
     elif effective < 30:
         level = "normal"
