@@ -121,7 +121,10 @@
     .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
     .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #75a8b5; }
     .gantt-ferry-pinned { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
-    .gantt-choice-swatch { width: 17px; height: 9px; border-radius: 3px; background: var(--sea); box-shadow: 0 0 0 2px var(--choice-outline); }
+    .gantt-ferry-selected:hover, .gantt-ferry-selected:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #75a8b5; }
+    .gantt-ferry-pinned:hover, .gantt-ferry-pinned:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
+    .gantt-ferry-blocking { animation: blocking-ferry-flash .8s ease-out; }
+    .gantt-choice-swatch { width: 17px; height: 9px; border-radius: 3px; background: var(--sea); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--choice-outline); }
     .gantt-choice-auto { --choice-outline: #75a8b5; }
     .gantt-choice-pinned { --choice-outline: var(--orange); }
     .gantt-alternative { top: 14px; height: 8px; opacity: .32; }
@@ -136,6 +139,10 @@
     .empty strong { display: block; margin-bottom: 7px; color: var(--ink); font-size: 18px; }
     .loading { animation: pulse 1.4s ease-in-out infinite; }
     @keyframes pulse { 50% { opacity: .45; } }
+    @keyframes blocking-ferry-flash {
+      0%, 100% { filter: brightness(1); }
+      42% { filter: brightness(1.75); box-shadow: 0 0 0 2px #fff, 0 0 0 6px #d94c3d, 0 0 16px rgba(217, 76, 61, .7); }
+    }
     @media (max-width: 1100px) {
       form { grid-template-columns: 1fr 1fr 150px 110px; }
       form .mode, form .submit { grid-column: span 2; }
@@ -208,6 +215,7 @@
     let experimentText = "";
     let pausePlan = null;
     let ganttViewport = null;
+    let blockedSailings = new Set();
     const selectedSailings = new Map();
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
@@ -392,6 +400,7 @@
         activeResult = Number(button.dataset.result);
         displayedLegs = response.itineraries[activeResult].legs;
         selectedSailings.clear();
+        blockedSailings.clear();
         experimentText = "";
         pausePlan = null;
         ganttViewport = null;
@@ -679,8 +688,9 @@
         }
         const isPinned = leg.kind === "scheduled_service"
           && selectedSailings.get(crossingKey(leg)) === serviceKey(leg);
+        const isBlocking = isPinned && blockedSailings.has(serviceKey(leg));
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
-          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${isPinned ? " gantt-ferry-pinned" : ""}" data-connection="${selectedConnection.id}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${isPinned ? "Lukittu" : "Automaattisesti valittu"} ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
+          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${isPinned ? " gantt-ferry-pinned" : ""}${isBlocking ? " gantt-ferry-blocking" : ""}" data-connection="${selectedConnection.id}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${isPinned ? "Lukittu" : "Automaattisesti valittu"} ${title} ${clock(leg.departure)}–${clock(leg.arrival)}" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
           : `<i class="gantt-bar ${barClass}" style="top:${8 + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" title="${title} ${clock(leg.departure)}–${clock(leg.arrival)}"></i>`;
         const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
         rows.push(`<div class="gantt-row" style="min-height:${leg.kind === "scheduled_service" ? ferryRowHeight : 45}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${bufferBars}${pause}</div></div>`);
@@ -747,6 +757,7 @@
       $("resetRoute").addEventListener("click", () => {
         displayedLegs = response.itineraries[activeResult].legs;
         selectedSailings.clear();
+        blockedSailings.clear();
         experimentText = "";
         pausePlan = null;
         ganttViewport = null;
@@ -857,19 +868,41 @@
       if (!selected) return;
       const key = crossingKey(selected.leg);
       const previous = selectedSailings.get(key);
-      selectedSailings.set(key, serviceKey(selected.leg));
+      const selectedService = serviceKey(selected.leg);
+      const unlock = previous === selectedService;
+      if (unlock) selectedSailings.delete(key); else selectedSailings.set(key, selectedService);
       const path = bestSelectedPath(maps);
       if (!path) {
+        const otherPins = [...selectedSailings.entries()].filter(([crossing]) => crossing !== key);
+        const individualBlockers = otherPins.filter(([crossing, service]) => {
+          selectedSailings.delete(crossing);
+          const becomesPossible = Boolean(bestSelectedPath(maps));
+          selectedSailings.set(crossing, service);
+          return becomesPossible;
+        });
         if (previous) selectedSailings.set(key, previous); else selectedSailings.delete(key);
-        experimentText = "Näiden lauttavalintojen yhdistelmälle ei löytynyt kokonaista matkaketjua.";
+        blockedSailings = new Set(
+          (individualBlockers.length ? individualBlockers : otherPins).map(([, service]) => service)
+        );
+        experimentText = blockedSailings.size
+          ? "Uusi valinta ei sovi yhteen lukitun vuoron kanssa. Estävä lukittu vuoro välähti kaaviossa."
+          : "Näiden lauttavalintojen yhdistelmälle ei löytynyt kokonaista matkaketjua.";
         renderDetail();
+        const flashedSailings = blockedSailings;
+        window.setTimeout(() => {
+          document.querySelectorAll(".gantt-ferry-blocking").forEach((item) => item.classList.remove("gantt-ferry-blocking"));
+          if (blockedSailings === flashedSailings) blockedSailings = new Set();
+        }, 850);
         return;
       }
+      blockedSailings.clear();
       displayedLegs = path.edges
         .filter((item) => !item.virtualWait)
         .map((item) => ({ ...item.leg, _connectionId: item.id }));
       pausePlan = null;
-      experimentText = `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
+      experimentText = unlock && !selectedSailings.size
+        ? "Vuoron lukitus poistettiin. Matkaketju valittiin jälleen automaattisesti."
+        : `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
       renderResults();
       renderDetail();
     }
@@ -887,7 +920,7 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); experimentText = ""; pausePlan = null; ganttViewport = null;
+        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; pausePlan = null; ganttViewport = null;
         const routeCount = mainRouteOptions().length;
         $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
