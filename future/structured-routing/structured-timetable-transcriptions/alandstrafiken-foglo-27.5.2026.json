@@ -18,6 +18,14 @@
     "2": {"operation": "booking_required", "deadline": {"relativeTo": "previous_day", "time": "21:30"}, "bookingContact": {"source": "operating_vessel"}}
   },
   "travelerInformation": {
+    "farePolicy": {
+      "vehicles": "paid",
+      "passengersInVehicle": "free",
+      "pedestrians": "free",
+      "paidWhenDepartingFrom": [
+        "Svinö"
+      ]
+    },
     "notices": [{"type": "regular_service_not_bookable", "meaning": "valid_ticket_required"}]
   },
   "review": {

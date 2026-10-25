@@ -7,6 +7,22 @@
     "loadingReadinessMinutesBefore": 15
   },
   "travelerInformation": {
+    "farePolicy": {
+      "vehicles": "paid",
+      "passengersInVehicle": "free",
+      "pedestrians": "free",
+      "paidWhenDepartingFrom": [
+        "Vuosnainen",
+        "Hummelvik"
+      ],
+      "transitChargePairs": [
+        {
+          "from": "Vuosnainen",
+          "to": "Hummelvik",
+          "chargeLegEndpoint": "Hummelvik"
+        }
+      ]
+    },
     "notices": [
       {
         "type": "vehicle_loading_readiness",

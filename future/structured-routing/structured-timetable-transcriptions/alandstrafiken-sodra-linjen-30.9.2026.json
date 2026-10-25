@@ -68,7 +68,23 @@
     "farePolicy": {
       "vehicles": "paid",
       "passengersInVehicle": "free",
-      "pedestrians": "free"
+      "pedestrians": "free",
+      "paidWhenDepartingFrom": [
+        "Galtby",
+        "Långnäs"
+      ],
+      "transitChargePairs": [
+        {
+          "from": "Galtby",
+          "to": "Långnäs",
+          "chargeLegEndpoint": "Galtby"
+        },
+        {
+          "from": "Galtby",
+          "to": "Svinö",
+          "chargeLegEndpoint": "Galtby"
+        }
+      ]
     },
     "notices": [
       {

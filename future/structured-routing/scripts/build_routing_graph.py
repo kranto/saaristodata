@@ -136,7 +136,7 @@ def selected_route_metadata(route: dict) -> dict:
     keys = (
         "provider", "serviceType", "serviceRole", "validPeriods", "holidayExceptions",
         "booking", "callConditions", "capacity", "contact", "publicTimetableUrl",
-        "travelerInformation", "vessel", "vessels", "vesselByCode", "notes", "generalNotes",
+        "travelerInformation", "connections", "vessel", "vessels", "vesselByCode", "notes", "generalNotes",
         "sources", "routingService", "routingPolicy", "review",
     )
     result = {"id": route["id"], "serviceType": service_type(route)}

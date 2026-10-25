@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "routing_ready",
-  "generatedAt": "2026-10-24T13:38:44.874465+00:00",
+  "generatedAt": "2026-10-25T14:49:38.871636+00:00",
   "sources": {
     "timetables": "/Users/kranto/personal/saaristodata/future/structured-routing/structured-connection-timetables-with-ais.json",
     "roads": "/Users/kranto/personal/saaristodata/future/structured-routing/road-network.json",
@@ -724001,6 +724001,14 @@
       },
       "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-05/foglo-27.5.2026.pdf",
       "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Svinö"
+          ]
+        },
         "notices": [
           {
             "type": "regular_service_not_bookable",
@@ -724439,6 +724447,57 @@
           }
         ]
       },
+      "connections": [
+        {
+          "id": "iniorutt-to-houtskarrutt-at-sjalo",
+          "fromRouteId": "iniorutt",
+          "toRouteId": "houtskarrutt",
+          "direction": "iniorutt_to_houtskarrutt_only",
+          "transferStop": "Själö",
+          "type": "planned_timetable_connection",
+          "guaranteedHold": "not_stated_by_source",
+          "example": {
+            "operatingDays": "____5__",
+            "origin": "Åselholm",
+            "firstLeg": {
+              "routeId": "iniorutt",
+              "departure": "13:10",
+              "arrivalStop": "Själö",
+              "arrival": "13:40",
+              "arrivalTimeRole": "approximate_source_time"
+            },
+            "transfer": {
+              "stop": "Själö",
+              "nextVesselStartsFrom": "Torsholma",
+              "nextVesselStartTime": "14:30",
+              "pickupTime": null,
+              "pickupTimeRole": "after_14:30_historical_estimate_candidate",
+              "waitDescription": "more than one hour in normal operation"
+            },
+            "secondLeg": {
+              "routeId": "houtskarrutt",
+              "arrivalStop": "Roslax",
+              "arrival": "17:40"
+            }
+          }
+        },
+        {
+          "id": "iniorutt-houtskarrutt-bidirectional-sjalo",
+          "routes": [
+            "iniorutt",
+            "houtskarrutt"
+          ],
+          "direction": "bidirectional",
+          "transferStop": "Själö",
+          "operatingDays": "1_3___7",
+          "timeOfDay": "afternoon",
+          "type": "official_timetable_connection",
+          "basis": "both vessels are scheduled at Själö at the same time and the connection is marked blue in the source timetable",
+          "sourceVisualEncoding": "blue_connection_marking",
+          "guaranteedHold": "not_stated_by_source",
+          "distinctionFromFridayConnection": "Unlike Friday's one-way connection with a long wait, this is an official simultaneous bidirectional connection."
+        }
+      ],
       "vessel": "M/S Finnö",
       "notes": [],
       "sources": [
@@ -725789,6 +725848,22 @@
         "loadingReadinessMinutesBefore": 15
       },
       "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Vuosnainen",
+            "Hummelvik"
+          ],
+          "transitChargePairs": [
+            {
+              "from": "Vuosnainen",
+              "to": "Hummelvik",
+              "chargeLegEndpoint": "Hummelvik"
+            }
+          ]
+        },
         "notices": [
           {
             "type": "vehicle_loading_readiness",
@@ -725873,6 +725948,37 @@
         ]
       },
       "publicTimetableUrl": "https://www.alandstrafiken.ax/sites/default/files/2026-09/ava-osnas-1.9.2026.pdf",
+      "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Vuosnainen"
+          ]
+        }
+      },
+      "connections": [
+        {
+          "type": "published_road_connection",
+          "fromStop": "Åva",
+          "toStop": "TorsholmaI",
+          "toRouteId": "norralinjen",
+          "arrivalTimes": [
+            "07:15",
+            "13:50",
+            "14:20",
+            "14:25",
+            "16:50",
+            "19:25",
+            "19:45",
+            "20:25"
+          ],
+          "maximumMinutesFromArrivalToDeparture": 60,
+          "guaranteed": false,
+          "sourceMeaning": "The timetable marks a possible connection, but Åland's government does not guarantee it."
+        }
+      ],
       "vessel": "M/S Ådan",
       "notes": [],
       "sources": [
@@ -726637,7 +726743,23 @@
         "farePolicy": {
           "vehicles": "paid",
           "passengersInVehicle": "free",
-          "pedestrians": "free"
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Galtby",
+            "Långnäs"
+          ],
+          "transitChargePairs": [
+            {
+              "from": "Galtby",
+              "to": "Långnäs",
+              "chargeLegEndpoint": "Galtby"
+            },
+            {
+              "from": "Galtby",
+              "to": "Svinö",
+              "chargeLegEndpoint": "Galtby"
+            }
+          ]
         },
         "notices": [
           {
