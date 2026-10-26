@@ -125,7 +125,7 @@
     .gantt-choice-swatch { width: 17px; height: 9px; border-radius: 3px; background: var(--sea); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--choice-outline); }
     .gantt-choice-auto { --choice-outline: #75a8b5; }
     .gantt-choice-pinned { --choice-outline: var(--orange); }
-    .gantt-alternative { --bar: var(--sea); top: 14px; height: 8px; opacity: 1; }
+    .gantt-alternative { --bar: transparent; height: 16px; border: 1px dashed var(--sea); box-sizing: border-box; opacity: 1; }
     .gantt-wait-safe { --bar: #bfe7d3; height: 16px; }
     .gantt-wait-short { --bar: #f3a79f; height: 16px; min-width: 5px; }
     .gantt-readiness { --bar: #7da7b7; height: 16px; z-index: 1; }
@@ -636,11 +636,12 @@
           ])
           : { laneByKey: new Map(), laneCount: 1 };
         const selectedLane = sailingLayout.laneByKey.get(selectedKey) || 0;
-        const ferryRowHeight = Math.max(45, 32 + (sailingLayout.laneCount - 1) * 18);
-        const sailingTop = Math.round((ferryRowHeight - (16 + (sailingLayout.laneCount - 1) * 18)) / 2);
+        const ferryLaneStep = 21;
+        const ferryRowHeight = Math.max(45, 32 + (sailingLayout.laneCount - 1) * ferryLaneStep);
+        const sailingTop = Math.round((ferryRowHeight - (16 + (sailingLayout.laneCount - 1) * ferryLaneStep)) / 2);
         const alternativeBars = alternatives.map((item) => {
           const lane = sailingLayout.laneByKey.get(item.id) || 0;
-          return `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" data-tooltip="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" style="top:${sailingTop + 4 + lane * 18}px;left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`;
+          return `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" data-tooltip="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" style="top:${sailingTop + lane * ferryLaneStep}px;left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`;
         }).join("");
         const barClass = leg.kind === "road" ? "gantt-road" : "gantt-ferry";
         const title = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : serviceName(leg);
@@ -654,7 +655,7 @@
             const waitClass = isShortWait ? "gantt-wait-short" : "gantt-wait-safe";
             if (profile.available > 0) {
               joinsBuffer = true;
-              bufferBars = `<i class="gantt-bar ${waitClass} gantt-join-left" data-tooltip="${escapeHtml(bufferTimeLabel(profile.available))}" style="top:${sailingTop}px;left:${scale.position(leg.arrival).toFixed(2)}%;width:${(profile.available / scale.total * 100).toFixed(2)}%"></i>`;
+              bufferBars = `<i class="gantt-bar ${waitClass} gantt-join-left" data-tooltip="${escapeHtml(bufferTimeLabel(profile.available))}" style="top:${sailingTop}px;left:calc(${scale.position(leg.arrival).toFixed(2)}% + 1px);width:calc(${(profile.available / scale.total * 100).toFixed(2)}% - 1px)"></i>`;
             }
             const extraTimeClass = isShortWait ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
             const extraTimeLabel = nextLeg.publishedConnection
@@ -670,7 +671,7 @@
             const { readiness } = waitProfile(leg);
             if (readiness > 0) {
               readinessStart = new Date(new Date(leg.departure).getTime() - readiness * 60000).toISOString();
-              readinessBar = `<i class="gantt-bar gantt-readiness gantt-join-right" data-tooltip="Lastausvalmius ${formatDuration(readiness)} ennen lähtöä" style="top:${sailingTop + selectedLane * 18}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${(readiness / scale.total * 100).toFixed(2)}%"></i>`;
+              readinessBar = `<i class="gantt-bar gantt-readiness gantt-join-right" data-tooltip="Lastausvalmius ${formatDuration(readiness)} ennen lähtöä" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(readinessStart).toFixed(2)}%;width:calc(${(readiness / scale.total * 100).toFixed(2)}% - 1px)"></i>`;
             }
           }
         }
@@ -681,10 +682,10 @@
         const barTooltip = `${title} ${clock(leg.departure)}–${clock(leg.arrival)}`;
         const joinClass = joinsBuffer ? " gantt-join-right" : readinessStart ? " gantt-join-left gantt-ferry-has-readiness" : "";
         const selectedBar = leg.kind === "scheduled_service" && selectedConnection
-          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${joinClass}${isPinned ? " gantt-ferry-pinned" : ""}${isBlocking ? " gantt-ferry-blocking" : ""}" data-connection="${selectedConnection.id}" data-tooltip="${escapeHtml(selectedTooltip)}" style="top:${sailingTop + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
-          : `<i class="gantt-bar ${barClass}${joinClass}" data-tooltip="${escapeHtml(barTooltip)}" style="top:${sailingTop + selectedLane * 18}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%"></i>`;
+          ? `<button type="button" class="gantt-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${joinClass}${isPinned ? " gantt-ferry-pinned" : ""}${isBlocking ? " gantt-ferry-blocking" : ""}" data-connection="${selectedConnection.id}" data-tooltip="${escapeHtml(selectedTooltip)}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
+          : `<i class="gantt-bar ${barClass}${joinClass}" data-tooltip="${escapeHtml(barTooltip)}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%"></i>`;
         const selectionOutline = leg.kind === "scheduled_service" && selectedConnection && readinessStart
-          ? `<i class="gantt-bar gantt-selection-outline${isPinned ? " gantt-selection-outline-pinned" : ""}" style="top:${sailingTop + selectedLane * 18}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${scale.width(readinessStart, leg.arrival).toFixed(2)}%"></i>`
+          ? `<i class="gantt-bar gantt-selection-outline${isPinned ? " gantt-selection-outline-pinned" : ""}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${scale.width(readinessStart, leg.arrival).toFixed(2)}%"></i>`
           : "";
         const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
         rows.push(`<div class="gantt-row${leg.kind === "scheduled_service" ? " gantt-row-ferry" : ""}" style="min-height:${leg.kind === "scheduled_service" ? ferryRowHeight : 45}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}${bufferBars}</div></div>`);
