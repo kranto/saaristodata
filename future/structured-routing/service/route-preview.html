@@ -74,14 +74,14 @@
     .journey-summary { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding: 22px 24px 18px; border-bottom: 1px solid #dce6e6; }
     .journey-summary h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; }
     .journey-summary p { margin: 6px 0 0; color: var(--muted); }
-    .timeline { padding: 20px 24px 28px; }
-    .leg { position: relative; display: grid; grid-template-columns: 72px 24px minmax(0, 1fr); column-gap: 13px; min-height: 94px; }
-    .leg::after { content: ""; position: absolute; left: 83px; top: 25px; bottom: -6px; width: 2px; background: #bbd1d4; }
+    .timeline { padding: 16px 24px 20px; }
+    .leg { position: relative; display: grid; grid-template-columns: 72px 24px minmax(0, 1fr); column-gap: 13px; min-height: 72px; }
+    .leg::after { content: ""; position: absolute; left: 83px; top: 25px; bottom: -4px; width: 2px; background: #bbd1d4; }
     .leg:last-child::after { display: none; }
     .clock { padding-top: 3px; text-align: right; font-size: 14px; font-weight: 850; font-variant-numeric: tabular-nums; }
     .marker { position: relative; z-index: 1; margin-top: 2px; width: 20px; height: 20px; border: 4px solid var(--paper); border-radius: 50%; background: var(--sea); box-shadow: 0 0 0 1px #90adb3; }
     .leg.road .marker { background: #7e909d; }
-    .leg-card { padding: 0 0 22px; min-width: 0; }
+    .leg-card { padding: 0 0 12px; min-width: 0; }
     .leg-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 850; }
     .leg-sub { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.45; }
     .selection-summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 24px 22px 133px; padding: 12px 15px; border-left: 4px solid #b9cbcf; border-radius: 0 10px 10px 0; background: #f1f6f5; color: var(--muted); font-size: 13px; line-height: 1.5; }
