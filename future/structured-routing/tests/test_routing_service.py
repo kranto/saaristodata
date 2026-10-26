@@ -159,6 +159,8 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("function ganttModeIcon", response.text)
         self.assertIn('class="gantt-mode-icon"', response.text)
         self.assertIn("gantt-row-ferry", response.text)
+        self.assertIn("Poista valinnat", response.text)
+        self.assertNotIn("Palauta ehdotus", response.text)
         self.assertIn("window.history.replaceState", response.text)
         self.assertNotIn("pausePlan", response.text)
         self.assertNotIn("pauseCandidates", response.text)
