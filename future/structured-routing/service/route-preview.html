@@ -593,7 +593,7 @@
     const isFerryLeg = (leg) => ["scheduled_service", "continuous_ferry"].includes(leg?.kind);
 
     function roadConnectionRisk(leg, nextLeg) {
-      if (leg.kind !== "road" || !isFerryLeg(nextLeg) || nextLeg.from !== leg.to || nextLeg.waitMinutes <= 0) return null;
+      if (leg.kind !== "road" || !isFerryLeg(nextLeg) || nextLeg.from !== leg.to) return null;
       const profile = waitProfile(nextLeg);
       return {
         ...nextLeg.transferRisk,
@@ -665,7 +665,7 @@
         let bufferBars = "", readinessBar = "", readinessStart = null, joinsBuffer = false, labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
         if (leg.kind === "road") {
           const nextLeg = displayedLegs[index + 1];
-          if (isFerryLeg(nextLeg) && nextLeg.from === leg.to && nextLeg.waitMinutes > 0) {
+          if (isFerryLeg(nextLeg) && nextLeg.from === leg.to) {
             const profile = waitProfile(nextLeg);
             const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
             const isShortWait = !nextLeg.publishedConnection && (profile.available < 5 || riskLevel === "below_required_readiness");

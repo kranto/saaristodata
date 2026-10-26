@@ -20,6 +20,7 @@ from route_itineraries import (  # noqa: E402
     candidate_departure_preference,
     candidate_dominates,
     default_origin_boarding_buffer_minutes,
+    edge_instance,
     find_itineraries,
     next_adaptive_sweep_seeds,
     prefix_road_shift,
@@ -99,6 +100,20 @@ class FastRouteSearchTests(unittest.TestCase):
             shift, first_service_index = prefix_road_shift(records, {"ferry": {}}, "car")
         self.assertEqual(first_service_index, 1)
         self.assertEqual(shift, timedelta(minutes=-5))
+
+    def test_continuous_ferry_adds_five_minutes_after_road_approach(self) -> None:
+        edge = next(
+            item for item in self.graph["edges"]
+            if item["kind"] == "continuous_ferry"
+            and item.get("routeId") == "embarsundslinjen"
+            and item["from"] == "Jyddö"
+        )
+        ready = datetime(2026, 10, 25, 19, 41)
+        instance = edge_instance(
+            edge, {}, ready, "car", "typical",
+            continuous_approach_minutes=5,
+        )
+        self.assertEqual(instance["departure"], datetime(2026, 10, 25, 19, 46))
 
     def test_adaptive_sweep_keeps_five_minute_normal_risk_boundary(self) -> None:
         seed = datetime(2026, 10, 25, 6, 1)
