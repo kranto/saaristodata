@@ -8,6 +8,7 @@ import sys
 import unittest
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,7 @@ from route_itineraries import (  # noqa: E402
     default_origin_boarding_buffer_minutes,
     find_itineraries,
     next_adaptive_sweep_seeds,
+    prefix_road_shift,
 )
 from route_itinerary import next_scheduled_instance, transfer_risk  # noqa: E402
 
@@ -75,6 +77,28 @@ class FastRouteSearchTests(unittest.TestCase):
         self.assertEqual(default_origin_boarding_buffer_minutes(records(60), 1), 10)
         self.assertEqual(default_origin_boarding_buffer_minutes(records(119), 1), 10)
         self.assertEqual(default_origin_boarding_buffer_minutes(records(120), 1), 15)
+
+    def test_initial_drive_buffer_is_added_to_loading_readiness(self) -> None:
+        records = [
+            {
+                "edge": {"kind": "road"},
+                "instance": {
+                    "departure": datetime(2026, 10, 25, 11, 46),
+                    "arrival": datetime(2026, 10, 25, 12, 5),
+                },
+            },
+            {
+                "edge": {
+                    "kind": "scheduled_service", "routeId": "ferry",
+                    "from": "Degerby",
+                },
+                "instance": {"departure": datetime(2026, 10, 25, 12, 15)},
+            },
+        ]
+        with patch("route_itineraries.loading_readiness_minutes", return_value=10):
+            shift, first_service_index = prefix_road_shift(records, {"ferry": {}}, "car")
+        self.assertEqual(first_service_index, 1)
+        self.assertEqual(shift, timedelta(minutes=-5))
 
     def test_adaptive_sweep_keeps_five_minute_normal_risk_boundary(self) -> None:
         seed = datetime(2026, 10, 25, 6, 1)
@@ -315,9 +339,9 @@ class FastRouteSearchTests(unittest.TestCase):
         self.assertEqual(
             [item["suggestedOriginDeparture"] for item in result["results"]],
             [
-                "2026-11-01T06:55",
-                "2026-11-01T12:55",
-                "2026-11-01T14:55",
+                "2026-11-01T06:50",
+                "2026-11-01T12:50",
+                "2026-11-01T14:50",
             ],
         )
         self.assertEqual(

@@ -161,7 +161,7 @@ def prefix_road_shift(
     readiness = loading_readiness_minutes(
         routes[first_service["edge"]["routeId"]], first_service["edge"]["from"], mode,
     )
-    boarding_buffer = readiness or default_origin_boarding_buffer_minutes(
+    boarding_buffer = readiness + default_origin_boarding_buffer_minutes(
         records, first_service_index,
     )
     target = first_service["instance"]["departure"] - timedelta(

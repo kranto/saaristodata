@@ -590,6 +590,18 @@
       return { readiness: Math.max(0, readiness), available };
     }
 
+    const isFerryLeg = (leg) => ["scheduled_service", "continuous_ferry"].includes(leg?.kind);
+
+    function roadConnectionRisk(leg, nextLeg) {
+      if (leg.kind !== "road" || !isFerryLeg(nextLeg) || nextLeg.from !== leg.to || nextLeg.waitMinutes <= 0) return null;
+      const profile = waitProfile(nextLeg);
+      return {
+        ...nextLeg.transferRisk,
+        effectiveBufferMinutes: profile.available,
+        level: nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available),
+      };
+    }
+
     function displayedConnection(leg) {
       if (!response?.decisionGraph || leg.kind !== "scheduled_service") return null;
       const matching = response.decisionGraph.connections.filter((item) => (
@@ -653,7 +665,7 @@
         let bufferBars = "", readinessBar = "", readinessStart = null, joinsBuffer = false, labelDetail = `${clock(leg.departure)}–${clock(leg.arrival)}`;
         if (leg.kind === "road") {
           const nextLeg = displayedLegs[index + 1];
-          if (nextLeg?.kind === "scheduled_service" && nextLeg.from === leg.to && nextLeg.waitMinutes > 0) {
+          if (isFerryLeg(nextLeg) && nextLeg.from === leg.to && nextLeg.waitMinutes > 0) {
             const profile = waitProfile(nextLeg);
             const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
             const isShortWait = !nextLeg.publishedConnection && (profile.available < 5 || riskLevel === "below_required_readiness");
@@ -705,7 +717,7 @@
       const routeName = `${placeName(displayedLegs[0].from)} – ${placeName(displayedLegs[displayedLegs.length - 1].to)}`;
       const timeline = displayedLegs.map((leg, index) => {
         const nextLeg = displayedLegs[index + 1];
-        const risk = leg.kind === "road" && nextLeg?.kind === "scheduled_service" ? nextLeg.transferRisk : null;
+        const risk = roadConnectionRisk(leg, nextLeg);
         const publishedConnection = leg.kind === "road" && nextLeg?.publishedConnection;
         const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
         const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : `${serviceName(leg)}${charge ? ` <span class="charge">${charge}</span>` : ""}`;
