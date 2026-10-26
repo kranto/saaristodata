@@ -163,6 +163,7 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("function waitProfile(leg)", response.text)
         self.assertIn('const isFerryLeg = (leg) => ["scheduled_service", "continuous_ferry"].includes', response.text)
         self.assertIn("function roadConnectionRisk(leg, nextLeg)", response.text)
+        self.assertNotIn("nextLeg.waitMinutes <= 0", response.text)
         self.assertIn("const risk = roadConnectionRisk(leg, nextLeg)", response.text)
         self.assertIn("(lastausvalmius ${clockBefore(leg.departure, readiness)})", response.text)
         self.assertNotIn("leg.booking?.loadingReadinessMinutesBefore\n        ?? 15", response.text)

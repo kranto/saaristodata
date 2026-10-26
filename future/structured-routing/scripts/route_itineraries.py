@@ -41,6 +41,8 @@ RISK_ORDER = {
     "below_required_readiness": 4,
 }
 
+CONTINUOUS_FERRY_APPROACH_MINUTES = 5
+
 
 def default_origin_boarding_buffer_minutes(
     records: list[dict], first_service_index: int,
@@ -361,6 +363,7 @@ def format_candidate(
 def edge_instance(
     edge: dict, routes: dict[str, dict], moment: datetime, mode: str, timing_profile: str,
     *, enforce_loading_readiness: bool = False,
+    continuous_approach_minutes: int = 0,
     scheduled_instances: ScheduledInstanceIndex | None = None,
 ) -> dict | None:
     if edge["kind"] == "road":
@@ -380,7 +383,9 @@ def edge_instance(
         if scheduled_instances is not None:
             return scheduled_instances.next(edge, boarding_ready)
         return next_scheduled_instance(edge, route, boarding_ready, timing_profile)
-    return next_continuous_instance(edge, moment)
+    return next_continuous_instance(
+        edge, moment + timedelta(minutes=continuous_approach_minutes),
+    )
 
 
 def earliest_candidate_from_seed(
@@ -429,6 +434,11 @@ def earliest_candidate_from_seed(
             instance = edge_instance(
                 edge, routes, moment, mode, timing_profile,
                 enforce_loading_readiness=not has_used_service,
+                continuous_approach_minutes=(
+                    CONTINUOUS_FERRY_APPROACH_MINUTES
+                    if records and records[-1]["edge"]["kind"] == "road"
+                    else 0
+                ),
                 scheduled_instances=scheduled_instances,
             )
             if not instance or instance["arrival"] > deadline:
@@ -905,6 +915,11 @@ def find_itineraries(
             instance = edge_instance(
                 edge, routes, moment, args.mode, args.timing_profile,
                 enforce_loading_readiness=not has_used_service,
+                continuous_approach_minutes=(
+                    CONTINUOUS_FERRY_APPROACH_MINUTES
+                    if records and records[-1]["edge"]["kind"] == "road"
+                    else 0
+                ),
                 scheduled_instances=scheduled_instances,
             )
             if not instance:
