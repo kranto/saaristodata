@@ -440,6 +440,16 @@
     const crossingKey = (leg) => [leg.serviceType, leg.from, leg.to].join("|");
     const approachKey = (leg) => [leg.kind, leg.serviceType || "", leg.from, leg.to].join("|");
 
+    function activeRouteAnchorKey() {
+      const routeLegs = response?.itineraries?.[activeResult]?.legs || [];
+      const routeAnchor = [...routeLegs].reverse().find((leg) => leg.kind === "scheduled_service");
+      return routeAnchor
+        ? [routeAnchor.serviceType, routeAnchor.routeId, routeAnchor.operator || "", routeAnchor.from, routeAnchor.to].join("|")
+        : null;
+    }
+
+    const routeAnchorKey = (leg) => [leg.serviceType, leg.routeId, leg.operator || "", leg.from, leg.to].join("|");
+
     function followsDisplayedApproach(connection, displayedLeg) {
       const index = displayedLegs.indexOf(displayedLeg);
       if (index <= 0) return true;
@@ -763,7 +773,10 @@
     }
 
     function bestSelectedPath(maps) {
+      const routeAnchor = activeRouteAnchorKey();
       const pinnedServices = [...new Set(selectedSailings.values())];
+      const anchorPin = routeAnchor ? `route:${routeAnchor}` : null;
+      if (anchorPin) pinnedServices.push(anchorPin);
       const pinBits = new Map(pinnedServices.map((key, index) => [key, 2 ** index]));
       const allPins = 2 ** pinnedServices.length - 1;
       const destinations = new Set(maps.graph.destinationNodeIds);
@@ -790,7 +803,11 @@
             const pinned = selectedSailings.get(crossingKey(edge.leg));
             if (pinned && serviceKey(edge.leg) !== pinned) continue;
           }
-          const nextMask = mask | (pinBits.get(serviceKey(edge.leg)) || 0);
+          const serviceBit = pinBits.get(serviceKey(edge.leg)) || 0;
+          const anchorBit = anchorPin && edge.leg.kind === "scheduled_service" && routeAnchorKey(edge.leg) === routeAnchor
+            ? pinBits.get(anchorPin) || 0
+            : 0;
+          const nextMask = mask | serviceBit | anchorBit;
           const rest = walk(edge.toNode, nextMask);
           if (!rest) continue;
           const candidate = {
@@ -813,6 +830,7 @@
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
         return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
+          || (aOkay && bOkay ? (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "") : 0)
           || a.risk - b.risk
           || (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
           || a.edges.length - b.edges.length;
