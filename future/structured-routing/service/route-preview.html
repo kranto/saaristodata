@@ -114,7 +114,7 @@
     .gantt-bar { position: absolute; top: 10px; height: 16px; min-width: 3px; border: 0; border-radius: 3px; padding: 0; background: var(--bar); }
     .gantt-road { --bar: #7e909d; }
     .gantt-ferry { --bar: var(--sea); }
-    .gantt-ferry-choice { z-index: 3; min-width: 11px; cursor: pointer; transition: opacity .15s, transform .15s, box-shadow .15s; }
+    .gantt-ferry-choice { z-index: 3; min-width: 8px; cursor: pointer; transition: opacity .15s, transform .15s, box-shadow .15s; }
     .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
     .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #75a8b5; }
     .gantt-ferry-pinned { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--orange); }
@@ -125,7 +125,7 @@
     .gantt-choice-swatch { width: 17px; height: 9px; border-radius: 2px; background: var(--sea); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--choice-outline); }
     .gantt-choice-auto { --choice-outline: #75a8b5; }
     .gantt-choice-pinned { --choice-outline: var(--orange); }
-    .gantt-alternative { --bar: transparent; height: 16px; border: 1px dashed var(--sea); box-sizing: border-box; opacity: 1; }
+    .gantt-alternative { --bar: transparent; min-width: 5px; height: 16px; border: 1px dashed var(--sea); box-sizing: border-box; opacity: 1; }
     .gantt-wait-safe { --bar: #bfe7d3; height: 16px; }
     .gantt-wait-short { --bar: #f3a79f; height: 16px; min-width: 5px; }
     .gantt-readiness { --bar: #7da7b7; height: 16px; z-index: 1; }
@@ -477,17 +477,12 @@
           byService.get(key).set(level, item);
         }
       });
-      let groups = [...byService.entries()].map(([key, variants]) => ({
+      const groups = [...byService.entries()].map(([key, variants]) => ({
         key,
         variants: [...variants.values()].sort((a, b) => (
           (riskRank[a.leg.transferRisk?.level] ?? -1) - (riskRank[b.leg.transferRisk?.level] ?? -1)
         )),
       })).sort((a, b) => a.variants[0].leg.departure.localeCompare(b.variants[0].leg.departure));
-      if (groups.length > 7) {
-        const current = Math.max(0, groups.findIndex((item) => item.key === serviceKey(leg)));
-        const start = Math.max(0, Math.min(current - 3, groups.length - 7));
-        groups = groups.slice(start, start + 7);
-      }
       return groups.length > 1 || groups.some((item) => item.variants.length > 1) ? groups : [];
     }
 
