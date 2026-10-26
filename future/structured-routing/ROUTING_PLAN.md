@@ -452,6 +452,48 @@ tieprofiilit tuottavat aidosti erilaisia yhteyksiä. Teersalo–Hakkenpää toim
 ajoneuvoluokituksen regressiotestinä: yhteys saa löytyä moottoripyörälle mutta
 ei henkilöautolle.
 
+## Prototyypistä tuotantoon
+
+Koko reititysjärjestelmää ei kirjoiteta tuotantovaiheessa uudelleen puhtaalta
+pöydältä. Nykyisestä toteutuksesta säilytetään ja sitä kehitetään edelleen
+ainakin seuraavilta osin:
+
+- rakenteinen aikataulu- ja AIS-aineisto
+- reititysgraafi ja reititysalgoritmit
+- Valhalla-integraatio, geokoodaus ja välimuisti
+- FastAPI-palvelu ja sen JSON-rajapinta
+- reittikohtaiset erityissäännöt sekä regressiotestit
+
+Näihin on kertynyt suuri määrä vaikeasti uudelleen löydettävää saaristoliikenteen
+toimialatietoa. Kokonaan uusi toteutus lisäisi tarpeettomasti riskiä siitä, että
+jo ratkaistut virheet ja erikoistapaukset palaisivat.
+
+Kokeellinen `service/route-preview.html` on sen sijaan toiminnallinen
+käyttöliittymäprototyyppi ja myöhemmän tuotantokäyttöliittymän referenssi. Sen
+tehtävänä on löytää oikea tapa näyttää matkaketjut, vaihtoehtoiset lauttavuorot,
+lastausvalmius, vaihtomarginaalit ja käyttäjän lukitsemat valinnat. Sitä ei ole
+tarkoitus kasvattaa sellaisenaan lopulliseksi käyttöliittymäksi. Kun
+toimintamalli on riittävän vakaa, sama näkymä toteutetaan komponenttipohjaisesti
+varsinaiseen Saaristolautat-sovellukseen.
+
+Ennen tuotantokäyttöliittymän toteuttamista:
+
+1. viimeistellään prototyypissä näytettävät reittivaihtoehdot ja
+   lauttavuorojen valintatapa
+2. tallennetaan noin 15–30 edustavaa esimerkkimatkaa regressiotesteiksi
+3. vakautetaan käyttöliittymän tarvitsema JSON-rajapinta
+4. varmistetaan, että rajapinta kertoo suoraan ainakin klikattavat vuorot,
+   automaattiset ja lukitut valinnat, lastausvalmiuden, ylimääräisen ajan,
+   operaattorin, maksullisuuden ja matkustajaohjeet
+5. rakennetaan tuotantonäkymä komponentteina nykyiseen sovellukseen käyttäen
+   prototyyppiä toiminnallisena määrittelynä
+
+Taustajärjestelmää tuotantokuntoon vietäessä tehdään hallittuja refaktorointeja
+uudelleenkirjoituksen sijasta. Esimerkiksi palvelun käyttämä varsinainen
+ohjelmakoodi siirretään vähitellen `scripts`-hakemistosta asennettavaksi
+Python-paketiksi. Rajapinnan käyttäytyminen ja regressioreittien tulokset
+pidetään refaktorointien aikana ennallaan.
+
 ## Onnistumisen rajaus
 
 Palvelu lupaa:
