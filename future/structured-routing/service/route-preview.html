@@ -74,7 +74,6 @@
     .journey-summary { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding: 22px 24px 18px; border-bottom: 1px solid #dce6e6; }
     .journey-summary h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; }
     .journey-summary p { margin: 6px 0 0; color: var(--muted); }
-    .reset { border: 1px solid #b9cbcf; border-radius: 10px; padding: 8px 11px; color: var(--sea); background: white; font-size: 12px; font-weight: 800; }
     .timeline { padding: 20px 24px 28px; }
     .leg { position: relative; display: grid; grid-template-columns: 72px 24px minmax(0, 1fr); column-gap: 13px; min-height: 94px; }
     .leg::after { content: ""; position: absolute; left: 83px; top: 25px; bottom: -6px; width: 2px; background: #bbd1d4; }
@@ -85,7 +84,9 @@
     .leg-card { padding: 0 0 22px; min-width: 0; }
     .leg-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-weight: 850; }
     .leg-sub { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .experiment { margin: 0 24px 22px 133px; padding: 13px 15px; border-left: 4px solid var(--orange); border-radius: 0 10px 10px 0; background: #fff3e9; color: #6d442d; font-size: 13px; line-height: 1.5; }
+    .selection-summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 24px 22px 133px; padding: 12px 15px; border-left: 4px solid #b9cbcf; border-radius: 0 10px 10px 0; background: #f1f6f5; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .selection-summary.has-selection { border-left-color: var(--orange); background: #fff3e9; color: #6d442d; }
+    .clear-selections { flex: 0 0 auto; border: 1px solid #b9cbcf; border-radius: 10px; padding: 8px 11px; color: var(--sea); background: white; font-size: 12px; font-weight: 800; }
     .gantt { margin: 18px 24px 8px; border: 1px solid #d3e2df; border-radius: 15px; background: #f8fbfa; overflow: hidden; }
     .gantt-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding: 14px 16px 12px; border-bottom: 1px solid #dce6e6; }
     .gantt-head h3 { margin: 0; font-size: 15px; }
@@ -158,7 +159,7 @@
       .timeline { padding-inline: 15px; }
       .leg { grid-template-columns: 58px 22px minmax(0, 1fr); column-gap: 10px; }
       .leg::after { left: 68px; }
-      .experiment { margin-left: 92px; margin-right: 15px; }
+      .selection-summary { margin-left: 92px; margin-right: 15px; }
       .gantt { margin-inline: 15px; }
       .gantt-axis, .gantt-row { grid-template-columns: 82px minmax(0, 1fr); gap: 6px; }
     }
@@ -700,8 +701,12 @@
           <div class="leg-card"><div class="leg-title">${vehicle}${publishedConnection ? `<span class="published-connection">Aikatauluyhteys</span>` : risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
         </div>`;
       }).join("");
-      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div><button class="reset" id="resetRoute">Palauta ehdotus</button></div>${ganttMarkup()}${experimentText ? `<div class="experiment">${experimentText}</div>` : ""}<div class="timeline">${timeline}</div>`;
-      $("resetRoute").addEventListener("click", () => {
+      const hasSelections = selectedSailings.size > 0;
+      const selectionSummary = experimentText
+        ? `<div class="selection-summary${hasSelections ? " has-selection" : ""}"><div>${experimentText}</div>${hasSelections ? `<button class="clear-selections" id="clearSelections">Poista valinnat</button>` : ""}</div>`
+        : "";
+      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div></div>${ganttMarkup()}${selectionSummary}<div class="timeline">${timeline}</div>`;
+      $("clearSelections")?.addEventListener("click", () => {
         displayedLegs = response.itineraries[activeResult].legs;
         selectedSailings.clear();
         blockedSailings.clear();
