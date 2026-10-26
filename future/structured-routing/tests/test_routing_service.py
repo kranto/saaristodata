@@ -136,7 +136,7 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Lukittu valinta", response.text)
         self.assertIn("function sailingBarLayout(items)", response.text)
         self.assertIn("const sailingTop = Math.round", response.text)
-        self.assertIn(".gantt-alternative { --bar: #c5cdd2;", response.text)
+        self.assertIn(".gantt-alternative { --bar: var(--sea); top: 14px; height: 8px; opacity: 1;", response.text)
         self.assertIn("12 + lane * 18", response.text)
         self.assertIn("ferryRowHeight", response.text)
         self.assertIn("gantt-wait-safe", response.text)
