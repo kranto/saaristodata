@@ -81,6 +81,11 @@ ehdottoman tarkkana yksittäisenä lähtönä. Reititin huomioi:
 - mahdollisuuden ottaa seuraava vuoro
 - seuraavan aikataulusidonnaisen yhteyden tärkeyden
 
+Jatkuvana tai tarvittaessa liikennöivän lautan malliin pitää myöhemmin lisätä
+myös realistinen kutsu- ja odotusviive. Pelkkä ylitysaika ei riitä, koska alus
+voi olla vastarannalla tai vasta reagoimassa kutsuun. Viive pidetään erillään
+aikataulun varsinaisista tauoista ja käyttäjälle varattavasta varmuusajasta.
+
 Lyhyen lossin kohdalla voidaan siten tarjota useita lähtövaihtoehtoja tai
 lisätä aikaa yhden tai useamman vuoron menettämiselle. Tätä varmuuslogiikkaa ei
 pidä soveltaa samalla tavalla harvoin kulkevaan varattuun yhteysalukseen, jonka

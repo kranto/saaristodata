@@ -20,6 +20,7 @@ from route_itineraries import (  # noqa: E402
     candidate_dominates,
     default_origin_boarding_buffer_minutes,
     find_itineraries,
+    next_adaptive_sweep_seeds,
 )
 from route_itinerary import next_scheduled_instance, transfer_risk  # noqa: E402
 
@@ -75,6 +76,36 @@ class FastRouteSearchTests(unittest.TestCase):
         self.assertEqual(default_origin_boarding_buffer_minutes(records(119), 1), 10)
         self.assertEqual(default_origin_boarding_buffer_minutes(records(120), 1), 15)
 
+    def test_adaptive_sweep_keeps_five_minute_normal_risk_boundary(self) -> None:
+        seed = datetime(2026, 10, 25, 6, 1)
+        departure = datetime(2026, 10, 25, 10, 0)
+        records = [
+            {
+                "edge": {"kind": "continuous_ferry", "routeId": "feeder"},
+                "instance": {"departure": seed, "arrival": seed + timedelta(minutes=5)},
+                "ready": seed,
+            },
+            {
+                "edge": {
+                    "kind": "scheduled_service", "routeId": "onward",
+                    "from": "Överö", "to": "Galtby",
+                },
+                "instance": {"departure": departure, "arrival": departure + timedelta(hours=4)},
+                "ready": departure - timedelta(minutes=21),
+            },
+        ]
+        routes = {
+            "feeder": {},
+            "onward": {"booking": {"loadingReadinessMinutesBefore": 15}},
+        }
+
+        self.assertEqual(
+            next_adaptive_sweep_seeds(
+                records, seed, routes, departure + timedelta(hours=8), "car",
+            ),
+            [seed + timedelta(minutes=1)],
+        )
+
     def test_later_intermediate_departure_wins_same_risk_tie(self) -> None:
         def candidate(departure: str) -> dict:
             return {
@@ -116,9 +147,9 @@ class FastRouteSearchTests(unittest.TestCase):
         self.assertEqual(transfer_risk(14, 15)["level"], "below_required_readiness")
 
     def test_safe_later_feeder_dominates_unnecessary_wait(self) -> None:
-        def candidate(parnas_departure: str, risk: str) -> dict:
+        def candidate(origin_departure: str, parnas_departure: str, risk: str) -> dict:
             return {
-                "suggestedOriginDeparture": "2026-10-25T12:45",
+                "suggestedOriginDeparture": origin_departure,
                 "arrival": "2026-10-25T19:46",
                 "riskSummary": {"worstConnectionRisk": risk},
                 "legs": [
@@ -135,8 +166,8 @@ class FastRouteSearchTests(unittest.TestCase):
                 ],
             }
 
-        early = candidate("2026-10-25T14:00", "relaxed")
-        later = candidate("2026-10-25T14:20", "normal")
+        early = candidate("2026-10-25T12:30", "2026-10-25T14:00", "relaxed")
+        later = candidate("2026-10-25T12:45", "2026-10-25T14:20", "normal")
         self.assertTrue(candidate_dominates(later, early))
         self.assertFalse(candidate_dominates(early, later))
 

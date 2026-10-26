@@ -490,7 +490,7 @@ def next_adaptive_sweep_seeds(
             # Last whole-minute value in each weaker risk class. Crossing the
             # threshold produces normal, tight, very tight and finally a
             # below-readiness alternative when each is feasible.
-            for target_buffer in (29, 4, 0, -1):
+            for target_buffer in (29, 5, 4, 0, -1):
                 shift = effective_buffer - target_buffer
                 if shift > 0:
                     values.append(seed + timedelta(minutes=shift))
@@ -534,8 +534,7 @@ def candidate_dominates(first: dict, second: dict) -> bool:
         for leg in second["legs"]
     )
     comparable_safe_feeders = (
-        first_departure == second_departure
-        and first_arrival == second_arrival
+        first_arrival == second_arrival
         and first_risk <= RISK_ORDER["normal"]
         and second_risk <= RISK_ORDER["normal"]
         and first_shape == second_shape
@@ -1004,13 +1003,17 @@ def find_itineraries(
     for group in grouped.values():
         group.sort(key=candidate_departure_preference, reverse=True)
         chosen = []
-        seen_risks = set()
-        for candidate in group:
-            risk = candidate["riskSummary"]["worstConnectionRisk"]
-            if risk in seen_risks:
+        for risk in RISK_ORDER:
+            candidate = next(
+                (
+                    item for item in group
+                    if item["riskSummary"]["worstConnectionRisk"] == risk
+                ),
+                None,
+            )
+            if candidate is None:
                 continue
             chosen.append(candidate)
-            seen_risks.add(risk)
             if len(chosen) >= args.max_results_per_final_service:
                 break
         if len(chosen) < args.max_results_per_final_service:
