@@ -318,16 +318,18 @@
         ? policy.bicycles === "paid" || policy.vehicles === "paid"
         : policy.vehicles === "paid";
       if (!paid) return "";
+      if (leg.fare?.chargeType === "aland_archipelago_transit") return "€ Kauttakulkumaksu";
       if (
         Array.isArray(policy.paidWhenDepartingFrom)
         && !policy.paidWhenDepartingFrom.includes(leg.from)
       ) return "";
-      return leg.fare?.chargeType === "aland_archipelago_transit" ? "€ Kauttakulkumaksu" : "€";
+      return "€";
     }
 
     function itineraryChargeLabel(item) {
-      if (item.fareSummary?.transitCharge) return "€ Kauttakulkumaksu";
-      return item.legs.some((leg) => chargeLabel(leg)) ? "€" : "";
+      const charges = item.legs.map((leg) => chargeLabel(leg)).filter(Boolean);
+      if (charges.some((label) => label.includes("Kauttakulkumaksu"))) return "€ Kauttakulkumaksu";
+      return charges.length ? "€" : "";
     }
 
     function routeUrlWithSearch() {
@@ -455,7 +457,7 @@
       const routeLegs = response?.itineraries?.[activeResult]?.legs || [];
       const commercialAnchor = routeLegs.find((leg) => leg.kind === "scheduled_service" && leg.operator);
       if (commercialAnchor) return commercialAnchor;
-      return [...routeLegs].reverse().find((leg) => leg.kind === "scheduled_service") || null;
+      return routeLegs.find((leg) => leg.kind === "scheduled_service") || null;
     }
 
     function activeRouteAnchorKey() {
@@ -592,7 +594,7 @@
     }
 
     function ganttModeIcon(leg) {
-      if (leg.kind === "scheduled_service") {
+      if (["scheduled_service", "continuous_ferry"].includes(leg.kind)) {
         return `<svg class="gantt-mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17 3 14h18l-2 3c-2.5 2.7-11.5 2.7-14 0Z"/><path d="M7 14V7h10v7M12 7V3M9 3h6M4 21c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/></svg>`;
       }
       if ((response?.query?.mode || $("mode").value) === "bicycle") {
@@ -753,7 +755,7 @@
           ? `<svg class="gantt-chain-link" style="height:${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}px" aria-hidden="true"><defs><marker id="gantt-arrow-${index}" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z"></path></marker></defs><line x1="${scale.position(barEnd).toFixed(2)}%" y1="${selectedBarTop + 16}" x2="${scale.position(barEnd).toFixed(2)}%" y2="${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}" marker-end="url(#gantt-arrow-${index})"></line></svg>`
           : "";
         const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
-        rows.push(`<div class="gantt-row${leg.kind === "scheduled_service" ? " gantt-row-ferry" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
+        rows.push(`<div class="gantt-row${isFerryLeg(leg) ? " gantt-row-ferry" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
       });
       return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajo ja ylimääräinen aika näkyvät yhtenä palkkina, jonka väri kertoo riskitason.</p></div></div><div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#72bd9c"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#aeb9c0"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#e28a51"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#b83e49"></i>Lastausvalmiuden jälkeen</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7da7b7"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-auto"></i>Automaattinen valinta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-pinned"></i>Lukittu valinta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div></section>`;
     }
@@ -957,7 +959,16 @@
       const fallback = response?.itineraries?.[activeResult]?.legs || [];
       if (!response?.decisionGraph) return fallback;
       const path = bestSelectedPath(graphMaps(), response.itineraries[activeResult].arrival);
-      return path ? pathLegs(path) : fallback;
+      if (!path) return fallback;
+      const originalByService = new Map(
+        fallback
+          .filter((leg) => leg.kind === "scheduled_service")
+          .map((leg) => [serviceKey(leg), leg])
+      );
+      return pathLegs(path).map((leg) => {
+        const original = originalByService.get(serviceKey(leg));
+        return original?.fare ? { ...leg, fare: original.fare } : leg;
+      });
     }
 
     function rebuildPreferredResultLegs() {
