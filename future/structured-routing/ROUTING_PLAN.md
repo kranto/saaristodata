@@ -483,6 +483,13 @@ tarkoitus kasvattaa sellaisenaan lopulliseksi käyttöliittymäksi. Kun
 toimintamalli on riittävän vakaa, sama näkymä toteutetaan komponenttipohjaisesti
 varsinaiseen Saaristolautat-sovellukseen.
 
+Avoin käyttöliittymäkysymys on samalla aluksella välisataman kautta jatkuva
+matka. Prototyyppi saa nyt vuorovalinnan yhteydessä korvata kaksi peräkkäistä
+lauttaväliä yhdellä suoralla legillä, jos päätösgraafi tunnistaa saman matkan ja
+alkuperäisen vaihtosataman sen välisatamaksi. Myöhemmin pitää ratkaista, onko
+käyttäjälle ymmärrettävämpää pitää näkyvä lauttavälirakenne muuttumattomana ja
+esittää samalla aluksella jatkaminen muulla tavalla.
+
 Ennen tuotantokäyttöliittymän toteuttamista:
 
 1. viimeistellään prototyypissä näytettävät reittivaihtoehdot ja
