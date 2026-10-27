@@ -23,6 +23,7 @@ from route_itineraries import (  # noqa: E402
     edge_instance,
     find_itineraries,
     next_adaptive_sweep_seeds,
+    same_provider_direct_ferry_connection,
     prefix_road_shift,
 )
 from route_itinerary import next_scheduled_instance, transfer_risk  # noqa: E402
@@ -273,6 +274,41 @@ class FastRouteSearchTests(unittest.TestCase):
         })
         self.assertEqual(connection["transferRisk"]["level"], "normal")
         self.assertEqual(connection["transferRisk"]["effectiveBufferMinutes"], -14)
+
+    def test_same_port_same_provider_ferry_transfer_ignores_readiness_shortfall(self) -> None:
+        moment = datetime(2026, 11, 2, 8, 40)
+        records = [
+            {
+                "edge": {
+                    "kind": "scheduled_service", "routeId": "feeder",
+                    "from": "Norrby", "to": "Själö",
+                },
+                "instance": {"arrival": moment},
+            },
+            {
+                "edge": {
+                    "kind": "scheduled_service", "routeId": "connection",
+                    "from": "Själö", "to": "Roslax",
+                },
+                "instance": {"departure": moment + timedelta(minutes=5)},
+            },
+        ]
+        connection = same_provider_direct_ferry_connection(
+            records, 1, {
+                "feeder": {"provider": "finferries"},
+                "connection": {"provider": "finferries"},
+            },
+        )
+        self.assertEqual(connection, {
+            "guaranteed": False,
+            "source": "same_provider_direct_ferry_transfer",
+        })
+        self.assertIsNone(same_provider_direct_ferry_connection(
+            records, 1, {
+                "feeder": {"provider": "finferries"},
+                "connection": {"provider": "alandstrafiken"},
+            },
+        ))
 
     def test_non_bookable_foglo_service_keeps_loading_readiness(self) -> None:
         result = find_itineraries(
