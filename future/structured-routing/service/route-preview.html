@@ -424,17 +424,21 @@
       const list = mainRouteOptions();
       $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
       $("results").innerHTML = list.map(({ item, index }) => {
+        const shownLegs = index === activeResult && displayedLegs.length ? displayedLegs : item.legs;
+        const shownDeparture = shownLegs[0]?.departure || item.suggestedOriginDeparture;
+        const shownArrival = shownLegs[shownLegs.length - 1]?.arrival || item.arrival;
+        const shownItem = { ...item, legs: shownLegs };
         return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
-          <div class="result-time"><span>${clock(item.suggestedOriginDeparture)}</span><span>${clock(item.arrival)}</span></div>
-          <div class="result-meta"><span>${formatDuration(item.elapsedFromSuggestedDepartureMinutes)}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(item))}${itineraryChargeLabel(item) ? ` <span class="charge">${itineraryChargeLabel(item)}</span>` : ""}</span></div>
+          <div class="result-time"><span>${clock(shownDeparture)}</span><span>${clock(shownArrival)}</span></div>
+          <div class="result-meta"><span>${formatDuration(minutes(shownDeparture, shownArrival))}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(shownItem))}${itineraryChargeLabel(shownItem) ? ` <span class="charge">${itineraryChargeLabel(shownItem)}</span>` : ""}</span></div>
         </button>`;
       }).join("");
       document.querySelectorAll("[data-result]").forEach((button) => button.addEventListener("click", () => {
         activeResult = Number(button.dataset.result);
-        displayedLegs = response.itineraries[activeResult].legs;
         selectedSailings.clear();
         blockedSailings.clear();
         experimentText = "";
+        displayedLegs = preferredActiveLegs();
         ganttViewport = null;
         renderResults(); renderDetail();
       }));
@@ -443,15 +447,26 @@
     const crossingKey = (leg) => [leg.serviceType, leg.from, leg.to].join("|");
     const approachKey = (leg) => [leg.kind, leg.serviceType || "", leg.from, leg.to].join("|");
 
-    function activeRouteAnchorKey() {
+    function activeRouteAnchorLeg() {
       const routeLegs = response?.itineraries?.[activeResult]?.legs || [];
-      const routeAnchor = [...routeLegs].reverse().find((leg) => leg.kind === "scheduled_service");
+      return [...routeLegs].reverse().find((leg) => leg.kind === "scheduled_service") || null;
+    }
+
+    function activeRouteAnchorKey() {
+      const routeAnchor = activeRouteAnchorLeg();
       return routeAnchor
         ? [routeAnchor.serviceType, routeAnchor.routeId, routeAnchor.operator || "", routeAnchor.from, routeAnchor.to].join("|")
         : null;
     }
 
     const routeAnchorKey = (leg) => [leg.serviceType, leg.routeId, leg.operator || "", leg.from, leg.to].join("|");
+
+    function matchesRouteAnchor(leg, anchorLeg, anchorKey) {
+      if (routeAnchorKey(leg) === anchorKey) return true;
+      return leg.serviceType === anchorLeg?.serviceType
+        && leg.to === anchorLeg.to
+        && (leg.intermediateStops || []).some((stop) => stop.id === anchorLeg.from);
+    }
 
     function followsDisplayedApproach(connection, displayedLeg) {
       const index = displayedLegs.indexOf(displayedLeg);
@@ -742,10 +757,10 @@
         : "";
       $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div></div>${ganttMarkup()}${selectionSummary}<div class="timeline">${timeline}</div>`;
       $("clearSelections")?.addEventListener("click", () => {
-        displayedLegs = response.itineraries[activeResult].legs;
         selectedSailings.clear();
         blockedSailings.clear();
         experimentText = "";
+        displayedLegs = preferredActiveLegs();
         ganttViewport = null;
         renderResults();
         renderDetail();
@@ -792,8 +807,11 @@
 
     function bestSelectedPath(maps) {
       const routeAnchor = activeRouteAnchorKey();
+      const routeAnchorLeg = activeRouteAnchorLeg();
       const pinnedServices = [...new Set(selectedSailings.values())];
-      const anchorPin = routeAnchor ? `route:${routeAnchor}` : null;
+      const anchorPin = routeAnchor && !selectedSailings.has(crossingKey(routeAnchorLeg))
+        ? `route:${routeAnchor}`
+        : null;
       if (anchorPin) pinnedServices.push(anchorPin);
       const pinBits = new Map(pinnedServices.map((key, index) => [key, 2 ** index]));
       const allPins = 2 ** pinnedServices.length - 1;
@@ -801,17 +819,28 @@
       const nodeTimes = new Map(maps.graph.nodes.map((node) => [node.id, node.time]));
       const memo = new Map(), visiting = new Set();
 
+      function compareRiskCounts(a, b) {
+        for (let rank = riskRank.below_required_readiness; rank >= 0; rank -= 1) {
+          const difference = (a.riskCounts[rank] || 0) - (b.riskCounts[rank] || 0);
+          if (difference) return difference;
+        }
+        return 0;
+      }
+
       function compareSuffix(a, b) {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
         return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || a.risk - b.risk
+          || compareRiskCounts(a, b)
           || a.edges.length - b.edges.length;
       }
 
       function walk(node, mask) {
         const state = `${node}|${mask}`;
-        if (destinations.has(node)) return mask === allPins ? { edges: [], destination: node, risk: -1 } : null;
+        if (destinations.has(node)) return mask === allPins
+          ? { edges: [], destination: node, risk: -1, riskCounts: [0, 0, 0, 0, 0] }
+          : null;
         if (memo.has(state)) return memo.get(state);
         if (visiting.has(state)) return null;
         visiting.add(state);
@@ -822,16 +851,20 @@
             if (pinned && serviceKey(edge.leg) !== pinned) continue;
           }
           const serviceBit = pinBits.get(serviceKey(edge.leg)) || 0;
-          const anchorBit = anchorPin && edge.leg.kind === "scheduled_service" && routeAnchorKey(edge.leg) === routeAnchor
+          const anchorBit = anchorPin && edge.leg.kind === "scheduled_service" && matchesRouteAnchor(edge.leg, routeAnchorLeg, routeAnchor)
             ? pinBits.get(anchorPin) || 0
             : 0;
           const nextMask = mask | serviceBit | anchorBit;
           const rest = walk(edge.toNode, nextMask);
           if (!rest) continue;
+          const edgeRisk = riskRank[edge.leg.transferRisk?.level] ?? -1;
+          const riskCounts = [...rest.riskCounts];
+          if (edgeRisk >= 0) riskCounts[edgeRisk] += 1;
           const candidate = {
             edges: [edge, ...rest.edges],
             destination: rest.destination,
-            risk: Math.max(rest.risk, riskRank[edge.leg.transferRisk?.level] ?? -1),
+            risk: Math.max(rest.risk, edgeRisk),
+            riskCounts,
           };
           if (!best || compareSuffix(candidate, best) < 0) best = candidate;
         }
@@ -850,10 +883,24 @@
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || (aOkay && bOkay ? (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "") : 0)
           || a.risk - b.risk
+          || compareRiskCounts(a, b)
           || (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "")
           || a.edges.length - b.edges.length;
       });
       return candidates[0] || null;
+    }
+
+    function pathLegs(path) {
+      return path.edges
+        .filter((item) => !item.virtualWait)
+        .map((item) => ({ ...item.leg, _connectionId: item.id }));
+    }
+
+    function preferredActiveLegs() {
+      const fallback = response?.itineraries?.[activeResult]?.legs || [];
+      if (!response?.decisionGraph) return fallback;
+      const path = bestSelectedPath(graphMaps());
+      return path ? pathLegs(path) : fallback;
     }
 
     function selectConnection(connectionId) {
@@ -889,9 +936,7 @@
         return;
       }
       blockedSailings.clear();
-      displayedLegs = path.edges
-        .filter((item) => !item.virtualWait)
-        .map((item) => ({ ...item.leg, _connectionId: item.id }));
+      displayedLegs = pathLegs(path);
       experimentText = unlock && !selectedSailings.size
         ? "Vuoron lukitus poistettiin. Matkaketju valittiin jälleen automaattisesti."
         : `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
@@ -912,7 +957,7 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; displayedLegs = payload.itineraries[0]?.legs || []; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; ganttViewport = null;
+        response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; displayedLegs = preferredActiveLegs(); ganttViewport = null;
         const routeCount = mainRouteOptions().length;
         $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
