@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-10T06:55:52.108046+00:00",
+  "generatedAt": "2026-10-27T18:47:34.600139+00:00",
   "status": "draft_connection_trips_with_role_aware_ais_estimates",
   "timingEstimatePolicy": {
     "field": "historicalEstimate",
@@ -53201,13 +53201,13 @@
         {
           "sourceId": "finferries-korpohoutskar-weekday",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-ma-pe-talvi-1.10.2026-30.4.2027.html",
-          "sha256": "bdbda5f55b8febf7cff7591646bac452aeb41cc06fa6ce4597f1a54b158416a5",
+          "sha256": "1d4d34576e43a718f11dfe30a0dbaffa9319f64765eb7eef3cb296ee63392ad8",
           "localFile": ".timetable-checker/originals/finferries/finferries-korpohoutskar-weekday.html"
         },
         {
           "sourceId": "finferries-korpohoutskar-weekend",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-la-su-talvi-19.10.2026-30.4.2027.html",
-          "sha256": "e44a8a6a3e4ad4add2d06ec7d0319311e625acbe548d5fbb59989594237503f5",
+          "sha256": "25ea8fa0977b023d756486085e9b8be4c29bf24d5e2ab4448e1da45bc7cd1e5f",
           "localFile": ".timetable-checker/originals/finferries/finferries-korpohoutskar-weekend.html"
         }
       ],
@@ -78571,7 +78571,7 @@
         {
           "sourceId": "finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027",
           "url": "https://www.finferries.fi/media/aikataulut-2027/nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
-          "sha256": "48b304bf7893b812fa1cb8f31a6dc1319e2d053532aa51fb575e5d7181e1020c",
+          "sha256": "8c2ea175f1bac10307816901b696a5f215d11d3044c9b390a6aa3503f094d771",
           "localFile": ".timetable-checker/originals/finferries/finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf"
         }
       ],
@@ -78591,6 +78591,22 @@
           "validTo": "2027-03-24"
         }
       ],
+      "callConditions": {
+        "y": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "17:00"
+          }
+        },
+        "y+": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "12:00"
+          }
+        }
+      },
       "holidayExceptions": [],
       "trips": [
         {
@@ -84200,7 +84216,7 @@
       "sourcePageText": [
         {
           "page": 1,
-          "text": "uppdaterad / päivitetty / updated 8.12.2025\nNAGU SÖDRA RUTT / NAUVON ETELÄINEN REITTI /\nNAUVO SOUTHERN ROUTE\nVintertidtabell / talviaikataulu / Winter schedule\n1.10.2026 - 24.3.2027 m/s Falkö Tel./puh. 020 7118 790\nMå/Ma/Mon Ti/Ti/Tue Ons/Ke/Wed To/To/Thu Fre/Pe/Fri Lö/La/Sat Sön/Su/Sun\nKirjais ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++\nGullkrona y y y y y\nStenskär y y y y y\nBrännskär 07:20y 07:20y 07:20y 07:20y 07:20y\nKirjais 7:45 7:45 7:45 7:45 7:45\nKirjais 7:45 7:45 7:45 7:45 7:45 09:00y\nPensar y y y y y y\nPenö y y y y y y\nKirjais ~08:50 ~08:50 ~08:50 ~08:50 ~08:50 ~10:00y\nKirjais 09:30y ~09:30y* 09:30y 09:30y 10:00y\nGullkrona y y y\nStenskär y y y\nGrötö y y y\nBrännskär y y y\nKnivskär y y y y\nKopparholm y y\nBodö y y\nTräskholm y y\nBjörkö y y\nGloskär / Trunsö y y\nSandholm y y\nLökholm y y y y\nBorstö y y y ~13:25 12:00y+\nKirjais 16:00y\nLökholm y y y+\nSandholm y y y+\nGloskär/Trunsö y y y+\nBjörkö y y y+\nTräskholm y y y+\nBodö y y y+\nKopparholm y y y*+\nKnivskär y y\nBrännskär y y y y+\nGrötö y y y y+\nStenskär y y y y+\nGullkrona y y+\nKirjais ~17:00y 17:30y ~17:00y ~16:00 ~18:00y\nKirjais 17:00y 17:30y 16:00y 17:00y 18:00y\nPeno y y y y y\nPensar y y y y y\nKirjais 18:15y 18:45 17:15y 18:00y 19:00y\nKirjais 18:15y 17:00y 17:15y 18:00y 19:00y\nBrännskär y y y y y\nStenskär y y y y y\nGullkrona y y y y y\nKirjais ~19:45 18:30y ~18:45 ~19:30 ~20:20\nKirjais 18:30y\nPeno y\nPensar y\nKirjais ~19:45\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\nSödra ruttens fartyg på tvärgående rutten /Eteläisen reitin alus poikittaisella reitillä /The vessel of the Southern route on the Transverse route\ny = Beställningstur, beställs före kl. 18:00 dagen innan. / Tilausvuoro, tilattava edellisenä päivänä ennen klo 18:00. / Needs to be ordered the day before by 6 pm.\ny+ = Beställs senast dagen innan kl. 12:00. / Tilattava viim. edellisenä päivänä klo 12:00 / Needs to be ordered the day before by 12 pm.\n* = Via Nagu tvärgående rutt (se tvärgående ruttens tidtabell) / Nauvon poikittaisen reitin kautta (katso poikittaisen reitin aikataulu)\n/ Via the Transverse route (see the schedule of the transverse route)\n++ = Turens avgångstid varierar enligt bookningarna 0615-0650 / Vuoron lähtöaika vaihtelee tilauksien mukaan kl 0615-0650 / Departure time of the tour varies according to bookings 0615-0650\n~ = Ankomsttiden kan variera beroende på beställningsmängden. / Saapumisaika voi vaihdella tilausmäärästä riippuen. / The arrival time can change due to the amount of orders.\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026\n31.10. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n5.12. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n6.12. Sön/su/Sun Söndags tidtabell / Sunnuntain aikataulu / Sundays Schedule\n24.12. Tor/to/Thu Ingen trafik / Ei liikennöintiä / No traffic\n25.12.Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n26.12. Lör/la/Sat Lördags tidtabell / lauantain aikataulu / Saturdays schedule\n30.12. Ons/ke/Wed Ons tidtabell / Ke aikataulu / Wed schedule\n31.12. Tor/to/Thu Fredags tidtabell / perjantain aikataulu / Fridays schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027\n1.1. Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n6.1. Ons/ke/Wed Ingen trafik / Ei liikennöintiä / No traffic\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservering av bilplats via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nMax. passagerarmängd 99, max. lastkapacitet 25 t, max. antal personbilar 8\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nAutopaikan varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nMax. matkustajamäärä 99, max. lastikapasiteetti 25 t, max. henkilöautomäärä 8.\nDue to circumstances there can be changes in the schedule.\nReservations of deck space for vehicles via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nMax. amount of passengers 99, max. carrying capacity 25 t, max. amount of cars 8\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
+          "text": "uppdaterad / päivitetty / updated 20.10.2026\nNAGU SÖDRA RUTT / NAUVON ETELÄINEN REITTI /\nNAUVO SOUTHERN ROUTE\nVintertidtabell / talviaikataulu / Winter schedule\n1.10.2026 - 24.3.2027 m/s Falkö Tel./puh. 020 7118 790\nMå/Ma/Mon Ti/Ti/Tue Ons/Ke/Wed To/To/Thu Fre/Pe/Fri Lö/La/Sat Sön/Su/Sun\nKirjais ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++ ~06:15y ++\nGullkrona y y y y y\nStenskär y y y y y\nBrännskär 07:20y 07:20y 07:20y 07:20y 07:20y\nKirjais 7:45 7:45 7:45 7:45 7:45\nKirjais 7:45 7:45 7:45 7:45 7:45 09:00y\nPensar y y y y y y\nPenö y y y y y y\nKirjais ~08:50 ~08:50 ~08:50 ~08:50 ~08:50 ~10:00y\nKirjais 09:30y ~09:30y* 09:30y 09:30y 10:00y\nGullkrona y y y\nStenskär y y y\nGrötö y y y\nBrännskär y y y\nKnivskär y y y y\nKopparholm y y\nBodö y y\nTräskholm y y\nBjörkö y y\nGloskär / Trunsö y y\nSandholm y y\nLökholm y y y y\nBorstö y y y ~13:25 12:00y+\nKirjais 16:00y\nLökholm y y y+\nSandholm y y y+\nGloskär/Trunsö y y y+\nBjörkö y y y+\nTräskholm y y y+\nBodö y y y+\nKopparholm y y y*+\nKnivskär y y\nBrännskär y y y y+\nGrötö y y y y+\nStenskär y y y y+\nGullkrona y y+\nKirjais ~17:00y 17:30y ~17:00y ~16:00 ~18:00y\nKirjais 17:00y 17:30y 16:00y 17:00y 18:00y\nPeno y y y y y\nPensar y y y y y\nKirjais 18:15y 18:45 17:15y 18:00y 19:00y\nKirjais 18:15y 17:00y 17:15y 18:00y 19:00y\nBrännskär y y y y y\nStenskär y y y y y\nGullkrona y y y y y\nKirjais ~19:45 18:30y ~18:45 ~19:30 ~20:20\nKirjais 18:30y\nPeno y\nPensar y\nKirjais ~19:45\nALLA RESOR MÅSTE BOKAS I FÖRVÄG / KAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALL TRIPS MUST BE BOOKED IN ADVANCE\nAlla beställningar via bokningssystemet. / Kaikki matkavaraukset varausjärjestelmää käyttäen. / All reservations via the booking system.\nSödra ruttens fartyg på tvärgående rutten /Eteläisen reitin alus poikittaisella reitillä /The vessel of the Southern route on the Transverse route\ny = Beställningstur, beställs före kl. 17:00 dagen innan. / Tilausvuoro, tilattava edellisenä päivänä ennen klo 17:00. / Needs to be ordered the day before by 5 pm.\ny+ = Beställs senast dagen innan kl. 12:00. / Tilattava viim. edellisenä päivänä klo 12:00 / Needs to be ordered the day before by 12 pm.\n* = Via Nagu tvärgående rutt (se tvärgående ruttens tidtabell) / Nauvon poikittaisen reitin kautta (katso poikittaisen reitin aikataulu)\n/ Via the Transverse route (see the schedule of the transverse route)\n++ = Turens avgångstid varierar enligt bookningarna 0615-0650 / Vuoron lähtöaika vaihtelee tilauksien mukaan kl 0615-0650 / Departure time of the tour varies according to bookings 0615-0650\n~ = Ankomsttiden kan variera beroende på beställningsmängden. / Saapumisaika voi vaihdella tilausmäärästä riippuen. / The arrival time can change due to the amount of orders.\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2026\n31.10. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n5.12. Lör/la/Sat Ingen trafik / Ei liikennöintiä / No traffic\n6.12. Sön/su/Sun Söndags tidtabell / Sunnuntain aikataulu / Sundays Schedule\n24.12. Tor/to/Thu Ingen trafik / Ei liikennöintiä / No traffic\n25.12.Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n26.12. Lör/la/Sat Lördags tidtabell / lauantain aikataulu / Saturdays schedule\n30.12. Ons/ke/Wed Ons tidtabell / Ke aikataulu / Wed schedule\n31.12. Tor/to/Thu Fredags tidtabell / perjantain aikataulu / Fridays schedule\nHelgtrafiken / Pyhäliikenne / Schedule for public holidays 2027\n1.1. Fre/pe/Fri Ingen trafik / Ei liikennöintiä / No traffic\n6.1. Ons/ke/Wed Ingen trafik / Ei liikennöintiä / No traffic\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservering av bilplats via bokningssystemet tidigast två veckor innan avgång.\nFordonen bör vara lastningsklara 10 min innan avgångstid.\nMax. passagerarmängd 99, max. lastkapacitet 25 t, max. antal personbilar 8\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nAutopaikan varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nMax. matkustajamäärä 99, max. lastikapasiteetti 25 t, max. henkilöautomäärä 8.\nDue to circumstances there can be changes in the schedule.\nReservations of deck space for vehicles via the booking system at the earliest two weeks before desired departure.\nVehicles must be ready for loading 10 min before departure.\nMax. amount of passengers 99, max. carrying capacity 25 t, max. amount of cars 8\nTrafikmeddelanden, avvikelser och mobilapp / Liikennetiedotteet, poikkeukset ja mobiilisovellus / Traffic news, exceptions and the mobile app www.finferries.fi\nBoka din resa via bokningssystemet / Varaa matkasi varausjärjestelmän kautta / Book your trip via the booking system: booking.finferries.fi"
         }
       ],
       "routingPolicy": {
@@ -84299,7 +84315,7 @@
             "bookingMarker": "y",
             "bookingDeadline": {
               "relativeTo": "previous_day",
-              "time": "18:00"
+              "time": "17:00"
             }
           },
           "strongPrintedRuleDoesNotJoinTrips": true
@@ -84370,7 +84386,10 @@
         "journeyReservationIsSeparate": true,
         "y": {
           "operation": "booking_required",
-          "interpretationStatus": "route_specific_deadline_not_normalized"
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "17:00"
+          }
         },
         "x": {
           "operation": "source_specific_condition",
@@ -89644,7 +89663,7 @@
         {
           "sourceId": "finferries-palva",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/palva-20.2.2017-alkaen.html",
-          "sha256": "afd5bf3b87283c4e73f84ce90679f7306d2d69da4ed8ad6484cac6a097ab23e7",
+          "sha256": "3168923d79add038725377efbf6f96ae775bd681c00d00a7d346420ea9c06d44",
           "localFile": ".timetable-checker/originals/finferries/finferries-palva.html"
         }
       ],
@@ -105144,7 +105163,7 @@
         {
           "sourceId": "finferries-rymattylanreitti-rymattylan-reitti-28.9.2026-2.5.2027",
           "url": "https://www.finferries.fi/media/aikataulut-2027/rymattylan-reitti-28.9.2026-2.5.2027.pdf",
-          "sha256": "bc8ad332275855d2dcc5480eacb11dabf9b2e0124f670acdde27892c37b2478c",
+          "sha256": "514e1b9ec2bac632a794ba9c8afc768fee36cfe1266665a277b9e2ed6c9a8b97",
           "localFile": ".timetable-checker/originals/finferries/finferries-rymattylanreitti-rymattylan-reitti-28.9.2026-2.5.2027.pdf"
         }
       ],
@@ -109994,7 +110013,7 @@
           "tableIndex": 1,
           "rows": [
             [
-              "Pyhäliikenne / Helgtrafiken / Schedule for public holidays 2026\n31.10. la/Lö/Sat Ei liikennettä / ingen trafik / no traffic\n6.12. pe/Fre/Fri Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n24.12. to/To/Thu Haapalasta 09:00y (kaikki saaret, ei Pähkinäinen, Maisaari) /\nFrån Haapala 09:00y (alla öarna, ej Pähkinäinen, Maisaari) / From Haapala 09:00 y (all islands, not Pähkinäinen, Maisaari)\n25.12. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n26.12. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n31.12. to/Tor/Thu Torstain aikataulu /Torsdags tidtabel / Thursday's schedule\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2027\n1.1. pe/Fre/Fri Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n6.1. ke/Ons/Wed Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n25.3. to/To/Thu Perjantain aikataulu / Fredagens tidtabell / Friday's schedule\n26.3. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n27.3. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n28.3. su/Sö/Sun Ei liikennettä / ingen trafik / no traffic\n29.3. ma/Mån/Mon Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n1.5. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\""
+              "Pyhäliikenne / Helgtrafiken / Schedule for public holidays 2026\n31.10. la/Lö/Sat Ei liikennettä / ingen trafik / no traffic\n6.12. su/Sö/Sun Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n24.12. to/To/Thu Haapalasta 09:00y (kaikki saaret, ei Pähkinäinen, Maisaari) /\nFrån Haapala 09:00y (alla öarna, ej Pähkinäinen, Maisaari) / From Haapala 09:00 y (all islands, not Pähkinäinen, Maisaari)\n25.12. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n26.12. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n31.12. to/Tor/Thu Torstain aikataulu / Torsdagens tidtabell / Thursday's schedule\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2027\n1.1. pe/Fre/Fri Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n6.1. ke/Ons/Wed Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n25.3. to/To/Thu Perjantain aikataulu / Fredagens tidtabell / Friday's schedule\n26.3. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n27.3. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n28.3. su/Sö/Sun Ei liikennettä / ingen trafik / no traffic\n29.3. ma/Mån/Mon Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n1.5. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\""
             ],
             [
               "Autopaikan ja rahdin varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 100, max. lastikapasiteetti 25t, henkilöautomäärä 8.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää."
@@ -110011,11 +110030,11 @@
       "sourcePageText": [
         {
           "page": 1,
-          "text": "päivitetty / uppdaterad / updated 31.10.2025 1/2\nRYMÄTTYLÄN REITTIALUE / RIMITO RUTTOMRÅDE /\nRYMÄTTYLÄ ROUTE\nTalviaikataulu / Vintertidtabell / Winter schedule\n28.9.2026 - 2.5.2027 m/s Isla Puh. / Tel. 020 7118 796\nMa/Må/Mon Ti/Ti/Tue Ke/Ons/Wed To/Tors/Thu Pe/Fre/Fri La/Lö/Sat Su/Sö/Sun\nHaapala 06:00y 06:00y 06:00y 06:00y 06:00y 07:50y 08:00y\nRuotsalainen y y y y y y y\nKorvenmaa/Wihuri/Pyytti y y y y y y\nPakinainen y y y y y y\nSamsaari y\nRuotsalainen y y y y y y\nHaapala 7:45y 7:45y 7:45y 7:45y 7:45y 08:30y 10:30y\nHaapala 07:45y 07:45y 07:45y\nSamsaari y y y\nMaisaari y\nHaapala 09:05y 09:40y 09:05y\nHaapala 10:15x 10:15x 10:15x 10:15x 10:15x 09:00x\nRuotsalainen (10:35)x (10:35)x (10:35)x (10:35)x (10:35)x (09:20)x\nPakinainen (10:55)x (10:55)x (10:55)x (10:55)x (10:55)x (09:40)x\nKorvenmaa/Wihuri/Pyytti x x x x x x\nPähkinäinen y\nSamsaari y y y\nRuotsalainen x x x x x x\nHaapala 12:00 12:00 13:00 12:00 12:45 11:30\nHaapala 14:30y 14:00y 14:00y 12:00y\nSamsaari y y y y\nMaisaari y y y\nHaapala 15:50y 15:50y 15:50y 13:50y\nHaapala 16:00x 16:00x 16:00x 16:00x 16:00x 15:00y 14:00x\nRuotsalainen (16:20)x (16:20)x (16:20)x (16:20)x (16:20)x y (14:20)x\nPakinainen (16:40)x (16:40)x (16:40)x (16:40)x (16:40)x y (14:40)x\nKorvenmaa/Wihuri/Pyytti x x x x x y x\nPähkinäinen y y\nSamsaari y y y\nRuotsalainen x x x x x y x\nHaapala 17:50 17:50 18:45 18:30 17:50 17:25y 15:50\nHaapala 18:30y 16:00x\nRuotsalainen (18:50)y (16:20)x\nPähkinäinen y\nPakinainen (19:10)y (16:40/17:05)x\nKorvenmaa/Wihuri/Pyytti y x\nRuotsalainen y x\nHaapala 20:10y 18:30\nKAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALLA RESOR MÅSTE BOKAS I FÖRVÄG / ALL TRIPS MUST BE BOOKED IN ADVANCE\nKaikki matkavaraukset varausjärjestelmää käyttäen. / Alla beställningar via bokningssystemet. / All reservations via the booking system.\nLiikennetiedotteet, poikkeukset ja mobiilisovellus / Trafikmeddelanden, avvikelser och mobilapp / Traffic news, exceptions and the mobile app www.finferries.fi\nVaraa matkasi varausjärjestelmän kautta / Boka din resa via bokningssystemet / Book your trip via the booking system: booking.finferries.fi"
+          "text": "päivitetty / uppdaterad / updated 22.10.2026 1/2\nRYMÄTTYLÄN REITTIALUE / RIMITO RUTTOMRÅDE /\nRYMÄTTYLÄ ROUTE\nTalviaikataulu / Vintertidtabell / Winter schedule\n28.9.2026 - 2.5.2027 m/s Isla Puh. / Tel. 020 7118 796\nMa/Må/Mon Ti/Ti/Tue Ke/Ons/Wed To/Tors/Thu Pe/Fre/Fri La/Lö/Sat Su/Sö/Sun\nHaapala 06:00y 06:00y 06:00y 06:00y 06:00y 07:50y 08:00y\nRuotsalainen y y y y y y y\nKorvenmaa/Wihuri/Pyytti y y y y y y\nPakinainen y y y y y y\nSamsaari y\nRuotsalainen y y y y y y\nHaapala 7:45y 7:45y 7:45y 7:45y 7:45y 08:30y 10:30y\nHaapala 07:45y 07:45y 07:45y\nSamsaari y y y\nMaisaari y\nHaapala 09:05y 09:40y 09:05y\nHaapala 10:15x 10:15x 10:15x 10:15x 10:15x 09:00x\nRuotsalainen (10:35)x (10:35)x (10:35)x (10:35)x (10:35)x (09:20)x\nPakinainen (10:55)x (10:55)x (10:55)x (10:55)x (10:55)x (09:40)x\nKorvenmaa/Wihuri/Pyytti x x x x x x\nPähkinäinen y\nSamsaari y y y\nRuotsalainen x x x x x x\nHaapala 12:00 12:00 13:00 12:00 12:45 11:30\nHaapala 14:30y 14:00y 14:00y 12:00y\nSamsaari y y y y\nMaisaari y y y\nHaapala 15:50y 15:50y 15:50y 13:50y\nHaapala 16:00x 16:00x 16:00x 16:00x 16:00x 15:00y 14:00x\nRuotsalainen (16:20)x (16:20)x (16:20)x (16:20)x (16:20)x y (14:20)x\nPakinainen (16:40)x (16:40)x (16:40)x (16:40)x (16:40)x y (14:40)x\nKorvenmaa/Wihuri/Pyytti x x x x x y x\nPähkinäinen y y\nSamsaari y y y\nRuotsalainen x x x x x y x\nHaapala 17:50 17:50 18:45 18:30 17:50 17:25y 15:50\nHaapala 18:30y 16:00x\nRuotsalainen (18:50)y (16:20)x\nPähkinäinen y\nPakinainen (19:10)y (16:40/17:05)x\nKorvenmaa/Wihuri/Pyytti y x\nRuotsalainen y x\nHaapala 20:10y 18:30\nKAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALLA RESOR MÅSTE BOKAS I FÖRVÄG / ALL TRIPS MUST BE BOOKED IN ADVANCE\nKaikki matkavaraukset varausjärjestelmää käyttäen. / Alla beställningar via bokningssystemet. / All reservations via the booking system.\nLiikennetiedotteet, poikkeukset ja mobiilisovellus / Trafikmeddelanden, avvikelser och mobilapp / Traffic news, exceptions and the mobile app www.finferries.fi\nVaraa matkasi varausjärjestelmän kautta / Boka din resa via bokningssystemet / Book your trip via the booking system: booking.finferries.fi"
         },
         {
           "page": 2,
-          "text": "päivitetty / uppdaterad / updated 31.10.2025 2/2\nRYMÄTTYLÄN REITTIALUE\nRIMITO RUTTOMRÅDE / RYMÄTTYLÄ ROUTE\nTalviaikataulu / Vintertidtabell / Winter schedule m/s Isla Puh. / Tel. 020 7118 796\n28.9.2026 - 2.5.2027\nKAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALLA RESOR MÅSTE BOKAS I FÖRVÄG / ALL TRIPS MUST BE BOOKED IN ADVANCE\nKaikki matkavaraukset varausjärjestelmää käyttäen. / Alla beställningar via bokningssystemet. / All reservations via the booking system.\nEi liikennöintiä talvikaudella / Ingen trafik på vintertiden / No traffic at winter time 1.11. - 1.4.\nMaisaari/Pähkinäinen vain avovesiaikana / endast vid öppet vatten / only during open water season\nPähkinäinen & Maisaari = Retkeilysaaret, utflyktsöar, camping islands\nx = Tilattava viimeistään samana päivänä klo 09:00 mennessä varausjärjestelmän kautta.\nBeställs senast samma dag före kl 09:00 via bokningssystemet.\nTo be ordered the same day before 09:00 via the booking system.\ny = Tilausvuoro. Tilattava viimeistään edellisenä liikennöintipäivänä klo 17:00 mennessä varausjärjestelmän kautta.\nBeställningstur. Beställs senast föregående dag kl. 17:00 via bokningssystemet.\nTo be ordered the day before by 17:00 via the booking system.\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2026\n31.10. la/Lö/Sat Ei liikennettä / ingen trafik / no traffic\n6.12. pe/Fre/Fri Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n24.12. to/To/Thu Haapalasta 09:00y (kaikki saaret, ei Pähkinäinen, Maisaari) /\nFrån Haapala 09:00y (alla öarna, ej Pähkinäinen, Maisaari) / From Haapala 09:00 y (all islands, not Pähkinäinen, Maisaari)\n25.12. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n26.12. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n31.12. to/Tor/Thu Torstain aikataulu /Torsdags tidtabel / Thursday's schedule\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2027\n1.1. pe/Fre/Fri Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n6.1. ke/Ons/Wed Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n25.3. to/To/Thu Perjantain aikataulu / Fredagens tidtabell / Friday's schedule\n26.3. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n27.3. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n28.3. su/Sö/Sun Ei liikennettä / ingen trafik / no traffic\n29.3. ma/Mån/Mon Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n1.5. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\nAutopaikan ja rahdin varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 100, max. lastikapasiteetti 25t, henkilöautomäärä 8.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångtiden.\nFartygens max antal passagerarmängd 100, max lastkapacitet 25t, max antal personbilar 8.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before desired departure.\nVechicles and passengers must be ready for loading 10 min before departure time\nMax. amount of passengers 100, max. carrying capacity 25t, max. amount of cars 8.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nLiikennetiedotteet, poikkeukset ja mobiilisovellus / Trafikmeddelanden, avvikelser och mobilapp / Traffic news, exceptions and the mobile app www.finferries.fi\nVaraa matkasi varausjärjestelmän kautta / Boka din resa via bokningssystemet / Book your trip via the booking system: booking.finferries.fi"
+          "text": "päivitetty / uppdaterad / updated 22.10.2026 2/2\nRYMÄTTYLÄN REITTIALUE\nRIMITO RUTTOMRÅDE / RYMÄTTYLÄ ROUTE\nTalviaikataulu / Vintertidtabell / Winter schedule m/s Isla Puh. / Tel. 020 7118 796\n28.9.2026 - 2.5.2027\nKAIKKI MATKAT VARATTAVA ETUKÄTEEN / ALLA RESOR MÅSTE BOKAS I FÖRVÄG / ALL TRIPS MUST BE BOOKED IN ADVANCE\nKaikki matkavaraukset varausjärjestelmää käyttäen. / Alla beställningar via bokningssystemet. / All reservations via the booking system.\nEi liikennöintiä talvikaudella / Ingen trafik på vintertiden / No traffic at winter time 1.11. - 1.4.\nMaisaari/Pähkinäinen vain avovesiaikana / endast vid öppet vatten / only during open water season\nPähkinäinen & Maisaari = Retkeilysaaret, utflyktsöar, camping islands\nx = Tilattava viimeistään samana päivänä klo 09:00 mennessä varausjärjestelmän kautta.\nBeställs senast samma dag före kl 09:00 via bokningssystemet.\nTo be ordered the same day before 09:00 via the booking system.\ny = Tilausvuoro. Tilattava viimeistään edellisenä liikennöintipäivänä klo 17:00 mennessä varausjärjestelmän kautta.\nBeställningstur. Beställs senast föregående dag kl. 17:00 via bokningssystemet.\nTo be ordered the day before by 17:00 via the booking system.\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2026\n31.10. la/Lö/Sat Ei liikennettä / ingen trafik / no traffic\n6.12. su/Sö/Sun Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n24.12. to/To/Thu Haapalasta 09:00y (kaikki saaret, ei Pähkinäinen, Maisaari) /\nFrån Haapala 09:00y (alla öarna, ej Pähkinäinen, Maisaari) / From Haapala 09:00 y (all islands, not Pähkinäinen, Maisaari)\n25.12. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n26.12. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n31.12. to/Tor/Thu Torstain aikataulu / Torsdagens tidtabell / Thursday's schedule\nPyhäliikenne / Helgtrafiken / Schedule for public holidays 2027\n1.1. pe/Fre/Fri Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n6.1. ke/Ons/Wed Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n25.3. to/To/Thu Perjantain aikataulu / Fredagens tidtabell / Friday's schedule\n26.3. pe/Fre/Fri Ei liikennettä / ingen trafik / no traffic\n27.3. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\n28.3. su/Sö/Sun Ei liikennettä / ingen trafik / no traffic\n29.3. ma/Mån/Mon Sunnuntain aikataulu / Söndagens tidtabell / Sunday's schedule\n1.5. la/Lö/Sat Lauantain aikataulu, kaikki vuorot \"y\" / Lördagens tidtabell. Alla turer \"y\" / Saturday's schedule, all tours \"y\"\nAutopaikan ja rahdin varaus maksimissaan kaksi viikkoa ennen aiottua lähtöä varausjärjestelmän kautta.\nAjoneuvojen ja matkustajien tulee olla lastausvalmiina 10 min ennen lähtöaikaa.\nAluksen max. matkustajamäärä 100, max. lastikapasiteetti 25t, henkilöautomäärä 8.\nOlosuhteista johtuen voidaan aikataulusta poiketa tai liikenne keskeyttää.\nReservering av bilplats och fraktleveranser via bokningssystemet tidigast två veckor innan avgång.\nFordonen och passagerare bör vara klara för inlastning 10 min. före avgångtiden.\nFartygens max antal passagerarmängd 100, max lastkapacitet 25t, max antal personbilar 8.\nBeroende på omständigheterna kan turlistan ändras eller trafiken inställas.\nReservations of deck space for vehicle and cargo transport via the booking system at the earliest two weeks before desired departure.\nVechicles and passengers must be ready for loading 10 min before departure time\nMax. amount of passengers 100, max. carrying capacity 25t, max. amount of cars 8.\nDue to circumstances there can be changes in the schedule or tours can be cancelled.\nLiikennetiedotteet, poikkeukset ja mobiilisovellus / Trafikmeddelanden, avvikelser och mobilapp / Traffic news, exceptions and the mobile app www.finferries.fi\nVaraa matkasi varausjärjestelmän kautta / Boka din resa via bokningssystemet / Book your trip via the booking system: booking.finferries.fi"
         }
       ],
       "routingPolicy": {
@@ -119040,34 +119059,21 @@
           "crossingMinutes": 4,
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "breaks": [
             {
               "start": "02:30",
               "end": "03:05",
               "operatingDays": "1234567"
-            }
-          ],
-          "weekendAndHolidayBreaks": [
-            {
-              "start": "09:10",
-              "end": "09:30"
-            },
-            {
-              "start": "11:55",
-              "end": "12:30"
-            },
-            {
-              "start": "17:55",
-              "end": "18:30"
             },
             {
               "start": "19:55",
-              "end": "20:15"
+              "end": "20:15",
+              "operatingDays": "_____6_"
             }
           ]
         },
@@ -119086,34 +119092,21 @@
           "crossingMinutes": 4,
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "breaks": [
             {
               "start": "02:30",
               "end": "03:05",
               "operatingDays": "1234567"
-            }
-          ],
-          "weekendAndHolidayBreaks": [
-            {
-              "start": "09:10",
-              "end": "09:30"
-            },
-            {
-              "start": "11:55",
-              "end": "12:30"
-            },
-            {
-              "start": "17:55",
-              "end": "18:30"
             },
             {
               "start": "19:55",
-              "end": "20:15"
+              "end": "20:15",
+              "operatingDays": "_____6_"
             }
           ]
         }
@@ -119121,10 +119114,10 @@
       "notes": [],
       "sources": [
         {
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
-          "url": "https://www.alandstrafiken.ax/sites/default/files/2026-01/toftolinjen-inkl-avvikelser.pdf",
-          "sha256": "32e8700eae07dfe78c70dc6cffeb06ba18980834b4423c382a09b1aabede95a8",
-          "localFile": ".timetable-checker/originals/alandstrafiken/alandstrafiken-toftolinjen-inkl-avvikelser.pdf"
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
+          "url": "https://www.alandstrafiken.ax/sites/default/files/2026-10/toftolinjen-17.10.26-28.2.27.pdf",
+          "sha256": "018e8767de90687de4d5cae9e4536b586cdea2ef92a97bdc49433f59b5df5881",
+          "localFile": ".timetable-checker/originals/alandstrafiken/toftolinjen-17.10.26-28.2.27.pdf"
         }
       ],
       "review": {
@@ -119140,46 +119133,13 @@
       "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "holidayExceptions": [
         {
-          "date": "2026-04-03",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-05-01",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-05-14",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-06-19",
-          "scheduleDayOverride": "friday"
-        },
-        {
           "date": "2026-12-24",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          },
           "trafficEnds": "00:00",
           "onOrderDepartures": [
             "01:00"
@@ -119196,12 +119156,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119223,12 +119183,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119262,12 +119222,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119289,12 +119249,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119328,12 +119288,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119355,12 +119315,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119394,12 +119354,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119427,12 +119387,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119472,12 +119432,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119499,12 +119459,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119538,12 +119498,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119565,12 +119525,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119604,12 +119564,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119631,12 +119591,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119670,12 +119630,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119703,12 +119663,12 @@
           "operatingDays": "12345__",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119748,12 +119708,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119775,12 +119735,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119814,12 +119774,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119841,12 +119801,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119880,12 +119840,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119907,12 +119867,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -119946,12 +119906,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -119973,12 +119933,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120012,12 +119972,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120039,12 +119999,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120075,15 +120035,15 @@
         },
         {
           "id": "toftolinjen-cable-0027",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120102,15 +120062,15 @@
         },
         {
           "id": "toftolinjen-cable-0028",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120144,12 +120104,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120171,12 +120131,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120210,12 +120170,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120237,12 +120197,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120276,12 +120236,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120303,12 +120263,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120342,12 +120302,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120369,12 +120329,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120408,12 +120368,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120435,12 +120395,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120474,12 +120434,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120501,12 +120461,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120540,12 +120500,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120567,12 +120527,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120606,12 +120566,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120633,12 +120593,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120672,12 +120632,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120699,12 +120659,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120738,12 +120698,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120765,12 +120725,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120801,15 +120761,15 @@
         },
         {
           "id": "toftolinjen-cable-0049",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120828,15 +120788,15 @@
         },
         {
           "id": "toftolinjen-cable-0050",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120867,15 +120827,15 @@
         },
         {
           "id": "toftolinjen-cable-0051",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120894,15 +120854,15 @@
         },
         {
           "id": "toftolinjen-cable-0052",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -120936,12 +120896,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -120963,12 +120923,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121002,12 +120962,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121029,12 +120989,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121068,12 +121028,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121095,12 +121055,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121134,12 +121094,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121161,12 +121121,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121200,12 +121160,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121227,12 +121187,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121266,12 +121226,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121293,12 +121253,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121332,12 +121292,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121359,12 +121319,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121398,12 +121358,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121425,12 +121385,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121464,12 +121424,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121491,12 +121451,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121530,12 +121490,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121557,12 +121517,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121596,12 +121556,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121623,12 +121583,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121662,12 +121622,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121689,12 +121649,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121728,12 +121688,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121755,12 +121715,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121794,12 +121754,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121827,12 +121787,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121872,12 +121832,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121899,12 +121859,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -121938,12 +121898,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -121965,12 +121925,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122004,12 +121964,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122031,12 +121991,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122070,12 +122030,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122103,12 +122063,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122148,12 +122108,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122175,12 +122135,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122214,12 +122174,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122241,12 +122201,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122280,12 +122240,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122307,12 +122267,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122346,12 +122306,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122379,12 +122339,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122421,15 +122381,15 @@
         },
         {
           "id": "toftolinjen-cable-0097",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122448,15 +122408,15 @@
         },
         {
           "id": "toftolinjen-cable-0098",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122487,15 +122447,15 @@
         },
         {
           "id": "toftolinjen-cable-0099",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122514,15 +122474,15 @@
         },
         {
           "id": "toftolinjen-cable-0100",
-          "operatingDays": "12345__",
+          "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122556,12 +122516,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122583,12 +122543,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122622,12 +122582,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122649,12 +122609,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122688,12 +122648,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122715,12 +122675,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122754,12 +122714,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122781,12 +122741,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122820,12 +122780,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122847,12 +122807,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122886,12 +122846,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122913,12 +122873,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -122949,15 +122909,15 @@
         },
         {
           "id": "toftolinjen-cable-0113",
-          "operatingDays": "12345__",
+          "operatingDays": "12345_7",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -122976,15 +122936,15 @@
         },
         {
           "id": "toftolinjen-cable-0114",
-          "operatingDays": "12345__",
+          "operatingDays": "12345_7",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
-          "publicHolidayPolicy": "excluded",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "publicHolidayPolicy": "included",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123018,12 +122978,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123045,12 +123005,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123084,12 +123044,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123111,12 +123071,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123150,12 +123110,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123177,12 +123137,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123216,12 +123176,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123243,12 +123203,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123282,12 +123242,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123309,12 +123269,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123348,12 +123308,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123375,12 +123335,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123414,12 +123374,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Töftö",
@@ -123441,12 +123401,12 @@
           "operatingDays": "1234567",
           "validPeriods": [
             {
-              "validFrom": "2026-01-01",
-              "validTo": "2026-12-31"
+              "validFrom": "2026-10-17",
+              "validTo": "2027-02-28"
             }
           ],
           "publicHolidayPolicy": "included",
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
           "calls": [
             {
               "stop": "Prästö",
@@ -123524,7 +123484,7 @@
             [
               "09",
               "00",
-              "151)",
+              "15",
               "30",
               "45"
             ],
@@ -123544,8 +123504,8 @@
             ],
             [
               "12",
-              "001)",
-              "151)",
+              "00",
+              "15",
               "30",
               "45"
             ],
@@ -123586,8 +123546,8 @@
             ],
             [
               "18",
-              "001)",
-              "151)",
+              "00",
+              "15",
               "30 45",
               null
             ],
@@ -123634,14 +123594,14 @@
               null
             ],
             [
-              "Lör, sön\noch helgdag",
-              "09:10–09:30\n11:55–12:30\n17:55–18:30\n19:55–20:15",
+              "Lördag",
+              "19:55–20:15",
               "",
               "",
               ""
             ],
             [
-              "1) Lördag, söndag och helgdag: Rödmarkerade turer utgår.",
+              "1) Lördag: Rödmarkerade turer utgår.",
               null,
               null,
               null,
@@ -123667,7 +123627,7 @@
       "sourcePageText": [
         {
           "page": 1,
-          "text": "Töftölinjens linfärja 1/1 2026–\nAVGÅNGSTIDER FRÅN TÖFTÖ (TÖFTÖ–PRÄSTÖ)\nTRAFIK VID BEHOV Vardagar 22:00-05:50. Lör, sön och helgdag 22:00–07:50\n06 002) 152) 302) 452)*)\n07 002) 152) 302) 452)*)\n08 00 15 30 45\n09 00 151) 30 45\n10 00 15 30 45\n11 00 15 30 45\n12 001) 151) 30 45\n13 00 15 30 45\n14 00 15 30 45\n15 00 15 30 45*)\n16 00 15 30 45*)\n17 00 15 30 45*)\n18 001) 151) 30 45\n19 00 15 30 45\n20 001) 15 30 45\n21 00 15 30 45\nTRAFIKUPPEHÅLL\nAlla dagar: 02:30–03:05\nLör, sön 09:10–09:30\noch helgdag 11:55–12:30\n17:55–18:30\n19:55–20:15\n1) Lördag, söndag och helgdag: Rödmarkerade turer utgår.\n2) Kör utan turlista lördag, söndag och helgdag.\n*) Vid behov inväntar färjan på bussar i linjetrafik, även från Prästö.\nTöftölinjens linfärja +358 (0)457 3421 279, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Töftö.\nAvgångstid från Prästö är cirka 5 -7 minuter efter angiven avgångstid från Töftö.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte kan ta mer last.\nFörtur har: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och brådskande sjuktransporter.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nAvvikelser:\nFre 3/4 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 1/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nTors 14/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 19/6 Fredagstrafik.\nTors 24/12 Söndagstrafik som avslutas kl. 24:00.\nPaus kl. 17:55-18:30 utgår.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
+          "text": "Töftölinjens linfärja 1/1 2026–28/2 2027\nUPPDATERAD 17/10 2026\nAVGÅNGSTIDER FRÅN TÖFTÖ (TÖFTÖ–PRÄSTÖ)\nTRAFIK VID BEHOV Vardagar 22:00-05:50. Lör, sön och helgdag 22:00–07:50\n06 002) 152) 302) 452)*)\n07 002) 152) 302) 452)*)\n08 00 15 30 45\n09 00 15 30 45\n10 00 15 30 45\n11 00 15 30 45\n12 00 15 30 45\n13 00 15 30 45\n14 00 15 30 45\n15 00 15 30 45*)\n16 00 15 30 45*)\n17 00 15 30 45*)\n18 00 15 30 45\n19 00 15 30 45\n20 001) 15 30 45\n21 00 15 30 45\nTRAFIKUPPEHÅLL\nAlla dagar: 02:30–03:05\nLördag 19:55–20:15\n1) Lördag: Rödmarkerade turer utgår.\n2) Kör utan turlista lördag, söndag och helgdag.\n*) Vid behov inväntar färjan på bussar i linjetrafik, även från Prästö.\nTöftölinjens linfärja +358 (0)457 3421 279, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Töftö.\nAvgångstid från Prästö är cirka 5 -7 minuter efter angiven avgångstid från Töftö.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte kan ta mer last.\nFörtur har: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och brådskande sjuktransporter.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nAvvikelser:\nFre 3/4 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 1/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nTors 14/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 19/6 Fredagstrafik.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
         }
       ],
       "routingPolicy": {
@@ -139543,7 +139503,7 @@
         {
           "sourceId": "finferries-vartsala",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/vartsala-1.10.2025-alkaen.html",
-          "sha256": "ad6bf997b9aa008d6bdf91c74064bee82ffe4ebfb1f5c1328b92e79afd0b3cc8",
+          "sha256": "3ef5d3647edef23d18e525757a7475f52cc4b3a361421dba327495f825c50880",
           "localFile": ".timetable-checker/originals/finferries/finferries-vartsala.html"
         }
       ],
@@ -163303,7 +163263,7 @@
     "unmappedFerryDepartureLabelCount": 0,
     "scheduledDepartureCount": 904,
     "unconvertedSourceCount": 0,
-    "expiredSourceCount": 9,
+    "expiredSourceCount": 7,
     "supersededSourceCount": 1,
     "unresolvedDepartureNoteCount": 312,
     "connectionRouteTripCount": 446,

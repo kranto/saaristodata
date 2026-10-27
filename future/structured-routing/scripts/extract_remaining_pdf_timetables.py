@@ -8,6 +8,7 @@ split into routing-ready trips.  The review queue records that semantic work.
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -46,10 +47,29 @@ SOURCES = {
     "alandstrafiken-seglinge-linfarja-14.9-31.12-1": ("seglingelinjen", "alandstrafiken", "2026-09-14", "2026-12-31", [1]),
     "alandstrafiken-simskala-1": ("simskalalinjen", "alandstrafiken", "2026-01-01", "2026-12-31", [1]),
     "alandstrafiken-sodra-linjen-30.9.2026": ("sodralinjen", "alandstrafiken", "2026-09-28", "2027-01-01", [9, 10, 11]),
-    "alandstrafiken-toftolinjen-inkl-avvikelser": ("toftolinjen", "alandstrafiken", "2026-01-01", "2026-12-31", [1]),
+    "alandstrafiken-toftolinjen-17.10.2026-28.2.2027": ("toftolinjen", "alandstrafiken", "2026-10-17", "2027-02-28", [1]),
     # Saaristolinjat
     "saaristolinjat-korppoon-reittialue-2026-09-01": ("korporutt", "saaristolinjat", "2026-09-01", "2027-06-01", [1]),
 }
+
+SOURCE_FILES = {
+    "alandstrafiken-toftolinjen-17.10.2026-28.2.2027": "toftolinjen-17.10.26-28.2.27.pdf",
+}
+
+# These fields contain reviewed semantics layered on top of the lossless PDF
+# extraction.  Refreshing the source tables must not discard that work.
+PRESERVED_CURATED_FIELDS = (
+    "publicTimetableUrl",
+    "vessel",
+    "vessels",
+    "vesselByCode",
+    "capacity",
+    "contact",
+    "holidayExceptions",
+    "booking",
+    "travelerInformation",
+    "callConditions",
+)
 
 
 def clean(value):
@@ -60,9 +80,15 @@ def clean(value):
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("source_ids", nargs="*", choices=sorted(SOURCES))
+    args = parser.parse_args()
+    selected_sources = set(args.source_ids)
     OUTPUT.mkdir(exist_ok=True)
     for source_id, (route_id, provider, valid_from, valid_to, selected_pages) in SOURCES.items():
-        path = ORIGINALS / provider / f"{source_id}.pdf"
+        if selected_sources and source_id not in selected_sources:
+            continue
+        path = ORIGINALS / provider / SOURCE_FILES.get(source_id, f"{source_id}.pdf")
         tables = []
         page_text = []
         with pdfplumber.open(path) as pdf:
@@ -90,6 +116,7 @@ def main() -> None:
                 "Mainland Finland source: Finnish is the default authority when language versions conflict"
             ),
             "sourceId": source_id,
+            **({"sourceFile": SOURCE_FILES[source_id]} if source_id in SOURCE_FILES else {}),
             "review": {
                 "status": "machine_extracted_requires_semantic_review",
                 "method": "pdfplumber table extraction",
@@ -359,7 +386,7 @@ def main() -> None:
                     }],
                 },
             ]
-        if source_id == "alandstrafiken-toftolinjen-inkl-avvikelser":
+        if source_id == "alandstrafiken-toftolinjen-17.10.2026-28.2.2027":
             data["routingPolicy"] = {
                 "weekendAndHolidayNightMorningService": {
                     "operatingDays": "_____67",
@@ -380,31 +407,6 @@ def main() -> None:
                     ),
                 }
             }
-            data["holidayExceptions"] = [
-                {
-                    "date": "2026-12-24",
-                    "baseSchedule": "sunday",
-                    "cancelledBreak": {
-                        "from": "17:55",
-                        "to": "18:30",
-                    },
-                    "lastScheduledDeparture": "21:45",
-                    "onDemandService": {
-                        "from": "22:00",
-                        "to": "00:00",
-                    },
-                },
-                {
-                    "date": "2026-12-25",
-                    "specialOrderedDeparture": "01:00",
-                    "noOtherServiceBefore": "06:00",
-                    "onDemandService": {
-                        "from": "06:00",
-                        "to": "07:50",
-                    },
-                    "scheduledServiceResumes": "08:00",
-                },
-            ]
         if source_id == "alandstrafiken-simskala-1":
             data["canonicalStopNames"] = {
                 "Timskär": {
@@ -562,6 +564,22 @@ def main() -> None:
                 ),
             }
         if source_id == "finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027":
+            data["callConditions"] = {
+                "y": {
+                    "operation": "booking_required",
+                    "bookingDeadline": {
+                        "relativeTo": "previous_day",
+                        "time": "17:00",
+                    },
+                },
+                "y+": {
+                    "operation": "booking_required",
+                    "bookingDeadline": {
+                        "relativeTo": "previous_day",
+                        "time": "12:00",
+                    },
+                },
+            }
             data["routingPolicy"] = {
                 "servicePattern": "reservation_activated_island_loop",
                 "serviceRunsWhen": "at_least_one_island_journey_is_reserved",
@@ -1059,7 +1077,7 @@ def main() -> None:
                     "bookingMarker": "y",
                     "bookingDeadline": {
                         "relativeTo": "previous_day",
-                        "time": "18:00",
+                        "time": "17:00",
                     },
                 },
                 "strongPrintedRuleDoesNotJoinTrips": True,
@@ -1242,7 +1260,20 @@ def main() -> None:
                 "guaranteedHold": "not_stated_by_source",
                 "distinctionFromFridayConnection": "Unlike Friday's one-way connection with a long wait, this is an official simultaneous bidirectional connection.",
             }]
-        (OUTPUT / f"{source_id}.json").write_text(
+        output_path = OUTPUT / f"{source_id}.json"
+        if output_path.exists():
+            previous = json.loads(output_path.read_text())
+            merged = {}
+            for field, previous_value in previous.items():
+                if field in data:
+                    merged[field] = data[field]
+                elif field in PRESERVED_CURATED_FIELDS:
+                    merged[field] = previous_value
+            for field, value in data.items():
+                if field not in merged:
+                    merged[field] = value
+            data = merged
+        output_path.write_text(
             json.dumps(data, ensure_ascii=False, indent=2) + "\n"
         )
 

@@ -129,6 +129,14 @@ class ExampleJourneyTests(unittest.TestCase):
         self.assert_route_ids(result, ["rymattylanreitti"])
         self.assertLess(result["arrival"], "2026-11-01T10:30")
 
+    def test_tofto_new_schedule_extends_into_2027_and_skips_saturday_20_00(self) -> None:
+        saturday = route("Töftö", "Prästö", "2027-01-02", "19:50")
+        sunday = route("Töftö", "Prästö", "2027-01-03", "19:50")
+        self.assert_route_ids(saturday, ["toftolinjen"])
+        self.assert_route_ids(sunday, ["toftolinjen"])
+        self.assertEqual(saturday["legs"][0]["departure"], "2027-01-02T20:15")
+        self.assertEqual(sunday["legs"][0]["departure"], "2027-01-03T20:00")
+
     def test_nagu_to_degerby_uses_the_now_complete_earliest_road_ferry_path(self) -> None:
         result = route("Nagu", "Degerby", "2026-11-03")
         self.assert_route_ids(

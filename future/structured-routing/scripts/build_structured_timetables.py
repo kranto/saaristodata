@@ -138,22 +138,19 @@ ALAND_SCHEDULED_CABLE_FERRIES = {
         "weekdayOnlyTimes": [
             "06:00", "06:15", "06:30", "06:45",
             "07:00", "07:15", "07:30", "07:45",
-            "09:15", "12:00", "12:15", "18:00", "18:15", "20:00",
         ],
+        "operatingDaysByTime": {"20:00": "12345_7"},
         "waitForConnectionTimes": ["06:45", "07:45", "15:45", "16:45", "17:45"],
-        "validPeriods": [{"validFrom": "2026-01-01", "validTo": "2026-12-31"}],
+        "validPeriods": [{"validFrom": "2026-10-17", "validTo": "2027-02-28"}],
         "continuousServices": [
             {"serviceMode": "on_demand", "start": "22:00", "end": "05:50", "crossesMidnight": True, "operatingDays": "12345__"},
             {"serviceMode": "on_demand", "start": "22:00", "end": "07:50", "crossesMidnight": True, "operatingDays": "_____67", "alsoAppliesOnPublicHolidays": True},
         ],
-        "breaks": [{"start": "02:30", "end": "03:05", "operatingDays": "1234567"}],
-        "weekendAndHolidayBreaks": [
-            {"start": "09:10", "end": "09:30"},
-            {"start": "11:55", "end": "12:30"},
-            {"start": "17:55", "end": "18:30"},
-            {"start": "19:55", "end": "20:15"},
+        "breaks": [
+            {"start": "02:30", "end": "03:05", "operatingDays": "1234567"},
+            {"start": "19:55", "end": "20:15", "operatingDays": "_____6_"},
         ],
-        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
         "phone": "+3584573421279",
     },
 }
@@ -204,11 +201,7 @@ ALAND_CABLE_FERRY_HOLIDAY_EXCEPTIONS = {
         {"date": "2026-12-25", "trafficResumes": "06:00"},
     ],
     "toftolinjen": [
-        {"date": "2026-04-03", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
-        {"date": "2026-05-01", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
-        {"date": "2026-05-14", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}},
-        {"date": "2026-06-19", "scheduleDayOverride": "friday"},
-        {"date": "2026-12-24", "scheduleDayOverride": "sunday", "cancelledBreak": {"from": "17:55", "to": "18:30"}, "trafficEnds": "00:00", "onOrderDepartures": ["01:00"]},
+        {"date": "2026-12-24", "trafficEnds": "00:00", "onOrderDepartures": ["01:00"]},
         {"date": "2026-12-25", "trafficResumes": "06:00"},
     ],
 }
@@ -756,8 +749,12 @@ def normalize_aland_scheduled_cable_ferry(route: dict, schedule: dict) -> None:
 
     trips = []
     weekday_only = set(schedule["weekdayOnlyTimes"])
+    operating_days_by_time = schedule.get("operatingDaysByTime", {})
     for published in schedule["times"]:
-        weekdays = "12345__" if published in weekday_only else "1234567"
+        weekdays = (
+            "12345__" if published in weekday_only else
+            operating_days_by_time.get(published, "1234567")
+        )
         holiday_policy = "excluded" if published in weekday_only else "included"
         arrival, arrival_day = add_minutes(published, 0, schedule["crossingMinutes"])
         trips.append(aland_cable_ferry_trip(
@@ -1155,7 +1152,10 @@ def build() -> dict:
                 "sourceId": source["id"],
                 "url": source["url"],
                 "sha256": source["fingerprint"]["sha256"],
-                "localFile": str((ORIGINALS / source["provider"] / f'{source["id"]}.{source["kind"]}').relative_to(REPOSITORY_ROOT)),
+                "localFile": str((
+                    ORIGINALS / source["provider"] /
+                    transcription.get("sourceFile", f'{source["id"]}.{source["kind"]}')
+                ).relative_to(REPOSITORY_ROOT)),
             })
             for key in (
                 "vessel", "vessels", "vesselByCode", "sourceLanguageAuthority",

@@ -145,6 +145,14 @@
         }
       },
       "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Svinö"
+          ]
+        },
         "notices": [
           {
             "type": "regular_service_not_bookable",
@@ -754,11 +762,30 @@
         "requiredForAllTrips": true,
         "url": "https://booking.finferries.fi/"
       },
+      "callConditions": {
+        "y": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "17:00"
+          }
+        },
+        "y+": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "12:00"
+          }
+        }
+      },
       "callMarkerPolicy": {
         "journeyReservationIsSeparate": true,
         "y": {
           "operation": "booking_required",
-          "interpretationStatus": "route_specific_deadline_not_normalized"
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "17:00"
+          }
         },
         "x": {
           "operation": "source_specific_condition",
@@ -874,7 +901,7 @@
             "bookingMarker": "y",
             "bookingDeadline": {
               "relativeTo": "previous_day",
-              "time": "18:00"
+              "time": "17:00"
             }
           },
           "strongPrintedRuleDoesNotJoinTrips": true
@@ -1038,6 +1065,9 @@
         "routePattern": "point_to_point_or_multi_stop",
         "cableFerry": false
       },
+      "booking": {
+        "loadingReadinessMinutesBefore": 15
+      },
       "pierAccess": {
         "Hummelvik": {
           "roadAccess": true,
@@ -1066,6 +1096,36 @@
           "suggestForUnspecifiedOrigin": false,
           "role": "island_terminal"
         }
+      },
+      "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Vuosnainen",
+            "Hummelvik"
+          ],
+          "transitChargePairs": [
+            {
+              "from": "Vuosnainen",
+              "to": "Hummelvik",
+              "chargeLegEndpoint": "Hummelvik"
+            }
+          ]
+        },
+        "notices": [
+          {
+            "type": "vehicle_loading_readiness",
+            "minutesBeforeDeparture": 15,
+            "appliesAt": "trip_origin"
+          },
+          {
+            "type": "possible_early_departure",
+            "minutesBeforePublishedTime": 5,
+            "appliesAt": "intermediate_stops"
+          }
+        ]
       }
     },
     {
@@ -1090,7 +1150,38 @@
         "loadingReadinessMinutesBefore": 10,
         "channel": "https://www.alandstrafiken.ax/",
         "phone": "+358 (0)18 25 600"
-      }
+      },
+      "travelerInformation": {
+        "farePolicy": {
+          "vehicles": "paid",
+          "passengersInVehicle": "free",
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Vuosnainen"
+          ]
+        }
+      },
+      "connections": [
+        {
+          "type": "published_road_connection",
+          "fromStop": "Åva",
+          "toStop": "TorsholmaI",
+          "toRouteId": "norralinjen",
+          "arrivalTimes": [
+            "07:15",
+            "13:50",
+            "14:20",
+            "14:25",
+            "16:50",
+            "19:25",
+            "19:45",
+            "20:25"
+          ],
+          "maximumMinutesFromArrivalToDeparture": 60,
+          "guaranteed": false,
+          "sourceMeaning": "The timetable marks a possible connection, but Åland's government does not guarantee it."
+        }
+      ]
     },
     {
       "routeId": "pargasrutt",
@@ -1464,7 +1555,23 @@
         "farePolicy": {
           "vehicles": "paid",
           "passengersInVehicle": "free",
-          "pedestrians": "free"
+          "pedestrians": "free",
+          "paidWhenDepartingFrom": [
+            "Galtby",
+            "Långnäs"
+          ],
+          "transitChargePairs": [
+            {
+              "from": "Galtby",
+              "to": "Långnäs",
+              "chargeLegEndpoint": "Galtby"
+            },
+            {
+              "from": "Galtby",
+              "to": "Svinö",
+              "chargeLegEndpoint": "Galtby"
+            }
+          ]
         },
         "notices": [
           {

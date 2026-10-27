@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "routing_ready",
-  "generatedAt": "2026-10-25T14:49:38.871636+00:00",
+  "generatedAt": "2026-10-27T19:27:43.858331+00:00",
   "sources": {
     "timetables": "/Users/kranto/personal/saaristodata/future/structured-routing/structured-connection-timetables-with-ais.json",
     "roads": "/Users/kranto/personal/saaristodata/future/structured-routing/road-network.json",
@@ -542730,8 +542730,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -542786,8 +542786,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -542841,8 +542841,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -542897,8 +542897,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -542952,8 +542952,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543008,8 +543008,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543063,8 +543063,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543124,8 +543124,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543184,8 +543184,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543240,8 +543240,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543295,8 +543295,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543351,8 +543351,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543406,8 +543406,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543462,8 +543462,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543517,8 +543517,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543578,8 +543578,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543638,8 +543638,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543694,8 +543694,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543749,8 +543749,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543805,8 +543805,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543860,8 +543860,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543916,8 +543916,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -543971,8 +543971,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544027,8 +544027,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544082,8 +544082,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544138,8 +544138,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544189,16 +544189,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "09:15",
@@ -544245,16 +544245,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -544304,8 +544304,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544360,8 +544360,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544415,8 +544415,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544471,8 +544471,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544526,8 +544526,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544582,8 +544582,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544637,8 +544637,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544693,8 +544693,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544748,8 +544748,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544804,8 +544804,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544859,8 +544859,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544915,8 +544915,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -544970,8 +544970,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545026,8 +545026,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545081,8 +545081,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545137,8 +545137,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545192,8 +545192,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545248,8 +545248,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545303,8 +545303,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545359,8 +545359,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545410,16 +545410,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "12:00",
@@ -545466,16 +545466,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -545521,16 +545521,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "12:15",
@@ -545577,16 +545577,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -545636,8 +545636,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545692,8 +545692,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545747,8 +545747,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545803,8 +545803,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545858,8 +545858,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545914,8 +545914,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -545969,8 +545969,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546025,8 +546025,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546080,8 +546080,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546136,8 +546136,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546191,8 +546191,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546247,8 +546247,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546302,8 +546302,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546358,8 +546358,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546413,8 +546413,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546469,8 +546469,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546524,8 +546524,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546580,8 +546580,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546635,8 +546635,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546691,8 +546691,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546746,8 +546746,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546802,8 +546802,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546857,8 +546857,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546913,8 +546913,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -546968,8 +546968,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547024,8 +547024,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547079,8 +547079,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547140,8 +547140,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547200,8 +547200,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547256,8 +547256,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547311,8 +547311,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547367,8 +547367,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547422,8 +547422,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547478,8 +547478,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547533,8 +547533,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547594,8 +547594,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547654,8 +547654,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547710,8 +547710,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547765,8 +547765,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547821,8 +547821,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547876,8 +547876,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547932,8 +547932,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -547987,8 +547987,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548048,8 +548048,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548104,16 +548104,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "18:00",
@@ -548160,16 +548160,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -548215,16 +548215,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "18:15",
@@ -548271,16 +548271,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "1234567",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -548330,8 +548330,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548386,8 +548386,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548441,8 +548441,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548497,8 +548497,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548552,8 +548552,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548608,8 +548608,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548663,8 +548663,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548719,8 +548719,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548774,8 +548774,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548830,8 +548830,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548885,8 +548885,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548941,8 +548941,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -548992,16 +548992,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "12345_7",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published",
           "time": "20:00",
@@ -549048,16 +549048,16 @@
         "car": "allowed"
       },
       "schedule": {
-        "operatingDays": "12345__",
+        "operatingDays": "12345_7",
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
-        "publicHolidayPolicy": "excluded",
+        "publicHolidayPolicy": "included",
         "departure": {
           "status": "published_range",
           "range": {
@@ -549107,8 +549107,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549163,8 +549163,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549218,8 +549218,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549274,8 +549274,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549329,8 +549329,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549385,8 +549385,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549440,8 +549440,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549496,8 +549496,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549551,8 +549551,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549607,8 +549607,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549662,8 +549662,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549718,8 +549718,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549773,8 +549773,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549829,8 +549829,8 @@
         "operatingDate": null,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
         "specialDays": [],
@@ -549889,34 +549889,21 @@
         "crossingMinutes": 4,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
-        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
         "breaks": [
           {
             "start": "02:30",
             "end": "03:05",
             "operatingDays": "1234567"
-          }
-        ],
-        "weekendAndHolidayBreaks": [
-          {
-            "start": "09:10",
-            "end": "09:30"
-          },
-          {
-            "start": "11:55",
-            "end": "12:30"
-          },
-          {
-            "start": "17:55",
-            "end": "18:30"
           },
           {
             "start": "19:55",
-            "end": "20:15"
+            "end": "20:15",
+            "operatingDays": "_____6_"
           }
         ]
       },
@@ -549950,34 +549937,21 @@
         "crossingMinutes": 4,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
-        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
         "breaks": [
           {
             "start": "02:30",
             "end": "03:05",
             "operatingDays": "1234567"
-          }
-        ],
-        "weekendAndHolidayBreaks": [
-          {
-            "start": "09:10",
-            "end": "09:30"
-          },
-          {
-            "start": "11:55",
-            "end": "12:30"
-          },
-          {
-            "start": "17:55",
-            "end": "18:30"
           },
           {
             "start": "19:55",
-            "end": "20:15"
+            "end": "20:15",
+            "operatingDays": "_____6_"
           }
         ]
       },
@@ -550012,34 +549986,21 @@
         "crossingMinutes": 4,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
-        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
         "breaks": [
           {
             "start": "02:30",
             "end": "03:05",
             "operatingDays": "1234567"
-          }
-        ],
-        "weekendAndHolidayBreaks": [
-          {
-            "start": "09:10",
-            "end": "09:30"
-          },
-          {
-            "start": "11:55",
-            "end": "12:30"
-          },
-          {
-            "start": "17:55",
-            "end": "18:30"
           },
           {
             "start": "19:55",
-            "end": "20:15"
+            "end": "20:15",
+            "operatingDays": "_____6_"
           }
         ]
       },
@@ -550074,34 +550035,21 @@
         "crossingMinutes": 4,
         "validPeriods": [
           {
-            "validFrom": "2026-01-01",
-            "validTo": "2026-12-31"
+            "validFrom": "2026-10-17",
+            "validTo": "2027-02-28"
           }
         ],
-        "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+        "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
         "breaks": [
           {
             "start": "02:30",
             "end": "03:05",
             "operatingDays": "1234567"
-          }
-        ],
-        "weekendAndHolidayBreaks": [
-          {
-            "start": "09:10",
-            "end": "09:30"
-          },
-          {
-            "start": "11:55",
-            "end": "12:30"
-          },
-          {
-            "start": "17:55",
-            "end": "18:30"
           },
           {
             "start": "19:55",
-            "end": "20:15"
+            "end": "20:15",
+            "operatingDays": "_____6_"
           }
         ]
       },
@@ -725129,13 +725077,13 @@
         {
           "sourceId": "finferries-korpohoutskar-weekday",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-ma-pe-talvi-1.10.2026-30.4.2027.html",
-          "sha256": "bdbda5f55b8febf7cff7591646bac452aeb41cc06fa6ce4597f1a54b158416a5",
+          "sha256": "1d4d34576e43a718f11dfe30a0dbaffa9319f64765eb7eef3cb296ee63392ad8",
           "localFile": ".timetable-checker/originals/finferries/finferries-korpohoutskar-weekday.html"
         },
         {
           "sourceId": "finferries-korpohoutskar-weekend",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/korppoo-houtskari-la-su-talvi-19.10.2026-30.4.2027.html",
-          "sha256": "e44a8a6a3e4ad4add2d06ec7d0319311e625acbe548d5fbb59989594237503f5",
+          "sha256": "25ea8fa0977b023d756486085e9b8be4c29bf24d5e2ab4448e1da45bc7cd1e5f",
           "localFile": ".timetable-checker/originals/finferries/finferries-korpohoutskar-weekend.html"
         }
       ],
@@ -725571,12 +725519,28 @@
         "requiredForAllTrips": true,
         "url": "https://booking.finferries.fi/"
       },
+      "callConditions": {
+        "y": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "17:00"
+          }
+        },
+        "y+": {
+          "operation": "booking_required",
+          "bookingDeadline": {
+            "relativeTo": "previous_day",
+            "time": "12:00"
+          }
+        }
+      },
       "notes": [],
       "sources": [
         {
           "sourceId": "finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027",
           "url": "https://www.finferries.fi/media/aikataulut-2027/nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf",
-          "sha256": "48b304bf7893b812fa1cb8f31a6dc1319e2d053532aa51fb575e5d7181e1020c",
+          "sha256": "8c2ea175f1bac10307816901b696a5f215d11d3044c9b390a6aa3503f094d771",
           "localFile": ".timetable-checker/originals/finferries/finferries-nagusodra-nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027.pdf"
         }
       ],
@@ -725676,7 +725640,7 @@
             "bookingMarker": "y",
             "bookingDeadline": {
               "relativeTo": "previous_day",
-              "time": "18:00"
+              "time": "17:00"
             }
           },
           "strongPrintedRuleDoesNotJoinTrips": true
@@ -726035,7 +725999,7 @@
         {
           "sourceId": "finferries-palva",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/palva-20.2.2017-alkaen.html",
-          "sha256": "afd5bf3b87283c4e73f84ce90679f7306d2d69da4ed8ad6484cac6a097ab23e7",
+          "sha256": "3168923d79add038725377efbf6f96ae775bd681c00d00a7d346420ea9c06d44",
           "localFile": ".timetable-checker/originals/finferries/finferries-palva.html"
         }
       ],
@@ -726329,7 +726293,7 @@
         {
           "sourceId": "finferries-rymattylanreitti-rymattylan-reitti-28.9.2026-2.5.2027",
           "url": "https://www.finferries.fi/media/aikataulut-2027/rymattylan-reitti-28.9.2026-2.5.2027.pdf",
-          "sha256": "bc8ad332275855d2dcc5480eacb11dabf9b2e0124f670acdde27892c37b2478c",
+          "sha256": "514e1b9ec2bac632a794ba9c8afc768fee36cfe1266665a277b9e2ed6c9a8b97",
           "localFile": ".timetable-checker/originals/finferries/finferries-rymattylanreitti-rymattylan-reitti-28.9.2026-2.5.2027.pdf"
         }
       ],
@@ -727072,46 +727036,13 @@
       "provider": "alandstrafiken",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "holidayExceptions": [
         {
-          "date": "2026-04-03",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-05-01",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-05-14",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          }
-        },
-        {
-          "date": "2026-06-19",
-          "scheduleDayOverride": "friday"
-        },
-        {
           "date": "2026-12-24",
-          "scheduleDayOverride": "sunday",
-          "cancelledBreak": {
-            "from": "17:55",
-            "to": "18:30"
-          },
           "trafficEnds": "00:00",
           "onOrderDepartures": [
             "01:00"
@@ -727145,10 +727076,10 @@
       "notes": [],
       "sources": [
         {
-          "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
-          "url": "https://www.alandstrafiken.ax/sites/default/files/2026-01/toftolinjen-inkl-avvikelser.pdf",
-          "sha256": "32e8700eae07dfe78c70dc6cffeb06ba18980834b4423c382a09b1aabede95a8",
-          "localFile": ".timetable-checker/originals/alandstrafiken/alandstrafiken-toftolinjen-inkl-avvikelser.pdf"
+          "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
+          "url": "https://www.alandstrafiken.ax/sites/default/files/2026-10/toftolinjen-17.10.26-28.2.27.pdf",
+          "sha256": "018e8767de90687de4d5cae9e4536b586cdea2ef92a97bdc49433f59b5df5881",
+          "localFile": ".timetable-checker/originals/alandstrafiken/toftolinjen-17.10.26-28.2.27.pdf"
         }
       ],
       "routingService": {
@@ -727491,7 +727422,7 @@
         {
           "sourceId": "finferries-vartsala",
           "url": "https://www.finferries.fi/koodiviidakko/aikataulu/vartsala-1.10.2025-alkaen.html",
-          "sha256": "ad6bf997b9aa008d6bdf91c74064bee82ffe4ebfb1f5c1328b92e79afd0b3cc8",
+          "sha256": "3ef5d3647edef23d18e525757a7475f52cc4b3a361421dba327495f825c50880",
           "localFile": ".timetable-checker/originals/finferries/finferries-vartsala.html"
         }
       ],
@@ -874992,12 +874923,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875039,12 +874970,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875100,12 +875031,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875147,12 +875078,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875208,12 +875139,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875255,12 +875186,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875316,12 +875247,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875369,12 +875300,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875436,12 +875367,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875483,12 +875414,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875544,12 +875475,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875591,12 +875522,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875652,12 +875583,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875699,12 +875630,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875760,12 +875691,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875813,12 +875744,12 @@
       "operatingDays": "12345__",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875880,12 +875811,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -875927,12 +875858,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -875988,12 +875919,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876035,12 +875966,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876096,12 +876027,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876143,12 +876074,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876204,12 +876135,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876251,12 +876182,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876312,12 +876243,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876359,12 +876290,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876417,15 +876348,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0027",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876464,15 +876395,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0028",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876528,12 +876459,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876575,12 +876506,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876636,12 +876567,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876683,12 +876614,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876744,12 +876675,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876791,12 +876722,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876852,12 +876783,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -876899,12 +876830,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -876960,12 +876891,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877007,12 +876938,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877068,12 +876999,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877115,12 +877046,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877176,12 +877107,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877223,12 +877154,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877284,12 +877215,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877331,12 +877262,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877392,12 +877323,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877439,12 +877370,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877500,12 +877431,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877547,12 +877478,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877605,15 +877536,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0049",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877652,15 +877583,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0050",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877713,15 +877644,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0051",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877760,15 +877691,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0052",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877824,12 +877755,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877871,12 +877802,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -877932,12 +877863,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -877979,12 +877910,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878040,12 +877971,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878087,12 +878018,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878148,12 +878079,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878195,12 +878126,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878256,12 +878187,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878303,12 +878234,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878364,12 +878295,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878411,12 +878342,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878472,12 +878403,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878519,12 +878450,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878580,12 +878511,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878627,12 +878558,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878688,12 +878619,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878735,12 +878666,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878796,12 +878727,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878843,12 +878774,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -878904,12 +878835,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -878951,12 +878882,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879012,12 +878943,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879059,12 +878990,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879120,12 +879051,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879167,12 +879098,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879228,12 +879159,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879281,12 +879212,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879348,12 +879279,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879395,12 +879326,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879456,12 +879387,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879503,12 +879434,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879564,12 +879495,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879611,12 +879542,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879672,12 +879603,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879725,12 +879656,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879792,12 +879723,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879839,12 +879770,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -879900,12 +879831,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -879947,12 +879878,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880008,12 +879939,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880055,12 +879986,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880116,12 +880047,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880169,12 +880100,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880233,15 +880164,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0097",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880280,15 +880211,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0098",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880341,15 +880272,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0099",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880388,15 +880319,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0100",
-      "operatingDays": "12345__",
+      "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880452,12 +880383,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880499,12 +880430,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880560,12 +880491,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880607,12 +880538,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880668,12 +880599,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880715,12 +880646,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880776,12 +880707,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880823,12 +880754,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880884,12 +880815,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -880931,12 +880862,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -880992,12 +880923,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881039,12 +880970,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881097,15 +881028,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0113",
-      "operatingDays": "12345__",
+      "operatingDays": "12345_7",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881144,15 +881075,15 @@
     },
     {
       "id": "toftolinjen:toftolinjen-cable-0114",
-      "operatingDays": "12345__",
+      "operatingDays": "12345_7",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
-      "publicHolidayPolicy": "excluded",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "publicHolidayPolicy": "included",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881208,12 +881139,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881255,12 +881186,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881316,12 +881247,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881363,12 +881294,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881424,12 +881355,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881471,12 +881402,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881532,12 +881463,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881579,12 +881510,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881640,12 +881571,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881687,12 +881618,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881748,12 +881679,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881795,12 +881726,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
@@ -881856,12 +881787,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Töftö",
@@ -881903,12 +881834,12 @@
       "operatingDays": "1234567",
       "validPeriods": [
         {
-          "validFrom": "2026-01-01",
-          "validTo": "2026-12-31"
+          "validFrom": "2026-10-17",
+          "validTo": "2027-02-28"
         }
       ],
       "publicHolidayPolicy": "included",
-      "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+      "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
       "calls": [
         {
           "stop": "Prästö",
