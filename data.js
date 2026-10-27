@@ -1364,7 +1364,8 @@ fdata = {
     toftolinjen: {
       link: "https://www.alandstrafiken.ax/turlistor",
       tables: [
-        { validFrom: "2026-01-01", validTo: "2026-12-31", images:["toftolinjen-inkl-avvikelser-1.jpg", "linfarjor-1.jpg"] },
+        { validFrom: "2026-01-01", validTo: "2026-10-16", images:["toftolinjen-inkl-avvikelser-1.jpg", "linfarjor-1.jpg"] },
+        { validFrom: "2026-10-17", validTo: "2027-02-28", images:["toftolinjen-17.10.2026-28.2.2027-1.jpg", "linfarjor-1.jpg"] },
       ],
     },
     
@@ -1522,7 +1523,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/rimito-ruttomrade.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/rymattyla-route.html",
       tables: [
-        { validFrom: "2026-09-28", validTo: "2027-05-02", images:["rymattylan-reitti-28.9.2026-2.5.2027-1.jpg", "rymattylan-reitti-28.9.2026-2.5.2027-2.jpg"] },
+        { validFrom: "2026-09-28", validTo: "2027-05-02", images:["rymattylan-reitti-28.9.2026-2.5.2027-paivitetty-22.10.2026-1.jpg", "rymattylan-reitti-28.9.2026-2.5.2027-paivitetty-22.10.2026-2.jpg"] },
       ],
     },
     houtskarrutt: {
@@ -1581,7 +1582,7 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/nagu-sodra-rutt-falko.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/nauvo-southern-route-falko.html",
       tables: [
-        { validFrom: "2026-10-01", validTo: "2027-03-24", images:["nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027-1.jpg"] },
+        { validFrom: "2026-10-01", validTo: "2027-03-24", images:["nauvon-etelainen-reitti-talvi-1.10.2026-24.3.2027-paivitetty-20.10.2026-1.jpg"] },
       ],
     },
     hitisjurmo: {
@@ -1931,6 +1932,7 @@ fdata = {
       name_fi: "Poikittainen linja",
       name_en: "Cross line",
       specifier: "Långnäs - Överö - Sottunga - Snäckö",
+      obsolete: true,
       piers: ["Långnäs", "Bergö", "Överö", "Sottunga", "Snäckö"],
       operator: "alandstrafiken",
       vessels: ["ejdern"],
