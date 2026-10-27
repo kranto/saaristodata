@@ -398,6 +398,33 @@
     )).join(">");
     const routeOptionKey = (item) => routeShape(item.legs);
 
+    const itineraryChargeCount = (item) => item.legs.filter((leg) => Boolean(chargeLabel(leg))).length;
+    const routeRiskRank = (item) => ({ relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 })[
+      item.riskSummary?.worstConnectionRisk || "normal"
+    ] ?? 3;
+
+    function isDominatedRouteOption(candidate, options) {
+      const candidateDeparture = candidate.item.suggestedOriginDeparture;
+      const candidateArrival = candidate.item.arrival;
+      const candidateCharges = itineraryChargeCount(candidate.item);
+      const candidateRisk = routeRiskRank(candidate.item);
+      return options.some((other) => {
+        if (other === candidate) return false;
+        const otherDeparture = other.item.suggestedOriginDeparture;
+        const otherArrival = other.item.arrival;
+        const otherCharges = itineraryChargeCount(other.item);
+        const otherRisk = routeRiskRank(other.item);
+        return otherDeparture >= candidateDeparture
+          && otherArrival <= candidateArrival
+          && otherCharges <= candidateCharges
+          && otherRisk <= candidateRisk
+          && (otherDeparture > candidateDeparture
+            || otherArrival < candidateArrival
+            || otherCharges < candidateCharges
+            || otherRisk < candidateRisk);
+      });
+    }
+
     function mainRouteOptions() {
       const unique = new Map();
       (response?.itineraries || []).forEach((item, index) => {
@@ -420,7 +447,8 @@
           unique.set(key, value);
         }
       });
-      return [...unique.values()];
+      const options = [...unique.values()];
+      return options.filter((candidate) => !isDominatedRouteOption(candidate, options));
     }
 
     function itineraryRouteLabel(item) {
@@ -726,7 +754,10 @@
           }
         } else if (leg.kind === "scheduled_service") {
           const previousLeg = displayedLegs[index - 1];
-          if (previousLeg?.kind === "road" && previousLeg.to === leg.from && leg.waitMinutes > 0) {
+          const arrivesAtSameLanding = previousLeg?.to === leg.from;
+          const isDirectFerryTransfer = isFerryLeg(previousLeg) && arrivesAtSameLanding;
+          const isRoadApproach = previousLeg?.kind === "road" && arrivesAtSameLanding;
+          if ((isRoadApproach || isDirectFerryTransfer) && leg.waitMinutes > 0) {
             const { readiness } = waitProfile(leg);
             if (readiness > 0) {
               readinessStart = new Date(new Date(leg.departure).getTime() - readiness * 60000).toISOString();

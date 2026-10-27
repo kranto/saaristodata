@@ -217,6 +217,32 @@ def published_road_connection(
     return None
 
 
+def same_provider_direct_ferry_connection(
+    records: list[dict], index: int, routes: dict[str, dict],
+) -> dict | None:
+    """Recognize a direct same-port transfer between one provider's ferries."""
+    if index < 1:
+        return None
+    current = records[index]
+    feeder = records[index - 1]
+    if (
+        current["edge"]["kind"] != "scheduled_service"
+        or feeder["edge"]["kind"] != "scheduled_service"
+        or feeder["edge"]["to"] != current["edge"]["from"]
+        or feeder["instance"]["arrival"] > current["instance"]["departure"]
+    ):
+        return None
+    feeder_route = routes[feeder["edge"]["routeId"]]
+    current_route = routes[current["edge"]["routeId"]]
+    provider = feeder_route.get("provider")
+    if not provider or provider != current_route.get("provider"):
+        return None
+    return {
+        "guaranteed": False,
+        "source": "same_provider_direct_ferry_transfer",
+    }
+
+
 def annotate_transit_charge(legs: list[dict]) -> dict | None:
     """Mark an Åland transit charge only for a complete gateway-to-gateway chain."""
     if not legs:
@@ -323,7 +349,10 @@ def format_candidate(
             else:
                 leg["availability"] = edge.get("availability")
 
-            published_connection = published_road_connection(records, index, routes)
+            published_connection = (
+                published_road_connection(records, index, routes)
+                or same_provider_direct_ferry_connection(records, index, routes)
+            )
             if published_connection:
                 leg["publishedConnection"] = published_connection
 
