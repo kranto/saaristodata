@@ -619,9 +619,18 @@
       return {
         ...nextLeg.transferRisk,
         effectiveBufferMinutes: profile.available,
-        level: nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available),
+        level: nextLeg.publishedConnection
+          ? riskForRemainingBuffer(profile.available)
+          : nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available),
       };
     }
+
+    function publishedConnectionNeedsGanttNotice(leg) {
+      if (!leg?.publishedConnection) return false;
+      return isAttentionRisk(riskForRemainingBuffer(waitProfile(leg).available));
+    }
+
+    const isAttentionRisk = (level) => ["tight", "very_tight", "below_required_readiness"].includes(level);
 
     function displayedConnection(leg) {
       if (!response?.decisionGraph || leg.kind !== "scheduled_service") return null;
@@ -692,15 +701,16 @@
           if (isFerryLeg(nextLeg) && nextLeg.from === leg.to) {
             const profile = waitProfile(nextLeg);
             const riskLevel = nextLeg.transferRisk?.level || riskForRemainingBuffer(profile.available);
-            const isShortWait = !nextLeg.publishedConnection && (profile.available < 5 || riskLevel === "below_required_readiness");
+            const showPublishedConnectionNotice = publishedConnectionNeedsGanttNotice(nextLeg);
+            const isShortWait = showPublishedConnectionNotice || (!nextLeg.publishedConnection && (profile.available < 5 || riskLevel === "below_required_readiness"));
             if (profile.available > 0) {
               barEnd = new Date(new Date(leg.arrival).getTime() + profile.available * 60000).toISOString();
             }
             const extraTimeClass = isShortWait ? "gantt-extra-time gantt-extra-time-short" : "gantt-extra-time";
-            const extraTimeLabel = nextLeg.publishedConnection
+            const extraTimeLabel = showPublishedConnectionNotice
               ? "aikatauluun merkitty yhteys (ei taattu)"
-              : bufferTimeLabel(profile.available);
-            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)} · <span class="${extraTimeClass}">${extraTimeLabel}</span>`;
+              : nextLeg.publishedConnection ? "" : bufferTimeLabel(profile.available);
+            labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}${extraTimeLabel ? ` · <span class="${extraTimeClass}">${extraTimeLabel}</span>` : ""}`;
           } else {
             labelDetail = `ajo ${formatDuration(leg.durationMinutes)} · ${formatDistance(leg.distanceMeters)}`;
           }
@@ -743,15 +753,21 @@
         const nextLeg = displayedLegs[index + 1];
         const risk = roadConnectionRisk(leg, nextLeg);
         const publishedConnection = leg.kind === "road" && nextLeg?.publishedConnection;
+        const showPublishedRisk = publishedConnection && risk && isAttentionRisk(risk.level);
+        const showRiskTag = risk && risk.level !== "normal" && (!publishedConnection || showPublishedRisk);
         const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
         const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : `${serviceName(leg)}${charge ? ` <span class="charge">${charge}</span>` : ""}`;
         const readiness = leg.kind === "scheduled_service" ? loadingReadinessMinutes(leg) : 0;
+        const roadDetails = [
+          publishedConnection ? "aikatauluun merkitty yhteys (ei taattu)" : "",
+          risk && (!publishedConnection || showPublishedRisk) ? bufferTimeLabel(risk.effectiveBufferMinutes) : "",
+        ].filter(Boolean);
         const detail = leg.kind === "road"
-          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${publishedConnection ? " · aikatauluun merkitty yhteys (ei taattu)" : risk ? ` · ${bufferTimeLabel(risk.effectiveBufferMinutes)}` : ""}`
+          ? `${legPlaceName(leg, "from")} → ${legPlaceName(leg, "to")} · ${formatDistance(leg.distanceMeters)}${roadDetails.length ? ` · ${roadDetails.join(" · ")}` : ""}`
           : `${legPlaceName(leg, "from")} ${clock(leg.departure)}${readiness ? ` (lastausvalmius ${clockBefore(leg.departure, readiness)})` : ""} → ${legPlaceName(leg, "to")} ${clock(leg.arrival)}`;
         return `<div class="leg ${leg.kind === "road" ? "road" : "ferry"}">
           <div class="clock">${clock(leg.departure)}</div><div class="marker"></div>
-          <div class="leg-card"><div class="leg-title">${vehicle}${publishedConnection ? `<span class="published-connection">Aikatauluyhteys</span>` : risk ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
+          <div class="leg-card"><div class="leg-title">${vehicle}${publishedConnection ? `<span class="published-connection">Aikatauluyhteys</span>` : ""}${showRiskTag ? riskPill(risk.level) : ""}</div><div class="leg-sub">${detail}</div></div>
         </div>`;
       }).join("");
       const hasSelections = selectedSailings.size > 0;
