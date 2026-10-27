@@ -223,6 +223,7 @@
     let tooltipTimer = null;
     let tooltipTarget = null;
     const selectedSailings = new Map();
+    const preferredLegsByResult = new Map();
 
     function hideFastTooltip() {
       window.clearTimeout(tooltipTimer);
@@ -424,7 +425,7 @@
       const list = mainRouteOptions();
       $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
       $("results").innerHTML = list.map(({ item, index }) => {
-        const shownLegs = index === activeResult && displayedLegs.length ? displayedLegs : item.legs;
+        const shownLegs = preferredLegsByResult.get(index) || item.legs;
         const shownDeparture = shownLegs[0]?.departure || item.suggestedOriginDeparture;
         const shownArrival = shownLegs[shownLegs.length - 1]?.arrival || item.arrival;
         const shownItem = { ...item, legs: shownLegs };
@@ -438,7 +439,7 @@
         selectedSailings.clear();
         blockedSailings.clear();
         experimentText = "";
-        displayedLegs = preferredActiveLegs();
+        displayedLegs = preferredLegsByResult.get(activeResult) || response.itineraries[activeResult].legs;
         ganttViewport = null;
         renderResults(); renderDetail();
       }));
@@ -449,6 +450,8 @@
 
     function activeRouteAnchorLeg() {
       const routeLegs = response?.itineraries?.[activeResult]?.legs || [];
+      const commercialAnchor = routeLegs.find((leg) => leg.kind === "scheduled_service" && leg.operator);
+      if (commercialAnchor) return commercialAnchor;
       return [...routeLegs].reverse().find((leg) => leg.kind === "scheduled_service") || null;
     }
 
@@ -760,7 +763,7 @@
         selectedSailings.clear();
         blockedSailings.clear();
         experimentText = "";
-        displayedLegs = preferredActiveLegs();
+        displayedLegs = preferredLegsByResult.get(activeResult) || response.itineraries[activeResult].legs;
         ganttViewport = null;
         renderResults();
         renderDetail();
@@ -805,7 +808,7 @@
       return { graph, connections, incoming, outgoing };
     }
 
-    function bestSelectedPath(maps) {
+    function bestSelectedPath(maps, requiredDestinationTime = null) {
       const routeAnchor = activeRouteAnchorKey();
       const routeAnchorLeg = activeRouteAnchorLeg();
       const pinnedServices = [...new Set(selectedSailings.values())];
@@ -815,8 +818,10 @@
       if (anchorPin) pinnedServices.push(anchorPin);
       const pinBits = new Map(pinnedServices.map((key, index) => [key, 2 ** index]));
       const allPins = 2 ** pinnedServices.length - 1;
-      const destinations = new Set(maps.graph.destinationNodeIds);
       const nodeTimes = new Map(maps.graph.nodes.map((node) => [node.id, node.time]));
+      const destinations = new Set(maps.graph.destinationNodeIds.filter((node) => (
+        !requiredDestinationTime || nodeTimes.get(node) === requiredDestinationTime
+      )));
       const memo = new Map(), visiting = new Set();
 
       function compareRiskCounts(a, b) {
@@ -899,8 +904,20 @@
     function preferredActiveLegs() {
       const fallback = response?.itineraries?.[activeResult]?.legs || [];
       if (!response?.decisionGraph) return fallback;
-      const path = bestSelectedPath(graphMaps());
+      const path = bestSelectedPath(graphMaps(), response.itineraries[activeResult].arrival);
       return path ? pathLegs(path) : fallback;
+    }
+
+    function rebuildPreferredResultLegs() {
+      preferredLegsByResult.clear();
+      const options = mainRouteOptions();
+      const firstResult = options[0]?.index ?? 0;
+      options.forEach(({ index }) => {
+        activeResult = index;
+        preferredLegsByResult.set(index, preferredActiveLegs());
+      });
+      activeResult = firstResult;
+      displayedLegs = preferredLegsByResult.get(activeResult) || response?.itineraries?.[activeResult]?.legs || [];
     }
 
     function selectConnection(connectionId) {
@@ -957,7 +974,7 @@
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
-        response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; displayedLegs = preferredActiveLegs(); ganttViewport = null;
+        response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; rebuildPreferredResultLegs(); ganttViewport = null;
         const routeCount = mainRouteOptions().length;
         $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
         renderResults();
