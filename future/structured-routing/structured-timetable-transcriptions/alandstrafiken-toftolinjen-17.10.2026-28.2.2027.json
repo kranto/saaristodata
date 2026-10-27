@@ -3,7 +3,7 @@
   "provider": "alandstrafiken",
   "sourceLanguageAuthority": "sv",
   "languageConflictPolicy": "Åland source: Swedish is the default authority when language versions conflict",
-  "sourceId": "alandstrafiken-toftolinjen-inkl-avvikelser",
+  "sourceId": "alandstrafiken-toftolinjen-17.10.2026-28.2.2027",
   "review": {
     "status": "machine_extracted_requires_semantic_review",
     "method": "pdfplumber table extraction",
@@ -14,8 +14,8 @@
   },
   "validPeriods": [
     {
-      "validFrom": "2026-01-01",
-      "validTo": "2026-12-31"
+      "validFrom": "2026-10-17",
+      "validTo": "2027-02-28"
     }
   ],
   "sourceTables": [
@@ -61,7 +61,7 @@
         [
           "09",
           "00",
-          "151)",
+          "15",
           "30",
           "45"
         ],
@@ -81,8 +81,8 @@
         ],
         [
           "12",
-          "001)",
-          "151)",
+          "00",
+          "15",
           "30",
           "45"
         ],
@@ -123,8 +123,8 @@
         ],
         [
           "18",
-          "001)",
-          "151)",
+          "00",
+          "15",
           "30 45",
           null
         ],
@@ -171,14 +171,14 @@
           null
         ],
         [
-          "Lör, sön\noch helgdag",
-          "09:10–09:30\n11:55–12:30\n17:55–18:30\n19:55–20:15",
+          "Lördag",
+          "19:55–20:15",
           "",
           "",
           ""
         ],
         [
-          "1) Lördag, söndag och helgdag: Rödmarkerade turer utgår.",
+          "1) Lördag: Rödmarkerade turer utgår.",
           null,
           null,
           null,
@@ -204,7 +204,7 @@
   "sourcePageText": [
     {
       "page": 1,
-      "text": "Töftölinjens linfärja 1/1 2026–\nAVGÅNGSTIDER FRÅN TÖFTÖ (TÖFTÖ–PRÄSTÖ)\nTRAFIK VID BEHOV Vardagar 22:00-05:50. Lör, sön och helgdag 22:00–07:50\n06 002) 152) 302) 452)*)\n07 002) 152) 302) 452)*)\n08 00 15 30 45\n09 00 151) 30 45\n10 00 15 30 45\n11 00 15 30 45\n12 001) 151) 30 45\n13 00 15 30 45\n14 00 15 30 45\n15 00 15 30 45*)\n16 00 15 30 45*)\n17 00 15 30 45*)\n18 001) 151) 30 45\n19 00 15 30 45\n20 001) 15 30 45\n21 00 15 30 45\nTRAFIKUPPEHÅLL\nAlla dagar: 02:30–03:05\nLör, sön 09:10–09:30\noch helgdag 11:55–12:30\n17:55–18:30\n19:55–20:15\n1) Lördag, söndag och helgdag: Rödmarkerade turer utgår.\n2) Kör utan turlista lördag, söndag och helgdag.\n*) Vid behov inväntar färjan på bussar i linjetrafik, även från Prästö.\nTöftölinjens linfärja +358 (0)457 3421 279, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Töftö.\nAvgångstid från Prästö är cirka 5 -7 minuter efter angiven avgångstid från Töftö.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte kan ta mer last.\nFörtur har: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och brådskande sjuktransporter.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nAvvikelser:\nFre 3/4 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 1/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nTors 14/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 19/6 Fredagstrafik.\nTors 24/12 Söndagstrafik som avslutas kl. 24:00.\nPaus kl. 17:55-18:30 utgår.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
+      "text": "Töftölinjens linfärja 1/1 2026–28/2 2027\nUPPDATERAD 17/10 2026\nAVGÅNGSTIDER FRÅN TÖFTÖ (TÖFTÖ–PRÄSTÖ)\nTRAFIK VID BEHOV Vardagar 22:00-05:50. Lör, sön och helgdag 22:00–07:50\n06 002) 152) 302) 452)*)\n07 002) 152) 302) 452)*)\n08 00 15 30 45\n09 00 15 30 45\n10 00 15 30 45\n11 00 15 30 45\n12 00 15 30 45\n13 00 15 30 45\n14 00 15 30 45\n15 00 15 30 45*)\n16 00 15 30 45*)\n17 00 15 30 45*)\n18 00 15 30 45\n19 00 15 30 45\n20 001) 15 30 45\n21 00 15 30 45\nTRAFIKUPPEHÅLL\nAlla dagar: 02:30–03:05\nLördag 19:55–20:15\n1) Lördag: Rödmarkerade turer utgår.\n2) Kör utan turlista lördag, söndag och helgdag.\n*) Vid behov inväntar färjan på bussar i linjetrafik, även från Prästö.\nTöftölinjens linfärja +358 (0)457 3421 279, Ålandstrafiken tel. +358 (0)18 25 600.\nINFORMATION\nAvgångstiderna anges enbart från Töftö.\nAvgångstid från Prästö är cirka 5 -7 minuter efter angiven avgångstid från Töftö.\nVid köbildning trafikerar färjan utan tidtabell (non-stop), utom under trafikuppehåll.\nFärjan avgår då däcket är fullt, bärigheten uppnådd eller att färjan av annan orsak inte kan ta mer last.\nFörtur har: Utryckningsfordon, bussar i linjetrafik, bränsletransporter och brådskande sjuktransporter.\nAvvikelser från turlistan kan ske vid force majeure.\nÅlands landskapsregering reserverar sig rätten till eventuella ändringar.\nAvvikelser:\nFre 3/4 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 1/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nTors 14/5 Söndagstrafik. Paus kl. 17:55-18:30 utgår.\nFre 19/6 Fredagstrafik.\nKorrigeringar/ändringar kan ha inträffat.\nFör uppdaterad turlista se\nalandstrafiken.ax"
     }
   ],
   "extractionDiagnostics": {
@@ -228,29 +228,5 @@
       "interpretation": "The printed 06:00-07:45 quarter-hour entries marked 2) are not scheduled weekend or holiday departures. They are covered by the continuous on-demand period ending at 07:50."
     }
   },
-  "holidayExceptions": [
-    {
-      "date": "2026-12-24",
-      "baseSchedule": "sunday",
-      "cancelledBreak": {
-        "from": "17:55",
-        "to": "18:30"
-      },
-      "lastScheduledDeparture": "21:45",
-      "onDemandService": {
-        "from": "22:00",
-        "to": "00:00"
-      }
-    },
-    {
-      "date": "2026-12-25",
-      "specialOrderedDeparture": "01:00",
-      "noOtherServiceBefore": "06:00",
-      "onDemandService": {
-        "from": "06:00",
-        "to": "07:50"
-      },
-      "scheduledServiceResumes": "08:00"
-    }
-  ]
+  "sourceFile": "toftolinjen-17.10.26-28.2.27.pdf"
 }
