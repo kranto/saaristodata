@@ -396,7 +396,7 @@
     const routeShape = (legs) => legs.map((leg) => (
       [leg.kind, leg.serviceType || "", leg.routeId || "", leg.from, leg.to].join(":")
     )).join(">");
-    const routeOptionKey = (item) => `${routeShape(item.legs)}|${item.arrival}`;
+    const routeOptionKey = (item) => routeShape(item.legs);
 
     function mainRouteOptions() {
       const unique = new Map();
@@ -405,7 +405,8 @@
         const value = { item, index, key };
         const previous = unique.get(key);
         // Relaxed and normal are both ordinary, recommended connections.
-        // Prefer the later useful feeder between them instead of sending the
+        // Within one route shape, prefer the earliest arrival. If two chains
+        // arrive together, use the later useful feeder instead of sending the
         // traveller unnecessarily early to wait at the ferry landing.
         const preference = { relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 };
         const level = item.riskSummary?.worstConnectionRisk || "normal";
@@ -414,7 +415,8 @@
         const previousDepartures = previous?.item.legs.filter((leg) => leg.kind === "scheduled_service").map((leg) => leg.departure).join("|") || "";
         if (!previous
           || preference[level] < preference[previousLevel]
-          || (preference[level] === preference[previousLevel] && serviceDepartures > previousDepartures)) {
+          || (preference[level] === preference[previousLevel] && item.arrival < previous.item.arrival)
+          || (preference[level] === preference[previousLevel] && item.arrival === previous.item.arrival && serviceDepartures > previousDepartures)) {
           unique.set(key, value);
         }
       });
@@ -539,17 +541,13 @@
 
     function resetGanttViewport() {
       const extent = displayedExtent();
-      const routeStart = extent.start;
-      const routeEnd = extent.end;
       displayedLegs.filter((leg) => leg.kind === "scheduled_service").forEach((leg) => {
-        const prefixDuration = new Date(leg.departure).getTime() - routeStart;
-        const suffixDuration = routeEnd - new Date(leg.arrival).getTime();
         sailingAlternatives(leg).forEach((group) => {
           group.variants.forEach((item) => {
             const alternativeDeparture = new Date(item.leg.departure).getTime();
             const alternativeArrival = new Date(item.leg.arrival).getTime();
-            extent.start = Math.min(extent.start, alternativeDeparture - prefixDuration);
-            extent.end = Math.max(extent.end, alternativeArrival + suffixDuration);
+            extent.start = Math.min(extent.start, alternativeDeparture);
+            extent.end = Math.max(extent.end, alternativeArrival);
           });
         });
       });
@@ -886,10 +884,15 @@
         return 0;
       }
 
+      function firstJourneyDeparture(candidate) {
+        return candidate.edges.find((edge) => !edge.virtualWait)?.leg.departure || "";
+      }
+
       function compareSuffix(a, b) {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
         return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
+          || (aOkay && bOkay ? firstJourneyDeparture(b).localeCompare(firstJourneyDeparture(a)) : 0)
           || a.risk - b.risk
           || compareRiskCounts(a, b)
           || a.edges.length - b.edges.length;
