@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from query_address_routes import (  # noqa: E402
     DEFAULT_STOP_INDEX,
     DESTINATION_NODE,
+    MAX_ADDRESS_ROUTE_LEGS,
     ORIGIN_NODE,
     add_external_edges,
     known_stop,
@@ -109,6 +110,9 @@ class FakePartialMatrixRouter(FakeRouter):
 
 
 class AddressGraphTests(unittest.TestCase):
+    def test_address_routes_allow_long_archipelago_chains(self) -> None:
+        self.assertEqual(MAX_ADDRESS_ROUTE_LEGS, 21)
+
     def test_known_stop_names_are_case_insensitive_and_unambiguous(self) -> None:
         index = json.loads(DEFAULT_STOP_INDEX.read_text())
         self.assertEqual(known_stop(index, "wihuri")["id"], "Wihuri")

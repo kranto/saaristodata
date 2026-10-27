@@ -28,6 +28,9 @@ DEFAULT_STOP_INDEX = EXPERIMENT / "external-routing-stop-index.json"
 ORIGIN_NODE = "address:origin"
 DESTINATION_NODE = "address:destination"
 MAX_BICYCLE_EXTERNAL_METERS = 150_000
+# Allow the longest plausible 19-leg archipelago chain plus address access
+# and egress. The bound still keeps the time-dependent search finite.
+MAX_ADDRESS_ROUTE_LEGS = 21
 
 
 def normalized_place_name(value: str) -> str:
@@ -414,7 +417,7 @@ def query_address_routes(
         timing_profile=timing_profile,
         same_day=same_day,
         max_results=max_results,
-        max_legs=16,
+        max_legs=MAX_ADDRESS_ROUTE_LEGS,
         include_decision_graph=include_decision_graph,
         graph_path=graph_path,
         graph_data=augmented,
