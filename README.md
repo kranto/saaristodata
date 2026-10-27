@@ -63,6 +63,9 @@ Esimerkiksi:
 
 Versionumeron tarvitsee olla yksilöllinen aiempaan julkaisuun nähden.
 Nykyinen käytäntö on kasvattaa kokonaislukua yhdellä.
+Nosta versiota vain kerran samaa vielä julkaisematonta muutosta tai commitia
+varten. Välivaiheiden, korjausten ja `data.json`-uudelleengenerointien yhteydessä
+numeroa ei tarvitse kasvattaa uudelleen.
 
 ## Tiedostojen roolit
 
@@ -96,6 +99,9 @@ obsolete: true,
 
 Vanhentuneiksi merkittyjä reittejä ei näytetä normaalina aktiivisena
 liikenteenä eikä niitä pidä laskea aktiivisten reittien puutteiksi.
+Kun karttakohteen `stype` muutetaan arvoon `connection_obsolete`, merkitse myös
+vastaava `data.js`:n reitti `obsolete: true` -tilaan. Kartta- ja reittidatan on
+oltava reitin elinkaaresta keskenään samaa mieltä.
 
 Alusrekisteri on historiallinen ja kumulatiivinen. Älä poista aiemmin käytössä
 ollutta alusta `ferries`-rekisteristä, vaikka se poistuisi nykyiseltä reitiltä:
@@ -530,7 +536,10 @@ menneisyydessä. Lähdetarkistuksen historiatiedot voivat säilyä erillisessä
    ```
 
    Tallenna kuvat `timetables_jpg/`-hakemistoon. Älä korvaa erinimistä vanhaa
-   kuvaa uudella sisällöllä.
+   kuvaa uudella sisällöllä. Jos operaattori korjaa saman kauden PDF:ää,
+   anna myös korjatulle kuvalle uusi nimi, esimerkiksi lisäämällä nimeen
+   päivityspäivä. Uusi tiedostonimi ohittaa selaimeen tai välipalvelimeen
+   tallentuneen vanhan aikataulukuvan.
 5. Tarkista jokainen valmis kuva silmämääräisesti täydessä koossa. Varmista,
    ettei rajaus leikkaa tekstiä ja että kaikki PDF:n aikataulusivut ovat mukana
    oikeassa järjestyksessä.
@@ -582,6 +591,10 @@ menneisyydessä. Lähdetarkistuksen historiatiedot voivat säilyä erillisessä
 - Yhteinen liite voi olla osa usean reitin aikataulua. Esimerkiksi
   vaijerilossien yleinen tauko- ja poikkeussivu lisätään reittikohtaisen kuvan
   lisäksi tai yksinään niille kausille, joille ei ole erillistä aikataulua.
+  Vuodenvaihteessa edellisen vuoden yleissivua voidaan näyttää edelleen
+  reittikohtaisen aikataulun rinnalla, kunnes uuden vuoden korvaava yleissivu
+  julkaistaan. Poista tai vaihda vanha sivu heti, kun uusi virallinen versio on
+  saatavilla.
 - Älä oleta, että kaikille vanhoille reiteille julkaistaan edelleen oma
   aikataulu. Jos reitti puuttuu operaattorin nykyiseltä aikataulusivulta, älä
   jatka vanhan aikataulun voimassaoloa. Selvitä reitin tila erikseen.
@@ -714,7 +727,13 @@ Kun raportti ilmoittaa muutoksesta:
    eivät lisää niitä automaattisesti. `acceptedUrls` sisältää lähdesivulla
    edelleen näkyvät historialliset tiedostot, joita ei tarvitse tarkistaa
    sisältölähteinä mutta joita ei myöskään pidä ilmoittaa uutena joka ajolla.
-3. Kun uusi aikataulu on käsitelty ja tarkistettu, hyväksy ladatut lähteet:
+   Jos uusi linkki korvaa 404-virheen palauttavan tai muuten päättyneen
+   `sources`-rivin, poista vanha rivi, kun sen aikataulujakso ei ole enää
+   aktiivinen. Säilytä kuitenkin edelleen lähdesivulla näkyvä historiallinen
+   URL tarvittaessa katalogin `acceptedUrls`-listassa.
+3. Aja uusien `sources`-rivien lisäämisen jälkeen `check` uudelleen. Näin uusi
+   lähde latautuu `candidates`-hakemistoon ja saa tarkistettavan sormenjäljen.
+   Kun uusi aikataulu on käsitelty ja tarkistettu, hyväksy ladatut lähteet:
 
    ```sh
    python3 scripts/check_timetables.py accept
