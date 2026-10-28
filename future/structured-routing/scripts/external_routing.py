@@ -23,6 +23,7 @@ from classify_external_route import classify, decode_polyline, distance_meters
 
 
 DEFAULT_NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+DEFAULT_OSM_API_URL = "https://api.openstreetmap.org/api/0.6"
 DEFAULT_VALHALLA_URL = "https://valhalla1.openstreetmap.de"
 DEFAULT_USER_AGENT = "Saaristolautat-route-prototype/1.0"
 
@@ -133,6 +134,62 @@ def _normalize_geocoded_result(result: dict, query: str) -> dict:
     return normalized
 
 
+def _normalized_name(value: object) -> str:
+    return " ".join(str(value or "").casefold().split())
+
+
+def _best_nominatim_result(query: str, results: list[dict]) -> dict:
+    """Prefer a municipality's central locality over its area centroid.
+
+    Nominatim commonly returns the admin-level 8 municipality boundary first.
+    For a bare municipality name it may also return a more precise city/town
+    feature later in the result list.  Street addresses and qualified searches
+    retain Nominatim's original ordering.
+    """
+    stripped_query = query.strip()
+    if not stripped_query or "," in stripped_query or any(
+        character.isdigit() for character in stripped_query
+    ):
+        return results[0]
+
+    normalized_query = _normalized_name(stripped_query)
+    central_candidates = []
+    for position, item in enumerate(results):
+        if _normalized_name(item.get("name")) != normalized_query:
+            continue
+        address = item.get("address") or {}
+        if not any(
+            _normalized_name(address.get(key)) == normalized_query
+            for key in ("city", "town", "municipality")
+        ):
+            continue
+        central_candidates.append((int(item.get("place_rank") or 0), -position, item))
+    if central_candidates:
+        return max(central_candidates, key=lambda candidate: candidate[:2])[2]
+    return results[0]
+
+
+def _municipality_boundary_result(query: str, results: list[dict]) -> dict | None:
+    stripped_query = query.strip()
+    if not stripped_query or "," in stripped_query or any(
+        character.isdigit() for character in stripped_query
+    ):
+        return None
+    normalized_query = _normalized_name(stripped_query)
+    return next(
+        (
+            item for item in results
+            if _normalized_name(item.get("name")) == normalized_query
+            and item.get("category") == "boundary"
+            and item.get("type") == "administrative"
+            and str((item.get("extratags") or {}).get("admin_level")) == "8"
+            and item.get("osm_type") == "relation"
+            and item.get("osm_id")
+        ),
+        None,
+    )
+
+
 def _read_json(request: Request, timeout: float) -> object:
     default_paths = ssl.get_default_verify_paths()
     configured_cafile = os.environ.get(default_paths.openssl_cafile_env)
@@ -175,12 +232,14 @@ class NominatimGeocoder:
         self,
         endpoint: str = DEFAULT_NOMINATIM_URL,
         *,
+        osm_api_endpoint: str = DEFAULT_OSM_API_URL,
         user_agent: str = DEFAULT_USER_AGENT,
         timeout: float = 30,
         minimum_interval_seconds: float = 1,
         cache=None,
     ) -> None:
         self.endpoint = endpoint
+        self.osm_api_endpoint = osm_api_endpoint.rstrip("/")
         self.user_agent = user_agent
         self.timeout = timeout
         self.minimum_interval_seconds = minimum_interval_seconds
@@ -194,7 +253,11 @@ class NominatimGeocoder:
         if normalized_query in self._cache:
             result = _normalize_geocoded_result(self._cache[normalized_query], query)
             return result
-        cache_key = {"endpoint": self.endpoint, "query": normalized_query}
+        cache_key = {
+            "endpoint": self.endpoint,
+            "query": normalized_query,
+            "selection": "municipality-admin-centre-v1",
+        }
         cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
         if cached is not None:
             result = _normalize_geocoded_result(cached, query)
@@ -204,6 +267,7 @@ class NominatimGeocoder:
             "q": query,
             "format": "jsonv2",
             "addressdetails": 1,
+            "extratags": 1,
             "limit": 5,
             "countrycodes": "fi",
             "accept-language": "fi,sv,en",
@@ -230,12 +294,18 @@ class NominatimGeocoder:
             self._last_request_at = time.monotonic()
         if not isinstance(results, list) or not results:
             raise ValueError(f"address was not found: {query}")
-        item = results[0]
+        item = _best_nominatim_result(query, results)
+        municipality = _municipality_boundary_result(query, results)
+        admin_centre = self._admin_centre(municipality) if municipality else None
+        if municipality and admin_centre:
+            item = municipality
         result = _normalize_geocoded_result({
             "query": query,
             "name": item.get("name"),
             "displayName": item["display_name"],
-            "coordinates": {"lat": float(item["lat"]), "lon": float(item["lon"])},
+            "coordinates": admin_centre or {
+                "lat": float(item["lat"]), "lon": float(item["lon"]),
+            },
             "address": item.get("address"),
             "provider": "Nominatim",
             "attribution": "© OpenStreetMap contributors",
@@ -244,6 +314,43 @@ class NominatimGeocoder:
             self.cache.set("nominatim:search", cache_key, result)
         self._cache[normalized_query] = result
         return dict(result)
+
+    def _admin_centre(self, municipality: dict) -> dict | None:
+        relation_id = int(municipality["osm_id"])
+        cache_key = {"endpoint": self.osm_api_endpoint, "relationId": relation_id}
+        cached = self.cache.get("osm:admin-centre", cache_key) if self.cache else None
+        if cached is not None:
+            return dict(cached)
+        try:
+            relation_request = Request(
+                f"{self.osm_api_endpoint}/relation/{relation_id}.json",
+                headers={"User-Agent": self.user_agent, "Accept": "application/json"},
+            )
+            relation_data = _read_json(relation_request, self.timeout)
+            relation = next(
+                item for item in relation_data["elements"]
+                if item.get("type") == "relation" and item.get("id") == relation_id
+            )
+            centre_member = next(
+                member for member in relation["members"]
+                if member.get("type") == "node" and member.get("role") == "admin_centre"
+            )
+            node_id = int(centre_member["ref"])
+            node_request = Request(
+                f"{self.osm_api_endpoint}/node/{node_id}.json",
+                headers={"User-Agent": self.user_agent, "Accept": "application/json"},
+            )
+            node_data = _read_json(node_request, self.timeout)
+            node = next(
+                item for item in node_data["elements"]
+                if item.get("type") == "node" and item.get("id") == node_id
+            )
+            result = {"lat": float(node["lat"]), "lon": float(node["lon"])}
+        except (KeyError, StopIteration, TypeError, ValueError, RuntimeError):
+            return None
+        if self.cache:
+            self.cache.set("osm:admin-centre", cache_key, result)
+        return result
 
 
 class ValhallaRouter:
