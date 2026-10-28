@@ -23,6 +23,7 @@ from route_itineraries import (  # noqa: E402
     edge_instance,
     find_itineraries,
     next_adaptive_sweep_seeds,
+    nonlocal_route_ids,
     prune_return_only_dead_ends,
     same_provider_direct_ferry_connection,
     prefix_road_shift,
@@ -61,6 +62,42 @@ class FastRouteSearchTests(unittest.TestCase):
             same_day=True, max_results=3, graph_data=self.graph,
         )
         self.assertTrue(all("_schedules" not in route for route in self.graph["routes"]))
+
+    def test_kokkila_uses_angelniemi_road_catchment(self) -> None:
+        def road(edge_id: str, from_id: str, to_id: str, minutes: int) -> dict:
+            return {
+                "id": edge_id,
+                "kind": "road",
+                "from": from_id,
+                "to": to_id,
+                "modes": {
+                    "auto": {
+                        "status": "ok",
+                        "durationSeconds": minutes * 60,
+                        "distanceMeters": minutes * 1000,
+                    },
+                },
+            }
+
+        salo_edges = [
+            road("salo-kokkila", "Salo", "Kokkila", 56),
+            road("salo-angelniemi", "Salo", "Angelniemi", 94),
+        ]
+        angelniemi_side_edges = [
+            road("local-kokkila", "local-origin", "Kokkila", 60),
+            road("local-angelniemi", "local-origin", "Angelniemi", 20),
+        ]
+
+        self.assertEqual(
+            nonlocal_route_ids(salo_edges, "Salo", "Föglö", "car"),
+            {"kokkila"},
+        )
+        self.assertEqual(
+            nonlocal_route_ids(
+                angelniemi_side_edges, "local-origin", "Föglö", "car",
+            ),
+            set(),
+        )
 
     def test_return_only_island_branch_is_pruned(self) -> None:
         adjacency = {
@@ -104,6 +141,97 @@ class FastRouteSearchTests(unittest.TestCase):
             [edge["id"] for edge in pruned["gateway"]],
             ["outbound-ferry"],
         )
+
+    def test_first_sailing_may_move_to_a_later_day(self) -> None:
+        graph = {
+            "nodes": [{"id": "origin"}, {"id": "destination"}],
+            "routes": [{"id": "three-day-service"}],
+            "tripPatterns": [{"id": "three-day-trip", "calls": []}],
+            "edges": [{
+                "id": "three-day-edge",
+                "kind": "scheduled_service",
+                "from": "origin",
+                "to": "destination",
+                "routeId": "three-day-service",
+                "tripPatternId": "three-day-trip",
+                "serviceType": "connection_vessel",
+                "mobility": {"car": "allowed"},
+                "schedule": {
+                    "operatingDays": "___4___",
+                    "departure": {"time": "06:00"},
+                    "arrival": {"time": "07:00"},
+                },
+            }],
+        }
+
+        result = find_itineraries(
+            "origin", "destination", date(2026, 11, 2), time(8, 0),
+            same_day=True, max_results=1, graph_data=graph,
+        )
+
+        self.assertEqual(result["status"], "routes_found")
+        self.assertEqual(
+            result["results"][0]["suggestedOriginDeparture"],
+            "2026-11-05T06:00",
+        )
+
+    def test_ferry_chain_is_limited_to_twelve_hours(self) -> None:
+        def graph(final_arrival: str) -> dict:
+            return {
+                "nodes": [
+                    {"id": "origin"}, {"id": "transfer"},
+                    {"id": "destination"},
+                ],
+                "routes": [{"id": "feeder"}, {"id": "onward"}],
+                "tripPatterns": [
+                    {"id": "feeder-trip", "calls": []},
+                    {"id": "onward-trip", "calls": []},
+                ],
+                "edges": [
+                    {
+                        "id": "feeder-edge",
+                        "kind": "scheduled_service",
+                        "from": "origin",
+                        "to": "transfer",
+                        "routeId": "feeder",
+                        "tripPatternId": "feeder-trip",
+                        "serviceType": "connection_vessel",
+                        "mobility": {"car": "allowed"},
+                        "schedule": {
+                            "operatingDays": "1234567",
+                            "departure": {"time": "06:00"},
+                            "arrival": {"time": "06:10"},
+                        },
+                    },
+                    {
+                        "id": "onward-edge",
+                        "kind": "scheduled_service",
+                        "from": "transfer",
+                        "to": "destination",
+                        "routeId": "onward",
+                        "tripPatternId": "onward-trip",
+                        "serviceType": "connection_vessel",
+                        "mobility": {"car": "allowed"},
+                        "schedule": {
+                            "operatingDays": "1234567",
+                            "departure": {"time": "17:55"},
+                            "arrival": {"time": final_arrival},
+                        },
+                    },
+                ],
+            }
+
+        within_limit = find_itineraries(
+            "origin", "destination", date(2026, 11, 2),
+            same_day=True, max_results=1, graph_data=graph("18:00"),
+        )
+        beyond_limit = find_itineraries(
+            "origin", "destination", date(2026, 11, 2),
+            same_day=True, max_results=1, graph_data=graph("18:01"),
+        )
+
+        self.assertEqual(within_limit["status"], "routes_found")
+        self.assertEqual(beyond_limit["status"], "no_route")
 
     def test_initial_drive_buffer_scales_with_driving_time(self) -> None:
         def records(minutes: int) -> list[dict]:
