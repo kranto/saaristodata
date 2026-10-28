@@ -134,6 +134,47 @@ class ScheduledInstanceIndex:
         return instances[index] if index < len(instances) else None
 
 
+def prune_return_only_dead_ends(
+    adjacency: dict[str, list[dict]], destination: str,
+) -> tuple[dict[str, list[dict]], int]:
+    """Remove departures whose only onward path revisits their origin node.
+
+    The searches below only consider simple paths: after leaving a node they
+    will not return to it. A ferry from a mainland gateway to an island whose
+    only exit is the same gateway can therefore never be part of a result.
+    The ordinary reverse-reachability check misses this because it sees the
+    unusable island -> gateway -> destination walk.
+
+    For each possible departure node, compute destination reachability with
+    that node removed. An outgoing edge is safe to discard when its target is
+    absent from that set. The calculation is query-local, mode-aware and uses
+    the same enabled adjacency as the actual search.
+    """
+    reverse_adjacency: dict[str, set[str]] = defaultdict(set)
+    for from_node, edges in adjacency.items():
+        for edge in edges:
+            reverse_adjacency[edge["to"]].add(from_node)
+
+    pruned: dict[str, list[dict]] = defaultdict(list)
+    removed = 0
+    for blocked_node, edges in adjacency.items():
+        reachable = {destination}
+        queue = deque([destination])
+        while queue:
+            node_id = queue.popleft()
+            for previous_node in reverse_adjacency.get(node_id, ()):
+                if previous_node == blocked_node or previous_node in reachable:
+                    continue
+                reachable.add(previous_node)
+                queue.append(previous_node)
+        for edge in edges:
+            if edge["to"] in reachable:
+                pruned[blocked_node].append(edge)
+            else:
+                removed += 1
+    return pruned, removed
+
+
 def service_signature(records: list[dict]) -> tuple:
     return tuple(
         (
@@ -815,6 +856,10 @@ def find_itineraries(
                 skipped_continuous_unknown += 1
             else:
                 adjacency[edge["from"]].append(edge)
+
+    adjacency, _ = prune_return_only_dead_ends(
+        adjacency, args.destination,
+    )
 
     start = datetime.combine(args.travel_date, args.start_time)
     deadline = (
