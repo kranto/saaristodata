@@ -8,6 +8,7 @@ import bisect
 import heapq
 import itertools
 import json
+import sys
 from collections import Counter, defaultdict, deque
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
@@ -192,6 +193,15 @@ class ScheduledInstanceIndex:
         departures, instances = value
         index = bisect.bisect_left(departures, ready)
         return instances[index] if index < len(instances) else None
+
+    def minimum_duration_seconds(self, edge: dict) -> int | None:
+        value = self._values.get(edge["id"])
+        if value is None:
+            return None
+        return min(
+            round((item["arrival"] - item["departure"]).total_seconds())
+            for item in value[1]
+        )
 
 
 def prune_return_only_dead_ends(
@@ -532,11 +542,53 @@ def is_redundant_consecutive_road(records: list[dict], edge: dict) -> bool:
     )
 
 
+def minimum_remaining_travel_seconds(
+    adjacency: dict[str, list[dict]], destination: str, mode: str,
+    scheduled_instances: ScheduledInstanceIndex | None = None,
+) -> dict[str, int]:
+    """Admissible destination heuristic shared by all seed-sweep searches.
+
+    Road and known crossing durations are unavoidable, while all ferry waiting
+    is valued at zero. The result can therefore only underestimate the
+    remaining journey time and is safe for ordering an exact earliest-arrival
+    search.
+    """
+    reverse_edges: dict[str, list[tuple[str, int]]] = defaultdict(list)
+    for from_node, edges in adjacency.items():
+        for edge in edges:
+            seconds = 0
+            if edge["kind"] == "road":
+                duration = road_duration(edge, mode)
+                if duration is None:
+                    continue
+                seconds = duration[0]
+            elif edge["kind"] == "continuous_ferry":
+                seconds = round(edge["crossingMinutes"] * 60)
+            elif scheduled_instances is not None:
+                seconds = scheduled_instances.minimum_duration_seconds(edge) or 0
+            reverse_edges[edge["to"]].append((from_node, seconds))
+
+    minimum = {destination: 0}
+    queue = [(0, destination)]
+    while queue:
+        seconds, node_id = heapq.heappop(queue)
+        if seconds != minimum.get(node_id):
+            continue
+        for previous_node, edge_seconds in reverse_edges.get(node_id, []):
+            candidate = seconds + edge_seconds
+            if candidate < minimum.get(previous_node, sys.maxsize):
+                minimum[previous_node] = candidate
+                heapq.heappush(queue, (candidate, previous_node))
+    return minimum
+
+
 def earliest_candidate_from_seed(
     adjacency: dict[str, list[dict]], routes: dict[str, dict], origin: str, destination: str,
     seed: datetime, deadline: datetime, mode: str, timing_profile: str, max_legs: int,
     scheduled_instances: ScheduledInstanceIndex | None = None,
     minimum_legs_to_destination: dict[str, int] | None = None,
+    minimum_remaining_seconds: dict[str, int] | None = None,
+    search_stats: Counter | None = None,
 ) -> tuple[list[dict], datetime] | None:
     """Return the earliest feasible itinerary after one exact origin seed.
 
@@ -545,11 +597,15 @@ def earliest_candidate_from_seed(
     not disappear merely because an earlier label reached the same road node.
     """
     serial = itertools.count()
-    queue = [(seed, next(serial), origin, [], (origin,), None, False, None)]
+    heuristic = minimum_remaining_seconds or {}
+    queue = [(
+        seed + timedelta(seconds=heuristic.get(origin, 0)),
+        next(serial), seed, origin, [], (origin,), None, False, None,
+    )]
     best: dict[tuple[str, str | None, datetime | None], datetime] = {}
     while queue:
         (
-            moment, _, node_id, records, visited_nodes, last_trip,
+            _, _, moment, node_id, records, visited_nodes, last_trip,
             has_used_service, first_service_departure,
         ) = heapq.heappop(queue)
         state = (node_id, last_trip, first_service_departure)
@@ -566,6 +622,8 @@ def earliest_candidate_from_seed(
             continue
         if moment > deadline or len(records) >= max_legs:
             continue
+        if search_stats is not None:
+            search_stats["expandedLabels"] += 1
         for edge in adjacency.get(node_id, []):
             if is_redundant_consecutive_road(records, edge):
                 continue
@@ -619,7 +677,10 @@ def earliest_candidate_from_seed(
                 if edge["kind"] == "scheduled_service" else None
             )
             heapq.heappush(queue, (
-                instance["arrival"], next(serial), edge["to"], records + [record],
+                instance["arrival"] + timedelta(
+                    seconds=heuristic.get(edge["to"], 0),
+                ),
+                next(serial), instance["arrival"], edge["to"], records + [record],
                 visited_nodes + (edge["to"],),
                 next_last_trip, has_used_service or edge["kind"] != "road",
                 next_first_service_departure,
@@ -681,6 +742,30 @@ def next_adaptive_sweep_seeds(
         # creates a branching sweep and repeats the same searches.
         return future_values[:1]
     return []
+
+
+def candidate_sweep_seed(candidate: dict, deadline: datetime) -> datetime | None:
+    """First origin minute at which this candidate's first schedule is missed."""
+    origin_departure = datetime.fromisoformat(candidate["suggestedOriginDeparture"])
+    has_used_service = False
+    for index, leg in enumerate(candidate["legs"]):
+        if leg["kind"] != "scheduled_service":
+            has_used_service |= leg["kind"] != "road"
+            continue
+        departure = datetime.fromisoformat(leg["departure"])
+        ready = datetime.fromisoformat(leg["readyAtOrigin"])
+        readiness = 0
+        if not has_used_service:
+            readiness = (leg.get("booking") or {}).get(
+                "loadingReadinessMinutesBefore", 0,
+            )
+        if index == 0:
+            seed = departure - timedelta(minutes=readiness) + timedelta(minutes=1)
+            return seed if seed <= deadline else None
+        catch_slack = round((departure - ready).total_seconds() / 60) - readiness
+        seed = origin_departure + timedelta(minutes=max(0, catch_slack) + 1)
+        return seed if seed <= deadline else None
+    return None
 
 
 def candidate_dominates(first: dict, second: dict) -> bool:
@@ -978,6 +1063,9 @@ def find_itineraries(
         [edge for edges in adjacency.values() for edge in edges],
         routes, start, deadline, args.timing_profile,
     )
+    minimum_remaining_seconds = minimum_remaining_travel_seconds(
+        adjacency, args.destination, args.mode, scheduled_instances,
+    )
     reverse_adjacency: dict[str, set[str]] = defaultdict(set)
     for from_node, edges in adjacency.items():
         for edge in edges:
@@ -1188,6 +1276,8 @@ def find_itineraries(
     # earliest-arrival itinerary; identical ferry sequences are deduplicated.
     swept_seed_count = 0
     swept_candidate_count = 0
+    swept_jump_count = 0
+    sweep_stats = Counter()
     if include_seed_sweep:
         sweep_deadline = first_result_day_deadline or deadline
         pending_seeds = [start]
@@ -1201,7 +1291,7 @@ def find_itineraries(
             found = earliest_candidate_from_seed(
                 adjacency, routes, args.origin, args.destination, seed, sweep_deadline,
                 args.mode, args.timing_profile, args.max_legs, scheduled_instances,
-                minimum_legs_to_destination,
+                minimum_legs_to_destination, minimum_remaining_seconds, sweep_stats,
             )
             if not found:
                 continue
@@ -1219,9 +1309,30 @@ def find_itineraries(
             ):
                 candidates_by_signature[signature] = candidate
                 swept_candidate_count += 1
-            for next_seed in next_adaptive_sweep_seeds(
+            next_seeds = next_adaptive_sweep_seeds(
                 records, seed, routes, sweep_deadline, args.mode,
-            ):
+            )
+            reusable_candidates = [
+                item for item in candidates_by_signature.values()
+                if item["_finalService"] == final_service
+                and item["arrival"] == candidate["arrival"]
+                and item["riskSummary"]["worstConnectionRisk"]
+                == candidate["riskSummary"]["worstConnectionRisk"]
+                and item["suggestedOriginDeparture"]
+                > candidate["suggestedOriginDeparture"]
+            ]
+            if next_seeds and reusable_candidates:
+                latest_known = max(
+                    reusable_candidates,
+                    key=lambda item: item["suggestedOriginDeparture"],
+                )
+                reusable_seed = candidate_sweep_seed(
+                    latest_known, sweep_deadline,
+                )
+                if reusable_seed is not None and reusable_seed > next_seeds[0]:
+                    next_seeds = [reusable_seed]
+                    swept_jump_count += 1
+            for next_seed in next_seeds:
                 if next_seed not in seen_seeds:
                     heapq.heappush(pending_seeds, next_seed)
 
@@ -1295,9 +1406,11 @@ def find_itineraries(
             "maxFerryChainHours": round(
                 MAX_FERRY_CHAIN_DURATION.total_seconds() / 3600
             ),
-            "sweepStrategy": "adaptive_first_service_boundaries",
+            "sweepStrategy": "adaptive_reused_candidate_boundaries",
             "sweptSeedCount": swept_seed_count,
             "sweptCandidateUpdates": swept_candidate_count,
+            "sweptCandidateJumps": swept_jump_count,
+            "sweptExpandedLabels": sweep_stats["expandedLabels"],
             "firstResultDayDeadline": (
                 first_result_day_deadline.isoformat(timespec="minutes")
                 if first_result_day_deadline else None

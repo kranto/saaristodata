@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from route_itineraries import (  # noqa: E402
     ScheduledInstanceIndex,
     annotate_transit_charge,
+    candidate_sweep_seed,
     candidate_departure_preference,
     candidate_dominates,
     default_origin_boarding_buffer_minutes,
@@ -583,9 +584,54 @@ class FastRouteSearchTests(unittest.TestCase):
         )
         self.assertEqual(
             result["diagnostics"]["sweepStrategy"],
-            "adaptive_first_service_boundaries",
+            "adaptive_reused_candidate_boundaries",
         )
         self.assertLessEqual(result["diagnostics"]["sweptSeedCount"], 4)
+
+    def test_reused_candidate_sweep_keeps_latest_feeder_to_same_final_sailing(self) -> None:
+        result = find_itineraries(
+            "Turku", "Storpensor", date(2026, 10, 30),
+            same_day=True, max_results=20, graph_data=self.graph,
+        )
+        final_connection = next(
+            item for item in result["results"]
+            if item["arrival"] == "2026-10-30T20:00"
+        )
+
+        self.assertEqual(
+            final_connection["suggestedOriginDeparture"],
+            "2026-10-30T17:05",
+        )
+        self.assertGreater(result["diagnostics"]["sweptCandidateJumps"], 0)
+        self.assertLessEqual(result["diagnostics"]["sweptSeedCount"], 15)
+
+    def test_sweep_jump_from_origin_ferry_starts_after_its_departure(self) -> None:
+        candidate = {
+            "suggestedOriginDeparture": "2026-11-02T13:40",
+            "legs": [{
+                "kind": "scheduled_service",
+                "departure": "2026-11-02T13:40",
+                "readyAtOrigin": "2026-11-02T06:01",
+                "booking": {"loadingReadinessMinutesBefore": 0},
+            }],
+        }
+
+        self.assertEqual(
+            candidate_sweep_seed(candidate, datetime(2026, 11, 2, 23, 59)),
+            datetime(2026, 11, 2, 13, 41),
+        )
+
+    def test_reused_candidate_sweep_keeps_later_keistio_routes(self) -> None:
+        result = find_itineraries(
+            "Keistiö", "Galtby", date(2026, 11, 2), time(6, 1),
+            same_day=True, max_results=20, graph_data=self.graph,
+        )
+
+        self.assertEqual(result["resultCount"], 7)
+        self.assertEqual(
+            result["results"][-1]["suggestedOriginDeparture"],
+            "2026-11-02T17:10",
+        )
 
     def test_decision_graph_keeps_leg_specific_risk_alternatives(self) -> None:
         result = find_itineraries(

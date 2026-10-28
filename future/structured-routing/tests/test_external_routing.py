@@ -5,12 +5,13 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from external_routing import concise_address_name  # noqa: E402
+from external_routing import NominatimGeocoder, concise_address_name  # noqa: E402
 
 
 class ConciseAddressNameTests(unittest.TestCase):
@@ -141,6 +142,141 @@ class ConciseAddressNameTests(unittest.TestCase):
         }
 
         self.assertEqual(concise_address_name(result), "Näsby, Houtskari, Pargas")
+
+
+class NominatimGeocoderTests(unittest.TestCase):
+    def test_bare_municipality_prefers_central_locality_over_area_centroid(self) -> None:
+        results = [
+            {
+                "lat": "60.2946985",
+                "lon": "23.2696461",
+                "name": "Salo",
+                "display_name": "Salo, Varsinais-Suomi, Suomi",
+                "category": "boundary",
+                "type": "administrative",
+                "place_rank": 16,
+                "osm_type": "relation",
+                "osm_id": 2373964,
+                "extratags": {"admin_level": "8"},
+                "address": {"city": "Salo"},
+            },
+            {
+                "lat": "60.3879279",
+                "lon": "23.1248648",
+                "name": "Salo",
+                "display_name": "Salo, Varsinais-Suomi, Suomi",
+                "category": "boundary",
+                "type": "administrative",
+                "place_rank": 18,
+                "address": {"city": "Salo"},
+            },
+            {
+                "lat": "61.1916127",
+                "lon": "25.6145954",
+                "name": "Salo",
+                "display_name": "Salo, Asikkala, Suomi",
+                "category": "place",
+                "type": "village",
+                "place_rank": 19,
+                "address": {"village": "Salo", "city": "Asikkala"},
+            },
+        ]
+
+        relation = {
+            "elements": [{
+                "type": "relation",
+                "id": 2373964,
+                "members": [{"type": "node", "ref": 30969777, "role": "admin_centre"}],
+            }],
+        }
+        centre = {
+            "elements": [{
+                "type": "node",
+                "id": 30969777,
+                "lat": 60.3879279,
+                "lon": 23.1248648,
+            }],
+        }
+        with patch(
+            "external_routing._read_json",
+            side_effect=[results, relation, centre],
+        ):
+            result = NominatimGeocoder(minimum_interval_seconds=0).geocode("Salo")
+
+        self.assertEqual(
+            result["coordinates"],
+            {"lat": 60.3879279, "lon": 23.1248648},
+        )
+
+    def test_street_address_keeps_nominatim_first_result(self) -> None:
+        results = [
+            {
+                "lat": "60.3900",
+                "lon": "23.1200",
+                "name": "Turuntie 1",
+                "display_name": "Turuntie 1, Salo, Suomi",
+                "place_rank": 30,
+                "address": {"road": "Turuntie", "house_number": "1", "city": "Salo"},
+            },
+            {
+                "lat": "60.3879279",
+                "lon": "23.1248648",
+                "name": "Salo",
+                "display_name": "Salo, Varsinais-Suomi, Suomi",
+                "place_rank": 18,
+                "address": {"city": "Salo"},
+            },
+        ]
+
+        with patch("external_routing._read_json", return_value=results):
+            result = NominatimGeocoder(minimum_interval_seconds=0).geocode(
+                "Turuntie 1, Salo"
+            )
+
+        self.assertEqual(result["coordinates"], {"lat": 60.39, "lon": 23.12})
+
+    def test_municipality_admin_centre_may_have_a_different_name(self) -> None:
+        results = [{
+            "lat": "61.3402939",
+            "lon": "22.9097256",
+            "name": "Sastamala",
+            "display_name": "Sastamala, Pirkanmaa, Suomi",
+            "category": "boundary",
+            "type": "administrative",
+            "place_rank": 16,
+            "osm_type": "relation",
+            "osm_id": 2524088,
+            "extratags": {"admin_level": "8"},
+            "address": {"municipality": "Sastamala"},
+        }]
+        relation = {
+            "elements": [{
+                "type": "relation",
+                "id": 2524088,
+                "members": [{"type": "node", "ref": 4966130398, "role": "admin_centre"}],
+            }],
+        }
+        centre = {
+            "elements": [{
+                "type": "node",
+                "id": 4966130398,
+                "lat": 61.3448335,
+                "lon": 22.9057947,
+                "tags": {"name": "Vammala", "place": "town"},
+            }],
+        }
+
+        with patch(
+            "external_routing._read_json",
+            side_effect=[results, relation, centre],
+        ):
+            result = NominatimGeocoder(minimum_interval_seconds=0).geocode("Sastamala")
+
+        self.assertEqual(
+            result["coordinates"],
+            {"lat": 61.3448335, "lon": 22.9057947},
+        )
+        self.assertEqual(result["displayName"], "Sastamala")
 
 
 if __name__ == "__main__":
