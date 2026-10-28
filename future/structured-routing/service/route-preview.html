@@ -408,6 +408,13 @@
       const candidateArrival = candidate.item.arrival;
       const candidateCharges = itineraryChargeCount(candidate.item);
       const candidateRisk = routeRiskRank(candidate.item);
+      const leavesFirst = options.every((other) => (
+        other === candidate || candidateDeparture <= other.item.suggestedOriginDeparture
+      ));
+      const arrivesLast = options.every((other) => (
+        other === candidate || candidateArrival >= other.item.arrival
+      ));
+      if (!leavesFirst || !arrivesLast) return false;
       return options.some((other) => {
         if (other === candidate) return false;
         const otherDeparture = other.item.suggestedOriginDeparture;
@@ -416,11 +423,10 @@
         const otherRisk = routeRiskRank(other.item);
         return otherDeparture >= candidateDeparture
           && otherArrival <= candidateArrival
-          && otherCharges <= candidateCharges
+          && otherCharges < candidateCharges
           && otherRisk <= candidateRisk
           && (otherDeparture > candidateDeparture
             || otherArrival < candidateArrival
-            || otherCharges < candidateCharges
             || otherRisk < candidateRisk);
       });
     }
