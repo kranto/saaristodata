@@ -22,6 +22,7 @@ from route_itineraries import (  # noqa: E402
     default_origin_boarding_buffer_minutes,
     edge_instance,
     find_itineraries,
+    is_redundant_consecutive_road,
     next_adaptive_sweep_seeds,
     nonlocal_route_ids,
     prune_return_only_dead_ends,
@@ -97,6 +98,19 @@ class FastRouteSearchTests(unittest.TestCase):
                 angelniemi_side_edges, "local-origin", "Föglö", "car",
             ),
             set(),
+        )
+
+    def test_consecutive_road_leg_is_redundant(self) -> None:
+        records = [{"edge": {"kind": "road"}}]
+
+        self.assertTrue(
+            is_redundant_consecutive_road(records, {"kind": "road"}),
+        )
+        self.assertFalse(
+            is_redundant_consecutive_road(records, {"kind": "scheduled_service"}),
+        )
+        self.assertFalse(
+            is_redundant_consecutive_road([], {"kind": "road"}),
         )
 
     def test_return_only_island_branch_is_pruned(self) -> None:
