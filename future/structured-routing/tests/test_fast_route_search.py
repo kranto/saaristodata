@@ -23,6 +23,7 @@ from route_itineraries import (  # noqa: E402
     edge_instance,
     find_itineraries,
     next_adaptive_sweep_seeds,
+    prune_return_only_dead_ends,
     same_provider_direct_ferry_connection,
     prefix_road_shift,
 )
@@ -60,6 +61,49 @@ class FastRouteSearchTests(unittest.TestCase):
             same_day=True, max_results=3, graph_data=self.graph,
         )
         self.assertTrue(all("_schedules" not in route for route in self.graph["routes"]))
+
+    def test_return_only_island_branch_is_pruned(self) -> None:
+        adjacency = {
+            "gateway": [
+                {"from": "gateway", "to": "island", "id": "dead-end-ferry"},
+                {"from": "gateway", "to": "mainland", "id": "onward-road"},
+            ],
+            "island": [
+                {"from": "island", "to": "gateway", "id": "return-ferry"},
+            ],
+            "mainland": [
+                {"from": "mainland", "to": "destination", "id": "destination-road"},
+            ],
+        }
+
+        pruned, removed = prune_return_only_dead_ends(adjacency, "destination")
+
+        self.assertEqual(
+            [edge["id"] for edge in pruned["gateway"]],
+            ["onward-road"],
+        )
+        self.assertEqual(removed, 1)
+
+    def test_island_branch_with_another_exit_is_preserved(self) -> None:
+        adjacency = {
+            "gateway": [
+                {"from": "gateway", "to": "island", "id": "outbound-ferry"},
+            ],
+            "island": [
+                {"from": "island", "to": "gateway", "id": "return-ferry"},
+                {"from": "island", "to": "mainland", "id": "other-exit"},
+            ],
+            "mainland": [
+                {"from": "mainland", "to": "destination", "id": "destination-road"},
+            ],
+        }
+
+        pruned, _ = prune_return_only_dead_ends(adjacency, "destination")
+
+        self.assertEqual(
+            [edge["id"] for edge in pruned["gateway"]],
+            ["outbound-ferry"],
+        )
 
     def test_initial_drive_buffer_scales_with_driving_time(self) -> None:
         def records(minutes: int) -> list[dict]:
