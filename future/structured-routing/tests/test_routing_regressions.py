@@ -189,8 +189,8 @@ class ExampleJourneyTests(unittest.TestCase):
         self.assertNotIn("diagnostics", result)
         self.assertEqual(result["status"], "routes_found")
         first = result["itineraries"][0]
-        self.assertEqual(first["suggestedOriginDeparture"], "2026-11-01T06:55")
-        self.assertEqual(first["legs"][0]["arrival"], "2026-11-01T07:50")
+        self.assertEqual(first["suggestedOriginDeparture"], "2026-11-01T06:50")
+        self.assertEqual(first["legs"][0]["arrival"], "2026-11-01T07:45")
         self.assertNotIn("transferRisk", first["legs"][1])
         self.assertIsNone(first["riskSummary"]["worstConnectionRisk"])
         self.assertTrue(first["timingBasis"]["usesHistoricalEstimate"])

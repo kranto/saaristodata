@@ -42,6 +42,66 @@ RISK_ORDER = {
 }
 
 CONTINUOUS_FERRY_APPROACH_MINUTES = 5
+MAX_FERRY_CHAIN_DURATION = timedelta(hours=12)
+# Structured schedules use a seven-day operating pattern. Looking through one
+# complete cycle lets the first usable sailing move to a later day without
+# turning that wait into part of the journey-duration limit.
+INITIAL_SERVICE_LOOKAHEAD = timedelta(days=7)
+
+# These short local crossings are useful for endpoints on one particular side
+# of the ferry, but considering them in every long-distance search creates a
+# large set of detours that can never become useful alternatives. Define the
+# ordinary-road catchment whose trips may use each crossing.
+LOCAL_ENDPOINT_ROUTE_CATCHMENTS = {
+    "kokkila": ("Kokkila", "Angelniemi"),
+}
+
+
+def nonlocal_route_ids(
+    edges: list[dict], origin: str, destination: str, mode: str,
+) -> set[str]:
+    """Return local ferry routes outside both endpoints' road catchments."""
+    road_seconds: dict[tuple[str, str], float] = {}
+    for edge in edges:
+        if edge["kind"] != "road":
+            continue
+        value = road_duration(edge, mode)
+        if value is None:
+            continue
+        key = (edge["from"], edge["to"])
+        road_seconds[key] = min(road_seconds.get(key, float("inf")), value[0])
+
+    def belongs_to_local_side(
+        endpoint: str, mainland_pier: str, local_pier: str, *, destination_role: bool,
+    ) -> bool:
+        if endpoint == local_pier:
+            return True
+        if endpoint == mainland_pier:
+            return False
+        if destination_role:
+            mainland_seconds = road_seconds.get((mainland_pier, endpoint))
+            local_seconds = road_seconds.get((local_pier, endpoint))
+        else:
+            mainland_seconds = road_seconds.get((endpoint, mainland_pier))
+            local_seconds = road_seconds.get((endpoint, local_pier))
+        return (
+            mainland_seconds is not None
+            and local_seconds is not None
+            and local_seconds < mainland_seconds
+        )
+
+    excluded = set()
+    for route_id, (mainland_pier, local_pier) in LOCAL_ENDPOINT_ROUTE_CATCHMENTS.items():
+        if not (
+            belongs_to_local_side(
+                origin, mainland_pier, local_pier, destination_role=False,
+            )
+            or belongs_to_local_side(
+                destination, mainland_pier, local_pier, destination_role=True,
+            )
+        ):
+            excluded.add(route_id)
+    return excluded
 
 
 def default_origin_boarding_buffer_minutes(
@@ -471,19 +531,25 @@ def earliest_candidate_from_seed(
     not disappear merely because an earlier label reached the same road node.
     """
     serial = itertools.count()
-    queue = [(seed, next(serial), origin, [], (origin,), None, False)]
-    best: dict[tuple[str, str | None], datetime] = {}
+    queue = [(seed, next(serial), origin, [], (origin,), None, False, None)]
+    best: dict[tuple[str, str | None, datetime | None], datetime] = {}
     while queue:
         (
             moment, _, node_id, records, visited_nodes, last_trip,
-            has_used_service,
+            has_used_service, first_service_departure,
         ) = heapq.heappop(queue)
-        state = (node_id, last_trip)
+        state = (node_id, last_trip, first_service_departure)
         if moment >= best.get(state, datetime.max):
             continue
         best[state] = moment
         if node_id == destination:
             return records, moment
+        journey_deadline = (
+            first_service_departure + MAX_FERRY_CHAIN_DURATION
+            if first_service_departure else None
+        )
+        if journey_deadline is not None and moment > journey_deadline:
+            continue
         if moment > deadline or len(records) >= max_legs:
             continue
         for edge in adjacency.get(node_id, []):
@@ -511,7 +577,25 @@ def earliest_candidate_from_seed(
                 ),
                 scheduled_instances=scheduled_instances,
             )
-            if not instance or instance["arrival"] > deadline:
+            if not instance or (
+                instance["arrival"] > deadline
+                and not (edge["kind"] == "road" and edge["to"] == destination)
+            ):
+                continue
+            next_first_service_departure = first_service_departure
+            if next_first_service_departure is None and edge["kind"] != "road":
+                next_first_service_departure = instance["departure"]
+            next_journey_deadline = (
+                next_first_service_departure + MAX_FERRY_CHAIN_DURATION
+                if next_first_service_departure else None
+            )
+            if (
+                next_journey_deadline is not None
+                and instance["arrival"] > next_journey_deadline
+                and not (
+                    edge["kind"] == "road" and edge["to"] == destination
+                )
+            ):
                 continue
             record = {"edge": edge, "instance": instance, "ready": moment}
             next_last_trip = (
@@ -522,6 +606,7 @@ def earliest_candidate_from_seed(
                 instance["arrival"], next(serial), edge["to"], records + [record],
                 visited_nodes + (edge["to"],),
                 next_last_trip, has_used_service or edge["kind"] != "road",
+                next_first_service_departure,
             ))
     return None
 
@@ -843,8 +928,15 @@ def find_itineraries(
 
     adjacency: dict[str, list[dict]] = defaultdict(list)
     skipped_continuous_unknown = 0
+    excluded_route_ids = nonlocal_route_ids(
+        graph["edges"], args.origin, args.destination, args.mode,
+    )
+    skipped_nonlocal_edges = 0
     for edge in graph["edges"]:
         if not edge.get("enabledForAutomaticRouting", True):
+            continue
+        if edge.get("routeId") in excluded_route_ids:
+            skipped_nonlocal_edges += 1
             continue
         if edge["kind"] == "road" and road_duration(edge, args.mode):
             adjacency[edge["from"]].append(edge)
@@ -862,12 +954,13 @@ def find_itineraries(
     )
 
     start = datetime.combine(args.travel_date, args.start_time)
-    deadline = (
-        datetime.combine(args.travel_date, time(23, 59, 59))
-        if args.same_day else start + timedelta(days=3)
-    )
+    # Waiting for the first sailing is not journey time. Search one complete
+    # weekly timetable cycle for that sailing, then allow at most twelve hours
+    # from its departure to the final pier. A final road leg may finish later.
+    deadline = start + INITIAL_SERVICE_LOOKAHEAD + MAX_FERRY_CHAIN_DURATION
     scheduled_instances = ScheduledInstanceIndex(
-        graph["edges"], routes, start, deadline, args.timing_profile,
+        [edge for edges in adjacency.values() for edge in edges],
+        routes, start, deadline, args.timing_profile,
     )
     reverse_adjacency: dict[str, set[str]] = defaultdict(set)
     for from_node, edges in adjacency.items():
@@ -889,7 +982,7 @@ def find_itineraries(
     # particularly for a three-day query.
     queue = [(
         start, next(serial), args.origin, [], (args.origin,),
-        start, "relaxed", False,
+        start, "relaxed", False, None,
     )]
     accepted_per_node_hour = Counter()
     pareto_frontiers: dict[tuple, list[tuple[datetime, datetime]]] = defaultdict(list)
@@ -901,10 +994,25 @@ def find_itineraries(
         (
             moment, _, node_id, records, visited_nodes,
             origin_departure, worst_risk, has_used_service,
+            first_service_departure,
         ) = heapq.heappop(queue)
         if first_result_day_deadline is not None and moment > first_result_day_deadline:
             break
-        if moment > deadline:
+        if moment > deadline and node_id != args.destination:
+            continue
+        journey_deadline = (
+            first_service_departure + MAX_FERRY_CHAIN_DURATION
+            if first_service_departure else None
+        )
+        if (
+            journey_deadline is not None
+            and moment > journey_deadline
+            and not (
+                node_id == args.destination
+                and records
+                and records[-1]["edge"]["kind"] == "road"
+            )
+        ):
             continue
         # Keep the feeder sailing identity across a following road leg. Two
         # different ferries can reach the same island road network and still
@@ -923,7 +1031,10 @@ def find_itineraries(
         # readiness enforcement and transfer-risk semantics. It is therefore
         # part of the routing state, especially after continuous road ferries
         # which have no tripPatternId of their own.
-        state_key = (node_id, recent_trips, worst_risk, has_used_service)
+        state_key = (
+            node_id, recent_trips, worst_risk, has_used_service,
+            first_service_departure,
+        )
         frontier = pareto_frontiers[state_key]
         if any(
             previous_arrival <= moment and previous_departure >= origin_departure
@@ -940,7 +1051,7 @@ def find_itineraries(
         ]
         pareto_frontiers[state_key].append((moment, origin_departure))
         if node_id == args.destination:
-            if not args.same_day and first_result_day_deadline is None:
+            if first_result_day_deadline is None:
                 first_result_day_deadline = datetime.combine(
                     moment.date(), time(23, 59, 59),
                 )
@@ -960,6 +1071,7 @@ def find_itineraries(
         hour_bucket = moment.replace(minute=0, second=0, microsecond=0)
         label_bucket = (
             node_id, hour_bucket, worst_risk, recent_trips,
+            first_service_departure,
         )
         accepted_per_node_hour[label_bucket] += 1
         if accepted_per_node_hour[label_bucket] > args.max_labels_per_node_hour:
@@ -998,7 +1110,28 @@ def find_itineraries(
             )
             if not instance:
                 continue
-            if instance["arrival"] > deadline:
+            if (
+                instance["arrival"] > deadline
+                and not (
+                    edge["kind"] == "road" and edge["to"] == args.destination
+                )
+            ):
+                continue
+            next_first_service_departure = first_service_departure
+            if next_first_service_departure is None and edge["kind"] != "road":
+                next_first_service_departure = instance["departure"]
+            next_journey_deadline = (
+                next_first_service_departure + MAX_FERRY_CHAIN_DURATION
+                if next_first_service_departure else None
+            )
+            if (
+                next_journey_deadline is not None
+                and instance["arrival"] > next_journey_deadline
+                and not (
+                    edge["kind"] == "road"
+                    and edge["to"] == args.destination
+                )
+            ):
                 continue
             record = {"edge": edge, "instance": instance, "ready": moment}
             next_records = records + [record]
@@ -1029,6 +1162,7 @@ def find_itineraries(
                 instance["arrival"], next(serial), edge["to"], next_records,
                 visited_nodes + (edge["to"],), next_origin_departure,
                 next_worst_risk, next_has_used_service,
+                next_first_service_departure,
             ))
 
     # Preserve useful later-departure chains that the bounded diverse-label
@@ -1136,8 +1270,13 @@ def find_itineraries(
             "expandedLabels": expansions,
             "candidateCount": len(candidates),
             "skippedContinuousEdgesWithoutCrossingTime": skipped_continuous_unknown,
+            "excludedNonlocalRoutes": sorted(excluded_route_ids),
+            "skippedNonlocalRouteEdges": skipped_nonlocal_edges,
             "maxLabelsPerNodeHour": args.max_labels_per_node_hour,
             "maxLegs": args.max_legs,
+            "maxFerryChainHours": round(
+                MAX_FERRY_CHAIN_DURATION.total_seconds() / 3600
+            ),
             "sweepStrategy": "adaptive_first_service_boundaries",
             "sweptSeedCount": swept_seed_count,
             "sweptCandidateUpdates": swept_candidate_count,
