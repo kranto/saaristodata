@@ -518,6 +518,20 @@ def edge_instance(
     )
 
 
+def is_redundant_consecutive_road(records: list[dict], edge: dict) -> bool:
+    """Whether this road edge would unnecessarily split one road journey.
+
+    Each drivable road component is represented by direct edges between all
+    routing stops in that component. Query-specific address access and egress
+    edges follow the same rule, so a road-to-road chain cannot add reachability.
+    """
+    return bool(
+        records
+        and records[-1]["edge"]["kind"] == "road"
+        and edge["kind"] == "road"
+    )
+
+
 def earliest_candidate_from_seed(
     adjacency: dict[str, list[dict]], routes: dict[str, dict], origin: str, destination: str,
     seed: datetime, deadline: datetime, mode: str, timing_profile: str, max_legs: int,
@@ -553,6 +567,8 @@ def earliest_candidate_from_seed(
         if moment > deadline or len(records) >= max_legs:
             continue
         for edge in adjacency.get(node_id, []):
+            if is_redundant_consecutive_road(records, edge):
+                continue
             if minimum_legs_to_destination is not None and (
                 edge["to"] not in minimum_legs_to_destination
                 or len(records) + 1 + minimum_legs_to_destination[edge["to"]] > max_legs
@@ -1081,6 +1097,8 @@ def find_itineraries(
         expansions += 1
 
         for edge in adjacency.get(node_id, []):
+            if is_redundant_consecutive_road(records, edge):
+                continue
             if (
                 edge["to"] not in minimum_legs_to_destination
                 or len(records) + 1 + minimum_legs_to_destination[edge["to"]] > args.max_legs
