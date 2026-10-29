@@ -2095,7 +2095,7 @@ fdata = {
       specifier: "",
       piers: ["Lillmälö", "Prostvik"],
       operator: "finferries",
-      vessels: ["elektra", "altera", "sterna"],
+      vessels: ["elektra", "altera", "falco"],
       features: {
         interval_L: ["times.anhour", "1-4"],
         duration_L: ["duration.minutes", "10"],
