@@ -225,7 +225,7 @@ fdata = {
     seglingelinjen: {
       name: "Seglingelinjes färja",
       shortname: "Seglinge",
-      mmsi: 230940100,
+      mmsi: 230129940,
       features: { },
       capacity: { cars: 14 },
       contact: {
