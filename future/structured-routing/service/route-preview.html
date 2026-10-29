@@ -263,6 +263,11 @@
       return `${String(Math.floor(valueMinutes / 60)).padStart(2, "0")}:${String(valueMinutes % 60).padStart(2, "0")}`;
     };
     const minutes = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
+    const addLocalMinutes = (value, amount) => {
+      const localClock = new Date(`${value.slice(0, 16)}:00Z`);
+      localClock.setUTCMinutes(localClock.getUTCMinutes() + amount);
+      return localClock.toISOString().slice(0, 16);
+    };
     const formatDuration = (value) => {
       const total = Math.round(value);
       if (total < 60) return `${total} min`;
@@ -276,6 +281,30 @@
       return `${formatDuration(minutes)} ylimääräistä aikaa`;
     };
     const formatDistance = (meters) => `${(Number(meters) / 1000).toFixed(1)} km`;
+    const formatMilliseconds = (value) => {
+      const milliseconds = Number(value);
+      if (!Number.isFinite(milliseconds)) return null;
+      if (milliseconds < 1000) return `${Math.round(milliseconds)} ms`;
+      return `${(milliseconds / 1000).toLocaleString("fi-FI", { minimumFractionDigits: 1, maximumFractionDigits: 2 })} s`;
+    };
+    const formatCount = (value) => Number(value).toLocaleString("fi-FI");
+    const routeStatusText = (payload, routeCount) => {
+      const pathCount = payload.decisionGraph?.candidatePathCount || 0;
+      const runtime = payload.runtime || {};
+      const diagnostics = payload.diagnostics || {};
+      const details = [];
+      const computationTime = formatMilliseconds(runtime.routingComputationMilliseconds);
+      const requestTime = formatMilliseconds(runtime.requestMilliseconds);
+      if (runtime.responseCacheHit) {
+        details.push(`vastaus ${requestTime || "nopeasti"} välimuistista${computationTime ? ` (alkuperäinen reititys ${computationTime})` : ""}`);
+      } else if (computationTime) {
+        details.push(`reititys ${computationTime} · vastausvälimuisti: ei osumaa`);
+      }
+      if (Number.isFinite(diagnostics.expandedLabels)) details.push(`${formatCount(diagnostics.expandedLabels)} laajennettua tilaa`);
+      if (Number.isFinite(diagnostics.candidateCount)) details.push(`${formatCount(diagnostics.candidateCount)} reittiehdokasta`);
+      if (Number.isFinite(diagnostics.sweptSeedCount)) details.push(`${formatCount(diagnostics.sweptSeedCount)} hakusiementä`);
+      return `Valmis: ${routeCount} suositeltua reittiä ja ${pathCount} päätösgraafin polkua.${details.length ? ` ${details.join(" · ")}.` : ""}`;
+    };
     const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
     const riskPill = (level) => `<span class="risk risk-${level || "none"}">${level ? riskLabel[level] : "Ei vaihtoriskiä"}</span>`;
     const serviceKey = (leg) => [leg.routeId, leg.tripPatternId, leg.from, leg.to, leg.departure, leg.arrival].join("|");
@@ -409,14 +438,18 @@
       const candidateCharges = itineraryChargeCount(candidate.item);
       const candidateRisk = routeRiskRank(candidate.item);
       const leavesFirst = options.every((other) => (
-        other === candidate || candidateDeparture <= other.item.suggestedOriginDeparture
+        other === candidate
+          || other.key === candidate.key
+          || candidateDeparture <= other.item.suggestedOriginDeparture
       ));
       const arrivesLast = options.every((other) => (
-        other === candidate || candidateArrival >= other.item.arrival
+        other === candidate
+          || other.key === candidate.key
+          || candidateArrival >= other.item.arrival
       ));
       if (!leavesFirst || !arrivesLast) return false;
       return options.some((other) => {
-        if (other === candidate) return false;
+        if (other === candidate || other.key === candidate.key) return false;
         const otherDeparture = other.item.suggestedOriginDeparture;
         const otherArrival = other.item.arrival;
         const otherCharges = itineraryChargeCount(other.item);
@@ -432,10 +465,21 @@
     }
 
     function mainRouteOptions() {
+      const candidates = (response?.itineraries || []).map((item, index) => ({
+        item,
+        index,
+        key: routeOptionKey(item),
+      }));
+      // Apply the cross-route dominance rule to individual itineraries before
+      // collapsing equal route shapes. Otherwise an early, safe feeder may be
+      // selected as the shape representative and hide the whole route even
+      // though a later itinerary of the same shape is worth showing.
+      const usefulCandidates = candidates.filter(
+        (candidate) => !isDominatedRouteOption(candidate, candidates),
+      );
       const unique = new Map();
-      (response?.itineraries || []).forEach((item, index) => {
-        const key = routeOptionKey(item);
-        const value = { item, index, key };
+      usefulCandidates.forEach((value) => {
+        const { item, key } = value;
         const previous = unique.get(key);
         // Relaxed and normal are both ordinary, recommended connections.
         // Within one route shape, prefer the earliest arrival. If two chains
@@ -453,8 +497,7 @@
           unique.set(key, value);
         }
       });
-      const options = [...unique.values()];
-      return options.filter((candidate) => !isDominatedRouteOption(candidate, options));
+      return [...unique.values()];
     }
 
     function itineraryRouteLabel(item) {
@@ -466,7 +509,9 @@
       const list = mainRouteOptions();
       $("resultCount").textContent = `${list.length} suositeltua · ${response?.decisionGraph?.candidatePathCount || 0} polkua graafissa`;
       $("results").innerHTML = list.map(({ item, index }) => {
-        const shownLegs = preferredLegsByResult.get(index) || item.legs;
+        const shownLegs = index === activeResult
+          ? displayedLegs
+          : preferredLegsByResult.get(index) || item.legs;
         const shownDeparture = shownLegs[0]?.departure || item.suggestedOriginDeparture;
         const shownArrival = shownLegs[shownLegs.length - 1]?.arrival || item.arrival;
         const shownItem = { ...item, legs: shownLegs };
@@ -990,9 +1035,47 @@
     }
 
     function pathLegs(path) {
-      return path.edges
-        .filter((item) => !item.virtualWait)
-        .map((item) => ({ ...item.leg, _connectionId: item.id }));
+      const legs = [];
+      let hiddenWaitStart = null, hiddenWaitLocation = null;
+      path.edges.forEach((item) => {
+        if (item.virtualWait) {
+          hiddenWaitStart ||= item.leg.departure;
+          hiddenWaitLocation ||= item.leg.from;
+          return;
+        }
+        let leg = { ...item.leg, _connectionId: item.id };
+        if (hiddenWaitStart && leg.kind === "road" && leg.from === hiddenWaitLocation) {
+          leg = {
+            ...leg,
+            readyAtOrigin: hiddenWaitStart,
+            departure: hiddenWaitStart,
+            arrival: addLocalMinutes(hiddenWaitStart, leg.durationMinutes),
+            _absorbedVirtualWait: true,
+          };
+        }
+        hiddenWaitStart = null;
+        hiddenWaitLocation = null;
+        legs.push(leg);
+      });
+      return legs.map((leg, index) => {
+        const previousLeg = legs[index - 1];
+        if (!isFerryLeg(leg) || !previousLeg?._absorbedVirtualWait || previousLeg.to !== leg.from) return leg;
+        const waitMinutes = Math.max(0, minutes(previousLeg.arrival, leg.departure));
+        const readiness = loadingReadinessMinutes(leg);
+        const effectiveBufferMinutes = waitMinutes - readiness;
+        return {
+          ...leg,
+          readyAtOrigin: previousLeg.arrival,
+          waitMinutes,
+          transferRisk: {
+            ...(leg.transferRisk || {}),
+            rawBufferMinutes: waitMinutes,
+            requiredReadinessMinutes: readiness,
+            effectiveBufferMinutes,
+            level: riskForRemainingBuffer(effectiveBufferMinutes),
+          },
+        };
+      });
     }
 
     function preferredActiveLegs() {
@@ -1074,12 +1157,12 @@
       const button = $("submit"); button.disabled = true; button.textContent = "Lasketaan…";
       $("status").className = "status loading"; $("status").textContent = "Geokoodataan osoitteet, haetaan lauttaketjut ja muodostetaan päätösgraafi…";
       try {
-        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDecisionGraph: true, includeGeometry: false }) });
+        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await result.json();
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
         response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; rebuildPreferredResultLegs(); ganttViewport = null;
         const routeCount = mainRouteOptions().length;
-        $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? `Valmis: ${routeCount} suositeltua reittiä ja ${payload.decisionGraph.candidatePathCount} päätösgraafin polkua.` : "Reittiä ei löytynyt.";
+        $("status").className = "status"; $("status").textContent = payload.status === "routes_found" ? routeStatusText(payload, routeCount) : "Reittiä ei löytynyt.";
         renderResults();
         if (displayedLegs.length) renderDetail();
       } catch (error) {

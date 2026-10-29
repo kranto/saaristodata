@@ -112,12 +112,23 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("const routeOptionKey = (item) => routeShape(item.legs)", response.text)
         self.assertIn("function isDominatedRouteOption(candidate, options)", response.text)
         self.assertIn("if (!leavesFirst || !arrivesLast) return false", response.text)
+        self.assertIn("other.key === candidate.key", response.text)
         self.assertIn("otherCharges < candidateCharges", response.text)
         self.assertIn("otherRisk <= candidateRisk", response.text)
+        self.assertIn("const usefulCandidates = candidates.filter", response.text)
+        self.assertIn("!isDominatedRouteOption(candidate, candidates)", response.text)
+        self.assertLess(
+            response.text.index("const usefulCandidates = candidates.filter"),
+            response.text.index("const unique = new Map()"),
+        )
         self.assertIn("item.arrival < previous.item.arrival", response.text)
         self.assertIn('index === activeResult ? "active" : ""', response.text)
+        self.assertIn("index === activeResult", response.text)
+        self.assertIn("? displayedLegs", response.text)
         self.assertNotIn("displayedRouteOptionKey", response.text)
         self.assertIn('virtualWait: true', response.text)
+        self.assertIn("_absorbedVirtualWait: true", response.text)
+        self.assertIn("effectiveBufferMinutes = waitMinutes - readiness", response.text)
         self.assertIn('.filter((item) => !item.virtualWait)', response.text)
         self.assertIn("grid-template-columns: auto minmax(0, 1fr)", response.text)
         self.assertIn("overflow-wrap: anywhere", response.text)
@@ -248,7 +259,9 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Math.max(ganttViewport.end, extent.end)", response.text)
         self.assertNotIn('"Ei vaihtoa"', response.text)
         self.assertIn("originAddress?.displayName", response.text)
+        self.assertIn("includeDiagnostics", response.text)
         self.assertIn("includeDecisionGraph", response.text)
+        self.assertIn("routeStatusText(payload, routeCount)", response.text)
 
     def test_route_returns_address_itineraries_and_geometry(self) -> None:
         response = self.client.post("/route", json={
@@ -310,7 +323,20 @@ class RoutingServiceTests(unittest.TestCase):
         second = self.client.post("/route", json=request)
         self.assertEqual(first.status_code, 200)
         self.assertEqual(second.status_code, 200)
-        self.assertEqual(second.json(), first.json())
+        first_result = first.json()
+        second_result = second.json()
+        self.assertFalse(first_result["runtime"]["responseCacheHit"])
+        self.assertTrue(second_result["runtime"]["responseCacheHit"])
+        self.assertGreaterEqual(
+            first_result["runtime"]["routingComputationMilliseconds"], 0,
+        )
+        self.assertEqual(
+            second_result["runtime"]["routingComputationMilliseconds"],
+            first_result["runtime"]["routingComputationMilliseconds"],
+        )
+        first_result.pop("runtime")
+        second_result.pop("runtime")
+        self.assertEqual(second_result, first_result)
         self.assertEqual(self.client.app.state.geocoder.calls, calls_after_first)
 
     def test_start_time_must_be_a_local_minute(self) -> None:
