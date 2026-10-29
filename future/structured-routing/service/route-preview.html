@@ -61,6 +61,7 @@
     .result:hover { background: #f1f7f5; }
     .result.active { border-color: #76aab7; background: #eaf4f3; }
     .result-time { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 800; }
+    .result-time small { font-size: .65em; font-weight: 700; white-space: nowrap; }
     .result-time span:last-child { color: var(--sea); }
     .result-meta { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px; min-width: 0; margin-top: 7px; color: var(--muted); font-size: 12px; }
     .result-route { min-width: 0; white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
@@ -75,6 +76,7 @@
     .journey-summary { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding: 22px 24px 18px; border-bottom: 1px solid #dce6e6; }
     .journey-summary h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 30px; }
     .journey-summary p { margin: 6px 0 0; color: var(--muted); }
+    .journey-summary p strong { color: var(--ink); font-weight: 800; }
     .timeline { padding: 16px 24px 20px; }
     .leg { position: relative; display: grid; grid-template-columns: 72px 24px minmax(0, 1fr); column-gap: 13px; min-height: 72px; }
     .leg::after { content: ""; position: absolute; left: 83px; top: 25px; bottom: -4px; width: 2px; background: #bbd1d4; }
@@ -256,6 +258,28 @@
     }
 
     const clock = (value) => value ? value.slice(11, 16) : "–";
+    const isoDate = (value) => value ? value.slice(0, 10) : "";
+    const formatDate = (value) => {
+      const [year, month, day] = isoDate(value).split("-");
+      return year && month && day ? `${Number(day)}.${Number(month)}.${year}` : "";
+    };
+    const dayNumber = (value) => {
+      const [year, month, day] = isoDate(value).split("-").map(Number);
+      return Date.UTC(year, month - 1, day) / 86400000;
+    };
+    const dayOffset = (departure, arrival) => Math.round(dayNumber(arrival) - dayNumber(departure));
+    const dayOffsetLabel = (departure, arrival) => {
+      const offset = dayOffset(departure, arrival);
+      return offset > 0 ? ` (+${offset})` : offset < 0 ? ` (${offset})` : "";
+    };
+    const resultDepartureLabel = (departure) => {
+      const queryDate = isoDate(response?.query?.departureNotBefore) || $("date").value;
+      const dateLabel = isoDate(departure) !== queryDate ? ` <small>(${formatDate(departure)})</small>` : "";
+      return `${clock(departure)}${dateLabel}`;
+    };
+    const resultArrivalLabel = (departure, arrival) => (
+      `${clock(arrival)}${dayOffset(departure, arrival) ? ` <small>${dayOffsetLabel(departure, arrival)}</small>` : ""}`
+    );
     const clockBefore = (value, offsetMinutes) => {
       if (!value || !offsetMinutes) return clock(value);
       const [hours, minutes] = value.slice(11, 16).split(":").map(Number);
@@ -516,7 +540,7 @@
         const shownArrival = shownLegs[shownLegs.length - 1]?.arrival || item.arrival;
         const shownItem = { ...item, legs: shownLegs };
         return `<button class="result ${index === activeResult ? "active" : ""}" data-result="${index}">
-          <div class="result-time"><span>${clock(shownDeparture)}</span><span>${clock(shownArrival)}</span></div>
+          <div class="result-time"><span>${resultDepartureLabel(shownDeparture)}</span><span>${resultArrivalLabel(shownDeparture, shownArrival)}</span></div>
           <div class="result-meta"><span>${formatDuration(minutes(shownDeparture, shownArrival))}</span><span class="result-route">${escapeHtml(itineraryRouteLabel(shownItem))}${itineraryChargeLabel(shownItem) ? ` <span class="charge">${itineraryChargeLabel(shownItem)}</span>` : ""}</span></div>
         </button>`;
       }).join("");
@@ -891,7 +915,7 @@
       const selectionSummary = experimentText
         ? `<div class="selection-summary${hasSelections ? " has-selection" : ""}"><div>${experimentText}</div>${hasSelections ? `<button class="clear-selections" id="clearSelections">Poista valinnat</button>` : ""}</div>`
         : "";
-      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${clock(start)} · perillä ${clock(end)} · ${formatDuration(minutes(start, end))}</p></div></div>${ganttMarkup()}${selectionSummary}<div class="timeline">${timeline}</div>`;
+      $("detail").innerHTML = `<div class="journey-summary"><div><h2>${routeName}</h2><p>Lähtö ${formatDate(start)} <strong>${clock(start)}</strong> · perillä <strong>${clock(end)}${dayOffsetLabel(start, end)}</strong> · <strong>${formatDuration(minutes(start, end))}</strong></p></div></div>${ganttMarkup()}${selectionSummary}<div class="timeline">${timeline}</div>`;
       alignGanttChainLinks();
       $("clearSelections")?.addEventListener("click", () => {
         selectedSailings.clear();
