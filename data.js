@@ -43,6 +43,7 @@ fdata = {
   ferries: {
     skiftet: {
       name: "M/S Skiftet",
+      mmsi: 230992740,
       features: { access: true, cafe: true },
       capacity: { persons: 200, cars: 24, trucks: 4 },
       contact: {
@@ -51,6 +52,7 @@ fdata = {
     },
     gudingen: {
       name: "M/S Gudingen",
+      mmsi: 230992580,
       features: { access: true, cafe: true },
       capacity: { persons: 195, cars: 23, trucks: 4 },
       contact: {
@@ -59,6 +61,7 @@ fdata = {
     },
     ejdern: {
       name: "M/S Ejdern",
+      mmsi: 230992680,
       features: { access: false, cafe: false },
       capacity: { persons: 99, cars: 16, trucks: 4 },
       contact: {
@@ -67,6 +70,7 @@ fdata = {
     },
     bogoy: {
       name: "M/S Bogoy",
+      mmsi: 230183820,
       features: { access: false, cafe: false },
       capacity: { persons: 60, cars: 15 },
       contact: {
@@ -75,6 +79,7 @@ fdata = {
     },
     skarven: {
       name: "M/S Skarven",
+      mmsi: 230610000,
       features: { access: true, cafe: true },
       capacity: { persons: 250, cars: 65, trucks: 4 },
       contact: {
@@ -83,6 +88,7 @@ fdata = {
     },
     alfageln: {
       name: "M/S Alfågeln",
+      mmsi: 230992670,
       features: { access: true, cafe: true },
       capacity: { persons: 244, cars: 36, trucks: 4 },
       contact: {
@@ -91,6 +97,7 @@ fdata = {
     },
     knipan: {
       name: "M/S Knipan",
+      mmsi: 230992710,
       features: { access: true, cafe: false },
       capacity: { persons: 157, cars: 22, trucks: 4 },
       contact: {
@@ -99,6 +106,7 @@ fdata = {
     },
     viggen: {
       name: "M/S Viggen",
+      mmsi: 230914000,
       features: { access: true, cafe: true },
       capacity: { persons: 250, cars: 38, trucks: 4 },
       contact: {
@@ -107,6 +115,7 @@ fdata = {
     },
     adan: {
       name: "M/S Ådan",
+      mmsi: 230174300,
       features: { access: true, cafe: true },
       capacity: { persons: 145, cars: 38, trucks: 4 },
       contact: {
@@ -115,6 +124,7 @@ fdata = {
     },
     doppingen: {
       name: "M/S Doppingen",
+      mmsi: 230011480,
       features: { access: false, cafe: false },
       capacity: { persons: 70, cars: 12, trucks: 2 },
       contact: {
@@ -129,12 +139,13 @@ fdata = {
         phones: ['+358 (0)40 0492 739']
       },
     },
-    tuuli: {
+    sanna: {
       name: "Enklingelinjens färja",
+      shortname: "Enklinge",
+      mmsi: 230944050,
       features: { access: false, cafe: false },
       capacity: { persons: 60, cars: 14, trucks: 2 },
       contact: {
-        phones: ['+358 (0)40 0492 739']
       },
     },
     frida: {
@@ -155,6 +166,7 @@ fdata = {
     },
     mergus: {
       name: "M/S Mergus",
+      mmsi: 230987410,
       features: { access: true, cafe: false },
       capacity: { persons: 99, cars: 26, trucks: 2 },
       contact: {
@@ -163,6 +175,8 @@ fdata = {
     },
     angosundslinjen: {
       name: "Ängösundslinjes färja",
+      shortname: "Ängösund",
+      mmsi: 230091290,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -171,6 +185,7 @@ fdata = {
     },
     toftolinjen: {
       name: "Töftölinjes färja",
+      shortname: "Töftö",
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -179,6 +194,8 @@ fdata = {
     },
     bjorkolinjen: {
       name: "Björkölinjes färja",
+      shortname: "Björkö",
+      mmsi: 230151230,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -187,6 +204,8 @@ fdata = {
     },
     simskalalinjen: {
       name: "Simskälälinjes färja",
+      shortname: "Simskälä",
+      mmsi: 230099540,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -195,6 +214,8 @@ fdata = {
     },
     embarsundslinjen: {
       name: "Embarsundslinjes färja",
+      shortname: "Embarsund",
+      mmsi: 230086510,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -203,6 +224,8 @@ fdata = {
     },
     seglingelinjen: {
       name: "Seglingelinjes färja",
+      shortname: "Seglinge",
+      mmsi: 230940100,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -214,6 +237,7 @@ fdata = {
 
     hammaronsalmi: {
       name: "Lautta #185",
+      shortname: "L185",
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -222,6 +246,7 @@ fdata = {
     },
     hogsar: {
       name: "Lautta #182",
+      shortname: "L182",
       features: { },
       capacity: { cars: 10 },
       contact: {
@@ -230,6 +255,7 @@ fdata = {
     },
     hogsara: {
       name: "Lautta #151",
+      shortname: "L151",
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -248,6 +274,7 @@ fdata = {
     },
     aurora: {
       name: "M/S Aurora",
+      mmsi: 230110440,
       features: { },
       capacity: { cars: 52,
         persons: 197,
@@ -258,6 +285,7 @@ fdata = {
     },
     keistio: {
       name: "Lautta #177",
+      shortname: "L177",
       features: { },
       capacity: { cars: 10 },
       contact: {
@@ -266,6 +294,7 @@ fdata = {
     },
     kivimolossi: {
       name: "Lautta #167",
+      shortname: "L167",
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -274,6 +303,7 @@ fdata = {
     },
     kokkila: {
       name: "Lautta #199",
+      shortname: "L199",
       features: { },
       capacity: { cars: 21 },
       contact: {
@@ -282,6 +312,7 @@ fdata = {
     },
     stellakorppoo: {
       name: "M/S Stella",
+      mmsi: 230634000,
       features: { cafe: true },
       capacity: { cars: 65 },
       contact: {
@@ -292,6 +323,7 @@ fdata = {
     },
     mossala: {
       name: "Lautta #176",
+      shortname: "L176",
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -300,6 +332,7 @@ fdata = {
     },
     l197: {
       name: "Lautta #197",
+      shortname: "L197",
       features: { },
       capacity: { cars: 30 },
       contact: {
@@ -308,6 +341,7 @@ fdata = {
     },
     l198: {
       name: "Lautta #198",
+      shortname: "L198",
       features: { },
       capacity: { cars: 36 },
       contact: {
@@ -316,6 +350,7 @@ fdata = {
     },
     l144: {
       name: "Lautta #144",
+      shortname: "L144",
       features: { },
       capacity: { cars: 27, persons: true },
       contact: {
@@ -332,6 +367,7 @@ fdata = {
     },
     nagu2: {
       name: "M/S Nagu 2",
+      mmsi: 230938240,
       features: { },
       capacity: { cars: 16 },
       contact: {
@@ -340,6 +376,7 @@ fdata = {
     },
     falko: {
       name: "M/S Falkö",
+      mmsi: 230992590,
       features: { },
       capacity: { cars: 8,
         persons: 110,
@@ -360,6 +397,7 @@ fdata = {
     },
     palva: {
       name: "Lautta #179",
+      shortname: "L179",
       features: { },
       capacity: { cars: 10 },
       contact: {
@@ -368,6 +406,7 @@ fdata = {
     },
     elektra: {
       name: "M/S Elektra",
+      mmsi: 230668000,
       features: { },
       capacity: { cars: 90,
         persons: 450,
@@ -378,6 +417,7 @@ fdata = {
     },
     altera: {
       name: "M/S Altera",
+      mmsi: 230168060,
       features: { },
       capacity: { cars: 90,
         persons: 450,
@@ -388,6 +428,7 @@ fdata = {
     },
     sterna: {
       name: "M/S Sterna",
+      mmsi: 230987380,
       features: { },
       capacity: { cars: 66 },
       contact: {
@@ -396,6 +437,7 @@ fdata = {
     },
     falco: {
       name: "M/S Falco",
+      mmsi: 230987390,
       features: { },
       capacity: { cars: 54 },
       contact: {
@@ -404,6 +446,7 @@ fdata = {
     },
     viken: {
       name: "M/S Viken",
+      mmsi: 230987260,
       features: { },
       capacity: { cars: 14,
         persons: 73,
@@ -422,6 +465,7 @@ fdata = {
     },
     replot2: {
       name: "Replot 2",
+      mmsi: 230938210,
       features: { },
       capacity: { cars: 27 },
       contact: {
@@ -430,6 +474,7 @@ fdata = {
     },
     saverkeit: {
       name: "Lautta #181",
+      shortname: "L181",
       features: { },
       capacity: { cars: 10 },
       contact: {
@@ -438,6 +483,8 @@ fdata = {
     },
     vartsala: {
       name: "Lautta #317",
+      shortname: "L317",
+      mmsi: 230174460,
       features: { },
       capacity: { cars: 52 },
       contact: {
@@ -446,6 +493,7 @@ fdata = {
     },
     velkuanmaa: {
       name: "Lautta #171",
+      shortname: "L171",
       features: { },
       capacity: { cars: 10 },
       contact: {
@@ -454,6 +502,7 @@ fdata = {
     },
     mskivimo: {
       name: "M/S Kivimo",
+      mmsi: 230939360,
       features: { },
       capacity: { cars: 8,
         persons: 50,
@@ -464,6 +513,7 @@ fdata = {
     },
     msfinno: {
       name: "M/S Finnö",
+      mmsi: 230992610,
       features: { },
       capacity: { cars: " ", bikes: " ",
         persons: 50,
@@ -474,6 +524,7 @@ fdata = {
     },
     mskaita: {
       name: "M/S Kaita",
+      mmsi: 230939370,
       features: { },
       capacity: { cars: 8,
         persons: 50,
@@ -484,6 +535,7 @@ fdata = {
     },
     msinnamo: {
       name: "M/S Innamo",
+      mmsi: 230175040,
       features: { },
       capacity: { cars: 8,
         persons: 99,
@@ -494,6 +546,7 @@ fdata = {
     },
     vano: {
       name: "Lautta #201",
+      shortname: "L201",
       features: { },
       capacity: { cars: 21 },
       contact: {
@@ -575,6 +628,7 @@ fdata = {
     },
     fisko: {
       name: "Y/A Fiskö",
+      mmsi: 230992640,
       features: { },
       capacity: { cars: 2,
         persons: 36,
@@ -588,6 +642,7 @@ fdata = {
     },
     isla: {
       name: "M/S Isla",
+      mmsi: 230117660,
       features: { },
       capacity: { cars: 8,
         persons: 100,
@@ -599,6 +654,7 @@ fdata = {
     },
     msjurmo: {
       name: "M/S Jurmo",
+      mmsi: 230051080,
       features: { },
       capacity: { cars: 9,
         persons: 100,
@@ -619,6 +675,7 @@ fdata = {
     },
     msuto: {
       name: "M/S Utö",
+      mmsi: 230980000,
       features: { cafe: true },
       capacity: { cars: 19,
         persons: 195
@@ -640,6 +697,7 @@ fdata = {
     },
     ostern: {
       name: "M/S Östern",
+      mmsi: 230035990,
       features: { cafe: true },
       capacity: { cars: 17,
         persons: 126
@@ -678,6 +736,7 @@ fdata = {
     },
     lovskar: {
       name: "M/S Lövskär",
+      mmsi: 230176640,
       features: { cafe: true },
       capacity: { persons: 118, bikes: " " },
       contact: {
@@ -1867,7 +1926,7 @@ fdata = {
       specifier: "Hummelvik - Torsholma",
       piers: ["Hummelvik", "Enklinge", "Kumlinge", "Asterholma", "Lappo", "Torsholma"],
       operator: "alandstrafiken",
-      vessels: ["alfageln", "bogoy", "tuuli", "ejdern"],
+      vessels: ["alfageln", "ostern", "sanna", "knipan"],
       features: {
         interval_L: ["times.adaytworoutes", "", "2-4", "Enklinge - Kumlinge", "10"],
         cost_L: "cost.applies",

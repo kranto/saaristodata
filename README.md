@@ -109,6 +109,12 @@ alus voi palata myöhemmin saman tai toisen operaattorin käyttöön. Lisää uu
 alus aina uutena tietueena. Reitin `vessels`-luettelo voidaan sen sijaan
 päivittää kuvaamaan vahvistettua nykyistä käyttöä.
 
+Lisää alukselle yhdeksännumeroinen `mmsi`-kenttä numerona, kun MMSI on
+luotettavasti tiedossa. Sovellus käyttää tunnistetta live-kartalla näkyvän
+AIS-nimen korvaamiseen alusrekisterin `shortname`-kentällä tai sen puuttuessa
+`name`-kentällä. Käytä `shortname`-kenttää vain, kun kartalla tarvitaan nimeä
+tiiviimpi esitysmuoto.
+
 Alusvaihdos voi olla tilapäinen. Päivitä reitin alusluettelo vain, kun muutos
 voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
 
