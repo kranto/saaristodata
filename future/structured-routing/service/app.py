@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import sys
+import time as runtime_clock
 from contextlib import asynccontextmanager
 from datetime import date, time
 from pathlib import Path
@@ -35,7 +36,7 @@ from route_itinerary import DEFAULT_GRAPH  # noqa: E402
 from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
-SERVICE_VERSION = "0.4.75"
+SERVICE_VERSION = "0.4.76"
 ROUTE_PREVIEW = ROOT / "service" / "route-preview.html"
 
 
@@ -126,6 +127,21 @@ def create_app() -> FastAPI:
 
     @application.post("/route")
     async def route(request: RouteRequest) -> dict:
+        request_started_at = runtime_clock.perf_counter()
+
+        def response_with_runtime(payload: dict, *, cache_hit: bool) -> dict:
+            response = dict(payload)
+            runtime = dict(response.get("runtime") or {})
+            runtime.update({
+                "responseCacheHit": cache_hit,
+                "requestMilliseconds": round(
+                    (runtime_clock.perf_counter() - request_started_at) * 1000,
+                    1,
+                ),
+            })
+            response["runtime"] = runtime
+            return response
+
         response_cache_key = {
             "serviceVersion": SERVICE_VERSION,
             "dataVersion": getattr(application.state, "data_version", "injected"),
@@ -133,8 +149,9 @@ def create_app() -> FastAPI:
         }
         cached = application.state.cache.get("routing:response", response_cache_key)
         if cached is not None:
-            return cached
+            return response_with_runtime(cached, cache_hit=True)
         try:
+            routing_started_at = runtime_clock.perf_counter()
             result = await run_in_threadpool(
                 query_address_routes,
                 request.origin,
@@ -155,8 +172,17 @@ def create_app() -> FastAPI:
                 geocoder=application.state.geocoder,
                 router=application.state.router,
             )
-            application.state.cache.set("routing:response", response_cache_key, result)
-            return result
+            cacheable_result = dict(result)
+            cacheable_result["runtime"] = {
+                "routingComputationMilliseconds": round(
+                    (runtime_clock.perf_counter() - routing_started_at) * 1000,
+                    1,
+                ),
+            }
+            application.state.cache.set(
+                "routing:response", response_cache_key, cacheable_result,
+            )
+            return response_with_runtime(cacheable_result, cache_hit=False)
         except ValueError as error:
             raise HTTPException(status_code=422, detail=str(error)) from error
         except RuntimeError as error:
