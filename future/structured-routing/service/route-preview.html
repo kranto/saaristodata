@@ -106,6 +106,7 @@
     .gantt-tick:last-child { transform: translateX(-100%); }
     .gantt-row { min-height: 45px; }
     .gantt-row-ferry { background: rgba(7, 89, 133, .055); }
+    .gantt-row-blocking { animation: blocking-row-flash .9s ease-out; }
     .gantt-row-ferry .gantt-label { color: #0b4969; }
     .gantt-label { align-self: center; font-size: 11px; line-height: 1.2; }
     .gantt-label-title { display: flex; align-items: center; gap: 7px; }
@@ -152,6 +153,10 @@
     @keyframes blocking-ferry-flash {
       0%, 100% { filter: brightness(1); }
       42% { filter: brightness(1.75); box-shadow: 0 0 0 2px #fff, 0 0 0 6px #d94c3d, 0 0 16px rgba(217, 76, 61, .7); }
+    }
+    @keyframes blocking-row-flash {
+      0%, 100% { background-color: rgba(7, 89, 133, .055); box-shadow: none; }
+      42% { background-color: rgba(217, 76, 61, .24); box-shadow: inset 5px 0 0 #d94c3d, inset 0 0 0 2px rgba(217, 76, 61, .5), 0 0 18px rgba(217, 76, 61, .22); }
     }
     @media (max-width: 1100px) {
       form { grid-template-columns: 1fr 1fr 150px 110px; }
@@ -852,14 +857,14 @@
           ? `<button type="button" class="gantt-bar gantt-primary-bar ${barClass} gantt-ferry-choice gantt-ferry-selected${joinClass}${isPinned ? " gantt-ferry-pinned" : ""}${isBlocking ? " gantt-ferry-blocking" : ""}" data-connection="${selectedConnection.id}" data-tooltip="${escapeHtml(selectedTooltip)}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, leg.arrival).toFixed(2)}%" aria-label="${isPinned ? "Lukittu" : "Automaattisesti valittu"} lautta ${clock(leg.departure)}–${clock(leg.arrival)}"></button>`
           : `<i class="gantt-bar gantt-primary-bar ${barClass}${joinClass}" data-tooltip="${escapeHtml(barTooltip)}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(leg.departure).toFixed(2)}%;width:${scale.width(leg.departure, barEnd).toFixed(2)}%"></i>`;
         const selectionOutline = leg.kind === "scheduled_service" && selectedConnection && readinessStart
-          ? `<i class="gantt-bar gantt-selection-outline${isPinned ? " gantt-selection-outline-pinned" : ""}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${scale.width(readinessStart, leg.arrival).toFixed(2)}%"></i>`
+          ? `<i class="gantt-bar gantt-selection-outline${isPinned ? " gantt-selection-outline-pinned" : ""}${isBlocking ? " gantt-ferry-blocking" : ""}" style="top:${sailingTop + selectedLane * ferryLaneStep}px;left:${scale.position(readinessStart).toFixed(2)}%;width:${scale.width(readinessStart, leg.arrival).toFixed(2)}%"></i>`
           : "";
         const nextLayout = layouts[index + 1];
         const chainLink = nextLayout
           ? `<svg class="gantt-chain-link" style="height:${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}px" aria-hidden="true"><defs><marker id="gantt-arrow-${index}" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z"></path></marker></defs><line x1="${scale.position(barEnd).toFixed(2)}%" y1="${selectedBarTop + 16}" x2="${scale.position(barEnd).toFixed(2)}%" y2="${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}" marker-end="url(#gantt-arrow-${index})"></line></svg>`
           : "";
         const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
-        rows.push(`<div class="gantt-row${isFerryLeg(leg) ? " gantt-row-ferry" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
+        rows.push(`<div class="gantt-row${isFerryLeg(leg) ? " gantt-row-ferry" : ""}${isBlocking ? " gantt-row-blocking" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
       });
       return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajo ja ylimääräinen aika näkyvät yhtenä palkkina, jonka väri kertoo riskitason.</p></div></div><div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#72bd9c"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#aeb9c0"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#e28a51"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#b83e49"></i>Lastausvalmiuden jälkeen</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7da7b7"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-auto"></i>Automaattinen valinta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-pinned"></i>Lukittu valinta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div></section>`;
     }
@@ -1152,14 +1157,16 @@
           (individualBlockers.length ? individualBlockers : otherPins).map(([, service]) => service)
         );
         experimentText = blockedSailings.size
-          ? "Uusi valinta ei sovi yhteen lukitun vuoron kanssa. Estävä lukittu vuoro välähti kaaviossa."
+          ? "Uusi valinta ei sovi yhteen lukitun vuoron kanssa. Estävä lauttarivi ja lukittu vuoro välähtivät kaaviossa."
           : "Näiden lauttavalintojen yhdistelmälle ei löytynyt kokonaista matkaketjua.";
         renderDetail();
         const flashedSailings = blockedSailings;
         window.setTimeout(() => {
-          document.querySelectorAll(".gantt-ferry-blocking").forEach((item) => item.classList.remove("gantt-ferry-blocking"));
+          document.querySelectorAll(".gantt-ferry-blocking, .gantt-row-blocking").forEach((item) => {
+            item.classList.remove("gantt-ferry-blocking", "gantt-row-blocking");
+          });
           if (blockedSailings === flashedSailings) blockedSailings = new Set();
-        }, 850);
+        }, 950);
         return;
       }
       blockedSailings.clear();
