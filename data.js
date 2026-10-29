@@ -264,6 +264,7 @@ fdata = {
     },
     aura: {
       name: "M/S Aura",
+      mmsi: 230987550,
       features: { },
       capacity: { cars: 52,
         persons: 197,
