@@ -145,6 +145,40 @@ class ConciseAddressNameTests(unittest.TestCase):
 
 
 class NominatimGeocoderTests(unittest.TestCase):
+    def test_bare_historic_area_name_prefers_exact_named_hamlet(self) -> None:
+        results = [
+            {
+                "lat": "60.3251466",
+                "lon": "22.9252045",
+                "name": "Angelniemi",
+                "display_name": "Angelniemi, Salo, Varsinais-Suomi, Suomi",
+                "category": "boundary",
+                "type": "historic",
+                "place_rank": 16,
+                "address": {"historic": "Angelniemi", "town": "Salo"},
+            },
+            {
+                "lat": "60.3008047",
+                "lon": "22.9088870",
+                "name": "Angelniemi",
+                "display_name": "Angelniemi, Salo, Varsinais-Suomi, Suomi",
+                "category": "place",
+                "type": "hamlet",
+                "place_rank": 20,
+                "address": {"hamlet": "Angelniemi", "town": "Salo"},
+            },
+        ]
+
+        with patch("external_routing._read_json", return_value=results):
+            result = NominatimGeocoder(minimum_interval_seconds=0).geocode(
+                "Angelniemi"
+            )
+
+        self.assertEqual(
+            result["coordinates"],
+            {"lat": 60.3008047, "lon": 22.908887},
+        )
+
     def test_bare_municipality_prefers_central_locality_over_area_centroid(self) -> None:
         results = [
             {
