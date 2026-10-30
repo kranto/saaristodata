@@ -139,12 +139,13 @@ def _normalized_name(value: object) -> str:
 
 
 def _best_nominatim_result(query: str, results: list[dict]) -> dict:
-    """Prefer a municipality's central locality over its area centroid.
+    """Prefer a named locality over an area centroid for a bare place name.
 
     Nominatim commonly returns the admin-level 8 municipality boundary first.
     For a bare municipality name it may also return a more precise city/town
-    feature later in the result list.  Street addresses and qualified searches
-    retain Nominatim's original ordering.
+    feature later in the result list.  Former municipalities and other historic
+    areas can similarly precede the actual village or hamlet.  Street addresses
+    and qualified searches retain Nominatim's original ordering.
     """
     stripped_query = query.strip()
     if not stripped_query or "," in stripped_query or any(
@@ -166,6 +167,22 @@ def _best_nominatim_result(query: str, results: list[dict]) -> dict:
         central_candidates.append((int(item.get("place_rank") or 0), -position, item))
     if central_candidates:
         return max(central_candidates, key=lambda candidate: candidate[:2])[2]
+
+    locality_types = {
+        "city", "town", "village", "hamlet", "suburb", "quarter",
+        "neighbourhood", "locality",
+    }
+    locality = next(
+        (
+            item for item in results
+            if _normalized_name(item.get("name")) == normalized_query
+            and item.get("category") == "place"
+            and item.get("type") in locality_types
+        ),
+        None,
+    )
+    if locality:
+        return locality
     return results[0]
 
 
@@ -256,7 +273,7 @@ class NominatimGeocoder:
         cache_key = {
             "endpoint": self.endpoint,
             "query": normalized_query,
-            "selection": "municipality-admin-centre-v1",
+            "selection": "named-locality-v2",
         }
         cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
         if cached is not None:
