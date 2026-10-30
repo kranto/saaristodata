@@ -466,7 +466,10 @@
     }
 
     const routeShape = (legs) => legs.map((leg) => (
-      [leg.kind, leg.serviceType || "", leg.routeId || "", leg.from, leg.to].join(":")
+      [
+        ["scheduled_service", "continuous_ferry"].includes(leg.kind) ? "ferry" : leg.kind,
+        leg.serviceType || "", leg.routeId || "", leg.from, leg.to,
+      ].join(":")
     )).join(">");
     const routeOptionKey = (item) => routeShape(item.legs);
 
@@ -531,12 +534,12 @@
         const preference = { relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 };
         const level = item.riskSummary?.worstConnectionRisk || "normal";
         const previousLevel = previous?.item.riskSummary?.worstConnectionRisk || "normal";
-        const serviceDepartures = item.legs.filter((leg) => leg.kind === "scheduled_service").map((leg) => leg.departure).join("|");
-        const previousDepartures = previous?.item.legs.filter((leg) => leg.kind === "scheduled_service").map((leg) => leg.departure).join("|") || "";
         if (!previous
           || preference[level] < preference[previousLevel]
           || (preference[level] === preference[previousLevel] && item.arrival < previous.item.arrival)
-          || (preference[level] === preference[previousLevel] && item.arrival === previous.item.arrival && serviceDepartures > previousDepartures)) {
+          || (preference[level] === preference[previousLevel]
+            && item.arrival === previous.item.arrival
+            && item.suggestedOriginDeparture > previous.item.suggestedOriginDeparture)) {
           unique.set(key, value);
         }
       });
@@ -544,7 +547,7 @@
     }
 
     function itineraryRouteLabel(item) {
-      const sailings = item.legs.filter((leg) => leg.kind === "scheduled_service");
+      const sailings = item.legs.filter((leg) => ["scheduled_service", "continuous_ferry"].includes(leg.kind));
       return sailings.map((leg) => `${leg.operator ? `${leg.operator}: ` : ""}${leg.from}–${leg.to}`).join(" · ") || "Tieyhteys";
     }
 
@@ -620,7 +623,7 @@
     }
 
     function sailingAlternatives(leg) {
-      if (!response?.decisionGraph || leg.kind !== "scheduled_service") return [];
+      if (!response?.decisionGraph || !isFerryLeg(leg)) return [];
       const matching = response.decisionGraph.connections.filter((item) => (
         item.leg.kind === "scheduled_service"
         && crossingKey(item.leg) === crossingKey(leg)
@@ -663,7 +666,7 @@
 
     function resetGanttViewport() {
       const extent = displayedExtent();
-      displayedLegs.filter((leg) => leg.kind === "scheduled_service").forEach((leg) => {
+      displayedLegs.filter(isFerryLeg).forEach((leg) => {
         sailingAlternatives(leg).forEach((group) => {
           group.variants.forEach((item) => {
             const alternativeDeparture = new Date(item.leg.departure).getTime();
@@ -799,17 +802,17 @@
       const rows = [];
       const ferryLaneStep = 21;
       const layouts = displayedLegs.map((leg) => {
-        const alternatives = leg.kind === "scheduled_service" ? sailingAlternatives(leg).map((item) => preferredVariant(item.variants)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
+        const alternatives = isFerryLeg(leg) ? sailingAlternatives(leg).map((item) => preferredVariant(item.variants)).filter((item) => serviceKey(item.leg) !== serviceKey(leg) && new Date(item.leg.departure).getTime() >= scale.start && new Date(item.leg.arrival).getTime() <= scale.end) : [];
         const selectedConnection = displayedConnection(leg);
         const selectedKey = selectedConnection?.id || "selected";
-        const sailingLayout = leg.kind === "scheduled_service"
+        const sailingLayout = isFerryLeg(leg)
           ? sailingBarLayout([
             { key: selectedKey, leg },
             ...alternatives.map((item) => ({ key: item.id, leg: item.leg })),
           ])
           : { laneByKey: new Map(), laneCount: 1 };
         const selectedLane = sailingLayout.laneByKey.get(selectedKey) || 0;
-        const rowHeight = leg.kind === "scheduled_service"
+        const rowHeight = isFerryLeg(leg)
           ? Math.max(45, 32 + (sailingLayout.laneCount - 1) * ferryLaneStep)
           : 45;
         const sailingTop = Math.round((rowHeight - (16 + (sailingLayout.laneCount - 1) * ferryLaneStep)) / 2);
