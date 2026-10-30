@@ -188,6 +188,10 @@ def create_app() -> FastAPI:
                     "coordinates": routing_coordinates(stop),
                     "provider": "saaristolautat",
                     "routingStopId": stop["id"],
+                    "resultCategory": "amenity",
+                    "resultType": "ferry_terminal",
+                    "addressType": "point_of_interest",
+                    "typeLabel": "lauttalaituri",
                 }],
             }
         try:
