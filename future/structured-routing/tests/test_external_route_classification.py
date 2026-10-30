@@ -77,6 +77,17 @@ class ExternalRouteClassificationTests(unittest.TestCase):
         self.assertEqual(near["roadAreaId"], "houtskar")
         self.assertIsNone(far)
 
+    def test_problematic_terminals_have_landside_routing_coordinates(self) -> None:
+        stops = {stop["id"]: stop for stop in self.index["stops"]}
+        self.assertEqual(
+            stops["Naantali"]["routingCoordinates"],
+            {"lon": 22.038798, "lat": 60.4591564},
+        )
+        self.assertEqual(
+            stops["Lillmälö"]["routingCoordinates"],
+            {"lon": 22.112531, "lat": 60.235428},
+        )
+
     def test_valhalla_response_must_include_maneuvers(self) -> None:
         response = {
             "trip": {

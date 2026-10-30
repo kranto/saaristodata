@@ -365,6 +365,42 @@ def enrich_external_geometries(
                 leg["externalRouting"]["geometry"] = geometries[pair]
 
 
+def enrich_road_navigation_coordinates(
+    response: dict,
+    origin: dict,
+    destination: dict,
+    index: dict,
+) -> None:
+    """Attach lightweight endpoint coordinates to road legs.
+
+    Navigation links only need the two endpoints, not the potentially large
+    routed geometry. Include the same data in decision-graph legs so a road
+    segment selected after changing a sailing remains navigable.
+    """
+    coordinates = {
+        item["id"]: routing_coordinates(item) for item in index["stops"]
+    }
+    coordinates[ORIGIN_NODE] = origin["coordinates"]
+    coordinates[DESTINATION_NODE] = destination["coordinates"]
+
+    def enrich(leg: dict) -> None:
+        if leg.get("kind") != "road":
+            return
+        from_coordinates = coordinates.get(leg.get("from"))
+        to_coordinates = coordinates.get(leg.get("to"))
+        if from_coordinates is not None and to_coordinates is not None:
+            leg["navigationCoordinates"] = {
+                "from": from_coordinates,
+                "to": to_coordinates,
+            }
+
+    for itinerary in response.get("itineraries", []):
+        for leg in itinerary.get("legs", []):
+            enrich(leg)
+    for connection in (response.get("decisionGraph") or {}).get("connections", []):
+        enrich(connection.get("leg", {}))
+
+
 def query_address_routes(
     origin_query: str,
     destination_query: str,
@@ -423,6 +459,7 @@ def query_address_routes(
         graph_data=augmented,
     )
     response = public_response(internal, include_diagnostics=include_diagnostics)
+    enrich_road_navigation_coordinates(response, origin, destination, index)
     if include_external_geometry:
         enrich_external_geometries(
             response, router, origin, destination, index, mode,

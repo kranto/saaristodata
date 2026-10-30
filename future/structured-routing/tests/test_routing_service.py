@@ -107,6 +107,9 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Näe vaihtoehtoiset lauttavuorot", response.text)
         self.assertIn("Matka aikajanalla", response.text)
         self.assertIn("formatDistance(leg.distanceMeters)", response.text)
+        self.assertIn("const googleMapsDirectionsUrl = (leg)", response.text)
+        self.assertIn("Avaa Google Mapsissa", response.text)
+        self.assertIn('target="_blank" rel="noopener noreferrer"', response.text)
         self.assertIn("const formatDate = (value)", response.text)
         self.assertIn("const dayOffsetLabel = (departure, arrival)", response.text)
         self.assertIn("resultDepartureLabel(shownDeparture)", response.text)
@@ -293,6 +296,14 @@ class RoutingServiceTests(unittest.TestCase):
         ]
         self.assertTrue(external)
         self.assertTrue(all(item["geometry"]["type"] == "LineString" for item in external))
+        road_legs = [
+            leg
+            for itinerary in result["itineraries"]
+            for leg in itinerary["legs"]
+            if leg["kind"] == "road"
+        ]
+        self.assertTrue(road_legs)
+        self.assertTrue(all("navigationCoordinates" in leg for leg in road_legs))
 
     def test_unknown_request_field_is_rejected(self) -> None:
         response = self.client.post("/route", json={

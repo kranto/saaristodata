@@ -15,6 +15,18 @@
       "lat": 60.223033,
       "source": "OpenStreetMap way 25208185, Eckerövägen/1",
       "reason": "route from the public-road entrance instead of the one-way terminal service-road network"
+    },
+    "Naantali": {
+      "lon": 22.038798,
+      "lat": 60.4591564,
+      "source": "Finnlines Check-in for cargo, user-verified landside access point 2026-10-29",
+      "reason": "route to a drivable check-in point instead of the ferry berth in the water"
+    },
+    "Lillmälö": {
+      "lon": 22.112531,
+      "lat": 60.235428,
+      "source": "Valhalla road correlation, OpenStreetMap ways 171112927 and 1426913370",
+      "reason": "route to the terminal road endpoint instead of the adjacent ferry geometry"
     }
   },
   "preferredNames": {
