@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from starlette.concurrency import run_in_threadpool
 
@@ -205,7 +205,7 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=502, detail=str(error)) from error
 
     @application.post("/route")
-    async def route(request: RouteRequest) -> dict:
+    async def route(request: RouteRequest):
         request_started_at = runtime_clock.perf_counter()
 
         def response_with_runtime(payload: dict, *, cache_hit: bool) -> dict:
@@ -220,6 +220,30 @@ def create_app() -> FastAPI:
             })
             response["runtime"] = runtime
             return response
+
+        stop_index = getattr(application.state, "stop_index_data", None)
+        if stop_index is None:
+            stop_index = json.loads(application.state.stop_index_path.read_text())
+        for field, query, selection in (
+            ("origin", request.origin, request.origin_selection),
+            ("destination", request.destination, request.destination_selection),
+        ):
+            if selection is not None or known_stop(stop_index, query) is not None:
+                continue
+            suggestions = await run_in_threadpool(
+                application.state.geocoder.suggest, query,
+            )
+            if len(suggestions) > 1:
+                field_label = "lähtöpaikka" if field == "origin" else "määränpää"
+                return JSONResponse(status_code=409, content={
+                    "detail": (
+                        f"Valitse täsmällinen {field_label} avautuneesta "
+                        "luettelosta ennen reititystä."
+                    ),
+                    "field": field,
+                    "query": query,
+                    "suggestions": suggestions,
+                })
 
         response_cache_key = {
             "serviceVersion": SERVICE_VERSION,
