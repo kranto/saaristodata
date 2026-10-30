@@ -471,8 +471,6 @@
         leg.serviceType || "", leg.routeId || "", leg.from, leg.to,
       ].join(":")
     )).join(">");
-    const routeOptionKey = (item) => routeShape(item.legs);
-
     const itineraryChargeCount = (item) => item.legs.filter((leg) => Boolean(chargeLabel(leg))).length;
     const routeRiskRank = (item) => ({ relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 })[
       item.riskSummary?.worstConnectionRisk || "normal"
@@ -511,11 +509,17 @@
     }
 
     function mainRouteOptions() {
-      const candidates = (response?.itineraries || []).map((item, index) => ({
-        item,
-        index,
-        key: routeOptionKey(item),
-      }));
+      const candidates = (response?.itineraries || []).map((item, index) => {
+        const preferredLegs = preferredLegsByResult.get(index);
+        return {
+          item,
+          index,
+          // Once the decision graph has produced the preferred chain, group
+          // options by that chain instead of the API seed itinerary. Different
+          // seeds can converge to the same actual ferry sequence.
+          key: routeShape(preferredLegs || item.legs),
+        };
+      });
       // Apply the cross-route dominance rule to individual itineraries before
       // collapsing equal route shapes. Otherwise an early, safe feeder may be
       // selected as the shape representative and hide the whole route even
@@ -1148,12 +1152,15 @@
 
     function rebuildPreferredResultLegs() {
       preferredLegsByResult.clear();
-      const options = mainRouteOptions();
-      const firstResult = options[0]?.index ?? 0;
-      options.forEach(({ index }) => {
+      // Resolve every API candidate before grouping. Resolving only the first
+      // representatives can expose a previously hidden seed after two
+      // representatives converge to the same preferred chain.
+      (response?.itineraries || []).forEach((_, index) => {
         activeResult = index;
         preferredLegsByResult.set(index, preferredActiveLegs());
       });
+      const options = mainRouteOptions();
+      const firstResult = options[0]?.index ?? 0;
       activeResult = firstResult;
       displayedLegs = preferredLegsByResult.get(activeResult) || response?.itineraries?.[activeResult]?.legs || [];
     }

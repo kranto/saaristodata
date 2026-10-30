@@ -65,6 +65,29 @@ class FastRouteSearchTests(unittest.TestCase):
         )
         self.assertTrue(all("_schedules" not in route for route in self.graph["routes"]))
 
+    def test_dense_scheduled_cable_ferry_search_stays_bounded(self) -> None:
+        result = find_itineraries(
+            "Angelniemi", "Wihuri", date(2026, 11, 1), time(18, 1),
+            same_day=True, max_results=16, max_legs=21,
+            graph_data=self.graph,
+        )
+
+        self.assertEqual(result["status"], "routes_found")
+        self.assertTrue(any(
+            [
+                leg.get("routeId") for leg in itinerary["legs"]
+                if leg.get("routeId")
+            ] == ["kokkila", "rymattylanreitti"]
+            for itinerary in result["results"]
+        ))
+        expanded = (
+            result["diagnostics"]["expandedLabels"]
+            + result["diagnostics"]["sweptExpandedLabels"]
+        )
+        # This query previously expanded more than 300,000 labels when every
+        # dense Kokkila departure spawned the same downstream search.
+        self.assertLess(expanded, 50_000)
+
     def test_kokkila_uses_angelniemi_road_catchment(self) -> None:
         def road(edge_id: str, from_id: str, to_id: str, minutes: int) -> dict:
             return {

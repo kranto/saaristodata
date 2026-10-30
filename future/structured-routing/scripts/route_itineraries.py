@@ -1125,8 +1125,17 @@ def find_itineraries(
         recent_trips = tuple(reversed([
             (
                 item["edge"].get("routeId"),
-                item["edge"].get("tripPatternId"),
-                item["instance"]["departure"].isoformat(),
+                (
+                    "scheduled_cable_ferry"
+                    if include_seed_sweep
+                    and item["edge"].get("serviceType") == "cable_ferry"
+                    else item["edge"].get("tripPatternId")
+                ),
+                (
+                    None
+                    if include_seed_sweep
+                    else item["instance"]["departure"].isoformat()
+                ),
             )
             for item in reversed(records)
             if item["edge"]["kind"] == "scheduled_service"
@@ -1135,13 +1144,23 @@ def find_itineraries(
         # readiness enforcement and transfer-risk semantics. It is therefore
         # part of the routing state, especially after continuous road ferries
         # which have no tripPatternId of their own.
+        # The adaptive seed sweep below is responsible for later useful
+        # departures. In the diverse search, retaining every departure of a
+        # frequent scheduled cable ferry as a separate state multiplies the
+        # same downstream search without adding a new physical route. Collapse
+        # those timetable instances here and let earliest arrival dominate;
+        # disabling the sweep preserves the old exhaustive state identity.
+        state_first_service = (
+            None if include_seed_sweep else first_service_departure
+        )
+        frontier_departure = start if include_seed_sweep else origin_departure
         state_key = (
             node_id, recent_trips, worst_risk, has_used_service,
-            first_service_departure,
+            state_first_service,
         )
         frontier = pareto_frontiers[state_key]
         if any(
-            previous_arrival <= moment and previous_departure >= origin_departure
+            previous_arrival <= moment and previous_departure >= frontier_departure
             for previous_arrival, previous_departure in frontier
         ):
             continue
@@ -1150,10 +1169,10 @@ def find_itineraries(
             for previous_arrival, previous_departure in frontier
             if not (
                 moment <= previous_arrival
-                and origin_departure >= previous_departure
+                and frontier_departure >= previous_departure
             )
         ]
-        pareto_frontiers[state_key].append((moment, origin_departure))
+        pareto_frontiers[state_key].append((moment, frontier_departure))
         if node_id == args.destination:
             if first_result_day_deadline is None:
                 first_result_day_deadline = datetime.combine(
@@ -1175,7 +1194,7 @@ def find_itineraries(
         hour_bucket = moment.replace(minute=0, second=0, microsecond=0)
         label_bucket = (
             node_id, hour_bucket, worst_risk, recent_trips,
-            first_service_departure,
+            state_first_service,
         )
         accepted_per_node_hour[label_bucket] += 1
         if accepted_per_node_hour[label_bucket] > args.max_labels_per_node_hour:
