@@ -145,6 +145,156 @@ class ConciseAddressNameTests(unittest.TestCase):
 
 
 class NominatimGeocoderTests(unittest.TestCase):
+    def test_visually_identical_place_candidates_are_deduplicated(self) -> None:
+        results = [
+            {
+                "lat": "61.5003", "lon": "23.7406", "name": "Amuri",
+                "display_name": "Amuri, Tampere, Pirkanmaa, Suomi",
+                "category": "place", "type": "suburb",
+                "osm_type": "node", "osm_id": 1,
+                "address": {"suburb": "Amuri", "city": "Tampere"},
+            },
+            {
+                "lat": "61.5010", "lon": "23.7432", "name": "Amuri",
+                "display_name": "Amuri, Tampere, Pirkanmaa, Suomi ilman postinumeroa",
+                "category": "boundary", "type": "administrative",
+                "osm_type": "relation", "osm_id": 2,
+                "address": {"suburb": "Amuri", "city": "Tampere"},
+            },
+        ]
+        with patch("external_routing._read_json", return_value=results):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+                street_suggestion_endpoint=None,
+            ).suggest("Amuri")
+        self.assertEqual(len(suggestions), 1)
+        self.assertEqual(suggestions[0]["displayName"], "Amuri, Tampere")
+
+    def test_bare_locality_name_returns_distinct_places_instead_of_one_best(self) -> None:
+        results = [
+            {
+                "lat": "61.4977", "lon": "23.8073", "name": "Kaleva",
+                "display_name": "Kaleva, Tampere, Suomi",
+                "category": "boundary", "type": "administrative",
+                "osm_type": "relation", "osm_id": 1,
+                "extratags": {"admin_level": "10"},
+                "address": {"suburb": "Kaleva", "city": "Tampere"},
+            },
+            {
+                "lat": "60.4145", "lon": "25.0958", "name": "Kaleva",
+                "display_name": "Kaleva, Kerava, Suomi",
+                "category": "boundary", "type": "administrative",
+                "osm_type": "relation", "osm_id": 2,
+                "extratags": {"admin_level": "10"},
+                "address": {"suburb": "Kaleva", "town": "Kerava"},
+            },
+            {
+                "lat": "61.3151", "lon": "22.1258", "name": "Kaleva",
+                "display_name": "Kaleva, Harjavalta, Suomi",
+                "category": "place", "type": "suburb",
+                "osm_type": "node", "osm_id": 3,
+                "address": {"suburb": "Kaleva", "town": "Harjavalta"},
+            },
+        ]
+        with patch("external_routing._read_json", return_value=results):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+                street_suggestion_endpoint=None,
+            ).suggest("Kaleva")
+
+        self.assertEqual(
+            [item["displayName"] for item in suggestions],
+            ["Kaleva, Tampere", "Kaleva, Kerava", "Kaleva, Harjavalta"],
+        )
+
+    def test_empty_suggestion_response_stays_empty(self) -> None:
+        with patch("external_routing._read_json", return_value=[]):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+            ).suggest("Vimpe")
+        self.assertEqual(suggestions, [])
+
+    def test_exact_street_results_are_supplemented_without_dropping_places(self) -> None:
+        nominatim = [
+            {
+                "lat": "60.1690", "lon": "24.9520", "name": "Hallituskatu",
+                "display_name": "Hallituskatu, Helsinki, Suomi",
+                "category": "highway", "type": "residential",
+                "osm_type": "way", "osm_id": 1,
+                "address": {"road": "Hallituskatu", "city": "Helsinki"},
+            },
+            {
+                "lat": "62.0000", "lon": "25.0000", "name": "Hallituskatu",
+                "display_name": "Hallituskatu, Esimerkkikunta, Suomi",
+                "category": "place", "type": "hamlet",
+                "osm_type": "node", "osm_id": 2,
+                "address": {"hamlet": "Hallituskatu", "municipality": "Esimerkkikunta"},
+            },
+        ]
+        photon = {
+            "features": [{
+                "type": "Feature",
+                "properties": {
+                    "osm_type": "W", "osm_id": 3, "type": "street",
+                    "name": "Hallituskatu", "city": "Kuopio",
+                    "state": "Pohjois-Savo", "country": "Suomi",
+                    "countrycode": "FI",
+                },
+                "geometry": {"type": "Point", "coordinates": [27.69, 62.89]},
+            }],
+        }
+        with patch("external_routing._read_json", side_effect=[nominatim, photon]):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+            ).suggest("Hallituskatu")
+
+        self.assertEqual(
+            {(item["displayName"], item["resultType"]) for item in suggestions},
+            {
+                ("Hallituskatu, Helsinki", "street"),
+                ("Hallituskatu, Esimerkkikunta", "hamlet"),
+                ("Hallituskatu, Kuopio", "street"),
+            },
+        )
+
+    def test_suggestions_keep_distinct_same_named_streets(self) -> None:
+        results = [
+            {
+                "lat": "60.1690", "lon": "24.9520", "name": "Hallituskatu",
+                "display_name": "Hallituskatu, Helsinki, Uusimaa, Suomi",
+                "osm_type": "way", "osm_id": 1,
+                "address": {"road": "Hallituskatu", "city": "Helsinki"},
+            },
+            {
+                "lat": "60.1691", "lon": "24.9530", "name": "Hallituskatu",
+                "display_name": "Hallituskatu, Helsinki, Uusimaa, Suomi",
+                "osm_type": "way", "osm_id": 3,
+                "address": {"road": "Hallituskatu", "city": "Helsinki"},
+            },
+            {
+                "lat": "61.4980", "lon": "23.7600", "name": "Hallituskatu",
+                "display_name": "Hallituskatu, Tampere, Pirkanmaa, Suomi",
+                "osm_type": "way", "osm_id": 2,
+                "address": {"road": "Hallituskatu", "city": "Tampere"},
+            },
+            {
+                "lat": "60.1692", "lon": "24.9500", "name": "Yliopistonkatu",
+                "display_name": "Yliopistonkatu, Helsinki, Uusimaa, Suomi",
+                "osm_type": "way", "osm_id": 4,
+                "address": {"road": "Yliopistonkatu", "city": "Helsinki"},
+            },
+        ]
+        with patch("external_routing._read_json", return_value=results):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+            ).suggest("Hallituskatu")
+
+        self.assertEqual(
+            [item["displayName"] for item in suggestions],
+            ["Hallituskatu, Helsinki", "Hallituskatu, Tampere"],
+        )
+        self.assertEqual(suggestions[1]["id"], "nominatim:way:2")
+
     def test_bare_historic_area_name_prefers_exact_named_hamlet(self) -> None:
         results = [
             {

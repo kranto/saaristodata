@@ -13,7 +13,7 @@ from datetime import date, time
 from pathlib import Path
 from typing import Literal
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from starlette.concurrency import run_in_threadpool
@@ -31,13 +31,38 @@ from external_routing import (  # noqa: E402
     NominatimGeocoder,
     ValhallaRouter,
 )
-from query_address_routes import DEFAULT_STOP_INDEX, query_address_routes  # noqa: E402
+from query_address_routes import (  # noqa: E402
+    DEFAULT_STOP_INDEX,
+    known_stop,
+    query_address_routes,
+    routing_coordinates,
+)
 from route_itinerary import DEFAULT_GRAPH  # noqa: E402
 from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
-SERVICE_VERSION = "0.4.78"
+SERVICE_VERSION = "0.4.79"
 ROUTE_PREVIEW = ROOT / "service" / "route-preview.html"
+
+
+class Coordinates(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    lat: float = Field(ge=59, le=71)
+    lon: float = Field(ge=19, le=32)
+
+
+class GeocodeSelection(BaseModel):
+    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+
+    id: str = Field(min_length=1, max_length=300)
+    display_name: str = Field(min_length=1, max_length=500, alias="displayName")
+    coordinates: Coordinates
+    provider: str = Field(min_length=1, max_length=100)
+    attribution: str | None = Field(default=None, max_length=300)
+    routing_stop_id: str | None = Field(
+        default=None, max_length=300, alias="routingStopId",
+    )
 
 
 class RouteRequest(BaseModel):
@@ -56,6 +81,12 @@ class RouteRequest(BaseModel):
     include_diagnostics: bool = Field(default=False, alias="includeDiagnostics")
     include_decision_graph: bool = Field(default=False, alias="includeDecisionGraph")
     include_geometry: bool = Field(default=True, alias="includeGeometry")
+    origin_selection: GeocodeSelection | None = Field(
+        default=None, alias="originSelection",
+    )
+    destination_selection: GeocodeSelection | None = Field(
+        default=None, alias="destinationSelection",
+    )
 
     @field_validator("start_time")
     @classmethod
@@ -63,6 +94,20 @@ class RouteRequest(BaseModel):
         if value.tzinfo is not None or value.second or value.microsecond:
             raise ValueError("startTime must be a local time with minute precision")
         return value
+
+
+class SelectedEndpointGeocoder:
+    def __init__(self, delegate, selections: dict[str, GeocodeSelection]) -> None:
+        self.delegate = delegate
+        self.selections = selections
+
+    def geocode(self, query: str) -> dict:
+        selection = self.selections.get(" ".join(query.casefold().split()))
+        if selection is None:
+            return self.delegate.geocode(query)
+        result = selection.model_dump(exclude_none=True, by_alias=True)
+        result["query"] = query
+        return result
 
 
 def environment_path(name: str, default: Path) -> Path:
@@ -125,6 +170,36 @@ def create_app() -> FastAPI:
     async def route_preview() -> HTMLResponse:
         return HTMLResponse(ROUTE_PREVIEW.read_text(encoding="utf-8"))
 
+    @application.get("/geocode")
+    async def geocode_suggestions(
+        query: str = Query(min_length=2, max_length=300),
+    ) -> dict:
+        stop_index = getattr(application.state, "stop_index_data", None)
+        if stop_index is None:
+            stop_index = json.loads(application.state.stop_index_path.read_text())
+        stop = known_stop(stop_index, query)
+        if stop is not None:
+            return {
+                "query": query,
+                "suggestions": [{
+                    "id": f"stop:{stop['id']}",
+                    "displayName": stop.get("name", stop["id"]),
+                    "description": "Saaristolauttojen laituri",
+                    "coordinates": routing_coordinates(stop),
+                    "provider": "saaristolautat",
+                    "routingStopId": stop["id"],
+                }],
+            }
+        try:
+            suggestions = await run_in_threadpool(
+                application.state.geocoder.suggest, query,
+            )
+            return {"query": query, "suggestions": suggestions}
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
+        except RuntimeError as error:
+            raise HTTPException(status_code=502, detail=str(error)) from error
+
     @application.post("/route")
     async def route(request: RouteRequest) -> dict:
         request_started_at = runtime_clock.perf_counter()
@@ -152,6 +227,18 @@ def create_app() -> FastAPI:
             return response_with_runtime(cached, cache_hit=True)
         try:
             routing_started_at = runtime_clock.perf_counter()
+            selections = {
+                " ".join(value.casefold().split()): selection
+                for value, selection in (
+                    (request.origin, request.origin_selection),
+                    (request.destination, request.destination_selection),
+                )
+                if selection is not None
+            }
+            geocoder = (
+                SelectedEndpointGeocoder(application.state.geocoder, selections)
+                if selections else application.state.geocoder
+            )
             result = await run_in_threadpool(
                 query_address_routes,
                 request.origin,
@@ -169,7 +256,7 @@ def create_app() -> FastAPI:
                 stop_index_path=application.state.stop_index_path,
                 graph_data=getattr(application.state, "graph_data", None),
                 stop_index_data=getattr(application.state, "stop_index_data", None),
-                geocoder=application.state.geocoder,
+                geocoder=geocoder,
                 router=application.state.router,
             )
             cacheable_result = dict(result)

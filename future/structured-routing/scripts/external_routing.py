@@ -23,6 +23,7 @@ from classify_external_route import classify, decode_polyline, distance_meters
 
 
 DEFAULT_NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+DEFAULT_PHOTON_URL = "https://photon.komoot.io/api/"
 DEFAULT_OSM_API_URL = "https://api.openstreetmap.org/api/0.6"
 DEFAULT_VALHALLA_URL = "https://valhalla1.openstreetmap.de"
 DEFAULT_USER_AGENT = "Saaristolautat-route-prototype/1.0"
@@ -249,6 +250,7 @@ class NominatimGeocoder:
         self,
         endpoint: str = DEFAULT_NOMINATIM_URL,
         *,
+        street_suggestion_endpoint: str | None = DEFAULT_PHOTON_URL,
         osm_api_endpoint: str = DEFAULT_OSM_API_URL,
         user_agent: str = DEFAULT_USER_AGENT,
         timeout: float = 30,
@@ -256,6 +258,7 @@ class NominatimGeocoder:
         cache=None,
     ) -> None:
         self.endpoint = endpoint
+        self.street_suggestion_endpoint = street_suggestion_endpoint
         self.osm_api_endpoint = osm_api_endpoint.rstrip("/")
         self.user_agent = user_agent
         self.timeout = timeout
@@ -264,6 +267,252 @@ class NominatimGeocoder:
         self._last_request_at: float | None = None
         self._cache: dict[str, dict] = {}
         self._request_lock = threading.Lock()
+
+    def suggest(self, query: str, *, limit: int = 10) -> list[dict]:
+        """Return distinct Finnish geocoding candidates without choosing one."""
+        normalized_query = " ".join(query.casefold().split())
+        cache_key = {
+            "endpoint": self.endpoint,
+            "query": normalized_query,
+            "limit": limit,
+            "selection": "address-suggestions-v1",
+        }
+        cached = self.cache.get("nominatim:suggest", cache_key) if self.cache else None
+        if cached is None:
+            parameters = urlencode({
+                "q": query,
+                "format": "jsonv2",
+                "addressdetails": 1,
+                "extratags": 1,
+                "limit": limit,
+                "countrycodes": "fi",
+                "accept-language": "fi,sv,en",
+            })
+            with self._request_lock:
+                cached = self.cache.get("nominatim:suggest", cache_key) if self.cache else None
+                if cached is None:
+                    if self._last_request_at is not None:
+                        wait = self.minimum_interval_seconds - (
+                            time.monotonic() - self._last_request_at
+                        )
+                        if wait > 0:
+                            time.sleep(wait)
+                    request = Request(
+                        f"{self.endpoint}?{parameters}",
+                        headers={"User-Agent": self.user_agent, "Accept": "application/json"},
+                    )
+                    cached = _read_json(request, self.timeout)
+                    self._last_request_at = time.monotonic()
+                    if self.cache:
+                        self.cache.set("nominatim:suggest", cache_key, cached)
+        if not isinstance(cached, list):
+            raise RuntimeError("geocoding provider returned an invalid suggestion response")
+        if not cached:
+            return []
+
+        candidate_items = cached
+        coordinate_override = None
+        stripped_query = query.strip()
+        normalized_query_name = _normalized_name(stripped_query)
+        cached_has_exact_street = any(
+            item.get("category") == "highway"
+            and normalized_query_name in {
+                _normalized_name(item.get("name")),
+                _normalized_name((item.get("address") or {}).get("road")),
+            }
+            for item in cached
+        )
+        if stripped_query and "," not in stripped_query and not any(
+            character.isdigit() for character in stripped_query
+        ):
+            municipality = _municipality_boundary_result(query, cached)
+            if municipality is not None and not cached_has_exact_street:
+                candidate_items = [municipality]
+                coordinate_override = self._admin_centre(municipality)
+        exact_name_items = [
+            item for item in candidate_items
+            if normalized_query_name in {
+                _normalized_name(item.get("name")),
+                *(
+                    _normalized_name((item.get("address") or {}).get(key))
+                    for key in (
+                        "road", "pedestrian", "residential", "footway", "path",
+                        "city", "town", "municipality", "village", "hamlet",
+                        "locality", "island",
+                    )
+                ),
+            }
+        ]
+        if exact_name_items:
+            candidate_items = exact_name_items
+        place_labels = {
+            _normalized_name(concise_address_name({
+                "name": item.get("name"),
+                "displayName": item.get("display_name"),
+                "address": item.get("address"),
+            }))
+            for item in candidate_items
+            if item.get("category") == "place"
+        }
+        candidate_items = [
+            item for item in candidate_items
+            if not (
+                item.get("category") == "boundary"
+                and item.get("type") == "historic"
+                and _normalized_name(concise_address_name({
+                    "name": item.get("name"),
+                    "displayName": item.get("display_name"),
+                    "address": item.get("address"),
+                })) in place_labels
+            )
+        ]
+        has_exact_street = any(
+            item.get("category") == "highway"
+            and normalized_query_name in {
+                _normalized_name(item.get("name")),
+                _normalized_name((item.get("address") or {}).get("road")),
+            }
+            for item in candidate_items
+        )
+        supplementary_streets = (
+            self._street_suggestions(query, limit=50)
+            if has_exact_street and self.street_suggestion_endpoint else []
+        )
+
+        suggestions = []
+        seen = set()
+        seen_descriptions = set()
+        seen_localities = set()
+        for position, item in enumerate(candidate_items):
+            if not isinstance(item, dict) or "lat" not in item or "lon" not in item:
+                continue
+            coordinates = coordinate_override or {
+                "lat": float(item["lat"]), "lon": float(item["lon"]),
+            }
+            identifier = (
+                f"nominatim:{item.get('osm_type')}:{item.get('osm_id')}"
+                if item.get("osm_type") and item.get("osm_id")
+                else f"nominatim:{coordinates['lat']:.7f}:{coordinates['lon']:.7f}:{position}"
+            )
+            candidate = _normalize_geocoded_result({
+                "id": identifier,
+                "name": item.get("name"),
+                "displayName": item.get("display_name") or query,
+                "description": item.get("display_name") or query,
+                "coordinates": coordinates,
+                "address": item.get("address"),
+                "provider": "Nominatim",
+                "attribution": "© OpenStreetMap contributors",
+                "resultType": (
+                    "street" if item.get("category") == "highway"
+                    else item.get("type") or item.get("category") or "place"
+                ),
+            }, query)
+            duplicate_key = (
+                _normalized_name(candidate["displayName"]),
+                candidate["resultType"],
+            )
+            description_key = _normalized_name(candidate["description"])
+            locality_key = (
+                _normalized_name(candidate["displayName"])
+                if item.get("category") in {"place", "boundary"} else None
+            )
+            if (
+                duplicate_key in seen
+                or description_key in seen_descriptions
+                or (locality_key is not None and locality_key in seen_localities)
+            ):
+                continue
+            seen.add(duplicate_key)
+            seen_descriptions.add(description_key)
+            if locality_key is not None:
+                seen_localities.add(locality_key)
+            suggestions.append(candidate)
+        for candidate in supplementary_streets:
+            duplicate_key = (
+                _normalized_name(candidate["displayName"]),
+                candidate["resultType"],
+            )
+            description_key = _normalized_name(candidate["description"])
+            if duplicate_key in seen or description_key in seen_descriptions:
+                continue
+            seen.add(duplicate_key)
+            seen_descriptions.add(description_key)
+            suggestions.append(candidate)
+        return suggestions
+
+    def _street_suggestions(self, query: str, *, limit: int) -> list[dict]:
+        cache_key = {
+            "endpoint": self.street_suggestion_endpoint,
+            "query": " ".join(query.casefold().split()),
+            "limit": limit,
+            "selection": "exact-finnish-streets-v1",
+        }
+        cached = self.cache.get("photon:street-suggest", cache_key) if self.cache else None
+        if cached is None:
+            parameters = urlencode({"q": query, "limit": limit})
+            with self._request_lock:
+                cached = self.cache.get("photon:street-suggest", cache_key) if self.cache else None
+                if cached is None:
+                    if self._last_request_at is not None:
+                        wait = self.minimum_interval_seconds - (
+                            time.monotonic() - self._last_request_at
+                        )
+                        if wait > 0:
+                            time.sleep(wait)
+                    request = Request(
+                        f"{self.street_suggestion_endpoint}?{parameters}",
+                        headers={"User-Agent": self.user_agent, "Accept": "application/json"},
+                    )
+                    cached = _read_json(request, self.timeout)
+                    self._last_request_at = time.monotonic()
+                    if self.cache:
+                        self.cache.set("photon:street-suggest", cache_key, cached)
+        features = cached.get("features") if isinstance(cached, dict) else None
+        if not isinstance(features, list):
+            return []
+        normalized_query = _normalized_name(query)
+        suggestions = []
+        for feature in features:
+            properties = feature.get("properties") or {}
+            geometry = feature.get("geometry") or {}
+            coordinates = geometry.get("coordinates") or []
+            if (
+                properties.get("countrycode") != "FI"
+                or properties.get("type") != "street"
+                or _normalized_name(properties.get("name")) != normalized_query
+                or len(coordinates) < 2
+            ):
+                continue
+            city = properties.get("city") or properties.get("county")
+            address = {
+                "road": properties.get("name"),
+                "city": city,
+                "suburb": properties.get("district"),
+                "neighbourhood": properties.get("locality"),
+                "state": properties.get("state"),
+                "postcode": properties.get("postcode"),
+                "country": properties.get("country"),
+            }
+            description = ", ".join(
+                str(value) for value in (
+                    properties.get("name"), properties.get("locality"),
+                    properties.get("district"), city, properties.get("state"),
+                    properties.get("postcode"), properties.get("country"),
+                ) if value
+            )
+            suggestions.append(_normalize_geocoded_result({
+                "id": f"photon:{properties.get('osm_type')}:{properties.get('osm_id')}",
+                "name": properties.get("name"),
+                "displayName": description,
+                "description": description,
+                "coordinates": {"lat": float(coordinates[1]), "lon": float(coordinates[0])},
+                "address": address,
+                "provider": "Photon",
+                "attribution": "© OpenStreetMap contributors",
+                "resultType": "street",
+            }, query))
+        return suggestions
 
     def geocode(self, query: str) -> dict:
         normalized_query = " ".join(query.casefold().split())
