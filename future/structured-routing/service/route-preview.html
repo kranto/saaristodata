@@ -248,6 +248,7 @@
     const selectedLocations = { origin: null, destination: null };
     const selectedSailings = new Map();
     const preferredLegsByResult = new Map();
+    const alternativeRouteFitCache = new Map();
 
     function hideFastTooltip() {
       window.clearTimeout(tooltipTimer);
@@ -557,12 +558,11 @@
       }
     }
 
-    const routeShape = (legs) => legs.map((leg) => (
-      [
-        ["scheduled_service", "continuous_ferry"].includes(leg.kind) ? "ferry" : leg.kind,
-        leg.serviceType || "", leg.routeId || "", leg.from, leg.to,
-      ].join(":")
-    )).join(">");
+    const routeLegKey = (leg) => [
+      ["scheduled_service", "continuous_ferry"].includes(leg.kind) ? "ferry" : leg.kind,
+      leg.serviceType || "", leg.routeId || "", leg.from, leg.to,
+    ].join(":");
+    const routeShape = (legs) => legs.map(routeLegKey).join(">");
     const itineraryChargeCount = (item) => item.legs.filter((leg) => Boolean(chargeLabel(leg))).length;
     const routeRiskRank = (item) => ({ relaxed: 0, normal: 0, tight: 1, very_tight: 2, below_required_readiness: 3 })[
       item.riskSummary?.worstConnectionRisk || "normal"
@@ -718,6 +718,38 @@
       })[0];
     }
 
+    function alternativeFitsActiveRoute(connection) {
+      const selectionKey = [...selectedSailings.entries()]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([crossing, service]) => `${crossing}=${service}`)
+        .join(";");
+      const cacheKey = `${activeResult}|${selectionKey}|${connection.id}`;
+      if (alternativeRouteFitCache.has(cacheKey)) return alternativeRouteFitCache.get(cacheKey);
+
+      const crossing = crossingKey(connection.leg);
+      const previous = selectedSailings.get(crossing);
+      selectedSailings.set(crossing, serviceKey(connection.leg));
+      const path = bestSelectedPath(graphMaps());
+      if (previous) selectedSailings.set(crossing, previous); else selectedSailings.delete(crossing);
+
+      let fits = Boolean(path);
+      if (path) {
+        const chosenShape = routeShape(pathLegs(path));
+        const options = mainRouteOptions();
+        const activeShape = options.find((item) => item.index === activeResult)?.key
+          || routeShape(preferredLegsByResult.get(activeResult) || response.itineraries[activeResult].legs);
+        const competingShapes = new Set(
+          options.filter((item) => item.index !== activeResult).map((item) => item.key)
+        );
+        // A local subchain may change when the timetable requires it. A
+        // sailing that resolves exactly to another main route option is not
+        // an alternative inside the currently selected option, however.
+        fits = chosenShape === activeShape || !competingShapes.has(chosenShape);
+      }
+      alternativeRouteFitCache.set(cacheKey, fits);
+      return fits;
+    }
+
     function sailingAlternatives(leg) {
       if (!response?.decisionGraph || !isFerryLeg(leg)) return [];
       const matching = response.decisionGraph.connections.filter((item) => (
@@ -741,7 +773,8 @@
         variants: [...variants.values()].sort((a, b) => (
           (riskRank[a.leg.transferRisk?.level] ?? -1) - (riskRank[b.leg.transferRisk?.level] ?? -1)
         )),
-      })).sort((a, b) => a.variants[0].leg.departure.localeCompare(b.variants[0].leg.departure));
+      })).filter((item) => alternativeFitsActiveRoute(preferredVariant(item.variants)))
+        .sort((a, b) => a.variants[0].leg.departure.localeCompare(b.variants[0].leg.departure));
       return groups.length > 1 || groups.some((item) => item.variants.length > 1) ? groups : [];
     }
 
@@ -1087,6 +1120,7 @@
 
     function renderDetail() {
       if (!displayedLegs.length) return;
+      alternativeRouteFitCache.clear();
       const start = displayedLegs[0].departure;
       const end = displayedLegs[displayedLegs.length - 1].arrival;
       const routeName = `${placeName(displayedLegs[0].from)} – ${placeName(displayedLegs[displayedLegs.length - 1].to)}`;
@@ -1175,6 +1209,20 @@
     function bestSelectedPath(maps, requiredDestinationTime = null) {
       const routeAnchor = activeRouteAnchorKey();
       const routeAnchorLeg = activeRouteAnchorLeg();
+      // A timetable choice should normally stay inside the selected route
+      // option. Treat its ferry route ids as a soft corridor: prefer an exact
+      // corridor, but allow a different subchain when the chosen sailing makes
+      // the original one impossible (for example a direct vs transfer trip).
+      const preferredRouteIds = new Set(
+        (selectedSailings.size ? response?.itineraries?.[activeResult]?.legs || [] : [])
+          .filter(isFerryLeg)
+          .map((leg) => leg.routeId)
+          .filter(Boolean)
+      );
+      const preferredLegKeys = new Set(
+        (selectedSailings.size ? response?.itineraries?.[activeResult]?.legs || [] : [])
+          .map(routeLegKey)
+      );
       const pinnedServices = [...new Set(selectedSailings.values())];
       const anchorPin = routeAnchor && !selectedSailings.has(crossingKey(routeAnchorLeg))
         ? `route:${routeAnchor}`
@@ -1202,7 +1250,11 @@
 
       function compareSuffix(a, b) {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-        return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+        return a.foreignLegs - b.foreignLegs
+          || b.preferredLegs - a.preferredLegs
+          || a.foreignRoutes - b.foreignRoutes
+          || b.preferredRoutes - a.preferredRoutes
+          || (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || (aOkay && bOkay ? firstJourneyDeparture(b).localeCompare(firstJourneyDeparture(a)) : 0)
           || a.risk - b.risk
@@ -1213,7 +1265,7 @@
       function walk(node, mask) {
         const state = `${node}|${mask}`;
         if (destinations.has(node)) return mask === allPins
-          ? { edges: [], destination: node, risk: -1, riskCounts: [0, 0, 0, 0, 0] }
+          ? { edges: [], destination: node, risk: -1, riskCounts: [0, 0, 0, 0, 0], foreignLegs: 0, preferredLegs: 0, foreignRoutes: 0, preferredRoutes: 0 }
           : null;
         if (memo.has(state)) return memo.get(state);
         if (visiting.has(state)) return null;
@@ -1234,11 +1286,18 @@
           const edgeRisk = riskRank[edge.leg.transferRisk?.level] ?? -1;
           const riskCounts = [...rest.riskCounts];
           if (edgeRisk >= 0) riskCounts[edgeRisk] += 1;
+          const routeId = isFerryLeg(edge.leg) ? edge.leg.routeId : null;
+          const isPreferredRoute = routeId && preferredRouteIds.has(routeId);
+          const isPreferredLeg = !edge.virtualWait && preferredLegKeys.has(routeLegKey(edge.leg));
           const candidate = {
             edges: [edge, ...rest.edges],
             destination: rest.destination,
             risk: Math.max(rest.risk, edgeRisk),
             riskCounts,
+            foreignLegs: rest.foreignLegs + (!edge.virtualWait && preferredLegKeys.size && !isPreferredLeg ? 1 : 0),
+            preferredLegs: rest.preferredLegs + (isPreferredLeg ? 1 : 0),
+            foreignRoutes: rest.foreignRoutes + (routeId && preferredRouteIds.size && !isPreferredRoute ? 1 : 0),
+            preferredRoutes: rest.preferredRoutes + (isPreferredRoute ? 1 : 0),
           };
           if (!best || compareSuffix(candidate, best) < 0) best = candidate;
         }
@@ -1253,7 +1312,11 @@
       }).filter(Boolean);
       candidates.sort((a, b) => {
         const aOkay = a.risk <= 1, bOkay = b.risk <= 1;
-        return (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
+        return a.foreignLegs - b.foreignLegs
+          || b.preferredLegs - a.preferredLegs
+          || a.foreignRoutes - b.foreignRoutes
+          || b.preferredRoutes - a.preferredRoutes
+          || (nodeTimes.get(a.destination) || "9999").localeCompare(nodeTimes.get(b.destination) || "9999")
           || (aOkay !== bOkay ? (aOkay ? -1 : 1) : 0)
           || (aOkay && bOkay ? (nodeTimes.get(b.origin) || "").localeCompare(nodeTimes.get(a.origin) || "") : 0)
           || a.risk - b.risk
@@ -1347,6 +1410,18 @@
       const selectedService = serviceKey(selected.leg);
       const unlock = previous === selectedService;
       if (unlock) selectedSailings.delete(key); else selectedSailings.set(key, selectedService);
+      const locksDisplayedService = !previous && displayedLegs.some((leg) => (
+        leg.kind === "scheduled_service"
+        && crossingKey(leg) === key
+        && serviceKey(leg) === selectedService
+      ));
+      if (locksDisplayedService) {
+        blockedSailings.clear();
+        experimentText = `<strong>${selectedSailings.size === 1 ? "Valittu vuoro" : `Valitut vuorot (${selectedSailings.size})`}:</strong> Muu matkaketju ja lähtöaika on laskettu valintojen ympärille; vaihtovarat näkyvät edeltävillä ajo-osuuksilla.`;
+        renderResults();
+        renderDetail();
+        return;
+      }
       const path = bestSelectedPath(maps);
       if (!path) {
         const otherPins = [...selectedSailings.entries()].filter(([crossing]) => crossing !== key);
