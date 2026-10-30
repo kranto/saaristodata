@@ -719,18 +719,20 @@
     }
 
     function alternativeFitsActiveRoute(connection) {
-      const selectionKey = [...selectedSailings.entries()]
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([crossing, service]) => `${crossing}=${service}`)
-        .join(";");
-      const cacheKey = `${activeResult}|${selectionKey}|${connection.id}`;
+      const cacheKey = `${activeResult}|${connection.id}`;
       if (alternativeRouteFitCache.has(cacheKey)) return alternativeRouteFitCache.get(cacheKey);
 
+      // Other locked sailings must not hide choices on this row. They are
+      // checked when the user actually combines the choices, at which point
+      // the blocking row is shown. Here we only decide whether this sailing
+      // belongs to the active main route option at all.
+      const previousSelections = new Map(selectedSailings);
       const crossing = crossingKey(connection.leg);
-      const previous = selectedSailings.get(crossing);
+      selectedSailings.clear();
       selectedSailings.set(crossing, serviceKey(connection.leg));
       const path = bestSelectedPath(graphMaps());
-      if (previous) selectedSailings.set(crossing, previous); else selectedSailings.delete(crossing);
+      selectedSailings.clear();
+      previousSelections.forEach((service, key) => selectedSailings.set(key, service));
 
       let fits = Boolean(path);
       if (path) {
@@ -756,7 +758,6 @@
         item.leg.kind === "scheduled_service"
         && crossingKey(item.leg) === crossingKey(leg)
         && item.leg.departure.slice(0, 10) === leg.departure.slice(0, 10)
-        && followsDisplayedApproach(item, leg)
       ));
       const byService = new Map();
       matching.forEach((item) => {
