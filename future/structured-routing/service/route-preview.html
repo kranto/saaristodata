@@ -43,6 +43,13 @@
     .search-card { background: rgba(255, 253, 248, .94); border: 1px solid rgba(150, 171, 175, .45); border-radius: 22px; box-shadow: var(--shadow); padding: 20px; }
     form { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) 160px 110px 120px auto; gap: 12px; align-items: end; }
     label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 750; letter-spacing: .025em; }
+    .address-control { position: relative; }
+    .address-suggestions { position: absolute; left: 0; right: 0; top: calc(100% + 5px); z-index: 30; display: grid; gap: 2px; max-height: 310px; overflow-y: auto; border: 1px solid #a9c0c6; border-radius: 11px; padding: 5px; background: #fff; box-shadow: 0 14px 34px rgba(18, 37, 58, .2); }
+    .address-suggestions[hidden] { display: none; }
+    .address-suggestion { display: grid; gap: 2px; width: 100%; border: 0; border-radius: 8px; padding: 9px 10px; color: var(--ink); background: transparent; text-align: left; }
+    .address-suggestion:hover, .address-suggestion:focus-visible { background: #eaf4f3; outline: none; }
+    .address-suggestion strong { font-size: 13px; }
+    .address-suggestion small { color: var(--muted); font-size: 11px; font-weight: 500; line-height: 1.3; }
     input, select { width: 100%; border: 1px solid #bdcdd1; border-radius: 11px; background: #fff; color: var(--ink); padding: 12px 13px; outline: none; }
     input:focus, select:focus { border-color: var(--sea); box-shadow: 0 0 0 3px rgba(7, 89, 133, .12); }
     .primary { min-height: 43px; border: 0; border-radius: 11px; padding: 0 20px; color: white; background: var(--sea); font-weight: 800; box-shadow: 0 8px 20px rgba(7, 89, 133, .22); }
@@ -196,8 +203,8 @@
 
     <section class="search-card">
       <form id="searchForm">
-        <label class="address">Lähtöpaikka<input id="origin" value="Turku" autocomplete="street-address"></label>
-        <label class="address">Määränpää<input id="destination" value="Storpensor" autocomplete="street-address"></label>
+        <label class="address"><span>Lähtöpaikka</span><span class="address-control"><input id="origin" value="Turku" autocomplete="street-address" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="originSuggestions"><span id="originSuggestions" class="address-suggestions" role="listbox" hidden></span></span></label>
+        <label class="address"><span>Määränpää</span><span class="address-control"><input id="destination" value="Storpensor" autocomplete="street-address" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="destinationSuggestions"><span id="destinationSuggestions" class="address-suggestions" role="listbox" hidden></span></span></label>
         <label>Päivä<input id="date" type="date" value="2026-10-30"></label>
         <label>Aikaisintaan<input id="startTime" type="time" value="00:00"></label>
         <label class="mode">Kulkutapa<select id="mode"><option value="car">Auto</option><option value="motorcycle">Moottoripyörä</option><option value="bicycle">Polkupyörä</option></select></label>
@@ -232,6 +239,7 @@
     let blockedSailings = new Set();
     let tooltipTimer = null;
     let tooltipTarget = null;
+    const selectedLocations = { origin: null, destination: null };
     const selectedSailings = new Map();
     const preferredLegsByResult = new Map();
 
@@ -444,6 +452,86 @@
       } catch (_) {
         // The form remains usable even when browser storage is unavailable.
       }
+    }
+
+    function addressSelectionPayload(suggestion) {
+      return {
+        id: suggestion.id,
+        displayName: suggestion.displayName,
+        coordinates: suggestion.coordinates,
+        provider: suggestion.provider,
+        ...(suggestion.attribution ? { attribution: suggestion.attribution } : {}),
+        ...(suggestion.routingStopId ? { routingStopId: suggestion.routingStopId } : {}),
+      };
+    }
+
+    async function responsePayload(result) {
+      const text = await result.text();
+      if (!text) return {};
+      try {
+        return JSON.parse(text);
+      } catch (_) {
+        return {
+          detail: result.ok
+            ? "Palvelin palautti vastauksen, jota ei voitu lukea."
+            : `Palvelinvirhe ${result.status}.`,
+        };
+      }
+    }
+
+    function closeAddressSuggestions(id) {
+      const menu = $(`${id}Suggestions`);
+      menu.hidden = true;
+      menu.replaceChildren();
+      $(id).setAttribute("aria-expanded", "false");
+    }
+
+    function selectAddressSuggestion(id, suggestion) {
+      const input = $(id);
+      input.value = suggestion.displayName;
+      selectedLocations[id] = {
+        inputValue: input.value,
+        selection: addressSelectionPayload(suggestion),
+      };
+      closeAddressSuggestions(id);
+      saveSearch();
+    }
+
+    function showAddressSuggestions(id, suggestions) {
+      const menu = $(`${id}Suggestions`);
+      menu.replaceChildren();
+      suggestions.forEach((suggestion) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "address-suggestion";
+        button.setAttribute("role", "option");
+        const title = document.createElement("strong");
+        title.textContent = suggestion.displayName;
+        const detail = document.createElement("small");
+        detail.textContent = suggestion.description || suggestion.displayName;
+        button.append(title, detail);
+        button.addEventListener("click", () => selectAddressSuggestion(id, suggestion));
+        menu.append(button);
+      });
+      menu.hidden = false;
+      $(id).setAttribute("aria-expanded", "true");
+    }
+
+    async function resolveAddressField(id) {
+      const inputValue = $(id).value.trim();
+      if (!inputValue) throw new Error("Anna sekä lähtöpaikka että määränpää.");
+      if (selectedLocations[id]?.inputValue === inputValue) return true;
+      const result = await fetch(`/geocode?query=${encodeURIComponent(inputValue)}`);
+      const payload = await responsePayload(result);
+      if (!result.ok) throw new Error(payload.detail || `Osoitehakua ei voitu tehdä (${result.status})`);
+      const suggestions = payload.suggestions || [];
+      if (!suggestions.length) throw new Error(`Paikkaa ”${inputValue}” ei löytynyt.`);
+      if (suggestions.length === 1) {
+        selectAddressSuggestion(id, suggestions[0]);
+        return true;
+      }
+      showAddressSuggestions(id, suggestions);
+      return false;
     }
 
     async function health() {
@@ -1215,8 +1303,17 @@
       const button = $("submit"); button.disabled = true; button.textContent = "Lasketaan…";
       $("status").className = "status loading"; $("status").textContent = "Geokoodataan osoitteet, haetaan lauttaketjut ja muodostetaan päätösgraafi…";
       try {
-        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
-        const payload = await result.json();
+        const resolved = await Promise.all([
+          resolveAddressField("origin"),
+          resolveAddressField("destination"),
+        ]);
+        if (!resolved.every(Boolean)) {
+          $("status").className = "status";
+          $("status").textContent = "Valitse täsmällinen lähtöpaikka tai määränpää avautuneesta luettelosta ja etsi reitit uudelleen.";
+          return;
+        }
+        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
+        const payload = await responsePayload(result);
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
         response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; rebuildPreferredResultLegs(); ganttViewport = null;
         const routeCount = mainRouteOptions().length;
@@ -1248,7 +1345,13 @@
 
     restoreSearch();
     searchFieldIds.forEach((id) => {
-      $(id).addEventListener("input", saveSearch);
+      $(id).addEventListener("input", () => {
+        if (id === "origin" || id === "destination") {
+          selectedLocations[id] = null;
+          closeAddressSuggestions(id);
+        }
+        saveSearch();
+      });
       $(id).addEventListener("change", saveSearch);
     });
     health();

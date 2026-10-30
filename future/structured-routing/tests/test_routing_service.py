@@ -39,6 +39,40 @@ class FakeGeocoder:
             "attribution": "test data",
         }
 
+    def suggest(self, query: str) -> list[dict]:
+        self.calls += 1
+        if query == "Ambiguous street":
+            return [
+                {
+                    "id": "test:first",
+                    "displayName": "Ambiguous street, Helsinki",
+                    "description": "Ambiguous street, Helsinki, Finland",
+                    "coordinates": {"lat": 60.17, "lon": 24.94},
+                    "provider": "test",
+                    "attribution": "test data",
+                },
+                {
+                    "id": "test:second",
+                    "displayName": "Ambiguous street, Tampere",
+                    "description": "Ambiguous street, Tampere, Finland",
+                    "coordinates": {"lat": 61.50, "lon": 23.76},
+                    "provider": "test",
+                    "attribution": "test data",
+                },
+            ]
+        return [{
+            "id": f"test:{query}",
+            "displayName": f"Resolved {query}",
+            "description": f"Resolved {query}, Finland",
+            "coordinates": (
+                {"lat": 61.5, "lon": 23.7}
+                if query == "Origin address"
+                else {"lat": 60.4, "lon": 21.8}
+            ),
+            "provider": "test",
+            "attribution": "test data",
+        }]
+
 
 class FakeRouter:
     provider = "test"
@@ -284,6 +318,40 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("includeDiagnostics", response.text)
         self.assertIn("includeDecisionGraph", response.text)
         self.assertIn("routeStatusText(payload, routeCount)", response.text)
+        self.assertIn('role="combobox"', response.text)
+        self.assertIn('fetch(`/geocode?query=', response.text)
+        self.assertIn("originSelection: selectedLocations.origin.selection", response.text)
+
+    def test_geocode_returns_multiple_address_suggestions(self) -> None:
+        response = self.client.get(
+            "/geocode", params={"query": "Ambiguous street"},
+        )
+        self.assertEqual(response.status_code, 200, response.text)
+        suggestions = response.json()["suggestions"]
+        self.assertEqual(len(suggestions), 2)
+        self.assertEqual(suggestions[1]["displayName"], "Ambiguous street, Tampere")
+
+    def test_route_uses_selected_geocoding_candidate(self) -> None:
+        response = self.client.post("/route", json={
+            "origin": "Ambiguous street, Tampere",
+            "destination": "Wihuri address",
+            "date": "2026-11-01",
+            "mode": "car",
+            "sameDay": True,
+            "maxResults": 2,
+            "originSelection": {
+                "id": "test:second",
+                "displayName": "Ambiguous street, Tampere",
+                "coordinates": {"lat": 61.50, "lon": 23.76},
+                "provider": "test",
+                "attribution": "test data",
+            },
+        })
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(
+            response.json()["query"]["originAddress"]["displayName"],
+            "Ambiguous street, Tampere",
+        )
 
     def test_route_returns_address_itineraries_and_geometry(self) -> None:
         response = self.client.post("/route", json={
