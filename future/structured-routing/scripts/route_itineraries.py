@@ -446,6 +446,11 @@ def format_candidate(
                     edge, route, date.fromisoformat(instance["serviceDate"]), trip_patterns
                 ),
             })
+            on_demand_availabilities = route.get("_continuous_by_crossing", {}).get(
+                (edge["from"], edge["to"]), []
+            )
+            if on_demand_availabilities:
+                leg["onDemandAvailabilities"] = on_demand_availabilities
             if edge["kind"] == "scheduled_service":
                 leg["departureTiming"] = edge["schedule"].get("departure")
                 leg["arrivalTiming"] = edge["schedule"].get("arrival")
@@ -1045,6 +1050,14 @@ def find_itineraries(
             routes[edge["routeId"]].setdefault("_schedules", []).append(edge["schedule"])
             adjacency[edge["from"]].append(edge)
         elif edge["kind"] == "continuous_ferry" and mode_allowed(edge, args.mode):
+            route = routes[edge["routeId"]]
+            crossing = (edge["from"], edge["to"])
+            availabilities = route.setdefault("_continuous_by_crossing", {}).setdefault(
+                crossing, []
+            )
+            availability = edge.get("availability")
+            if availability and availability not in availabilities:
+                availabilities.append(availability)
             if edge.get("crossingMinutes") is None:
                 skipped_continuous_unknown += 1
             else:
