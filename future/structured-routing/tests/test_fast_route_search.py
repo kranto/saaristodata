@@ -690,6 +690,33 @@ class FastRouteSearchTests(unittest.TestCase):
             {"relaxed": 35, "normal": 5},
         )
 
+    def test_decision_graph_keeps_all_reachable_tofto_departures(self) -> None:
+        result = find_itineraries(
+            "Kivimaa", "Degerby", date(2026, 10, 25), time(6, 1),
+            same_day=True, max_results=16, max_legs=21,
+            graph_data=self.graph, include_decision_graph=True,
+        )
+        departures = {
+            connection["leg"]["departure"]
+            for connection in result["decisionGraph"]["connections"]
+            if connection["leg"]["kind"] == "scheduled_service"
+            and connection["leg"]["from"] == "Töftö"
+            and connection["leg"]["to"] == "Prästö"
+        }
+
+        self.assertEqual(
+            departures,
+            {
+                f"2026-10-25T{hour:02d}:{minute:02d}"
+                for hour, minute in (
+                    (17, 15), (17, 30), (17, 45),
+                    (18, 0), (18, 15), (18, 30), (18, 45),
+                    (19, 0), (19, 15), (19, 30), (19, 45),
+                    (20, 0), (20, 15), (20, 30), (20, 45),
+                )
+            },
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
