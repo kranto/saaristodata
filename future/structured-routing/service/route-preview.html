@@ -67,6 +67,8 @@
     .result-route { min-width: 0; white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
     .charge { display: inline-flex; align-items: center; width: fit-content; border-radius: 999px; padding: 2px 7px; background: #f8e8b7; color: #684c00; font-size: 11px; font-weight: 850; white-space: nowrap; }
     .published-connection { display: inline-flex; align-items: center; width: fit-content; border-radius: 999px; padding: 2px 7px; background: #dcebf5; color: #24516a; font-size: 11px; font-weight: 850; }
+    .navigation-link { display: inline-flex; align-items: center; width: fit-content; margin-left: 8px; border: 1px solid #8db2bd; border-radius: 999px; padding: 4px 9px; color: var(--sea); background: #fff; font-family: Arial, sans-serif; font-size: 11px; font-weight: 800; text-decoration: none; vertical-align: middle; }
+    .navigation-link:hover, .navigation-link:focus-visible { border-color: var(--sea); background: #edf7f8; outline: none; }
     .risk { display: inline-flex; align-items: center; border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 800; }
     .risk-none, .risk-relaxed { color: #1f684f; background: #dff2e8; }
     .risk-normal { color: #7d5918; background: #fff0c9; }
@@ -310,6 +312,18 @@
       return `${formatDuration(minutes)} ylimääräistä aikaa`;
     };
     const formatDistance = (meters) => `${(Number(meters) / 1000).toFixed(1)} km`;
+    const coordinateValue = (coordinates) => `${coordinates.lat},${coordinates.lon}`;
+    const googleMapsDirectionsUrl = (leg) => {
+      const coordinates = leg.navigationCoordinates;
+      if (!coordinates?.from || !coordinates?.to) return "";
+      const parameters = new URLSearchParams({
+        api: "1",
+        origin: coordinateValue(coordinates.from),
+        destination: coordinateValue(coordinates.to),
+        travelmode: response?.query?.mode === "bicycle" ? "bicycling" : "driving",
+      });
+      return `https://www.google.com/maps/dir/?${parameters.toString()}`;
+    };
     const formatMilliseconds = (value) => {
       const milliseconds = Number(value);
       if (!Number.isFinite(milliseconds)) return null;
@@ -902,7 +916,13 @@
         const showPublishedRisk = publishedConnection && risk && isAttentionRisk(risk.level);
         const showRiskTag = risk && risk.level !== "normal" && (!publishedConnection || showPublishedRisk);
         const charge = leg.kind === "scheduled_service" ? chargeLabel(leg) : "";
-        const vehicle = leg.kind === "road" ? `Ajo ${formatDuration(leg.durationMinutes)}` : `${serviceName(leg)}${charge ? ` <span class="charge">${charge}</span>` : ""}`;
+        const navigationUrl = index === 0 && leg.kind === "road" ? googleMapsDirectionsUrl(leg) : "";
+        const navigationLink = navigationUrl
+          ? ` <a class="navigation-link" href="${escapeHtml(navigationUrl)}" target="_blank" rel="noopener noreferrer">Avaa Google Mapsissa</a>`
+          : "";
+        const vehicle = leg.kind === "road"
+          ? `Ajo ${formatDuration(leg.durationMinutes)}${navigationLink}`
+          : `${serviceName(leg)}${charge ? ` <span class="charge">${charge}</span>` : ""}`;
         const readiness = leg.kind === "scheduled_service" ? loadingReadinessMinutes(leg) : 0;
         const roadDetails = [
           publishedConnection ? "aikatauluun merkitty yhteys (ei taattu)" : "",
