@@ -328,6 +328,100 @@ class NominatimGeocoderTests(unittest.TestCase):
             result["coordinates"],
             {"lat": 60.3008047, "lon": 22.908887},
         )
+        with patch("external_routing._read_json", return_value=results):
+            suggestions = NominatimGeocoder(minimum_interval_seconds=0).suggest(
+                "Angelniemi"
+            )
+        self.assertEqual(len(suggestions), 1)
+        self.assertEqual(suggestions[0]["resultCategory"], "place")
+        self.assertEqual(suggestions[0]["resultType"], "hamlet")
+        self.assertEqual(suggestions[0]["typeLabel"], "kylä")
+
+    def test_suggestions_filter_natural_features_and_explain_equal_names(self) -> None:
+        results = [
+            {
+                "lat": "60.3008047", "lon": "22.9088870",
+                "name": "Angelniemi",
+                "display_name": (
+                    "Angelniemi, Halikko, Salo, Salon seutukunta, "
+                    "Varsinais-Suomi, Manner-Suomi, 25230, Suomi"
+                ),
+                "category": "place", "type": "hamlet",
+                "osm_type": "node", "osm_id": 1,
+                "address": {
+                    "hamlet": "Angelniemi", "town": "Halikko", "city": "Salo",
+                    "municipality": "Salon seutukunta", "state": "Varsinais-Suomi",
+                    "region": "Manner-Suomi", "postcode": "25230",
+                    "country": "Suomi",
+                },
+            },
+            {
+                "lat": "60.3572099", "lon": "23.0328041",
+                "name": "Angelniemi",
+                "display_name": "Angelniemi, Kaninkola, Halikko, Salo, Suomi",
+                "category": "natural", "type": "cliff",
+                "osm_type": "way", "osm_id": 2,
+                "address": {"cliff": "Angelniemi", "hamlet": "Kaninkola"},
+            },
+            {
+                "lat": "60.3128597", "lon": "22.9439411",
+                "name": "Angelniemi",
+                "display_name": (
+                    "Angelniemi, Kemiönsaarentie, Tammenpää, Kokkila, Halikko, "
+                    "Salo, Salon seutukunta, Varsinais-Suomi, Manner-Suomi, 25570, Suomi"
+                ),
+                "category": "amenity", "type": "ferry_terminal",
+                "osm_type": "node", "osm_id": 3,
+                "address": {
+                    "amenity": "Angelniemi", "road": "Kemiönsaarentie",
+                    "hamlet": "Tammenpää", "village": "Kokkila",
+                    "town": "Halikko", "city": "Salo",
+                    "municipality": "Salon seutukunta", "state": "Varsinais-Suomi",
+                    "region": "Manner-Suomi", "postcode": "25570",
+                    "country": "Suomi",
+                },
+            },
+        ]
+        with patch("external_routing._read_json", return_value=results):
+            suggestions = NominatimGeocoder(minimum_interval_seconds=0).suggest(
+                "Angelniemi, Salo"
+            )
+
+        self.assertEqual(len(suggestions), 2)
+        self.assertEqual(
+            [(item["resultCategory"], item["resultType"], item["addressType"], item["typeLabel"])
+             for item in suggestions],
+            [
+                ("place", "hamlet", "locality", "kylä"),
+                ("amenity", "ferry_terminal", "point_of_interest", "lauttalaituri"),
+            ],
+        )
+        for item in suggestions:
+            self.assertNotIn("Salon seutukunta", item["description"])
+            self.assertNotIn("Manner-Suomi", item["description"])
+            self.assertNotIn(
+                "Suomi", [part.strip() for part in item["description"].split(",")]
+            )
+            self.assertIn("Varsinais-Suomi", item["description"])
+
+    def test_historic_boundary_is_never_a_route_endpoint(self) -> None:
+        historic_boundary = [{
+            "lat": "60.3251466", "lon": "22.9252045",
+            "name": "Angelniemi",
+            "display_name": "Angelniemi, Varsinais-Suomi, Suomi",
+            "category": "boundary", "type": "historic",
+            "osm_type": "relation", "osm_id": 17561240,
+            "address": {"historic": "Angelniemi", "state": "Varsinais-Suomi"},
+        }]
+        with patch("external_routing._read_json", return_value=historic_boundary):
+            suggestions = NominatimGeocoder(minimum_interval_seconds=0).suggest(
+                "Angelniemi"
+            )
+        self.assertEqual(suggestions, [])
+
+        with patch("external_routing._read_json", return_value=historic_boundary):
+            with self.assertRaisesRegex(ValueError, "address was not found"):
+                NominatimGeocoder(minimum_interval_seconds=0).geocode("Angelniemi")
 
     def test_bare_municipality_prefers_central_locality_over_area_centroid(self) -> None:
         results = [

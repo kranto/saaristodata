@@ -145,6 +145,9 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Avaa Google Mapsissa", response.text)
         self.assertIn('target="_blank" rel="noopener noreferrer"', response.text)
         self.assertIn("const formatDate = (value)", response.text)
+        self.assertIn("address-suggestion-type", response.text)
+        self.assertIn("type.textContent = suggestion.typeLabel", response.text)
+        self.assertIn('filter(Boolean).join(" / ")', response.text)
         self.assertIn("const dayOffsetLabel = (departure, arrival)", response.text)
         self.assertIn("resultDepartureLabel(shownDeparture)", response.text)
         self.assertIn("resultArrivalLabel(shownDeparture, shownArrival)", response.text)
@@ -330,6 +333,15 @@ class RoutingServiceTests(unittest.TestCase):
         suggestions = response.json()["suggestions"]
         self.assertEqual(len(suggestions), 2)
         self.assertEqual(suggestions[1]["displayName"], "Ambiguous street, Tampere")
+
+    def test_known_ferry_stop_geocode_includes_types(self) -> None:
+        response = self.client.get("/geocode", params={"query": "Wihuri"})
+        self.assertEqual(response.status_code, 200, response.text)
+        suggestion = response.json()["suggestions"][0]
+        self.assertEqual(suggestion["resultCategory"], "amenity")
+        self.assertEqual(suggestion["resultType"], "ferry_terminal")
+        self.assertEqual(suggestion["addressType"], "point_of_interest")
+        self.assertEqual(suggestion["typeLabel"], "lauttalaituri")
 
     def test_route_uses_selected_geocoding_candidate(self) -> None:
         response = self.client.post("/route", json={

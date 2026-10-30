@@ -44,6 +44,106 @@ TRADITIONAL_ARCHIPELAGO_AREAS = {
 }
 
 
+IGNORED_SUGGESTION_CATEGORIES = {"natural"}
+
+
+def _is_ignored_geocoding_result(item: dict) -> bool:
+    category = str(item.get("category") or "").casefold()
+    result_type = str(item.get("type") or "").casefold()
+    return (
+        category in IGNORED_SUGGESTION_CATEGORIES
+        or (category == "boundary" and result_type == "historic")
+    )
+
+
+def _general_address_type(category: object, result_type: object) -> str:
+    """Return a small, stable classification for address suggestion UI."""
+    category_name = str(category or "").casefold()
+    type_name = str(result_type or "").casefold()
+    if category_name == "highway":
+        return "street"
+    if category_name == "building" or type_name in {"house", "house_number"}:
+        return "house"
+    if category_name == "place":
+        if type_name == "country":
+            return "country"
+        if type_name in {"state", "region"}:
+            return "state"
+        if type_name in {"county"}:
+            return "county"
+        if type_name in {"city", "town"}:
+            return "city"
+        if type_name in {"suburb", "quarter", "neighbourhood"}:
+            return "district"
+        return "locality"
+    if category_name == "boundary" and type_name == "administrative":
+        return "district"
+    return "point_of_interest"
+
+
+def _suggestion_type_label(category: object, result_type: object) -> str:
+    """Return a concise Finnish label for disambiguating equal place names."""
+    category_name = str(category or "").casefold()
+    type_name = str(result_type or "").casefold()
+    exact_labels = {
+        ("amenity", "ferry_terminal"): "lauttalaituri",
+        ("boundary", "historic"): "historiallinen alue",
+        ("place", "city"): "kaupunki",
+        ("place", "town"): "taajama",
+        ("place", "village"): "kylä",
+        ("place", "hamlet"): "kylä",
+        ("place", "suburb"): "kaupunginosa",
+        ("place", "quarter"): "kaupunginosa",
+        ("place", "neighbourhood"): "kaupunginosa",
+        ("place", "locality"): "paikannimi",
+        ("place", "isolated_dwelling"): "asutus",
+        ("place", "island"): "saari",
+        ("place", "islet"): "saari",
+        ("railway", "station"): "rautatieasema",
+        ("railway", "halt"): "rautatieasema",
+        ("aeroway", "aerodrome"): "lentoasema",
+        ("man_made", "lighthouse"): "majakka",
+        ("man_made", "pier"): "laituri",
+        ("leisure", "park"): "puisto",
+    }
+    if (category_name, type_name) in exact_labels:
+        return exact_labels[(category_name, type_name)]
+    category_labels = {
+        "highway": "katu tai tie",
+        "building": "rakennus",
+        "place": "paikannimi",
+        "boundary": "alue",
+        "amenity": "kohde",
+        "tourism": "kohde",
+        "shop": "liike",
+        "office": "toimipaikka",
+        "railway": "rautatiekohde",
+        "aeroway": "lentoliikennekohde",
+        "historic": "historiallinen kohde",
+        "man_made": "rakennelma",
+        "leisure": "vapaa-ajan kohde",
+    }
+    return category_labels.get(category_name, "kohde")
+
+
+def concise_suggestion_description(result: dict) -> str:
+    """Drop Finnish hierarchy levels that do not help identify a result."""
+    description = str(
+        result.get("description") or result.get("displayName")
+        or result.get("query") or ""
+    )
+    address = result.get("address") or {}
+    hidden_values = {
+        _normalized_name(address.get(key))
+        for key in ("municipality", "region", "country")
+        if address.get(key)
+    }
+    return ", ".join(
+        part.strip() for part in description.split(",")
+        if part.strip() and _normalized_name(part) not in hidden_values
+    )
+
+
 def traditional_archipelago_area(result: dict) -> str | None:
     """Find a familiar former municipality in Nominatim's place hierarchy."""
     address = result.get("address") or {}
@@ -132,6 +232,8 @@ def _normalize_geocoded_result(result: dict, query: str) -> dict:
     normalized = dict(result)
     normalized["query"] = query
     normalized["displayName"] = concise_address_name(normalized)
+    if normalized.get("description"):
+        normalized["description"] = concise_suggestion_description(normalized)
     return normalized
 
 
@@ -144,9 +246,8 @@ def _best_nominatim_result(query: str, results: list[dict]) -> dict:
 
     Nominatim commonly returns the admin-level 8 municipality boundary first.
     For a bare municipality name it may also return a more precise city/town
-    feature later in the result list.  Former municipalities and other historic
-    areas can similarly precede the actual village or hamlet.  Street addresses
-    and qualified searches retain Nominatim's original ordering.
+    feature later in the result list. Street addresses and qualified searches
+    retain Nominatim's original ordering.
     """
     stripped_query = query.strip()
     if not stripped_query or "," in stripped_query or any(
@@ -310,7 +411,12 @@ class NominatimGeocoder:
         if not cached:
             return []
 
-        candidate_items = cached
+        candidate_items = [
+            item for item in cached
+            if not _is_ignored_geocoding_result(item)
+        ]
+        if not candidate_items:
+            return []
         coordinate_override = None
         stripped_query = query.strip()
         normalized_query_name = _normalized_name(stripped_query)
@@ -345,27 +451,6 @@ class NominatimGeocoder:
         ]
         if exact_name_items:
             candidate_items = exact_name_items
-        place_labels = {
-            _normalized_name(concise_address_name({
-                "name": item.get("name"),
-                "displayName": item.get("display_name"),
-                "address": item.get("address"),
-            }))
-            for item in candidate_items
-            if item.get("category") == "place"
-        }
-        candidate_items = [
-            item for item in candidate_items
-            if not (
-                item.get("category") == "boundary"
-                and item.get("type") == "historic"
-                and _normalized_name(concise_address_name({
-                    "name": item.get("name"),
-                    "displayName": item.get("display_name"),
-                    "address": item.get("address"),
-                })) in place_labels
-            )
-        ]
         has_exact_street = any(
             item.get("category") == "highway"
             and normalized_query_name in {
@@ -403,9 +488,16 @@ class NominatimGeocoder:
                 "address": item.get("address"),
                 "provider": "Nominatim",
                 "attribution": "© OpenStreetMap contributors",
+                "resultCategory": item.get("category"),
                 "resultType": (
                     "street" if item.get("category") == "highway"
                     else item.get("type") or item.get("category") or "place"
+                ),
+                "addressType": _general_address_type(
+                    item.get("category"), item.get("type"),
+                ),
+                "typeLabel": _suggestion_type_label(
+                    item.get("category"), item.get("type"),
                 ),
             }, query)
             duplicate_key = (
@@ -510,7 +602,10 @@ class NominatimGeocoder:
                 "address": address,
                 "provider": "Photon",
                 "attribution": "© OpenStreetMap contributors",
+                "resultCategory": "highway",
                 "resultType": "street",
+                "addressType": "street",
+                "typeLabel": "katu tai tie",
             }, query))
         return suggestions
 
@@ -522,7 +617,7 @@ class NominatimGeocoder:
         cache_key = {
             "endpoint": self.endpoint,
             "query": normalized_query,
-            "selection": "named-locality-v2",
+            "selection": "named-locality-v3",
         }
         cached = self.cache.get("nominatim:search", cache_key) if self.cache else None
         if cached is not None:
@@ -560,6 +655,12 @@ class NominatimGeocoder:
             self._last_request_at = time.monotonic()
         if not isinstance(results, list) or not results:
             raise ValueError(f"address was not found: {query}")
+        results = [
+            item for item in results
+            if isinstance(item, dict) and not _is_ignored_geocoding_result(item)
+        ]
+        if not results:
+            raise ValueError(f"address was not found: {query}")
         item = _best_nominatim_result(query, results)
         municipality = _municipality_boundary_result(query, results)
         admin_centre = self._admin_centre(municipality) if municipality else None
@@ -575,6 +676,14 @@ class NominatimGeocoder:
             "address": item.get("address"),
             "provider": "Nominatim",
             "attribution": "© OpenStreetMap contributors",
+            "resultCategory": item.get("category"),
+            "resultType": item.get("type") or item.get("category") or "place",
+            "addressType": _general_address_type(
+                item.get("category"), item.get("type"),
+            ),
+            "typeLabel": _suggestion_type_label(
+                item.get("category"), item.get("type"),
+            ),
         }, query)
         if self.cache:
             self.cache.set("nominatim:search", cache_key, result)
