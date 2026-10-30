@@ -103,7 +103,10 @@
     .gantt-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding: 14px 16px 12px; border-bottom: 1px solid #dce6e6; }
     .gantt-head h3 { margin: 0; font-size: 15px; }
     .gantt-head p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
-    .gantt-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 10px 16px 2px; color: var(--muted); font-size: 11px; }
+    .gantt-legend { display: grid; gap: 7px; padding: 10px 16px 2px; color: var(--muted); font-size: 11px; }
+    .gantt-legend-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+    .gantt-legend-label { color: var(--ink); font-weight: 800; }
+    .gantt-legend-items { display: flex; flex-wrap: wrap; gap: 7px 16px; }
     .gantt-key { display: inline-flex; align-items: center; gap: 5px; }
     .gantt-swatch { width: 16px; height: 7px; border-radius: 2px; background: var(--swatch); }
     .gantt-chart { padding: 10px 14px 14px; overflow: hidden; }
@@ -132,6 +135,7 @@
     .gantt-road-very_tight { --bar: #d9614d; }
     .gantt-road-below_required_readiness { --bar: #b83e49; }
     .gantt-ferry { --bar: var(--sea); }
+    .gantt-primary-bar { z-index: 2; }
     .gantt-ferry-choice { z-index: 3; min-width: 8px; cursor: pointer; transition: opacity .15s, transform .15s, box-shadow .15s; }
     .gantt-ferry-choice:hover, .gantt-ferry-choice:focus-visible { opacity: 1; transform: scaleY(1.25); outline: none; box-shadow: 0 0 0 2px rgba(7, 89, 133, .2); }
     .gantt-ferry-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #75a8b5; }
@@ -144,6 +148,8 @@
     .gantt-choice-auto { --choice-outline: #75a8b5; }
     .gantt-choice-pinned { --choice-outline: var(--orange); }
     .gantt-alternative { --bar: transparent; min-width: 5px; height: 16px; border: 1px dashed var(--sea); box-sizing: border-box; opacity: 1; }
+    .gantt-on-demand { z-index: 1; min-width: 3px; height: 16px; border: 1px dotted #75a8b5; box-sizing: border-box; background: #dcecef; pointer-events: none; }
+    .gantt-on-demand-swatch { width: 17px; height: 9px; border: 1px dotted #75a8b5; border-radius: 2px; box-sizing: border-box; background: #dcecef; }
     .gantt-readiness { --bar: #7da7b7; height: 16px; z-index: 1; }
     .gantt-join-left { border-top-left-radius: 0; border-bottom-left-radius: 0; }
     .gantt-join-right { border-top-right-radius: 0; border-bottom-right-radius: 0; }
@@ -739,6 +745,86 @@
       return groups.length > 1 || groups.some((item) => item.variants.length > 1) ? groups : [];
     }
 
+    const localDateKey = (value) => {
+      const date = new Date(value);
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    };
+
+    const dateAtClock = (day, value) => {
+      const [hours, minutes] = value.split(":").map(Number);
+      const result = new Date(day);
+      result.setHours(hours, minutes, 0, 0);
+      return result;
+    };
+
+    const availabilityRunsOn = (availability, day) => {
+      const key = localDateKey(day);
+      const validPeriods = availability.validPeriods || [];
+      if (validPeriods.length && !validPeriods.some((item) => (
+        (!item.validFrom || item.validFrom <= key) && (!item.validTo || key <= item.validTo)
+      ))) return false;
+      const pattern = availability.operatingDays;
+      const weekday = (day.getDay() + 6) % 7;
+      return Boolean(pattern && pattern.length === 7 && pattern[weekday] !== "_");
+    };
+
+    function onDemandWindows(leg, scale) {
+      const availabilities = leg.onDemandAvailabilities
+        || (leg.availability ? [leg.availability] : []);
+      if (!availabilities.length) return [];
+      const firstDay = new Date(scale.start);
+      firstDay.setHours(0, 0, 0, 0);
+      firstDay.setDate(firstDay.getDate() - 1);
+      const lastDay = new Date(scale.end);
+      lastDay.setHours(0, 0, 0, 0);
+      lastDay.setDate(lastDay.getDate() + 1);
+      const result = new Map();
+      for (let day = new Date(firstDay); day <= lastDay; day.setDate(day.getDate() + 1)) {
+        availabilities.forEach((availability) => {
+          if (!availabilityRunsOn(availability, day)) return;
+          const operatingWindow = availability.operatingWindow || availability;
+          let start = new Date(day), end = new Date(day);
+          start.setHours(0, 0, 0, 0);
+          if (operatingWindow.start && operatingWindow.end) {
+            start = dateAtClock(day, operatingWindow.start);
+            end = dateAtClock(day, operatingWindow.end);
+            if (operatingWindow.crossesMidnight || end <= start) end.setDate(end.getDate() + 1);
+          } else {
+            end.setDate(end.getDate() + 1);
+          }
+          let segments = [[start, end]];
+          (availability.breaks || []).forEach((item) => {
+            if (item.only || !item.start || !item.end) return;
+            const breakPattern = item.operatingDays;
+            const firstBreakDay = new Date(start);
+            firstBreakDay.setHours(0, 0, 0, 0);
+            for (let breakDay = firstBreakDay; breakDay < end; breakDay.setDate(breakDay.getDate() + 1)) {
+              const weekday = (breakDay.getDay() + 6) % 7;
+              if (breakPattern && (breakPattern.length !== 7 || breakPattern[weekday] === "_")) continue;
+              const breakStart = dateAtClock(breakDay, item.start);
+              const breakEnd = dateAtClock(breakDay, item.end);
+              if (breakEnd <= breakStart) breakEnd.setDate(breakEnd.getDate() + 1);
+              segments = segments.flatMap(([segmentStart, segmentEnd]) => {
+                if (breakEnd <= segmentStart || breakStart >= segmentEnd) return [[segmentStart, segmentEnd]];
+                return [
+                  ...(segmentStart < breakStart ? [[segmentStart, breakStart]] : []),
+                  ...(breakEnd < segmentEnd ? [[breakEnd, segmentEnd]] : []),
+                ];
+              });
+            }
+          });
+          segments.forEach(([segmentStart, segmentEnd]) => {
+            const clippedStart = new Date(Math.max(segmentStart.getTime(), scale.start));
+            const clippedEnd = new Date(Math.min(segmentEnd.getTime(), scale.end));
+            if (clippedEnd <= clippedStart) return;
+            const key = `${clippedStart.toISOString()}|${clippedEnd.toISOString()}`;
+            result.set(key, { start: clippedStart.toISOString(), end: clippedEnd.toISOString() });
+          });
+        });
+      }
+      return [...result.values()].sort((a, b) => a.start.localeCompare(b.start));
+    }
+
     function riskForRemainingBuffer(value) {
       if (value < 0) return "below_required_readiness";
       if (value === 0) return "very_tight";
@@ -910,6 +996,9 @@
       displayedLegs.forEach((leg, index) => {
         const { alternatives, selectedConnection, sailingLayout, selectedLane, rowHeight, sailingTop } = layouts[index];
         const selectedBarTop = sailingTop + selectedLane * ferryLaneStep;
+        const onDemandBars = isFerryLeg(leg) ? onDemandWindows(leg, scale).map((window) => (
+          `<i class="gantt-bar gantt-on-demand" data-tooltip="Tarvittaessa ${clock(window.start)}–${clock(window.end)}" style="top:${selectedBarTop}px;left:${scale.position(window.start).toFixed(2)}%;width:${scale.width(window.start, window.end).toFixed(2)}%"></i>`
+        )).join("") : "";
         const alternativeBars = alternatives.map((item) => {
           const lane = sailingLayout.laneByKey.get(item.id) || 0;
           return `<button type="button" class="gantt-bar gantt-ferry gantt-ferry-choice gantt-alternative" data-connection="${item.id}" data-tooltip="Valitse ${clock(item.leg.departure)}–${clock(item.leg.arrival)}" style="top:${sailingTop + lane * ferryLaneStep}px;left:${scale.position(item.leg.departure).toFixed(2)}%;width:${scale.width(item.leg.departure, item.leg.arrival).toFixed(2)}%" aria-label="Valitse lautta ${clock(item.leg.departure)}–${clock(item.leg.arrival)}"></button>`;
@@ -970,9 +1059,9 @@
           ? `<svg class="gantt-chain-link" style="height:${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}px" aria-hidden="true"><defs><marker id="gantt-arrow-${index}" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z"></path></marker></defs><line x1="${scale.position(barEnd).toFixed(2)}%" y1="${selectedBarTop + 16}" x2="${scale.position(barEnd).toFixed(2)}%" y2="${rowHeight + nextLayout.sailingTop + nextLayout.selectedLane * ferryLaneStep}" marker-end="url(#gantt-arrow-${index})"></line></svg>`
           : "";
         const charge = leg.kind === "scheduled_service" && chargeLabel(leg) ? "€" : "";
-        rows.push(`<div class="gantt-row${isFerryLeg(leg) ? " gantt-row-ferry" : ""}${isBlocking ? " gantt-row-blocking" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
+        rows.push(`<div class="gantt-row${isFerryLeg(leg) ? " gantt-row-ferry" : ""}${isBlocking ? " gantt-row-blocking" : ""}" style="min-height:${rowHeight}px"><div class="gantt-label"><div class="gantt-label-title">${ganttModeIcon(leg)}<span>${legPlaceName(leg, "from")}–${legPlaceName(leg, "to")}</span>${charge ? `<span class="charge">${charge}</span>` : ""}</div><small>${labelDetail}</small></div><div class="gantt-lane">${ganttGrid(scale)}${chainLink}${onDemandBars}${alternativeBars}${readinessBar}${selectedBar}${selectionOutline}</div></div>`);
       });
-      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajo ja ylimääräinen aika näkyvät yhtenä palkkina, jonka väri kertoo riskitason.</p></div></div><div class="gantt-legend"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#72bd9c"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#aeb9c0"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#e28a51"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#b83e49"></i>Lastausvalmiuden jälkeen</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7da7b7"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lautta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-auto"></i>Automaattinen valinta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-pinned"></i>Lukittu valinta</span></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div></section>`;
+      return `<section class="gantt"><div class="gantt-head"><div><h3>Matka aikajanalla</h3><p>Valitse vuoro klikkaamalla lauttapalkkia. Ajo ja ylimääräinen aika näkyvät yhtenä palkkina, jonka väri kertoo riskitason.</p></div></div><div class="gantt-legend"><div class="gantt-legend-row"><span class="gantt-legend-label">Ajoaika:</span><div class="gantt-legend-items"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#72bd9c"></i>Väljä</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#aeb9c0"></i>Normaali</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#e28a51"></i>Tiukka</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#b83e49"></i>Saapuminen lastausvalmiuden jälkeen</span></div></div><div class="gantt-legend-row"><span class="gantt-legend-label">Lautta:</span><div class="gantt-legend-items"><span class="gantt-key"><i class="gantt-swatch" style="--swatch:#7da7b7"></i>Lastausvalmius</span><span class="gantt-key"><i class="gantt-swatch" style="--swatch:var(--sea)"></i>Lauttamatka</span><span class="gantt-key"><i class="gantt-on-demand-swatch"></i>Liikennöi tarvittaessa</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-auto"></i>Automaattinen valinta</span><span class="gantt-key"><i class="gantt-choice-swatch gantt-choice-pinned"></i>Lukittu valinta</span></div></div></div><div class="gantt-chart"><div class="gantt-axis"><span></span><div class="gantt-axis-line">${axis}</div></div>${rows.join("")}</div></section>`;
     }
 
     function alignGanttChainLinks() {

@@ -88,6 +88,25 @@ class FastRouteSearchTests(unittest.TestCase):
         # dense Kokkila departure spawned the same downstream search.
         self.assertLess(expanded, 50_000)
 
+    def test_scheduled_ferry_leg_exposes_on_demand_availability(self) -> None:
+        result = find_itineraries(
+            "Angelniemi", "Wihuri", date(2026, 11, 2), time(6, 1),
+            same_day=True, max_results=16, max_legs=21,
+            graph_data=self.graph,
+        )
+        kokkila_leg = next(
+            leg
+            for itinerary in result["results"]
+            for leg in itinerary["legs"]
+            if leg.get("routeId") == "kokkila"
+            and leg["kind"] == "scheduled_service"
+        )
+
+        self.assertEqual(
+            kokkila_leg["onDemandAvailabilities"][0]["operatingWindow"],
+            {"start": "23:15", "end": "05:00", "crossesMidnight": True},
+        )
+
     def test_kokkila_uses_angelniemi_road_catchment(self) -> None:
         def road(edge_id: str, from_id: str, to_id: str, minutes: int) -> dict:
             return {
