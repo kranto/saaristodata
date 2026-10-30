@@ -23,10 +23,10 @@
       "reason": "route to a drivable check-in point instead of the ferry berth in the water"
     },
     "Lillmälö": {
-      "lon": 22.112531,
-      "lat": 60.235428,
-      "source": "Valhalla road correlation, OpenStreetMap ways 171112927 and 1426913370",
-      "reason": "route to the terminal road endpoint instead of the adjacent ferry geometry"
+      "lon": 22.1126618,
+      "lat": 60.2354954,
+      "source": "user-verified Google Maps road point 2026-10-30",
+      "reason": "route to the terminal road ten metres northeast of the adjacent ferry geometry"
     }
   },
   "preferredNames": {

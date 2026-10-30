@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T05:41:32.215409+00:00",
+  "generatedAt": "2026-10-30T05:52:27.408509+00:00",
   "description": "Known water-transport stops used to map external-router ferry boarding coordinates to the internal ferry-free road areas.",
   "matchingPolicy": {
     "method": "nearest_known_stop",
@@ -1069,10 +1069,10 @@
       "coordinateSource": "saaristolautat/public/data/saaristo.json",
       "name": "Lillmälö",
       "routingCoordinates": {
-        "lon": 22.112531,
-        "lat": 60.235428
+        "lon": 22.1126618,
+        "lat": 60.2354954
       },
-      "routingCoordinateSource": "Valhalla road correlation, OpenStreetMap ways 171112927 and 1426913370",
+      "routingCoordinateSource": "user-verified Google Maps road point 2026-10-30",
       "roadAreaId": "mainland_finland",
       "roadAreaKind": "maintained_component"
     },

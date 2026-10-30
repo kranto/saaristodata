@@ -85,7 +85,7 @@ class ExternalRouteClassificationTests(unittest.TestCase):
         )
         self.assertEqual(
             stops["Lillmälö"]["routingCoordinates"],
-            {"lon": 22.112531, "lat": 60.235428},
+            {"lon": 22.1126618, "lat": 60.2354954},
         )
 
     def test_valhalla_response_must_include_maneuvers(self) -> None:
