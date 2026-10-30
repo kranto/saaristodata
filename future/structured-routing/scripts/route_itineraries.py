@@ -1128,12 +1128,13 @@ def find_itineraries(
                 (
                     "scheduled_cable_ferry"
                     if include_seed_sweep
+                    and not include_decision_graph
                     and item["edge"].get("serviceType") == "cable_ferry"
                     else item["edge"].get("tripPatternId")
                 ),
                 (
                     None
-                    if include_seed_sweep
+                    if include_seed_sweep and not include_decision_graph
                     else item["instance"]["departure"].isoformat()
                 ),
             )
@@ -1145,11 +1146,13 @@ def find_itineraries(
         # part of the routing state, especially after continuous road ferries
         # which have no tripPatternId of their own.
         # The adaptive seed sweep below is responsible for later useful
-        # departures. In the diverse search, retaining every departure of a
-        # frequent scheduled cable ferry as a separate state multiplies the
-        # same downstream search without adding a new physical route. Collapse
-        # those timetable instances here and let earliest arrival dominate;
-        # disabling the sweep preserves the old exhaustive state identity.
+        # departures. In an itinerary-only search, retaining every departure
+        # of a frequent scheduled cable ferry as a separate state multiplies
+        # the same downstream search without adding a new physical route.
+        # Collapse those timetable instances and let earliest arrival
+        # dominate. A decision graph is different: its local choices power the
+        # clickable timetable, so each reachable departure must retain its own
+        # state even when it leads to the same final itinerary.
         state_first_service = (
             None if include_seed_sweep else first_service_departure
         )
