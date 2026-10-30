@@ -560,7 +560,10 @@ def next_continuous_instance(edge: dict, ready: datetime) -> dict | None:
     if crossing is None:
         return None
     availability = edge["availability"]
-    for offset in range(MAX_SEARCH_DAYS + 1):
+    # A window such as 22:00–06:00 belongs to the day on which it starts.
+    # Shortly after midnight the active window therefore starts on the
+    # previous date and must be considered before future service days.
+    for offset in range(-1, MAX_SEARCH_DAYS + 1):
         day = ready.date() + timedelta(days=offset)
         for start, end in availability_windows(availability, day):
             departure = max(ready, start)

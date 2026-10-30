@@ -288,6 +288,16 @@ FERRY_ROUTE_MODELS = {
         "crossingTimeBasis": "current_route_information_estimate",
         "crossingTimeSourceUrl": "https://lautta.junatiedot.fi/kokkila-lossi",
         "origins": {"Kokkila (saari/ö)": "Kokkila"},
+        # The published daytime timetable is followed from the first crossing
+        # until the last return. Overnight the ferry operates on demand.
+        "continuousServices": [{
+            "serviceMode": "on_demand",
+            "operatingDays": "1234567",
+            "operatingWindow": {
+                "start": "23:15", "end": "05:00", "crossesMidnight": True,
+            },
+            "sourceId": "finferries-kokkila",
+        }],
     },
     "mossala": {
         "mode": "cable_ferry", "terminals": ["BjörköH", "MossalaE"],
@@ -324,6 +334,16 @@ FERRY_ROUTE_MODELS = {
         "crossingTimeBasis": "current_route_information_estimate",
         "crossingTimeSourceUrl": "https://fi.ferje.info/vanon-lossi",
         "origins": {"Våno (mantere/fastland)": "Våno"},
+        # The daytime service follows the published departures; at night the
+        # source explicitly says that the ferry operates on demand.
+        "continuousServices": [{
+            "serviceMode": "on_demand",
+            "operatingDays": "1234567",
+            "operatingWindow": {
+                "start": "22:15", "end": "05:30", "crossesMidnight": True,
+            },
+            "sourceId": "finferries-vano-weekday",
+        }],
     },
     "vartsala": {
         "mode": "cable_ferry", "terminals": ["Kivimaa", "Vartsala"],
@@ -619,6 +639,17 @@ def normalize_ferry_route(route: dict, model: dict) -> list[str]:
         service["terminals"] = terminals
         if model.get("crossingMinutes") is not None:
             service["crossingMinutes"] = model["crossingMinutes"]
+
+    for service in model.get("continuousServices", []):
+        route["continuousServices"].append({
+            "type": "continuous_or_on_demand",
+            "terminals": terminals,
+            **service,
+            **({"crossingMinutes": model["crossingMinutes"]}
+               if model.get("crossingMinutes") is not None else {}),
+        })
+    if route["departures"] and route["continuousServices"]:
+        route["routingService"]["model"] = "hybrid_scheduled_and_on_demand"
 
     trips = []
     unmapped = []

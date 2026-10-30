@@ -24329,7 +24329,24 @@
           ]
         }
       ],
-      "continuousServices": [],
+      "continuousServices": [
+        {
+          "type": "continuous_or_on_demand",
+          "terminals": [
+            "Kokkila",
+            "Angelniemi"
+          ],
+          "serviceMode": "on_demand",
+          "operatingDays": "1234567",
+          "operatingWindow": {
+            "start": "23:15",
+            "end": "05:00",
+            "crossesMidnight": true
+          },
+          "sourceId": "finferries-kokkila",
+          "crossingMinutes": 6
+        }
+      ],
       "notes": [
         {
           "sourceId": "finferries-kokkila",
@@ -24362,7 +24379,7 @@
         "bookingRuleInheritedFromConnectionVessels": false
       },
       "routingService": {
-        "model": "scheduled_departures",
+        "model": "hybrid_scheduled_and_on_demand",
         "networkEdge": true,
         "terminals": [
           "Kokkila",
@@ -74153,7 +74170,24 @@
           ]
         }
       ],
-      "continuousServices": [],
+      "continuousServices": [
+        {
+          "type": "continuous_or_on_demand",
+          "terminals": [
+            "Våno",
+            "Mielisholm"
+          ],
+          "serviceMode": "on_demand",
+          "operatingDays": "1234567",
+          "operatingWindow": {
+            "start": "22:15",
+            "end": "05:30",
+            "crossesMidnight": true
+          },
+          "sourceId": "finferries-vano-weekday",
+          "crossingMinutes": 3
+        }
+      ],
       "notes": [
         {
           "sourceId": "finferries-vano-weekday",
@@ -74212,7 +74246,7 @@
         "bookingRuleInheritedFromConnectionVessels": false
       },
       "routingService": {
-        "model": "scheduled_departures",
+        "model": "hybrid_scheduled_and_on_demand",
         "networkEdge": true,
         "terminals": [
           "Våno",
@@ -90907,7 +90941,7 @@
     "tripCount": 1850,
     "normalizedFerryRouteCount": 25,
     "normalizedFerryTripCount": 1721,
-    "continuousFerryServiceCount": 14,
+    "continuousFerryServiceCount": 16,
     "unmappedFerryDepartureLabelCount": 0,
     "scheduledDepartureCount": 904,
     "unconvertedSourceCount": 0,

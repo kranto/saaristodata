@@ -161,6 +161,25 @@ class ExampleJourneyTests(unittest.TestCase):
         self.assert_route_ids(result, ["vartsala"])
         self.assertEqual(result["arrival"], "2026-11-03T08:18")
 
+    def test_kokkila_operates_on_demand_overnight(self) -> None:
+        result = route("Angelniemi", "Kokkila", "2026-11-03", "02:00")
+        self.assert_route_ids(result, ["kokkila"])
+        self.assertEqual(result["legs"][0]["kind"], "continuous_ferry")
+        self.assertEqual(result["arrival"], "2026-11-03T02:06")
+
+    def test_kokkila_uses_published_departures_during_the_day(self) -> None:
+        result = route("Angelniemi", "Kokkila", "2026-11-03", "08:00")
+        self.assert_route_ids(result, ["kokkila"])
+        self.assertEqual(result["legs"][0]["kind"], "scheduled_service")
+        self.assertEqual(result["legs"][0]["departure"], "2026-11-03T08:06")
+        self.assertEqual(result["arrival"], "2026-11-03T08:12")
+
+    def test_vano_operates_on_demand_at_night(self) -> None:
+        result = route("Våno", "Mielisholm", "2026-11-03", "02:00")
+        self.assert_route_ids(result, ["vano"])
+        self.assertEqual(result["legs"][0]["kind"], "continuous_ferry")
+        self.assertEqual(result["arrival"], "2026-11-03T02:03")
+
     def test_published_commercial_ferry_examples(self) -> None:
         examples = [
             ("Turku", "Mariehamn", "08:00", "viking-turku-aland", "2026-11-03T14:10"),

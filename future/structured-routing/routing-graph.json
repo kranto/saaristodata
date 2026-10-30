@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "routing_ready",
-  "generatedAt": "2026-10-27T19:27:43.858331+00:00",
+  "generatedAt": "2026-10-30T07:20:40.408620+00:00",
   "sources": {
     "timetables": "/Users/kranto/personal/saaristodata/future/structured-routing/structured-connection-timetables-with-ais.json",
     "roads": "/Users/kranto/personal/saaristodata/future/structured-routing/road-network.json",
@@ -219066,6 +219066,70 @@
       },
       "timingStatus": "usable",
       "enabledForAutomaticRouting": true
+    },
+    {
+      "id": "continuous:kokkila:0:forward",
+      "kind": "continuous_ferry",
+      "from": "Kokkila",
+      "to": "Angelniemi",
+      "routeId": "kokkila",
+      "serviceType": "cable_ferry",
+      "mobility": {
+        "foot": "allowed",
+        "bicycle": "allowed",
+        "motorcycle": "allowed",
+        "car": "allowed"
+      },
+      "availability": {
+        "type": "continuous_or_on_demand",
+        "terminals": [
+          "Kokkila",
+          "Angelniemi"
+        ],
+        "serviceMode": "on_demand",
+        "operatingDays": "1234567",
+        "operatingWindow": {
+          "start": "23:15",
+          "end": "05:00",
+          "crossesMidnight": true
+        },
+        "sourceId": "finferries-kokkila",
+        "crossingMinutes": 6
+      },
+      "crossingMinutes": 6,
+      "crossingTimeStatus": "approximate"
+    },
+    {
+      "id": "continuous:kokkila:0:reverse",
+      "kind": "continuous_ferry",
+      "from": "Angelniemi",
+      "to": "Kokkila",
+      "routeId": "kokkila",
+      "serviceType": "cable_ferry",
+      "mobility": {
+        "foot": "allowed",
+        "bicycle": "allowed",
+        "motorcycle": "allowed",
+        "car": "allowed"
+      },
+      "availability": {
+        "type": "continuous_or_on_demand",
+        "terminals": [
+          "Kokkila",
+          "Angelniemi"
+        ],
+        "serviceMode": "on_demand",
+        "operatingDays": "1234567",
+        "operatingWindow": {
+          "start": "23:15",
+          "end": "05:00",
+          "crossesMidnight": true
+        },
+        "sourceId": "finferries-kokkila",
+        "crossingMinutes": 6
+      },
+      "crossingMinutes": 6,
+      "crossingTimeStatus": "approximate"
     },
     {
       "id": "scheduled:korpohoutskar:korpohoutskar-ferry-0001:0:1",
@@ -593729,6 +593793,70 @@
       "enabledForAutomaticRouting": true
     },
     {
+      "id": "continuous:vano:0:forward",
+      "kind": "continuous_ferry",
+      "from": "Våno",
+      "to": "Mielisholm",
+      "routeId": "vano",
+      "serviceType": "cable_ferry",
+      "mobility": {
+        "foot": "allowed",
+        "bicycle": "allowed",
+        "motorcycle": "allowed",
+        "car": "allowed"
+      },
+      "availability": {
+        "type": "continuous_or_on_demand",
+        "terminals": [
+          "Våno",
+          "Mielisholm"
+        ],
+        "serviceMode": "on_demand",
+        "operatingDays": "1234567",
+        "operatingWindow": {
+          "start": "22:15",
+          "end": "05:30",
+          "crossesMidnight": true
+        },
+        "sourceId": "finferries-vano-weekday",
+        "crossingMinutes": 3
+      },
+      "crossingMinutes": 3,
+      "crossingTimeStatus": "approximate"
+    },
+    {
+      "id": "continuous:vano:0:reverse",
+      "kind": "continuous_ferry",
+      "from": "Mielisholm",
+      "to": "Våno",
+      "routeId": "vano",
+      "serviceType": "cable_ferry",
+      "mobility": {
+        "foot": "allowed",
+        "bicycle": "allowed",
+        "motorcycle": "allowed",
+        "car": "allowed"
+      },
+      "availability": {
+        "type": "continuous_or_on_demand",
+        "terminals": [
+          "Våno",
+          "Mielisholm"
+        ],
+        "serviceMode": "on_demand",
+        "operatingDays": "1234567",
+        "operatingWindow": {
+          "start": "22:15",
+          "end": "05:30",
+          "crossesMidnight": true
+        },
+        "sourceId": "finferries-vano-weekday",
+        "crossingMinutes": 3
+      },
+      "crossingMinutes": 3,
+      "crossingTimeStatus": "approximate"
+    },
+    {
       "id": "scheduled:vartsala:vartsala-ferry-0001:0:1",
       "kind": "scheduled_service",
       "from": "Kivimaa",
@@ -725012,7 +725140,7 @@
         }
       ],
       "routingService": {
-        "model": "scheduled_departures",
+        "model": "hybrid_scheduled_and_on_demand",
         "networkEdge": true,
         "terminals": [
           "Kokkila",
@@ -727381,7 +727509,7 @@
         }
       ],
       "routingService": {
-        "model": "scheduled_departures",
+        "model": "hybrid_scheduled_and_on_demand",
         "networkEdge": true,
         "terminals": [
           "Våno",
@@ -932994,7 +933122,7 @@
   ],
   "statistics": {
     "nodeCount": 184,
-    "edgeCount": 9833,
+    "edgeCount": 9837,
     "tripPatternCount": 2726,
     "routeMetadataCount": 50,
     "routesWithEdgesCount": 49,
@@ -933005,13 +933133,13 @@
     "ambiguousStopGroupCount": 0,
     "multiStopCellCount": 2,
     "edgeCountsByKind": {
-      "continuous_ferry": 28,
+      "continuous_ferry": 32,
       "road": 606,
       "scheduled_service": 9199
     },
     "serviceEdgeCountsByType": {
       "alandstrafiken_archipelago_ferry": 1288,
-      "cable_ferry": 1132,
+      "cable_ferry": 1136,
       "commercial_ferry": 19,
       "connection_vessel": 6171,
       "road_ferry": 617
