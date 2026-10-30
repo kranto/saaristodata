@@ -104,8 +104,6 @@
     .gantt-axis { height: 22px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
     .gantt-axis-line, .gantt-lane { position: relative; min-width: 0; }
     .gantt-tick { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-    .gantt-tick:first-child { transform: none; }
-    .gantt-tick:last-child { transform: translateX(-100%); }
     .gantt-row { min-height: 45px; }
     .gantt-row-ferry { background: rgba(7, 89, 133, .055); }
     .gantt-row-blocking { animation: blocking-row-flash .9s ease-out; }
@@ -704,7 +702,7 @@
         const value = (startClockMinutes + offset) % (24 * 60);
         return `${String(Math.floor(value / 60)).padStart(2, "0")}.${String(value % 60).padStart(2, "0")}`;
       };
-      const ticks = [{ label: labelAt(0), left: 0 }];
+      const ticks = [];
       let firstOffset = (step - startClockMinutes % step) % step;
       if (firstOffset === 0) firstOffset = step;
       for (let offset = firstOffset; offset < total; offset += step) {
@@ -712,7 +710,6 @@
           ticks.push({ label: labelAt(offset), left: offset / total * 100 });
         }
       }
-      ticks.push({ label: labelAt(total), left: 100 });
       return { start, end, total, position, width, ticks };
     }
 
