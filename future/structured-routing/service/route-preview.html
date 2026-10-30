@@ -1494,6 +1494,13 @@
         }
         const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await responsePayload(result);
+        if (result.status === 409 && payload.field && payload.suggestions?.length) {
+          selectedLocations[payload.field] = null;
+          showAddressSuggestions(payload.field, payload.suggestions);
+          $("status").className = "status";
+          $("status").textContent = payload.detail;
+          return;
+        }
         if (!result.ok) throw new Error(payload.detail || `Virhe ${result.status}`);
         response = payload; activeResult = 0; selectedSailings.clear(); blockedSailings.clear(); experimentText = ""; rebuildPreferredResultLegs(); ganttViewport = null;
         const routeCount = mainRouteOptions().length;

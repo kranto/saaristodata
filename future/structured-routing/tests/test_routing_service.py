@@ -324,6 +324,8 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn('role="combobox"', response.text)
         self.assertIn('fetch(`/geocode?query=', response.text)
         self.assertIn("originSelection: selectedLocations.origin.selection", response.text)
+        self.assertIn("result.status === 409", response.text)
+        self.assertIn("showAddressSuggestions(payload.field, payload.suggestions)", response.text)
 
     def test_geocode_returns_multiple_address_suggestions(self) -> None:
         response = self.client.get(
@@ -364,6 +366,20 @@ class RoutingServiceTests(unittest.TestCase):
             response.json()["query"]["originAddress"]["displayName"],
             "Ambiguous street, Tampere",
         )
+
+    def test_route_requires_selection_before_classifying_ambiguous_address(self) -> None:
+        response = self.client.post("/route", json={
+            "origin": "Ambiguous street",
+            "destination": "Wihuri address",
+            "date": "2026-11-01",
+            "mode": "car",
+        })
+        self.assertEqual(response.status_code, 409, response.text)
+        payload = response.json()
+        self.assertEqual(payload["field"], "origin")
+        self.assertEqual(payload["query"], "Ambiguous street")
+        self.assertEqual(len(payload["suggestions"]), 2)
+        self.assertIn("Valitse täsmällinen lähtöpaikka", payload["detail"])
 
     def test_route_returns_address_itineraries_and_geometry(self) -> None:
         response = self.client.post("/route", json={
