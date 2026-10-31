@@ -1,0 +1,29 @@
+services:
+  routing-api:
+    build:
+      context: .
+      target: development
+    working_dir: /workspace/future/structured-routing
+    command:
+      - uvicorn
+      - service.app:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --proxy-headers
+      - --forwarded-allow-ips=*
+      - --reload
+      - --reload-dir
+      - /workspace/future/structured-routing/service
+      - --reload-dir
+      - /workspace/future/structured-routing/scripts
+    environment:
+      # Docker Desktopin bind-mountien tiedostotapahtumat eivät välity aina
+      # luotettavasti macOS:stä konttiin, joten watchfiles käyttää pollingia.
+      WATCHFILES_FORCE_POLLING: "true"
+    volumes:
+      # Säilytä repositorion future/structured-routing-rakenne myös kontissa,
+      # koska regressiotestit suorittavat CLI-komentoja saaristodata-juuresta.
+      - .:/workspace/future/structured-routing
+      - routing-cache:/var/cache/saaristolautat

@@ -1,5 +1,6 @@
 *
 !requirements.txt
+!requirements-dev.txt
 !Dockerfile
 !scripts/
 !scripts/*.py
