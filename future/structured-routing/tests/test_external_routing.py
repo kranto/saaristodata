@@ -11,10 +11,37 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from external_routing import NominatimGeocoder, concise_address_name  # noqa: E402
+from external_routing import (  # noqa: E402
+    NominatimGeocoder,
+    concise_address_name,
+    concise_suggestion_description,
+)
 
 
 class ConciseAddressNameTests(unittest.TestCase):
+    def test_city_district_is_hidden_from_suggestion_description(self) -> None:
+        result = {
+            "description": (
+                "Irjala, Takahuhti, Koillinen suuralue, Tampere, Pirkanmaa, "
+                "Manner-Suomi, 33560, Suomi"
+            ),
+            "address": {
+                "suburb": "Irjala",
+                "quarter": "Takahuhti",
+                "city_district": "Koillinen suuralue",
+                "city": "Tampere",
+                "state": "Pirkanmaa",
+                "region": "Manner-Suomi",
+                "postcode": "33560",
+                "country": "Suomi",
+            },
+        }
+
+        self.assertEqual(
+            concise_suggestion_description(result),
+            "Irjala, Takahuhti, Tampere, Pirkanmaa, 33560",
+        )
+
     def test_finnish_street_address_uses_local_order_and_municipality(self) -> None:
         result = {
             "displayName": (

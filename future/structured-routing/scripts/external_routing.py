@@ -135,7 +135,7 @@ def concise_suggestion_description(result: dict) -> str:
     address = result.get("address") or {}
     hidden_values = {
         _normalized_name(address.get(key))
-        for key in ("municipality", "region", "country")
+        for key in ("city_district", "municipality", "region", "country")
         if address.get(key)
     }
     return ", ".join(
