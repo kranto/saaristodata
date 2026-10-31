@@ -322,10 +322,18 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("includeDecisionGraph", response.text)
         self.assertIn("routeStatusText(payload, routeCount)", response.text)
         self.assertIn('role="combobox"', response.text)
-        self.assertIn('fetch(`/geocode?query=', response.text)
+        self.assertIn('fetch(apiUrl(`geocode?query=', response.text)
+        self.assertIn('fetch(apiUrl("health"))', response.text)
+        self.assertIn('fetch(apiUrl("route")', response.text)
         self.assertIn("originSelection: selectedLocations.origin.selection", response.text)
         self.assertIn("result.status === 409", response.text)
         self.assertIn("showAddressSuggestions(payload.field, payload.suggestions)", response.text)
+
+    def test_root_redirect_is_relative_for_reverse_proxy_prefixes(self) -> None:
+        response = self.client.get("/", follow_redirects=False)
+
+        self.assertEqual(response.status_code, 307)
+        self.assertEqual(response.headers["location"], "route")
 
     def test_route_preview_looks_up_addresses_while_typing(self) -> None:
         response = self.client.get("/route")

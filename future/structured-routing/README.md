@@ -543,6 +543,20 @@ uudella palvelimella lataa ja rakentaa aineiston ennen API:n käynnistymistä.
 FastAPIn koneellisesti muodostama rajapintakuvaus löytyy palvelun käydessä
 osoitteesta `/docs`.
 
+Hetznerin kevyt testidemo käyttää palvelimen vähäisen levy- ja muistitilan vuoksi
+julkista Valhalla-instanssia oman Valhalla-kontin sijasta. Se käynnistetään omasta
+Compose-tiedostostaan ja liitetään nykyiseen `public-web`-verkkoon:
+
+```sh
+docker compose -f compose.hetzner.yml up -d --build
+```
+
+Ulomman nginxin `test.saaristolautat.fi`-palvelinlohkoon lisätään
+`deploy/nginx-location.conf`. Demo löytyy tämän jälkeen osoitteesta
+`https://test.saaristolautat.fi/reititysdemo/`. Käyttöliittymän API-pyynnöt ovat
+suhteellisia nykyiseen reittipolkuun, joten sama image toimii sekä juuripolussa
+paikallisesti että nginxin alipolun kautta palvelimella.
+
 Kontti käyttää aluksi yhtä palvelinprosessia. Näin Nominatimin vähintään yhden
 sekunnin kutsuväli ja SQLite-välimuistin kirjoitukset pysyvät yhden prosessin
 hallinnassa. Hitaat ulkoiset haut suoritetaan säikeissä, joten ne eivät estä
