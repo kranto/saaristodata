@@ -499,6 +499,39 @@ Käynnistys palvelimella:
 docker compose up -d --build
 ```
 
+Paikallisessa käyttöliittymä- ja API-kehityksessä lähdekoodin voi liittää
+suoraan konttiin erillisellä compose-overridella. Image rakennetaan
+ensimmäisellä kerralla:
+
+```sh
+docker compose -f compose.yml -f compose.dev.yml up -d --build
+```
+
+Sen jälkeen saman kehityskontin voi käynnistää ilman rakentamista:
+
+```sh
+docker compose -f compose.yml -f compose.dev.yml up -d
+```
+
+Kehitystarget sisältää myös `requirements-dev.txt`:n testiriippuvuudet.
+`service/route-preview.html` luetaan jokaisella sivupyynnöllä, joten sen
+muutokset näkyvät heti selaimen virkistyksellä. `service`- ja `scripts`-kansioiden
+Python-muutokset käynnistävät Uvicornin automaattisesti uudelleen. Käynnistyksen
+yhteydessä ladattavien juuritason aineistojen, kuten `routing-graph.json`in,
+muuttamisen jälkeen riittää API-kontin uudelleenkäynnistys:
+
+```sh
+docker compose -f compose.yml -f compose.dev.yml restart routing-api
+```
+
+Docker-image tarvitsee rakentaa uudelleen vain, jos `Dockerfile` tai Pythonin
+riippuvuudet muuttuvat. Kehityskontissa voi ajaa testit esimerkiksi näin:
+
+```sh
+docker compose -f compose.yml -f compose.dev.yml exec routing-api \
+  python -m unittest discover -s tests -v
+```
+
 `compose.yml` kuuntelee vain palvelimen omassa osoitteessa
 `127.0.0.1:8082`. Sama compose käynnistää Suomen aineistoa käyttävän Valhallan
 osoitteeseen `127.0.0.1:18083`; reititys-API käyttää sitä compose-verkon sisällä
