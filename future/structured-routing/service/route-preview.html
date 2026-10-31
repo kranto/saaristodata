@@ -201,10 +201,10 @@
       .gantt { margin-inline: 15px; }
       .gantt-axis, .gantt-row { grid-template-columns: 82px minmax(0, 1fr); gap: 6px; }
     }
-    @media (max-width: 390px) {
+    @media (max-width: 520px) {
       .search-card { padding-inline: 15px; }
       form { gap: 10px; }
-      #date, #startTime { padding-inline: 9px; font-size: 15px; }
+      form .date-field, form .time-field { grid-column: 1 / -1; }
     }
   </style>
 </head>
@@ -223,8 +223,8 @@
       <form id="searchForm">
         <label class="address"><span>Lähtöpaikka</span><span class="address-control"><input id="origin" value="Turku" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="originSuggestions"><span id="originSuggestions" class="address-suggestions" role="listbox" aria-live="polite" hidden></span></span></label>
         <label class="address"><span>Määränpää</span><span class="address-control"><input id="destination" value="Storpensor" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="destinationSuggestions"><span id="destinationSuggestions" class="address-suggestions" role="listbox" aria-live="polite" hidden></span></span></label>
-        <label>Päivä<input id="date" type="date" value="2026-10-30"></label>
-        <label>Aikaisintaan<input id="startTime" type="time" value="00:00"></label>
+        <label class="date-field">Päivä<input id="date" type="date" value="2026-10-30"></label>
+        <label class="time-field">Aikaisintaan<input id="startTime" type="time" value="00:00"></label>
         <label class="mode">Kulkutapa<select id="mode"><option value="car">Auto</option><option value="motorcycle">Moottoripyörä</option><option value="bicycle">Polkupyörä</option></select></label>
         <button id="submit" class="primary submit" type="submit">Etsi reitit</button>
       </form>
