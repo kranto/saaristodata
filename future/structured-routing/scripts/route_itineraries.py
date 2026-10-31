@@ -920,6 +920,57 @@ def build_decision_graph(candidates: list[dict], origin: str, destination: str) 
                 }
         destination_node_ids.add(node_id(destination, legs[-1]["arrival"]))
 
+    # Candidate paths may reach the same landing at different times. A later
+    # arrival can still board a scheduled sailing that was originally recorded
+    # only as part of an earlier-arriving candidate. Materialize those valid
+    # combinations here so decision-graph consumers do not mistake the missing
+    # edge for an incompatible locked sailing.
+    nodes_by_location: dict[str, list[dict]] = defaultdict(list)
+    for node in nodes.values():
+        nodes_by_location[node["location"]].append(node)
+    for connection in list(connections.values()):
+        leg = connection["leg"]
+        if leg["kind"] != "scheduled_service" or leg.get("transferRisk") is None:
+            continue
+        original_ready = datetime.fromisoformat(leg["readyAtOrigin"])
+        departure = datetime.fromisoformat(leg["departure"])
+        for node in nodes_by_location[leg["from"]]:
+            ready = datetime.fromisoformat(node["time"])
+            if not original_ready < ready <= departure:
+                continue
+            wait_minutes = round((departure - ready).total_seconds() / 60)
+            public_leg = {
+                **leg,
+                "readyAtOrigin": node["time"],
+                "waitMinutes": wait_minutes,
+                "transferRisk": transfer_risk(
+                    wait_minutes,
+                    leg["transferRisk"]["requiredReadinessMinutes"],
+                ),
+            }
+            if (
+                public_leg.get("publishedConnection")
+                and RISK_ORDER[public_leg["transferRisk"]["level"]]
+                > RISK_ORDER["normal"]
+            ):
+                public_leg["transferRisk"]["level"] = "normal"
+            key = json.dumps(
+                [node["id"], connection["toNode"], public_leg],
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            if key in connection_keys:
+                continue
+            identifier = f"c{len(connections) + 1}"
+            connection_keys[key] = identifier
+            connections[identifier] = {
+                "id": identifier,
+                "fromNode": node["id"],
+                "toNode": connection["toNode"],
+                "leg": public_leg,
+            }
+
     transfer_groups: dict[tuple, list[dict]] = defaultdict(list)
     for connection in connections.values():
         leg = connection["leg"]

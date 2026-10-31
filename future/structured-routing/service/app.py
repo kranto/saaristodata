@@ -41,7 +41,7 @@ from route_itinerary import DEFAULT_GRAPH  # noqa: E402
 from routing_cache import SQLiteJsonCache  # noqa: E402
 
 
-SERVICE_VERSION = "0.4.81"
+SERVICE_VERSION = "0.4.82"
 ROUTE_PREVIEW = ROOT / "service" / "route-preview.html"
 
 

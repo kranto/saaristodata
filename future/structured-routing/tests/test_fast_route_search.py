@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from route_itineraries import (  # noqa: E402
     ScheduledInstanceIndex,
     annotate_transit_charge,
+    build_decision_graph,
     candidate_sweep_seed,
     candidate_departure_preference,
     candidate_dominates,
@@ -707,6 +708,57 @@ class FastRouteSearchTests(unittest.TestCase):
                 for item in choice["variants"]
             },
             {"relaxed": 35, "normal": 5},
+        )
+
+    def test_decision_graph_connects_later_arrival_to_catchable_sailing(self) -> None:
+        def road(ready: str, arrival: str) -> dict:
+            return {
+                "kind": "road", "from": "Origin", "to": "Pärnäs",
+                "readyAtOrigin": ready, "departure": ready, "arrival": arrival,
+                "durationMinutes": round(
+                    (datetime.fromisoformat(arrival) - datetime.fromisoformat(ready))
+                    .total_seconds() / 60
+                ),
+            }
+
+        def sailing(ready: str, departure: str, arrival: str) -> dict:
+            wait = round(
+                (datetime.fromisoformat(departure) - datetime.fromisoformat(ready))
+                .total_seconds() / 60
+            )
+            return {
+                "kind": "scheduled_service", "from": "Pärnäs", "to": "Destination",
+                "routeId": "nagu-korpo", "tripPatternId": "westbound",
+                "readyAtOrigin": ready, "departure": departure, "arrival": arrival,
+                "waitMinutes": wait, "transferRisk": transfer_risk(wait, 10),
+            }
+
+        graph = build_decision_graph([
+            {"legs": [
+                road("2026-10-25T08:00", "2026-10-25T09:25"),
+                sailing("2026-10-25T09:25", "2026-10-25T11:30", "2026-10-25T11:35"),
+            ]},
+            {"legs": [
+                road("2026-10-25T08:30", "2026-10-25T09:55"),
+                sailing("2026-10-25T09:55", "2026-10-25T10:10", "2026-10-25T10:15"),
+            ]},
+        ], "Origin", "Destination")
+
+        later_sailing_variants = [
+            connection["leg"] for connection in graph["connections"]
+            if connection["leg"].get("departure") == "2026-10-25T11:30"
+        ]
+        self.assertEqual(
+            {leg["readyAtOrigin"] for leg in later_sailing_variants},
+            {"2026-10-25T09:25", "2026-10-25T09:55"},
+        )
+        later_arrival_variant = next(
+            leg for leg in later_sailing_variants
+            if leg["readyAtOrigin"] == "2026-10-25T09:55"
+        )
+        self.assertEqual(later_arrival_variant["waitMinutes"], 95)
+        self.assertEqual(
+            later_arrival_variant["transferRisk"]["effectiveBufferMinutes"], 85,
         )
 
     def test_decision_graph_keeps_all_reachable_tofto_departures(self) -> None:
