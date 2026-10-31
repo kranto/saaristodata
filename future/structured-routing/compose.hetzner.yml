@@ -1,0 +1,32 @@
+name: saaristolautat-routing-demo
+
+services:
+  routing-api:
+    build:
+      context: .
+      target: production
+    image: saaristolautat-routing-demo:latest
+    restart: unless-stopped
+    environment:
+      ROUTING_USER_AGENT: "Saaristolautat routing demo/0.1 (admin@saaristolautat.fi)"
+      # The current Hetzner VM is too small for local Finland Valhalla tiles.
+      VALHALLA_URL: ${VALHALLA_URL:-https://valhalla1.openstreetmap.de}
+    volumes:
+      - routing-cache:/var/cache/saaristolautat
+    networks:
+      web:
+        aliases:
+          - routing-demo
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+volumes:
+  routing-cache:
+
+networks:
+  web:
+    external: true
+    name: ${WEB_NETWORK_NAME:-public-web}

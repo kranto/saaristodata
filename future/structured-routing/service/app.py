@@ -164,7 +164,9 @@ def create_app() -> FastAPI:
 
     @application.get("/", include_in_schema=False)
     async def root() -> RedirectResponse:
-        return RedirectResponse(url="/route")
+        # Keep the redirect relative so a reverse-proxy prefix such as
+        # /reititysdemo/ remains part of the public URL.
+        return RedirectResponse(url="route")
 
     @application.get("/route", response_class=HTMLResponse, include_in_schema=False)
     async def route_preview() -> HTMLResponse:

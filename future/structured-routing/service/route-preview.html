@@ -237,6 +237,7 @@
     const $ = (id) => document.getElementById(id);
     const isFilePreview = window.location.protocol === "file:";
     const routeUrl = "http://127.0.0.1:8082/route";
+    const apiUrl = (path) => new URL(path.replace(/^\/+/, ""), window.location.href);
     const searchStorageKey = "saaristolautat.routePreview.search.v1";
     const searchFieldIds = ["origin", "destination", "date", "startTime", "mode"];
     const riskRank = { relaxed: 0, normal: 1, tight: 2, very_tight: 3, below_required_readiness: 4 };
@@ -623,7 +624,7 @@
       state.query = inputValue;
       if (announceLoading) showAddressSuggestionState(id, "Haetaan paikkoja…");
       try {
-        const result = await fetch(`/geocode?query=${encodeURIComponent(inputValue)}`, {
+        const result = await fetch(apiUrl(`geocode?query=${encodeURIComponent(inputValue)}`), {
           signal: controller.signal,
         });
         const payload = await responsePayload(result);
@@ -718,7 +719,7 @@
         return;
       }
       try {
-        const value = await fetch("/health").then((item) => item.json());
+        const value = await fetch(apiUrl("health")).then((item) => item.json());
         $("apiState").classList.add("ok");
         $("apiState").textContent = `Palvelu ${value.version} käytettävissä`;
       } catch (_) {
@@ -1645,7 +1646,7 @@
           $("status").textContent = "Valitse täsmällinen lähtöpaikka tai määränpää avautuneesta luettelosta ja etsi reitit uudelleen.";
           return;
         }
-        const result = await fetch("/route", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
+        const result = await fetch(apiUrl("route"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await responsePayload(result);
         if (result.status === 409 && payload.field && payload.suggestions?.length) {
           selectedLocations[payload.field] = null;
