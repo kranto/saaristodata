@@ -250,6 +250,7 @@
     let tooltipTimer = null;
     let tooltipTarget = null;
     const selectedLocations = { origin: null, destination: null };
+    const expectedLocationIds = { origin: null, destination: null };
     const addressLookupState = Object.fromEntries(["origin", "destination"].map((id) => [id, {
       timer: null,
       controller: null,
@@ -432,6 +433,10 @@
     function routeUrlWithSearch() {
       const url = new URL(routeUrl);
       searchFieldIds.forEach((id) => url.searchParams.set(id, $(id).value));
+      ["origin", "destination"].forEach((id) => {
+        const selectionId = selectedLocations[id]?.selection?.id || expectedLocationIds[id];
+        if (selectionId) url.searchParams.set(`${id}Id`, selectionId);
+      });
       return url.toString();
     }
 
@@ -439,6 +444,11 @@
       if (isFilePreview) return;
       const url = new URL(window.location.href);
       searchFieldIds.forEach((id) => url.searchParams.set(id, $(id).value));
+      ["origin", "destination"].forEach((id) => {
+        const selectionId = selectedLocations[id]?.selection?.id || expectedLocationIds[id];
+        if (selectionId) url.searchParams.set(`${id}Id`, selectionId);
+        else url.searchParams.delete(`${id}Id`);
+      });
       window.history.replaceState(null, "", url);
     }
 
@@ -449,6 +459,9 @@
           searchFieldIds.forEach((id) => {
             if (query.has(id)) $(id).value = query.get(id);
           });
+          ["origin", "destination"].forEach((id) => {
+            expectedLocationIds[id] = query.get(`${id}Id`);
+          });
           saveSearch();
           return;
         }
@@ -456,6 +469,10 @@
         if (!saved || typeof saved !== "object") return;
         searchFieldIds.forEach((id) => {
           if (typeof saved[id] === "string") $(id).value = saved[id];
+        });
+        ["origin", "destination"].forEach((id) => {
+          expectedLocationIds[id] = typeof saved[`${id}Id`] === "string"
+            ? saved[`${id}Id`] : null;
         });
         syncSearchToCurrentUrl();
       } catch (_) {
@@ -466,6 +483,10 @@
     function saveSearch() {
       try {
         const values = Object.fromEntries(searchFieldIds.map((id) => [id, $(id).value]));
+        ["origin", "destination"].forEach((id) => {
+          const selectionId = selectedLocations[id]?.selection?.id || expectedLocationIds[id];
+          if (selectionId) values[`${id}Id`] = selectionId;
+        });
         localStorage.setItem(searchStorageKey, JSON.stringify(values));
         syncSearchToCurrentUrl();
       } catch (_) {
@@ -527,6 +548,7 @@
         inputValue: input.value,
         selection: addressSelectionPayload(suggestion),
       };
+      expectedLocationIds[id] = suggestion.id;
       const state = addressLookupState[id];
       window.clearTimeout(state.timer);
       state.controller?.abort();
@@ -670,6 +692,15 @@
       }
       if (suggestions === null) return false;
       if (!suggestions.length) throw new Error(`Paikkaa ”${inputValue}” ei löytynyt.`);
+      if (expectedLocationIds[id]) {
+        const expected = suggestions.find((suggestion) => suggestion.id === expectedLocationIds[id]);
+        if (expected) {
+          selectAddressSuggestion(id, expected);
+          return true;
+        }
+        expectedLocationIds[id] = null;
+        saveSearch();
+      }
       if (suggestions.length === 1) {
         selectAddressSuggestion(id, suggestions[0]);
         return true;
@@ -1657,6 +1688,7 @@
       $(id).addEventListener("input", () => {
         if (id === "origin" || id === "destination") {
           selectedLocations[id] = null;
+          expectedLocationIds[id] = null;
           scheduleAddressLookup(id);
         }
         saveSearch();
