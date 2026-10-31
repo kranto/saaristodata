@@ -341,6 +341,16 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("Haetaan paikkoja…", response.text)
         self.assertIn('autocomplete="off"', response.text)
 
+    def test_route_preview_preserves_exact_locations_in_url(self) -> None:
+        response = self.client.get("/route")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("const expectedLocationIds = { origin: null, destination: null }", response.text)
+        self.assertIn('url.searchParams.set(`${id}Id`, selectionId)', response.text)
+        self.assertIn('query.get(`${id}Id`)', response.text)
+        self.assertIn("suggestion.id === expectedLocationIds[id]", response.text)
+        self.assertIn("expectedLocationIds[id] = suggestion.id", response.text)
+
     def test_geocode_returns_multiple_address_suggestions(self) -> None:
         response = self.client.get(
             "/geocode", params={"query": "Ambiguous street"},
