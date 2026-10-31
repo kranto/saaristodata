@@ -327,6 +327,20 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertIn("result.status === 409", response.text)
         self.assertIn("showAddressSuggestions(payload.field, payload.suggestions)", response.text)
 
+    def test_route_preview_looks_up_addresses_while_typing(self) -> None:
+        response = self.client.get("/route")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("function scheduleAddressLookup(id)", response.text)
+        self.assertIn("fetchAddressSuggestions(id, inputValue", response.text)
+        self.assertIn("}, 350);", response.text)
+        self.assertIn("state.controller?.abort()", response.text)
+        self.assertIn('event.key === "ArrowDown"', response.text)
+        self.assertIn('event.key === "Enter"', response.text)
+        self.assertIn('event.key === "Escape"', response.text)
+        self.assertIn("Haetaan paikkoja…", response.text)
+        self.assertIn('autocomplete="off"', response.text)
+
     def test_geocode_returns_multiple_address_suggestions(self) -> None:
         response = self.client.get(
             "/geocode", params={"query": "Ambiguous street"},
