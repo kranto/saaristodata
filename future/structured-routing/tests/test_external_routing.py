@@ -238,7 +238,78 @@ class NominatimGeocoderTests(unittest.TestCase):
         with patch("external_routing._read_json", return_value=[]):
             suggestions = NominatimGeocoder(
                 minimum_interval_seconds=0,
+                street_suggestion_endpoint=None,
             ).suggest("Vimpe")
+        self.assertEqual(suggestions, [])
+
+    def test_partial_word_finds_finnish_places_and_points_of_interest(self) -> None:
+        photon = {
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "osm_type": "N", "osm_id": 1,
+                        "osm_key": "place", "osm_value": "village",
+                        "type": "locality", "name": "Hastersboda",
+                        "city": "Föglö", "state": "Ahvenanmaa",
+                        "country": "Suomi", "countrycode": "FI",
+                    },
+                    "geometry": {"type": "Point", "coordinates": [20.57, 60.03]},
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "osm_type": "N", "osm_id": 2,
+                        "osm_key": "tourism", "osm_value": "viewpoint",
+                        "type": "house", "name": "Hastersboda utsiktstorn",
+                        "city": "Föglö", "state": "Ahvenanmaa",
+                        "country": "Suomi", "countrycode": "FI",
+                    },
+                    "geometry": {"type": "Point", "coordinates": [20.58, 60.04]},
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "osm_type": "N", "osm_id": 3,
+                        "osm_key": "place", "osm_value": "village",
+                        "type": "locality", "name": "Hastersby",
+                        "country": "Sverige", "countrycode": "SE",
+                    },
+                    "geometry": {"type": "Point", "coordinates": [18.0, 59.0]},
+                },
+            ],
+        }
+        with patch("external_routing._read_json", side_effect=[[], photon]):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+            ).suggest("Hastersb")
+
+        self.assertEqual(
+            [(item["displayName"], item["resultType"]) for item in suggestions],
+            [
+                ("Hastersboda, Föglö", "village"),
+                ("Hastersboda utsiktstorn, Föglö", "viewpoint"),
+            ],
+        )
+
+    def test_partial_word_must_start_a_candidate_word(self) -> None:
+        photon = {
+            "features": [{
+                "type": "Feature",
+                "properties": {
+                    "osm_type": "N", "osm_id": 1,
+                    "osm_key": "place", "osm_value": "village",
+                    "type": "locality", "name": "Hastersboda",
+                    "city": "Föglö", "country": "Suomi", "countrycode": "FI",
+                },
+                "geometry": {"type": "Point", "coordinates": [20.57, 60.03]},
+            }],
+        }
+        with patch("external_routing._read_json", side_effect=[[], photon]):
+            suggestions = NominatimGeocoder(
+                minimum_interval_seconds=0,
+            ).suggest("sters")
+
         self.assertEqual(suggestions, [])
 
     def test_exact_street_results_are_supplemented_without_dropping_places(self) -> None:
