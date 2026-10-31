@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import ssl
 import threading
 import time
@@ -241,6 +242,23 @@ def _normalized_name(value: object) -> str:
     return " ".join(str(value or "").casefold().split())
 
 
+def _word_prefix_match(query: object, *values: object) -> bool:
+    """Return true when every query word starts a word in the candidate.
+
+    Photon is deliberately used as a prefix completer, not as an unrestricted
+    fuzzy search. This keeps short interactive queries predictable while still
+    allowing e.g. ``Hastersb`` to find ``Hastersboda``.
+    """
+    query_words = re.findall(r"\w+", _normalized_name(query))
+    candidate_words = re.findall(
+        r"\w+", " ".join(_normalized_name(value) for value in values if value),
+    )
+    return bool(query_words) and all(
+        any(candidate.startswith(query_word) for candidate in candidate_words)
+        for query_word in query_words
+    )
+
+
 def _best_nominatim_result(query: str, results: list[dict]) -> dict:
     """Prefer a named locality over an area centroid for a bare place name.
 
@@ -408,15 +426,10 @@ class NominatimGeocoder:
                         self.cache.set("nominatim:suggest", cache_key, cached)
         if not isinstance(cached, list):
             raise RuntimeError("geocoding provider returned an invalid suggestion response")
-        if not cached:
-            return []
-
         candidate_items = [
             item for item in cached
             if not _is_ignored_geocoding_result(item)
         ]
-        if not candidate_items:
-            return []
         coordinate_override = None
         stripped_query = query.strip()
         normalized_query_name = _normalized_name(stripped_query)
@@ -462,6 +475,10 @@ class NominatimGeocoder:
         supplementary_streets = (
             self._street_suggestions(query, limit=50)
             if has_exact_street and self.street_suggestion_endpoint else []
+        )
+        partial_suggestions = (
+            self._partial_suggestions(query, limit=max(limit * 3, 20))
+            if not exact_name_items and self.street_suggestion_endpoint else []
         )
 
         suggestions = []
@@ -520,7 +537,7 @@ class NominatimGeocoder:
             if locality_key is not None:
                 seen_localities.add(locality_key)
             suggestions.append(candidate)
-        for candidate in supplementary_streets:
+        for candidate in [*supplementary_streets, *partial_suggestions]:
             duplicate_key = (
                 _normalized_name(candidate["displayName"]),
                 candidate["resultType"],
@@ -531,20 +548,20 @@ class NominatimGeocoder:
             seen.add(duplicate_key)
             seen_descriptions.add(description_key)
             suggestions.append(candidate)
-        return suggestions
+        return suggestions[:limit]
 
-    def _street_suggestions(self, query: str, *, limit: int) -> list[dict]:
+    def _photon_features(self, query: str, *, limit: int) -> list[dict]:
         cache_key = {
             "endpoint": self.street_suggestion_endpoint,
             "query": " ".join(query.casefold().split()),
             "limit": limit,
-            "selection": "exact-finnish-streets-v1",
+            "selection": "finnish-address-suggestions-v1",
         }
-        cached = self.cache.get("photon:street-suggest", cache_key) if self.cache else None
+        cached = self.cache.get("photon:suggest", cache_key) if self.cache else None
         if cached is None:
             parameters = urlencode({"q": query, "limit": limit})
             with self._request_lock:
-                cached = self.cache.get("photon:street-suggest", cache_key) if self.cache else None
+                cached = self.cache.get("photon:suggest", cache_key) if self.cache else None
                 if cached is None:
                     if self._last_request_at is not None:
                         wait = self.minimum_interval_seconds - (
@@ -559,54 +576,94 @@ class NominatimGeocoder:
                     cached = _read_json(request, self.timeout)
                     self._last_request_at = time.monotonic()
                     if self.cache:
-                        self.cache.set("photon:street-suggest", cache_key, cached)
+                        self.cache.set("photon:suggest", cache_key, cached)
         features = cached.get("features") if isinstance(cached, dict) else None
-        if not isinstance(features, list):
-            return []
-        normalized_query = _normalized_name(query)
+        return features if isinstance(features, list) else []
+
+    @staticmethod
+    def _photon_candidate(feature: dict, query: str) -> dict | None:
+        properties = feature.get("properties") or {}
+        geometry = feature.get("geometry") or {}
+        coordinates = geometry.get("coordinates") or []
+        if properties.get("countrycode") != "FI" or len(coordinates) < 2:
+            return None
+
+        photon_type = str(properties.get("type") or "")
+        category = str(properties.get("osm_key") or "")
+        source_type = str(properties.get("osm_value") or photon_type or "place")
+        result_type = "street" if photon_type == "street" else source_type
+        if _is_ignored_geocoding_result({"category": category, "type": source_type}):
+            return None
+
+        city = properties.get("city") or properties.get("county")
+        address = {
+            "city": city,
+            "suburb": properties.get("district"),
+            "neighbourhood": properties.get("locality"),
+            "state": properties.get("state"),
+            "postcode": properties.get("postcode"),
+            "country": properties.get("country"),
+        }
+        if photon_type == "street" or category == "highway":
+            category = "highway"
+            address["road"] = properties.get("name")
+        elif category == "place" and source_type in {
+            "city", "town", "village", "hamlet", "suburb", "quarter",
+            "neighbourhood", "locality", "island", "islet",
+        }:
+            address[source_type] = properties.get("name")
+
+        description = ", ".join(
+            str(value) for value in (
+                properties.get("name"), properties.get("locality"),
+                properties.get("district"), city, properties.get("state"),
+                properties.get("postcode"), properties.get("country"),
+            ) if value
+        )
+        return _normalize_geocoded_result({
+            "id": f"photon:{properties.get('osm_type')}:{properties.get('osm_id')}",
+            "name": properties.get("name"),
+            "displayName": description or str(properties.get("name") or query),
+            "description": description or str(properties.get("name") or query),
+            "coordinates": {"lat": float(coordinates[1]), "lon": float(coordinates[0])},
+            "address": address,
+            "provider": "Photon",
+            "attribution": "© OpenStreetMap contributors",
+            "resultCategory": category or "place",
+            "resultType": result_type,
+            "addressType": _general_address_type(category, source_type),
+            "typeLabel": _suggestion_type_label(category, source_type),
+        }, query)
+
+    def _partial_suggestions(self, query: str, *, limit: int) -> list[dict]:
         suggestions = []
-        for feature in features:
+        for feature in self._photon_features(query, limit=limit):
             properties = feature.get("properties") or {}
-            geometry = feature.get("geometry") or {}
-            coordinates = geometry.get("coordinates") or []
-            if (
-                properties.get("countrycode") != "FI"
-                or properties.get("type") != "street"
-                or _normalized_name(properties.get("name")) != normalized_query
-                or len(coordinates) < 2
+            if not _word_prefix_match(
+                query,
+                properties.get("name"), properties.get("locality"),
+                properties.get("district"), properties.get("city"),
+                properties.get("county"), properties.get("state"),
             ):
                 continue
-            city = properties.get("city") or properties.get("county")
-            address = {
-                "road": properties.get("name"),
-                "city": city,
-                "suburb": properties.get("district"),
-                "neighbourhood": properties.get("locality"),
-                "state": properties.get("state"),
-                "postcode": properties.get("postcode"),
-                "country": properties.get("country"),
-            }
-            description = ", ".join(
-                str(value) for value in (
-                    properties.get("name"), properties.get("locality"),
-                    properties.get("district"), city, properties.get("state"),
-                    properties.get("postcode"), properties.get("country"),
-                ) if value
-            )
-            suggestions.append(_normalize_geocoded_result({
-                "id": f"photon:{properties.get('osm_type')}:{properties.get('osm_id')}",
-                "name": properties.get("name"),
-                "displayName": description,
-                "description": description,
-                "coordinates": {"lat": float(coordinates[1]), "lon": float(coordinates[0])},
-                "address": address,
-                "provider": "Photon",
-                "attribution": "© OpenStreetMap contributors",
-                "resultCategory": "highway",
-                "resultType": "street",
-                "addressType": "street",
-                "typeLabel": "katu tai tie",
-            }, query))
+            candidate = self._photon_candidate(feature, query)
+            if candidate is not None:
+                suggestions.append(candidate)
+        return suggestions
+
+    def _street_suggestions(self, query: str, *, limit: int) -> list[dict]:
+        normalized_query = _normalized_name(query)
+        suggestions = []
+        for feature in self._photon_features(query, limit=limit):
+            properties = feature.get("properties") or {}
+            if (
+                properties.get("type") != "street"
+                or _normalized_name(properties.get("name")) != normalized_query
+            ):
+                continue
+            candidate = self._photon_candidate(feature, query)
+            if candidate is not None:
+                suggestions.append(candidate)
         return suggestions
 
     def geocode(self, query: str) -> dict:
