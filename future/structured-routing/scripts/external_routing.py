@@ -878,6 +878,37 @@ class ValhallaRouter:
             "distanceMeters": max(0, round(float(summary["length"]) * 1000)),
         }
 
+    def measure_route_avoiding_known_ferries(
+        self, origin: dict, destination: dict, mode: str, index: dict,
+    ) -> dict | None:
+        """Measure an access route that may use only unmodeled ferries.
+
+        Some mainland road areas contain places behind a local ferry that is
+        present in Valhalla but not in the archipelago graph. Such a ferry may
+        be part of the external address-access leg. A ferry whose boarding
+        matches our stop index must remain in the internal timetable graph.
+        """
+        response = self.route(origin, destination, mode, exclude_ferries=False)
+        classification = classify(response, index)
+        if (
+            classification.get("firstKnownBoarding") is not None
+            or classification.get("status") in {
+                "maneuvers_required", "ferry_reported_but_no_boarding_maneuver",
+            }
+        ):
+            return None
+        summary = (response.get("trip") or {}).get("summary") or {}
+        if summary.get("time") is None or summary.get("length") is None:
+            return None
+        return {
+            "durationSeconds": max(0, round(float(summary["time"]))),
+            "distanceMeters": max(0, round(float(summary["length"]) * 1000)),
+            "ferriesExcluded": False,
+            "unrecognizedFerryBoardings": len(
+                classification.get("ferryBoardings", [])
+            ),
+        }
+
     def route_geometry(
         self, origin: dict, destination: dict, mode: str, *,
         exclude_ferries: bool = True,

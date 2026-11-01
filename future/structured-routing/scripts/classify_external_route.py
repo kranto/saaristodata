@@ -122,6 +122,8 @@ def classify(
         status = "maneuvers_required"
     elif first_known:
         status = "known_road_area_found"
+    elif boardings and anchor_road_area_id:
+        status = "known_road_area_found"
     elif boardings:
         status = "no_known_boarding_stop"
     elif has_ferry:
@@ -139,10 +141,13 @@ def classify(
             "boardingSequence": first_known["boardingSequence"],
             "stop": first_known["stop"],
         }
-    elif not has_ferry and anchor_road_area_id:
+    elif anchor_road_area_id and status == "known_road_area_found":
         road_area = {
             "id": anchor_road_area_id,
-            "inference": "no_ferry_to_known_anchor",
+            "inference": (
+                "unrecognized_ferries_to_known_anchor"
+                if has_ferry else "no_ferry_to_known_anchor"
+            ),
         }
 
     return {

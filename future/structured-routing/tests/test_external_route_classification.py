@@ -98,6 +98,21 @@ class ExternalRouteClassificationTests(unittest.TestCase):
         result = MODULE.classify(response, self.index)
         self.assertEqual(result["status"], "maneuvers_required")
 
+    def test_anchor_does_not_hide_an_unclassifiable_ferry_route(self) -> None:
+        response = {
+            "trip": {
+                "summary": {"has_ferry": True},
+                "legs": [{"shape": "", "summary": {"has_ferry": True}}],
+            },
+        }
+
+        result = MODULE.classify(
+            response, self.index, anchor_road_area_id="mainland_finland",
+        )
+
+        self.assertEqual(result["status"], "maneuvers_required")
+        self.assertIsNone(result["roadArea"])
+
     def test_no_ferry_means_same_area_as_known_anchor(self) -> None:
         response = {
             "trip": {
@@ -112,6 +127,32 @@ class ExternalRouteClassificationTests(unittest.TestCase):
         self.assertEqual(result["roadArea"], {
             "id": "mainland_finland",
             "inference": "no_ferry_to_known_anchor",
+        })
+
+    def test_unrecognized_ferry_may_lead_to_known_anchor_area(self) -> None:
+        response = {
+            "trip": {
+                "summary": {"has_ferry": True},
+                "legs": [{
+                    "shape": encode_polyline([(59.975, 23.883), (60.0, 23.9)]),
+                    "maneuvers": [{
+                        "type": 28,
+                        "begin_shape_index": 0,
+                        "street_names": ["unmodeled local ferry"],
+                    }],
+                }],
+            },
+        }
+
+        result = MODULE.classify(
+            response, self.index, anchor_road_area_id="mainland_finland",
+        )
+
+        self.assertEqual(result["status"], "known_road_area_found")
+        self.assertEqual(result["unknownBoardingsBeforeFirstKnown"], 1)
+        self.assertEqual(result["roadArea"], {
+            "id": "mainland_finland",
+            "inference": "unrecognized_ferries_to_known_anchor",
         })
 
 

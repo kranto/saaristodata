@@ -139,7 +139,7 @@ def external_road_edge(
 ) -> dict:
     road_mode = "auto" if mode in {"car", "motorcycle"} else "bicycle"
     duration = measurement["durationSeconds"]
-    return {
+    result = {
         "id": edge_id,
         "kind": "road",
         "from": origin,
@@ -157,9 +157,14 @@ def external_road_edge(
             "provider": "Valhalla",
             "role": role,
             "roadAreaId": road_area_id,
-            "ferriesExcluded": True,
+            "ferriesExcluded": measurement.get("ferriesExcluded", True),
         },
     }
+    if measurement.get("unrecognizedFerryBoardings"):
+        result["externalRouting"]["unrecognizedFerryBoardings"] = measurement[
+            "unrecognizedFerryBoardings"
+        ]
+    return result
 
 
 def external_measurements(
@@ -169,6 +174,9 @@ def external_measurements(
     mode: str,
     *,
     fallback_from_source: bool,
+    allow_unrecognized_ferries: bool = False,
+    stop_index: dict | None = None,
+    preferred_index: int | None = None,
 ) -> list[dict]:
     """Use a matrix first, then a complete route-by-route fallback.
 
@@ -199,6 +207,9 @@ def external_measurements(
             range(len(targets)),
             key=lambda index: distance_meters(point, targets[index]),
         )
+        if preferred_index in ranked:
+            ranked.remove(preferred_index)
+            ranked.insert(0, preferred_index)
         pairs = [
             (0, target_index) for target_index in ranked
             if (0, target_index) not in completed_pairs
@@ -209,19 +220,35 @@ def external_measurements(
             range(len(sources)),
             key=lambda index: distance_meters(sources[index], point),
         )
+        if preferred_index in ranked:
+            ranked.remove(preferred_index)
+            ranked.insert(0, preferred_index)
         pairs = [
             (source_index, 0) for source_index in ranked
             if (source_index, 0) not in completed_pairs
         ]
 
     for source_index, target_index in pairs:
-        try:
-            measurement = router.measure_route(
-                sources[source_index], targets[target_index], mode,
-                exclude_ferries=True,
-            )
-        except RuntimeError:
-            continue
+        if (
+            allow_unrecognized_ferries
+            and stop_index is not None
+            and hasattr(router, "measure_route_avoiding_known_ferries")
+        ):
+            try:
+                measurement = router.measure_route_avoiding_known_ferries(
+                    sources[source_index], targets[target_index], mode,
+                    stop_index,
+                )
+            except RuntimeError:
+                measurement = None
+        else:
+            try:
+                measurement = router.measure_route(
+                    sources[source_index], targets[target_index], mode,
+                    exclude_ferries=True,
+                )
+            except RuntimeError:
+                measurement = None
         if not measurement:
             continue
         if (
@@ -249,6 +276,10 @@ def add_external_edges(
     *,
     origin_stop_id: str | None = None,
     destination_stop_id: str | None = None,
+    origin_attachment_stop_id: str | None = None,
+    destination_attachment_stop_id: str | None = None,
+    origin_allow_unrecognized_ferries: bool = False,
+    destination_allow_unrecognized_ferries: bool = False,
 ) -> dict:
     """Return a graph augmented with address access and egress road edges."""
     # Only the top-level node and edge arrays are extended. Their existing
@@ -261,6 +292,14 @@ def add_external_edges(
     }
     origin_stops = [] if origin_stop_id else area_stops(index, result, origin_area_id)
     destination_stops = [] if destination_stop_id else area_stops(index, result, destination_area_id)
+    if origin_attachment_stop_id:
+        origin_stops.sort(
+            key=lambda stop: stop["id"] != origin_attachment_stop_id,
+        )
+    if destination_attachment_stop_id:
+        destination_stops.sort(
+            key=lambda stop: stop["id"] != destination_attachment_stop_id,
+        )
     if not origin_stop_id and not origin_stops:
         raise ValueError(f"road area has no routing stops: {origin_area_id}")
     if not destination_stop_id and not destination_stops:
@@ -287,6 +326,15 @@ def add_external_edges(
         router, [origin["coordinates"]],
         [routing_coordinates(item) for item in origin_stops], mode,
         fallback_from_source=True,
+        allow_unrecognized_ferries=origin_allow_unrecognized_ferries,
+        stop_index=index,
+        preferred_index=next(
+            (
+                index for index, stop in enumerate(origin_stops)
+                if stop["id"] == origin_attachment_stop_id
+            ),
+            None,
+        ),
     )
     for value in access_values:
         stop = origin_stops[value["toIndex"]]
@@ -301,6 +349,15 @@ def add_external_edges(
         [destination["coordinates"]],
         mode,
         fallback_from_source=False,
+        allow_unrecognized_ferries=destination_allow_unrecognized_ferries,
+        stop_index=index,
+        preferred_index=next(
+            (
+                index for index, stop in enumerate(destination_stops)
+                if stop["id"] == destination_attachment_stop_id
+            ),
+            None,
+        ),
     )
     for value in egress_values:
         stop = destination_stops[value["fromIndex"]]
@@ -314,6 +371,11 @@ def add_external_edges(
             router,
             [origin["coordinates"]], [destination["coordinates"]], mode,
             fallback_from_source=True,
+            allow_unrecognized_ferries=(
+                origin_allow_unrecognized_ferries
+                or destination_allow_unrecognized_ferries
+            ),
+            stop_index=index,
         )
         if direct_values:
             result["edges"].append(external_road_edge(
@@ -322,9 +384,9 @@ def add_external_edges(
             ))
 
     if not origin_stop_id and not access_values:
-        raise ValueError("no ferry-free road route from the origin to a routing stop")
+        raise ValueError("no usable road route from the origin to a routing stop")
     if not destination_stop_id and not egress_values:
-        raise ValueError("no ferry-free road route from a routing stop to the destination")
+        raise ValueError("no usable road route from a routing stop to the destination")
     return result
 
 
@@ -359,7 +421,9 @@ def enrich_external_geometries(
             if pair not in geometries:
                 geometries[pair] = router.route_geometry(
                     coordinates[pair[0]], coordinates[pair[1]], mode,
-                    exclude_ferries=True,
+                    exclude_ferries=leg["externalRouting"].get(
+                        "ferriesExcluded", True,
+                    ),
                 )
             if geometries[pair] is not None:
                 leg["externalRouting"]["geometry"] = geometries[pair]
@@ -435,11 +499,29 @@ def query_address_routes(
     destination_classification = endpoint_classification(index, destination, router, mode)
     origin_area_id = origin_classification["roadArea"]["id"]
     destination_area_id = destination_classification["roadArea"]["id"]
+    origin_allow_unrecognized_ferries = bool(
+        origin_classification.get("externalRouteHasFerry")
+        and origin_classification.get("unknownBoardingsBeforeFirstKnown", 0)
+    )
+    destination_allow_unrecognized_ferries = bool(
+        destination_classification.get("externalRouteHasFerry")
+        and destination_classification.get("unknownBoardingsBeforeFirstKnown", 0)
+    )
+    origin_attachment_stop_id = (
+        (origin_classification.get("roadArea") or {}).get("stop") or {}
+    ).get("id") if origin_allow_unrecognized_ferries else None
+    destination_attachment_stop_id = (
+        (destination_classification.get("roadArea") or {}).get("stop") or {}
+    ).get("id") if destination_allow_unrecognized_ferries else None
     augmented = add_external_edges(
         graph, index, router, origin, destination,
         origin_area_id, destination_area_id, mode,
         origin_stop_id=origin.get("routingStopId"),
         destination_stop_id=destination.get("routingStopId"),
+        origin_attachment_stop_id=origin_attachment_stop_id,
+        destination_attachment_stop_id=destination_attachment_stop_id,
+        origin_allow_unrecognized_ferries=origin_allow_unrecognized_ferries,
+        destination_allow_unrecognized_ferries=destination_allow_unrecognized_ferries,
     )
     origin_node = origin.get("routingStopId", ORIGIN_NODE)
     destination_node = destination.get("routingStopId", DESTINATION_NODE)

@@ -109,6 +109,43 @@ class FakePartialMatrixRouter(FakeRouter):
         return {"durationSeconds": 900, "distanceMeters": 10_000}
 
 
+class FakeUnrecognizedFerryRouter(FakeRouter):
+    def __init__(self) -> None:
+        self.unrecognized_measurements = []
+
+    def matrix(
+        self, sources: list[dict], targets: list[dict], mode: str,
+        *, exclude_ferries: bool = True,
+    ) -> list[dict]:
+        return [
+            {
+                "from_index": source_index,
+                "to_index": target_index,
+                "time": None,
+                "distance": None,
+            }
+            for source_index in range(len(sources))
+            for target_index in range(len(targets))
+        ]
+
+    def measure_route(
+        self, origin: dict, destination: dict, mode: str,
+        *, exclude_ferries: bool = True,
+    ) -> None:
+        return None
+
+    def measure_route_avoiding_known_ferries(
+        self, origin: dict, destination: dict, mode: str, index: dict,
+    ) -> dict:
+        self.unrecognized_measurements.append((origin, destination))
+        return {
+            "durationSeconds": 1200,
+            "distanceMeters": 12_000,
+            "ferriesExcluded": False,
+            "unrecognizedFerryBoardings": 1,
+        }
+
+
 class AddressGraphTests(unittest.TestCase):
     def test_address_routes_allow_long_archipelago_chains(self) -> None:
         self.assertEqual(MAX_ADDRESS_ROUTE_LEGS, 21)
@@ -210,6 +247,101 @@ class AddressGraphTests(unittest.TestCase):
         access = [edge for edge in result["edges"] if edge["from"] == ORIGIN_NODE]
         self.assertEqual({edge["to"] for edge in access}, {"A", "B"})
         self.assertGreaterEqual(len(router.measured), 1)
+
+    def test_access_leg_may_use_an_unrecognized_local_ferry(self) -> None:
+        graph = {"nodes": [{"id": "A"}, {"id": "B"}], "edges": []}
+        index = {
+            "stops": [
+                {
+                    "id": "A", "roadAreaId": "origin",
+                    "coordinates": {"lat": 1, "lon": 1},
+                },
+                {
+                    "id": "B", "roadAreaId": "destination",
+                    "coordinates": {"lat": 2, "lon": 2},
+                },
+            ],
+        }
+        location = {
+            "displayName": "Address",
+            "coordinates": {"lat": 0, "lon": 0},
+        }
+
+        result = add_external_edges(
+            graph, index, FakeUnrecognizedFerryRouter(), location, location,
+            "origin", "destination", "car",
+            origin_allow_unrecognized_ferries=True,
+            destination_allow_unrecognized_ferries=True,
+        )
+
+        self.assertEqual(len(result["edges"]), 2)
+        self.assertTrue(all(
+            edge["externalRouting"]["ferriesExcluded"] is False
+            for edge in result["edges"]
+        ))
+        self.assertTrue(all(
+            edge["externalRouting"]["unrecognizedFerryBoardings"] == 1
+            for edge in result["edges"]
+        ))
+
+    def test_unrecognized_ferry_access_prioritizes_the_classified_attachment_stop(self) -> None:
+        graph = {
+            "nodes": [
+                {"id": "A1"}, {"id": "A2"}, {"id": "B1"}, {"id": "B2"},
+            ],
+            "edges": [],
+        }
+        index = {
+            "stops": [
+                {
+                    "id": "A1", "roadAreaId": "origin",
+                    "coordinates": {"lat": 1, "lon": 1},
+                },
+                {
+                    "id": "A2", "roadAreaId": "origin",
+                    "coordinates": {"lat": 1, "lon": 2},
+                },
+                {
+                    "id": "B1", "roadAreaId": "destination",
+                    "coordinates": {"lat": 2, "lon": 1},
+                },
+                {
+                    "id": "B2", "roadAreaId": "destination",
+                    "coordinates": {"lat": 2, "lon": 2},
+                },
+            ],
+        }
+        location = {
+            "displayName": "Address",
+            "coordinates": {"lat": 0, "lon": 0},
+        }
+        router = FakeUnrecognizedFerryRouter()
+
+        result = add_external_edges(
+            graph, index, router, location, location,
+            "origin", "destination", "car",
+            origin_attachment_stop_id="A2",
+            destination_attachment_stop_id="B1",
+            origin_allow_unrecognized_ferries=True,
+            destination_allow_unrecognized_ferries=True,
+        )
+
+        self.assertEqual(
+            {(edge["from"], edge["to"]) for edge in result["edges"]},
+            {
+                (ORIGIN_NODE, "A1"), (ORIGIN_NODE, "A2"),
+                ("B1", DESTINATION_NODE), ("B2", DESTINATION_NODE),
+            },
+        )
+        self.assertEqual(len(router.unrecognized_measurements), 4)
+        self.assertEqual(
+            router.unrecognized_measurements[0][1],
+            {"lat": 1, "lon": 2},
+        )
+        self.assertEqual(
+            router.unrecognized_measurements[2][0],
+            {"lat": 2, "lon": 1},
+        )
 
     def test_address_query_uses_external_access_and_internal_schedule(self) -> None:
         result = query_address_routes(

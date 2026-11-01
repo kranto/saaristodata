@@ -13,9 +13,28 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from external_routing import (  # noqa: E402
     NominatimGeocoder,
+    ValhallaRouter,
     concise_address_name,
     concise_suggestion_description,
 )
+
+
+def encode_polyline(points: list[tuple[float, float]], precision: int = 6) -> str:
+    factor = 10 ** precision
+    previous_lat = 0
+    previous_lon = 0
+    output = []
+    for lat, lon in points:
+        values = [round(lat * factor) - previous_lat, round(lon * factor) - previous_lon]
+        previous_lat += values[0]
+        previous_lon += values[1]
+        for value in values:
+            encoded = ~(value << 1) if value < 0 else value << 1
+            while encoded >= 0x20:
+                output.append(chr((0x20 | (encoded & 0x1F)) + 63))
+                encoded >>= 5
+            output.append(chr(encoded + 63))
+    return "".join(output)
 
 
 class ConciseAddressNameTests(unittest.TestCase):
@@ -653,6 +672,54 @@ class NominatimGeocoderTests(unittest.TestCase):
             {"lat": 61.3448335, "lon": 22.9057947},
         )
         self.assertEqual(result["displayName"], "Sastamala")
+
+
+class ValhallaRouterTests(unittest.TestCase):
+    @staticmethod
+    def ferry_response(lat: float, lon: float) -> dict:
+        return {
+            "trip": {
+                "summary": {
+                    "has_ferry": True,
+                    "time": 600,
+                    "length": 5,
+                },
+                "legs": [{
+                    "shape": encode_polyline([(lat, lon)]),
+                    "maneuvers": [{
+                        "type": 28,
+                        "begin_shape_index": 0,
+                        "street_names": ["ferry"],
+                    }],
+                }],
+            },
+        }
+
+    def test_external_access_accepts_only_unrecognized_ferries(self) -> None:
+        index = {
+            "matchingPolicy": {"maximumDistanceMeters": 500},
+            "stops": [{
+                "id": "Known",
+                "name": "Known",
+                "roadAreaId": "area",
+                "roadAreaKind": "maintained_component",
+                "coordinates": {"lat": 60, "lon": 22},
+            }],
+        }
+        router = ValhallaRouter()
+
+        with patch.object(router, "route", return_value=self.ferry_response(0, 0)):
+            accepted = router.measure_route_avoiding_known_ferries(
+                {"lat": 1, "lon": 1}, {"lat": 2, "lon": 2}, "car", index,
+            )
+        with patch.object(router, "route", return_value=self.ferry_response(60, 22)):
+            rejected = router.measure_route_avoiding_known_ferries(
+                {"lat": 1, "lon": 1}, {"lat": 2, "lon": 2}, "car", index,
+            )
+
+        self.assertEqual(accepted["unrecognizedFerryBoardings"], 1)
+        self.assertFalse(accepted["ferriesExcluded"])
+        self.assertIsNone(rejected)
 
 
 if __name__ == "__main__":

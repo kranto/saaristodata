@@ -50,15 +50,22 @@ tulkita uudeksi säännöksi.
     piste on;
   - tuntemattomat lauttaylitykset ennen ensimmäistä tunnistettua ylitystä
     eivät muuta luokitusta.
-- Kun tiealue on tiedossa, lähtöpiste yhdistetään ilman lauttoja kaikkiin sen
-  tiealueen graafilaitureihin. Määränpää yhdistetään vastaavasti kaikista
-  alueen laitureista. Saman tiealueen pisteiden välille lisätään myös suora
-  tieyhteys.
+- Kun tiealue on tiedossa, lähtöpiste yhdistetään tavallisesti ilman lauttoja
+  kaikkiin sen tiealueen graafilaitureihin. Määränpää yhdistetään vastaavasti
+  kaikista alueen laitureista. Saman tiealueen pisteiden välille lisätään myös
+  suora tieyhteys.
 - Valhallan matriisi on ensisijainen. Jos matriisi ei onnistu, kaikki alueen
   laiturit kokeillaan yksittäisillä hauilla; ehdokkaita ei rajata vain
   lähimpiin.
-- Ulkoisilla tieosuuksilla Valhallalta kielletään lautat, koska saariston
-  lauttavalinnat kuuluvat omaan graafiin.
+- Ulkoisilla tieosuuksilla Valhallalta kielletään lähtökohtaisesti lautat,
+  koska saariston tunnetut lauttavalinnat kuuluvat omaan graafiin.
+- Jos osoitteen tiealueluokitus osoittaa, että pisteestä pääsee tiealueelle
+  vain graafille tuntemattomalla paikallislautalla, ulkoinen alku- tai
+  loppuosuus saa käyttää sitä. Jokainen tällainen Valhalla-reitti
+  luokitellaan erikseen ja hylätään heti, jos jokin sen lauttanousu osuu oman
+  graafin tunnettuun laituriin. Ensimmäisen tunnetun nousun laituri kokeillaan
+  ensin, mutta poikkeustapauksessa muutkin saman tiealueen laiturit tutkitaan,
+  koska laiturin tiekoordinaatti voi korreloitua lautan väärälle puolelle.
 - Polkupyörän ulkoinen alku- tai loppuosuus hylätään, jos se ylittää 150 km.
 - Laiturilla voi olla erillinen `routingCoordinates`, jota käytetään
   tieverkolla. Muuten käytetään laiturin varsinaista koordinaattia.
