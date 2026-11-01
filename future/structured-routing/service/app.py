@@ -76,7 +76,6 @@ class RouteRequest(BaseModel):
     timing_profile: Literal["typical", "conservative"] = Field(
         default="typical", alias="timingProfile",
     )
-    same_day: bool = Field(default=True, alias="sameDay")
     max_results: int = Field(default=12, ge=1, le=24, alias="maxResults")
     include_diagnostics: bool = Field(default=False, alias="includeDiagnostics")
     include_decision_graph: bool = Field(default=False, alias="includeDecisionGraph")
@@ -277,7 +276,6 @@ def create_app() -> FastAPI:
                 request.start_time,
                 mode=request.mode,
                 timing_profile=request.timing_profile,
-                same_day=request.same_day,
                 max_results=request.max_results,
                 include_diagnostics=request.include_diagnostics,
                 include_decision_graph=request.include_decision_graph,

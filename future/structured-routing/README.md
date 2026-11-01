@@ -202,14 +202,14 @@ python3 future/structured-routing/scripts/route_itinerary.py \
   Verkan Storpensor 2026-10-30 12:00 --mode car
 
 python3 future/structured-routing/scripts/route_itineraries.py \
-  Turku Storpensor 2026-10-30 --mode car --same-day
+  Turku Storpensor 2026-10-30 --mode car
 
 python3 future/structured-routing/scripts/query_routes.py \
-  Turku Wihuri 2026-11-01 --mode car --same-day
+  Turku Wihuri 2026-11-01 --mode car
 
 python3 future/structured-routing/scripts/query_address_routes.py \
   "Hallituskatu 13, Tampere" "Norra Finbyvägen 8, Sund" \
-  2026-11-03 --mode car --same-day
+  2026-11-03 --mode car
 
 python3 future/structured-routing/scripts/audit_route_timing_coverage.py
 
@@ -460,8 +460,7 @@ curl http://127.0.0.1:8082/route \
     "origin": "Hallituskatu 13, Tampere",
     "destination": "Norra Finbyvägen 8, Sund",
     "date": "2026-11-03",
-    "mode": "car",
-    "sameDay": true
+    "mode": "car"
   }'
 ```
 
@@ -583,7 +582,7 @@ aikatauluvuoro menetetään tai yhteysriskin luokka vaihtuu. Näin harvoin
 liikennöidyllä reitillä ei lasketa kymmeniä keskenään samanlaisia hakuja, ja
 riskiluokan raja löytyy minuutin tarkkuudella askelvälistä riippumatta.
 
-Kun `sameDay` on `false`, reititin etsii enintään kolmen päivän aikajänteeltä
+Reititin etsii yhden kokonaisen seitsemänpäiväisen aikataulukierron ajalta
 ensimmäisen päivän, jona määränpäähän voidaan saapua, ja palauttaa kyseisen
 saapumispäivän hyödylliset vaihtoehdot. Myöhempien päivien samanlaisia vuoroja
 ei lasketa turhaan eikä palauteta ensimmäisten käyttökelpoisten yhteyksien

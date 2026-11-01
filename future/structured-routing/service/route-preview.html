@@ -1657,7 +1657,7 @@
           $("status").textContent = "Valitse täsmällinen lähtöpaikka tai määränpää avautuneesta luettelosta ja etsi reitit uudelleen.";
           return;
         }
-        const result = await fetch(apiUrl("route"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, sameDay: true, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
+        const result = await fetch(apiUrl("route"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ origin: $("origin").value, destination: $("destination").value, originSelection: selectedLocations.origin.selection, destinationSelection: selectedLocations.destination.selection, date: $("date").value, startTime: $("startTime").value, mode: $("mode").value, maxResults: 16, includeDiagnostics: true, includeDecisionGraph: true, includeGeometry: false }) });
         const payload = await responsePayload(result);
         if (result.status === 409 && payload.field && payload.suggestions?.length) {
           selectedLocations[payload.field] = null;

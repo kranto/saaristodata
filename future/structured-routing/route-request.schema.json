@@ -21,7 +21,6 @@
       "enum": ["typical", "conservative"],
       "default": "typical"
     },
-    "sameDay": { "type": "boolean", "default": true },
     "maxResults": { "type": "integer", "minimum": 1, "maximum": 24, "default": 12 },
     "includeDiagnostics": { "type": "boolean", "default": false },
     "includeDecisionGraph": { "type": "boolean", "default": false },

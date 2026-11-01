@@ -1045,7 +1045,6 @@ def find_itineraries(
     max_legs: int = 12,
     include_seed_sweep: bool = True,
     include_decision_graph: bool = False,
-    same_day: bool = False,
     graph_path: Path = DEFAULT_GRAPH,
     graph_data: dict | None = None,
 ) -> dict:
@@ -1066,7 +1065,6 @@ def find_itineraries(
         max_candidates=max_candidates,
         max_labels_per_node_hour=max_labels_per_node_hour,
         max_legs=max_legs,
-        same_day=same_day,
         graph=graph_path,
     )
     graph = graph_data if graph_data is not None else json.loads(args.graph.read_text())
@@ -1527,7 +1525,6 @@ def main() -> int:
     parser.add_argument("--max-labels-per-node-hour", type=int, default=20)
     parser.add_argument("--max-legs", type=int, default=12)
     parser.add_argument("--include-decision-graph", action="store_true")
-    parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
     args = parser.parse_args()
     try:
@@ -1544,7 +1541,6 @@ def main() -> int:
             max_labels_per_node_hour=args.max_labels_per_node_hour,
             max_legs=args.max_legs,
             include_decision_graph=args.include_decision_graph,
-            same_day=args.same_day,
             graph_path=args.graph,
         )
     except ValueError as error:

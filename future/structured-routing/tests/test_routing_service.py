@@ -383,7 +383,6 @@ class RoutingServiceTests(unittest.TestCase):
             "destination": "Wihuri address",
             "date": "2026-11-01",
             "mode": "car",
-            "sameDay": True,
             "maxResults": 2,
             "originSelection": {
                 "id": "test:second",
@@ -419,7 +418,6 @@ class RoutingServiceTests(unittest.TestCase):
             "destination": "Wihuri address",
             "date": "2026-11-01",
             "mode": "car",
-            "sameDay": True,
             "maxResults": 2,
         })
         self.assertEqual(response.status_code, 200, response.text)
@@ -442,12 +440,12 @@ class RoutingServiceTests(unittest.TestCase):
         self.assertTrue(road_legs)
         self.assertTrue(all("navigationCoordinates" in leg for leg in road_legs))
 
-    def test_unknown_request_field_is_rejected(self) -> None:
+    def test_removed_same_day_request_field_is_rejected(self) -> None:
         response = self.client.post("/route", json={
             "origin": "Origin address",
             "destination": "Wihuri address",
             "date": "2026-11-01",
-            "surprise": True,
+            "sameDay": True,
         })
         self.assertEqual(response.status_code, 422)
 
@@ -457,7 +455,6 @@ class RoutingServiceTests(unittest.TestCase):
             "destination": "Wihuri address",
             "date": "2026-11-01",
             "mode": "car",
-            "sameDay": True,
             "includeDecisionGraph": True,
             "includeGeometry": False,
         })
@@ -473,7 +470,6 @@ class RoutingServiceTests(unittest.TestCase):
             "destination": "Wihuri address",
             "date": "2026-11-01",
             "mode": "car",
-            "sameDay": True,
             "maxResults": 2,
         }
         first = self.client.post("/route", json=request)

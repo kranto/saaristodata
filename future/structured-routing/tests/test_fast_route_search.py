@@ -62,14 +62,14 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_search_does_not_mutate_reusable_graph(self) -> None:
         find_itineraries(
             "Turku", "Wihuri", date(2026, 11, 1),
-            same_day=True, max_results=3, graph_data=self.graph,
+            max_results=3, graph_data=self.graph,
         )
         self.assertTrue(all("_schedules" not in route for route in self.graph["routes"]))
 
     def test_dense_scheduled_cable_ferry_search_stays_bounded(self) -> None:
         result = find_itineraries(
             "Angelniemi", "Wihuri", date(2026, 11, 1), time(18, 1),
-            same_day=True, max_results=16, max_legs=21,
+            max_results=16, max_legs=21,
             graph_data=self.graph,
         )
 
@@ -92,7 +92,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_scheduled_ferry_leg_exposes_on_demand_availability(self) -> None:
         result = find_itineraries(
             "Angelniemi", "Wihuri", date(2026, 11, 2), time(6, 1),
-            same_day=True, max_results=16, max_legs=21,
+            max_results=16, max_legs=21,
             graph_data=self.graph,
         )
         kokkila_leg = next(
@@ -224,7 +224,7 @@ class FastRouteSearchTests(unittest.TestCase):
 
         result = find_itineraries(
             "origin", "destination", date(2026, 11, 2), time(8, 0),
-            same_day=True, max_results=1, graph_data=graph,
+            max_results=1, graph_data=graph,
         )
 
         self.assertEqual(result["status"], "routes_found")
@@ -281,11 +281,11 @@ class FastRouteSearchTests(unittest.TestCase):
 
         within_limit = find_itineraries(
             "origin", "destination", date(2026, 11, 2),
-            same_day=True, max_results=1, graph_data=graph("18:00"),
+            max_results=1, graph_data=graph("18:00"),
         )
         beyond_limit = find_itineraries(
             "origin", "destination", date(2026, 11, 2),
-            same_day=True, max_results=1, graph_data=graph("18:01"),
+            max_results=1, graph_data=graph("18:01"),
         )
 
         self.assertEqual(within_limit["status"], "routes_found")
@@ -393,7 +393,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_later_feeder_survives_shared_onward_sailing(self) -> None:
         result = find_itineraries(
             "Lillmälö", "Finholma", date(2026, 10, 25), time(12, 0),
-            same_day=True, max_results=20, graph_data=self.graph,
+            max_results=20, graph_data=self.graph,
         )
         direct = next(
             item for item in result["results"]
@@ -495,7 +495,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_published_aland_connection_is_not_ranked_below_readiness(self) -> None:
         result = find_itineraries(
             "Vuosnainen", "Hummelvik", date(2026, 10, 25), time(12, 30),
-            same_day=True, max_results=5, graph_data=self.graph,
+            max_results=5, graph_data=self.graph,
         )
         connection = result["results"][0]["legs"][-1]
         self.assertEqual(connection["publishedConnection"], {
@@ -543,7 +543,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_non_bookable_foglo_service_keeps_loading_readiness(self) -> None:
         result = find_itineraries(
             "Degerby", "Svinö", date(2026, 10, 25), time(11, 0),
-            same_day=True, max_results=2, graph_data=self.graph,
+            max_results=2, graph_data=self.graph,
         )
         leg = result["results"][0]["legs"][0]
         self.assertFalse(leg["booking"]["required"])
@@ -557,7 +557,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_vuosnainen_vehicle_charge_is_departure_specific(self) -> None:
         result = find_itineraries(
             "Vuosnainen", "Åva", date(2026, 10, 25), time(12, 30),
-            same_day=True, max_results=1, graph_data=self.graph,
+            max_results=1, graph_data=self.graph,
         )
         policy = result["results"][0]["legs"][0]["travelerInformation"]["farePolicy"]
         self.assertEqual(policy["vehicles"], "paid")
@@ -615,7 +615,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_adaptive_sweep_finds_all_wihuri_departures_without_half_hour_scan(self) -> None:
         result = find_itineraries(
             "Turku", "Wihuri", date(2026, 11, 1),
-            same_day=True, max_results=10, graph_data=self.graph,
+            max_results=10, graph_data=self.graph,
         )
         self.assertEqual(
             [item["suggestedOriginDeparture"] for item in result["results"]],
@@ -634,7 +634,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_reused_candidate_sweep_keeps_latest_feeder_to_same_final_sailing(self) -> None:
         result = find_itineraries(
             "Turku", "Storpensor", date(2026, 10, 30),
-            same_day=True, max_results=20, graph_data=self.graph,
+            max_results=20, graph_data=self.graph,
         )
         final_connection = next(
             item for item in result["results"]
@@ -667,7 +667,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_reused_candidate_sweep_keeps_later_keistio_routes(self) -> None:
         result = find_itineraries(
             "Keistiö", "Galtby", date(2026, 11, 2), time(6, 1),
-            same_day=True, max_results=20, graph_data=self.graph,
+            max_results=20, graph_data=self.graph,
         )
 
         self.assertEqual(result["resultCount"], 7)
@@ -679,7 +679,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_decision_graph_keeps_leg_specific_risk_alternatives(self) -> None:
         result = find_itineraries(
             "Turku", "Storpensor", date(2026, 10, 30),
-            same_day=True, max_results=20, graph_data=self.graph,
+            max_results=20, graph_data=self.graph,
             include_decision_graph=True,
         )
         graph = result["decisionGraph"]
@@ -764,7 +764,7 @@ class FastRouteSearchTests(unittest.TestCase):
     def test_decision_graph_keeps_all_reachable_tofto_departures(self) -> None:
         result = find_itineraries(
             "Kivimaa", "Degerby", date(2026, 10, 25), time(6, 1),
-            same_day=True, max_results=16, max_legs=21,
+            max_results=16, max_legs=21,
             graph_data=self.graph, include_decision_graph=True,
         )
         departures = {

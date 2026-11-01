@@ -409,7 +409,6 @@ def query_address_routes(
     *,
     mode: str = "car",
     timing_profile: str = "typical",
-    same_day: bool = False,
     max_results: int = 12,
     include_diagnostics: bool = False,
     include_decision_graph: bool = False,
@@ -451,7 +450,6 @@ def query_address_routes(
         start_time,
         mode=mode,
         timing_profile=timing_profile,
-        same_day=same_day,
         max_results=max_results,
         max_legs=MAX_ADDRESS_ROUTE_LEGS,
         include_decision_graph=include_decision_graph,
@@ -486,7 +484,6 @@ def main() -> int:
     parser.add_argument("start_time", type=parse_clock, nargs="?", default=time(0, 0))
     parser.add_argument("--mode", choices=("car", "motorcycle", "bicycle"), default="car")
     parser.add_argument("--timing-profile", choices=("typical", "conservative"), default="typical")
-    parser.add_argument("--same-day", action="store_true")
     parser.add_argument("--max-results", type=int, default=12)
     parser.add_argument("--include-diagnostics", action="store_true")
     parser.add_argument("--include-decision-graph", action="store_true")
@@ -507,7 +504,6 @@ def main() -> int:
             args.start_time,
             mode=args.mode,
             timing_profile=args.timing_profile,
-            same_day=args.same_day,
             max_results=args.max_results,
             include_diagnostics=args.include_diagnostics,
             include_decision_graph=args.include_decision_graph,

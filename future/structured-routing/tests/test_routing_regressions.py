@@ -35,7 +35,7 @@ def public_routes(origin: str, destination: str, date: str, time: str = "00:00")
     completed = subprocess.run(
         [
             sys.executable, str(PUBLIC_ROUTER), origin, destination, date, time,
-            "--mode", "car", "--same-day", "--max-results", "3",
+            "--mode", "car", "--max-results", "3",
         ],
         cwd=ROOT.parents[1],
         check=False,
