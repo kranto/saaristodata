@@ -256,6 +256,7 @@ fdata = {
     hogsara: {
       name: "Lautta #151",
       shortname: "L151",
+      mmsi: 230199320,
       features: { },
       capacity: { cars: 14 },
       contact: {
@@ -334,6 +335,7 @@ fdata = {
     l197: {
       name: "Lautta #197",
       shortname: "L197",
+      mmsi: 230938250,
       features: { },
       capacity: { cars: 30 },
       contact: {
@@ -343,6 +345,7 @@ fdata = {
     l198: {
       name: "Lautta #198",
       shortname: "L198",
+      mmsi: 230184710,
       features: { },
       capacity: { cars: 36 },
       contact: {
@@ -352,6 +355,7 @@ fdata = {
     l144: {
       name: "Lautta #144",
       shortname: "L144",
+      mmsi: 230181340,
       features: { },
       capacity: { cars: 27, persons: true },
       contact: {
@@ -668,6 +672,7 @@ fdata = {
     },
     alva: {
       name: "M/S Alva",
+      mmsi: 230054170,
       features: { },
       capacity: { persons: 20 },
       contact: {
