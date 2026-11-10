@@ -1586,7 +1586,7 @@
       "properties": {
         "stype": "pier",
         "ref": "Snäckö",
-        "ssubtype": "2",
+        "ssubtype": "3",
         "labelAnchor": {"dir": "E", "x":7 , "y":0 },
         "markerVisibleFrom": 10
       },
