@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-11T11:46:23.759414+00:00",
-  "area": "pilot-kustavi-inio-velkua",
+  "generated_at": "2026-11-11T15:18:30.387351+00:00",
+  "area": "pilot-archipelago-sea",
   "source": "mml-kmtk-beta",
-  "archive": "landcover-pilot-kustavi-inio-velkua-kmtk.pmtiles",
-  "bytes": 9641041,
-  "sha256": "fe1b5b1e5cab79b0966757621f2621d3238113aaa3a35d93955cbc090a5eb811",
+  "archive": "landcover-pilot-archipelago-sea-kmtk.pmtiles",
+  "bytes": 22712286,
+  "sha256": "2e4f04865222cc714455d14254f43ed6f5b7fa9ab0dbd1c997b7abaa922e38ef",
   "bounds_wgs84": [
-    21.05,
-    60.2,
+    20.1,
+    59.7,
     22.0,
     60.7
   ],

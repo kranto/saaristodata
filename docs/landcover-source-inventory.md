@@ -97,6 +97,11 @@ only as a later gap filler. In the Kustavi–Iniö–Velkua pilot, KMTK returned
 43,056 raw `rock_area` polygons, showing why its rock geometry is materially
 more useful than the Syke raster around Rymättylä.
 
+The expanded Archipelago Sea pilot uses bounds `[20.10, 59.70, 22.00, 60.70]`,
+four times the original bounding-box area. It returned 128,847 raw features,
+including 103,946 `rock_area` polygons. After validation and size filtering,
+126,713 features were written to a 22.7 MB PMTiles archive.
+
 Source:
 
 - https://www.maanmittauslaitos.fi/kartat-ja-paikkatieto/aineistot-ja-rajapinnat/maastotiedot-ja-niiden-hankinta/maastotiedot

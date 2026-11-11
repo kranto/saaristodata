@@ -20,7 +20,7 @@ REQUEST_LIMIT = 10_000
 INITIAL_SPLIT_DEPTHS = {
     # The full pilot contains enough rock polygons that asking for all of them
     # in one response is slow and frequently times out in the BETA service.
-    "rock_area": 3,
+    "rock_area": 5,
 }
 
 
@@ -132,7 +132,7 @@ def feature_identifier(feature: dict) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
+    parser.add_argument("--area", default="pilot-archipelago-sea")
     parser.add_argument("--source", default=DEFAULT_SOURCE)
     parser.add_argument("--api-key-file", type=Path)
     parser.add_argument("--output", type=Path)

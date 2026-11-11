@@ -21,7 +21,7 @@ DEFAULT_SOURCE = "mml-kmtk-beta"
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
+    parser.add_argument("--area", default="pilot-archipelago-sea")
     parser.add_argument("--source", default=DEFAULT_SOURCE)
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)

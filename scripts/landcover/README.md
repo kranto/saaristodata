@@ -54,16 +54,16 @@ local file outside the repository. Then run:
 ```sh
 /tmp/saaristolautat-landcover-venv/bin/python \
   scripts/landcover/download_kmtk.py \
-  --area pilot-kustavi-inio-velkua \
+  --area pilot-archipelago-sea \
   --api-key-file /path/to/mml-api-key
 
 /tmp/saaristolautat-landcover-venv/bin/python \
   scripts/landcover/build_kmtk_geojson.py \
-  --area pilot-kustavi-inio-velkua
+  --area pilot-archipelago-sea
 
 /tmp/saaristolautat-landcover-venv/bin/python \
   scripts/landcover/build_tiles.py \
-  --area pilot-kustavi-inio-velkua \
+  --area pilot-archipelago-sea \
   --source mml-kmtk-beta \
   --variant kmtk
 ```

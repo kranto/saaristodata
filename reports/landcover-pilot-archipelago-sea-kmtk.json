@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-11-11T15:18:17.699010+00:00",
+  "area": "pilot-archipelago-sea",
+  "source": "mml-kmtk-beta",
+  "input": "raw/landcover/mml-kmtk-beta/pilot-archipelago-sea.geojson",
+  "output": "work/landcover/pilot-archipelago-sea-kmtk.geojson",
+  "output_bytes": 76012736,
+  "feature_counts": {
+    "bare": 48,
+    "farmland": 7977,
+    "open": 2802,
+    "rock": 103073,
+    "sand": 240,
+    "urban": 53,
+    "wetland": 12520
+  },
+  "source_collection_counts": {
+    "brush": 34,
+    "cultivated_land": 7977,
+    "earth_fill": 11,
+    "marsh": 1240,
+    "meadow": 2187,
+    "open_woodland": 581,
+    "paludified_land": 2712,
+    "peatland": 8568,
+    "quarry": 19,
+    "rock_area": 102424,
+    "sand": 240,
+    "soil_extraction_area": 18,
+    "stony_ground": 649,
+    "urban_area": 53
+  },
+  "area_square_metres": {
+    "bare": 1831120.3,
+    "farmland": 336419020.1,
+    "open": 42840836.3,
+    "rock": 715670069.2,
+    "sand": 985534.7,
+    "urban": 9898597.6,
+    "wetland": 71168371.6
+  },
+  "download": {
+    "downloaded_at": "2026-11-11T15:17:31.387061+00:00",
+    "area": "pilot-archipelago-sea",
+    "source": "mml-kmtk-beta",
+    "bbox_wgs84": [
+      20.1,
+      59.7,
+      22.0,
+      60.7
+    ],
+    "collections": {
+      "brush": 34,
+      "cultivated_land": 8277,
+      "earth_fill": 11,
+      "marsh": 1240,
+      "meadow": 2200,
+      "open_woodland": 581,
+      "paludified_land": 2716,
+      "peatland": 8863,
+      "quarry": 19,
+      "rock_area": 103946,
+      "sand": 240,
+      "soil_extraction_area": 18,
+      "stony_ground": 649,
+      "urban_area": 53
+    },
+    "features": 128847,
+    "bytes": 469987996,
+    "output": "raw/landcover/mml-kmtk-beta/pilot-archipelago-sea.geojson"
+  },
+  "tiles": {
+    "generated_at": "2026-11-11T15:18:30.387351+00:00",
+    "output": "tiles/landcover-pilot-archipelago-sea-kmtk.pmtiles",
+    "output_bytes": 22712286,
+    "layer_name": "landcover",
+    "minimum_zoom": 10,
+    "maximum_zoom": 14,
+    "zoom_statistics": {
+      "10": {
+        "tiles": 36,
+        "minimum_bytes": 240,
+        "maximum_bytes": 221613,
+        "average_bytes": 86604.5
+      },
+      "11": {
+        "tiles": 134,
+        "minimum_bytes": 204,
+        "maximum_bytes": 108561,
+        "average_bytes": 26383.9
+      },
+      "12": {
+        "tiles": 465,
+        "minimum_bytes": 149,
+        "maximum_bytes": 38817,
+        "average_bytes": 8687.5
+      },
+      "13": {
+        "tiles": 1624,
+        "minimum_bytes": 147,
+        "maximum_bytes": 14421,
+        "average_bytes": 3110.4
+      },
+      "14": {
+        "tiles": 5487,
+        "minimum_bytes": 146,
+        "maximum_bytes": 5721,
+        "average_bytes": 1267.0
+      }
+    }
+  }
+}

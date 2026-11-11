@@ -59,6 +59,14 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(second[2:], [22.0, 60.7])
         self.assertEqual(first[2], second[0])
 
+    def test_expanded_kmtk_pilot_is_four_times_original_bbox(self) -> None:
+        expanded = area_config(self.manifest, "pilot-archipelago-sea")
+        old_west, old_south, old_east, old_north = self.area["bbox_wgs84"]
+        west, south, east, north = expanded["bbox_wgs84"]
+        self.assertAlmostEqual(east - west, 2 * (old_east - old_west))
+        self.assertAlmostEqual(north - south, 2 * (old_north - old_south))
+        self.assertEqual((east, north), (old_east, old_north))
+
 
 if __name__ == "__main__":
     unittest.main()
