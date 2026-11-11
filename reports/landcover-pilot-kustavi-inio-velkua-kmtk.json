@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-11-11T11:46:12.901476+00:00",
+  "area": "pilot-kustavi-inio-velkua",
+  "source": "mml-kmtk-beta",
+  "input": "raw/landcover/mml-kmtk-beta/pilot-kustavi-inio-velkua.geojson",
+  "output": "work/landcover/pilot-kustavi-inio-velkua-kmtk.geojson",
+  "output_bytes": 31655255,
+  "feature_counts": {
+    "bare": 34,
+    "farmland": 4846,
+    "open": 1580,
+    "rock": 40340,
+    "sand": 38,
+    "urban": 43,
+    "wetland": 5617
+  },
+  "source_collection_counts": {
+    "cultivated_land": 4846,
+    "earth_fill": 7,
+    "marsh": 820,
+    "meadow": 1306,
+    "open_woodland": 274,
+    "paludified_land": 1356,
+    "peatland": 3441,
+    "quarry": 14,
+    "rock_area": 40213,
+    "sand": 38,
+    "soil_extraction_area": 13,
+    "stony_ground": 127,
+    "urban_area": 43
+  },
+  "area_square_metres": {
+    "bare": 1575229.5,
+    "farmland": 257764031.3,
+    "open": 22798670.5,
+    "rock": 267045461.4,
+    "sand": 46061.8,
+    "urban": 8403198.1,
+    "wetland": 36406713.9
+  },
+  "download": {
+    "downloaded_at": "2026-11-11T11:45:44.991528+00:00",
+    "area": "pilot-kustavi-inio-velkua",
+    "source": "mml-kmtk-beta",
+    "bbox_wgs84": [
+      21.05,
+      60.2,
+      22.0,
+      60.7
+    ],
+    "collections": {
+      "brush": 0,
+      "cultivated_land": 5353,
+      "earth_fill": 7,
+      "marsh": 838,
+      "meadow": 1360,
+      "open_woodland": 310,
+      "paludified_land": 1473,
+      "peatland": 3838,
+      "quarry": 15,
+      "rock_area": 43056,
+      "sand": 38,
+      "soil_extraction_area": 13,
+      "stony_ground": 170,
+      "urban_area": 43
+    },
+    "features": 56514,
+    "bytes": 197886615,
+    "output": "raw/landcover/mml-kmtk-beta/pilot-kustavi-inio-velkua.geojson"
+  },
+  "tiles": {
+    "generated_at": "2026-11-11T11:46:23.759414+00:00",
+    "output": "tiles/landcover-pilot-kustavi-inio-velkua-kmtk.pmtiles",
+    "output_bytes": 9641041,
+    "layer_name": "landcover",
+    "minimum_zoom": 10,
+    "maximum_zoom": 14,
+    "zoom_statistics": {
+      "10": {
+        "tiles": 16,
+        "minimum_bytes": 288,
+        "maximum_bytes": 196721,
+        "average_bytes": 83342.0
+      },
+      "11": {
+        "tiles": 48,
+        "minimum_bytes": 206,
+        "maximum_bytes": 90541,
+        "average_bytes": 31487.0
+      },
+      "12": {
+        "tiles": 141,
+        "minimum_bytes": 303,
+        "maximum_bytes": 31044,
+        "average_bytes": 12201.1
+      },
+      "13": {
+        "tiles": 510,
+        "minimum_bytes": 149,
+        "maximum_bytes": 11377,
+        "average_bytes": 4201.5
+      },
+      "14": {
+        "tiles": 1837,
+        "minimum_bytes": 147,
+        "maximum_bytes": 4826,
+        "average_bytes": 1593.3
+      }
+    }
+  }
+}

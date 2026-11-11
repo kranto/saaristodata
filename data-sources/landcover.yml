@@ -9,6 +9,36 @@ areas:
     output_resolution_metres: 10
 
 sources:
+  mml-kmtk-beta:
+    status: pilot-only
+    title: Kansallinen maastotietokanta BETA
+    organisation: Maanmittauslaitos
+    metadata_url: https://www.maanmittauslaitos.fi/rajapintapalvelut/maastotietojen-kyselypalvelu-beta
+    service_url: https://open-api-geospatial.nls.fi/api/topodb/open-data/features/v1
+    service: OGC API Features BETA
+    crs: EPSG:4326
+    license: CC BY 4.0
+    attribution: "Lähde: Maanmittauslaitos, Kansallinen maastotietokanta BETA"
+    authentication: MML_API_KEY environment variable or local API-key file
+    limitations:
+      - BETA data is only permitted for testing and can change before production release.
+      - KMTK has no continuous forest polygon; Syke may be needed later to fill unclassified land.
+    collection_mapping:
+      brush: open
+      cultivated_land: farmland
+      earth_fill: bare
+      marsh: wetland
+      meadow: open
+      open_woodland: open
+      paludified_land: wetland
+      peatland: wetland
+      quarry: bare
+      rock_area: rock
+      sand: sand
+      soil_extraction_area: bare
+      stony_ground: rock
+      urban_area: urban
+
   syke-maanpeite-2022:
     status: active
     title: Maanpeite 2 m 2022
@@ -64,4 +94,13 @@ processing:
   simplify_tolerance_metres: 5
   tile_minzoom: 10
   tile_maxzoom: 14
+  kmtk_minimum_area_square_metres:
+    forest: 2500
+    farmland: 1000
+    open: 500
+    wetland: 500
+    rock: 100
+    sand: 100
+    bare: 500
+    urban: 2500
 

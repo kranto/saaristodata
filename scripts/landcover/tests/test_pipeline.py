@@ -10,6 +10,7 @@ SCRIPT_DIRECTORY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPT_DIRECTORY))
 
 from common import area_config, load_manifest, source_config  # noqa: E402
+from download_kmtk import collection_url, split_bbox  # noqa: E402
 from download_syke import build_url  # noqa: E402
 
 
@@ -35,6 +36,28 @@ class PipelineConfigurationTests(unittest.TestCase):
         processing = self.manifest["processing"]
         self.assertEqual(processing["tile_minzoom"], 10)
         self.assertEqual(processing["tile_maxzoom"], 14)
+
+    def test_kmtk_collections_cover_selected_polygon_classes(self) -> None:
+        source = source_config(self.manifest, "mml-kmtk-beta")
+        self.assertEqual(source["status"], "pilot-only")
+        self.assertEqual(
+            set(source["collection_mapping"].values()),
+            {"bare", "farmland", "open", "rock", "sand", "urban", "wetland"},
+        )
+        self.assertNotIn("forest", source["collection_mapping"].values())
+
+    def test_kmtk_collection_url_has_bounded_query(self) -> None:
+        source = source_config(self.manifest, "mml-kmtk-beta")
+        url = collection_url(source["service_url"], "rock_area", self.area["bbox_wgs84"])
+        query = urllib.parse.parse_qs(urllib.parse.urlsplit(url).query)
+        self.assertEqual(query["bbox"], ["21.05,60.2,22.0,60.7"])
+        self.assertEqual(query["limit"], ["10000"])
+
+    def test_kmtk_bbox_split_preserves_extent(self) -> None:
+        first, second = split_bbox(self.area["bbox_wgs84"])
+        self.assertEqual(first[:2], [21.05, 60.2])
+        self.assertEqual(second[2:], [22.0, 60.7])
+        self.assertEqual(first[2], second[0])
 
 
 if __name__ == "__main__":

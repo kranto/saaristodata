@@ -55,6 +55,8 @@ def sha256(path: Path) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
+    parser.add_argument("--source")
+    parser.add_argument("--variant", help="Filename suffix, for example kmtk")
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--force", action="store_true")
@@ -63,9 +65,11 @@ def main() -> None:
     manifest = load_manifest()
     area_config(manifest, args.area)
     processing = manifest["processing"]
-    source = manifest["sources"][processing["source_name"]]
-    input_path = args.input or REPO_ROOT / "work" / "landcover" / f"{args.area}.geojson"
-    output_path = args.output or REPO_ROOT / "tiles" / f"landcover-{args.area}.pmtiles"
+    source_name = args.source or processing["source_name"]
+    source = manifest["sources"][source_name]
+    suffix = f"-{args.variant}" if args.variant else ""
+    input_path = args.input or REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
+    output_path = args.output or REPO_ROOT / "tiles" / f"landcover-{args.area}{suffix}.pmtiles"
     mbtiles_path = output_path.with_suffix(".mbtiles")
 
     if not input_path.exists():
@@ -87,12 +91,12 @@ def main() -> None:
         "--maximum-zoom", str(processing["tile_maxzoom"]),
         "--coalesce-smallest-as-needed",
         "--attribution", source["attribution"],
-        "--name", f"Complementary land cover: {args.area}",
+        "--name", f"Complementary land cover ({source_name}): {args.area}",
         str(input_path),
     ], check=True)
     subprocess.run([pmtiles, "convert", str(mbtiles_path), str(output_path)], check=True)
 
-    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}.json"
+    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}{suffix}.json"
     report = json.loads(report_path.read_text(encoding="utf-8")) if report_path.exists() else {}
     report["tiles"] = {
         "generated_at": datetime.now(UTC).isoformat(),
@@ -110,6 +114,7 @@ def main() -> None:
         "schema_version": 1,
         "generated_at": report["tiles"]["generated_at"],
         "area": args.area,
+        "source": source_name,
         "archive": output_path.name,
         "bytes": output_path.stat().st_size,
         "sha256": sha256(output_path),
@@ -117,10 +122,12 @@ def main() -> None:
         "minimum_zoom": processing["tile_minzoom"],
         "maximum_zoom": processing["tile_maxzoom"],
         "layer_name": processing["layer_name"],
-        "classes": sorted(set(source["class_mapping"].values())),
+        "classes": sorted(set(
+            source.get("class_mapping", source.get("collection_mapping", {})).values()
+        )),
         "attribution": source["attribution"],
     }
-    active_manifest_path = REPO_ROOT / "tiles" / "landcover.json"
+    active_manifest_path = REPO_ROOT / "tiles" / f"landcover{suffix}.json"
     active_manifest_path.write_text(
         json.dumps(active_manifest, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",

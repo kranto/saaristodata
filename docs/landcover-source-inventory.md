@@ -79,6 +79,24 @@ be used in production. MML also states that KMTK is intended for analysis and
 data integration rather than direct cartographic products. The production
 pipeline must therefore not depend on the beta schema.
 
+The November 2026 comparison pilot nevertheless uses the bounded KMTK OGC API
+Features service in test and development. Relevant polygon collections are
+normalized to Saaristolautat classes as follows:
+
+- `rock_area` and `stony_ground` → `rock`
+- `cultivated_land` → `farmland`
+- `meadow`, `open_woodland` and `brush` → `open`
+- `marsh`, `paludified_land` and `peatland` → `wetland`
+- `sand` → `sand`
+- `earth_fill`, `quarry` and `soil_extraction_area` → `bare`
+- `urban_area` → `urban`
+
+There is no continuous forest polygon collection. The KMTK-only variant
+therefore deliberately leaves those areas unclassified; Syke is considered
+only as a later gap filler. In the Kustavi–Iniö–Velkua pilot, KMTK returned
+43,056 raw `rock_area` polygons, showing why its rock geometry is materially
+more useful than the Syke raster around Rymättylä.
+
 Source:
 
 - https://www.maanmittauslaitos.fi/kartat-ja-paikkatieto/aineistot-ja-rajapinnat/maastotiedot-ja-niiden-hankinta/maastotiedot

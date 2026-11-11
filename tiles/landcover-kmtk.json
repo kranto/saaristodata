@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-11T11:46:23.759414+00:00",
+  "area": "pilot-kustavi-inio-velkua",
+  "source": "mml-kmtk-beta",
+  "archive": "landcover-pilot-kustavi-inio-velkua-kmtk.pmtiles",
+  "bytes": 9641041,
+  "sha256": "fe1b5b1e5cab79b0966757621f2621d3238113aaa3a35d93955cbc090a5eb811",
+  "bounds_wgs84": [
+    21.05,
+    60.2,
+    22.0,
+    60.7
+  ],
+  "minimum_zoom": 10,
+  "maximum_zoom": 14,
+  "layer_name": "landcover",
+  "classes": [
+    "bare",
+    "farmland",
+    "open",
+    "rock",
+    "sand",
+    "urban",
+    "wetland"
+  ],
+  "attribution": "Lähde: Maanmittauslaitos, Kansallinen maastotietokanta BETA"
+}

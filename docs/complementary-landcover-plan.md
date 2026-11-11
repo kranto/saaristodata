@@ -37,9 +37,10 @@ ja vesistöjä ei korvata, vaan ne tulevat edelleen OpenFreeMapista.
 
 ### Manner-Suomi ja Turun saaristo
 
-Ensisijainen lähde on Maanmittauslaitoksen Maastotietokanta. Aineisto ladataan
-GeoPackage-muodossa vapaalla aluerajauksella tai myöhemmin automatisoidusti
-MML:n OGC API Features- tai OGC API Processes -rajapinnasta.
+Ensisijainen kokeilulähde on Maanmittauslaitoksen Kansallinen
+maastotietokanta (KMTK). BETA-vaiheessa aineisto ladataan rajatusti MML:n OGC
+API Features -rajapinnasta vain testi- ja kehityskäyttöön. Tuotantokäyttö
+edellyttää KMTK:n tuotantoversion, skeeman ja käyttöehtojen uutta tarkistusta.
 
 Koko Suomen GeoPackagea ei ladata. Lataus rajataan Saaristolauttojen
 toiminta-alueeseen ja vain tarvittaviin teemoihin.
@@ -52,6 +53,13 @@ Lähteet:
 Maastotietokanta on CC BY 4.0 -lisensoitu. Aineistolähde, aineiston nimi ja
 luovutusajankohta merkitään sekä tuotantotiedoston metatietoihin että kartan
 tekijätietoihin.
+
+KMTK:n aluekohteista saadaan muun muassa avokallio, viljelysmaa, suo, niitty,
+harvapuustoinen alue, hiekka ja taajama. Jatkuvaa metsäpolygonia ei ole.
+Ensimmäinen KMTK-versio jätetään tarkoituksella ilman Syke-täyttöä, jotta
+KMTK:n todellinen kattavuus voidaan arvioida. Syken Maanpeite 2 m 2022 otetaan
+mukaan vasta, jos luokittelemattomien alueiden täydentämisestä on kartalle
+selvää hyötyä.
 
 ### Ahvenanmaa
 
