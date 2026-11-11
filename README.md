@@ -86,6 +86,10 @@ numeroa ei tarvitse kasvattaa uudelleen.
   hinnoittelun lähdemuistio.
 - `docs/complementary-landcover-plan.md`: suunnitelma OpenFreeMap-pohjakarttaa
   täydentävän maanpeiteaineiston tuottamiseen, tarjoiluun ja ylläpitoon.
+- `docs/landcover-source-inventory.md`: täydentävän maanpeitteen lähdevertailu,
+  luokkakoodit ja ensimmäisen pilotin lähdevalinta.
+- `scripts/landcover/`: toistettava lataus- ja käsittelyputki täydentävän
+  maanpeitteen pilottia varten.
 - `future/structured-routing/structured-timetables.json`: koneellisesti muodostettu rakenteellisen
   aikataulun luonnos. Tietueen `review.status` kertoo tarkistustilan.
 - `future/structured-routing/structured-timetables.schema.json`: rakenteellisen aikataulun JSON Schema.

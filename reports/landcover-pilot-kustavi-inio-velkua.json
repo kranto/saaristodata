@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-11-11T03:12:33.132006+00:00",
+  "area": "pilot-kustavi-inio-velkua",
+  "source": "syke-maanpeite-2022",
+  "input": "raw/landcover/syke-maanpeite-2022/pilot-kustavi-inio-velkua.tif",
+  "output": "work/landcover/pilot-kustavi-inio-velkua.geojson",
+  "output_bytes": 145839986,
+  "raster": {
+    "width": 5800,
+    "height": 5200,
+    "resolution": [
+      9.999910611861806,
+      9.99994874510943
+    ],
+    "crs": "EPSG:3067",
+    "bounds": [
+      170003.03174768708,
+      6687997.578889818,
+      228002.51329648556,
+      6739997.312364387
+    ],
+    "nodata": -9999.0
+  },
+  "source_pixel_counts": {
+    "211": 2765665,
+    "212": 2237943,
+    "220": 6471210,
+    "310": 80345,
+    "410": 898239
+  },
+  "feature_counts": {
+    "bare": 9523,
+    "farmland": 4094,
+    "forest": 8178,
+    "open": 10795,
+    "rock": 1182
+  },
+  "area_square_metres": {
+    "bare": 42724599.1,
+    "farmland": 276126116.4,
+    "forest": 618744697.7,
+    "open": 105100421.8,
+    "rock": 2950058.5
+  },
+  "download": {
+    "area": "pilot-kustavi-inio-velkua",
+    "source": "syke-maanpeite-2022",
+    "downloaded_at": "2026-11-11T03:11:42.968089+00:00",
+    "request_url": "https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Maanpeite2022Scalgo&SUBSET=N%286688000%2C6740000%29&SUBSET=E%28170000%2C228000%29&subsettingcrs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3067&format=image%2Ftiff&SCALEFACTOR=0.2",
+    "bytes": 69207476,
+    "sha256": "249ac237360a50053c880dafe217a3d2d6e89954dc0c680719ecf7e95bfec735",
+    "output": "raw/landcover/syke-maanpeite-2022/pilot-kustavi-inio-velkua.tif"
+  },
+  "tiles": {
+    "generated_at": "2026-11-11T03:23:18.842391+00:00",
+    "output": "tiles/landcover-pilot-kustavi-inio-velkua.pmtiles",
+    "output_bytes": 23379016,
+    "layer_name": "landcover",
+    "minimum_zoom": 10,
+    "maximum_zoom": 14,
+    "zoom_statistics": {
+      "10": {
+        "tiles": 16,
+        "minimum_bytes": 300,
+        "maximum_bytes": 499804,
+        "average_bytes": 224675.6
+      },
+      "11": {
+        "tiles": 48,
+        "minimum_bytes": 200,
+        "maximum_bytes": 254692,
+        "average_bytes": 85483.0
+      },
+      "12": {
+        "tiles": 153,
+        "minimum_bytes": 145,
+        "maximum_bytes": 73926,
+        "average_bytes": 28940.3
+      },
+      "13": {
+        "tiles": 545,
+        "minimum_bytes": 127,
+        "maximum_bytes": 27331,
+        "average_bytes": 9203.5
+      },
+      "14": {
+        "tiles": 1941,
+        "minimum_bytes": 123,
+        "maximum_bytes": 10221,
+        "average_bytes": 3210.0
+      }
+    }
+  }
+}

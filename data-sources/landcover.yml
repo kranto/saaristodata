@@ -1,0 +1,67 @@
+schema_version: 1
+
+areas:
+  pilot-kustavi-inio-velkua:
+    description: Kustavi-Iniö-Velkua pilot area
+    bbox_wgs84: [21.05, 60.20, 22.00, 60.70]
+    # Rounded outwards from bbox_wgs84. WCS subsets use EPSG:3067 axis names.
+    bbox_epsg3067: [170000, 6688000, 228000, 6740000]
+    output_resolution_metres: 10
+
+sources:
+  syke-maanpeite-2022:
+    status: active
+    title: Maanpeite 2 m 2022
+    organisation: Suomen ympäristökeskus (Syke)
+    metadata_url: https://luontotieto.syke.fi/en/aineisto/maanpeite-2-m-2022-ja-jatkojaloste-kasvillisuuden-korkeudella-2/
+    service_url: https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs
+    service: WCS 2.0.1
+    coverage_id: Maanpeite2022Scalgo
+    native_resolution_metres: 2
+    crs: EPSG:3067
+    license: CC BY 4.0
+    attribution: "Lähde: Syke, Maanpeite 2 m 2022"
+    notes:
+      - The source covers Finland, including Åland.
+      - The base product has a generic high-vegetation class on Åland even though canopy-height data are incomplete there.
+      - WCS output is requested at a coarser resolution for the map pilot.
+    class_mapping:
+      211: farmland
+      212: open
+      220: forest
+      310: rock
+      410: bare
+
+  mml-topographic-database:
+    status: supplemental-research
+    title: Maastotietokanta
+    organisation: Maanmittauslaitos
+    metadata_url: https://www.maanmittauslaitos.fi/kartat-ja-paikkatieto/aineistot-ja-rajapinnat/tuotekuvaukset/maastotietokanta
+    api_url: https://avoin-paikkatieto.maanmittauslaitos.fi/maastotiedot/features/v1/
+    crs: EPSG:3067
+    license: CC BY 4.0
+    attribution: Sisältää Maanmittauslaitoksen Maastotietokannan aineistoa
+    authentication: User-specific API key required for the open OGC API Features service
+    useful_polygon_classes:
+      farmland: [32611, 32612]
+      meadow: [32800]
+      wetland: [35300, 35411, 35412, 35421, 35422]
+      open: [39110, 39120, 39130]
+    limitations:
+      - Forest vegetation classes 32710, 32713, 32714, 32715 and 32719 are cartographic points, not forest polygons.
+      - The source cannot provide continuous forest cover by itself.
+
+processing:
+  output_crs: EPSG:4326
+  layer_name: landcover
+  source_name: syke-maanpeite-2022
+  minimum_area_square_metres:
+    forest: 2500
+    farmland: 1000
+    open: 2500
+    rock: 1000
+    bare: 1000
+  simplify_tolerance_metres: 5
+  tile_minzoom: 10
+  tile_maxzoom: 14
+
