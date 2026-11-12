@@ -137,6 +137,37 @@ underneath the more specific KMTK polygons:
   --variant syke-forest
 ```
 
+### Kumlinge-Seglinge forest smoothing pilot
+
+The smoothing pilot clips the existing 20 metre forest raster to the test
+area, upsamples the binary mask to a 5 metre working grid, applies a
+conservative 10 metre box-filter radius and vectorizes the 50% contour. This
+is cartographic smoothing; it does not increase the source data accuracy.
+
+```sh
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_geojson.py \
+  --area pilot-kumlinge-seglinge \
+  --variant syke-forest-smoothed \
+  --include-class forest \
+  --input raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif \
+  --clip-to-area \
+  --smooth-factor 4 \
+  --smooth-radius-pixels 2
+
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_tiles.py \
+  --area pilot-kumlinge-seglinge \
+  --source syke-maanpeite-2022 \
+  --variant syke-forest-smoothed \
+  --force
+```
+
+Compare the original and smoothed variants in the local application:
+
+- original: `?screenshotCenter=20.76234,60.24975&screenshotZoom=13`
+- smoothed: `?forest=smoothed&screenshotCenter=20.76234,60.24975&screenshotZoom=13`
+
 ## Tests
 
 ```sh

@@ -70,6 +70,11 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(expanded["bbox_wgs84"], [19.0, 59.7, 23.0, 60.7])
         self.assertEqual(expanded["bbox_epsg3067"], [50000, 6624000, 282000, 6757000])
 
+    def test_forest_smoothing_pilot_uses_kumlinge_seglinge_bounds(self) -> None:
+        pilot = area_config(self.manifest, "pilot-kumlinge-seglinge")
+        self.assertEqual(pilot["bbox_wgs84"], [20.54017, 60.18646, 20.98451, 60.31304])
+        self.assertEqual(pilot["bbox_epsg3067"], [142000, 6687000, 168000, 6704000])
+
 
 if __name__ == "__main__":
     unittest.main()

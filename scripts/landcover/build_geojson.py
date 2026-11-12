@@ -11,8 +11,11 @@ from pathlib import Path
 
 import numpy as np
 import rasterio
+from affine import Affine
 from pyproj import Transformer
 from rasterio.features import shapes
+from rasterio.windows import Window, from_bounds
+from rasterio.warp import Resampling, reproject
 from shapely import transform
 from shapely.geometry import mapping, shape
 
@@ -28,19 +31,32 @@ def main() -> None:
     parser.add_argument("--source", default=DEFAULT_SOURCE)
     parser.add_argument("--variant")
     parser.add_argument("--include-class", action="append", dest="included_classes")
+    parser.add_argument("--clip-to-area", action="store_true")
+    parser.add_argument(
+        "--smooth-factor",
+        type=int,
+        default=1,
+        help="Upsample a single-class mask before vectorizing (for example 4)",
+    )
+    parser.add_argument(
+        "--smooth-radius-pixels",
+        type=int,
+        default=0,
+        help="Box-filter radius after upsampling, in output pixels",
+    )
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
 
     manifest = load_manifest()
-    area_config(manifest, args.area)
+    area = area_config(manifest, args.area)
     source = source_config(manifest, args.source)
     processing = manifest["processing"]
     suffix = f"-{args.variant}" if args.variant else ""
-    source_path = args.input or (
+    source_path = args.input.resolve() if args.input else (
         REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}{suffix}.tif"
     )
-    output_path = args.output or (
+    output_path = args.output.resolve() if args.output else (
         REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
     )
 
@@ -56,6 +72,12 @@ def main() -> None:
             if name in requested_classes
         }
     class_names = sorted(set(class_mapping.values()))
+    if args.smooth_factor < 1:
+        raise ValueError("--smooth-factor must be at least 1")
+    if args.smooth_radius_pixels < 0:
+        raise ValueError("--smooth-radius-pixels cannot be negative")
+    if args.smooth_factor > 1 and len(class_names) != 1:
+        raise ValueError("--smooth-factor requires exactly one included class")
     class_indexes = {name: index + 1 for index, name in enumerate(class_names)}
     reverse_indexes = {index: name for name, index in class_indexes.items()}
     minimum_areas = processing["minimum_area_square_metres"]
@@ -69,7 +91,16 @@ def main() -> None:
     with rasterio.open(source_path) as dataset:
         if dataset.crs is None:
             raise ValueError(f"Input raster {source_path} has no CRS")
-        values = dataset.read(1)
+        window = None
+        if args.clip_to_area:
+            if dataset.crs.to_epsg() != 3067:
+                raise ValueError("--clip-to-area currently requires an EPSG:3067 source raster")
+            window = from_bounds(*area["bbox_epsg3067"], transform=dataset.transform)
+            window = window.round_offsets().round_lengths().intersection(
+                Window(0, 0, dataset.width, dataset.height)
+            )
+        values = dataset.read(1, window=window)
+        working_transform = dataset.window_transform(window) if window else dataset.transform
         valid = values != dataset.nodata if dataset.nodata is not None else np.ones(values.shape, bool)
         reclassified = np.zeros(values.shape, dtype=np.uint8)
         for source_value, class_name in class_mapping.items():
@@ -77,11 +108,40 @@ def main() -> None:
             source_counts[str(source_value)] = int(mask.sum())
             reclassified[mask] = class_indexes[class_name]
 
+        if args.smooth_factor > 1:
+            factor = args.smooth_factor
+            smoothed = np.zeros(
+                (reclassified.shape[0] * factor, reclassified.shape[1] * factor),
+                dtype=np.float32,
+            )
+            smoothed_transform = working_transform * Affine.scale(1 / factor, 1 / factor)
+            reproject(
+                source=reclassified.astype(np.float32),
+                destination=smoothed,
+                src_transform=working_transform,
+                src_crs=dataset.crs,
+                dst_transform=smoothed_transform,
+                dst_crs=dataset.crs,
+                src_nodata=0,
+                dst_nodata=0,
+                resampling=Resampling.bilinear,
+            )
+            if args.smooth_radius_pixels:
+                radius = args.smooth_radius_pixels
+                padded = np.pad(smoothed, radius, mode="edge")
+                smoothed = sum(
+                    padded[row:row + smoothed.shape[0], column:column + smoothed.shape[1]]
+                    for row in range(radius * 2 + 1)
+                    for column in range(radius * 2 + 1)
+                ) / ((radius * 2 + 1) ** 2)
+            reclassified = (smoothed >= 0.5).astype(np.uint8)
+            working_transform = smoothed_transform
+
         target_transformer = Transformer.from_crs(
             dataset.crs, processing["output_crs"], always_xy=True
         ).transform
         for geometry, class_index in shapes(
-            reclassified, mask=reclassified > 0, transform=dataset.transform
+            reclassified, mask=reclassified > 0, transform=working_transform
         ):
             class_name = reverse_indexes[int(class_index)]
             polygon = shape(geometry)
@@ -113,6 +173,12 @@ def main() -> None:
             "crs": str(dataset.crs),
             "bounds": list(dataset.bounds),
             "nodata": dataset.nodata,
+            "clipped_to_area": args.clip_to_area,
+            "vectorization_resolution": [
+                abs(working_transform.a), abs(working_transform.e)
+            ],
+            "smooth_factor": args.smooth_factor,
+            "smooth_radius_pixels": args.smooth_radius_pixels,
         }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)

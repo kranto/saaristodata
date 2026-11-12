@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-11-12T11:28:41.743351+00:00",
+  "area": "pilot-kumlinge-seglinge",
+  "source": "syke-maanpeite-2022",
+  "variant": "syke-forest-smoothed",
+  "included_classes": [
+    "forest"
+  ],
+  "input": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif",
+  "output": "work/landcover/pilot-kumlinge-seglinge-syke-forest-smoothed.geojson",
+  "output_bytes": 1866448,
+  "raster": {
+    "width": 11016,
+    "height": 6650,
+    "resolution": [
+      19.999523270365295,
+      19.99989749021886
+    ],
+    "crs": "EPSG:3067",
+    "bounds": [
+      61684.0,
+      6623997.9069211185,
+      281998.7483463441,
+      6756997.225231074
+    ],
+    "nodata": -9999.0,
+    "clipped_to_area": true,
+    "vectorization_resolution": [
+      4.999880817591324,
+      4.999974372554715
+    ],
+    "smooth_factor": 4,
+    "smooth_radius_pixels": 2
+  },
+  "source_pixel_counts": {
+    "220": 71853
+  },
+  "feature_counts": {
+    "forest": 722
+  },
+  "area_square_metres": {
+    "forest": 26817448.3
+  },
+  "download": {
+    "area": "pilot-archipelago-sea",
+    "source": "syke-maanpeite-2022",
+    "variant": "syke-forest",
+    "output_resolution_metres": 20.0,
+    "downloaded_at": "2026-11-12T07:44:30.281884+00:00",
+    "request_url": "https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Maanpeite2022Scalgo&SUBSET=N%286624000%2C6757000%29&SUBSET=E%2850000%2C282000%29&subsettingcrs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3067&format=image%2Ftiff&SCALEFACTOR=0.1",
+    "bytes": 149949060,
+    "sha256": "9fd6537c02f7500120743a8d601efa6c4215662abd00adfb91887930e8400559",
+    "output": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif"
+  },
+  "tiles": {
+    "generated_at": "2026-11-12T11:28:42.400661+00:00",
+    "output": "tiles/landcover-pilot-kumlinge-seglinge-syke-forest-smoothed.pmtiles",
+    "output_bytes": 444949,
+    "layer_name": "landcover",
+    "minimum_zoom": 10,
+    "maximum_zoom": 14,
+    "zoom_statistics": {
+      "10": {
+        "tiles": 4,
+        "minimum_bytes": 5516,
+        "maximum_bytes": 36687,
+        "average_bytes": 16003.0
+      },
+      "11": {
+        "tiles": 10,
+        "minimum_bytes": 214,
+        "maximum_bytes": 33816,
+        "average_bytes": 6978.5
+      },
+      "12": {
+        "tiles": 20,
+        "minimum_bytes": 202,
+        "maximum_bytes": 22398,
+        "average_bytes": 3920.3
+      },
+      "13": {
+        "tiles": 57,
+        "minimum_bytes": 129,
+        "maximum_bytes": 7656,
+        "average_bytes": 1729.9
+      },
+      "14": {
+        "tiles": 135,
+        "minimum_bytes": 135,
+        "maximum_bytes": 3356,
+        "average_bytes": 983.7
+      }
+    }
+  }
+}

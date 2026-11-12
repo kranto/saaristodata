@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-12T11:28:42.400661+00:00",
+  "area": "pilot-kumlinge-seglinge",
+  "source": "syke-maanpeite-2022",
+  "archive": "landcover-pilot-kumlinge-seglinge-syke-forest-smoothed.pmtiles",
+  "bytes": 444949,
+  "sha256": "185fa175fc908938e3ba901aa18839c85dbd46793292cd15e0697afd9c34018d",
+  "bounds_wgs84": [
+    20.54017,
+    60.18646,
+    20.98451,
+    60.31304
+  ],
+  "minimum_zoom": 10,
+  "maximum_zoom": 14,
+  "layer_name": "landcover",
+  "classes": [
+    "forest"
+  ],
+  "attribution": "Lähde: Syke, Maanpeite 2 m 2022"
+}
