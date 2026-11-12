@@ -104,7 +104,9 @@ processing:
     rock: 1000
     bare: 1000
   simplify_tolerance_metres: 5
-  tile_minzoom: 10
+  tile_minzoom: 8
+  tile_detail_minzoom: 10
+  tile_overview_simplification: 20
   tile_maxzoom: 14
   kmtk_minimum_area_square_metres:
     forest: 2500

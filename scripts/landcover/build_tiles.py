@@ -52,6 +52,57 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def run_tippecanoe(
+    command: str,
+    output: Path,
+    input_path: Path,
+    layer_name: str,
+    minimum_zoom: int,
+    maximum_zoom: int,
+    attribution: str,
+    name: str,
+    extra_args: list[str] | None = None,
+) -> None:
+    subprocess.run([
+        command,
+        "--output", str(output),
+        "--layer", layer_name,
+        "--minimum-zoom", str(minimum_zoom),
+        "--maximum-zoom", str(maximum_zoom),
+        *(extra_args or []),
+        "--attribution", attribution,
+        "--name", name,
+        str(input_path),
+    ], check=True)
+
+
+def merge_overview_tiles(detail_mbtiles: Path, overview_mbtiles: Path, minimum_zoom: int) -> None:
+    with sqlite3.connect(detail_mbtiles) as database:
+        database.execute("ATTACH DATABASE ? AS overview", (str(overview_mbtiles),))
+        database.execute("INSERT OR REPLACE INTO images SELECT * FROM overview.images")
+        database.execute("INSERT OR REPLACE INTO map SELECT * FROM overview.map")
+        database.commit()
+        database.execute("DETACH DATABASE overview")
+
+        database.execute("DELETE FROM metadata WHERE name = 'minzoom'")
+        database.execute(
+            "INSERT INTO metadata (name, value) VALUES ('minzoom', ?)",
+            (str(minimum_zoom),),
+        )
+        metadata_row = database.execute(
+            "SELECT value FROM metadata WHERE name = 'json'"
+        ).fetchone()
+        if metadata_row:
+            metadata = json.loads(metadata_row[0])
+            for layer in metadata.get("vector_layers", []):
+                layer["minzoom"] = minimum_zoom
+            database.execute(
+                "UPDATE metadata SET value = ? WHERE name = 'json'",
+                (json.dumps(metadata, separators=(",", ":")),),
+            )
+        database.commit()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
@@ -71,10 +122,11 @@ def main() -> None:
     input_path = args.input or REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
     output_path = args.output or REPO_ROOT / "tiles" / f"landcover-{args.area}{suffix}.pmtiles"
     mbtiles_path = output_path.with_suffix(".mbtiles")
+    overview_mbtiles_path = mbtiles_path.with_name(f"{mbtiles_path.stem}-overview.mbtiles")
 
     if not input_path.exists():
         raise FileNotFoundError(f"{input_path} does not exist; run build_geojson.py first")
-    existing = [path for path in (output_path, mbtiles_path) if path.exists()]
+    existing = [path for path in (output_path, mbtiles_path, overview_mbtiles_path) if path.exists()]
     if existing and not args.force:
         raise FileExistsError(f"Output already exists: {existing}; use --force to replace it")
     for path in existing:
@@ -83,17 +135,38 @@ def main() -> None:
 
     tippecanoe = require_command("tippecanoe")
     pmtiles = require_command("pmtiles")
-    subprocess.run([
+    archive_name = f"Complementary land cover ({source_name}): {args.area}"
+    detail_minzoom = processing.get("tile_detail_minzoom", processing["tile_minzoom"])
+    run_tippecanoe(
         tippecanoe,
-        "--output", str(mbtiles_path),
-        "--layer", processing["layer_name"],
-        "--minimum-zoom", str(processing["tile_minzoom"]),
-        "--maximum-zoom", str(processing["tile_maxzoom"]),
-        "--coalesce-smallest-as-needed",
-        "--attribution", source["attribution"],
-        "--name", f"Complementary land cover ({source_name}): {args.area}",
-        str(input_path),
-    ], check=True)
+        mbtiles_path,
+        input_path,
+        processing["layer_name"],
+        detail_minzoom,
+        processing["tile_maxzoom"],
+        source["attribution"],
+        archive_name,
+        ["--coalesce-smallest-as-needed"],
+    )
+    if processing["tile_minzoom"] < detail_minzoom:
+        run_tippecanoe(
+            tippecanoe,
+            overview_mbtiles_path,
+            input_path,
+            processing["layer_name"],
+            processing["tile_minzoom"],
+            detail_minzoom - 1,
+            source["attribution"],
+            f"{archive_name} overview",
+            [
+                "--simplification", str(processing["tile_overview_simplification"]),
+                "--include", "class",
+                "--no-feature-limit",
+                "--no-tile-size-limit",
+            ],
+        )
+        merge_overview_tiles(mbtiles_path, overview_mbtiles_path, processing["tile_minzoom"])
+        overview_mbtiles_path.unlink()
     subprocess.run([pmtiles, "convert", str(mbtiles_path), str(output_path)], check=True)
 
     report_path = REPO_ROOT / "reports" / f"landcover-{args.area}{suffix}.json"

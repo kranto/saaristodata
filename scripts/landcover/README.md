@@ -100,11 +100,15 @@ Install `tippecanoe` and the `pmtiles` CLI, then run:
 ```
 
 The builder creates ignored MBTiles and PMTiles archives in `tiles/`. The
-pilot begins at zoom 10 because a lower minimum zoom would require dropping
-most of its detailed polygons. Per-zoom tile counts and sizes are added to the
-tracked JSON report. It also writes the tracked `tiles/landcover.json` active
-archive manifest with its checksum, bounds, zoom range and attribution.
-Existing archives are preserved unless `--force` is used.
+archives begin at zoom 8. Zooms 8 and 9 are built in a separate overview pass
+with stronger Tippecanoe simplification and only the renderable `class`
+attribute. No overview features are dropped to meet a tile-size limit. The
+unchanged detail pass covers zooms 10 through 14, and the two passes are merged
+before PMTiles conversion. Per-zoom tile counts and sizes are added to the
+tracked JSON report. It also writes the tracked
+`tiles/landcover.json` active archive manifest with its checksum, bounds, zoom
+range and attribution. Existing archives are preserved unless `--force` is
+used.
 
 In the development and test application the KMTK variant is the default.
 Append `?landcover=syke` to compare it with the earlier raster variant, or

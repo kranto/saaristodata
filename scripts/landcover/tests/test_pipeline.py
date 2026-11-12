@@ -41,9 +41,11 @@ class PipelineConfigurationTests(unittest.TestCase):
             {"bare", "farmland", "forest", "open", "rock"},
         )
 
-    def test_tiles_begin_at_close_zoom(self) -> None:
+    def test_tiles_include_simplified_overview_zooms(self) -> None:
         processing = self.manifest["processing"]
-        self.assertEqual(processing["tile_minzoom"], 10)
+        self.assertEqual(processing["tile_minzoom"], 8)
+        self.assertEqual(processing["tile_detail_minzoom"], 10)
+        self.assertEqual(processing["tile_overview_simplification"], 20)
         self.assertEqual(processing["tile_maxzoom"], 14)
 
     def test_kmtk_collections_cover_selected_polygon_classes(self) -> None:
