@@ -111,6 +111,32 @@ Append `?landcover=syke` to compare it with the earlier raster variant, or
 `?landcover=0` to disable the complementary layer. Production builds do not
 enable either pilot.
 
+## Build the Syke forest fallback
+
+KMTK has no continuous forest polygon collection. Build a forest-only Syke
+variant at 20 metre resolution to fill missing OpenStreetMap forest cover
+underneath the more specific KMTK polygons:
+
+```sh
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/download_syke.py \
+  --area pilot-archipelago-sea \
+  --variant syke-forest \
+  --output-resolution-metres 20
+
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_geojson.py \
+  --area pilot-archipelago-sea \
+  --variant syke-forest \
+  --include-class forest
+
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_tiles.py \
+  --area pilot-archipelago-sea \
+  --source syke-maanpeite-2022 \
+  --variant syke-forest
+```
+
 ## Tests
 
 ```sh

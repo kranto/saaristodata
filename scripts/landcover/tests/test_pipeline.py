@@ -26,6 +26,12 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(query["SUBSET"], ["N(6688000,6740000)", "E(170000,228000)"])
         self.assertEqual(query["coverageId"], ["Maanpeite2022Scalgo"])
 
+    def test_wcs_url_accepts_coarser_forest_resolution(self) -> None:
+        query = urllib.parse.parse_qs(
+            urllib.parse.urlsplit(build_url(self.source, self.area, 20)).query
+        )
+        self.assertEqual(query["SCALEFACTOR"], ["0.1"])
+
     def test_selected_classes_are_normalized(self) -> None:
         self.assertEqual(
             set(self.source["class_mapping"].values()),

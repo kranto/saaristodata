@@ -19,10 +19,14 @@ from common import REPO_ROOT, area_config, load_manifest, source_config
 DEFAULT_SOURCE = "syke-maanpeite-2022"
 
 
-def build_url(source: dict, area: dict) -> str:
+def build_url(
+    source: dict, area: dict, output_resolution_metres: float | None = None
+) -> str:
     west, south, east, north = area["bbox_epsg3067"]
     native_resolution = float(source["native_resolution_metres"])
-    output_resolution = float(area["output_resolution_metres"])
+    output_resolution = float(
+        output_resolution_metres or area["output_resolution_metres"]
+    )
     scale_factor = native_resolution / output_resolution
     query = {
         "service": "WCS",
@@ -49,6 +53,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
     parser.add_argument("--source", default=DEFAULT_SOURCE)
+    parser.add_argument("--variant")
+    parser.add_argument("--output-resolution-metres", type=float)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--print-url", action="store_true")
@@ -60,10 +66,12 @@ def main() -> None:
     if source.get("status") != "active":
         raise ValueError(f"Source {args.source!r} is not active")
 
+    suffix = f"-{args.variant}" if args.variant else ""
     output = args.output or (
-        REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}.tif"
+        REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}{suffix}.tif"
     )
-    url = build_url(source, area)
+    output_resolution = args.output_resolution_metres or area["output_resolution_metres"]
+    url = build_url(source, area, output_resolution)
     if args.print_url:
         print(url)
         return
@@ -88,6 +96,8 @@ def main() -> None:
     receipt = {
         "area": args.area,
         "source": args.source,
+        "variant": args.variant,
+        "output_resolution_metres": output_resolution,
         "downloaded_at": datetime.now(UTC).isoformat(),
         "request_url": url,
         "bytes": output.stat().st_size,

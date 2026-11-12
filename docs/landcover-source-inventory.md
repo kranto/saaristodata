@@ -1,12 +1,14 @@
 # Complementary land-cover source inventory
 
-Updated 2026-11-11.
+Updated 2026-11-12.
 
-## Recommended pilot source
+## Syke forest fallback
 
-Syke's **Maanpeite 2 m 2022** is the recommended base source for the first
-pilot. It is a nationwide categorical raster with 2 m pixels, licensed under
-CC BY 4.0. A WCS 2.0.1 service can return a bounded GeoTIFF without an API key.
+Syke's **Maanpeite 2 m 2022** is used underneath KMTK to fill continuous
+forest cover missing from both KMTK and parts of OpenStreetMap. It is a
+nationwide categorical raster with 2 m pixels, licensed under CC BY 4.0. A WCS
+2.0.1 service can return a bounded GeoTIFF without an API key. The fallback is
+resampled to 20 m and includes only source class 220 (`forest`).
 
 Useful classes for the pilot are:
 
@@ -92,15 +94,18 @@ normalized to Saaristolautat classes as follows:
 - `urban_area` → `urban`
 
 There is no continuous forest polygon collection. The KMTK-only variant
-therefore deliberately leaves those areas unclassified; Syke is considered
-only as a later gap filler. In the Kustavi–Iniö–Velkua pilot, KMTK returned
-43,056 raw `rock_area` polygons, showing why its rock geometry is materially
-more useful than the Syke raster around Rymättylä.
+therefore initially left those areas unclassified. The comparison showed that
+OpenStreetMap forest cover is too uneven, especially on Åland, so a forest-only
+Syke layer is now drawn underneath KMTK. In the Kustavi–Iniö–Velkua pilot,
+KMTK returned 43,056 raw `rock_area` polygons, showing why its rock geometry is
+materially more useful than the Syke raster around Rymättylä.
 
 The full Archipelago Sea pilot uses bounds `[19.00, 59.70, 23.00, 60.70]`,
 about 8.4 times the original bounding-box area. It returned 264,678 raw
 features, including 201,288 `rock_area` polygons. After validation and size
 filtering, 261,072 features were written to a 47.6 MB PMTiles archive.
+The 20 m Syke fallback contains 36,258 forest polygons in a 35.3 MB PMTiles
+archive over the same bounds.
 
 Source:
 

@@ -56,10 +56,12 @@ tekijätietoihin.
 
 KMTK:n aluekohteista saadaan muun muassa avokallio, viljelysmaa, suo, niitty,
 harvapuustoinen alue, hiekka ja taajama. Jatkuvaa metsäpolygonia ei ole.
-Ensimmäinen KMTK-versio jätetään tarkoituksella ilman Syke-täyttöä, jotta
-KMTK:n todellinen kattavuus voidaan arvioida. Syken Maanpeite 2 m 2022 otetaan
-mukaan vasta, jos luokittelemattomien alueiden täydentämisestä on kartalle
-selvää hyötyä.
+Ensimmäinen KMTK-versio jätettiin tarkoituksella ilman Syke-täyttöä, jotta
+KMTK:n todellinen kattavuus voitiin arvioida. Vertailussa havaittiin, että
+KMTK:ssa ei ole jatkuvaa metsäpolygonia ja OpenStreetMapin metsäpeitto on
+erityisesti Ahvenanmaalla epätasainen. Syken Maanpeite 2 m 2022 -aineistosta
+tuotetaan siksi 20 metrin tarkkuudella vain metsäluokka KMTK:n alle jääväksi
+täyttökerrokseksi.
 
 Koko reittialueen kattava KMTK-koealue `pilot-archipelago-sea` on rajattu
 arvoihin `[19.00, 59.70, 23.00, 60.70]`. Suorakulmainen latausrajaus ympäröi

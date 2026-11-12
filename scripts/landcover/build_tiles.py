@@ -122,7 +122,7 @@ def main() -> None:
         "minimum_zoom": processing["tile_minzoom"],
         "maximum_zoom": processing["tile_maxzoom"],
         "layer_name": processing["layer_name"],
-        "classes": sorted(set(
+        "classes": report.get("included_classes") or sorted(set(
             source.get("class_mapping", source.get("collection_mapping", {})).values()
         )),
         "attribution": source["attribution"],

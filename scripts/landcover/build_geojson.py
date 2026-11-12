@@ -26,6 +26,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--area", default="pilot-kustavi-inio-velkua")
     parser.add_argument("--source", default=DEFAULT_SOURCE)
+    parser.add_argument("--variant")
+    parser.add_argument("--include-class", action="append", dest="included_classes")
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -34,14 +36,25 @@ def main() -> None:
     area_config(manifest, args.area)
     source = source_config(manifest, args.source)
     processing = manifest["processing"]
+    suffix = f"-{args.variant}" if args.variant else ""
     source_path = args.input or (
-        REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}.tif"
+        REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}{suffix}.tif"
     )
     output_path = args.output or (
-        REPO_ROOT / "work" / "landcover" / f"{args.area}.geojson"
+        REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
     )
 
     class_mapping = {int(value): name for value, name in source["class_mapping"].items()}
+    if args.included_classes:
+        requested_classes = set(args.included_classes)
+        available_classes = set(class_mapping.values())
+        unknown_classes = requested_classes - available_classes
+        if unknown_classes:
+            raise ValueError(f"Unknown classes: {sorted(unknown_classes)}")
+        class_mapping = {
+            value: name for value, name in class_mapping.items()
+            if name in requested_classes
+        }
     class_names = sorted(set(class_mapping.values()))
     class_indexes = {name: index + 1 for index, name in enumerate(class_names)}
     reverse_indexes = {index: name for name, index in class_indexes.items()}
@@ -117,6 +130,8 @@ def main() -> None:
         "generated_at": datetime.now(UTC).isoformat(),
         "area": args.area,
         "source": args.source,
+        "variant": args.variant,
+        "included_classes": sorted(set(class_mapping.values())),
         "input": str(source_path.relative_to(REPO_ROOT)),
         "output": str(output_path.relative_to(REPO_ROOT)),
         "output_bytes": output_path.stat().st_size,
@@ -130,7 +145,7 @@ def main() -> None:
     receipt_path = source_path.with_suffix(".receipt.json")
     if receipt_path.exists():
         report["download"] = json.loads(receipt_path.read_text(encoding="utf-8"))
-    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}.json"
+    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}{suffix}.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
