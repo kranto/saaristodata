@@ -137,17 +137,17 @@ underneath the more specific KMTK polygons:
   --variant syke-forest
 ```
 
-### Kumlinge-Seglinge forest smoothing pilot
+### Smoothed forest polygons
 
-The smoothing pilot clips the existing 20 metre forest raster to the test
-area, upsamples the binary mask to a 5 metre working grid, applies a
-conservative 10 metre box-filter radius and vectorizes the 50% contour. This
-is cartographic smoothing; it does not increase the source data accuracy.
+The smoother upsamples the existing 20 metre forest mask to a 5 metre working
+grid, applies a conservative 10 metre box-filter radius and vectorizes the 50%
+contour. Large rasters are processed in overlapping chunks to keep memory use
+bounded. This is cartographic smoothing; it does not increase source accuracy.
 
 ```sh
 /tmp/saaristolautat-landcover-venv/bin/python \
   scripts/landcover/build_geojson.py \
-  --area pilot-kumlinge-seglinge \
+  --area pilot-archipelago-sea \
   --variant syke-forest-smoothed \
   --include-class forest \
   --input raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif \
@@ -157,16 +157,17 @@ is cartographic smoothing; it does not increase the source data accuracy.
 
 /tmp/saaristolautat-landcover-venv/bin/python \
   scripts/landcover/build_tiles.py \
-  --area pilot-kumlinge-seglinge \
+  --area pilot-archipelago-sea \
   --source syke-maanpeite-2022 \
   --variant syke-forest-smoothed \
   --force
 ```
 
-Compare the original and smoothed variants in the local application:
+The smoothed archive is the application's default forest fallback. Compare it
+with the retained original using the local application:
 
-- original: `?screenshotCenter=20.76234,60.24975&screenshotZoom=13`
-- smoothed: `?forest=smoothed&screenshotCenter=20.76234,60.24975&screenshotZoom=13`
+- smoothed: `?screenshotCenter=20.76234,60.24975&screenshotZoom=13`
+- original: `?forest=original&screenshotCenter=20.76234,60.24975&screenshotZoom=13`
 
 ## Tests
 

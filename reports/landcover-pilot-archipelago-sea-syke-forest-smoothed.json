@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-11-12T13:12:12.980300+00:00",
+  "area": "pilot-archipelago-sea",
+  "source": "syke-maanpeite-2022",
+  "variant": "syke-forest-smoothed",
+  "included_classes": [
+    "forest"
+  ],
+  "input": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif",
+  "output": "work/landcover/pilot-archipelago-sea-syke-forest-smoothed.geojson",
+  "output_bytes": 208701287,
+  "raster": {
+    "width": 11016,
+    "height": 6650,
+    "resolution": [
+      19.999523270365295,
+      19.99989749021886
+    ],
+    "crs": "EPSG:3067",
+    "bounds": [
+      61684.0,
+      6623997.9069211185,
+      281998.7483463441,
+      6756997.225231074
+    ],
+    "nodata": -9999.0,
+    "clipped_to_area": true,
+    "vectorization_resolution": [
+      4.999880817591324,
+      4.999974372554715
+    ],
+    "smooth_factor": 4,
+    "smooth_radius_pixels": 2
+  },
+  "source_pixel_counts": {
+    "220": 11081027
+  },
+  "feature_counts": {
+    "forest": 40102
+  },
+  "area_square_metres": {
+    "forest": 4415126351.1
+  },
+  "download": {
+    "area": "pilot-archipelago-sea",
+    "source": "syke-maanpeite-2022",
+    "variant": "syke-forest",
+    "output_resolution_metres": 20.0,
+    "downloaded_at": "2026-11-12T07:44:30.281884+00:00",
+    "request_url": "https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Maanpeite2022Scalgo&SUBSET=N%286624000%2C6757000%29&SUBSET=E%2850000%2C282000%29&subsettingcrs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3067&format=image%2Ftiff&SCALEFACTOR=0.1",
+    "bytes": 149949060,
+    "sha256": "9fd6537c02f7500120743a8d601efa6c4215662abd00adfb91887930e8400559",
+    "output": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif"
+  },
+  "tiles": {
+    "generated_at": "2026-11-12T13:12:43.640315+00:00",
+    "output": "tiles/landcover-pilot-archipelago-sea-syke-forest-smoothed.pmtiles",
+    "output_bytes": 45399779,
+    "layer_name": "landcover",
+    "minimum_zoom": 10,
+    "maximum_zoom": 14,
+    "zoom_statistics": {
+      "10": {
+        "tiles": 65,
+        "minimum_bytes": 133,
+        "maximum_bytes": 282193,
+        "average_bytes": 98274.6
+      },
+      "11": {
+        "tiles": 221,
+        "minimum_bytes": 132,
+        "maximum_bytes": 83894,
+        "average_bytes": 32558.9
+      },
+      "12": {
+        "tiles": 746,
+        "minimum_bytes": 129,
+        "maximum_bytes": 31630,
+        "average_bytes": 11001.7
+      },
+      "13": {
+        "tiles": 2608,
+        "minimum_bytes": 125,
+        "maximum_bytes": 11918,
+        "average_bytes": 3858.7
+      },
+      "14": {
+        "tiles": 9054,
+        "minimum_bytes": 124,
+        "maximum_bytes": 4118,
+        "average_bytes": 1493.2
+      }
+    }
+  }
+}

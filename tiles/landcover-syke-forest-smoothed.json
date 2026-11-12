@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T11:28:42.400661+00:00",
-  "area": "pilot-kumlinge-seglinge",
+  "generated_at": "2026-11-12T13:12:43.640315+00:00",
+  "area": "pilot-archipelago-sea",
   "source": "syke-maanpeite-2022",
-  "archive": "landcover-pilot-kumlinge-seglinge-syke-forest-smoothed.pmtiles",
-  "bytes": 444949,
-  "sha256": "185fa175fc908938e3ba901aa18839c85dbd46793292cd15e0697afd9c34018d",
+  "archive": "landcover-pilot-archipelago-sea-syke-forest-smoothed.pmtiles",
+  "bytes": 45399779,
+  "sha256": "ce57a19a7e406bce1b3c1b701da0087377eb0fdef72e4002679724850e57dee9",
   "bounds_wgs84": [
-    20.54017,
-    60.18646,
-    20.98451,
-    60.31304
+    19.0,
+    59.7,
+    23.0,
+    60.7
   ],
   "minimum_zoom": 10,
   "maximum_zoom": 14,

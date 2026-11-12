@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
@@ -13,7 +14,8 @@ import numpy as np
 import rasterio
 from affine import Affine
 from pyproj import Transformer
-from rasterio.features import shapes
+from rasterio.features import bounds as feature_bounds, shapes
+from rasterio.transform import array_bounds
 from rasterio.windows import Window, from_bounds
 from rasterio.warp import Resampling, reproject
 from shapely import transform
@@ -23,6 +25,84 @@ from common import REPO_ROOT, area_config, load_manifest, source_config
 
 
 DEFAULT_SOURCE = "syke-maanpeite-2022"
+
+
+def box_blur(values: np.ndarray, radius: int) -> np.ndarray:
+    if radius == 0:
+        return values
+    size = radius * 2 + 1
+    padded = np.pad(values, radius, mode="edge")
+    integral = np.pad(padded, ((1, 0), (1, 0)), mode="constant")
+    integral = integral.cumsum(axis=0, dtype=np.float32).cumsum(axis=1, dtype=np.float32)
+    totals = (
+        integral[size:, size:]
+        - integral[:-size, size:]
+        - integral[size:, :-size]
+        + integral[:-size, :-size]
+    )
+    return totals / (size * size)
+
+
+def smoothed_shapes(
+    values: np.ndarray,
+    transform: Affine,
+    crs: rasterio.crs.CRS,
+    factor: int,
+    radius: int,
+    chunk_size: int = 512,
+):
+    """Yield a smoothed binary mask as polygons without allocating the full upsampled raster."""
+    height, width = values.shape
+    halo = max(2, math.ceil((radius + 1) / factor) + 1)
+    scale = Affine.scale(1 / factor, 1 / factor)
+    for row in range(0, height, chunk_size):
+        core_height = min(chunk_size, height - row)
+        source_row = max(0, row - halo)
+        source_bottom = min(height, row + core_height + halo)
+        for column in range(0, width, chunk_size):
+            core_width = min(chunk_size, width - column)
+            source_column = max(0, column - halo)
+            source_right = min(width, column + core_width + halo)
+            source_values = values[
+                source_row:source_bottom,
+                source_column:source_right,
+            ].astype(np.float32)
+            source_transform = transform * Affine.translation(source_column, source_row)
+            destination = np.zeros(
+                (source_values.shape[0] * factor, source_values.shape[1] * factor),
+                dtype=np.float32,
+            )
+            reproject(
+                source=source_values,
+                destination=destination,
+                src_transform=source_transform,
+                src_crs=crs,
+                dst_transform=source_transform * scale,
+                dst_crs=crs,
+                src_nodata=0,
+                dst_nodata=0,
+                resampling=Resampling.bilinear,
+            )
+            destination = box_blur(destination, radius)
+            top = (row - source_row) * factor
+            left = (column - source_column) * factor
+            core = destination[
+                top:top + core_height * factor,
+                left:left + core_width * factor,
+            ] >= 0.5
+            core_transform = transform * Affine.translation(column, row) * scale
+            core_bounds = array_bounds(core.shape[0], core.shape[1], core_transform)
+            for geometry, value in shapes(
+                core.astype(np.uint8), mask=core, transform=core_transform
+            ):
+                west, south, east, north = feature_bounds(geometry)
+                touches_chunk_boundary = (
+                    math.isclose(west, core_bounds[0], abs_tol=0.01)
+                    or math.isclose(south, core_bounds[1], abs_tol=0.01)
+                    or math.isclose(east, core_bounds[2], abs_tol=0.01)
+                    or math.isclose(north, core_bounds[3], abs_tol=0.01)
+                )
+                yield geometry, value, touches_chunk_boundary
 
 
 def main() -> None:
@@ -109,44 +189,36 @@ def main() -> None:
             reclassified[mask] = class_indexes[class_name]
 
         if args.smooth_factor > 1:
-            factor = args.smooth_factor
-            smoothed = np.zeros(
-                (reclassified.shape[0] * factor, reclassified.shape[1] * factor),
-                dtype=np.float32,
+            geometry_iterator = smoothed_shapes(
+                reclassified,
+                working_transform,
+                dataset.crs,
+                args.smooth_factor,
+                args.smooth_radius_pixels,
             )
-            smoothed_transform = working_transform * Affine.scale(1 / factor, 1 / factor)
-            reproject(
-                source=reclassified.astype(np.float32),
-                destination=smoothed,
-                src_transform=working_transform,
-                src_crs=dataset.crs,
-                dst_transform=smoothed_transform,
-                dst_crs=dataset.crs,
-                src_nodata=0,
-                dst_nodata=0,
-                resampling=Resampling.bilinear,
+            vectorization_transform = working_transform * Affine.scale(
+                1 / args.smooth_factor,
+                1 / args.smooth_factor,
             )
-            if args.smooth_radius_pixels:
-                radius = args.smooth_radius_pixels
-                padded = np.pad(smoothed, radius, mode="edge")
-                smoothed = sum(
-                    padded[row:row + smoothed.shape[0], column:column + smoothed.shape[1]]
-                    for row in range(radius * 2 + 1)
-                    for column in range(radius * 2 + 1)
-                ) / ((radius * 2 + 1) ** 2)
-            reclassified = (smoothed >= 0.5).astype(np.uint8)
-            working_transform = smoothed_transform
+        else:
+            geometry_iterator = (
+                (geometry, class_index, False)
+                for geometry, class_index in shapes(
+                    reclassified,
+                    mask=reclassified > 0,
+                    transform=working_transform,
+                )
+            )
+            vectorization_transform = working_transform
 
         target_transformer = Transformer.from_crs(
             dataset.crs, processing["output_crs"], always_xy=True
         ).transform
-        for geometry, class_index in shapes(
-            reclassified, mask=reclassified > 0, transform=working_transform
-        ):
+        for geometry, class_index, touches_chunk_boundary in geometry_iterator:
             class_name = reverse_indexes[int(class_index)]
             polygon = shape(geometry)
             minimum_area = float(minimum_areas[class_name])
-            if polygon.area < minimum_area:
+            if polygon.area < minimum_area and not touches_chunk_boundary:
                 continue
             polygon = polygon.simplify(simplify_tolerance, preserve_topology=True)
             if polygon.is_empty or not polygon.is_valid:
@@ -175,7 +247,7 @@ def main() -> None:
             "nodata": dataset.nodata,
             "clipped_to_area": args.clip_to_area,
             "vectorization_resolution": [
-                abs(working_transform.a), abs(working_transform.e)
+                abs(vectorization_transform.a), abs(vectorization_transform.e)
             ],
             "smooth_factor": args.smooth_factor,
             "smooth_radius_pixels": args.smooth_radius_pixels,

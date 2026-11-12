@@ -5,11 +5,14 @@ import unittest
 import urllib.parse
 from pathlib import Path
 
+import numpy as np
+
 
 SCRIPT_DIRECTORY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPT_DIRECTORY))
 
 from common import area_config, load_manifest, source_config  # noqa: E402
+from build_geojson import box_blur  # noqa: E402
 from download_kmtk import collection_url, split_bbox  # noqa: E402
 from download_syke import build_url  # noqa: E402
 
@@ -74,6 +77,12 @@ class PipelineConfigurationTests(unittest.TestCase):
         pilot = area_config(self.manifest, "pilot-kumlinge-seglinge")
         self.assertEqual(pilot["bbox_wgs84"], [20.54017, 60.18646, 20.98451, 60.31304])
         self.assertEqual(pilot["bbox_epsg3067"], [142000, 6687000, 168000, 6704000])
+
+    def test_box_blur_preserves_shape_and_constant_values(self) -> None:
+        values = np.full((5, 7), 0.75, dtype=np.float32)
+        blurred = box_blur(values, radius=2)
+        self.assertEqual(blurred.shape, values.shape)
+        np.testing.assert_allclose(blurred, values, rtol=0, atol=1e-6)
 
 
 if __name__ == "__main__":
