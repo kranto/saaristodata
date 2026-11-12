@@ -8,10 +8,10 @@ areas:
     bbox_epsg3067: [170000, 6688000, 228000, 6740000]
     output_resolution_metres: 10
   pilot-archipelago-sea:
-    description: Expanded Archipelago Sea KMTK pilot; four times the original WGS84 bbox area
-    bbox_wgs84: [20.10, 59.70, 22.00, 60.70]
+    description: Full Archipelago Sea and Åland route-area KMTK pilot
+    bbox_wgs84: [19.00, 59.70, 23.00, 60.70]
     # Rounded outwards from bbox_wgs84.
-    bbox_epsg3067: [112000, 6628000, 228000, 6750000]
+    bbox_epsg3067: [50000, 6624000, 282000, 6757000]
     output_resolution_metres: 10
 
 sources:

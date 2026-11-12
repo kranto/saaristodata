@@ -1,4 +1,5 @@
 .DS_Store
+.env
 .timetable-checker/
 __pycache__/
 

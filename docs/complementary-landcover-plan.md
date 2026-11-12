@@ -61,11 +61,12 @@ KMTK:n todellinen kattavuus voidaan arvioida. Syken Maanpeite 2 m 2022 otetaan
 mukaan vasta, jos luokittelemattomien alueiden täydentämisestä on kartalle
 selvää hyötyä.
 
-Laajennettu KMTK-koealue `pilot-archipelago-sea` on rajattu arvoihin
-`[20.10, 59.70, 22.00, 60.70]`. Se säilyttää alkuperäisen koealueen itä- ja
-pohjoisrajan mutta kaksinkertaistaa leveyden länteen ja korkeuden etelään,
-joten suorakulmion pinta-ala on nelinkertainen. Alkuperäinen alue säilytetään
-Syke-vertailua ja aiempien tulosten toistamista varten.
+Koko reittialueen kattava KMTK-koealue `pilot-archipelago-sea` on rajattu
+arvoihin `[19.00, 59.70, 23.00, 60.70]`. Suorakulmainen latausrajaus ympäröi
+sovelluksessa pienellä zoomilla näkyvän Ahvenanmaan ja Turun saariston ovaalin
+kohdealueen. Tyhjät merikulmat eivät kasvata vektorilaattoja olennaisesti.
+Alkuperäinen alue säilytetään Syke-vertailua ja aiempien tulosten toistamista
+varten.
 
 ### Ahvenanmaa
 

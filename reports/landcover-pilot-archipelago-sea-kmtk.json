@@ -1,111 +1,111 @@
 {
-  "generated_at": "2026-11-11T15:18:17.699010+00:00",
+  "generated_at": "2026-11-11T22:58:44.541749+00:00",
   "area": "pilot-archipelago-sea",
   "source": "mml-kmtk-beta",
   "input": "raw/landcover/mml-kmtk-beta/pilot-archipelago-sea.geojson",
   "output": "work/landcover/pilot-archipelago-sea-kmtk.geojson",
-  "output_bytes": 76012736,
+  "output_bytes": 156645171,
   "feature_counts": {
-    "bare": 48,
-    "farmland": 7977,
-    "open": 2802,
-    "rock": 103073,
-    "sand": 240,
-    "urban": 53,
-    "wetland": 12520
+    "bare": 220,
+    "farmland": 21460,
+    "open": 7596,
+    "rock": 200270,
+    "sand": 446,
+    "urban": 382,
+    "wetland": 30698
   },
   "source_collection_counts": {
-    "brush": 34,
-    "cultivated_land": 7977,
-    "earth_fill": 11,
-    "marsh": 1240,
-    "meadow": 2187,
-    "open_woodland": 581,
-    "paludified_land": 2712,
-    "peatland": 8568,
-    "quarry": 19,
-    "rock_area": 102424,
-    "sand": 240,
-    "soil_extraction_area": 18,
-    "stony_ground": 649,
-    "urban_area": 53
+    "brush": 39,
+    "cultivated_land": 21460,
+    "earth_fill": 53,
+    "marsh": 1930,
+    "meadow": 5385,
+    "open_woodland": 2172,
+    "paludified_land": 9888,
+    "peatland": 18880,
+    "quarry": 69,
+    "rock_area": 198841,
+    "sand": 446,
+    "soil_extraction_area": 98,
+    "stony_ground": 1429,
+    "urban_area": 382
   },
   "area_square_metres": {
-    "bare": 1831120.3,
-    "farmland": 336419020.1,
-    "open": 42840836.3,
-    "rock": 715670069.2,
-    "sand": 985534.7,
-    "urban": 9898597.6,
-    "wetland": 71168371.6
+    "bare": 10468065.1,
+    "farmland": 1372441842.2,
+    "open": 138794577.3,
+    "rock": 1353053893.5,
+    "sand": 1820377.1,
+    "urban": 141938363.3,
+    "wetland": 259334026.1
   },
   "download": {
-    "downloaded_at": "2026-11-11T15:17:31.387061+00:00",
+    "downloaded_at": "2026-11-11T22:57:11.129299+00:00",
     "area": "pilot-archipelago-sea",
     "source": "mml-kmtk-beta",
     "bbox_wgs84": [
-      20.1,
+      19.0,
       59.7,
-      22.0,
+      23.0,
       60.7
     ],
     "collections": {
-      "brush": 34,
-      "cultivated_land": 8277,
-      "earth_fill": 11,
-      "marsh": 1240,
-      "meadow": 2200,
-      "open_woodland": 581,
-      "paludified_land": 2716,
-      "peatland": 8863,
-      "quarry": 19,
-      "rock_area": 103946,
-      "sand": 240,
-      "soil_extraction_area": 18,
-      "stony_ground": 649,
-      "urban_area": 53
+      "brush": 39,
+      "cultivated_land": 22032,
+      "earth_fill": 53,
+      "marsh": 1930,
+      "meadow": 5403,
+      "open_woodland": 2172,
+      "paludified_land": 9902,
+      "peatland": 19434,
+      "quarry": 69,
+      "rock_area": 201288,
+      "sand": 447,
+      "soil_extraction_area": 98,
+      "stony_ground": 1429,
+      "urban_area": 382
     },
-    "features": 128847,
-    "bytes": 469987996,
+    "features": 264678,
+    "bytes": 935354373,
     "output": "raw/landcover/mml-kmtk-beta/pilot-archipelago-sea.geojson"
   },
   "tiles": {
-    "generated_at": "2026-11-11T15:18:30.387351+00:00",
+    "generated_at": "2026-11-11T22:59:11.923205+00:00",
     "output": "tiles/landcover-pilot-archipelago-sea-kmtk.pmtiles",
-    "output_bytes": 22712286,
+    "output_bytes": 47552959,
     "layer_name": "landcover",
     "minimum_zoom": 10,
     "maximum_zoom": 14,
     "zoom_statistics": {
       "10": {
-        "tiles": 36,
+        "tiles": 64,
         "minimum_bytes": 240,
-        "maximum_bytes": 221613,
-        "average_bytes": 86604.5
+        "maximum_bytes": 335070,
+        "average_bytes": 102127.3
       },
       "11": {
-        "tiles": 134,
-        "minimum_bytes": 204,
-        "maximum_bytes": 108561,
-        "average_bytes": 26383.9
+        "tiles": 223,
+        "minimum_bytes": 171,
+        "maximum_bytes": 110427,
+        "average_bytes": 32965.6
       },
       "12": {
-        "tiles": 465,
-        "minimum_bytes": 149,
-        "maximum_bytes": 38817,
-        "average_bytes": 8687.5
+        "tiles": 810,
+        "minimum_bytes": 147,
+        "maximum_bytes": 44098,
+        "average_bytes": 10455.9
       },
       "13": {
-        "tiles": 1624,
+        "tiles": 2940,
         "minimum_bytes": 147,
-        "maximum_bytes": 14421,
-        "average_bytes": 3110.4
+        "maximum_bytes": 16749,
+        "average_bytes": 3605.8
       },
       "14": {
-        "tiles": 5487,
+        "tiles": 10260,
         "minimum_bytes": 146,
-        "maximum_bytes": 5721,
-        "average_bytes": 1267.0
+        "maximum_bytes": 6935,
+        "average_bytes": 1419.7
       }
     }
   }
