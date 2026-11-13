@@ -75,6 +75,28 @@ does not appear in process arguments or logs. Generated raw data, normalized
 GeoJSON and PMTiles remain ignored; the processing report and
 `tiles/landcover-kmtk.json` manifest are tracked.
 
+Build the compact urban-area archive used by the application's default map
+from the same downloaded KMTK data and with the same processing and tile
+settings:
+
+```sh
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_kmtk_geojson.py \
+  --area pilot-archipelago-sea \
+  --include-collection urban_area \
+  --variant kmtk-urban
+
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_tiles.py \
+  --area pilot-archipelago-sea \
+  --source mml-kmtk-beta \
+  --variant kmtk-urban
+```
+
+The full KMTK archive remains the terrain map's source. The smaller urban
+archive contains only features originating from KMTK's `urban_area`
+collection and is used for the simplified default map.
+
 ## Build normalized GeoJSON
 
 ```sh

@@ -13,6 +13,7 @@ sys.path.insert(0, str(SCRIPT_DIRECTORY))
 
 from common import area_config, load_manifest, source_config  # noqa: E402
 from build_geojson import box_blur  # noqa: E402
+from build_kmtk_geojson import collection_is_included  # noqa: E402
 from download_kmtk import collection_url, split_bbox  # noqa: E402
 from download_syke import build_url  # noqa: E402
 
@@ -56,6 +57,12 @@ class PipelineConfigurationTests(unittest.TestCase):
             {"bare", "farmland", "open", "rock", "sand", "urban", "wetland"},
         )
         self.assertNotIn("forest", source["collection_mapping"].values())
+
+    def test_kmtk_collection_filter_selects_only_urban_area(self) -> None:
+        included = ["urban_area"]
+        self.assertTrue(collection_is_included({"source_collection": "urban_area"}, included))
+        self.assertFalse(collection_is_included({"source_collection": "rock_area"}, included))
+        self.assertTrue(collection_is_included({"source_collection": "rock_area"}, None))
 
     def test_kmtk_collection_url_has_bounded_query(self) -> None:
         source = source_config(self.manifest, "mml-kmtk-beta")

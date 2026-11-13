@@ -19,10 +19,21 @@ from common import REPO_ROOT, area_config, load_manifest, source_config
 DEFAULT_SOURCE = "mml-kmtk-beta"
 
 
+def collection_is_included(properties: dict, included_collections: list[str] | None) -> bool:
+    return not included_collections or properties.get("source_collection") in included_collections
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--area", default="pilot-archipelago-sea")
     parser.add_argument("--source", default=DEFAULT_SOURCE)
+    parser.add_argument(
+        "--include-collection",
+        action="append",
+        dest="included_collections",
+        help="Only include this KMTK source collection; may be repeated",
+    )
+    parser.add_argument("--variant", help="Filename suffix, for example kmtk-urban")
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -32,7 +43,8 @@ def main() -> None:
     source = source_config(manifest, args.source)
     processing = manifest["processing"]
     input_path = args.input or REPO_ROOT / "raw" / "landcover" / args.source / f"{args.area}.geojson"
-    output_path = args.output or REPO_ROOT / "work" / "landcover" / f"{args.area}-kmtk.geojson"
+    suffix = f"-{args.variant}" if args.variant else "-kmtk"
+    output_path = args.output or REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
     raw = json.loads(input_path.read_text(encoding="utf-8"))
 
     to_projected = Transformer.from_crs(4326, 3067, always_xy=True).transform
@@ -48,6 +60,8 @@ def main() -> None:
 
     for feature in raw.get("features", []):
         properties = feature.get("properties", {})
+        if not collection_is_included(properties, args.included_collections):
+            continue
         class_name = properties["class"]
         geometry = transform(shape(feature["geometry"]), to_projected, interleaved=False)
         geometry = make_valid(geometry).intersection(clip)
@@ -83,6 +97,8 @@ def main() -> None:
         "input": str(input_path.relative_to(REPO_ROOT)),
         "output": str(output_path.relative_to(REPO_ROOT)),
         "output_bytes": output_path.stat().st_size,
+        "included_collections": args.included_collections,
+        "included_classes": sorted(counts),
         "feature_counts": dict(sorted(counts.items())),
         "source_collection_counts": dict(sorted(collection_counts.items())),
         "area_square_metres": {key: round(value, 1) for key, value in sorted(areas.items())},
@@ -90,7 +106,7 @@ def main() -> None:
     receipt_path = input_path.with_suffix(".receipt.json")
     if receipt_path.exists():
         report["download"] = json.loads(receipt_path.read_text(encoding="utf-8"))
-    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}-kmtk.json"
+    report_path = REPO_ROOT / "reports" / f"landcover-{args.area}{suffix}.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
 
