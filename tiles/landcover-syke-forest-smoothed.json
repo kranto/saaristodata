@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T20:32:31.636546+00:00",
+  "generated_at": "2026-11-13T07:25:13.094797+00:00",
   "area": "pilot-archipelago-sea",
   "source": "syke-maanpeite-2022",
-  "archive": "landcover-pilot-archipelago-sea-syke-forest-smoothed.pmtiles",
-  "bytes": 48128678,
-  "sha256": "d6f0efe7d4fc21a9528df035633e42f5ab1326338bf0a8479304bdf915cc961f",
+  "archive": "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+  "bytes": 48128676,
+  "sha256": "440a25f0fcdcff773d1440363b768360880de9685792e84ad223754c843632f5",
   "bounds_wgs84": [
     19.0,
     59.7,

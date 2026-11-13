@@ -1,23 +1,22 @@
 # Complementary land-cover pipeline
 
-This directory contains the reproducible pilot pipeline described in
+This directory contains the reproducible land-cover pipeline described in
 `docs/complementary-landcover-plan.md`.
 
 ## Current source decision
 
-The comparison pilot uses the National Land Survey's **KMTK BETA** polygon
+The terrain data uses the National Land Survey's **KMTK BETA** polygon
 collections as its primary source. It provides explicit polygons for rock,
 farmland, wetland, meadow, open woodland, sand, extraction areas and urban
 areas. KMTK does not provide continuous forest polygons, so the first KMTK
 variant intentionally leaves unclassified land to the OpenFreeMap base map.
 This makes KMTK's actual coverage visible before Syke is used as a gap filler.
 
-KMTK BETA is for testing only and must not be enabled in production. The
-earlier Syke **Maanpeite 2 m 2022** raster pilot remains available as a
-comparison and as a candidate for later filling of genuinely unclassified
-areas. Both sources are licensed under CC BY 4.0.
+KMTK is still a BETA service and its data model can change before the final
+release. Syke **Maanpeite 2 m 2022** supplies the smoothed forest fallback.
+Both sources are licensed under CC BY 4.0.
 
-Source URLs, class mappings, pilot bounds and processing thresholds are kept
+Source URLs, class mappings, internal area bounds and processing thresholds are kept
 in `data-sources/landcover.yml`.
 
 ## Environment
@@ -31,22 +30,7 @@ python3 -m venv /tmp/saaristolautat-landcover-venv
   -r scripts/landcover/requirements.txt
 ```
 
-## Download the pilot raster
-
-```sh
-/tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/download_syke.py \
-  --area pilot-kustavi-inio-velkua
-```
-
-The command downloads a 10 m categorical GeoTIFF into the ignored
-`raw/landcover/` directory. It also writes a receipt containing the exact WCS
-request, timestamp, size and SHA-256 checksum. Existing files are not replaced
-unless `--force` is supplied.
-
-Use `--print-url` to inspect the request without downloading data.
-
-## Build the KMTK-primary pilot
+## Build the KMTK-primary dataset
 
 Create an MML API key and either export it as `MML_API_KEY` or store it in a
 local file outside the repository. Then run:
@@ -65,7 +49,8 @@ local file outside the repository. Then run:
   scripts/landcover/build_tiles.py \
   --area pilot-archipelago-sea \
   --source mml-kmtk-beta \
-  --variant kmtk
+  --variant kmtk \
+  --output tiles/landcover-archipelago-sea-kmtk.pmtiles
 ```
 
 The downloader reads all configured KMTK polygon collections, recursively
@@ -90,58 +75,33 @@ settings:
   scripts/landcover/build_tiles.py \
   --area pilot-archipelago-sea \
   --source mml-kmtk-beta \
-  --variant kmtk-urban
+  --variant kmtk-urban \
+  --output tiles/landcover-archipelago-sea-kmtk-urban.pmtiles
 ```
 
 The full KMTK archive remains the terrain map's source. The smaller urban
 archive contains only features originating from KMTK's `urban_area`
 collection and is used for the simplified default map.
 
-## Build normalized GeoJSON
+## Tile generation
 
-```sh
-/tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/build_geojson.py \
-  --area pilot-kustavi-inio-velkua
-```
-
-The builder reclassifies selected source pixels, removes polygons below the
-class-specific area thresholds, simplifies geometries in EPSG:3067 and writes
-WGS84 GeoJSON into the ignored `work/landcover/` directory. A small JSON report
-with raster dimensions, class counts, output sizes and areas is written to the
-tracked `reports/` directory.
-
-## Build PMTiles
-
-Install `tippecanoe` and the `pmtiles` CLI, then run:
-
-```sh
-/tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/build_tiles.py \
-  --area pilot-kustavi-inio-velkua
-```
-
-The builder creates ignored MBTiles and PMTiles archives in `tiles/`. The
-archives begin at zoom 8. Zooms 8 and 9 are built in a separate overview pass
+Install `tippecanoe` and the `pmtiles` CLI before running the build commands.
+The builder creates the ignored PMTiles archive at the requested output path
+and keeps its MBTiles intermediate under `work/landcover/`. The archives begin
+at zoom 8. Zooms 8 and 9 are built in a separate overview pass
 with stronger Tippecanoe simplification and only the renderable `class`
 attribute. No overview features are dropped to meet a tile-size limit. The
 unchanged detail pass covers zooms 10 through 14, and the two passes are merged
 before PMTiles conversion. Per-zoom tile counts and sizes are added to the
-tracked JSON report. It also writes the tracked
-`tiles/landcover.json` active archive manifest with its checksum, bounds, zoom
-range and attribution. Existing archives are preserved unless `--force` is
-used.
+tracked JSON report and the variant-specific active archive manifest with its
+checksum, bounds, zoom range and attribution. Existing archives are preserved
+unless `--force` is used.
 
-In the development and test application the KMTK variant is the default.
-Append `?landcover=syke` to compare it with the earlier raster variant, or
-`?landcover=0` to disable the complementary layer. Production builds do not
-enable either pilot.
+## Build the smoothed Syke forest fallback
 
-## Build the Syke forest fallback
-
-KMTK has no continuous forest polygon collection. Build a forest-only Syke
-variant at 20 metre resolution to fill missing OpenStreetMap forest cover
-underneath the more specific KMTK polygons:
+KMTK has no continuous forest polygon collection. Download a forest-only Syke
+source raster at 20 metre resolution to fill missing OpenStreetMap forest
+cover underneath the more specific KMTK polygons:
 
 ```sh
 /tmp/saaristolautat-landcover-venv/bin/python \
@@ -150,22 +110,9 @@ underneath the more specific KMTK polygons:
   --variant syke-forest \
   --output-resolution-metres 20
 
-/tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/build_geojson.py \
-  --area pilot-archipelago-sea \
-  --variant syke-forest \
-  --include-class forest
-
-/tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/build_tiles.py \
-  --area pilot-archipelago-sea \
-  --source syke-maanpeite-2022 \
-  --variant syke-forest
 ```
 
-### Smoothed forest polygons
-
-The smoother upsamples the existing 20 metre forest mask to a 5 metre working
+The smoother upsamples the downloaded 20 metre forest mask to a 5 metre working
 grid, applies a conservative 10 metre box-filter radius and vectorizes the 50%
 contour. Large rasters are processed in overlapping chunks to keep memory use
 bounded. This is cartographic smoothing; it does not increase source accuracy.
@@ -186,14 +133,21 @@ bounded. This is cartographic smoothing; it does not increase source accuracy.
   --area pilot-archipelago-sea \
   --source syke-maanpeite-2022 \
   --variant syke-forest-smoothed \
+  --output tiles/landcover-archipelago-sea-syke-forest-smoothed.pmtiles \
   --force
 ```
 
-The smoothed archive is the application's default forest fallback. Compare it
-with the retained original using the local application:
+The smoothed archive is the application's only forest fallback. The source
+raster is retained for reproducibility; an unsmoothed vector-tile variant is
+not built or published.
 
-- smoothed: `?screenshotCenter=20.76234,60.24975&screenshotZoom=13`
-- original: `?forest=original&screenshotCenter=20.76234,60.24975&screenshotZoom=13`
+## Published archives
+
+Only the three archives listed in `tiles/published-landcover.json` and in the
+`published_archives` section of `data-sources/landcover.yml` are release data.
+Their public names intentionally omit the internal `pilot` area prefix. Verify
+file sizes and SHA-256 checksums against the publication manifest before
+copying the archives to a server.
 
 ## Tests
 

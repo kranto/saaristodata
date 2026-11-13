@@ -52,6 +52,40 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def intermediate_mbtiles_path(output_path: Path) -> Path:
+    """Keep build intermediates out of the publicly served tiles directory."""
+    return REPO_ROOT / "work" / "landcover" / f"{output_path.stem}.mbtiles"
+
+
+def write_publication_manifest(manifest: dict) -> None:
+    archives = []
+    for variant, publication in manifest.get("published_archives", {}).items():
+        active_path = REPO_ROOT / "tiles" / f"landcover-{variant}.json"
+        if not active_path.exists():
+            continue
+        active = json.loads(active_path.read_text(encoding="utf-8"))
+        if active["archive"] != publication["archive"]:
+            raise ValueError(
+                f"Publication archive mismatch for {variant}: "
+                f"{active['archive']} != {publication['archive']}"
+            )
+        archive_path = REPO_ROOT / "tiles" / active["archive"]
+        if not archive_path.exists():
+            continue
+        if archive_path.stat().st_size != active["bytes"] or sha256(archive_path) != active["sha256"]:
+            raise ValueError(f"Publication metadata is stale for {active['archive']}")
+        archives.append({
+            "archive": active["archive"],
+            "bytes": active["bytes"],
+            "sha256": active["sha256"],
+        })
+    publication_path = REPO_ROOT / "tiles" / "published-landcover.json"
+    publication_path.write_text(
+        json.dumps({"schema_version": 1, "archives": archives}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
 def run_tippecanoe(
     command: str,
     output: Path,
@@ -121,7 +155,9 @@ def main() -> None:
     suffix = f"-{args.variant}" if args.variant else ""
     input_path = args.input or REPO_ROOT / "work" / "landcover" / f"{args.area}{suffix}.geojson"
     output_path = args.output or REPO_ROOT / "tiles" / f"landcover-{args.area}{suffix}.pmtiles"
-    mbtiles_path = output_path.with_suffix(".mbtiles")
+    if not output_path.is_absolute():
+        output_path = REPO_ROOT / output_path
+    mbtiles_path = intermediate_mbtiles_path(output_path)
     overview_mbtiles_path = mbtiles_path.with_name(f"{mbtiles_path.stem}-overview.mbtiles")
 
     if not input_path.exists():
@@ -132,10 +168,12 @@ def main() -> None:
     for path in existing:
         path.unlink()
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    mbtiles_path.parent.mkdir(parents=True, exist_ok=True)
 
     tippecanoe = require_command("tippecanoe")
     pmtiles = require_command("pmtiles")
-    archive_name = f"Complementary land cover ({source_name}): {args.area}"
+    public_name = output_path.stem.removeprefix("landcover-")
+    archive_name = f"Complementary land cover ({source_name}): {public_name}"
     detail_minzoom = processing.get("tile_detail_minzoom", processing["tile_minzoom"])
     run_tippecanoe(
         tippecanoe,
@@ -205,6 +243,7 @@ def main() -> None:
         json.dumps(active_manifest, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
+    write_publication_manifest(manifest)
     print(json.dumps(report["tiles"], indent=2))
 
 

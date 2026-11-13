@@ -11,9 +11,10 @@ import numpy as np
 SCRIPT_DIRECTORY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPT_DIRECTORY))
 
-from common import area_config, load_manifest, source_config  # noqa: E402
+from common import REPO_ROOT, area_config, load_manifest, source_config  # noqa: E402
 from build_geojson import box_blur  # noqa: E402
 from build_kmtk_geojson import collection_is_included  # noqa: E402
+from build_tiles import intermediate_mbtiles_path  # noqa: E402
 from download_kmtk import collection_url, split_bbox  # noqa: E402
 from download_syke import build_url  # noqa: E402
 
@@ -49,9 +50,28 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(processing["tile_overview_simplification"], 20)
         self.assertEqual(processing["tile_maxzoom"], 14)
 
+    def test_publication_allowlist_contains_only_release_archives(self) -> None:
+        archives = {
+            item["archive"] for item in self.manifest["published_archives"].values()
+        }
+        self.assertEqual(
+            archives,
+            {
+                "landcover-archipelago-sea-kmtk.pmtiles",
+                "landcover-archipelago-sea-kmtk-urban.pmtiles",
+                "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+            },
+        )
+        self.assertTrue(all("pilot" not in archive for archive in archives))
+
+    def test_mbtiles_intermediate_is_outside_public_tiles(self) -> None:
+        output = REPO_ROOT / "tiles" / "landcover-archipelago-sea-kmtk.pmtiles"
+        intermediate = intermediate_mbtiles_path(output)
+        self.assertEqual(intermediate.parent, Path(REPO_ROOT / "work" / "landcover"))
+
     def test_kmtk_collections_cover_selected_polygon_classes(self) -> None:
         source = source_config(self.manifest, "mml-kmtk-beta")
-        self.assertEqual(source["status"], "pilot-only")
+        self.assertEqual(source["status"], "beta")
         self.assertEqual(
             set(source["collection_mapping"].values()),
             {"bare", "farmland", "open", "rock", "sand", "urban", "wetland"},

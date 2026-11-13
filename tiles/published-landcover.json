@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "archives": [
+    {
+      "archive": "landcover-archipelago-sea-kmtk.pmtiles",
+      "bytes": 51589518,
+      "sha256": "7b1bfd53eab66712ccda232b88f4e7b5361906349543588c72bf9a9d31af4c9c"
+    },
+    {
+      "archive": "landcover-archipelago-sea-kmtk-urban.pmtiles",
+      "bytes": 687276,
+      "sha256": "fddd2d72c782ddd4bdb9ce39e20a7d539d082253eb8537c52410639b2e39a97e"
+    },
+    {
+      "archive": "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+      "bytes": 48128676,
+      "sha256": "440a25f0fcdcff773d1440363b768360880de9685792e84ad223754c843632f5"
+    }
+  ]
+}

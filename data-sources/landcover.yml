@@ -1,5 +1,16 @@
 schema_version: 1
 
+# Only these archives are copied to the public data directory. Internal area
+# identifiers retain their historical pilot names so existing raw downloads
+# and processing reports remain reproducible.
+published_archives:
+  kmtk:
+    archive: landcover-archipelago-sea-kmtk.pmtiles
+  kmtk-urban:
+    archive: landcover-archipelago-sea-kmtk-urban.pmtiles
+  syke-forest-smoothed:
+    archive: landcover-archipelago-sea-syke-forest-smoothed.pmtiles
+
 areas:
   pilot-kustavi-inio-velkua:
     description: Kustavi-Iniö-Velkua pilot area
@@ -22,7 +33,7 @@ areas:
 
 sources:
   mml-kmtk-beta:
-    status: pilot-only
+    status: beta
     title: Kansallinen maastotietokanta BETA
     organisation: Maanmittauslaitos
     metadata_url: https://www.maanmittauslaitos.fi/rajapintapalvelut/maastotietojen-kyselypalvelu-beta
@@ -33,7 +44,7 @@ sources:
     attribution: "Lähde: Maanmittauslaitos, Kansallinen maastotietokanta BETA"
     authentication: MML_API_KEY environment variable or local API-key file
     limitations:
-      - BETA data is only permitted for testing and can change before production release.
+      - The BETA service and data model can change before the final KMTK release.
       - KMTK has no continuous forest polygon; Syke may be needed later to fill unclassified land.
     collection_mapping:
       brush: open

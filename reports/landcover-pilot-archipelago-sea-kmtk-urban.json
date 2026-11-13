@@ -51,9 +51,9 @@
     "output": "raw/landcover/mml-kmtk-beta/pilot-archipelago-sea.geojson"
   },
   "tiles": {
-    "generated_at": "2026-11-13T02:55:22.612407+00:00",
-    "output": "tiles/landcover-pilot-archipelago-sea-kmtk-urban.pmtiles",
-    "output_bytes": 687282,
+    "generated_at": "2026-11-13T07:24:43.989959+00:00",
+    "output": "tiles/landcover-archipelago-sea-kmtk-urban.pmtiles",
+    "output_bytes": 687276,
     "layer_name": "landcover",
     "minimum_zoom": 8,
     "maximum_zoom": 14,

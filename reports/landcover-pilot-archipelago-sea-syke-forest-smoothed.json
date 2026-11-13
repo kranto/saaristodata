@@ -53,9 +53,9 @@
     "output": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif"
   },
   "tiles": {
-    "generated_at": "2026-11-12T20:32:31.636546+00:00",
-    "output": "tiles/landcover-pilot-archipelago-sea-syke-forest-smoothed.pmtiles",
-    "output_bytes": 48128678,
+    "generated_at": "2026-11-13T07:25:13.094797+00:00",
+    "output": "tiles/landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+    "output_bytes": 48128676,
     "layer_name": "landcover",
     "minimum_zoom": 8,
     "maximum_zoom": 14,
