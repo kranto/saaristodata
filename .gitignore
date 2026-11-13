@@ -1,3 +1,13 @@
 .DS_Store
+.env
 .timetable-checker/
 __pycache__/
+
+# Generated complementary land-cover data. Keep the reproducible source
+# manifest, scripts and reports in Git; keep downloaded and generated spatial
+# data outside version control.
+raw/landcover/
+work/landcover/
+tiles/landcover-*.pmtiles
+tiles/landcover-*.mbtiles
+tiles/landcover-*.geojson

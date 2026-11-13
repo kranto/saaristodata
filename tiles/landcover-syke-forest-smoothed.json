@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-13T07:25:13.094797+00:00",
+  "area": "pilot-archipelago-sea",
+  "source": "syke-maanpeite-2022",
+  "archive": "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+  "bytes": 48128676,
+  "sha256": "440a25f0fcdcff773d1440363b768360880de9685792e84ad223754c843632f5",
+  "bounds_wgs84": [
+    19.0,
+    59.7,
+    23.0,
+    60.7
+  ],
+  "minimum_zoom": 8,
+  "maximum_zoom": 14,
+  "layer_name": "landcover",
+  "classes": [
+    "forest"
+  ],
+  "attribution": "Lähde: Syke, Maanpeite 2 m 2022"
+}
