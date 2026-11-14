@@ -15,7 +15,9 @@ near-neutral pixels. Fully transparent pixels are normalized, the gray channel
 is quantized to 64 levels, and the result is encoded as transparent WebP at
 quality 80. This keeps the flat sea from darkening while retaining the light
 and dark relief on land. The full 8 m raster is stored in a PMTiles archive, so
-the browser loads only the tiles visible in the current viewport.
+the browser loads only the tiles visible in the current viewport. Raster tiles
+end at zoom 12 and are overzoomed beyond it to reduce requests and decoded
+texture memory on mobile devices.
 
 The API key is read from `saaristodata/.env`. It is used only by the build
 script and is never sent to the browser. Generated test files stay in the

@@ -279,7 +279,7 @@ def build_hillshade_pmtiles(
     bbox: tuple[float, float, float, float],
     output: Path,
     minimum_zoom: int = 7,
-    maximum_zoom: int = 13,
+    maximum_zoom: int = 12,
 ) -> dict:
     mbtiles = output.with_suffix(".mbtiles")
     mbtiles.unlink(missing_ok=True)
@@ -489,7 +489,7 @@ def main() -> None:
     hillshade_tiffs = download_hillshade(client, sheets, output_dir / "source-hillshade")
     downloaded_sheets = {path.stem for path in hillshade_tiffs}
     hillshade_source = merged_hillshade(hillshade_tiffs, bbox, output_dir / "cache" / "hillshade-8m-merged.tif")
-    hillshade = build_hillshade_pmtiles(hillshade_source, bbox, output_dir / "hillshade-8m-webp.pmtiles")
+    hillshade = build_hillshade_pmtiles(hillshade_source, bbox, output_dir / "hillshade-8m-webp-z12.pmtiles")
 
     contour_features = iter_contours(client, bbox)
     counts = write_contour_sequences(contour_features, output_dir)
@@ -511,7 +511,7 @@ def main() -> None:
         "assets": {
             "contours_5m": "contours-5m.pmtiles",
             "contours_10m": "contours-10m.pmtiles",
-            "hillshade": "hillshade-8m-webp.pmtiles",
+            "hillshade": "hillshade-8m-webp-z12.pmtiles",
         },
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
