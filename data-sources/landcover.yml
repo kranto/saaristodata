@@ -4,6 +4,8 @@ schema_version: 1
 # identifiers retain their historical pilot names so existing raw downloads
 # and processing reports remain reproducible.
 published_archives:
+  terrain-overview:
+    archive: terrain-landcover-overview-r1.pmtiles
   kmtk:
     archive: terrain-landcover-r1.pmtiles
   kmtk-urban:

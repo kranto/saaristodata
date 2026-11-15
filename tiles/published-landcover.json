@@ -2,6 +2,11 @@
   "schema_version": 1,
   "archives": [
     {
+      "archive": "terrain-landcover-overview-r1.pmtiles",
+      "bytes": 4100721,
+      "sha256": "c3869dc22a5d84958573ff1df46357cb1f87b646fd6ef8843761ac3b84010b2b"
+    },
+    {
       "archive": "terrain-landcover-r1.pmtiles",
       "bytes": 63270442,
       "sha256": "952c7403c04a16576d566325ced5f98b3f1bf560452c5a6aa0d2d0af3c9d55f1"

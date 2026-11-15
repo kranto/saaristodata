@@ -97,6 +97,21 @@ tracked JSON report and the variant-specific active archive manifest with its
 checksum, bounds, zoom range and attribution. Existing archives are preserved
 unless `--force` is used.
 
+The terrain map uses a single precomposed WebP overview for zooms 8-10 so
+the browser does not need to download and decode the large KMTK and shoreline-
+masked Syke vector tiles at startup. It deliberately excludes the separate
+urban-only archive used by the default OpenFreeMap style. Rebuild it from the
+published vector archives with:
+
+```sh
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/landcover/build_overview_raster.py
+```
+
+The zoom-10 raster prevents the zoom-9 image from being enlarged near the
+transition. At zoom 10 the terrain map switches back to the two detailed
+vector archives.
+
 ## Build the smoothed Syke forest fallback
 
 KMTK has no continuous forest polygon collection. Download a forest-only Syke

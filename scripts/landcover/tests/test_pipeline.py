@@ -64,6 +64,7 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(
             archives,
             {
+                "terrain-landcover-overview-r1.pmtiles",
                 "terrain-landcover-r1.pmtiles",
                 "terrain-landcover-detail-r1.pmtiles",
                 "terrain-landcover-fill-r1.pmtiles",

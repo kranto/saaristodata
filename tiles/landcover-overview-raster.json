@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "archive": "terrain-landcover-overview-r1.pmtiles",
+  "bounds": [
+    19.0,
+    59.7,
+    23.58061,
+    60.75826
+  ],
+  "minzoom": 8,
+  "maxzoom": 10,
+  "webp_quality_by_zoom": {
+    "8": 70,
+    "9": 75,
+    "10": 85
+  },
+  "supersampling": 2,
+  "opacity_cap_ratio": 0.825,
+  "source_bytes": {
+    "fill": {
+      "8": 902771,
+      "9": 1801513,
+      "10": 6580314
+    },
+    "kmtk": {
+      "8": 2067734,
+      "9": 2896884,
+      "10": 8057627
+    }
+  },
+  "raster": {
+    "8": {
+      "tiles": 8,
+      "bytes": 205768
+    },
+    "9": {
+      "tiles": 23,
+      "bytes": 764814
+    },
+    "10": {
+      "tiles": 71,
+      "bytes": 3129472
+    }
+  },
+  "bytes": 4100721,
+  "sha256": "c3869dc22a5d84958573ff1df46357cb1f87b646fd6ef8843761ac3b84010b2b"
+}
