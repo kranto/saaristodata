@@ -2,19 +2,19 @@
   "schema_version": 1,
   "archives": [
     {
-      "archive": "landcover-archipelago-sea-kmtk.pmtiles",
+      "archive": "terrain-landcover-r1.pmtiles",
       "bytes": 63270442,
       "sha256": "952c7403c04a16576d566325ced5f98b3f1bf560452c5a6aa0d2d0af3c9d55f1"
     },
     {
-      "archive": "landcover-archipelago-sea-kmtk-urban.pmtiles",
+      "archive": "terrain-landcover-detail-r1.pmtiles",
       "bytes": 791886,
       "sha256": "48c93def20d9194af9034f19d1031c35f18090ea2055969878873d31deae4ee5"
     },
     {
-      "archive": "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
-      "bytes": 49282147,
-      "sha256": "e5caf1d3266cbc56476c9e471f0b9d2b2a22d92e5bf6937433e62008953c93e0"
+      "archive": "terrain-landcover-fill-r1.pmtiles",
+      "bytes": 50628107,
+      "sha256": "5ed4d7b2eab0af71a22b4b3fc62765ef2ed7e86bfef81eede42ec6b06c6b1b22"
     }
   ]
 }

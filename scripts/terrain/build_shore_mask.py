@@ -39,7 +39,7 @@ FOREST_SOURCE = (
 )
 FOREST_OUTPUT = (
     REPO_ROOT / "tiles"
-    / "landcover-archipelago-sea-syke-forest-shore-masked.pmtiles"
+    / "terrain-landcover-fill-r1.pmtiles"
 )
 HILLSHADE_SOURCE = (
     REPO_ROOT / "raw" / "landcover" / "terrain-test" / "cache"
@@ -47,7 +47,7 @@ HILLSHADE_SOURCE = (
 )
 HILLSHADE_OUTPUT = (
     REPO_ROOT / "raw" / "landcover" / "terrain-test"
-    / "hillshade-8m-webp-z12-shore-masked.pmtiles"
+    / "terrain-hillshade-r1.pmtiles"
 )
 
 
@@ -179,11 +179,11 @@ def main() -> None:
             sea_parts.append(make_valid(clipped))
     sea_geometry = unary_union(sea_parts)
     forest_output = (
-        FOREST_OUTPUT.with_name(f"{FOREST_OUTPUT.stem}-pilot.pmtiles")
+        FOREST_OUTPUT.with_name("terrain-landcover-fill-pilot-r1.pmtiles")
         if args.pilot else FOREST_OUTPUT
     )
     hillshade_output = (
-        HILLSHADE_OUTPUT.with_name(f"{HILLSHADE_OUTPUT.stem}-pilot.pmtiles")
+        HILLSHADE_OUTPUT.with_name("terrain-hillshade-pilot-r1.pmtiles")
         if args.pilot else HILLSHADE_OUTPUT
     )
     if args.hillshade_only:

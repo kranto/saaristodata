@@ -5,11 +5,11 @@ schema_version: 1
 # and processing reports remain reproducible.
 published_archives:
   kmtk:
-    archive: landcover-archipelago-sea-kmtk.pmtiles
+    archive: terrain-landcover-r1.pmtiles
   kmtk-urban:
-    archive: landcover-archipelago-sea-kmtk-urban.pmtiles
+    archive: terrain-landcover-detail-r1.pmtiles
   syke-forest-smoothed:
-    archive: landcover-archipelago-sea-syke-forest-smoothed.pmtiles
+    archive: terrain-landcover-fill-r1.pmtiles
 
 areas:
   pilot-kustavi-inio-velkua:

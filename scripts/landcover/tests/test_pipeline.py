@@ -64,15 +64,15 @@ class PipelineConfigurationTests(unittest.TestCase):
         self.assertEqual(
             archives,
             {
-                "landcover-archipelago-sea-kmtk.pmtiles",
-                "landcover-archipelago-sea-kmtk-urban.pmtiles",
-                "landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+                "terrain-landcover-r1.pmtiles",
+                "terrain-landcover-detail-r1.pmtiles",
+                "terrain-landcover-fill-r1.pmtiles",
             },
         )
         self.assertTrue(all("pilot" not in archive for archive in archives))
 
     def test_mbtiles_intermediate_is_outside_public_tiles(self) -> None:
-        output = REPO_ROOT / "tiles" / "landcover-archipelago-sea-kmtk.pmtiles"
+        output = REPO_ROOT / "tiles" / "terrain-landcover-r1.pmtiles"
         intermediate = intermediate_mbtiles_path(output)
         self.assertEqual(intermediate.parent, Path(REPO_ROOT / "work" / "landcover"))
 

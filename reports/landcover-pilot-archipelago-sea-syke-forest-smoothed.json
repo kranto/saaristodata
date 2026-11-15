@@ -54,7 +54,7 @@
   },
   "tiles": {
     "generated_at": "2026-11-15T16:03:14.123204+00:00",
-    "output": "tiles/landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
+    "output": "tiles/terrain-landcover-fill-r0.pmtiles",
     "output_bytes": 49282147,
     "layer_name": "landcover",
     "minimum_zoom": 8,

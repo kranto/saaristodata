@@ -3,7 +3,7 @@
   "generated_at": "2026-11-15T16:02:39.163737+00:00",
   "area": "pilot-archipelago-sea",
   "source": "mml-kmtk-beta",
-  "archive": "landcover-archipelago-sea-kmtk-urban.pmtiles",
+  "archive": "terrain-landcover-detail-r1.pmtiles",
   "bytes": 791886,
   "sha256": "48c93def20d9194af9034f19d1031c35f18090ea2055969878873d31deae4ee5",
   "bounds_wgs84": [

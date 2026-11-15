@@ -9,5 +9,6 @@ __pycache__/
 raw/landcover/
 work/landcover/
 tiles/landcover-*.pmtiles
+tiles/terrain-*.pmtiles
 tiles/landcover-*.mbtiles
 tiles/landcover-*.geojson

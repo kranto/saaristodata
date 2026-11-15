@@ -50,7 +50,7 @@ local file outside the repository. Then run:
   --area pilot-archipelago-sea \
   --source mml-kmtk-beta \
   --variant kmtk \
-  --output tiles/landcover-archipelago-sea-kmtk.pmtiles
+  --output tiles/terrain-landcover-r1.pmtiles
 ```
 
 The downloader reads all configured KMTK polygon collections, recursively
@@ -76,7 +76,7 @@ settings:
   --area pilot-archipelago-sea \
   --source mml-kmtk-beta \
   --variant kmtk-urban \
-  --output tiles/landcover-archipelago-sea-kmtk-urban.pmtiles
+  --output tiles/terrain-landcover-detail-r1.pmtiles
 ```
 
 The full KMTK archive remains the terrain map's source. The smaller urban
@@ -129,17 +129,12 @@ bounded. This is cartographic smoothing; it does not increase source accuracy.
   --smooth-radius-pixels 2
 
 /tmp/saaristolautat-landcover-venv/bin/python \
-  scripts/landcover/build_tiles.py \
-  --area pilot-archipelago-sea \
-  --source syke-maanpeite-2022 \
-  --variant syke-forest-smoothed \
-  --output tiles/landcover-archipelago-sea-syke-forest-smoothed.pmtiles \
-  --force
+  scripts/terrain/build_shore_mask.py
 ```
 
-The smoothed archive is the application's only forest fallback. The source
-raster is retained for reproducibility; an unsmoothed vector-tile variant is
-not built or published.
+The shoreline-masked smoothed archive is the application's only forest
+fallback. The source raster and downloaded shoreline are retained for
+reproducibility; an unsmoothed vector-tile variant is not built or published.
 
 ## Published archives
 

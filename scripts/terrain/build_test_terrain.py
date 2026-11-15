@@ -574,13 +574,19 @@ def main() -> None:
         hillshade_source,
         bbox,
         clip_geometry,
-        output_dir / "hillshade-8m-webp-z12.pmtiles",
+        output_dir / "terrain-hillshade-r1.pmtiles",
     )
 
     contour_features = iter_contours(client, bbox)
     counts = write_contour_sequences(contour_features, output_dir, clip_geometry)
-    build_pmtiles(output_dir / "contours-5m.geojsonseq", output_dir / "contours-5m.pmtiles")
-    build_pmtiles(output_dir / "contours-10m.geojsonseq", output_dir / "contours-10m.pmtiles")
+    build_pmtiles(
+        output_dir / "contours-5m.geojsonseq",
+        output_dir / "terrain-contour-5m-r1.pmtiles",
+    )
+    build_pmtiles(
+        output_dir / "contours-10m.geojsonseq",
+        output_dir / "terrain-contour-10m-r1.pmtiles",
+    )
 
     manifest = {
         "schema_version": 1,
@@ -604,9 +610,9 @@ def main() -> None:
         },
         "contours": {"collection": "korkeuskayra", "feature_counts": counts},
         "assets": {
-            "contours_5m": "contours-5m.pmtiles",
-            "contours_10m": "contours-10m.pmtiles",
-            "hillshade": "hillshade-8m-webp-z12.pmtiles",
+            "contours_5m": "terrain-contour-5m-r1.pmtiles",
+            "contours_10m": "terrain-contour-10m-r1.pmtiles",
+            "hillshade": "terrain-hillshade-r1.pmtiles",
         },
     }
     (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

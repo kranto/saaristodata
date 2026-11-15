@@ -52,7 +52,7 @@
   },
   "tiles": {
     "generated_at": "2026-11-15T16:02:39.163737+00:00",
-    "output": "tiles/landcover-archipelago-sea-kmtk-urban.pmtiles",
+    "output": "tiles/terrain-landcover-detail-r1.pmtiles",
     "output_bytes": 791886,
     "layer_name": "landcover",
     "minimum_zoom": 8,
