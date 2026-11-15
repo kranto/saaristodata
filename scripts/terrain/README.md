@@ -13,13 +13,16 @@ The source data comes directly from Maanmittauslaitos:
   file service
 
 The hillshade raster tiles make MML's neutral gray transparent and feather
-near-neutral pixels. Fully transparent pixels are normalized, the gray channel
-is quantized to 64 levels, and the result is encoded as transparent WebP at
-quality 80. This keeps the flat sea from darkening while retaining the light
-and dark relief on land. The full 8 m raster is stored in a PMTiles archive, so
-the browser loads only the tiles visible in the current viewport. Raster tiles
-end at zoom 12 and are overzoomed beyond it to reduce requests and decoded
-texture memory on mobile devices.
+near-neutral pixels. Fully transparent pixels are normalized and the result is
+encoded as transparent WebP. Zooms 7-9 are progressively rendered at lower
+internal resolutions and lower WebP quality; zoom 10 onwards retains the full
+256 px, 64-level, quality-80 rendering. At zooms 7-8 the shoreline alpha is
+simplified together with the relief because exact small-island edges are not
+visible at overview scale. Zoom 9 retains the exact shoreline alpha while
+simplifying the relief. This keeps the small-zoom overview light without
+requiring a separate hillshade archive. Raster tiles end at zoom 12
+and are overzoomed beyond it to reduce requests and decoded texture memory on
+mobile devices.
 
 The API key is read from `saaristodata/.env`. It is used only by the build
 script and is never sent to the browser. Generated test files stay in the
@@ -38,3 +41,13 @@ Build with the existing land-cover virtual environment:
 
 The app's localhost controls can independently select 5 m or 10 m contours,
 enable the hillshade, and tune their zoom ranges, colour and opacity.
+
+An already generated hillshade archive can be optimized without touching the
+source rasters or rebuilding the shoreline mask. This simplifies the complete
+RGBA image at zooms 7-9 and copies zooms 10-12 unchanged:
+
+```sh
+/tmp/saaristolautat-landcover-venv/bin/python \
+  scripts/terrain/optimize_hillshade.py \
+  raw/landcover/terrain-test/terrain-hillshade-r1.pmtiles
+```
