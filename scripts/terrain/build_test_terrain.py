@@ -32,6 +32,7 @@ from rasterio.vrt import WarpedVRT
 from rasterio.warp import Resampling, reproject
 from shapely import make_valid, transform
 from shapely.geometry import box, mapping, shape
+from shapely.ops import clip_by_rect
 
 
 WEB_MERCATOR_LIMIT = 20_037_508.342789244
@@ -289,6 +290,7 @@ def build_hillshade_pmtiles(
     output: Path,
     minimum_zoom: int = 7,
     maximum_zoom: int = 12,
+    water_geometry=None,
 ) -> dict:
     mbtiles = output.with_suffix(".mbtiles")
     mbtiles.unlink(missing_ok=True)
@@ -319,6 +321,17 @@ def build_hillshade_pmtiles(
     tile_counts: dict[str, int] = {}
     to_web_mercator = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True).transform
     web_mercator_clip = transform(clip_geometry, to_web_mercator, interleaved=False)
+    web_mercator_water = (
+        transform(water_geometry, to_web_mercator, interleaved=False)
+        if water_geometry is not None else None
+    )
+    if web_mercator_water is not None:
+        maximum_zoom_tile_width = 2 * WEB_MERCATOR_LIMIT / (1 << maximum_zoom)
+        maximum_zoom_subpixel = maximum_zoom_tile_width / (256 * 4)
+        web_mercator_water = web_mercator_water.simplify(
+            maximum_zoom_subpixel / 4,
+            preserve_topology=False,
+        )
     try:
         with rasterio.open(source_path) as source, WarpedVRT(
             source,
@@ -327,6 +340,14 @@ def build_hillshade_pmtiles(
             resampling=Resampling.bilinear,
         ) as warped:
             for zoom in range(minimum_zoom, maximum_zoom + 1):
+                water_for_zoom = web_mercator_water
+                if water_for_zoom is not None:
+                    tile_width = 2 * WEB_MERCATOR_LIMIT / (1 << zoom)
+                    subpixel = tile_width / (256 * 4)
+                    water_for_zoom = water_for_zoom.simplify(
+                        subpixel / 4,
+                        preserve_topology=False,
+                    )
                 x_min = longitude_tile(west, zoom)
                 x_max = longitude_tile(math.nextafter(east, west), zoom)
                 y_min = latitude_tile(north, zoom)
@@ -361,6 +382,24 @@ def build_hillshade_pmtiles(
                             dtype=np.uint8,
                         )
                         alpha[area_mask == 0] = 0
+                        if water_for_zoom is not None:
+                            tile_water = clip_by_rect(water_for_zoom, *bounds)
+                            if not tile_water.is_empty:
+                                supersampling = 4
+                                size = 256 * supersampling
+                                water_mask = rasterize(
+                                    [(mapping(tile_water), 1)],
+                                    out_shape=(size, size),
+                                    transform=from_bounds(*bounds, size, size),
+                                    fill=0,
+                                    dtype=np.uint8,
+                                )
+                                water_coverage = water_mask.reshape(
+                                    256, supersampling, 256, supersampling
+                                ).mean(axis=(1, 3))
+                                alpha = np.rint(
+                                    alpha.astype(np.float32) * (1 - water_coverage)
+                                ).astype(np.uint8)
                         quantization_step = 256 // HILLSHADE_GRAY_LEVELS
                         signed_gray = gray.astype(np.int16) - 181
                         gray = np.clip(
