@@ -6,12 +6,19 @@ import urllib.parse
 from pathlib import Path
 
 import numpy as np
+from shapely.geometry import Point
 
 
 SCRIPT_DIRECTORY = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPT_DIRECTORY))
 
-from common import REPO_ROOT, area_config, load_manifest, source_config  # noqa: E402
+from common import (  # noqa: E402
+    REPO_ROOT,
+    area_clip_geometry,
+    area_config,
+    load_manifest,
+    source_config,
+)
 from build_geojson import box_blur  # noqa: E402
 from build_kmtk_geojson import collection_is_included  # noqa: E402
 from build_tiles import intermediate_mbtiles_path  # noqa: E402
@@ -99,8 +106,16 @@ class PipelineConfigurationTests(unittest.TestCase):
 
     def test_expanded_kmtk_pilot_covers_full_route_area(self) -> None:
         expanded = area_config(self.manifest, "pilot-archipelago-sea")
-        self.assertEqual(expanded["bbox_wgs84"], [19.0, 59.7, 23.0, 60.7])
-        self.assertEqual(expanded["bbox_epsg3067"], [50000, 6624000, 282000, 6757000])
+        self.assertEqual(expanded["bbox_wgs84"], [19.0, 59.7, 23.58061, 60.75826])
+        self.assertEqual(expanded["bbox_epsg3067"], [50000, 6624000, 313000, 6763000])
+
+    def test_expanded_area_uses_shared_include_and_exclude_mask(self) -> None:
+        expanded = area_config(self.manifest, "pilot-archipelago-sea")
+        clip = area_clip_geometry(expanded)
+        self.assertTrue(clip.covers(Point(23.4, 60.0)))
+        self.assertFalse(clip.covers(Point(23.4, 60.6)))
+        self.assertTrue(clip.covers(Point(21.0, 60.75826)))
+        self.assertFalse(clip.covers(Point(23.4, 60.8)))
 
     def test_forest_smoothing_pilot_uses_kumlinge_seglinge_bounds(self) -> None:
         pilot = area_config(self.manifest, "pilot-kumlinge-seglinge")

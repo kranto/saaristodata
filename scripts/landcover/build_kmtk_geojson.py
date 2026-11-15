@@ -11,9 +11,9 @@ from pathlib import Path
 
 from pyproj import Transformer
 from shapely import make_valid, transform
-from shapely.geometry import box, mapping, shape
+from shapely.geometry import mapping, shape
 
-from common import REPO_ROOT, area_config, load_manifest, source_config
+from common import REPO_ROOT, area_clip_geometry, area_config, load_manifest, source_config
 
 
 DEFAULT_SOURCE = "mml-kmtk-beta"
@@ -49,8 +49,8 @@ def main() -> None:
 
     to_projected = Transformer.from_crs(4326, 3067, always_xy=True).transform
     to_wgs84 = Transformer.from_crs(3067, 4326, always_xy=True).transform
-    west, south, east, north = area["bbox_epsg3067"]
-    clip = box(west, south, east, north)
+    clip = area_clip_geometry(area, 3067)
+    output_clip = area_clip_geometry(area)
     minimum_areas = processing["kmtk_minimum_area_square_metres"]
     tolerance = float(processing["simplify_tolerance_metres"])
     counts = Counter()
@@ -68,7 +68,12 @@ def main() -> None:
         if geometry.is_empty or geometry.area < float(minimum_areas[class_name]):
             continue
         geometry = geometry.simplify(tolerance, preserve_topology=True)
+        geometry = make_valid(geometry).intersection(clip)
         if geometry.is_empty:
+            continue
+        output_geometry = transform(geometry, to_wgs84, interleaved=False)
+        output_geometry = make_valid(output_geometry).intersection(output_clip)
+        if output_geometry.is_empty:
             continue
         counts[class_name] += 1
         areas[class_name] += geometry.area
@@ -81,7 +86,7 @@ def main() -> None:
                 "source_collection": properties["source_collection"],
                 "source_date": "2026-beta",
             },
-            "geometry": mapping(transform(geometry, to_wgs84, interleaved=False)),
+            "geometry": mapping(output_geometry),
         })
 
     output_path.parent.mkdir(parents=True, exist_ok=True)

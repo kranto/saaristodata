@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T13:12:12.980300+00:00",
+  "generated_at": "2026-11-15T15:57:53.174911+00:00",
   "area": "pilot-archipelago-sea",
   "source": "syke-maanpeite-2022",
   "variant": "syke-forest-smoothed",
@@ -8,10 +8,10 @@
   ],
   "input": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif",
   "output": "work/landcover/pilot-archipelago-sea-syke-forest-smoothed.geojson",
-  "output_bytes": 208701287,
+  "output_bytes": 214877448,
   "raster": {
-    "width": 11016,
-    "height": 6650,
+    "width": 12566,
+    "height": 6950,
     "resolution": [
       19.999523270365295,
       19.99989749021886
@@ -20,8 +20,8 @@
     "bounds": [
       61684.0,
       6623997.9069211185,
-      281998.7483463441,
-      6756997.225231074
+      312998.0094154103,
+      6762997.194478139
     ],
     "nodata": -9999.0,
     "clipped_to_area": true,
@@ -33,74 +33,74 @@
     "smooth_radius_pixels": 2
   },
   "source_pixel_counts": {
-    "220": 11081027
+    "220": 16171833
   },
   "feature_counts": {
-    "forest": 40102
+    "forest": 40181
   },
   "area_square_metres": {
-    "forest": 4415126351.1
+    "forest": 4577244015.1
   },
   "download": {
     "area": "pilot-archipelago-sea",
     "source": "syke-maanpeite-2022",
     "variant": "syke-forest",
     "output_resolution_metres": 20.0,
-    "downloaded_at": "2026-11-12T07:44:30.281884+00:00",
-    "request_url": "https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Maanpeite2022Scalgo&SUBSET=N%286624000%2C6757000%29&SUBSET=E%2850000%2C282000%29&subsettingcrs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3067&format=image%2Ftiff&SCALEFACTOR=0.1",
-    "bytes": 149949060,
-    "sha256": "9fd6537c02f7500120743a8d601efa6c4215662abd00adfb91887930e8400559",
+    "downloaded_at": "2026-11-15T15:20:57.454786+00:00",
+    "request_url": "https://paikkatiedot.ymparisto.fi/geoserver/syke_maanpeitescalgo/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=Maanpeite2022Scalgo&SUBSET=N%286624000%2C6763000%29&SUBSET=E%2850000%2C313000%29&subsettingcrs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3067&format=image%2Ftiff&SCALEFACTOR=0.1",
+    "bytes": 183504004,
+    "sha256": "8a522a65eceba69cb700d2582a4358a7989340e12e93281d69b2ed8d917e49a7",
     "output": "raw/landcover/syke-maanpeite-2022/pilot-archipelago-sea-syke-forest.tif"
   },
   "tiles": {
-    "generated_at": "2026-11-13T07:25:13.094797+00:00",
+    "generated_at": "2026-11-15T16:03:14.123204+00:00",
     "output": "tiles/landcover-archipelago-sea-syke-forest-smoothed.pmtiles",
-    "output_bytes": 48128676,
+    "output_bytes": 49282147,
     "layer_name": "landcover",
     "minimum_zoom": 8,
     "maximum_zoom": 14,
     "zoom_statistics": {
       "8": {
         "tiles": 8,
-        "minimum_bytes": 11834,
-        "maximum_bytes": 343357,
-        "average_bytes": 111414.4
+        "minimum_bytes": 11785,
+        "maximum_bytes": 247213,
+        "average_bytes": 111593.2
       },
       "9": {
-        "tiles": 21,
-        "minimum_bytes": 123,
-        "maximum_bytes": 228746,
-        "average_bytes": 87499.7
+        "tiles": 23,
+        "minimum_bytes": 111,
+        "maximum_bytes": 249015,
+        "average_bytes": 78084.7
       },
       "10": {
-        "tiles": 65,
-        "minimum_bytes": 133,
-        "maximum_bytes": 282193,
-        "average_bytes": 98274.6
+        "tiles": 71,
+        "minimum_bytes": 135,
+        "maximum_bytes": 283492,
+        "average_bytes": 92549.8
       },
       "11": {
-        "tiles": 221,
+        "tiles": 229,
         "minimum_bytes": 132,
-        "maximum_bytes": 83894,
-        "average_bytes": 32558.9
+        "maximum_bytes": 86707,
+        "average_bytes": 32390.9
       },
       "12": {
-        "tiles": 746,
+        "tiles": 753,
         "minimum_bytes": 129,
-        "maximum_bytes": 31630,
-        "average_bytes": 11001.7
+        "maximum_bytes": 31359,
+        "average_bytes": 11210.2
       },
       "13": {
-        "tiles": 2608,
+        "tiles": 2609,
         "minimum_bytes": 125,
-        "maximum_bytes": 11918,
-        "average_bytes": 3858.7
+        "maximum_bytes": 12151,
+        "average_bytes": 3949.1
       },
       "14": {
-        "tiles": 9054,
+        "tiles": 9084,
         "minimum_bytes": 124,
-        "maximum_bytes": 4118,
-        "average_bytes": 1493.2
+        "maximum_bytes": 4172,
+        "average_bytes": 1523.0
       }
     }
   }

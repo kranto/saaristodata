@@ -12,6 +12,7 @@ import os
 import re
 import sqlite3
 import subprocess
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -24,13 +25,15 @@ import rasterio
 import shapefile
 from PIL import Image
 from pyproj import Transformer
+from rasterio.features import rasterize
 from rasterio.merge import merge
 from rasterio.transform import from_bounds
 from rasterio.vrt import WarpedVRT
 from rasterio.warp import Resampling, reproject
+from shapely import make_valid, transform
+from shapely.geometry import box, mapping, shape
 
 
-DEFAULT_BBOX = (19.0, 59.7, 23.0, 60.7)
 WEB_MERCATOR_LIMIT = 20_037_508.342789244
 HILLSHADE_FORMAT = "webp"
 HILLSHADE_WEBP_QUALITY = 80
@@ -38,6 +41,11 @@ HILLSHADE_WEBP_METHOD = 4
 HILLSHADE_GRAY_LEVELS = 64
 HILLSHADE_TRANSPARENT_ALPHA_LIMIT = 8
 REPO_ROOT = Path(__file__).resolve().parents[2]
+LANDCOVER_SCRIPT_DIR = REPO_ROOT / "scripts" / "landcover"
+sys.path.insert(0, str(LANDCOVER_SCRIPT_DIR))
+from common import area_clip_geometry, area_config, load_manifest  # noqa: E402
+
+DEFAULT_AREA = "pilot-archipelago-sea"
 DEFAULT_DATA_DIR = REPO_ROOT / "raw" / "landcover" / "terrain-test"
 FEATURES_URL = "https://avoin-paikkatieto.maanmittauslaitos.fi/maastotiedot/features/v1"
 FILES_URL = "https://avoin-paikkatieto.maanmittauslaitos.fi/tiedostopalvelu/ogcproc/v1"
@@ -277,6 +285,7 @@ def web_mercator_tile_bounds(zoom: int, x: int, y: int) -> tuple[float, float, f
 def build_hillshade_pmtiles(
     source_path: Path,
     bbox: tuple[float, float, float, float],
+    clip_geometry,
     output: Path,
     minimum_zoom: int = 7,
     maximum_zoom: int = 12,
@@ -308,6 +317,8 @@ def build_hillshade_pmtiles(
         ("maxzoom", str(maximum_zoom)),
     ])
     tile_counts: dict[str, int] = {}
+    to_web_mercator = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True).transform
+    web_mercator_clip = transform(clip_geometry, to_web_mercator, interleaved=False)
     try:
         with rasterio.open(source_path) as source, WarpedVRT(
             source,
@@ -339,6 +350,17 @@ def build_hillshade_pmtiles(
                         deviation = np.abs(gray.astype(np.int16) - 181)
                         alpha = np.clip((deviation - 2) / 18 * 255, 0, 255).astype(np.uint8)
                         alpha[alpha < HILLSHADE_TRANSPARENT_ALPHA_LIMIT] = 0
+                        tile_clip = web_mercator_clip.intersection(box(*bounds))
+                        if tile_clip.is_empty:
+                            continue
+                        area_mask = rasterize(
+                            [(mapping(tile_clip), 1)],
+                            out_shape=(256, 256),
+                            transform=from_bounds(*bounds, 256, 256),
+                            fill=0,
+                            dtype=np.uint8,
+                        )
+                        alpha[area_mask == 0] = 0
                         quantization_step = 256 // HILLSHADE_GRAY_LEVELS
                         signed_gray = gray.astype(np.int16) - 181
                         gray = np.clip(
@@ -425,7 +447,7 @@ def iter_contours(
         latitude = chunk_north
 
 
-def write_contour_sequences(features: Iterable[dict], output_dir: Path) -> dict[str, int]:
+def write_contour_sequences(features: Iterable[dict], output_dir: Path, clip_geometry) -> dict[str, int]:
     outputs = {
         5: (output_dir / "contours-5m.geojsonseq").open("w", encoding="utf-8"),
         10: (output_dir / "contours-10m.geojsonseq").open("w", encoding="utf-8"),
@@ -436,11 +458,14 @@ def write_contour_sequences(features: Iterable[dict], output_dir: Path) -> dict[
             millimetres = int(feature.get("properties", {}).get("korkeusarvo", -1))
             if millimetres < 0 or millimetres % 5000:
                 continue
+            geometry = make_valid(shape(feature["geometry"])).intersection(clip_geometry)
+            if geometry.is_empty:
+                continue
             elevation = millimetres / 1000
             compact = {
                 "type": "Feature",
                 "properties": {"elevation": elevation},
-                "geometry": feature["geometry"],
+                "geometry": mapping(geometry),
             }
             encoded = json.dumps(compact, separators=(",", ":"), ensure_ascii=False)
             outputs[5].write(encoded + "\n")
@@ -471,7 +496,13 @@ def build_pmtiles(sequence: Path, output: Path) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--bbox", nargs=4, type=float, default=DEFAULT_BBOX, metavar=("W", "S", "E", "N"))
+    parser.add_argument(
+        "--bbox",
+        nargs=4,
+        type=float,
+        metavar=("W", "S", "E", "N"),
+        help="Override the configured non-rectangular target area with a rectangle",
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--env-file", type=Path, default=REPO_ROOT / ".env")
     return parser.parse_args()
@@ -479,7 +510,14 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    bbox = tuple(args.bbox)
+    if args.bbox:
+        bbox = tuple(args.bbox)
+        clip_geometry = box(*bbox)
+        area_definition = {"bbox_wgs84": list(bbox)}
+    else:
+        area_definition = area_config(load_manifest(), DEFAULT_AREA)
+        clip_geometry = area_clip_geometry(area_definition)
+        bbox = tuple(clip_geometry.bounds)
     output_dir = args.output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
     client = MmlClient(read_api_key(args.env_file))
@@ -488,11 +526,20 @@ def main() -> None:
     sheets = map_sheets_for_bbox(sheet_paths, projected_bbox(bbox))
     hillshade_tiffs = download_hillshade(client, sheets, output_dir / "source-hillshade")
     downloaded_sheets = {path.stem for path in hillshade_tiffs}
-    hillshade_source = merged_hillshade(hillshade_tiffs, bbox, output_dir / "cache" / "hillshade-8m-merged.tif")
-    hillshade = build_hillshade_pmtiles(hillshade_source, bbox, output_dir / "hillshade-8m-webp-z12.pmtiles")
+    hillshade_source = merged_hillshade(
+        hillshade_tiffs,
+        bbox,
+        output_dir / "cache" / "hillshade-8m-merged-region-v2.tif",
+    )
+    hillshade = build_hillshade_pmtiles(
+        hillshade_source,
+        bbox,
+        clip_geometry,
+        output_dir / "hillshade-8m-webp-z12.pmtiles",
+    )
 
     contour_features = iter_contours(client, bbox)
-    counts = write_contour_sequences(contour_features, output_dir)
+    counts = write_contour_sequences(contour_features, output_dir, clip_geometry)
     build_pmtiles(output_dir / "contours-5m.geojsonseq", output_dir / "contours-5m.pmtiles")
     build_pmtiles(output_dir / "contours-10m.geojsonseq", output_dir / "contours-10m.pmtiles")
 
@@ -500,6 +547,15 @@ def main() -> None:
         "schema_version": 1,
         "source": "Maanmittauslaitos",
         "requested_bbox_wgs84": list(bbox),
+        "target_area": {
+            key: area_definition[key]
+            for key in (
+                "include_bboxes_wgs84",
+                "exclude_bboxes_wgs84",
+                "north_limit_wgs84",
+            )
+            if key in area_definition
+        },
         "hillshade": {
             "product": "Rinnevarjoste 8 m",
             "map_sheets": sheets,

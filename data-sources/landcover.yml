@@ -20,9 +20,16 @@ areas:
     output_resolution_metres: 10
   pilot-archipelago-sea:
     description: Full Archipelago Sea and Åland route-area KMTK pilot
-    bbox_wgs84: [19.00, 59.70, 23.00, 60.70]
+    # Download envelope for the non-rectangular target area below.
+    bbox_wgs84: [19.00, 59.70, 23.58061, 60.75826]
     # Rounded outwards from bbox_wgs84.
-    bbox_epsg3067: [50000, 6624000, 282000, 6757000]
+    bbox_epsg3067: [50000, 6624000, 313000, 6763000]
+    include_bboxes_wgs84:
+      - [19.00, 59.70, 23.00, 60.75826]
+      - [22.62179, 59.71622, 23.58061, 60.53005]
+    exclude_bboxes_wgs84:
+      - [22.23415, 60.55430, 24.69488, 61.45784]
+    north_limit_wgs84: 60.75826
     output_resolution_metres: 10
   pilot-kumlinge-seglinge:
     description: Kumlinge-Seglinge SYKE forest smoothing pilot

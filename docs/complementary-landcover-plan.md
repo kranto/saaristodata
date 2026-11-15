@@ -64,7 +64,7 @@ tuotetaan siksi 20 metrin tarkkuudella vain metsäluokka KMTK:n alle jääväksi
 täyttökerrokseksi.
 
 Koko reittialueen kattava KMTK-koealue `pilot-archipelago-sea` on rajattu
-arvoihin `[19.00, 59.70, 23.00, 60.70]`. Suorakulmainen latausrajaus ympäröi
+arvoihin `[19.00, 59.70, 23.58061, 60.75826]`. Suorakulmainen latausrajaus ympäröi
 sovelluksessa pienellä zoomilla näkyvän Ahvenanmaan ja Turun saariston ovaalin
 kohdealueen. Tyhjät merikulmat eivät kasvata vektorilaattoja olennaisesti.
 Alkuperäinen alue säilytetään Syke-vertailua ja aiempien tulosten toistamista

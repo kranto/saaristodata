@@ -100,7 +100,7 @@ Syke layer is now drawn underneath KMTK. In the Kustavi–Iniö–Velkua pilot,
 KMTK returned 43,056 raw `rock_area` polygons, showing why its rock geometry is
 materially more useful than the Syke raster around Rymättylä.
 
-The full Archipelago Sea pilot uses bounds `[19.00, 59.70, 23.00, 60.70]`,
+The full Archipelago Sea pilot uses download bounds `[19.00, 59.70, 23.58061, 60.75826]`,
 about 8.4 times the original bounding-box area. It returned 264,678 raw
 features, including 201,288 `rock_area` polygons. After validation and size
 filtering, 261,072 features were written to a 47.6 MB PMTiles archive.

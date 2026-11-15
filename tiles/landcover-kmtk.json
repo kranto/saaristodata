@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T07:24:41.611136+00:00",
+  "generated_at": "2026-11-15T16:02:31.299581+00:00",
   "area": "pilot-archipelago-sea",
   "source": "mml-kmtk-beta",
   "archive": "landcover-archipelago-sea-kmtk.pmtiles",
-  "bytes": 51589518,
-  "sha256": "7b1bfd53eab66712ccda232b88f4e7b5361906349543588c72bf9a9d31af4c9c",
+  "bytes": 63270442,
+  "sha256": "952c7403c04a16576d566325ced5f98b3f1bf560452c5a6aa0d2d0af3c9d55f1",
   "bounds_wgs84": [
     19.0,
     59.7,
-    23.0,
-    60.7
+    23.58061,
+    60.75826
   ],
   "minimum_zoom": 8,
   "maximum_zoom": 14,

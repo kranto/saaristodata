@@ -1,7 +1,9 @@
 # Local OpenFreeMap terrain prototype
 
-This localhost-only prototype covers the same Archipelago Sea area as the KMTK
-and Syke land-cover archives: `W 19.0 · S 59.7 · E 23.0 · N 60.7`. It is shown
+This localhost-only prototype uses the same non-rectangular Archipelago Sea
+target area as the KMTK and Syke land-cover archives. Its download envelope is
+`W 19.0 · S 59.7 · E 23.58061 · N 60.75826`; the exact include and exclude
+rectangles are defined in `data-sources/landcover.yml`. It is shown
 only on the **OpenFreeMap maasto** base map.
 
 The source data comes directly from Maanmittauslaitos:

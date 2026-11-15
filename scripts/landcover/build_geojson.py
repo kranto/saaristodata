@@ -18,10 +18,10 @@ from rasterio.features import bounds as feature_bounds, shapes
 from rasterio.transform import array_bounds
 from rasterio.windows import Window, from_bounds
 from rasterio.warp import Resampling, reproject
-from shapely import transform
+from shapely import make_valid, transform
 from shapely.geometry import mapping, shape
 
-from common import REPO_ROOT, area_config, load_manifest, source_config
+from common import REPO_ROOT, area_clip_geometry, area_config, load_manifest, source_config
 
 
 DEFAULT_SOURCE = "syke-maanpeite-2022"
@@ -167,11 +167,16 @@ def main() -> None:
     source_counts = Counter()
     output_counts = Counter()
     output_areas = Counter()
+    output_clip_geometry = (
+        area_clip_geometry(area, processing["output_crs"])
+        if args.clip_to_area else None
+    )
 
     with rasterio.open(source_path) as dataset:
         if dataset.crs is None:
             raise ValueError(f"Input raster {source_path} has no CRS")
         window = None
+        clip_geometry = None
         if args.clip_to_area:
             if dataset.crs.to_epsg() != 3067:
                 raise ValueError("--clip-to-area currently requires an EPSG:3067 source raster")
@@ -179,6 +184,7 @@ def main() -> None:
             window = window.round_offsets().round_lengths().intersection(
                 Window(0, 0, dataset.width, dataset.height)
             )
+            clip_geometry = area_clip_geometry(area, dataset.crs)
         values = dataset.read(1, window=window)
         working_transform = dataset.window_transform(window) if window else dataset.transform
         valid = values != dataset.nodata if dataset.nodata is not None else np.ones(values.shape, bool)
@@ -216,18 +222,26 @@ def main() -> None:
         ).transform
         for geometry, class_index, touches_chunk_boundary in geometry_iterator:
             class_name = reverse_indexes[int(class_index)]
-            polygon = shape(geometry)
+            polygon = make_valid(shape(geometry))
+            if clip_geometry is not None:
+                polygon = polygon.intersection(clip_geometry)
             minimum_area = float(minimum_areas[class_name])
             if polygon.area < minimum_area and not touches_chunk_boundary:
                 continue
             polygon = polygon.simplify(simplify_tolerance, preserve_topology=True)
             if polygon.is_empty or not polygon.is_valid:
                 polygon = polygon.buffer(0)
+            if clip_geometry is not None:
+                polygon = make_valid(polygon).intersection(clip_geometry)
             if polygon.is_empty:
+                continue
+            projected = transform(polygon, target_transformer, interleaved=False)
+            if output_clip_geometry is not None:
+                projected = make_valid(projected).intersection(output_clip_geometry)
+            if projected.is_empty:
                 continue
             output_counts[class_name] += 1
             output_areas[class_name] += polygon.area
-            projected = transform(polygon, target_transformer, interleaved=False)
             features.append({
                 "type": "Feature",
                 "properties": {
