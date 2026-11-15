@@ -1082,6 +1082,7 @@
         "sname": "Hitis",
         "sname_fi": "Hiittinen",
         "labelVisibleFrom": 8,
+        "labelVisibleTo": 12,
         "labelAnchor": {"dir": "SE", "x":0 , "y":10 }
       },
       "geometry": {
@@ -4030,6 +4031,7 @@
         "stype": "area", "ssubtype": "island1",
         "sname": "Rosala",
         "labelVisibleFrom": 10,
+        "labelVisibleTo": 12,
         "labelAnchor": {"dir": "S", "x":0 , "y":10 }
       },
       "geometry": {
@@ -7296,7 +7298,8 @@
         "sname": "Pargas",
         "sname_fi": "Parainen",
         "labelAnchor": {"dir": "E", "x": 10, "y": 0 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+         "labelVisibleTo": 14       
       }
     },
     {
@@ -7360,7 +7363,8 @@
         "ssubtype": "mun2",
         "sname": "Salo",
         "labelAnchor": {"dir": "N", "x": 0, "y": -10 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+        "labelVisibleTo": 12
       }
     },
     {
@@ -7376,7 +7380,8 @@
         "sname": "Naantali",
         "sname_sv": "Nådendal",
         "labelAnchor": {"dir": "N", "x": 18, "y": -10 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+        "labelVisibleTo": 15
       }
     },
     {
@@ -7392,7 +7397,8 @@
         "sname": "Rymättylä",
         "sname_sv": "Rimito",
         "labelAnchor": {"dir": "S", "x": -10, "y": 0 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+        "labelVisibleTo": 12
       }
     },
     {
@@ -7408,7 +7414,8 @@
         "sname": "Kustavi",
         "sname_sv": "Gustavs",
         "labelAnchor": {"dir": "NE", "x": -10, "y": -10 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+         "labelVisibleTo": 14       
       }
     },
     {
@@ -7424,7 +7431,8 @@
         "sname": "Taivassalo",
         "sname_sv": "Tövsala",
         "labelAnchor": {"dir": "S", "x": 0, "y": 15 },
-        "labelVisibleFrom": 9
+        "labelVisibleFrom": 9,
+         "labelVisibleTo": 14       
       }
     },
     {
@@ -7656,7 +7664,8 @@
         "ssubtype": "mun2",
         "sname": "Velkua",
         "labelAnchor": {"x": 0, "y": 0 },
-        "labelVisibleFrom": 8
+        "labelVisibleFrom": 8,
+         "labelVisibleTo": 13       
       }
     },
     {
