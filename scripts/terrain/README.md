@@ -1,6 +1,6 @@
-# Local OpenFreeMap terrain prototype
+# OpenFreeMap terrain overlays
 
-This localhost-only prototype uses the same non-rectangular Archipelago Sea
+The published terrain overlays use the same non-rectangular Archipelago Sea
 target area as the KMTK and Syke land-cover archives. Its download envelope is
 `W 19.0 · S 59.7 · E 23.58061 · N 60.75826`; the exact include and exclude
 rectangles are defined in `data-sources/landcover.yml`. It is shown
@@ -39,8 +39,10 @@ Build with the existing land-cover virtual environment:
   scripts/terrain/build_test_terrain.py
 ```
 
-The app's localhost controls can independently select 5 m or 10 m contours,
-enable the hillshade, and tune their zoom ranges, colour and opacity.
+Users can independently enable contours and hillshade on the terrain map. The
+app's localhost-only controls additionally tune their zoom ranges, colour and
+opacity. The complete current build, shoreline-mask, verification and
+server-publication runbook is `docs/terrain-data-pipeline.md`.
 
 An already generated hillshade archive can be optimized without touching the
 source rasters or rebuilding the shoreline mask. This simplifies the complete

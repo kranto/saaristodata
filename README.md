@@ -9,6 +9,10 @@ kartalla ja aikataulujen tekeminen helposti löydettäviksi. Aikataulunäkymä o
 tarkoitettu matkan suunnitteluun eri päiville ja kausille, ei vain seuraavan
 lähdön näyttämiseen.
 
+KMTK-, Syke-, korkeuskäyrä- ja rinnevarjostusaineistojen koko käsittely- ja
+julkaisuketju on kuvattu tiedostossa
+[`docs/terrain-data-pipeline.md`](docs/terrain-data-pipeline.md).
+
 ## Tietojen ylläpito
 
 Reittien, lauttojen, aikataulujen, operaattorien ja yhteystietojen

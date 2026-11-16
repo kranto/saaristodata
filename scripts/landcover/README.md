@@ -3,6 +3,10 @@
 This directory contains the reproducible land-cover pipeline described in
 `docs/complementary-landcover-plan.md`.
 
+The complete current build, masking, verification and server-publication
+runbook is `docs/terrain-data-pipeline.md`. This README documents the
+land-cover-specific commands and implementation details.
+
 ## Current source decision
 
 The terrain data uses the National Land Survey's **KMTK BETA** polygon
@@ -97,7 +101,7 @@ tracked JSON report and the variant-specific active archive manifest with its
 checksum, bounds, zoom range and attribution. Existing archives are preserved
 unless `--force` is used.
 
-The terrain map uses a single precomposed WebP overview for zooms 8-11 so
+The terrain map uses a single precomposed WebP overview for source zooms 8-12 so
 the browser does not need to download and decode the large KMTK and shoreline-
 masked Syke vector tiles at startup. It deliberately excludes the separate
 urban-only archive used by the default OpenFreeMap style. Rebuild it from the
@@ -109,9 +113,11 @@ published vector archives with:
 ```
 
 The zoom-10 raster prevents the zoom-9 image from being enlarged near the
-transition. Zooms 8-9 use 256 px tiles, while zooms 10-11 retain the renderer's
+transition. Zooms 8-9 use 256 px images, while zooms 10-12 retain the renderer's
 full 512 px output so they stay sharp immediately below the vector transition.
-At zoom 11 the terrain map switches back to the two detailed vector archives.
+Because the raster source uses the 256 px convention, map zooms 8-11 use source
+zooms 9-12. At map zoom 12 the terrain map switches back to the two detailed
+vector archives.
 
 ## Build the smoothed Syke forest fallback
 
@@ -154,7 +160,7 @@ reproducibility; an unsmoothed vector-tile variant is not built or published.
 
 ## Published archives
 
-Only the three archives listed in `tiles/published-landcover.json` and in the
+Only the four archives listed in `tiles/published-landcover.json` and in the
 `published_archives` section of `data-sources/landcover.yml` are release data.
 Their public names intentionally omit the internal `pilot` area prefix. Verify
 file sizes and SHA-256 checksums against the publication manifest before
