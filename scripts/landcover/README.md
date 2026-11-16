@@ -109,8 +109,9 @@ published vector archives with:
 ```
 
 The zoom-10 raster prevents the zoom-9 image from being enlarged near the
-transition. At zoom 10 the terrain map switches back to the two detailed
-vector archives.
+transition. Zooms 8-9 use 256 px tiles, while zoom 10 retains the renderer's
+full 512 px output so it stays sharp immediately below the vector transition.
+At zoom 10 the terrain map switches back to the two detailed vector archives.
 
 ## Build the smoothed Syke forest fallback
 

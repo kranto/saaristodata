@@ -14,6 +14,11 @@
     "9": 75,
     "10": 85
   },
+  "tile_pixels_by_zoom": {
+    "8": 256,
+    "9": 256,
+    "10": 512
+  },
   "supersampling": 2,
   "opacity_cap_ratio": 0.825,
   "source_bytes": {
@@ -39,9 +44,9 @@
     },
     "10": {
       "tiles": 71,
-      "bytes": 3129472
+      "bytes": 4503908
     }
   },
-  "bytes": 4100721,
-  "sha256": "c3869dc22a5d84958573ff1df46357cb1f87b646fd6ef8843761ac3b84010b2b"
+  "bytes": 5475168,
+  "sha256": "888e819e573a5251306bb905affc9315df056457fa8984ef1c7c05ddc847f3a8"
 }

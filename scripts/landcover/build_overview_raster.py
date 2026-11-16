@@ -28,6 +28,7 @@ MIN_ZOOM = 8
 MAX_ZOOM = 10
 SUPERSAMPLING = 2
 WEBP_QUALITY = {8: 70, 9: 75, 10: 85}
+TILE_PIXELS = {8: 256, 9: 256, 10: 512}
 WEBP_METHOD = 4
 OPACITY_CAP_RATIO = 0.825
 SOURCE_ARCHIVES = (
@@ -181,7 +182,9 @@ def render_source(
 
 
 def encode_tile(image: Image.Image, zoom: int) -> bytes:
-    image = image.resize((256, 256), Image.Resampling.LANCZOS)
+    tile_pixels = TILE_PIXELS[zoom]
+    if image.size != (tile_pixels, tile_pixels):
+        image = image.resize((tile_pixels, tile_pixels), Image.Resampling.LANCZOS)
     encoded = io.BytesIO()
     image.save(encoded, format="WEBP", quality=WEBP_QUALITY[zoom], method=WEBP_METHOD)
     return encoded.getvalue()
@@ -278,6 +281,7 @@ def main() -> None:
         "minzoom": MIN_ZOOM,
         "maxzoom": MAX_ZOOM,
         "webp_quality_by_zoom": WEBP_QUALITY,
+        "tile_pixels_by_zoom": TILE_PIXELS,
         "supersampling": SUPERSAMPLING,
         "opacity_cap_ratio": OPACITY_CAP_RATIO,
         "source_bytes": source_bytes,
