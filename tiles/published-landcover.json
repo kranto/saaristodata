@@ -3,8 +3,8 @@
   "archives": [
     {
       "archive": "terrain-landcover-overview-r1.pmtiles",
-      "bytes": 18641960,
-      "sha256": "9c5ccfb61582d06ffb02c5dab73c390a944724878de6c2f111c21bd902c4d2b0"
+      "bytes": 52753166,
+      "sha256": "dd1345e74d8e92825e5bbb01511c61026165171804c89b7ee0e7ef64b31a385c"
     },
     {
       "archive": "terrain-landcover-r1.pmtiles",
