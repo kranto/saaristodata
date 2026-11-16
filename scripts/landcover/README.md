@@ -97,7 +97,7 @@ tracked JSON report and the variant-specific active archive manifest with its
 checksum, bounds, zoom range and attribution. Existing archives are preserved
 unless `--force` is used.
 
-The terrain map uses a single precomposed WebP overview for zooms 8-10 so
+The terrain map uses a single precomposed WebP overview for zooms 8-11 so
 the browser does not need to download and decode the large KMTK and shoreline-
 masked Syke vector tiles at startup. It deliberately excludes the separate
 urban-only archive used by the default OpenFreeMap style. Rebuild it from the
@@ -109,9 +109,9 @@ published vector archives with:
 ```
 
 The zoom-10 raster prevents the zoom-9 image from being enlarged near the
-transition. Zooms 8-9 use 256 px tiles, while zoom 10 retains the renderer's
-full 512 px output so it stays sharp immediately below the vector transition.
-At zoom 10 the terrain map switches back to the two detailed vector archives.
+transition. Zooms 8-9 use 256 px tiles, while zooms 10-11 retain the renderer's
+full 512 px output so they stay sharp immediately below the vector transition.
+At zoom 11 the terrain map switches back to the two detailed vector archives.
 
 ## Build the smoothed Syke forest fallback
 
