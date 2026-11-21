@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "acceptedAt": "2026-10-27T18:47:34.600139+00:00",
+  "acceptedAt": "2026-11-21T18:18:11.240354+00:00",
   "settings": {
     "pdfRenderDpi": 150
   },
@@ -44,14 +44,22 @@
         "velkuanmaa"
       ],
       "sourcePrefix": "https://www.finferries.fi/",
-      "complete": false
+      "complete": false,
+      "acceptedUrls": [
+        "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-ma-pe-1.1.-31.3.2027-ja-1.10.-31.12.2027.html",
+        "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-la-1.1-31.3.2027-ja-1.10.-31.12.2027.html",
+        "https://www.finferries.fi/koodiviidakko/aikataulu/kasnas-hiittinen-talvi-su-1.1.-31.3.2027-ja-1.10.-31.12.2027.html"
+      ]
     },
     {
       "id": "alandstrafiken-turlistor",
       "url": "https://www.alandstrafiken.ax/turlistor",
       "pattern": "/sites/default/files/[^?#]+\\.pdf(?:[?#].*)?$",
       "sourcePrefix": "https://www.alandstrafiken.ax/sites/default/files/",
-      "complete": false
+      "complete": false,
+      "acceptedUrls": [
+        "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf"
+      ]
     },
     {
       "id": "saaristolinjat-aikataulut",
@@ -244,10 +252,10 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/keistio-ma-pe-1.4.2026-alkaen.html",
       "seedFile": "component-keistio-weekday.html",
       "fingerprint": {
-        "sha256": "c619e74a1240b219308bc4d0de12cb81dda29303ddf7a8fac28119a22a8fdbb8",
-        "size": 4115,
-        "etag": "W/\"e15d95f559b752666827d02e3b4904f8\"",
-        "normalizedSha256": "48aac7335e2b990ff3a101fb3da763ecb51d5849b6ea9e72f5cf02eb0339b6ce"
+        "sha256": "6d89dc7b1c24daff6daaeb55e987cd5a85c6a78eb8069b5f32bfdd547d747508",
+        "size": 4032,
+        "etag": "W/\"0ee631229dd44bf43d2a572024c4015f\"",
+        "normalizedSha256": "bff5eb15a1e9b63fa034eecca03d3bd162e46d6fc524d7b3a32c5c0f7c3974b0"
       }
     },
     {
@@ -257,10 +265,10 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/keistio-la-1.4.2026-alkaen.html",
       "seedFile": "component-keistio-saturday.html",
       "fingerprint": {
-        "sha256": "1bb15b6e4b5ea2d81042dda7818132c7f61e82841024a29d1ea28ff9b35ebbda",
-        "size": 3569,
-        "etag": "W/\"051c05f0e2235ad65f3f068abb564e55\"",
-        "normalizedSha256": "cbd4c314356725302e294ffb5428846e08a588d5b2dd773c462d5c97afb4dbdd"
+        "sha256": "df970c61b7786884a9a0ace10e7df60ba12d4525cbfae9ebaf209e79cf3bd298",
+        "size": 3486,
+        "etag": "W/\"72fc75b4f42571147cedf7558980b47e\"",
+        "normalizedSha256": "51a03749ce527b3acb1caef99197c48af249291a0f99cc770266c1befa717d79"
       }
     },
     {
@@ -446,6 +454,22 @@
       }
     },
     {
+      "id": "finferries-kasnashitis-kasnas-hiittinen-aurora-1.1.-31.12.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/kasnas-hiittinen-aurora-1.1.-31.12.2027.pdf",
+      "seedFile": "kasnas-hiittinen-aurora-1.1.-31.12.2027.pdf",
+      "fingerprint": {
+        "sha256": "b3d770221b52507ab3396629c3f5f861b166abfdbc7d6c31142c159df211a897",
+        "size": 193017,
+        "etag": "\"2f1f9-6607693fbc529\"",
+        "lastModified": "Tue, 17 Nov 2026 10:44:25 GMT",
+        "pageImageSha256": [
+          "d65c57aeb99d72932c56efb3d1a34e12f374b732bb9284b85a90acbe174d868b"
+        ]
+      }
+    },
+    {
       "id": "finferries-hitisalva-hiittisten-itainen-reitti-talviaikataulu-2026",
       "provider": "finferries",
       "kind": "pdf",
@@ -475,6 +499,39 @@
         "pageImageSha256": [
           "9d54059f6d48212be5a8ccb6785332c73400406084f508fe556368fb333f5808",
           "411bd14b4ac026fead45007013e56fdda6ca7297702bd0629e7a67801bb1b0d3"
+        ]
+      }
+    },
+    {
+      "id": "finferries-hitisalva-hiittisten-itainen-reitti-1.1.-31.5.2027-ja-13.8.-31.12.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/hiittisten-itainen-reitti-1.1.-31.5.2027-ja-13.8.-31.12.2027.pdf",
+      "seedFile": "hiittisten-itainen-reitti-1.1.-31.5.2027-ja-13.8.-31.12.2027.pdf",
+      "fingerprint": {
+        "sha256": "7f101ad4b638c1ea92b9b896aa3746ebd56e7ac3db02a099ffd207816252b987",
+        "size": 482486,
+        "etag": "\"75cb6-660772fc6b5ed\"",
+        "lastModified": "Tue, 17 Nov 2026 11:27:59 GMT",
+        "pageImageSha256": [
+          "b9617c442516fcf9542760973723edd463158dad0cd287ce534f3da580f42071"
+        ]
+      }
+    },
+    {
+      "id": "finferries-hitisjurmo-hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027.pdf",
+      "seedFile": "hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027.pdf",
+      "fingerprint": {
+        "sha256": "38a9f1f3133296185df1c118a56df8fd7d772664fbd87a6f167a9b3355669c94",
+        "size": 480484,
+        "etag": "\"754e4-660751b6d75b0\"",
+        "lastModified": "Tue, 17 Nov 2026 08:59:07 GMT",
+        "pageImageSha256": [
+          "66ed0154761294ff07f22072e8bddfd0111097738fc8ce26c13c806d1d4131fd",
+          "6becab1f8e501904f9dc2e5b3f7e289586e7fb796addb658380a7acf66c0a38a"
         ]
       }
     },
@@ -529,19 +586,36 @@
       }
     },
     {
-      "id": "finferries-iniorutt-inion-lisareitti-talvi-19.8.2026-30.4.2027",
+      "id": "finferries-iniorutt-inion-lisareitti-talvi-19.8.2026-29.11.2026",
       "provider": "finferries",
       "kind": "pdf",
-      "url": "https://www.finferries.fi/media/aikataulut-2027/inion-lisareitti-talvi-19.8.2026-30.4.2027.pdf",
-      "seedFile": "inion-lisareitti-talvi-19.8.2026-30.4.2027.pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/inion-lisareitti-talvi-19.8.2026-29.11.2026.pdf",
+      "seedFile": "inion-lisareitti-talvi-19.8.2026-29.11.2026.pdf",
       "fingerprint": {
-        "sha256": "19a9456ec1f654e13aaece6c246da43b4979fdc5d26f382b70b4d944cdeee27e",
-        "size": 549681,
-        "etag": "\"86331-658fd015040bd\"",
-        "lastModified": "Fri, 14 Aug 2026 07:45:32 GMT",
+        "sha256": "9b37ffd6ce4f94aea7c35eb2411d346fdfdb043ed55d87f6f1e675f396df8f45",
+        "size": 509910,
+        "etag": "\"7c7d6-6606186c58960\"",
+        "lastModified": "Mon, 16 Nov 2026 09:37:29 GMT",
         "pageImageSha256": [
-          "361dc68d036751e842fc7bdba83f8f0b9053be5edece5ff22c009ebcca1c1bc8",
-          "0fe35e03567063c244a1bbf9819b2b5d205473bce3d75f3d561df906f1ce9108"
+          "797018468a4f174231f3452a14b4afb8926fc1065b735328601ae5b6007aa1b7",
+          "d2a9d9736ac1326c43e1948a065b7024246e9a5b8f9b8376f6d7ea6b45e26144"
+        ]
+      }
+    },
+    {
+      "id": "finferries-iniorutt-inion-lisareitti-talvi-30.11.2026-30.4.2027",
+      "provider": "finferries",
+      "kind": "pdf",
+      "url": "https://www.finferries.fi/media/aikataulut-2027/inion-lisareitti-talvi-30.11.2026-30.4.2027.pdf",
+      "seedFile": "inion-lisareitti-talvi-30.11.2026-30.4.2027.pdf",
+      "fingerprint": {
+        "sha256": "95d7fd64daf5fd0d0c720705bf24b0f58e81940d5e9913be015b567ef9d6b495",
+        "size": 546503,
+        "etag": "\"856c7-66073ba368bd6\"",
+        "lastModified": "Tue, 17 Nov 2026 07:20:21 GMT",
+        "pageImageSha256": [
+          "012f091c9752cfcd8e52acfd24a9dae3e18db474a218546c229b448e3c4bae54",
+          "57217c58cc00679b66bfe06b039c00058deabaf5aceca375438979efddcf69da"
         ]
       }
     },
@@ -955,16 +1029,16 @@
       }
     },
     {
-      "id": "alandstrafiken-sodra-linjen-30.9.2026",
+      "id": "alandstrafiken-sodra-linjen-12.11.2026",
       "provider": "alandstrafiken",
       "kind": "pdf",
-      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-09/sodra-linjen-30.9.2026.pdf",
-      "seedFile": "sodra-linjen-30.9.2026.pdf",
+      "url": "https://www.alandstrafiken.ax/sites/default/files/2026-11/sodra-linjen-12.11.2026.pdf",
+      "seedFile": "sodra-linjen-12.11.2026.pdf",
       "fingerprint": {
-        "sha256": "be9d38768e0af9739247a3c5e62fdab6b8bb7337764599007e99f7d8e319cae9",
-        "size": 231801,
-        "etag": "\"38979-65cb2438e1a84\"",
-        "lastModified": "Wed, 30 Sep 2026 12:16:07 GMT",
+        "sha256": "626c82c97726102a962c44c52fba2dc7724569beb95e247768b6ca16bf55f3ae",
+        "size": 231716,
+        "etag": "\"38924-66075a03bbaea\"",
+        "lastModified": "Tue, 17 Nov 2026 09:36:15 GMT",
         "pageImageSha256": [
           "bb0b3c25487cb66587efe298aa089234be17bc1456467cd173b835302779ed69",
           "8a09cfb2351878f0d05aab5de1a7728f7dcaec81f5c68c6b797a4aebf8e62e53",
@@ -976,7 +1050,7 @@
           "c2447588bc1fe831f241f521eada798213b94c1cf9406dd38c53c66d3812808e",
           "c24ce2ca77318e58d93799d7f6824c073ee051ecdb2c28f47dcb4f16e0dd4f0c",
           "cda80bf042db7c3dfe8034cdc1f9eefe84aa1c051ccfba9bcd393f2951efbfb8",
-          "f6f236662d190296fb22f1daa2a582929a3737467bef0dbcb5ba8fc15086afc0"
+          "8d7f8a44346b9aa6fe0216dee4cb6cbcfb4101d86c5c6bbfcdd8876510e4fadd"
         ]
       }
     },
@@ -989,6 +1063,8 @@
       "fingerprint": {
         "sha256": "018e8767de90687de4d5cae9e4536b586cdea2ef92a97bdc49433f59b5df5881",
         "size": 114237,
+        "etag": "\"1be3d-65dc7b8a7ab93\"",
+        "lastModified": "Wed, 14 Oct 2026 07:17:18 GMT",
         "pageImageSha256": [
           "bd8122ad7da58f9827551053fcd9c7b2edaa0ed0ed3898f259b5eb2952f6b0e9"
         ]
@@ -1001,9 +1077,9 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/palva-20.2.2017-alkaen.html",
       "seedFile": "component-palva__1.html",
       "fingerprint": {
-        "sha256": "3168923d79add038725377efbf6f96ae775bd681c00d00a7d346420ea9c06d44",
-        "size": 4501,
-        "etag": "W/\"8dcb5be172594577191a7c0ccea8ff11\"",
+        "sha256": "afd5bf3b87283c4e73f84ce90679f7306d2d69da4ed8ad6484cac6a097ab23e7",
+        "size": 4081,
+        "etag": "W/\"830fe98248f98a6328b0757daad7e0ca\"",
         "normalizedSha256": "f317920dff65d666f2fa1a9a29afb2bdf8ca37cfc794c139fbe094e943e66be7"
       }
     },
@@ -1040,10 +1116,10 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hiittisten-itainen-reitti-ms-alva.html",
       "seedFile": "component-hitisalva__1.html",
       "fingerprint": {
-        "sha256": "a02dbdd09726bcdb0434b96bb56195276c6ca49c5da7428132338df7c5efd7ff",
-        "size": 4969,
-        "etag": "W/\"6e6b1ac132a006b75566e502b0326b20\"",
-        "normalizedSha256": "7776a66f9af0c4b705f0e8d85ab1ccda7b29ae843bb6816bf4dd8c7a65f83f89"
+        "sha256": "a67e1f032edaa2202dea173ad353d8b6508b727e6350bd00fa21507b63232344",
+        "size": 5552,
+        "etag": "W/\"6d3b864c906c32cb5f4c38a9c9d8ca4a\"",
+        "normalizedSha256": "3fce3fc49c531ef3397f73faf1a25c2e775ff7b1231f4109a00571ee24dad585"
       }
     },
     {
@@ -1053,10 +1129,10 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/hiittisten-reittialue-jurmo.html",
       "seedFile": "component-hitisjurmo__1.html",
       "fingerprint": {
-        "sha256": "40cbd8dac46f7eda2aaecc91b4f8852b080902390b51b3a7573ab142eb5151aa",
-        "size": 4980,
-        "etag": "W/\"99f740f05efb79e38887929689d8e936\"",
-        "normalizedSha256": "c11121b5ad7421308637043239f80b8f45ef8c1311422d9dfb68d752397dff8c"
+        "sha256": "61e2b0f961a41f7aca81822977a146234927986c1e1945632d39d43215af4263",
+        "size": 5519,
+        "etag": "W/\"005daeade6e18ff207d62a1d9d1c34a4\"",
+        "normalizedSha256": "a7aa4f56bbfbe2496a936dfa701613cab1314cd36b54822ac7c17a0cdafc8120"
       }
     },
     {
@@ -1079,10 +1155,10 @@
       "url": "https://www.finferries.fi/koodiviidakko/aikataulu/inion-lisareitti-kivimo.html",
       "seedFile": "component-iniorutt__1.html",
       "fingerprint": {
-        "sha256": "bdd3753f8929ada823989dfde97bf4ad474b8c02b598ce7d7c557cf0772ad9c5",
-        "size": 5274,
-        "etag": "W/\"aba29e05d2faaf3533feddd139cd5096\"",
-        "normalizedSha256": "44f28f9160b72fb24452920d5c3080fd67380c56014220bd306621d0535a92b5"
+        "sha256": "342aecbcb8af163325e7125f3fc4727025a76d90b211a5eed99622da8cee95a5",
+        "size": 6245,
+        "etag": "W/\"0c8bb5e6ef39495387a3c845dd02bc9b\"",
+        "normalizedSha256": "6c3319d85fcbd4232110778bf28a5eb107f630f23a07c1f6e1f5a3dcaa960343"
       }
     },
     {

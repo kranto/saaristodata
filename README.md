@@ -132,6 +132,16 @@ voidaan vahvistaa liikenteen tilaajan tai operaattorin omasta lähteestä.
 
 - Käytä tietojen lähteenä ensisijaisesti liikenteen tilaajan tai operaattorin
   virallista aikataulua.
+- Käytä Finferriesin aikatauluista ensisijaisesti virallista PDF-aikataulua,
+  kun sellainen on saatavilla. PDF on ensisijainen sekä paikallisen esityksen
+  lähteenä että voimassaolon ja aikataulusisällön tulkinnassa. Käytä
+  Finferriesin HTML-taulukkoa paikallisen aikataulun lähteenä vain, jos
+  käyttökelpoista PDF:ää ei ole tai ylläpitäjän kanssa on erikseen sovittu
+  toisin.
+- Jos viralliset lähteet ovat keskenään ristiriidassa tai niiden voimassaolo,
+  kellonajat tai ehdot jäävät epäselviksi, älä ratkaise ristiriitaa päättelemällä
+  URL-osoitteesta, tiedostonimestä tai muusta epäsuorasta vihjeestä. Keskeytä
+  kyseinen tulkinta ja kysy ylläpitäjältä, miten tiedot merkitään.
 - Arvioi esitystapa reittikohtaisesti. Ulkoinen linkki voi olla hyvä ja pysyvä
   ratkaisu, jos se vie suoraan vakaaseen, ajantasaiseen, koko suunnittelujakson
   kattavaan ja mobiilissa helposti selattavaan aikatauluun.
@@ -204,10 +214,10 @@ Houtskarin ja Iniön lisäreitin sininen merkintä ilmaisee virallisen
 vaihtoyhteyden. Säilytä ja tarkista tällaiset värikoodit lähdekuvasta.
 
 Jos saman virallisen aikataulun kieliversiot ovat keskenään ristiriidassa,
-säilytä kaikki lähdearvot ja ristiriidan kuvaus rakenteessa. Käytä oletuksena
-Manner-Suomen aikatauluissa suomenkielistä ja Ahvenanmaan aikatauluissa
-ruotsinkielistä tietoa. Kirjaa valittu arvo ja valintaperuste erikseen, jotta
-ratkaisu voidaan myöhemmin tarkistaa tai vaihtaa.
+säilytä kaikki lähdearvot ja ristiriidan kuvaus rakenteessa. Älä valitse yhtä
+arvoa oletuksena, vaan kysy ylläpitäjältä, miten ristiriita ratkaistaan. Kirjaa
+sovittu arvo ja valintaperuste erikseen, jotta ratkaisu voidaan myöhemmin
+tarkistaa tai vaihtaa.
 
 Ålandstrafikenin vuosiaikataulu muodostuu tavallisesti viidestä kaudesta mutta
 kolmesta varsinaisesta aikataulupohjasta: alkuvuosi vastaa loppuvuotta, kevään

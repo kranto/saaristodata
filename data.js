@@ -1386,9 +1386,9 @@ fdata = {
         { validFrom: "2026-06-18", validTo: "2026-06-22", images: ["sodra-linjen-30.9.2026-08.jpg"]},
         { validFrom: "2026-08-19", validTo: "2026-09-27", images: ["sodra-linjen-30.9.2026-04.jpg", "sodra-linjen-30.9.2026-05.jpg"]},
         { validFrom: "2026-09-28", validTo: "2026-12-22", images: ["sodra-linjen-30.9.2026-09.jpg", "sodra-linjen-30.9.2026-10.jpg"]},
-        { validFrom: "2026-12-23", validTo: "2026-12-25", images: ["sodra-linjen-30.9.2026-11.jpg"]},
+        { validFrom: "2026-12-23", validTo: "2026-12-25", images: ["sodra-linjen-12.11.2026-11.jpg"]},
         { validFrom: "2026-12-26", validTo: "2026-12-29", images: ["sodra-linjen-30.9.2026-09.jpg", "sodra-linjen-30.9.2026-10.jpg"]},
-        { validFrom: "2026-12-30", validTo: "2027-01-01", images: ["sodra-linjen-30.9.2026-11.jpg"]},
+        { validFrom: "2026-12-30", validTo: "2027-01-01", images: ["sodra-linjen-12.11.2026-11.jpg"]},
         { validFrom: "2026-06-01", validTo: "2026-08-31", images: ["passbaten-2026-1.jpg"]},
       ],
     },
@@ -1572,6 +1572,7 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/kasnas-hitis-aurora.html#timetables",
       tables: [
         { validFrom: "2026-01-01", validTo: "2026-12-31", images: ["kasnas-hiittinen-aurora-talvi-1.1.-31.12.2026-1.jpg"]},
+        { validFrom: "2027-01-01", validTo: "2027-12-31", images: ["kasnas-hiittinen-aurora-1.1.-31.12.2027-1.jpg"]},
       ],
     },
     velkuanreitti: {
@@ -1607,7 +1608,8 @@ fdata = {
       link_sv: "https://www.finferries.fi/sv/farjetrafik/farjplatserna-och-tidtabellerna/inio-tillaggsrutt.html",
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/inio-additional-route.html",
       tables: [
-        { validFrom: "2026-08-19", validTo: "2027-04-30", images:["inion-lisareitti-talvi-19.8.2026-30.4.2027-1.jpg", "inion-lisareitti-talvi-19.8.2026-30.4.2027-2.jpg"] },
+        { validFrom: "2026-08-19", validTo: "2026-11-29", images:["inion-lisareitti-talvi-19.8.2026-29.11.2026-1.jpg", "inion-lisareitti-talvi-19.8.2026-29.11.2026-2.jpg"] },
+        { validFrom: "2026-11-30", validTo: "2027-04-30", images:["inion-lisareitti-talvi-30.11.2026-30.4.2027-1.jpg", "inion-lisareitti-talvi-30.11.2026-30.4.2027-2.jpg"] },
       ],
     },
     utorutt: { 
@@ -1658,6 +1660,8 @@ fdata = {
       tables: [
         { validFrom: "2026-01-01", validTo: "2026-05-30", images:["hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-1.jpg", "hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-2.jpg"]},
         { validFrom: "2026-08-10", validTo: "2026-12-31", images:["hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-1.jpg", "hiittisten-reittialue-1.1.-30.5.2026-ja-10.8.-31.12.2026-2.jpg"]},
+        { validFrom: "2027-01-01", validTo: "2027-05-30", images:["hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027-1.jpg", "hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027-2.jpg"]},
+        { validFrom: "2027-08-13", validTo: "2027-12-31", images:["hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027-1.jpg", "hiittisten-reittialue-1.1.-30.5.2027-ja-13.8.-31.12.2027-2.jpg"]},
       ],
     },
     hitisalva: { 
@@ -1667,6 +1671,8 @@ fdata = {
       link_en: "https://www.finferries.fi/en/ferry-traffic/ferries-and-schedules/hiittinen-eastern-route.html",
       tables: [
         { validFrom: "2026-08-11", validTo: "2026-12-31", images:["hiittisten-itainen-reitti-talviaikataulu-2026-1.jpg"]},
+        { validFrom: "2027-01-01", validTo: "2027-05-31", images:["hiittisten-itainen-reitti-1.1.-31.5.2027-ja-13.8.-31.12.2027-1.jpg"]},
+        { validFrom: "2027-08-13", validTo: "2027-12-31", images:["hiittisten-itainen-reitti-1.1.-31.5.2027-ja-13.8.-31.12.2027-1.jpg"]},
       ],
     },
     pargasrutt: {
